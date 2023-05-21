@@ -56,8 +56,12 @@ impl cfn_resources::CfnResource for CfnIdentityPoolRoleAttachment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines how to map a claim to a role ARN.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -117,6 +121,20 @@ pub struct MappingRule {
 
 
 
+impl cfn_resources::CfnResource for MappingRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// RoleMapping is a property of the AWS::Cognito::IdentityPoolRoleAttachment resource that defines the role-mapping    attributes of an Amazon Cognito identity pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -180,6 +198,22 @@ pub struct RoleMapping {
 
 
 
+impl cfn_resources::CfnResource for RoleMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.rules_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// RulesConfigurationType is a subproperty of the RoleMapping property that defines the rules to be used for mapping users to    roles.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -200,3 +234,18 @@ pub struct RulesConfigurationType {
 }
 
 
+
+impl cfn_resources::CfnResource for RulesConfigurationType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

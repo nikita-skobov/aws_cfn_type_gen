@@ -150,4 +150,65 @@ impl cfn_resources::CfnResource for CfnAssignment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_arn;
+
+        if the_val.len() > 1224 as _ {
+            return Err(format!("Max validation failed on field 'instance_arn'. {} is greater than 1224", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_arn;
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'instance_arn'. {} is less than 10", the_val.len()));
+        }
+
+        
+        let the_val = &self.permission_set_arn;
+
+        if the_val.len() > 1224 as _ {
+            return Err(format!("Max validation failed on field 'permission_set_arn'. {} is greater than 1224", the_val.len()));
+        }
+
+        
+        let the_val = &self.permission_set_arn;
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'permission_set_arn'. {} is less than 10", the_val.len()));
+        }
+
+        
+        let the_val = &self.principal_id;
+
+        if the_val.len() > 47 as _ {
+            return Err(format!("Max validation failed on field 'principal_id'. {} is greater than 47", the_val.len()));
+        }
+
+        
+        let the_val = &self.principal_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'principal_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_id;
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'target_id'. {} is greater than 12", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_id;
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'target_id'. {} is less than 12", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

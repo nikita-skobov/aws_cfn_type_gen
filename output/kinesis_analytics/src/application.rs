@@ -88,8 +88,60 @@ impl cfn_resources::CfnResource for CfnApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.application_code {
+
+        if the_val.len() > 102400 as _ {
+            return Err(format!("Max validation failed on field 'application_code'. {} is greater than 102400", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_code {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'application_code'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'application_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'application_description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides additional mapping information when the record format uses delimiters, such       as CSV. For example, the following sample records use CSV format, where the records use       the '\n' as the row delimiter and a comma (",") as the column       delimiter:
 ///
@@ -131,6 +183,34 @@ pub struct CSVMappingParameters {
 
 
 
+impl cfn_resources::CfnResource for CSVMappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_column_delimiter;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_column_delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_row_delimiter;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_row_delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// When you configure the application input, you specify the streaming source, the       in-application stream name that is created, and the mapping between the two. For more       information, see Configuring Application         Input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -226,6 +306,44 @@ pub struct Input {
 
 
 
+impl cfn_resources::CfnResource for Input {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_parallelism.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.input_processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.input_schema.validate()?;
+
+        self.kinesis_firehose_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_streams_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name_prefix;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'name_prefix'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.name_prefix;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name_prefix'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that contains the Amazon Resource Name (ARN) of the AWS Lambda function that is used to preprocess records in the       stream, and the ARN of the IAM role that is used to access the AWS Lambda       function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -273,6 +391,48 @@ pub struct InputLambdaProcessor {
 
 
 
+impl cfn_resources::CfnResource for InputLambdaProcessor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes the number of in-application streams to create for a given streaming source.       For information about parallelism, see Configuring Application         Input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -298,6 +458,36 @@ pub struct InputParallelism {
 
 
 
+impl cfn_resources::CfnResource for InputParallelism {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.count {
+
+        if *the_val > 64 as _ {
+            return Err(format!("Max validation failed on field 'count'. {} is greater than 64", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides a description of a processor that is used to preprocess the records in the       stream before being processed by your application code. Currently, the only input       processor available is AWS Lambda.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -319,6 +509,22 @@ pub struct InputProcessingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InputProcessingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_lambda_processor.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the format of the data in the streaming source, and how each data element maps to corresponding columns in the in-application stream that is being created.
 ///
@@ -370,6 +576,29 @@ pub struct InputSchema {
 
 
 
+impl cfn_resources::CfnResource for InputSchema {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_columns;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'record_columns'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        self.record_format.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Provides additional mapping information when JSON is the record format on the       streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -393,6 +622,27 @@ pub struct JSONMappingParameters {
 
 
 
+impl cfn_resources::CfnResource for JSONMappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_row_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_row_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Identifies an Amazon Kinesis Firehose delivery stream as the streaming source. You       provide the delivery stream's Amazon Resource Name (ARN) and an IAM role ARN that       enables Amazon Kinesis Analytics to access the stream on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -438,6 +688,48 @@ pub struct KinesisFirehoseInput {
 
 
 
+impl cfn_resources::CfnResource for KinesisFirehoseInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Identifies an Amazon Kinesis stream as the streaming source. You provide the stream's       Amazon Resource Name (ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to       access the stream on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -483,6 +775,48 @@ pub struct KinesisStreamsInput {
 
 
 
+impl cfn_resources::CfnResource for KinesisStreamsInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -516,6 +850,24 @@ pub struct MappingParameters {
 
 
 
+impl cfn_resources::CfnResource for MappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.csvmapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.jsonmapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the mapping of each data element in the streaming source to the       corresponding column in the in-application stream.
 ///
@@ -565,6 +917,27 @@ pub struct RecordColumn {
 
 
 
+impl cfn_resources::CfnResource for RecordColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.sql_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sql_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes the record format and relevant mapping information that should be applied       to schematize the records on the stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -618,3 +991,20 @@ impl Default for RecordFormatRecordFormatTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for RecordFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.mapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

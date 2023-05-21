@@ -76,8 +76,14 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessInstance {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.logging_configurations.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Options for CloudWatch Logs as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -111,6 +117,20 @@ pub struct CloudWatchLogs {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchLogs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Options for Kinesis as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -144,6 +164,20 @@ pub struct KinesisDataFirehose {
 
 
 
+impl cfn_resources::CfnResource for KinesisDataFirehose {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Options for Amazon S3 as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -201,6 +235,20 @@ pub struct S3 {
 
 
 
+impl cfn_resources::CfnResource for S3 {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -238,6 +286,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the destinations for Verified Access logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -283,6 +345,26 @@ pub struct VerifiedAccessLogs {
 
 
 
+impl cfn_resources::CfnResource for VerifiedAccessLogs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_data_firehose.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a Verified Access trust provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -414,3 +496,18 @@ impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for VerifiedAccessTrustProvider {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -101,8 +101,32 @@ impl cfn_resources::CfnResource for CfnFHIRDatastore {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.datastore_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'datastore_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.datastore_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'datastore_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.preload_data_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sse_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The CreatedAt property type specifies Property description not available. for an AWS::HealthLake::FHIRDatastore.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -134,6 +158,20 @@ pub struct CreatedAt {
 
 
 
+impl cfn_resources::CfnResource for CreatedAt {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The customer-managed-key(CMK) used when creating a Data Store. If a customer owned key is not specified, an    Amazon owned key will be used for encryption.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -173,6 +211,36 @@ pub struct KmsEncryptionConfig {
 
 
 
+impl cfn_resources::CfnResource for KmsEncryptionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 400 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 400", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Optional parameter to preload data upon creation of the Data Store. Currently, the only     supported preloaded data is synthetic data generated from Synthea.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -211,6 +279,20 @@ impl Default for PreloadDataConfigPreloadDataTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PreloadDataConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The server-side encryption key configuration for a customer provided encryption key.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -232,6 +314,22 @@ pub struct SseConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SseConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.kms_encryption_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -268,3 +366,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

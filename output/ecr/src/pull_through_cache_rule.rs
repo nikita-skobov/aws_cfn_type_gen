@@ -46,4 +46,25 @@ impl cfn_resources::CfnResource for CfnPullThroughCacheRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.ecr_repository_prefix {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'ecr_repository_prefix'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ecr_repository_prefix {
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'ecr_repository_prefix'. {} is less than 2", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

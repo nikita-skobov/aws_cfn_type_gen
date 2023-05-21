@@ -121,8 +121,12 @@ impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -168,6 +172,20 @@ pub struct GlobalReplicationGroupMember {
 
 
 
+impl cfn_resources::CfnResource for GlobalReplicationGroupMember {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of the replication groups
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -212,6 +230,20 @@ pub struct RegionalConfiguration {
 
 
 
+impl cfn_resources::CfnResource for RegionalConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of PreferredAvailabilityZones objects that specifies       the configuration of a node group in the resharded cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -250,3 +282,34 @@ pub struct ReshardingConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for ReshardingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.node_group_id {
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'node_group_id'. {} is greater than 4", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.node_group_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'node_group_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

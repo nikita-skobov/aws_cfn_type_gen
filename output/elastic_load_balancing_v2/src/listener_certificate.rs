@@ -40,8 +40,12 @@ impl cfn_resources::CfnResource for CfnListenerCertificate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an SSL server certificate for the certificate list of a secure     listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -62,3 +66,18 @@ pub struct Certificate {
 }
 
 
+
+impl cfn_resources::CfnResource for Certificate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

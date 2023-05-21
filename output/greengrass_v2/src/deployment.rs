@@ -112,8 +112,16 @@ impl cfn_resources::CfnResource for CfnDeployment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.deployment_policies.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_job_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about a deployment's update to a component's configuration on AWS IoT Greengrass core devices. For more information, see Update component     configurations in the AWS IoT Greengrass V2 Developer    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -147,6 +155,20 @@ pub struct ComponentConfigurationUpdate {
 
 
 
+impl cfn_resources::CfnResource for ComponentConfigurationUpdate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about a component to deploy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -192,6 +214,24 @@ pub struct ComponentDeploymentSpecification {
 
 
 
+impl cfn_resources::CfnResource for ComponentDeploymentSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration_update.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.run_with.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information system user and group that the AWS IoT Greengrass Core software uses    to run component processes on the core device. For more information, see Configure the user and group that run components in the AWS IoT Greengrass V2 Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -241,6 +281,22 @@ pub struct ComponentRunWith {
 
 
 
+impl cfn_resources::CfnResource for ComponentRunWith {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.system_resource_limits.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about a deployment's policy that defines when components are safe to    update.
 ///
@@ -282,6 +338,20 @@ pub struct DeploymentComponentUpdatePolicy {
 
 
 
+impl cfn_resources::CfnResource for DeploymentComponentUpdatePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about how long a component on a core device can validate its    configuration updates before it times out. Components can use the SubscribeToValidateConfigurationUpdates IPC operation to receive notifications when    a deployment specifies a configuration update. Then, components can respond with the SendConfigurationValidityReport IPC operation. For more information, see the Create deployments in the AWS IoT Greengrass V2 Developer    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -305,6 +375,20 @@ pub struct DeploymentConfigurationValidationPolicy {
 
 
 
+impl cfn_resources::CfnResource for DeploymentConfigurationValidationPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about an AWS IoT job configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -350,6 +434,26 @@ pub struct DeploymentIoTJobConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DeploymentIoTJobConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.abort_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.job_executions_rollout_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timeout_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about policies that define how a deployment updates components and    handles failure.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -397,6 +501,24 @@ pub struct DeploymentPolicies {
 
 
 
+impl cfn_resources::CfnResource for DeploymentPolicies {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.component_update_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.configuration_validation_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains a list of criteria that define when and how to cancel a configuration    deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -418,6 +540,20 @@ pub struct IoTJobAbortConfig {
 
 
 
+impl cfn_resources::CfnResource for IoTJobAbortConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains criteria that define when and how to cancel a job.
 ///
@@ -479,6 +615,20 @@ pub struct IoTJobAbortCriteria {
 
 
 
+impl cfn_resources::CfnResource for IoTJobAbortCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about the rollout configuration for a job. This configuration defines    the rate at which the job deploys a configuration to a fleet of target devices.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -512,6 +662,22 @@ pub struct IoTJobExecutionsRolloutConfig {
 
 
 
+impl cfn_resources::CfnResource for IoTJobExecutionsRolloutConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.exponential_rate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about an exponential rollout rate for a configuration deployment    job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -559,6 +725,22 @@ pub struct IoTJobExponentialRolloutRate {
 
 
 
+impl cfn_resources::CfnResource for IoTJobExponentialRolloutRate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.rate_increase_criteria.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about criteria to meet before a job increases its rollout rate.    Specify either numberOfNotifiedThings or    numberOfSucceededThings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -592,6 +774,20 @@ pub struct IoTJobRateIncreaseCriteria {
 
 
 
+impl cfn_resources::CfnResource for IoTJobRateIncreaseCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about the timeout configuration for a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -615,6 +811,20 @@ pub struct IoTJobTimeoutConfig {
 
 
 
+impl cfn_resources::CfnResource for IoTJobTimeoutConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about system resource limits that the software    applies to a component's processes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -647,3 +857,18 @@ pub struct SystemResourceLimits {
 }
 
 
+
+impl cfn_resources::CfnResource for SystemResourceLimits {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

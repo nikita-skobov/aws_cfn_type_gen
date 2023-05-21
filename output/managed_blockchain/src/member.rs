@@ -70,8 +70,32 @@ impl cfn_resources::CfnResource for CfnMember {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.invitation_id {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'invitation_id'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.invitation_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'invitation_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.member_configuration.validate()?;
+
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A policy type that defines the voting rules for the network. The rules decide if a proposal is approved. Approval may be based on criteria such as the percentage of YES votes and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.
 ///
@@ -148,6 +172,52 @@ impl Default for ApprovalThresholdPolicyThresholdComparatorEnum {
 }
 
 
+impl cfn_resources::CfnResource for ApprovalThresholdPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.proposal_duration_in_hours {
+
+        if *the_val > 168 as _ {
+            return Err(format!("Max validation failed on field 'proposal_duration_in_hours'. {} is greater than 168", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.proposal_duration_in_hours {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'proposal_duration_in_hours'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.threshold_percentage {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'threshold_percentage'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.threshold_percentage {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'threshold_percentage'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration properties of the member.
 ///
@@ -203,6 +273,44 @@ pub struct MemberConfiguration {
 
 
 
+impl cfn_resources::CfnResource for MemberConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        self.member_framework_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network that is using the Hyperledger Fabric framework.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -248,6 +356,48 @@ pub struct MemberFabricConfiguration {
 
 
 
+impl cfn_resources::CfnResource for MemberFabricConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.admin_password;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'admin_password'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.admin_password;
+
+        if the_val.len() < 8 as _ {
+            return Err(format!("Min validation failed on field 'admin_password'. {} is less than 8", the_val.len()));
+        }
+
+        
+        let the_val = &self.admin_username;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'admin_username'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        let the_val = &self.admin_username;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'admin_username'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration properties relevant to a member for the blockchain framework that the Managed Blockchain network uses.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -268,6 +418,22 @@ pub struct MemberFrameworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for MemberFrameworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.member_fabric_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration properties of the network to which the member belongs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -382,6 +548,60 @@ impl Default for NetworkConfigurationFrameworkEnum {
 }
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.framework_version;
+
+        if the_val.len() > 8 as _ {
+            return Err(format!("Max validation failed on field 'framework_version'. {} is greater than 8", the_val.len()));
+        }
+
+        
+        let the_val = &self.framework_version;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'framework_version'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.network_framework_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.voting_policy.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Hyperledger Fabric configuration properties for the network.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -424,6 +644,20 @@ impl Default for NetworkFabricConfigurationEditionEnum {
 }
 
 
+impl cfn_resources::CfnResource for NetworkFabricConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration properties relevant to the network for the blockchain framework that the network uses.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -445,6 +679,22 @@ pub struct NetworkFrameworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NetworkFrameworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.network_fabric_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The voting rules for the network to decide if a proposal is accepted
 ///
@@ -467,3 +717,20 @@ pub struct VotingPolicy {
 }
 
 
+
+impl cfn_resources::CfnResource for VotingPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.approval_threshold_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

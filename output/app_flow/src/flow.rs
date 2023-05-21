@@ -186,8 +186,49 @@ impl cfn_resources::CfnResource for CfnFlow {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.flow_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'flow_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.kmsarn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kmsarn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kmsarn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'kmsarn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        self.metadata_catalog_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_flow_config.validate()?;
+
+        self.trigger_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The aggregation settings that you can use to customize the output format of your flow    data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -241,6 +282,20 @@ impl Default for AggregationConfigAggregationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for AggregationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Amplitude is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -266,6 +321,27 @@ pub struct AmplitudeSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for AmplitudeSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The operation to be performed on the provided source fields.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1686,6 +1762,20 @@ impl Default for ConnectorOperatorZendeskEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConnectorOperator {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when the custom connector is being used as a    destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1788,6 +1878,29 @@ impl Default for CustomConnectorDestinationPropertiesWriteOperationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomConnectorDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.entity_name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'entity_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        self.error_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when the custom connector is being used as a    source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1825,6 +1938,27 @@ pub struct CustomConnectorSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for CustomConnectorSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.entity_name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'entity_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Datadog is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1850,6 +1984,27 @@ pub struct DatadogSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for DatadogSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// This stores the information that is required to query a particular connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1991,6 +2146,42 @@ pub struct DestinationConnectorProperties {
 
 
 
+impl cfn_resources::CfnResource for DestinationConnectorProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_connector.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.event_bridge.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lookout_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.marketo.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redshift.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sapodata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.salesforce.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snowflake.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.upsolver.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.zendesk.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about the configuration of destination connectors present in the    flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2089,6 +2280,38 @@ impl Default for DestinationFlowConfigConnectorTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DestinationFlowConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.api_version {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_version'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.connector_profile_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'connector_profile_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.destination_connector_properties.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Dynatrace is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2114,6 +2337,27 @@ pub struct DynatraceSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for DynatraceSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2169,6 +2413,44 @@ pub struct ErrorHandlingConfig {
 
 
 
+impl cfn_resources::CfnResource for ErrorHandlingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.bucket_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Amazon EventBridge is being used as a    destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2210,6 +2492,29 @@ pub struct EventBridgeDestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for EventBridgeDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.error_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The GlueDataCatalog property type specifies Property description not available. for an AWS::AppFlow::Flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2252,6 +2557,20 @@ pub struct GlueDataCatalog {
 
 
 
+impl cfn_resources::CfnResource for GlueDataCatalog {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Google Analytics is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2277,6 +2596,27 @@ pub struct GoogleAnalyticsSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for GoogleAnalyticsSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the configuration used when importing incremental records from the source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2302,6 +2642,28 @@ pub struct IncrementalPullConfig {
 
 
 
+impl cfn_resources::CfnResource for IncrementalPullConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.datetime_type_field_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'datetime_type_field_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Infor Nexus is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2327,6 +2689,27 @@ pub struct InforNexusSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for InforNexusSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Amazon Lookout for Metrics is used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2348,6 +2731,20 @@ pub struct LookoutMetricsDestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for LookoutMetricsDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The properties that Amazon AppFlow applies when you use Marketo as a flow    destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2385,6 +2782,29 @@ pub struct MarketoDestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for MarketoDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.error_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Marketo is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2410,6 +2830,27 @@ pub struct MarketoSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for MarketoSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The MetadataCatalogConfig property type specifies Property description not available. for an AWS::AppFlow::Flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2430,6 +2871,22 @@ pub struct MetadataCatalogConfig {
 
 
 
+impl cfn_resources::CfnResource for MetadataCatalogConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.glue_data_catalog.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The PardotSourceProperties property type specifies Property description not available. for an AWS::AppFlow::Flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2450,6 +2907,20 @@ pub struct PardotSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for PardotSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies elements that Amazon AppFlow includes in the file and folder names in the flow    destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2552,6 +3023,20 @@ impl Default for PrefixConfigPrefixTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PrefixConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Amazon Redshift is being used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2623,6 +3108,51 @@ pub struct RedshiftDestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for RedshiftDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        self.error_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.intermediate_bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'intermediate_bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.intermediate_bucket_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'intermediate_bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Amazon S3 is used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2678,6 +3208,44 @@ pub struct S3DestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for S3DestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        self.s3_output_format_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// When you use Amazon S3 as the source, the configuration format that you provide    the flow input data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2720,6 +3288,20 @@ impl Default for S3InputFormatConfigS3InputFileTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3InputFormatConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration that determines how Amazon AppFlow should format the flow output    data when Amazon S3 is used as the destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2801,6 +3383,24 @@ impl Default for S3OutputFormatConfigFileTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3OutputFormatConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aggregation_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.prefix_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Amazon S3 is being used as the flow source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2856,6 +3456,43 @@ pub struct S3SourceProperties {
 
 
 
+impl cfn_resources::CfnResource for S3SourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_prefix;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        self.s3_input_format_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when using SAPOData as a flow destination
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2931,6 +3568,31 @@ pub struct SAPODataDestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for SAPODataDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.error_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.object_path;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object_path'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        self.success_response_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when using SAPOData as a flow source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2956,6 +3618,27 @@ pub struct SAPODataSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for SAPODataSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object_path;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object_path'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Salesforce is being used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3085,6 +3768,29 @@ impl Default for SalesforceDestinationPropertiesWriteOperationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SalesforceDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.error_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Salesforce is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3173,6 +3879,27 @@ impl Default for SalesforceSourcePropertiesDataTransferApiEnum {
 }
 
 
+impl cfn_resources::CfnResource for SalesforceSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the configuration details of a schedule-triggered flow as defined by the user.    Currently, these settings only apply to the Scheduled trigger type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3308,6 +4035,35 @@ impl Default for ScheduledTriggerPropertiesDataPullModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ScheduledTriggerProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.schedule_expression;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'schedule_expression'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.time_zone {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'time_zone'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when ServiceNow is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3333,6 +4089,27 @@ pub struct ServiceNowSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for ServiceNowSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Singular is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3358,6 +4135,27 @@ pub struct SingularSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for SingularSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Slack is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3383,6 +4181,27 @@ pub struct SlackSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for SlackSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Snowflake is being used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3454,6 +4273,51 @@ pub struct SnowflakeDestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for SnowflakeDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        self.error_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.intermediate_bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'intermediate_bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.intermediate_bucket_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'intermediate_bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the information that is required to query a particular connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3666,6 +4530,54 @@ pub struct SourceConnectorProperties {
 
 
 
+impl cfn_resources::CfnResource for SourceConnectorProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.amplitude.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom_connector.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.datadog.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynatrace.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.google_analytics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.infor_nexus.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.marketo.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pardot.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sapodata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.salesforce.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.service_now.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.singular.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.slack.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.trendmicro.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.veeva.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.zendesk.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about the configuration of the source connector used in the flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3852,6 +4764,40 @@ impl Default for SourceFlowConfigConnectorTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SourceFlowConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.api_version {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_version'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.connector_profile_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'connector_profile_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.incremental_pull_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_connector_properties.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Determines how Amazon AppFlow handles the success response that it gets from the    connector after placing data.
 ///
@@ -3897,6 +4843,44 @@ pub struct SuccessResponseHandlingConfig {
 
 
 
+impl cfn_resources::CfnResource for SuccessResponseHandlingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.bucket_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -3934,6 +4918,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A class for modeling different type of tasks. Task implementation varies based on the     TaskType.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4052,6 +5050,30 @@ impl Default for TaskTaskTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Task {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.connector_operator.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.destination_field {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'destination_field'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A map used to store task-related information. The execution service looks for particular    information based on the TaskType.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4158,6 +5180,20 @@ impl Default for TaskPropertiesObjectKeyEnum {
 }
 
 
+impl cfn_resources::CfnResource for TaskPropertiesObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when using Trend Micro as a flow source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4183,6 +5219,27 @@ pub struct TrendmicroSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for TrendmicroSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The trigger settings that determine how and when Amazon AppFlow runs the specified    flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4241,6 +5298,22 @@ impl Default for TriggerConfigTriggerTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TriggerConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.trigger_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Upsolver is used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4296,6 +5369,44 @@ pub struct UpsolverDestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for UpsolverDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() < 16 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 16", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        self.s3_output_format_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration that determines how Amazon AppFlow formats the flow output data    when Upsolver is used as the destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4366,6 +5477,24 @@ impl Default for UpsolverS3OutputFormatConfigFileTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for UpsolverS3OutputFormatConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aggregation_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.prefix_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The properties that are applied when using Veeva as a flow source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4443,6 +5572,35 @@ pub struct VeevaSourceProperties {
 
 
 
+impl cfn_resources::CfnResource for VeevaSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.document_type {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'document_type'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when Zendesk is used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4504,6 +5662,29 @@ pub struct ZendeskDestinationProperties {
 
 
 
+impl cfn_resources::CfnResource for ZendeskDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.error_handling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The properties that are applied when using Zendesk as a flow source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4528,3 +5709,25 @@ pub struct ZendeskSourceProperties {
 }
 
 
+
+impl cfn_resources::CfnResource for ZendeskSourceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'object'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

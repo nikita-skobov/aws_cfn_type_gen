@@ -74,8 +74,40 @@ impl cfn_resources::CfnResource for CfnChannel {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.channel_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'channel_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.channel_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'channel_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.channel_storage.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retention_period.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Where channel data is stored. You may choose one of serviceManagedS3,     customerManagedS3 storage. If not specified, the default is     serviceManagedS3. This can't be changed after creation of the channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -109,6 +141,22 @@ pub struct ChannelStorage {
 
 
 
+impl cfn_resources::CfnResource for ChannelStorage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.customer_managed_s3.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Used to store channel data in an S3 bucket that you manage.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -170,6 +218,64 @@ pub struct CustomerManagedS3 {
 
 
 
+impl cfn_resources::CfnResource for CustomerManagedS3 {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'bucket'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket'. {} is less than 3", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.key_prefix {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'key_prefix'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key_prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key_prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// How long, in days, message data is kept.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -205,6 +311,28 @@ pub struct RetentionPeriod {
 
 
 
+impl cfn_resources::CfnResource for RetentionPeriod {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.number_of_days {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'number_of_days'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -241,3 +369,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

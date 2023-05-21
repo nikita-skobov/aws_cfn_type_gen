@@ -100,8 +100,24 @@ impl cfn_resources::CfnResource for CfnHostedZone {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.hosted_zone_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        self.query_logging_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, omit both the 			HostedZoneConfig and Comment elements.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -125,6 +141,28 @@ pub struct HostedZoneConfig {
 
 
 
+impl cfn_resources::CfnResource for HostedZoneConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.comment {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'comment'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about a tag that you want to add or edit for 			the specified health check or hosted zone.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -166,6 +204,34 @@ pub struct HostedZoneTag {
 
 
 
+impl cfn_resources::CfnResource for HostedZoneTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about a configuration for DNS query 			logging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -187,6 +253,20 @@ pub struct QueryLoggingConfig {
 
 
 
+impl cfn_resources::CfnResource for QueryLoggingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Private hosted zones only: A complex type that contains information about an Amazon VPC. Route 53 Resolver 			uses the records in the private hosted zone to route traffic in that VPC.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -348,3 +428,18 @@ impl Default for VPCVPCRegionEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for VPC {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

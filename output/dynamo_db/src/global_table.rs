@@ -189,8 +189,36 @@ impl cfn_resources::CfnResource for CfnGlobalTable {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.ssespecification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.stream_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        self.time_to_live_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.write_provisioned_throughput_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the type and format of extension access. Only one of 				CustomObjectIdentifier or AccessMethodType may be 			provided. Providing both results in InvalidArgsException.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -210,6 +238,20 @@ pub struct AttributeDefinition {
 
 
 
+impl cfn_resources::CfnResource for AttributeDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configures a scalable target and an autoscaling policy for a table or global secondary       index's read or write capacity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -271,6 +313,22 @@ pub struct CapacityAutoScalingSettings {
 
 
 
+impl cfn_resources::CfnResource for CapacityAutoScalingSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.target_tracking_scaling_policy_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Configures contributor insights settings for a replica or one of its indexes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -294,6 +352,20 @@ pub struct ContributorInsightsSpecification {
 
 
 
+impl cfn_resources::CfnResource for ContributorInsightsSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Allows you to specify a global secondary index for the global table. The index will be       defined on all replicas.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -363,6 +435,45 @@ pub struct GlobalSecondaryIndex {
 
 
 
+impl cfn_resources::CfnResource for GlobalSecondaryIndex {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.index_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'index_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'index_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.key_schema;
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'key_schema'. {} is greater than 2", the_val.len()));
+        }
+
+        
+        self.projection.validate()?;
+
+        self.write_provisioned_throughput_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents a single element of a key schema. A key schema       specifies the attributes that make up the primary key of a table, or the key attributes       of an index.
 ///
@@ -429,6 +540,34 @@ impl Default for KeySchemaKeyTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for KeySchema {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attribute_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'attribute_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Kinesis Data Streams configuration for the specified global table replica.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -454,6 +593,34 @@ pub struct KinesisStreamSpecification {
 
 
 
+impl cfn_resources::CfnResource for KinesisStreamSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.stream_arn;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'stream_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.stream_arn;
+
+        if the_val.len() < 37 as _ {
+            return Err(format!("Min validation failed on field 'stream_arn'. {} is less than 37", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents the properties of a local secondary index. A local secondary index can only       be created when its parent table is created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -511,6 +678,43 @@ pub struct LocalSecondaryIndex {
 
 
 
+impl cfn_resources::CfnResource for LocalSecondaryIndex {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.index_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'index_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'index_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.key_schema;
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'key_schema'. {} is greater than 2", the_val.len()));
+        }
+
+        
+        self.projection.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Represents the settings used to enable point in time recovery.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -532,6 +736,20 @@ pub struct PointInTimeRecoverySpecification {
 
 
 
+impl cfn_resources::CfnResource for PointInTimeRecoverySpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents attributes that are copied (projected) from the table into an index. These       are in addition to the primary key attributes and index key attributes, which are       automatically projected.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -596,6 +814,28 @@ impl Default for ProjectionProjectionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Projection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.non_key_attributes {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'non_key_attributes'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Allows you to specify the read capacity settings for a replica table or a replica       global secondary index when the BillingMode is set to         PROVISIONED. You must specify a value for either         ReadCapacityUnits or ReadCapacityAutoScalingSettings, but       not both. You can switch between fixed capacity and auto scaling.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -629,6 +869,22 @@ pub struct ReadProvisionedThroughputSettings {
 
 
 
+impl cfn_resources::CfnResource for ReadProvisionedThroughputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.read_capacity_auto_scaling_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the properties of a global secondary index that can be set on a per-replica       basis.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -680,6 +936,38 @@ pub struct ReplicaGlobalSecondaryIndexSpecification {
 
 
 
+impl cfn_resources::CfnResource for ReplicaGlobalSecondaryIndexSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.contributor_insights_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.index_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'index_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'index_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        self.read_provisioned_throughput_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Allows you to specify a KMS key identifier to be used for server-side encryption. The       key can be specified via ARN, key ID, or alias. The key must be created in the same       region as the replica.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -701,6 +989,20 @@ pub struct ReplicaSSESpecification {
 
 
 
+impl cfn_resources::CfnResource for ReplicaSSESpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines settings specific to a single replica of a global table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -853,6 +1155,30 @@ impl Default for ReplicaSpecificationTableClassEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReplicaSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.contributor_insights_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_stream_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.point_in_time_recovery_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.read_provisioned_throughput_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ssespecification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the settings used to enable server-side encryption.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -909,6 +1235,20 @@ impl Default for SSESpecificationSSETypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SSESpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents the DynamoDB Streams configuration for a table in DynamoDB.
 ///
@@ -963,6 +1303,20 @@ impl Default for StreamSpecificationStreamViewTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for StreamSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1000,6 +1354,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a target tracking scaling policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1057,6 +1425,20 @@ pub struct TargetTrackingScalingPolicyConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TargetTrackingScalingPolicyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents the settings used to enable or disable Time to Live (TTL) for the specified       table. All replicas will have the same time to live configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1096,6 +1478,36 @@ pub struct TimeToLiveSpecification {
 
 
 
+impl cfn_resources::CfnResource for TimeToLiveSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.attribute_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'attribute_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.attribute_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies an auto scaling policy for write capacity. This policy will be applied to       all replicas. This setting must be specified if BillingMode is set to         PROVISIONED.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1116,3 +1528,20 @@ pub struct WriteProvisionedThroughputSettings {
 }
 
 
+
+impl cfn_resources::CfnResource for WriteProvisionedThroughputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.write_capacity_auto_scaling_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

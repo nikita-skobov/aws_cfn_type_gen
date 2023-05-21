@@ -142,8 +142,56 @@ impl cfn_resources::CfnResource for CfnService {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.auto_scaling_configuration_arn {
+
+        if the_val.len() > 1011 as _ {
+            return Err(format!("Max validation failed on field 'auto_scaling_configuration_arn'. {} is greater than 1011", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.auto_scaling_configuration_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'auto_scaling_configuration_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.health_check_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.instance_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.observability_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.service_name {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'service_name'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.service_name {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'service_name'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        self.source_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Describes resources needed to authenticate access to some source repositories. The specific resource depends on the repository provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -189,6 +237,52 @@ pub struct AuthenticationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AuthenticationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_role_arn {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'access_role_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.access_role_arn {
+
+        if the_val.len() < 29 as _ {
+            return Err(format!("Min validation failed on field 'access_role_arn'. {} is less than 29", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.connection_arn {
+
+        if the_val.len() > 1011 as _ {
+            return Err(format!("Max validation failed on field 'connection_arn'. {} is greater than 1011", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.connection_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'connection_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes the configuration that AWS App Runner uses to build and run an App Runner service from a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -245,6 +339,22 @@ impl Default for CodeConfigurationConfigurationSourceEnum {
 }
 
 
+impl cfn_resources::CfnResource for CodeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.code_configuration_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the basic configuration needed for building and running an AWS App Runner service. This type doesn't support the full set of possible    configuration options. Fur full configuration capabilities, use a apprunner.yaml file in the source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -390,6 +500,36 @@ impl Default for CodeConfigurationValuesRuntimeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CodeConfigurationValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.port {
+
+        if the_val.len() > 51200 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 51200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -443,6 +583,38 @@ pub struct CodeRepository {
 
 
 
+impl cfn_resources::CfnResource for CodeRepository {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.code_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.repository_url;
+
+        if the_val.len() > 51200 as _ {
+            return Err(format!("Max validation failed on field 'repository_url'. {} is greater than 51200", the_val.len()));
+        }
+
+        
+        let the_val = &self.repository_url;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'repository_url'. {} is less than 0", the_val.len()));
+        }
+
+        
+        self.source_code_version.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Describes configuration settings related to outbound network traffic of an AWS App Runner service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -507,6 +679,36 @@ impl Default for EgressConfigurationEgressTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EgressConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.vpc_connector_arn {
+
+        if the_val.len() > 1011 as _ {
+            return Err(format!("Max validation failed on field 'vpc_connector_arn'. {} is greater than 1011", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.vpc_connector_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'vpc_connector_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a custom encryption key that AWS App Runner uses to encrypt copies of the source repository and service logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -534,6 +736,34 @@ pub struct EncryptionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.kms_key;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'kms_key'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.kms_key;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'kms_key'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes the settings for the health check that AWS App Runner performs to monitor the health of a service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -670,6 +900,92 @@ impl Default for HealthCheckConfigurationProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for HealthCheckConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.healthy_threshold {
+
+        if *the_val > 20 as _ {
+            return Err(format!("Max validation failed on field 'healthy_threshold'. {} is greater than 20", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.healthy_threshold {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'healthy_threshold'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.interval {
+
+        if *the_val > 20 as _ {
+            return Err(format!("Max validation failed on field 'interval'. {} is greater than 20", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.interval {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'interval'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout {
+
+        if *the_val > 20 as _ {
+            return Err(format!("Max validation failed on field 'timeout'. {} is greater than 20", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'timeout'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.unhealthy_threshold {
+
+        if *the_val > 20 as _ {
+            return Err(format!("Max validation failed on field 'unhealthy_threshold'. {} is greater than 20", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.unhealthy_threshold {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'unhealthy_threshold'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes the configuration that AWS App Runner uses to run an App Runner service using an image pulled from a source image repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -736,6 +1052,36 @@ pub struct ImageConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ImageConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.port {
+
+        if the_val.len() > 51200 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 51200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a source image repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -810,6 +1156,36 @@ impl Default for ImageRepositoryImageRepositoryTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ImageRepository {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.image_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.image_identifier;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'image_identifier'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.image_identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'image_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Network configuration settings for inbound network traffic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -831,6 +1207,20 @@ pub struct IngressConfiguration {
 
 
 
+impl cfn_resources::CfnResource for IngressConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the runtime configuration of an AWS App Runner service instance (scaling unit).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -898,6 +1288,68 @@ pub struct InstanceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InstanceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.cpu {
+
+        if the_val.len() > 9 as _ {
+            return Err(format!("Max validation failed on field 'cpu'. {} is greater than 9", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cpu {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'cpu'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.instance_role_arn {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'instance_role_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.instance_role_arn {
+
+        if the_val.len() < 29 as _ {
+            return Err(format!("Min validation failed on field 'instance_role_arn'. {} is less than 29", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.memory {
+
+        if the_val.len() > 6 as _ {
+            return Err(format!("Max validation failed on field 'memory'. {} is greater than 6", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.memory {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'memory'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a key-value pair, which is a string-to-string mapping.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -931,6 +1383,20 @@ pub struct KeyValuePair {
 
 
 
+impl cfn_resources::CfnResource for KeyValuePair {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes configuration settings related to network traffic of an AWS App Runner service. Consists of embedded objects for each configurable network    feature.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -964,6 +1430,24 @@ pub struct NetworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.egress_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ingress_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the observability configuration of an AWS App Runner service. These are additional observability features, like tracing, that you choose to    enable. They're configured in a separate resource that you associate with your service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1007,6 +1491,36 @@ pub struct ServiceObservabilityConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ServiceObservabilityConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.observability_configuration_arn {
+
+        if the_val.len() > 1011 as _ {
+            return Err(format!("Max validation failed on field 'observability_configuration_arn'. {} is greater than 1011", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.observability_configuration_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'observability_configuration_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Identifies a version of code that AWS App Runner refers to within a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1067,6 +1581,34 @@ impl Default for SourceCodeVersionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SourceCodeVersion {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.value;
+
+        if the_val.len() > 51200 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 51200", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes the source deployed to an AWS App Runner service. It can be a code or an image repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1130,6 +1672,26 @@ pub struct SourceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SourceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.authentication_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.code_repository.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.image_repository.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1166,3 +1728,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

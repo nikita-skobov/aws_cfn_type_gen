@@ -60,8 +60,14 @@ impl cfn_resources::CfnResource for CfnFunctionDefinition {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.initial_version.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The default configuration 		that applies to all Lambda functions in the function definition version. Individual Lambda functions can override these settings.
 ///
@@ -85,6 +91,22 @@ pub struct DefaultConfig {
 
 
 
+impl cfn_resources::CfnResource for DefaultConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.execution.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The environment configuration for a Lambda function on the AWS IoT Greengrass core.
 ///
@@ -148,6 +170,22 @@ pub struct Environment {
 
 
 
+impl cfn_resources::CfnResource for Environment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.execution.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration settings for the Lambda execution environment on the AWS IoT Greengrass core.
 ///
@@ -191,6 +229,22 @@ pub struct Execution {
 
 
 
+impl cfn_resources::CfnResource for Execution {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.run_as.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A function is a Lambda function 		that's referenced from an AWS IoT Greengrass group. The function is deployed to a Greengrass core where it runs locally. 	For more information, 	see Run Lambda Functions on the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -238,6 +292,22 @@ pub struct Function {
 
 
 
+impl cfn_resources::CfnResource for Function {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.function_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The      group-specific configuration settings for a Lambda function. These settings configure the function's behavior in the Greengrass group. 		 For more information, 	see Controlling Execution of Greengrass Lambda Functions by Using Group-Specific Configuration in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -335,6 +405,22 @@ pub struct FunctionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FunctionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.environment.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A function definition version contains a list of functions.
 ///
@@ -370,6 +456,22 @@ pub struct FunctionDefinitionVersion {
 
 
 
+impl cfn_resources::CfnResource for FunctionDefinitionVersion {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A list of the 		resources in the group 				 that the function can access, with the corresponding read-only or read-write permissions. The maximum is 10 resources.
 ///
@@ -405,6 +507,20 @@ pub struct ResourceAccessPolicy {
 
 
 
+impl cfn_resources::CfnResource for ResourceAccessPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The access identity whose permissions 		are used to run the Lambda function. This setting overrides the default access identity that's specified 		for the group (by default, ggc_user and ggc_group). You can override the user, group, or both. 	For more information, 	see Run as in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -439,3 +555,18 @@ pub struct RunAs {
 }
 
 
+
+impl cfn_resources::CfnResource for RunAs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

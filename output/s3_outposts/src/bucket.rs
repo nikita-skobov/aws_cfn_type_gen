@@ -76,8 +76,14 @@ impl cfn_resources::CfnResource for CfnBucket {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.lifecycle_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 on Outposts waits    before permanently removing all parts of the upload. For more information, see Aborting Incomplete     Multipart Uploads Using a Bucket Lifecycle Policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -99,6 +105,20 @@ pub struct AbortIncompleteMultipartUpload {
 
 
 
+impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Filter property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -141,6 +161,24 @@ pub struct Filter {
 
 
 
+impl cfn_resources::CfnResource for Filter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.and_operator.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tag.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The FilterAndOperator property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -172,6 +210,20 @@ pub struct FilterAndOperator {
 
 
 
+impl cfn_resources::CfnResource for FilterAndOperator {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FilterTag property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -203,6 +255,20 @@ pub struct FilterTag {
 
 
 
+impl cfn_resources::CfnResource for FilterTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The container for the lifecycle configuration for the objects stored in an S3 on Outposts bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -224,6 +290,20 @@ pub struct LifecycleConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LifecycleConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A container for an Amazon S3 on Outposts bucket lifecycle rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -305,6 +385,24 @@ pub struct Rule {
 
 
 
+impl cfn_resources::CfnResource for Rule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.abort_incomplete_multipart_upload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -341,3 +439,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

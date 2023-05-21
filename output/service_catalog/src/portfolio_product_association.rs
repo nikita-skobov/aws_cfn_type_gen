@@ -88,4 +88,61 @@ impl cfn_resources::CfnResource for CfnPortfolioProductAssociation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.accept_language {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'accept_language'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.portfolio_id;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'portfolio_id'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.portfolio_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'portfolio_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.product_id;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'product_id'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.product_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'product_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.source_portfolio_id {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'source_portfolio_id'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_portfolio_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_portfolio_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

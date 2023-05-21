@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnConfigurationAssociation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The ConfigurationId property type specifies a configuration Id and the    revision of a configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -74,3 +80,18 @@ pub struct ConfigurationId {
 }
 
 
+
+impl cfn_resources::CfnResource for ConfigurationId {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

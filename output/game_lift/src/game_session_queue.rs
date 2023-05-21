@@ -146,8 +146,78 @@ impl cfn_resources::CfnResource for CfnGameSessionQueue {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_event_data {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'custom_event_data'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_event_data {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'custom_event_data'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.filter_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.notification_target {
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'notification_target'. {} is greater than 300", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.notification_target {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'notification_target'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.priority_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'timeout_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A fleet or alias designated in a game session queue. Queues fulfill requests for new       game sessions by placing a new game session on any of the queue's destinations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -175,6 +245,36 @@ pub struct Destination {
 
 
 
+impl cfn_resources::CfnResource for Destination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.destination_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'destination_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.destination_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'destination_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A list of fleet locations where a game session queue can place new game sessions. You    can use a filter to temporarily turn off placements for specific locations. For queues    that have multi-location fleets, you can use a filter configuration allow placement with    some, but not all of these locations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -198,6 +298,28 @@ pub struct FilterConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FilterConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.allowed_locations {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'allowed_locations'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The queue setting that determines the highest latency allowed for individual    players when placing a game session. When a latency policy is in force, a game session cannot    be placed with any fleet in a Region where a player reports latency higher than the cap.    Latency policies are only enforced when the placement request contains player latency    information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +357,36 @@ pub struct PlayerLatencyPolicy {
 
 
 
+impl cfn_resources::CfnResource for PlayerLatencyPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.maximum_individual_player_latency_milliseconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'maximum_individual_player_latency_milliseconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.policy_duration_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'policy_duration_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Custom prioritization settings for use by a game session queue when placing new game    sessions with available game servers. When defined, this configuration replaces the    default FleetIQ prioritization process, which is as follows:
 ///
@@ -276,6 +428,36 @@ pub struct PriorityConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PriorityConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.location_order {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'location_order'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.priority_order {
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'priority_order'. {} is greater than 4", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -312,3 +494,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -198,8 +198,30 @@ impl cfn_resources::CfnResource for CfnDomain {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.advanced_security_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cognito_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.domain_endpoint_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ebsoptions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.elasticsearch_cluster_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_at_rest_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.node_to_node_encryption_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snapshot_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpcoptions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies options for fine-grained access control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -253,6 +275,22 @@ pub struct AdvancedSecurityOptionsInput {
 
 
 
+impl cfn_resources::CfnResource for AdvancedSecurityOptionsInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.master_user_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configures OpenSearch Service to use Amazon Cognito authentication for OpenSearch Dashboards.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -310,6 +348,20 @@ pub struct CognitoOptions {
 
 
 
+impl cfn_resources::CfnResource for CognitoOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies options for cold storage. For more information, see Cold storage for Amazon     Elasticsearch Service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -331,6 +383,20 @@ pub struct ColdStorageOptions {
 
 
 
+impl cfn_resources::CfnResource for ColdStorageOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies additional options for the domain endpoint, such as whether to require HTTPS for all traffic or whether to use a custom endpoint rather than the default endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -397,6 +463,20 @@ pub struct DomainEndpointOptions {
 
 
 
+impl cfn_resources::CfnResource for DomainEndpointOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configurations of Amazon Elastic Block Store (Amazon EBS) volumes that are attached to    data nodes in the OpenSearch Service domain. For more information, see EBS volume size limits in the Amazon OpenSearch Service Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -454,6 +534,20 @@ pub struct EBSOptions {
 
 
 
+impl cfn_resources::CfnResource for EBSOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The cluster configuration for the OpenSearch Service domain. You can specify options such    as the instance type and the number of instances. For more information, see Creating and managing Amazon OpenSearch Service domains in the Amazon     OpenSearch Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -595,6 +689,24 @@ pub struct ElasticsearchClusterConfig {
 
 
 
+impl cfn_resources::CfnResource for ElasticsearchClusterConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cold_storage_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.zone_awareness_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Whether the domain should encrypt data at rest, and if so, the AWS Key Management Service key to use.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -628,6 +740,20 @@ pub struct EncryptionAtRestOptions {
 
 
 
+impl cfn_resources::CfnResource for EncryptionAtRestOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies whether the OpenSearch Service domain publishes the Elasticsearch application,    search slow logs, or index slow logs to Amazon CloudWatch. Each option must be an object of    name SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS,     INDEX_SLOW_LOGS, or AUDIT_LOGS depending on the type of logs you    want to publish.
 ///
@@ -665,6 +791,20 @@ pub struct LogPublishingOption {
 
 
 
+impl cfn_resources::CfnResource for LogPublishingOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies information about the master user. Required if you enabled the internal user    database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -707,6 +847,20 @@ pub struct MasterUserOptions {
 
 
 
+impl cfn_resources::CfnResource for MasterUserOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies whether node-to-node encryption is enabled.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -728,6 +882,20 @@ pub struct NodeToNodeEncryptionOptions {
 
 
 
+impl cfn_resources::CfnResource for NodeToNodeEncryptionOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// DEPRECATED. For domains running Elasticsearch 5.3 and    later, OpenSearch Service takes hourly automated snapshots, making this setting irrelevant. For domains    running earlier versions of Elasticsearch, OpenSearch Service takes daily automated snapshots.
 ///
@@ -751,6 +919,20 @@ pub struct SnapshotOptions {
 
 
 
+impl cfn_resources::CfnResource for SnapshotOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -788,6 +970,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The virtual private cloud (VPC) configuration for the OpenSearch Service domain. For more    information, see Launching your Amazon OpenSearch     Service domains using a VPC in the Amazon OpenSearch Service Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -823,6 +1019,20 @@ pub struct VPCOptions {
 
 
 
+impl cfn_resources::CfnResource for VPCOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies zone awareness configuration options. Only use if     ZoneAwarenessEnabled is true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -845,3 +1055,18 @@ pub struct ZoneAwarenessConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for ZoneAwarenessConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -102,8 +102,16 @@ impl cfn_resources::CfnResource for CfnAppMonitor {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.app_monitor_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom_events.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This structure contains much of the configuration data for the app monitor.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -243,6 +251,20 @@ pub struct AppMonitorConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AppMonitorConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure specifies whether this app monitor allows the web client to define and send custom events.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -266,6 +288,20 @@ pub struct CustomEvents {
 
 
 
+impl cfn_resources::CfnResource for CustomEvents {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies one custom metric or extended metric that you want the CloudWatch RUM app monitor to       send to a destination. Valid       destinations include CloudWatch and Evidently.
 ///
@@ -363,6 +399,20 @@ pub struct MetricDefinition {
 
 
 
+impl cfn_resources::CfnResource for MetricDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send       extended metrics to CloudWatch or to a CloudWatch Evidently experiment.
 ///
@@ -424,6 +474,20 @@ pub struct MetricDestination {
 
 
 
+impl cfn_resources::CfnResource for MetricDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -460,3 +524,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

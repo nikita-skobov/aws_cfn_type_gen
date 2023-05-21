@@ -62,8 +62,14 @@ impl cfn_resources::CfnResource for CfnComponentVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.lambda_function.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about a component dependency for a Lambda function    component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -103,6 +109,20 @@ pub struct ComponentDependencyRequirement {
 
 
 
+impl cfn_resources::CfnResource for ComponentDependencyRequirement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about a platform that a component supports.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -138,6 +158,20 @@ pub struct ComponentPlatform {
 
 
 
+impl cfn_resources::CfnResource for ComponentPlatform {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about a container in which AWS Lambda functions run on     AWS IoT Greengrass core devices.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -199,6 +233,20 @@ pub struct LambdaContainerParams {
 
 
 
+impl cfn_resources::CfnResource for LambdaContainerParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about a device that Linux processes in a container can access.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -248,6 +296,20 @@ pub struct LambdaDeviceMount {
 
 
 
+impl cfn_resources::CfnResource for LambdaDeviceMount {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about an event source for an AWS Lambda function. The    event source defines the topics on which this Lambda function subscribes to    receive messages that run the function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -283,6 +345,20 @@ pub struct LambdaEventSource {
 
 
 
+impl cfn_resources::CfnResource for LambdaEventSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains parameters for a Lambda function that runs on AWS IoT Greengrass.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -430,6 +506,22 @@ pub struct LambdaExecutionParameters {
 
 
 
+impl cfn_resources::CfnResource for LambdaExecutionParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.linux_process_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about an AWS Lambda function to import to create a    component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -515,6 +607,22 @@ pub struct LambdaFunctionRecipeSource {
 
 
 
+impl cfn_resources::CfnResource for LambdaFunctionRecipeSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.component_lambda_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains parameters for a Linux process that contains an AWS Lambda    function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -550,6 +658,22 @@ pub struct LambdaLinuxProcessParams {
 
 
 
+impl cfn_resources::CfnResource for LambdaLinuxProcessParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.container_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about a volume that Linux processes in a container can access. When    you define a volume, the AWS IoT Greengrass Core software mounts the source files to the    destination inside the container.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -610,3 +734,18 @@ pub struct LambdaVolumeMount {
 }
 
 
+
+impl cfn_resources::CfnResource for LambdaVolumeMount {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

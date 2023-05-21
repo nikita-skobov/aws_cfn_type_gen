@@ -96,8 +96,16 @@ impl cfn_resources::CfnResource for CfnRotationSchedule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.hosted_rotation_lambda.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rotation_rules.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Creates a new Lambda rotation    function based on one of the     Secrets Manager rotation function templates.
 ///
@@ -263,6 +271,20 @@ pub struct HostedRotationLambda {
 
 
 
+impl cfn_resources::CfnResource for HostedRotationLambda {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The rotation schedule and window. We recommend you use ScheduleExpression to       set a cron or rate expression for the schedule and Duration to set the length of       the rotation window.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -313,3 +335,18 @@ pub struct RotationRules {
 }
 
 
+
+impl cfn_resources::CfnResource for RotationRules {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

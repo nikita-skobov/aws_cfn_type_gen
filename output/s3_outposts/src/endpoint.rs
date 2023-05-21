@@ -104,8 +104,12 @@ impl cfn_resources::CfnResource for CfnEndpoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The container for the network interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -126,3 +130,18 @@ pub struct NetworkInterface {
 }
 
 
+
+impl cfn_resources::CfnResource for NetworkInterface {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

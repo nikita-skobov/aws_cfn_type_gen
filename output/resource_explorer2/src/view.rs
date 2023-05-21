@@ -70,8 +70,14 @@ impl cfn_resources::CfnResource for CfnView {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.filters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object with a FilterString that specifies which resources to include       in the results of queries made using this view.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -92,6 +98,20 @@ pub struct Filters {
 
 
 
+impl cfn_resources::CfnResource for Filters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about an additional property that describes a resource, that you can       optionally include in a view.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -116,3 +136,32 @@ pub struct IncludedProperty {
 }
 
 
+
+impl cfn_resources::CfnResource for IncludedProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 1011 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1011", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

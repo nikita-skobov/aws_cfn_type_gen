@@ -64,8 +64,14 @@ impl cfn_resources::CfnResource for CfnMitigationAction {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.action_params.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Defines the type of action and the parameters for that action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -147,6 +153,32 @@ pub struct ActionParams {
 
 
 
+impl cfn_resources::CfnResource for ActionParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.add_things_to_thing_group_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.enable_io_tlogging_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.publish_finding_to_sns_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.replace_default_policy_version_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.update_cacertificate_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.update_device_certificate_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Parameters used when defining a mitigation action that move a set of things to a thing group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -180,6 +212,20 @@ pub struct AddThingsToThingGroupParams {
 
 
 
+impl cfn_resources::CfnResource for AddThingsToThingGroupParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Parameters used when defining a mitigation action that enable AWS IoT Core logging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -213,6 +259,20 @@ pub struct EnableIoTLoggingParams {
 
 
 
+impl cfn_resources::CfnResource for EnableIoTLoggingParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Parameters to define a mitigation action that publishes findings to Amazon SNS. You can implement your own custom actions in response to the Amazon SNS messages.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -234,6 +294,20 @@ pub struct PublishFindingToSnsParams {
 
 
 
+impl cfn_resources::CfnResource for PublishFindingToSnsParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Parameters to define a mitigation action that adds a blank policy to restrict permissions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -255,6 +329,20 @@ pub struct ReplaceDefaultPolicyVersionParams {
 
 
 
+impl cfn_resources::CfnResource for ReplaceDefaultPolicyVersionParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -292,6 +380,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Parameters to define a mitigation action that changes the state of the CA certificate to inactive.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -313,6 +415,20 @@ pub struct UpdateCACertificateParams {
 
 
 
+impl cfn_resources::CfnResource for UpdateCACertificateParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Parameters to define a mitigation action that changes the state of the device certificate to inactive.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -333,3 +449,18 @@ pub struct UpdateDeviceCertificateParams {
 }
 
 
+
+impl cfn_resources::CfnResource for UpdateDeviceCertificateParams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

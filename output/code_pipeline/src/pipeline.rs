@@ -126,8 +126,37 @@ impl cfn_resources::CfnResource for CfnPipeline {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.artifact_store.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents information about an action declaration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -277,6 +306,92 @@ pub struct ActionDeclaration {
 
 
 
+impl cfn_resources::CfnResource for ActionDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action_type_id.validate()?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'namespace'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'namespace'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.region {
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'region'. {} is greater than 30", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.region {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'region'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.run_order {
+
+        if *the_val > 999 as _ {
+            return Err(format!("Max validation failed on field 'run_order'. {} is greater than 999", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.run_order {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'run_order'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents information about an action type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -336,6 +451,20 @@ pub struct ActionTypeId {
 
 
 
+impl cfn_resources::CfnResource for ActionTypeId {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The S3 bucket where artifacts for the pipeline are stored.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -404,6 +533,36 @@ impl Default for ArtifactStoreTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ArtifactStore {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption_key.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.location;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'location'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.location;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'location'. {} is less than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A mapping of artifactStore objects and their corresponding AWS       Regions. There must be an artifact store for the pipeline Region and for each       cross-region action in the pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -443,6 +602,36 @@ pub struct ArtifactStoreMap {
 
 
 
+impl cfn_resources::CfnResource for ArtifactStoreMap {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.artifact_store.validate()?;
+
+        let the_val = &self.region;
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'region'. {} is greater than 30", the_val.len()));
+        }
+
+        
+        let the_val = &self.region;
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'region'. {} is less than 4", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Reserved for future use.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -497,6 +686,34 @@ impl Default for BlockerDeclarationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for BlockerDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents information about the key used to encrypt data in the artifact store, such    as an AWS Key Management Service (AWS KMS) key.
 ///
@@ -534,6 +751,20 @@ pub struct EncryptionKey {
 
 
 
+impl cfn_resources::CfnResource for EncryptionKey {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents information about an artifact to be worked on, such as a test or build       artifact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -565,6 +796,34 @@ pub struct InputArtifact {
 
 
 
+impl cfn_resources::CfnResource for InputArtifact {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents information about the output of an action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -596,6 +855,34 @@ pub struct OutputArtifact {
 
 
 
+impl cfn_resources::CfnResource for OutputArtifact {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents information about a stage and its definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -647,6 +934,34 @@ pub struct StageDeclaration {
 
 
 
+impl cfn_resources::CfnResource for StageDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The name of the pipeline in which you want to disable the flow of artifacts from       one stage to another.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -692,6 +1007,48 @@ pub struct StageTransition {
 
 
 
+impl cfn_resources::CfnResource for StageTransition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.reason;
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'reason'. {} is greater than 300", the_val.len()));
+        }
+
+        
+        let the_val = &self.reason;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'reason'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.stage_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'stage_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.stage_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'stage_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -728,3 +1085,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

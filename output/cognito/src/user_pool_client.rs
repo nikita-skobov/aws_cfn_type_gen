@@ -379,8 +379,110 @@ impl cfn_resources::CfnResource for CfnUserPoolClient {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.allowed_oauth_flows {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'allowed_oauth_flows'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allowed_oauth_scopes {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'allowed_oauth_scopes'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        self.analytics_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.auth_session_validity {
+
+        if *the_val > 15 as _ {
+            return Err(format!("Max validation failed on field 'auth_session_validity'. {} is greater than 15", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.auth_session_validity {
+
+        if *the_val < 3 as _ {
+            return Err(format!("Min validation failed on field 'auth_session_validity'. {} is less than 3", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.callback_urls {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'callback_urls'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'client_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'client_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.default_redirect_uri {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'default_redirect_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.default_redirect_uri {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'default_redirect_uri'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.logout_urls {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'logout_urls'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.token_validity_units.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Amazon Pinpoint analytics configuration necessary to collect metrics for a user       pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -458,6 +560,36 @@ pub struct AnalyticsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AnalyticsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The time units you use when you set the duration of ID, access, and refresh tokens.       The default unit for RefreshToken is days, and the default for ID and access tokens is       hours.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -589,3 +721,18 @@ impl Default for TokenValidityUnitsRefreshTokenEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TokenValidityUnits {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

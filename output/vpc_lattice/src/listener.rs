@@ -90,8 +90,14 @@ impl cfn_resources::CfnResource for CfnListener {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_action.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The action for the default rule. Each listener has a default rule. Each rule consists of a  priority, one or more actions, and one or more conditions. The default rule is the rule that's  used if no other rules match. Each rule must include exactly one of the following types of  actions: forward or fixed-response, and it must be the last action to  be performed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -125,6 +131,24 @@ pub struct DefaultAction {
 
 
 
+impl cfn_resources::CfnResource for DefaultAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.fixed_response.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.forward.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about an action that returns a custom HTTP response.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -146,6 +170,20 @@ pub struct FixedResponse {
 
 
 
+impl cfn_resources::CfnResource for FixedResponse {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The forward action. Traffic that matches the rule is forwarded to the specified target  groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -169,6 +207,20 @@ pub struct Forward {
 
 
 
+impl cfn_resources::CfnResource for Forward {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -206,6 +258,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the weight of a target group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -238,3 +304,18 @@ pub struct WeightedTargetGroup {
 }
 
 
+
+impl cfn_resources::CfnResource for WeightedTargetGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

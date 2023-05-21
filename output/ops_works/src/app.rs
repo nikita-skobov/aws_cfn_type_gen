@@ -207,8 +207,16 @@ impl cfn_resources::CfnResource for CfnApp {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.app_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ssl_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an app's data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -254,6 +262,20 @@ pub struct DataSource {
 
 
 
+impl cfn_resources::CfnResource for DataSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents an app's environment variable.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -299,6 +321,20 @@ pub struct EnvironmentVariable {
 
 
 
+impl cfn_resources::CfnResource for EnvironmentVariable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -406,6 +442,20 @@ impl Default for SourceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Source {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an app's SSL configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -450,3 +500,18 @@ pub struct SslConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for SslConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

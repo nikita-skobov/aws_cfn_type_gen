@@ -128,8 +128,62 @@ impl cfn_resources::CfnResource for CfnResponsePlan {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        self.chat_channel.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.display_name {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'display_name'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.display_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'display_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.engagements {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'engagements'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        self.incident_template.validate()?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Action property type specifies the configuration to launch.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -151,6 +205,22 @@ pub struct Action {
 
 
 
+impl cfn_resources::CfnResource for Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ssm_automation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AWS Chatbot chat channel used for collaboration during an       incident.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -174,6 +244,28 @@ pub struct ChatChannel {
 
 
 
+impl cfn_resources::CfnResource for ChatChannel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.chatbot_sns {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'chatbot_sns'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// When you add a runbook to a response plan, you can specify the parameters the runbook       should use at runtime. Response plans support parameters with both static and dynamic       values. For static values, you enter the value when you define the parameter in the       response plan. For dynamic values, the system determines the correct parameter value by       collecting information from the incident. Incident Manager supports the       following dynamic parameters:
 ///
@@ -215,6 +307,22 @@ pub struct DynamicSsmParameter {
 
 
 
+impl cfn_resources::CfnResource for DynamicSsmParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The dynamic parameter value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -257,6 +365,20 @@ impl Default for DynamicSsmParameterValueVariableEnum {
 }
 
 
+impl cfn_resources::CfnResource for DynamicSsmParameterValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The IncidentTemplate property type specifies details used to create an       incident when using this response plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -358,6 +480,88 @@ pub struct IncidentTemplate {
 
 
 
+impl cfn_resources::CfnResource for IncidentTemplate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.dedupe_string {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'dedupe_string'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.dedupe_string {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'dedupe_string'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.impact;
+
+        if *the_val > 5 as _ {
+            return Err(format!("Max validation failed on field 'impact'. {} is greater than 5", the_val));
+        }
+
+        
+        let the_val = &self.impact;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'impact'. {} is less than 1", the_val));
+        }
+
+        
+        if let Some(the_val) = &self.notification_targets {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'notification_targets'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.summary {
+
+        if the_val.len() > 8000 as _ {
+            return Err(format!("Max validation failed on field 'summary'. {} is greater than 8000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.summary {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'summary'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information about third-party services integrated into a response plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -379,6 +583,22 @@ pub struct Integration {
 
 
 
+impl cfn_resources::CfnResource for Integration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.pager_duty_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The SNS topic that's used by AWS Chatbot to notify the incidents chat       channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -406,6 +626,36 @@ pub struct NotificationTargetItem {
 
 
 
+impl cfn_resources::CfnResource for NotificationTargetItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.sns_topic_arn {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'sns_topic_arn'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sns_topic_arn {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'sns_topic_arn'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Details about the PagerDuty configuration for a response plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -451,6 +701,22 @@ pub struct PagerDutyConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PagerDutyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.pager_duty_incident_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Details about the PagerDuty service where the response plan creates an       incident.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -472,6 +738,20 @@ pub struct PagerDutyIncidentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PagerDutyIncidentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The SsmAutomation property type specifies details about the Systems       Manager automation document that will be used as a runbook during an incident.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -586,6 +866,50 @@ impl Default for SsmAutomationTargetAccountEnum {
 }
 
 
+impl cfn_resources::CfnResource for SsmAutomation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.document_version {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'document_version'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_version {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'document_version'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The key-value pair parameters to use when running the automation document.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -619,6 +943,20 @@ pub struct SsmParameter {
 
 
 
+impl cfn_resources::CfnResource for SsmParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -655,3 +993,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

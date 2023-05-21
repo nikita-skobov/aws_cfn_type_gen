@@ -60,8 +60,36 @@ impl cfn_resources::CfnResource for CfnNotebookInstanceLifecycleConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.notebook_instance_lifecycle_config_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'notebook_instance_lifecycle_config_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.on_create {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'on_create'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.on_start {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'on_start'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the notebook instance lifecycle configuration script. Each lifecycle       configuration script has a limit of 16384 characters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -88,3 +116,34 @@ pub struct NotebookInstanceLifecycleHook {
 }
 
 
+
+impl cfn_resources::CfnResource for NotebookInstanceLifecycleHook {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.content {
+
+        if the_val.len() > 16384 as _ {
+            return Err(format!("Max validation failed on field 'content'. {} is greater than 16384", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.content {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'content'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

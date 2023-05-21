@@ -111,8 +111,14 @@ impl cfn_resources::CfnResource for CfnGitHubRepository {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.code.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Code property type specifies information about code to be       committed.
 ///
@@ -136,6 +142,22 @@ pub struct Code {
 
 
 
+impl cfn_resources::CfnResource for Code {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The S3 property type specifies information about the Amazon S3 bucket       that contains the code to be committed to the new repository.
 ///
@@ -182,3 +204,18 @@ pub struct S3 {
 }
 
 
+
+impl cfn_resources::CfnResource for S3 {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

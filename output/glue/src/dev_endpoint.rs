@@ -230,4 +230,33 @@ impl cfn_resources::CfnResource for CfnDevEndpoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.public_keys {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'public_keys'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.security_configuration {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.security_configuration {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'security_configuration'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

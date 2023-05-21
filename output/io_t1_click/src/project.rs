@@ -52,8 +52,14 @@ impl cfn_resources::CfnResource for CfnProject {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.placement_template.validate()?;
+
+        Ok(())
+    }
+}
 
 /// In AWS CloudFormation, use the DeviceTemplate property type to define the template for an AWS IoT 1-Click project.
 ///
@@ -89,6 +95,20 @@ pub struct DeviceTemplate {
 
 
 
+impl cfn_resources::CfnResource for DeviceTemplate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// In AWS CloudFormation, use the PlacementTemplate property type to define the template for an AWS IoT 1-Click project.
 ///
@@ -123,3 +143,18 @@ pub struct PlacementTemplate {
 }
 
 
+
+impl cfn_resources::CfnResource for PlacementTemplate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

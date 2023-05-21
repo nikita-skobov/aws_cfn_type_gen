@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnSpotFleet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.spot_fleet_request_config_data.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips)     on an instance. To exclude accelerator-enabled instance types, set Max to       0.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -75,6 +81,20 @@ pub struct AcceleratorCountRequest {
 
 
 
+impl cfn_resources::CfnResource for AcceleratorCountRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum amount of total accelerator memory, in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -108,6 +128,20 @@ pub struct AcceleratorTotalMemoryMiBRequest {
 
 
 
+impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see       Amazon       EBS–optimized instances in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -141,6 +175,20 @@ pub struct BaselineEbsBandwidthMbpsRequest {
 
 
 
+impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a block device mapping.
 ///
@@ -204,6 +252,22 @@ pub struct BlockDeviceMapping {
 
 
 
+impl cfn_resources::CfnResource for BlockDeviceMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ebs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies a Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -225,6 +289,20 @@ pub struct ClassicLoadBalancer {
 
 
 
+impl cfn_resources::CfnResource for ClassicLoadBalancer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the Classic Load Balancers to attach to a Spot Fleet. Spot Fleet registers the     running Spot Instances with these Classic Load Balancers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -248,6 +326,27 @@ pub struct ClassicLoadBalancersConfig {
 
 
 
+impl cfn_resources::CfnResource for ClassicLoadBalancersConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.classic_load_balancers;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'classic_load_balancers'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes a block device for an EBS volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -388,6 +487,20 @@ impl Default for EbsBlockDeviceVolumeTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EbsBlockDevice {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the launch template to be used by the Spot Fleet request for configuring Amazon EC2 instances.
 ///
@@ -453,6 +566,36 @@ pub struct FleetLaunchTemplateSpecification {
 
 
 
+impl cfn_resources::CfnResource for FleetLaunchTemplateSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.launch_template_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'launch_template_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.launch_template_name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'launch_template_name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a security group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -474,6 +617,20 @@ pub struct GroupIdentifier {
 
 
 
+impl cfn_resources::CfnResource for GroupIdentifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an IAM instance profile.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -495,6 +652,20 @@ pub struct IamInstanceProfileSpecification {
 
 
 
+impl cfn_resources::CfnResource for IamInstanceProfileSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an IPv6 address.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -516,6 +687,20 @@ pub struct InstanceIpv6Address {
 
 
 
+impl cfn_resources::CfnResource for InstanceIpv6Address {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -661,6 +846,20 @@ pub struct InstanceNetworkInterfaceSpecification {
 
 
 
+impl cfn_resources::CfnResource for InstanceNetworkInterfaceSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The attributes for the instance types. When you specify instance attributes, Amazon EC2 will     identify instance types with these attributes.
 ///
@@ -1127,6 +1326,54 @@ impl Default for InstanceRequirementsRequestLocalStorageEnum {
 }
 
 
+impl cfn_resources::CfnResource for InstanceRequirementsRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.accelerator_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.accelerator_total_memory_mi_b.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.allowed_instance_types {
+
+        if the_val.len() > 400 as _ {
+            return Err(format!("Max validation failed on field 'allowed_instance_types'. {} is greater than 400", the_val.len()));
+        }
+
+        }
+        
+        self.baseline_ebs_bandwidth_mbps.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.excluded_instance_types {
+
+        if the_val.len() > 400 as _ {
+            return Err(format!("Max validation failed on field 'excluded_instance_types'. {} is greater than 400", the_val.len()));
+        }
+
+        }
+        
+        self.memory_gi_bper_vcpu.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.memory_mi_b.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_bandwidth_gbps.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_interface_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.total_local_storage_gb.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vcpu_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies a launch template and overrides.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1160,6 +1407,22 @@ pub struct LaunchTemplateConfig {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplateConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.launch_template_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies overrides for a launch template.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3816,6 +4079,22 @@ impl Default for LaunchTemplateOverridesInstanceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for LaunchTemplateOverrides {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.instance_requirements.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the Classic Load Balancers and target groups to attach to a Spot Fleet     request.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3849,6 +4128,24 @@ pub struct LoadBalancersConfig {
 
 
 
+impl cfn_resources::CfnResource for LoadBalancersConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.classic_load_balancers_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.target_groups_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum amount of memory per vCPU, in GiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3882,6 +4179,20 @@ pub struct MemoryGiBPerVCpuRequest {
 
 
 
+impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum amount of memory, in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3915,6 +4226,20 @@ pub struct MemoryMiBRequest {
 
 
 
+impl cfn_resources::CfnResource for MemoryMiBRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
 ///
@@ -3950,6 +4275,20 @@ pub struct NetworkBandwidthGbpsRequest {
 
 
 
+impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum number of network interfaces.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3983,6 +4322,20 @@ pub struct NetworkInterfaceCountRequest {
 
 
 
+impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a secondary private IPv4 address for a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4016,6 +4369,20 @@ pub struct PrivateIpAddressSpecification {
 
 
 
+impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Spot Instance replacement strategy to use when Amazon EC2 emits a signal that your       Spot Instance is at an elevated risk of being interrupted. For more information, see         Capacity rebalancing in the Amazon EC2 User Guide for Linux Instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4080,6 +4447,20 @@ impl Default for SpotCapacityRebalanceReplacementStrategyEnum {
 }
 
 
+impl cfn_resources::CfnResource for SpotCapacityRebalance {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the launch specification for one or more Spot Instances. If you include     On-Demand capacity in your fleet request, you can't use       SpotFleetLaunchSpecification; you must use LaunchTemplateConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6868,6 +7249,28 @@ impl Default for SpotFleetLaunchSpecificationInstanceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SpotFleetLaunchSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.iam_instance_profile.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.instance_requirements.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.monitoring.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.placement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes whether monitoring is enabled.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6891,6 +7294,20 @@ pub struct SpotFleetMonitoring {
 
 
 
+impl cfn_resources::CfnResource for SpotFleetMonitoring {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration of a Spot Fleet request. For more information, see Spot Fleet       in the Amazon EC2 User Guide.
 ///
@@ -7342,6 +7759,24 @@ impl Default for SpotFleetRequestConfigDataTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SpotFleetRequestConfigData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.load_balancers_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.spot_maintenance_strategies.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The tags for a Spot Fleet resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7728,6 +8163,20 @@ impl Default for SpotFleetTagSpecificationResourceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SpotFleetTagSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The strategies for managing your Spot Instances that are at an elevated risk of being       interrupted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7749,6 +8198,22 @@ pub struct SpotMaintenanceStrategies {
 
 
 
+impl cfn_resources::CfnResource for SpotMaintenanceStrategies {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.capacity_rebalance.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes Spot Instance placement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7821,6 +8286,20 @@ impl Default for SpotPlacementTenancyEnum {
 }
 
 
+impl cfn_resources::CfnResource for SpotPlacement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -7858,6 +8337,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a load balancer target group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7879,6 +8372,20 @@ pub struct TargetGroup {
 
 
 
+impl cfn_resources::CfnResource for TargetGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the target groups to attach to a Spot Fleet. Spot Fleet registers the       running Spot Instances with these target groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7902,6 +8409,27 @@ pub struct TargetGroupsConfig {
 
 
 
+impl cfn_resources::CfnResource for TargetGroupsConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.target_groups;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'target_groups'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The minimum and maximum amount of total local storage, in GB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7935,6 +8463,20 @@ pub struct TotalLocalStorageGBRequest {
 
 
 
+impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum number of vCPUs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7967,3 +8509,18 @@ pub struct VCpuCountRangeRequest {
 }
 
 
+
+impl cfn_resources::CfnResource for VCpuCountRangeRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

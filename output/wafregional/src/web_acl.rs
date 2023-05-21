@@ -78,8 +78,42 @@ impl cfn_resources::CfnResource for CfnWebACL {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_action.validate()?;
+
+        let the_val = &self.metric_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.metric_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the action AWS WAF takes when a web request matches or doesn't match all rule conditions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -107,6 +141,20 @@ pub struct Action {
 
 
 
+impl cfn_resources::CfnResource for Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A combination of ByteMatchSet, IPSet, and/or SqlInjectionMatchSet objects that identify the web requests that you      want to allow, block, or count. For example, you might create a Rule that includes the following predicates:
 ///
@@ -159,3 +207,34 @@ pub struct Rule {
 }
 
 
+
+impl cfn_resources::CfnResource for Rule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.validate()?;
+
+        let the_val = &self.rule_id;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'rule_id'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.rule_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'rule_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

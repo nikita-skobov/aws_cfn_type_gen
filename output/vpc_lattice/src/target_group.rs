@@ -80,8 +80,14 @@ impl cfn_resources::CfnResource for CfnTargetGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The health check configuration of a target group. Health check configurations aren't used  for LAMBDA and ALB target groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -211,6 +217,22 @@ pub struct HealthCheckConfig {
 
 
 
+impl cfn_resources::CfnResource for HealthCheckConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.matcher.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The codes to use when checking for a successful response from a target for health  checks.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -232,6 +254,20 @@ pub struct Matcher {
 
 
 
+impl cfn_resources::CfnResource for Matcher {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -269,6 +305,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -302,6 +352,20 @@ pub struct Target {
 
 
 
+impl cfn_resources::CfnResource for Target {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the configuration of a target group. Lambda functions don't support target group  configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -382,3 +446,20 @@ pub struct TargetGroupConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for TargetGroupConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.health_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

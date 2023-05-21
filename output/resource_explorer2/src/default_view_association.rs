@@ -32,4 +32,23 @@ impl cfn_resources::CfnResource for CfnDefaultViewAssociation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.view_arn;
+
+        if the_val.len() > 1011 as _ {
+            return Err(format!("Max validation failed on field 'view_arn'. {} is greater than 1011", the_val.len()));
+        }
+
+        
+        let the_val = &self.view_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'view_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

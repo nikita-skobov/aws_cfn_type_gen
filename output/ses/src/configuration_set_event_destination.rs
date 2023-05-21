@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnConfigurationSetEventDestination {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.event_destination.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains information associated with an Amazon CloudWatch event destination to which email       sending events are published.
 ///
@@ -65,6 +71,20 @@ pub struct CloudWatchDestination {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains the dimension configuration to use when you publish email sending events to       Amazon CloudWatch.
 ///
@@ -141,6 +161,20 @@ impl Default for DimensionConfigurationDimensionValueSourceEnum {
 }
 
 
+impl cfn_resources::CfnResource for DimensionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about an event destination.
 ///
@@ -228,6 +262,26 @@ pub struct EventDestination {
 
 
 
+impl cfn_resources::CfnResource for EventDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_firehose_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sns_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event       destination.
 ///
@@ -263,6 +317,20 @@ pub struct KinesisFirehoseDestination {
 
 
 
+impl cfn_resources::CfnResource for KinesisFirehoseDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event destination.
 ///
@@ -287,3 +355,18 @@ pub struct SnsDestination {
 }
 
 
+
+impl cfn_resources::CfnResource for SnsDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

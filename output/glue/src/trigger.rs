@@ -175,8 +175,48 @@ impl cfn_resources::CfnResource for CfnTrigger {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.event_batching_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.predicate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines an action to be initiated by a trigger.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -273,6 +313,54 @@ pub struct Action {
 
 
 
+impl cfn_resources::CfnResource for Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.job_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'job_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.job_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'job_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.notification_property.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.security_configuration {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.security_configuration {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'security_configuration'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Defines a condition under which a trigger fires.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -412,6 +500,36 @@ impl Default for ConditionStateEnum {
 }
 
 
+impl cfn_resources::CfnResource for Condition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.job_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'job_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.job_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'job_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Batch condition that must be met (specified number of events received or batch time window expired) before EventBridge event trigger fires.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -445,6 +563,20 @@ pub struct EventBatchingCondition {
 
 
 
+impl cfn_resources::CfnResource for EventBatchingCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies configuration properties of a job run notification.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -465,6 +597,20 @@ pub struct NotificationProperty {
 
 
 
+impl cfn_resources::CfnResource for NotificationProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines the predicate of the trigger, which determines when it fires.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -518,3 +664,18 @@ impl Default for PredicateLogicalEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for Predicate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

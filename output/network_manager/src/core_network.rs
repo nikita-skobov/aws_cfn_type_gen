@@ -78,8 +78,42 @@ impl cfn_resources::CfnResource for CfnCoreNetwork {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.global_network_id;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'global_network_id'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.global_network_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'global_network_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes a core network edge.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -131,6 +165,36 @@ pub struct CoreNetworkEdge {
 
 
 
+impl cfn_resources::CfnResource for CoreNetworkEdge {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.edge_location {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'edge_location'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.edge_location {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'edge_location'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a core network segment, which are dedicated routes. Only attachments within this segment can communicate with each other.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -182,6 +246,36 @@ pub struct CoreNetworkSegment {
 
 
 
+impl cfn_resources::CfnResource for CoreNetworkSegment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -218,3 +312,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

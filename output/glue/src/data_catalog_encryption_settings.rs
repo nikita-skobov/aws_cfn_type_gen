@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnDataCatalogEncryptionSettings {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_catalog_encryption_settings.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The data structure used by the Data Catalog to encrypt the password as part of     CreateConnection or UpdateConnection and store it in the     ENCRYPTED_PASSWORD field in the connection properties. You can enable catalog    encryption or only password encryption.
 ///
@@ -81,6 +87,20 @@ pub struct ConnectionPasswordEncryption {
 
 
 
+impl cfn_resources::CfnResource for ConnectionPasswordEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains configuration information for maintaining Data Catalog security.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -114,6 +134,24 @@ pub struct DataCatalogEncryptionSettings {
 
 
 
+impl cfn_resources::CfnResource for DataCatalogEncryptionSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.connection_password_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_at_rest.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the encryption-at-rest configuration for the Data Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -173,3 +211,34 @@ impl Default for EncryptionAtRestCatalogEncryptionModeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for EncryptionAtRest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.sse_aws_kms_key_id {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'sse_aws_kms_key_id'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sse_aws_kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sse_aws_kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

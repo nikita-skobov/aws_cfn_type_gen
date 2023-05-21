@@ -296,8 +296,28 @@ impl cfn_resources::CfnResource for CfnScalableTarget {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_id;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'resource_id'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.suspended_state.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// ScalableTargetAction specifies the minimum and maximum capacity for the     ScalableTargetAction property of the AWS::ApplicationAutoScaling::ScalableTarget ScheduledAction property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -331,6 +351,20 @@ pub struct ScalableTargetAction {
 
 
 
+impl cfn_resources::CfnResource for ScalableTargetAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// ScheduledAction is a property of the AWS::ApplicationAutoScaling::ScalableTarget resource that specifies a scheduled    action for a scalable target.
 ///
@@ -442,6 +476,66 @@ pub struct ScheduledAction {
 
 
 
+impl cfn_resources::CfnResource for ScheduledAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.scalable_target_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.schedule;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'schedule'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.schedule;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'schedule'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.scheduled_action_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'scheduled_action_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.scheduled_action_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'scheduled_action_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.timezone {
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'timezone'. {} is greater than 1600", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timezone {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'timezone'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// SuspendedState is a property of the AWS::ApplicationAutoScaling::ScalableTarget resource that specifies whether the    scaling activities for a scalable target are in a suspended state.
 ///
@@ -488,3 +582,18 @@ pub struct SuspendedState {
 }
 
 
+
+impl cfn_resources::CfnResource for SuspendedState {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -89,8 +89,36 @@ impl cfn_resources::CfnResource for CfnRepository {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.code.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.repository_description {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'repository_description'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.repository_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'repository_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.repository_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'repository_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information about code to be committed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -123,6 +151,22 @@ pub struct Code {
 
 
 
+impl cfn_resources::CfnResource for Code {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Information about a trigger for a repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -196,6 +240,20 @@ pub struct RepositoryTrigger {
 
 
 
+impl cfn_resources::CfnResource for RepositoryTrigger {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the Amazon S3 bucket that contains the code that will be committed to the new repository.     Changes to this property are ignored after initial resource creation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -238,6 +296,20 @@ pub struct S3 {
 
 
 
+impl cfn_resources::CfnResource for S3 {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -274,3 +346,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

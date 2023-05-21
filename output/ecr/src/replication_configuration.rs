@@ -28,8 +28,14 @@ impl cfn_resources::CfnResource for CfnReplicationConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.replication_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The replication configuration for a registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -53,6 +59,27 @@ pub struct ReplicationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ReplicationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.rules;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'rules'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An array of objects representing the destination for a replication rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -94,6 +121,34 @@ pub struct ReplicationDestination {
 
 
 
+impl cfn_resources::CfnResource for ReplicationDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.region;
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'region'. {} is greater than 25", the_val.len()));
+        }
+
+        
+        let the_val = &self.region;
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'region'. {} is less than 2", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An array of objects representing the replication destinations and repository filters       for a replication configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -131,6 +186,35 @@ pub struct ReplicationRule {
 
 
 
+impl cfn_resources::CfnResource for ReplicationRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.destinations;
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'destinations'. {} is greater than 25", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.repository_filters {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'repository_filters'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The filter settings used with image replication. Specifying a repository filter to a       replication rule provides a method for controlling which repositories in a private       registry are replicated. If no filters are added, the contents of all repositories are       replicated.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -186,3 +270,32 @@ impl Default for RepositoryFilterFilterTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for RepositoryFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.filter;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'filter'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter;
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'filter'. {} is less than 2", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

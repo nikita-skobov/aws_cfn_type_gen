@@ -64,8 +64,16 @@ impl cfn_resources::CfnResource for CfnFlow {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.source.validate()?;
+
+        self.source_failover_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about the encryption of the flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -183,6 +191,20 @@ pub struct Encryption {
 
 
 
+impl cfn_resources::CfnResource for Encryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for source failover.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -240,6 +262,22 @@ pub struct FailoverConfig {
 
 
 
+impl cfn_resources::CfnResource for FailoverConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.source_priority.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The details of the sources of the flow.
 ///
@@ -478,6 +516,22 @@ pub struct Source {
 
 
 
+impl cfn_resources::CfnResource for Source {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.decryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The priority you want to assign to a source. You can have a primary stream and a backup stream or two equally prioritized streams. This setting only applies when Failover Mode is set to FAILOVER.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -498,3 +552,18 @@ pub struct SourcePriority {
 }
 
 
+
+impl cfn_resources::CfnResource for SourcePriority {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

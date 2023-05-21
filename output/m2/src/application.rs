@@ -121,8 +121,30 @@ impl cfn_resources::CfnResource for CfnApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.definition.validate()?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -161,3 +183,34 @@ pub struct Definition {
 }
 
 
+
+impl cfn_resources::CfnResource for Definition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.content {
+
+        if the_val.len() > 65000 as _ {
+            return Err(format!("Max validation failed on field 'content'. {} is greater than 65000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.content {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'content'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

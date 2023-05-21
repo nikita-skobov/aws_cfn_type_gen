@@ -60,8 +60,30 @@ impl cfn_resources::CfnResource for CfnCodeRepository {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.code_repository_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'code_repository_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.code_repository_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'code_repository_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.git_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies configuration details for a Git repository in your AWS       account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -123,6 +145,52 @@ pub struct GitConfig {
 
 
 
+impl cfn_resources::CfnResource for GitConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.branch {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'branch'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.branch {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'branch'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secret_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secret_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -159,3 +227,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

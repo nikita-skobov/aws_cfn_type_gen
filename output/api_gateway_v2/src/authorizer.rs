@@ -152,8 +152,14 @@ impl cfn_resources::CfnResource for CfnAuthorizer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.jwt_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The JWTConfiguration property specifies the configuration of a JWT          authorizer. Required for the JWT authorizer type. Supported only for          HTTP APIs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -186,3 +192,18 @@ pub struct JWTConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for JWTConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

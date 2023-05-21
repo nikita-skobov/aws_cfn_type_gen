@@ -357,8 +357,82 @@ impl cfn_resources::CfnResource for CfnCluster {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.auto_scaling_role {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'auto_scaling_role'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.auto_scaling_role {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'auto_scaling_role'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.auto_termination_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'custom_ami_id'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'custom_ami_id'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.instances.validate()?;
+
+        let the_val = &self.job_flow_role;
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'job_flow_role'. {} is greater than 10280", the_val.len()));
+        }
+
+        
+        let the_val = &self.job_flow_role;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'job_flow_role'. {} is less than 0", the_val.len()));
+        }
+
+        
+        self.kerberos_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.managed_scaling_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.security_configuration {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.security_configuration {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'security_configuration'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Application is a property of AWS::EMR::Cluster. The Application property type defines the open-source big data applications for EMR to install and configure when a cluster is created.
 ///
@@ -420,6 +494,20 @@ pub struct Application {
 
 
 
+impl cfn_resources::CfnResource for Application {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// AutoScalingPolicy is a subproperty of InstanceGroupConfig. AutoScalingPolicy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. For more information, see Using Automatic Scaling in Amazon EMR in the Amazon EMR Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -453,6 +541,22 @@ pub struct AutoScalingPolicy {
 
 
 
+impl cfn_resources::CfnResource for AutoScalingPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constraints.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The AutoTerminationPolicy property type specifies Property description not available. for an AWS::EMR::Cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -473,6 +577,20 @@ pub struct AutoTerminationPolicy {
 
 
 
+impl cfn_resources::CfnResource for AutoTerminationPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// BootstrapActionConfig is a property of AWS::EMR::Cluster that can be used to run bootstrap actions on EMR clusters. You can use a bootstrap action to install software and configure EC2 instances for all cluster nodes before EMR installs and configures open-source big data applications on cluster instances. For more information, see Create Bootstrap Actions to Install Additional Software in the Amazon EMR Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -512,6 +630,36 @@ pub struct BootstrapActionConfig {
 
 
 
+impl cfn_resources::CfnResource for BootstrapActionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        
+        self.script_bootstrap_action.validate()?;
+
+        Ok(())
+    }
+}
 
 /// CloudWatchAlarmDefinition is a subproperty of the ScalingTrigger property, which determines when to trigger an automatic scaling activity. Scaling activity begins when you satisfy the defined alarm conditions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -812,6 +960,20 @@ impl Default for CloudWatchAlarmDefinitionUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for CloudWatchAlarmDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The EC2 unit limits for a managed scaling policy. The managed scaling activity of a     cluster can not be above or below these limits. The limit only applies to the core and task     nodes. The master node cannot be scaled after initial configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -906,6 +1068,20 @@ impl Default for ComputeLimitsUnitTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ComputeLimits {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration is a subproperty of InstanceFleetConfig or InstanceGroupConfig. Configuration specifies optional configurations for customizing open-source big data applications and environment parameters. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications in the Amazon EMR Release Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -951,6 +1127,20 @@ pub struct Configuration {
 
 
 
+impl cfn_resources::CfnResource for Configuration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// EbsBlockDeviceConfig is a subproperty of the EbsConfiguration property type. EbsBlockDeviceConfig defines the number and type of EBS volumes to associate with all EC2 instances in an EMR cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -984,6 +1174,22 @@ pub struct EbsBlockDeviceConfig {
 
 
 
+impl cfn_resources::CfnResource for EbsBlockDeviceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.volume_specification.validate()?;
+
+        Ok(())
+    }
+}
 
 /// EbsConfiguration is a subproperty of InstanceFleetConfig or InstanceGroupConfig. EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1017,6 +1223,20 @@ pub struct EbsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EbsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1086,6 +1306,50 @@ pub struct HadoopJarStepConfig {
 
 
 
+impl cfn_resources::CfnResource for HadoopJarStepConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.jar;
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'jar'. {} is greater than 10280", the_val.len()));
+        }
+
+        
+        let the_val = &self.jar;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'jar'. {} is less than 0", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.main_class {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'main_class'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.main_class {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'main_class'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Use InstanceFleetConfig to define instance fleets for an EMR cluster. A cluster can not use both instance fleets and instance groups. For more information, see Configure Instance Fleets in the Amazon EMR Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1169,6 +1433,54 @@ pub struct InstanceFleetConfig {
 
 
 
+impl cfn_resources::CfnResource for InstanceFleetConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.launch_specifications.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_on_demand_capacity {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'target_on_demand_capacity'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_spot_capacity {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'target_spot_capacity'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// InstanceFleetProvisioningSpecification is a subproperty of InstanceFleetConfig. InstanceFleetProvisioningSpecification defines the launch specification for Spot instances in an instance fleet, which determines the defined duration and provisioning timeout behavior for Spot instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1204,6 +1516,24 @@ pub struct InstanceFleetProvisioningSpecifications {
 
 
 
+impl cfn_resources::CfnResource for InstanceFleetProvisioningSpecifications {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.on_demand_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.spot_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use InstanceGroupConfig to define instance groups for an EMR cluster. A cluster can not use both instance groups and instance fleets. For more information, see Create a Cluster with Instance Fleets or Uniform Instance Groups in the Amazon EMR Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1368,6 +1698,86 @@ impl Default for InstanceGroupConfigMarketEnum {
 }
 
 
+impl cfn_resources::CfnResource for InstanceGroupConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_scaling_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.bid_price {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'bid_price'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bid_price {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'bid_price'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'custom_ami_id'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'custom_ami_id'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.ebs_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.instance_type;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_type'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// InstanceTypeConfig is a sub-property of InstanceFleetConfig. InstanceTypeConfig determines the EC2 instances that Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1481,6 +1891,76 @@ pub struct InstanceTypeConfig {
 
 
 
+impl cfn_resources::CfnResource for InstanceTypeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.bid_price {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'bid_price'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bid_price {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'bid_price'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'custom_ami_id'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'custom_ami_id'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.ebs_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.instance_type;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_type'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.weighted_capacity {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'weighted_capacity'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// JobFlowInstancesConfig is a property of the AWS::EMR::Cluster resource. JobFlowInstancesConfig defines the instance groups or instance fleets that comprise the cluster. JobFlowInstancesConfig must contain either InstanceFleetConfig or InstanceGroupConfig. They cannot be used together.
 ///
@@ -1752,6 +2232,126 @@ pub struct JobFlowInstancesConfig {
 
 
 
+impl cfn_resources::CfnResource for JobFlowInstancesConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.core_instance_fleet.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.core_instance_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.ec2_key_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'ec2_key_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ec2_key_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'ec2_key_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ec2_subnet_id {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'ec2_subnet_id'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ec2_subnet_id {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'ec2_subnet_id'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.emr_managed_master_security_group {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'emr_managed_master_security_group'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.emr_managed_master_security_group {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'emr_managed_master_security_group'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.emr_managed_slave_security_group {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'emr_managed_slave_security_group'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.emr_managed_slave_security_group {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'emr_managed_slave_security_group'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hadoop_version {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'hadoop_version'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hadoop_version {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'hadoop_version'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.master_instance_fleet.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.master_instance_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.placement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.service_access_security_group {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'service_access_security_group'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.service_access_security_group {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'service_access_security_group'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// KerberosAttributes is a property of the AWS::EMR::Cluster resource. KerberosAttributes define the cluster-specific Kerberos configuration when Kerberos authentication is enabled using a security configuration. The cluster-specific configuration must be compatible with the security configuration. For more information see Use Kerberos Authentication in the EMR Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1851,6 +2451,96 @@ pub struct KerberosAttributes {
 
 
 
+impl cfn_resources::CfnResource for KerberosAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.addomain_join_password {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'addomain_join_password'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.addomain_join_password {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'addomain_join_password'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.addomain_join_user {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'addomain_join_user'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.addomain_join_user {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'addomain_join_user'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cross_realm_trust_principal_password {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'cross_realm_trust_principal_password'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cross_realm_trust_principal_password {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'cross_realm_trust_principal_password'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.kdc_admin_password;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'kdc_admin_password'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.kdc_admin_password;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'kdc_admin_password'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.realm;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'realm'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.realm;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'realm'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// KeyValue is a subproperty of the HadoopJarStepConfig property type. KeyValue is used to pass parameters to a step.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1896,6 +2586,52 @@ pub struct KeyValue {
 
 
 
+impl cfn_resources::CfnResource for KeyValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Managed scaling policy for an Amazon EMR cluster. The policy specifies the     limits for resources that can be added or terminated from a cluster. The policy only     applies to the core and task nodes. The master node cannot be scaled after initial     configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1917,6 +2653,22 @@ pub struct ManagedScalingPolicy {
 
 
 
+impl cfn_resources::CfnResource for ManagedScalingPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.compute_limits.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// MetricDimension is a subproperty of the CloudWatchAlarmDefinition property type. MetricDimension specifies a CloudWatch dimension, which is specified with a Key Value pair. The key is known as a Name in CloudWatch. By default, Amazon EMR uses one dimension whose Key is JobFlowID and Value is a variable representing the cluster ID, which is ${emr.clusterId}. This enables the automatic scaling rule for EMR to bootstrap when the cluster ID becomes available during cluster creation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1950,6 +2702,20 @@ pub struct MetricDimension {
 
 
 
+impl cfn_resources::CfnResource for MetricDimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1988,6 +2754,20 @@ impl Default for OnDemandProvisioningSpecificationAllocationStrategyEnum {
 }
 
 
+impl cfn_resources::CfnResource for OnDemandProvisioningSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// PlacementType is a property of the AWS::EMR::Cluster resource. PlacementType determines the Amazon EC2 Availability Zone configuration of the cluster (job flow).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2015,6 +2795,34 @@ pub struct PlacementType {
 
 
 
+impl cfn_resources::CfnResource for PlacementType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.availability_zone;
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'availability_zone'. {} is greater than 10280", the_val.len()));
+        }
+
+        
+        let the_val = &self.availability_zone;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'availability_zone'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// ScalingAction is a subproperty of the ScalingRule property type. ScalingAction determines the type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2069,6 +2877,22 @@ impl Default for ScalingActionMarketEnum {
 }
 
 
+impl cfn_resources::CfnResource for ScalingAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.simple_scaling_policy_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// ScalingConstraints is a subproperty of the AutoScalingPolicy property type. ScalingConstraints defines the upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or shrink below these limits.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2102,6 +2926,20 @@ pub struct ScalingConstraints {
 
 
 
+impl cfn_resources::CfnResource for ScalingConstraints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// ScalingRule is a subproperty of the AutoScalingPolicy property type. ScalingRule defines the scale-in or scale-out rules for scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2159,6 +2997,24 @@ pub struct ScalingRule {
 
 
 
+impl cfn_resources::CfnResource for ScalingRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.validate()?;
+
+        self.trigger.validate()?;
+
+        Ok(())
+    }
+}
 
 /// ScalingTrigger is a subproperty of the ScalingRule property type. ScalingTrigger determines the conditions that trigger an automatic scaling activity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2180,6 +3036,22 @@ pub struct ScalingTrigger {
 
 
 
+impl cfn_resources::CfnResource for ScalingTrigger {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_alarm_definition.validate()?;
+
+        Ok(())
+    }
+}
 
 /// ScriptBootstrapActionConfig is a subproperty of the BootstrapActionConfig property type. ScriptBootstrapActionConfig specifies the arguments and location of the bootstrap script for EMR to run on all cluster nodes before it installs open-source big data applications on them.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2219,6 +3091,34 @@ pub struct ScriptBootstrapActionConfig {
 
 
 
+impl cfn_resources::CfnResource for ScriptBootstrapActionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.path;
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'path'. {} is greater than 10280", the_val.len()));
+        }
+
+        
+        let the_val = &self.path;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'path'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// SimpleScalingPolicyConfiguration is a subproperty of the ScalingAction property type. SimpleScalingPolicyConfiguration determines how an automatic scaling action adds or removes instances, the cooldown period, and the number of EC2 instances that are added each time the CloudWatch metric alarm condition is satisfied.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2289,6 +3189,20 @@ impl Default for SimpleScalingPolicyConfigurationAdjustmentTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SimpleScalingPolicyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// SpotProvisioningSpecification is a subproperty of the InstanceFleetProvisioningSpecifications property type. SpotProvisioningSpecification determines the launch specification for Spot instances in the instance fleet, which includes the defined duration and provisioning timeout behavior.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2390,6 +3304,35 @@ impl Default for SpotProvisioningSpecificationTimeoutActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for SpotProvisioningSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.block_duration_minutes {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'block_duration_minutes'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.timeout_duration_minutes;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'timeout_duration_minutes'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// StepConfig is a property of the AWS::EMR::Cluster resource. The StepConfig property type specifies a cluster (job flow) step, which runs only on the master node. Steps are used to submit data processing jobs to the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2441,6 +3384,36 @@ pub struct StepConfig {
 
 
 
+impl cfn_resources::CfnResource for StepConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.hadoop_jar_step.validate()?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -2478,6 +3451,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2522,3 +3509,18 @@ pub struct VolumeSpecification {
 }
 
 
+
+impl cfn_resources::CfnResource for VolumeSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

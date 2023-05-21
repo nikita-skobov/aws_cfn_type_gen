@@ -128,8 +128,76 @@ impl cfn_resources::CfnResource for CfnEventBusPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.action {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'action'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.action {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'action'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.event_bus_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'event_bus_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.event_bus_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'event_bus_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.principal {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'principal'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.principal {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'principal'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.statement_id;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'statement_id'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.statement_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'statement_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A JSON string which you can use to limit the event bus permissions you are granting to    only accounts that fulfill the condition. Currently, the only supported condition is    membership in a certain AWS organization. The string must contain Type,     Key, and Value fields. The Value field specifies the    ID of the AWS organization. Following is an example value for Condition:
 ///
@@ -176,3 +244,18 @@ pub struct Condition {
 }
 
 
+
+impl cfn_resources::CfnResource for Condition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

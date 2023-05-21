@@ -82,4 +82,24 @@ impl cfn_resources::CfnResource for CfnCostCategory {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.rules;
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'rules'. {} is greater than 500", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.split_charge_rules {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'split_charge_rules'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

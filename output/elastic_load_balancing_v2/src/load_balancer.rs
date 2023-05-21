@@ -221,8 +221,20 @@ impl cfn_resources::CfnResource for CfnLoadBalancer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.load_balancer_attributes {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'load_balancer_attributes'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies an attribute for an Application Load Balancer, a Network Load Balancer, or a     Gateway Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -274,6 +286,36 @@ pub struct LoadBalancerAttribute {
 
 
 
+impl cfn_resources::CfnResource for LoadBalancerAttribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies a subnet for a load balancer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -331,6 +373,20 @@ pub struct SubnetMapping {
 
 
 
+impl cfn_resources::CfnResource for SubnetMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -367,3 +423,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

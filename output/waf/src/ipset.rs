@@ -48,8 +48,26 @@ impl cfn_resources::CfnResource for CfnIPSet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) that web requests originate from.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -117,3 +135,32 @@ impl Default for IPSetDescriptorTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for IPSetDescriptor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.value;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

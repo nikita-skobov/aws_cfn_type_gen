@@ -92,8 +92,59 @@ impl cfn_resources::CfnResource for CfnConnector {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.access_role;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'access_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.access_role;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'access_role'. {} is less than 20", the_val.len()));
+        }
+
+        
+        self.as2_config.validate()?;
+
+        if let Some(the_val) = &self.logging_role {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'logging_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.logging_role {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'logging_role'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.url;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'url'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A structure that contains the parameters for a connector object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -364,6 +415,68 @@ impl Default for As2ConfigSigningAlgorithmEnum {
 }
 
 
+impl cfn_resources::CfnResource for As2Config {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.local_profile_id {
+
+        if the_val.len() > 19 as _ {
+            return Err(format!("Max validation failed on field 'local_profile_id'. {} is greater than 19", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.local_profile_id {
+
+        if the_val.len() < 19 as _ {
+            return Err(format!("Min validation failed on field 'local_profile_id'. {} is less than 19", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.message_subject {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'message_subject'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.message_subject {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'message_subject'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.partner_profile_id {
+
+        if the_val.len() > 19 as _ {
+            return Err(format!("Max validation failed on field 'partner_profile_id'. {} is greater than 19", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.partner_profile_id {
+
+        if the_val.len() < 19 as _ {
+            return Err(format!("Min validation failed on field 'partner_profile_id'. {} is less than 19", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -400,3 +513,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

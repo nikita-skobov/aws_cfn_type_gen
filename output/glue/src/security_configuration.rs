@@ -46,8 +46,28 @@ impl cfn_resources::CfnResource for CfnSecurityConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption_configuration.validate()?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies how Amazon CloudWatch data should be encrypted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -104,6 +124,20 @@ impl Default for CloudWatchEncryptionCloudWatchEncryptionModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CloudWatchEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an encryption configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -149,6 +183,26 @@ pub struct EncryptionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.job_bookmarks_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_encryptions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies how job bookmark data should be encrypted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -205,6 +259,20 @@ impl Default for JobBookmarksEncryptionJobBookmarksEncryptionModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for JobBookmarksEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies how Amazon Simple Storage Service (Amazon S3) data should be encrypted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -265,6 +333,20 @@ impl Default for S3EncryptionS3EncryptionModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3Encryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The S3Encryptions property type specifies the encyption configuration for       Amazon Simple Storage Service (Amazon S3) data for a security configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -273,3 +355,18 @@ pub struct S3Encryptions {
 }
 
 
+
+impl cfn_resources::CfnResource for S3Encryptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

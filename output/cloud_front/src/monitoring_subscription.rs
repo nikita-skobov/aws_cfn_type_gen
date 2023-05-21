@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnMonitoringSubscription {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.monitoring_subscription.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A monitoring subscription. This structure contains information about whether 			additional CloudWatch metrics are enabled for a given CloudFront distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -63,6 +69,22 @@ pub struct MonitoringSubscription {
 
 
 
+impl cfn_resources::CfnResource for MonitoringSubscription {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.realtime_metrics_subscription_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A subscription configuration for additional CloudWatch metrics.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -104,3 +126,18 @@ impl Default for RealtimeMetricsSubscriptionConfigRealtimeMetricsSubscriptionSta
     }
 }
 
+
+impl cfn_resources::CfnResource for RealtimeMetricsSubscriptionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

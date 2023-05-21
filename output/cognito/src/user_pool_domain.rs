@@ -66,8 +66,42 @@ impl cfn_resources::CfnResource for CfnUserPoolDomain {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_domain_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.domain;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'domain'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.domain;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'domain'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration for a custom domain that hosts the sign-up and sign-in webpages for       your application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -94,3 +128,34 @@ pub struct CustomDomainConfigType {
 }
 
 
+
+impl cfn_resources::CfnResource for CustomDomainConfigType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.certificate_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'certificate_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.certificate_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'certificate_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

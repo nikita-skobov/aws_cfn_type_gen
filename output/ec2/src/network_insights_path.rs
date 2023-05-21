@@ -163,8 +163,64 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsPath {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.destination_ip {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'destination_ip'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.destination_ip {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'destination_ip'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.destination_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'destination_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.destination_port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'destination_port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.filter_at_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter_at_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.source_ip {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'source_ip'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_ip {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'source_ip'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a port range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -206,6 +262,52 @@ pub struct FilterPortRange {
 
 
 
+impl cfn_resources::CfnResource for FilterPortRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.from_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'from_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.from_port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'from_port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.to_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'to_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.to_port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'to_port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a set of filters for a path analysis. Use path filters to scope the analysis when      there can be multiple resulting paths.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -275,6 +377,56 @@ pub struct PathFilter {
 
 
 
+impl cfn_resources::CfnResource for PathFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.destination_address {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'destination_address'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.destination_address {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'destination_address'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.destination_port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.source_address {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'source_address'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_address {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'source_address'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.source_port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -311,3 +463,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

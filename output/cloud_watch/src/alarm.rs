@@ -538,8 +538,179 @@ impl cfn_resources::CfnResource for CfnAlarm {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.alarm_actions {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'alarm_actions'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.alarm_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'alarm_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.alarm_description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'alarm_description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.alarm_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'alarm_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.alarm_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'alarm_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.datapoints_to_alarm {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'datapoints_to_alarm'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.dimensions {
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'dimensions'. {} is greater than 30", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.evaluate_low_sample_count_percentile {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'evaluate_low_sample_count_percentile'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.evaluate_low_sample_count_percentile {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'evaluate_low_sample_count_percentile'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.evaluation_periods;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'evaluation_periods'. {} is less than 1", the_val));
+        }
+
+        
+        if let Some(the_val) = &self.insufficient_data_actions {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'insufficient_data_actions'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.metric_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.metric_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'namespace'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'namespace'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.okactions {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'okactions'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.period {
+
+        if *the_val < 10 as _ {
+            return Err(format!("Min validation failed on field 'period'. {} is less than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.threshold_metric_id {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'threshold_metric_id'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.threshold_metric_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'threshold_metric_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.treat_missing_data {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'treat_missing_data'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.treat_missing_data {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'treat_missing_data'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Dimension is an embedded property of the AWS::CloudWatch::Alarm type. Dimensions       are name/value pairs that can be associated with a CloudWatch metric. You can       specify a maximum of 10 dimensions for a given metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -581,6 +752,48 @@ pub struct Dimension {
 
 
 
+impl cfn_resources::CfnResource for Dimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Metric property type represents a specific metric. Metric is a property of the 		      MetricStat property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -638,6 +851,60 @@ pub struct Metric {
 
 
 
+impl cfn_resources::CfnResource for Metric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.dimensions {
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'dimensions'. {} is greater than 30", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.metric_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.metric_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'namespace'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'namespace'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The MetricDataQuery property type specifies the metric data to return, and whether this call is       just retrieving a batch set of data for one metric, or is performing a math expression on metric data.
 ///
@@ -751,6 +1018,60 @@ pub struct MetricDataQuery {
 
 
 
+impl cfn_resources::CfnResource for MetricDataQuery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.expression {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.expression {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.id;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'id'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.metric_stat.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.period {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'period'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// This structure defines the metric to be returned, along with the statistics, period, and units.
 ///
@@ -938,3 +1259,27 @@ impl Default for MetricStatUnitEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for MetricStat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.metric.validate()?;
+
+        let the_val = &self.period;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'period'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}

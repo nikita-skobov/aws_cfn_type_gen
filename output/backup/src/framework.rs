@@ -78,8 +78,44 @@ impl cfn_resources::CfnResource for CfnFramework {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.framework_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'framework_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.framework_description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'framework_description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.framework_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'framework_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.framework_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'framework_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A list of parameters for a control. A control can have zero, one, or more than one     parameter. An example of a control with two parameters is: "backup plan frequency is at     least daily and the retention period is at least 1 year". The     first parameter is daily. The second parameter is 1 year.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -113,6 +149,20 @@ pub struct ControlInputParameter {
 
 
 
+impl cfn_resources::CfnResource for ControlInputParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A framework consists of one or more controls. Each control has its own control scope.     The control scope can include one or more resource types, a combination of a tag key and     value, or a combination of one resource type and one resource ID. If no scope is specified,     evaluations for the rule are triggered when any resource in your recording group changes in     configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -160,6 +210,28 @@ pub struct ControlScope {
 
 
 
+impl cfn_resources::CfnResource for ControlScope {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.compliance_resource_ids {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'compliance_resource_ids'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -205,6 +277,22 @@ pub struct FrameworkControl {
 
 
 
+impl cfn_resources::CfnResource for FrameworkControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.control_scope.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -241,3 +329,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

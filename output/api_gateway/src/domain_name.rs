@@ -134,8 +134,16 @@ impl cfn_resources::CfnResource for CfnDomainName {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.endpoint_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mutual_tls_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The EndpointConfiguration property type specifies the endpoint types of an Amazon API Gateway domain name.
 ///
@@ -159,6 +167,20 @@ pub struct EndpointConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EndpointConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway    performs two-way authentication between the client and the server. Clients must present a    trusted certificate to access your API.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -192,6 +214,20 @@ pub struct MutualTlsAuthentication {
 
 
 
+impl cfn_resources::CfnResource for MutualTlsAuthentication {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -228,3 +264,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

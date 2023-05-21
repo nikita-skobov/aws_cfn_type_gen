@@ -102,8 +102,49 @@ impl cfn_resources::CfnResource for CfnDataset {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.dataset_group_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'dataset_group_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        self.dataset_import_job.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.dataset_type;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'dataset_type'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.schema_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'schema_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The DataSource property type specifies Property description not available. for an AWS::Personalize::Dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -124,6 +165,20 @@ pub struct DataSource {
 
 
 
+impl cfn_resources::CfnResource for DataSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a job that imports training data from a data source (Amazon S3    bucket) to an Amazon Personalize dataset. For more information, see CreateDatasetImportJob.
 ///
@@ -212,3 +267,60 @@ pub struct DatasetImportJob {
 }
 
 
+
+impl cfn_resources::CfnResource for DatasetImportJob {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.dataset_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'dataset_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.dataset_import_job_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'dataset_import_job_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.job_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'job_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.job_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'job_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

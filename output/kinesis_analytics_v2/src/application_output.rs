@@ -54,8 +54,28 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.output.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Describes the data format when records are written to the destination in a SQL-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -98,6 +118,20 @@ impl Default for DestinationSchemaRecordFormatTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DestinationSchema {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, when configuring application    output, identifies a Kinesis Data Firehose delivery stream as the destination. You provide the    stream Amazon Resource Name (ARN) of the delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -125,6 +159,34 @@ pub struct KinesisFirehoseOutput {
 
 
 
+impl cfn_resources::CfnResource for KinesisFirehoseOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies a Kinesis data stream as the destination. You provide the stream Amazon Resource    Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -152,6 +214,34 @@ pub struct KinesisStreamsOutput {
 
 
 
+impl cfn_resources::CfnResource for KinesisStreamsOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies an Amazon Lambda function as the destination. You provide the function Amazon Resource    Name (ARN) of the Lambda function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -181,6 +271,34 @@ pub struct LambdaOutput {
 
 
 
+impl cfn_resources::CfnResource for LambdaOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes a SQL-based Kinesis Data Analytics application's output configuration,    in which you identify an in-application stream and a destination where you want the    in-application stream data to be written. The destination can be a Kinesis data stream or a    Kinesis Data Firehose delivery stream.
 /// 
@@ -256,3 +374,42 @@ pub struct Output {
 }
 
 
+
+impl cfn_resources::CfnResource for Output {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination_schema.validate()?;
+
+        self.kinesis_firehose_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_streams_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lambda_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

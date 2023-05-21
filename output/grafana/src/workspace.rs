@@ -262,8 +262,66 @@ impl cfn_resources::CfnResource for CfnWorkspace {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.network_access_control.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.organization_role_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'organization_role_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.organization_role_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'organization_role_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.saml_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that defines which attributes in the IdP assertion are to be used to       define information about the users authenticated by the IdP to use the workspace.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -369,6 +427,116 @@ pub struct AssertionAttributes {
 
 
 
+impl cfn_resources::CfnResource for AssertionAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.email {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'email'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'email'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.groups {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'groups'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.groups {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'groups'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.login {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'login'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.login {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'login'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.org {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'org'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.org {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'org'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'role'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure containing the identity provider (IdP) metadata used to integrate the       identity provider with this workspace. You can specify the metadata either by providing       a URL to its location in the url parameter, or by specifying the full       metadata in XML format in the xml parameter. Specifying both will cause an       error.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -406,6 +574,36 @@ pub struct IdpMetadata {
 
 
 
+impl cfn_resources::CfnResource for IdpMetadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.url {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'url'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.url {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'url'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration settings for in-bound network access to your workspace.
 ///
@@ -455,6 +653,20 @@ pub struct NetworkAccessControl {
 
 
 
+impl cfn_resources::CfnResource for NetworkAccessControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure defines which groups defined in the SAML assertion attribute are to be       mapped to the Grafana Admin and Editor roles in the workspace.       SAML authenticated users not part of Admin or Editor role       groups have Viewer permission over the workspace.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -488,6 +700,20 @@ pub struct RoleValues {
 
 
 
+impl cfn_resources::CfnResource for RoleValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure containing information about how this workspace works with SAML.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -557,6 +783,26 @@ pub struct SamlConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SamlConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.assertion_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.idp_metadata.validate()?;
+
+        self.role_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration settings for an Amazon VPC that contains data sources for       your Grafana workspace to connect to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -597,3 +843,18 @@ pub struct VpcConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

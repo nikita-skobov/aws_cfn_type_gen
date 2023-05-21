@@ -32,8 +32,14 @@ impl cfn_resources::CfnResource for CfnNotificationChannel {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Information about notification channels you have configured with DevOps Guru. 			The one    	supported notification channel is Amazon Simple Notification Service (Amazon SNS).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -71,6 +77,24 @@ pub struct NotificationChannelConfig {
 
 
 
+impl cfn_resources::CfnResource for NotificationChannelConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.filters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sns.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The filter configurations for the Amazon SNS notification topic you use with DevOps Guru. You can choose to specify which events or message types to receive notifications for. 			You can also choose to specify which severity levels to receive notifications for.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -108,6 +132,36 @@ pub struct NotificationFilterConfig {
 
 
 
+impl cfn_resources::CfnResource for NotificationFilterConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.message_types {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'message_types'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.severities {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'severities'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains the Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic.
 ///
@@ -138,3 +192,34 @@ pub struct SnsChannelConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for SnsChannelConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.topic_arn {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'topic_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.topic_arn {
+
+        if the_val.len() < 36 as _ {
+            return Err(format!("Min validation failed on field 'topic_arn'. {} is less than 36", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

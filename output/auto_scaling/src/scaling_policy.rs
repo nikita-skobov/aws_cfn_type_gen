@@ -186,8 +186,16 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.predictive_scaling_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.target_tracking_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains customized metric specification information for a target tracking scaling policy    for Amazon EC2 Auto Scaling.
 ///
@@ -298,6 +306,20 @@ impl Default for CustomizedMetricSpecificationStatisticEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomizedMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents a specific metric.
 ///
@@ -347,6 +369,20 @@ pub struct Metric {
 
 
 
+impl cfn_resources::CfnResource for Metric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The metric data to return. Also defines whether this call is returning data for one metric    only, or whether it is performing a math expression on the values of returned metric    statistics to create a new time series. A time series is a series of data points, each of    which is associated with a timestamp.
 ///
@@ -448,6 +484,60 @@ pub struct MetricDataQuery {
 
 
 
+impl cfn_resources::CfnResource for MetricDataQuery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.expression {
+
+        if the_val.len() > 1023 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 1023", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.expression {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.id;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'id'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.label {
+
+        if the_val.len() > 2047 as _ {
+            return Err(format!("Max validation failed on field 'label'. {} is greater than 2047", the_val.len()));
+        }
+
+        }
+        
+        self.metric_stat.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// MetricDimension specifies a name/value pair that is part of the identity of a    CloudWatch metric for the Dimensions property of the AWS::AutoScaling::ScalingPolicy CustomizedMetricSpecification property type.    Duplicate dimensions are not allowed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -481,6 +571,20 @@ pub struct MetricDimension {
 
 
 
+impl cfn_resources::CfnResource for MetricDimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// MetricStat is a property of the AWS::AutoScaling::ScalingPolicy MetricDataQuery property type.
 ///
@@ -538,6 +642,36 @@ pub struct MetricStat {
 
 
 
+impl cfn_resources::CfnResource for MetricStat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.metric.validate()?;
+
+        let the_val = &self.stat;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'stat'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.stat;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'stat'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Contains predefined metric specification information for a target tracking scaling policy    for Amazon EC2 Auto Scaling.
 ///
@@ -620,6 +754,36 @@ impl Default for PredefinedMetricSpecificationPredefinedMetricTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PredefinedMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() > 1023 as _ {
+            return Err(format!("Max validation failed on field 'resource_label'. {} is greater than 1023", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// PredictiveScalingConfiguration is a property of the AWS::AutoScaling::ScalingPolicy resource that specifies a predictive scaling policy    for Amazon EC2 Auto Scaling.
 ///
@@ -751,6 +915,44 @@ impl Default for PredictiveScalingConfigurationModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PredictiveScalingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max_capacity_buffer {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'max_capacity_buffer'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_capacity_buffer {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_capacity_buffer'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.scheduling_buffer_time {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'scheduling_buffer_time'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains capacity metric information for the     CustomizedCapacityMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -772,6 +974,20 @@ pub struct PredictiveScalingCustomizedCapacityMetric {
 
 
 
+impl cfn_resources::CfnResource for PredictiveScalingCustomizedCapacityMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains load metric information for the CustomizedLoadMetricSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -793,6 +1009,20 @@ pub struct PredictiveScalingCustomizedLoadMetric {
 
 
 
+impl cfn_resources::CfnResource for PredictiveScalingCustomizedLoadMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains scaling metric information for the     CustomizedScalingMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -814,6 +1044,20 @@ pub struct PredictiveScalingCustomizedScalingMetric {
 
 
 
+impl cfn_resources::CfnResource for PredictiveScalingCustomizedScalingMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that specifies a metric specification for the     MetricSpecifications property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingConfiguration property    type.
 ///
@@ -915,6 +1159,32 @@ pub struct PredictiveScalingMetricSpecification {
 
 
 
+impl cfn_resources::CfnResource for PredictiveScalingMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.customized_capacity_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.customized_load_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.customized_scaling_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.predefined_load_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.predefined_metric_pair_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.predefined_scaling_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains load metric information for the PredefinedLoadMetricSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -987,6 +1257,20 @@ impl Default for PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PredictiveScalingPredefinedLoadMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains metric pair information for the PredefinedMetricPairSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 ///
@@ -1067,6 +1351,36 @@ impl Default for PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PredictiveScalingPredefinedMetricPair {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() > 1023 as _ {
+            return Err(format!("Max validation failed on field 'resource_label'. {} is greater than 1023", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains scaling metric information for the     PredefinedScalingMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1139,6 +1453,20 @@ impl Default for PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnu
 }
 
 
+impl cfn_resources::CfnResource for PredictiveScalingPredefinedScalingMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// StepAdjustment specifies a step adjustment for the StepAdjustments    property of the AWS::AutoScaling::ScalingPolicy resource.
 ///
@@ -1194,6 +1522,20 @@ pub struct StepAdjustment {
 
 
 
+impl cfn_resources::CfnResource for StepAdjustment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// TargetTrackingConfiguration is a property of the AWS::AutoScaling::ScalingPolicy resource that specifies a target tracking scaling    policy configuration for Amazon EC2 Auto Scaling.
 ///
@@ -1254,3 +1596,22 @@ pub struct TargetTrackingConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for TargetTrackingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.customized_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.predefined_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

@@ -207,8 +207,30 @@ impl cfn_resources::CfnResource for CfnEnvironment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.high_availability_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines the storage configuration for an Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -246,6 +268,20 @@ pub struct EfsStorageConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EfsStorageConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines the storage configuration for an Amazon FSx file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -283,6 +319,20 @@ pub struct FsxStorageConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FsxStorageConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines the details of a high availability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -308,6 +358,34 @@ pub struct HighAvailabilityConfig {
 
 
 
+impl cfn_resources::CfnResource for HighAvailabilityConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.desired_capacity;
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'desired_capacity'. {} is greater than 100", the_val));
+        }
+
+        
+        let the_val = &self.desired_capacity;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'desired_capacity'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Defines the storage configuration for a runtime environment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -340,3 +418,22 @@ pub struct StorageConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for StorageConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.efs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.fsx.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

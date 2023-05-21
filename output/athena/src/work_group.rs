@@ -115,8 +115,30 @@ impl cfn_resources::CfnResource for CfnWorkGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.work_group_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AclConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -137,6 +159,20 @@ pub struct AclConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AclConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The CustomerContentEncryptionConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -157,6 +193,20 @@ pub struct CustomerContentEncryptionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CustomerContentEncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// If query results are encrypted in Amazon S3, indicates the encryption option used (for       example, SSE_KMS or CSE_KMS) and key information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -217,6 +267,20 @@ impl Default for EncryptionConfigurationEncryptionOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for EncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Athena engine version for running queries, or the PySpark engine       version for running sessions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -258,6 +322,52 @@ pub struct EngineVersion {
 
 
 
+impl cfn_resources::CfnResource for EngineVersion {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.effective_engine_version {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'effective_engine_version'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.effective_engine_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'effective_engine_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.selected_engine_version {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'selected_engine_version'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.selected_engine_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'selected_engine_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The location in Amazon S3 where query and calculation results are stored and the encryption       option, if any, used for query and calculation results. These are known as "client-side settings". If       workgroup settings override client-side settings, then the query uses the workgroup       settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -313,6 +423,24 @@ pub struct ResultConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ResultConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.acl_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -350,6 +478,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of the workgroup, which includes the location in Amazon S3 where       query results are stored, the encryption option, if any, used for query results, whether       Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of       bytes scanned (cutoff) per query, if it is specified. The EnforceWorkGroupConfiguration option determines whether workgroup       settings override client-side query settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -464,3 +606,24 @@ pub struct WorkGroupConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for WorkGroupConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.customer_content_encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.engine_version.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.result_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

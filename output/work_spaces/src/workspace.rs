@@ -126,8 +126,42 @@ impl cfn_resources::CfnResource for CfnWorkspace {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.directory_id;
+
+        if the_val.len() > 65 as _ {
+            return Err(format!("Max validation failed on field 'directory_id'. {} is greater than 65", the_val.len()));
+        }
+
+        
+        let the_val = &self.directory_id;
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'directory_id'. {} is less than 10", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'user_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.workspace_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -165,6 +199,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about a WorkSpace.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -309,3 +357,18 @@ impl Default for WorkspacePropertiesRunningModeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for WorkspaceProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -159,8 +159,52 @@ impl cfn_resources::CfnResource for CfnFlywheel {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.active_model_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'active_model_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.data_access_role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_access_role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_access_role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'data_access_role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_lake_s3_uri;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'data_lake_s3_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        self.data_security_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.flywheel_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'flywheel_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        self.task_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Data security configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -232,6 +276,46 @@ pub struct DataSecurityConfig {
 
 
 
+impl cfn_resources::CfnResource for DataSecurityConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.data_lake_kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_lake_kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model_kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'model_kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.volume_kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'volume_kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        self.vpc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration required for a document classification model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -288,6 +372,28 @@ impl Default for DocumentClassificationConfigModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DocumentClassificationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.labels {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'labels'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration required for an entity recognition model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -309,6 +415,20 @@ pub struct EntityRecognitionConfig {
 
 
 
+impl cfn_resources::CfnResource for EntityRecognitionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An entity type within a labeled training dataset that Amazon Comprehend uses to train a    custom entity recognizer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -336,6 +456,27 @@ pub struct EntityTypesListItem {
 
 
 
+impl cfn_resources::CfnResource for EntityTypesListItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cfn_type;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'cfn_type'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -373,6 +514,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration about the model associated with a flywheel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -479,6 +634,24 @@ impl Default for TaskConfigLanguageCodeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TaskConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.document_classification_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.entity_recognition_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration parameters for an optional private Virtual Private Cloud (VPC) containing    the resources you are using for the job. For more information, see Amazon     VPC.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -515,3 +688,32 @@ pub struct VpcConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.security_group_ids;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnets;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'subnets'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -52,8 +52,14 @@ impl cfn_resources::CfnResource for CfnMultiRegionAccessPoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.public_access_block_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 Multi-Region    Access Point. You can enable the configuration options in any combination. For more    information about when Amazon S3 considers an object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -121,6 +127,20 @@ pub struct PublicAccessBlockConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A bucket associated with a specific Region when creating Multi-Region Access    Points.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -152,3 +172,18 @@ pub struct Region {
 }
 
 
+
+impl cfn_resources::CfnResource for Region {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

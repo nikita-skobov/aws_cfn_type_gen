@@ -44,8 +44,14 @@ impl cfn_resources::CfnResource for CfnBackupSelection {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.backup_selection.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies an object containing properties used to assign a set of resources to a backup     plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -137,6 +143,22 @@ pub struct BackupSelectionResourceType {
 
 
 
+impl cfn_resources::CfnResource for BackupSelectionResourceType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.conditions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Includes information about tags you define to assign tagged resources to a backup     plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -170,6 +192,20 @@ pub struct ConditionParameter {
 
 
 
+impl cfn_resources::CfnResource for ConditionParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an object that contains an array of triplets made up of a condition type (such     as STRINGEQUALS), a key, and a value. Conditions are used to filter resources     in a selection that is assigned to a backup plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -215,6 +251,20 @@ pub struct ConditionResourceType {
 
 
 
+impl cfn_resources::CfnResource for ConditionResourceType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about which resources to include or exclude from a backup plan     using their tags. Conditions are case sensitive.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -271,3 +321,18 @@ pub struct Conditions {
 }
 
 
+
+impl cfn_resources::CfnResource for Conditions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

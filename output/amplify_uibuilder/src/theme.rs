@@ -86,8 +86,12 @@ impl cfn_resources::CfnResource for CfnTheme {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ThemeValue property specifies the configuration of a theme's    properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -121,6 +125,20 @@ pub struct ThemeValue {
 
 
 
+impl cfn_resources::CfnResource for ThemeValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ThemeValues property specifies key-value pair that defines a property of a theme.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -153,3 +171,20 @@ pub struct ThemeValues {
 }
 
 
+
+impl cfn_resources::CfnResource for ThemeValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

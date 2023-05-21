@@ -50,8 +50,14 @@ impl cfn_resources::CfnResource for CfnGroupMembership {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.member_id.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An object that contains the identifier of a group member. Setting the UserID field to the specific identifier for a user indicates that the user is a member of the group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -71,3 +77,18 @@ pub struct MemberId {
 }
 
 
+
+impl cfn_resources::CfnResource for MemberId {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

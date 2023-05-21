@@ -179,8 +179,94 @@ impl cfn_resources::CfnResource for CfnDashboard {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.aws_account_id;
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'aws_account_id'. {} is greater than 12", the_val.len()));
+        }
+
+        
+        let the_val = &self.aws_account_id;
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'aws_account_id'. {} is less than 12", the_val.len()));
+        }
+
+        
+        let the_val = &self.dashboard_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'dashboard_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.dashboard_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'dashboard_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.dashboard_publish_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.permissions {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'permissions'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        self.source_entity.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'version_description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version_description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An ad hoc (one-time) filtering option.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -223,6 +309,20 @@ impl Default for AdHocFilteringOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for AdHocFilteringOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An aggregation function aggregates values from a dimension or measure.
 ///
@@ -324,6 +424,22 @@ impl Default for AggregationFunctionDateAggregationFunctionEnum {
 }
 
 
+impl cfn_resources::CfnResource for AggregationFunction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.numerical_aggregation_function.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration options to sort aggregated values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -392,6 +508,24 @@ impl Default for AggregationSortConfigurationSortDirectionEnum {
 }
 
 
+impl cfn_resources::CfnResource for AggregationSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aggregation_function.validate()?;
+
+        self.column.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for default analysis settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -413,6 +547,22 @@ pub struct AnalysisDefaults {
 
 
 
+impl cfn_resources::CfnResource for AnalysisDefaults {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_new_sheet_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The date configuration of the filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -471,6 +621,36 @@ impl Default for AnchorDateConfigurationAnchorOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for AnchorDateConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The arc axis configuration of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -504,6 +684,22 @@ pub struct ArcAxisConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ArcAxisConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The arc axis range of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -537,6 +733,20 @@ pub struct ArcAxisDisplayRange {
 
 
 
+impl cfn_resources::CfnResource for ArcAxisDisplayRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The arc configuration of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -595,6 +805,20 @@ impl Default for ArcConfigurationArcThicknessEnum {
 }
 
 
+impl cfn_resources::CfnResource for ArcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options that determine the arc thickness of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -645,6 +869,20 @@ impl Default for ArcOptionsArcThicknessEnum {
 }
 
 
+impl cfn_resources::CfnResource for ArcOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The data options for an axis.
 ///
@@ -680,6 +918,24 @@ pub struct AxisDataOptions {
 
 
 
+impl cfn_resources::CfnResource for AxisDataOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.date_axis_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numeric_axis_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The minimum and maximum setup for an axis display range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -713,6 +969,20 @@ pub struct AxisDisplayMinMaxRange {
 
 
 
+impl cfn_resources::CfnResource for AxisDisplayMinMaxRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The display options for the axis label.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -836,6 +1106,26 @@ impl Default for AxisDisplayOptionsGridLineVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for AxisDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scrollbar_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tick_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The range setup of a numeric axis display range.
 ///
@@ -871,6 +1161,22 @@ pub struct AxisDisplayRange {
 
 
 
+impl cfn_resources::CfnResource for AxisDisplayRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.min_max.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The label options for a chart axis. You must specify the field that the label is targeted to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -916,6 +1222,24 @@ pub struct AxisLabelOptions {
 
 
 
+impl cfn_resources::CfnResource for AxisLabelOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.apply_to.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The reference that specifies where the axis label is applied to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -953,6 +1277,36 @@ pub struct AxisLabelReferenceOptions {
 
 
 
+impl cfn_resources::CfnResource for AxisLabelReferenceOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The liner axis scale setup.
 ///
@@ -988,6 +1342,20 @@ pub struct AxisLinearScale {
 
 
 
+impl cfn_resources::CfnResource for AxisLinearScale {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The logarithmic axis scale setup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1009,6 +1377,20 @@ pub struct AxisLogarithmicScale {
 
 
 
+impl cfn_resources::CfnResource for AxisLogarithmicScale {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The scale setup       options for a numeric axis display.
 ///
@@ -1044,6 +1426,24 @@ pub struct AxisScale {
 
 
 
+impl cfn_resources::CfnResource for AxisScale {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.linear.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.logarithmic.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The tick label options of an axis.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1077,6 +1477,22 @@ pub struct AxisTickLabelOptions {
 
 
 
+impl cfn_resources::CfnResource for AxisTickLabelOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The aggregated field wells of a bar chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1142,6 +1558,52 @@ pub struct BarChartAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for BarChartAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'category'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.colors {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'colors'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.small_multiples {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'small_multiples'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a BarChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1395,6 +1857,60 @@ impl Default for BarChartConfigurationOrientationEnum {
 }
 
 
+impl cfn_resources::CfnResource for BarChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_axis.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.category_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.color_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.contribution_analysis_defaults {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'contribution_analysis_defaults'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.reference_lines {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'reference_lines'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        self.small_multiples_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value_axis.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells of a BarChartVisual.
 ///
@@ -1418,6 +1934,22 @@ pub struct BarChartFieldWells {
 
 
 
+impl cfn_resources::CfnResource for BarChartFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bar_chart_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// sort-configuration-description
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1505,6 +2037,50 @@ pub struct BarChartSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for BarChartSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.color_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.color_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'color_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.small_multiples_limit_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.small_multiples_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'small_multiples_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A bar chart.
 ///
@@ -1600,6 +2176,56 @@ pub struct BarChartVisual {
 
 
 
+impl cfn_resources::CfnResource for BarChartVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the bin count of a histogram.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1623,6 +2249,28 @@ pub struct BinCountOptions {
 
 
 
+impl cfn_resources::CfnResource for BinCountOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.value {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the bin width of a histogram.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1656,6 +2304,20 @@ pub struct BinWidthOptions {
 
 
 
+impl cfn_resources::CfnResource for BinWidthOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of a body section.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1719,6 +2381,40 @@ pub struct BodySectionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for BodySectionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.content.validate()?;
+
+        self.page_break_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.section_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'section_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.section_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'section_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of content in a body section.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1740,6 +2436,22 @@ pub struct BodySectionContent {
 
 
 
+impl cfn_resources::CfnResource for BodySectionContent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.layout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The aggregated field well for a box plot.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1777,6 +2489,36 @@ pub struct BoxPlotAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for BoxPlotAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.group_by {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'group_by'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a BoxPlotVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1919,6 +2661,48 @@ pub struct BoxPlotChartConfiguration {
 
 
 
+impl cfn_resources::CfnResource for BoxPlotChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.box_plot_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.category_axis.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.category_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_yaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_yaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.reference_lines {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'reference_lines'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells of a BoxPlotVisual.
 ///
@@ -1942,6 +2726,22 @@ pub struct BoxPlotFieldWells {
 
 
 
+impl cfn_resources::CfnResource for BoxPlotFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.box_plot_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options of a box plot visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2029,6 +2829,22 @@ impl Default for BoxPlotOptionsOutlierVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for BoxPlotOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.style_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a BoxPlotVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2064,6 +2880,30 @@ pub struct BoxPlotSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for BoxPlotSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.pagination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The style options of the box plot.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2106,6 +2946,20 @@ impl Default for BoxPlotStyleOptionsFillStyleEnum {
 }
 
 
+impl cfn_resources::CfnResource for BoxPlotStyleOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A box plot.
 ///
@@ -2199,6 +3053,56 @@ pub struct BoxPlotVisual {
 
 
 
+impl cfn_resources::CfnResource for BoxPlotVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The calculated field of an analysis.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2256,6 +3160,62 @@ pub struct CalculatedField {
 
 
 
+impl cfn_resources::CfnResource for CalculatedField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_set_identifier'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_set_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() > 32000 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 32000", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The table calculation measure field for pivot tables.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2297,6 +3257,48 @@ pub struct CalculatedMeasureField {
 
 
 
+impl cfn_resources::CfnResource for CalculatedMeasureField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2320,6 +3322,28 @@ pub struct CascadingControlConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CascadingControlConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.source_controls {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'source_controls'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The source controls that are used in a CascadingControlConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2353,6 +3377,22 @@ pub struct CascadingControlSource {
 
 
 
+impl cfn_resources::CfnResource for CascadingControlSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column_to_match.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The dimension type field with categorical type columns..
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2418,6 +3458,54 @@ pub struct CategoricalDimensionField {
 
 
 
+impl cfn_resources::CfnResource for CategoricalDimensionField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.hierarchy_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'hierarchy_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hierarchy_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'hierarchy_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The measure type field with categorical type columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2500,6 +3588,38 @@ impl Default for CategoricalMeasureFieldAggregationFunctionEnum {
 }
 
 
+impl cfn_resources::CfnResource for CategoricalMeasureField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The numeric equality type drill down filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2535,6 +3655,29 @@ pub struct CategoryDrillDownFilter {
 
 
 
+impl cfn_resources::CfnResource for CategoryDrillDownFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.category_values;
+
+        if the_val.len() > 100000 as _ {
+            return Err(format!("Max validation failed on field 'category_values'. {} is greater than 100000", the_val.len()));
+        }
+
+        
+        self.column.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A CategoryFilter filters text values.
 ///
@@ -2588,6 +3731,38 @@ pub struct CategoryFilter {
 
 
 
+impl cfn_resources::CfnResource for CategoryFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        self.configuration.validate()?;
+
+        let the_val = &self.filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration for a CategoryFilter.
 ///
@@ -2635,6 +3810,26 @@ pub struct CategoryFilterConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CategoryFilterConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_filter_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom_filter_list_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter_list_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The label options for an axis on a chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2726,6 +3921,28 @@ impl Default for ChartAxisLabelOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for ChartAxisLabelOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.axis_label_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'axis_label_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The cluster marker that is a part of the cluster marker       configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2747,6 +3964,22 @@ pub struct ClusterMarker {
 
 
 
+impl cfn_resources::CfnResource for ClusterMarker {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.simple_cluster_marker.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The cluster marker configuration of the geospatial map selected point style.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2768,6 +4001,22 @@ pub struct ClusterMarkerConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ClusterMarkerConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cluster_marker.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Determines the color scale that is applied to the visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2836,6 +4085,29 @@ impl Default for ColorScaleColorFillTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ColorScale {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.colors;
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'colors'. {} is greater than 3", the_val.len()));
+        }
+
+        
+        self.null_value_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ColorsConfiguration property type specifies Property description not available. for an AWS::QuickSight::Dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2856,6 +4128,20 @@ pub struct ColorsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ColorsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The general configuration of a column.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2933,6 +4219,26 @@ impl Default for ColumnConfigurationRoleEnum {
 }
 
 
+impl cfn_resources::CfnResource for ColumnConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.colors_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column.validate()?;
+
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The option that determines the hierarchy of the fields for a visual element.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2978,6 +4284,26 @@ pub struct ColumnHierarchy {
 
 
 
+impl cfn_resources::CfnResource for ColumnHierarchy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.date_time_hierarchy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.explicit_hierarchy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.predefined_hierarchy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A column of a data set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3019,6 +4345,48 @@ pub struct ColumnIdentifier {
 
 
 
+impl cfn_resources::CfnResource for ColumnIdentifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.column_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'column_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_set_identifier'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_set_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The sort configuration for a column that is not used in a field well.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3084,6 +4452,24 @@ impl Default for ColumnSortDirectionEnum {
 }
 
 
+impl cfn_resources::CfnResource for ColumnSort {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aggregation_function.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_by.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The tooltip item for the columns that are not part of a field well.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3162,6 +4548,24 @@ impl Default for ColumnTooltipItemVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for ColumnTooltipItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aggregation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The aggregated field wells of a combo chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3227,6 +4631,52 @@ pub struct ComboChartAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for ComboChartAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.bar_values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'bar_values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.category {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'category'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.colors {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'colors'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.line_values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'line_values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a ComboChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3461,6 +4911,56 @@ impl Default for ComboChartConfigurationBarsArrangementEnum {
 }
 
 
+impl cfn_resources::CfnResource for ComboChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bar_data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.category_axis.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.category_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.color_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.line_data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_yaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_yaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.reference_lines {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'reference_lines'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        self.secondary_yaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.secondary_yaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells of the visual.
 ///
@@ -3484,6 +4984,22 @@ pub struct ComboChartFieldWells {
 
 
 
+impl cfn_resources::CfnResource for ComboChartFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.combo_chart_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a ComboChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3545,6 +5061,40 @@ pub struct ComboChartSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ComboChartSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.color_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.color_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'color_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A combo chart.
 ///
@@ -3640,6 +5190,56 @@ pub struct ComboChartVisual {
 
 
 
+impl cfn_resources::CfnResource for ComboChartVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The comparison display configuration of a KPI or gauge chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3700,6 +5300,22 @@ impl Default for ComparisonConfigurationComparisonMethodEnum {
 }
 
 
+impl cfn_resources::CfnResource for ComparisonConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.comparison_format.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The format of the comparison.
 ///
@@ -3735,6 +5351,24 @@ pub struct ComparisonFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ComparisonFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.number_display_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.percentage_display_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The computation union that is used in an insight visual.
 ///
@@ -3866,6 +5500,40 @@ pub struct Computation {
 
 
 
+impl cfn_resources::CfnResource for Computation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.forecast.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.growth_rate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.maximum_minimum.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.metric_comparison.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.period_over_period.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.period_to_date.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.top_bottom_movers.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.top_bottom_ranked.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.total_aggregation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.unique_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The formatting configuration for the color.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3899,6 +5567,24 @@ pub struct ConditionalFormattingColor {
 
 
 
+impl cfn_resources::CfnResource for ConditionalFormattingColor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.gradient.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.solid.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Determines the custom condition for an icon set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3962,6 +5648,38 @@ pub struct ConditionalFormattingCustomIconCondition {
 
 
 
+impl cfn_resources::CfnResource for ConditionalFormattingCustomIconCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.icon_options.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Custom icon options for an icon set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4114,6 +5832,20 @@ impl Default for ConditionalFormattingCustomIconOptionsIconEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConditionalFormattingCustomIconOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Formatting configuration for gradient color.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4151,6 +5883,36 @@ pub struct ConditionalFormattingGradientColor {
 
 
 
+impl cfn_resources::CfnResource for ConditionalFormattingGradientColor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.color.validate()?;
+
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The formatting configuration for the icon.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4184,6 +5946,24 @@ pub struct ConditionalFormattingIcon {
 
 
 
+impl cfn_resources::CfnResource for ConditionalFormattingIcon {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.icon_set.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Determines the icon display configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4222,6 +6002,20 @@ impl Default for ConditionalFormattingIconDisplayConfigurationIconDisplayOptionE
 }
 
 
+impl cfn_resources::CfnResource for ConditionalFormattingIconDisplayConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Formatting configuration for icon set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4316,6 +6110,34 @@ impl Default for ConditionalFormattingIconSetIconSetTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConditionalFormattingIconSet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Formatting configuration for solid color.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4355,6 +6177,34 @@ pub struct ConditionalFormattingSolidColor {
 
 
 
+impl cfn_resources::CfnResource for ConditionalFormattingSolidColor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The contribution analysis visual display for a line, pie, or bar chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4394,6 +6244,41 @@ pub struct ContributionAnalysisDefault {
 
 
 
+impl cfn_resources::CfnResource for ContributionAnalysisDefault {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.contributor_dimensions;
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'contributor_dimensions'. {} is greater than 4", the_val.len()));
+        }
+
+        
+        let the_val = &self.measure_field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'measure_field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.measure_field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'measure_field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the currency display format configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4546,6 +6431,60 @@ impl Default for CurrencyDisplayFormatConfigurationNumberScaleEnum {
 }
 
 
+impl cfn_resources::CfnResource for CurrencyDisplayFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.decimal_places_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.negative_value_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.null_value_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.separator_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'suffix'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'suffix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The filter operation that filters data included in a visual or in an entire sheet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4579,6 +6518,24 @@ pub struct CustomActionFilterOperation {
 
 
 
+impl cfn_resources::CfnResource for CustomActionFilterOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.selected_fields_configuration.validate()?;
+
+        self.target_visuals_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The navigation operation that navigates between different sheets in the same analysis.
 ///
@@ -4602,6 +6559,22 @@ pub struct CustomActionNavigationOperation {
 
 
 
+impl cfn_resources::CfnResource for CustomActionNavigationOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.local_navigation_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The set parameter operation that sets parameters in custom action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4625,6 +6598,27 @@ pub struct CustomActionSetParametersOperation {
 
 
 
+impl cfn_resources::CfnResource for CustomActionSetParametersOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.parameter_value_configurations;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'parameter_value_configurations'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The URL operation that opens a link to another webpage.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4691,6 +6685,34 @@ impl Default for CustomActionURLOperationURLTargetEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomActionURLOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.urltemplate;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'urltemplate'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.urltemplate;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'urltemplate'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The CustomColor property type specifies Property description not available. for an AWS::QuickSight::Dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4733,6 +6755,20 @@ pub struct CustomColor {
 
 
 
+impl cfn_resources::CfnResource for CustomColor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of a CustomContentVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -4832,6 +6868,36 @@ impl Default for CustomContentConfigurationImageScalingEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomContentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.content_url {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'content_url'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.content_url {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'content_url'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A visual that contains custom content.
 ///
@@ -4927,6 +6993,62 @@ pub struct CustomContentVisual {
 
 
 
+impl cfn_resources::CfnResource for CustomContentVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_set_identifier'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_set_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A custom filter that filters based on a single value. This filter can be partially matched.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5091,6 +7213,44 @@ impl Default for CustomFilterConfigurationSelectAllOptionsEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomFilterConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category_value {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'category_value'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A list of custom filter values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5233,6 +7393,28 @@ impl Default for CustomFilterListConfigurationSelectAllOptionsEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomFilterListConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category_values {
+
+        if the_val.len() > 100000 as _ {
+            return Err(format!("Max validation failed on field 'category_values'. {} is greater than 100000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The custom narrative options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5256,6 +7438,27 @@ pub struct CustomNarrativeOptions {
 
 
 
+impl cfn_resources::CfnResource for CustomNarrativeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.narrative;
+
+        if the_val.len() > 150000 as _ {
+            return Err(format!("Max validation failed on field 'narrative'. {} is greater than 150000", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The customized parameter values.
 ///
@@ -5323,6 +7526,52 @@ pub struct CustomParameterValues {
 
 
 
+impl cfn_resources::CfnResource for CustomParameterValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_time_values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'date_time_values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.decimal_values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'decimal_values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.integer_values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'integer_values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.string_values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'string_values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of custom values for the destination parameter in DestinationParameterValueConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5355,6 +7604,22 @@ pub struct CustomValuesConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CustomValuesConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_values.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Dashboard error.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5457,6 +7722,28 @@ impl Default for DashboardErrorTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DashboardError {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.violated_entities {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'violated_entities'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Dashboard publish options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5598,6 +7885,42 @@ pub struct DashboardPublishOptions {
 
 
 
+impl cfn_resources::CfnResource for DashboardPublishOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ad_hoc_filtering_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_point_drill_up_down_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_point_menu_label_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_point_tooltip_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.export_to_csvoption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.export_with_hidden_fields_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sheet_controls_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sheet_layout_element_maximization_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_axis_sort_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_menu_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_publish_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Dashboard source entity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5619,6 +7942,22 @@ pub struct DashboardSourceEntity {
 
 
 
+impl cfn_resources::CfnResource for DashboardSourceEntity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.source_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Dashboard source template.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5652,6 +7991,20 @@ pub struct DashboardSourceTemplate {
 
 
 
+impl cfn_resources::CfnResource for DashboardSourceTemplate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Dashboard version.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5830,6 +8183,52 @@ impl Default for DashboardVersionStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for DashboardVersion {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.data_set_arns {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'data_set_arns'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sheets {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'sheets'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The contents of a dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5938,6 +8337,69 @@ pub struct DashboardVersionDefinition {
 
 
 
+impl cfn_resources::CfnResource for DashboardVersionDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.analysis_defaults.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.calculated_fields {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'calculated_fields'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.column_configurations {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'column_configurations'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.data_set_identifier_declarations;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'data_set_identifier_declarations'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.filter_groups {
+
+        if the_val.len() > 2000 as _ {
+            return Err(format!("Max validation failed on field 'filter_groups'. {} is greater than 2000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_declarations {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'parameter_declarations'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sheets {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'sheets'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The visual publish options of a visual in a dashboard
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -5959,6 +8421,22 @@ pub struct DashboardVisualPublishOptions {
 
 
 
+impl cfn_resources::CfnResource for DashboardVisualPublishOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.export_hidden_fields_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options for data bars.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6012,6 +8490,34 @@ pub struct DataBarsOptions {
 
 
 
+impl cfn_resources::CfnResource for DataBarsOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Determines the color that is applied to a particular data value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6047,6 +8553,20 @@ pub struct DataColor {
 
 
 
+impl cfn_resources::CfnResource for DataColor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The data field series item configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6129,6 +8649,36 @@ impl Default for DataFieldSeriesItemAxisBindingEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataFieldSeriesItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of the data labels.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6396,6 +8946,30 @@ impl Default for DataLabelOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataLabelOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.data_label_types {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'data_label_types'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.label_font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The option that determines the data label type.
 ///
@@ -6467,6 +9041,30 @@ pub struct DataLabelType {
 
 
 
+impl cfn_resources::CfnResource for DataLabelType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_path_label_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_label_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.maximum_label_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.minimum_label_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.range_ends_label_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The color map that determines the color options for a particular element.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6563,6 +9161,22 @@ impl Default for DataPathColorTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataPathColor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.element.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The option that specifies individual data values for labels.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6635,6 +9249,44 @@ impl Default for DataPathLabelTypeVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataPathLabelType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.field_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_value {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'field_value'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Allows data paths to be sorted by a specific data value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6691,6 +9343,27 @@ impl Default for DataPathSortDirectionEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataPathSort {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.sort_paths;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'sort_paths'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The data path that needs to be sorted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6730,6 +9403,41 @@ pub struct DataPathValue {
 
 
 
+impl cfn_resources::CfnResource for DataPathValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_value;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'field_value'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The drill down options for data points in a dashbaord.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6772,6 +9480,20 @@ impl Default for DataPointDrillUpDownOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataPointDrillUpDownOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The data point menu options of a dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6814,6 +9536,20 @@ impl Default for DataPointMenuLabelOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataPointMenuLabelOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The data point tooltip options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6856,6 +9592,20 @@ impl Default for DataPointTooltipOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataPointTooltipOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A data set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6893,6 +9643,34 @@ pub struct DataSetIdentifierDeclaration {
 
 
 
+impl cfn_resources::CfnResource for DataSetIdentifierDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.identifier;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'identifier'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Dataset reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6928,6 +9706,20 @@ pub struct DataSetReference {
 
 
 
+impl cfn_resources::CfnResource for DataSetReference {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options that determine how a date axis is displayed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -6970,6 +9762,20 @@ impl Default for DateAxisOptionsMissingDateVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for DateAxisOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The dimension type field with date type columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7098,6 +9904,54 @@ impl Default for DateDimensionFieldDateGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for DateDimensionField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.hierarchy_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'hierarchy_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hierarchy_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'hierarchy_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The measure type field with date type columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7188,6 +10042,38 @@ impl Default for DateMeasureFieldAggregationFunctionEnum {
 }
 
 
+impl cfn_resources::CfnResource for DateMeasureField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The default values of the DateTimeParameterDeclaration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7235,6 +10121,32 @@ pub struct DateTimeDefaultValues {
 
 
 
+impl cfn_resources::CfnResource for DateTimeDefaultValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dynamic_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rolling_date.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.static_values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'static_values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Formatting configuration for DateTime fields.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7284,6 +10196,40 @@ pub struct DateTimeFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DateTimeFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_time_format {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'date_time_format'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_time_format {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'date_time_format'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.null_value_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numeric_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The option that determines the hierarchy of any DateTime fields.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7323,6 +10269,42 @@ pub struct DateTimeHierarchy {
 
 
 
+impl cfn_resources::CfnResource for DateTimeHierarchy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.drill_down_filters {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'drill_down_filters'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.hierarchy_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'hierarchy_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.hierarchy_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'hierarchy_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A date-time parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7358,6 +10340,20 @@ pub struct DateTimeParameter {
 
 
 
+impl cfn_resources::CfnResource for DateTimeParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A parameter declaration for the DateTime data type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7481,6 +10477,38 @@ impl Default for DateTimeParameterDeclarationTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for DateTimeParameterDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.value_when_unset.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7518,6 +10546,38 @@ pub struct DateTimePickerControlDisplayOptions {
 
 
 
+impl cfn_resources::CfnResource for DateTimePickerControlDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_time_format {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'date_time_format'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_time_format {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'date_time_format'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.title_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration that defines the default value of a DateTime parameter when a value has not been set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7574,6 +10634,20 @@ impl Default for DateTimeValueWhenUnsetConfigurationValueWhenUnsetOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for DateTimeValueWhenUnsetConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The default values of the DecimalParameterDeclaration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7609,6 +10683,30 @@ pub struct DecimalDefaultValues {
 
 
 
+impl cfn_resources::CfnResource for DecimalDefaultValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dynamic_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.static_values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'static_values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A decimal parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7644,6 +10742,20 @@ pub struct DecimalParameter {
 
 
 
+impl cfn_resources::CfnResource for DecimalParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A parameter declaration for the Decimal data type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7739,6 +10851,38 @@ impl Default for DecimalParameterDeclarationParameterValueTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DecimalParameterDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.value_when_unset.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The option that determines the decimal places configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7760,6 +10904,20 @@ pub struct DecimalPlacesConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DecimalPlacesConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration that defines the default value of a Decimal parameter when a value has not been set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7816,6 +10974,20 @@ impl Default for DecimalValueWhenUnsetConfigurationValueWhenUnsetOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for DecimalValueWhenUnsetConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options that determine the default settings of a free-form layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7837,6 +11009,22 @@ pub struct DefaultFreeFormLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DefaultFreeFormLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.canvas_size_options.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the default settings for a grid layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7858,6 +11046,22 @@ pub struct DefaultGridLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DefaultGridLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.canvas_size_options.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the default settings for interactive layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7891,6 +11095,24 @@ pub struct DefaultInteractiveLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DefaultInteractiveLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.free_form.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.grid.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for default new sheet settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7957,6 +11179,24 @@ impl Default for DefaultNewSheetConfigurationSheetContentTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DefaultNewSheetConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.interactive_layout_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.paginated_layout_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the default settings for a paginated layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7978,6 +11218,22 @@ pub struct DefaultPaginatedLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DefaultPaginatedLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.section_based.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the default settings for a section-based layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7999,6 +11255,22 @@ pub struct DefaultSectionBasedLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DefaultSectionBasedLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.canvas_size_options.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of destination parameter values.
 ///
@@ -8079,6 +11351,38 @@ impl Default for DestinationParameterValueConfigurationSelectAllValueOptionsEnum
 }
 
 
+impl cfn_resources::CfnResource for DestinationParameterValueConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_values_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.source_field {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'source_field'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_field {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_field'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The dimension type field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8124,6 +11428,26 @@ pub struct DimensionField {
 
 
 
+impl cfn_resources::CfnResource for DimensionField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.categorical_dimension_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.date_dimension_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numerical_dimension_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The label options of the label that is displayed in the center of a donut chart. This option isn't available for pie charts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8166,6 +11490,20 @@ impl Default for DonutCenterOptionsLabelVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for DonutCenterOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options for configuring a donut chart or pie chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8201,6 +11539,24 @@ pub struct DonutOptions {
 
 
 
+impl cfn_resources::CfnResource for DonutOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.arc_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.donut_center_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The drill down filter for the column hierarchies.
 ///
@@ -8248,6 +11604,26 @@ pub struct DrillDownFilter {
 
 
 
+impl cfn_resources::CfnResource for DrillDownFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numeric_equality_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.time_range_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8281,6 +11657,24 @@ pub struct DropDownControlDisplayOptions {
 
 
 
+impl cfn_resources::CfnResource for DropDownControlDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.select_all_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines different defaults to the users or groups based on mapping.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8326,6 +11720,26 @@ pub struct DynamicDefaultValue {
 
 
 
+impl cfn_resources::CfnResource for DynamicDefaultValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_value_column.validate()?;
+
+        self.group_name_column.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.user_name_column.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An empty visual.
 ///
@@ -8385,6 +11799,56 @@ pub struct EmptyVisual {
 
 
 
+impl cfn_resources::CfnResource for EmptyVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_set_identifier'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_set_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object, structure, or sub-structure of an analysis, template, or dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8408,6 +11872,20 @@ pub struct Entity {
 
 
 
+impl cfn_resources::CfnResource for Entity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The exclude period of TimeRangeFilter or RelativeDatesFilter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8525,6 +12003,20 @@ impl Default for ExcludePeriodConfigurationStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ExcludePeriodConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The option that determines the hierarchy of the fields that are built within a visual's field wells. These fields can't be duplicated to other visuals.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8578,6 +12070,49 @@ pub struct ExplicitHierarchy {
 
 
 
+impl cfn_resources::CfnResource for ExplicitHierarchy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.columns;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'columns'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.drill_down_filters {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'drill_down_filters'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.hierarchy_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'hierarchy_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.hierarchy_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'hierarchy_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Determines if hidden fields are included in an exported dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8620,6 +12155,20 @@ impl Default for ExportHiddenFieldsOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ExportHiddenFieldsOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Export to .csv option.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8662,6 +12211,20 @@ impl Default for ExportToCSVOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ExportToCSVOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Determines whether or not hidden fields are visible on exported dashbaords.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8704,6 +12267,20 @@ impl Default for ExportWithHiddenFieldsOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ExportWithHiddenFieldsOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The setup for the detailed tooltip.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8795,6 +12372,28 @@ impl Default for FieldBasedTooltipTooltipTitleTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FieldBasedTooltip {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.tooltip_fields {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'tooltip_fields'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The field label type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8853,6 +12452,36 @@ impl Default for FieldLabelTypeVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for FieldLabelType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.field_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The field series item configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8923,6 +12552,36 @@ impl Default for FieldSeriesItemAxisBindingEnum {
 }
 
 
+impl cfn_resources::CfnResource for FieldSeriesItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration for a field in a       field well.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -8983,6 +12642,34 @@ impl Default for FieldSortDirectionEnum {
 }
 
 
+impl cfn_resources::CfnResource for FieldSort {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The field sort options in a chart configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9016,6 +12703,24 @@ pub struct FieldSortOptions {
 
 
 
+impl cfn_resources::CfnResource for FieldSortOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column_sort.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_sort.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The tooltip item for the fields.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9086,6 +12791,34 @@ impl Default for FieldTooltipItemVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for FieldTooltipItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The aggregated field well of the filled map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9123,6 +12856,36 @@ pub struct FilledMapAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for FilledMapAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.geospatial {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'geospatial'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The conditional formatting of a FilledMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9146,6 +12909,27 @@ pub struct FilledMapConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for FilledMapConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.conditional_formatting_options;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'conditional_formatting_options'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Conditional formatting options of a FilledMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9167,6 +12951,22 @@ pub struct FilledMapConditionalFormattingOption {
 
 
 
+impl cfn_resources::CfnResource for FilledMapConditionalFormattingOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.shape.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for a FilledMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9248,6 +13048,32 @@ pub struct FilledMapConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FilledMapConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.map_style_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.window_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells of a FilledMapVisual.
 ///
@@ -9271,6 +13097,22 @@ pub struct FilledMapFieldWells {
 
 
 
+impl cfn_resources::CfnResource for FilledMapFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.filled_map_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting that determines the shape of the filled map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9308,6 +13150,36 @@ pub struct FilledMapShapeConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for FilledMapShapeConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.format.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a FilledMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9331,6 +13203,28 @@ pub struct FilledMapSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FilledMapSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A filled map.
 ///
@@ -9436,6 +13330,58 @@ pub struct FilledMapVisual {
 
 
 
+impl cfn_resources::CfnResource for FilledMapVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.conditional_formatting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// With a Filter, you can remove portions of data from a particular visual or view.
 ///
@@ -9533,6 +13479,34 @@ pub struct Filter {
 
 
 
+impl cfn_resources::CfnResource for Filter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numeric_equality_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numeric_range_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.relative_dates_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.time_equality_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.time_range_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.top_bottom_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The control of a filter that is used to interact with a dashboard or an analysis.
 ///
@@ -9628,6 +13602,34 @@ pub struct FilterControl {
 
 
 
+impl cfn_resources::CfnResource for FilterControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.date_time_picker.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dropdown.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.list.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.relative_date_time.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.slider.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_area.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A control from a date filter that is used to specify date and time.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9736,6 +13738,64 @@ impl Default for FilterDateTimePickerControlTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FilterDateTimePickerControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'source_filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A control to display a dropdown list with buttons that are used to select a single value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9868,6 +13928,68 @@ impl Default for FilterDropDownControlTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FilterDropDownControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cascading_control_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.selectable_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'source_filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A grouping of individual filters. Filter groups are applied to the same group of visuals.
 ///
@@ -9993,6 +14115,43 @@ impl Default for FilterGroupStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for FilterGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.filter_group_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_group_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_group_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_group_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.filters;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'filters'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        self.scope_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A list of filter configurations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10096,6 +14255,28 @@ impl Default for FilterListConfigurationSelectAllOptionsEnum {
 }
 
 
+impl cfn_resources::CfnResource for FilterListConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category_values {
+
+        if the_val.len() > 100000 as _ {
+            return Err(format!("Max validation failed on field 'category_values'. {} is greater than 100000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A control to display a list of buttons or boxes. This is used to select either a single value or multiple values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10228,6 +14409,68 @@ impl Default for FilterListControlTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FilterListControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cascading_control_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.selectable_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'source_filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration of selected fields in theCustomActionFilterOperation.
 ///
@@ -10286,6 +14529,28 @@ impl Default for FilterOperationSelectedFieldsConfigurationSelectedFieldOptionsE
 }
 
 
+impl cfn_resources::CfnResource for FilterOperationSelectedFieldsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.selected_fields {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'selected_fields'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of target visuals that you want to be filtered.
 ///
@@ -10309,6 +14574,22 @@ pub struct FilterOperationTargetVisualsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FilterOperationTargetVisualsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.same_sheet_target_visual_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A control from a date filter that is used to specify the relative date.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10382,6 +14663,64 @@ pub struct FilterRelativeDateTimeControl {
 
 
 
+impl cfn_resources::CfnResource for FilterRelativeDateTimeControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'source_filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The scope configuration for a FilterGroup.
 ///
@@ -10405,6 +14744,22 @@ pub struct FilterScopeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FilterScopeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.selected_sheets.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A list of selectable values that are used in a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10428,6 +14783,28 @@ pub struct FilterSelectableValues {
 
 
 
+impl cfn_resources::CfnResource for FilterSelectableValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A control to display a horizontal toggle bar. This is used to change a value by sliding the toggle.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10572,6 +14949,64 @@ impl Default for FilterSliderControlTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FilterSliderControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'source_filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A control to display a text box that is used to enter multiple entries.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10661,6 +15096,80 @@ pub struct FilterTextAreaControl {
 
 
 
+impl cfn_resources::CfnResource for FilterTextAreaControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'delimiter'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'source_filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A control to display a text box that is used to enter a single entry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10734,6 +15243,64 @@ pub struct FilterTextFieldControl {
 
 
 
+impl cfn_resources::CfnResource for FilterTextFieldControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'source_filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configures the display properties of the given text.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10847,6 +15414,24 @@ impl Default for FontConfigurationFontStyleEnum {
 }
 
 
+impl cfn_resources::CfnResource for FontConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.font_size.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.font_weight.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The option that determines the text display size.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10901,6 +15486,20 @@ impl Default for FontSizeRelativeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FontSize {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The option that determines the text display weight, or boldness.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -10943,6 +15542,20 @@ impl Default for FontWeightNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for FontWeight {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The forecast computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11129,6 +15742,102 @@ impl Default for ForecastComputationSeasonalityEnum {
 }
 
 
+impl cfn_resources::CfnResource for ForecastComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.custom_seasonality_value {
+
+        if *the_val > 180 as _ {
+            return Err(format!("Max validation failed on field 'custom_seasonality_value'. {} is greater than 180", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_seasonality_value {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'custom_seasonality_value'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.periods_backward {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'periods_backward'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.periods_backward {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'periods_backward'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.periods_forward {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'periods_forward'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.periods_forward {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'periods_forward'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prediction_interval {
+
+        if *the_val > 95 as _ {
+            return Err(format!("Max validation failed on field 'prediction_interval'. {} is greater than 95", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prediction_interval {
+
+        if *the_val < 50 as _ {
+            return Err(format!("Min validation failed on field 'prediction_interval'. {} is less than 50", the_val));
+        }
+
+        }
+        
+        self.time.validate()?;
+
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The forecast configuration that is used in a line chart's display properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11162,6 +15871,24 @@ pub struct ForecastConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ForecastConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.forecast_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scenario.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The forecast scenario of a forecast in the line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11195,6 +15922,24 @@ pub struct ForecastScenario {
 
 
 
+impl cfn_resources::CfnResource for ForecastScenario {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.what_if_point_scenario.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.what_if_range_scenario.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The formatting configuration for all types of field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11240,6 +15985,26 @@ pub struct FormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.date_time_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.number_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.string_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration options for the canvas of a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11261,6 +16026,22 @@ pub struct FreeFormLayoutCanvasSizeOptions {
 
 
 
+impl cfn_resources::CfnResource for FreeFormLayoutCanvasSizeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.screen_canvas_size_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11295,6 +16076,29 @@ pub struct FreeFormLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FreeFormLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.canvas_size_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.elements;
+
+        if the_val.len() > 430 as _ {
+            return Err(format!("Max validation failed on field 'elements'. {} is greater than 430", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An element within a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11506,6 +16310,50 @@ impl Default for FreeFormLayoutElementVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for FreeFormLayoutElement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.background_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.border_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.element_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'element_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.element_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'element_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.loading_animation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.rendering_rules {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'rendering_rules'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        self.selected_border_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The background style configuration of a free-form layout element.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11562,6 +16410,20 @@ impl Default for FreeFormLayoutElementBackgroundStyleVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for FreeFormLayoutElementBackgroundStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The background style configuration of a free-form layout element.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11618,6 +16480,20 @@ impl Default for FreeFormLayoutElementBorderStyleVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for FreeFormLayoutElementBorderStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options that determine the sizing of the canvas used in a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11639,6 +16515,20 @@ pub struct FreeFormLayoutScreenCanvasSizeOptions {
 
 
 
+impl cfn_resources::CfnResource for FreeFormLayoutScreenCanvasSizeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The free-form layout configuration of a section.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11662,6 +16552,27 @@ pub struct FreeFormSectionLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FreeFormSectionLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.elements;
+
+        if the_val.len() > 430 as _ {
+            return Err(format!("Max validation failed on field 'elements'. {} is greater than 430", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The field well configuration of a FunnelChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11699,6 +16610,36 @@ pub struct FunnelChartAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for FunnelChartAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'category'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a FunnelChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -11792,6 +16733,34 @@ pub struct FunnelChartConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FunnelChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of the data labels.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12022,6 +16991,22 @@ impl Default for FunnelChartDataLabelOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for FunnelChartDataLabelOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.label_font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a FunnelChartVisual.
 ///
@@ -12045,6 +17030,22 @@ pub struct FunnelChartFieldWells {
 
 
 
+impl cfn_resources::CfnResource for FunnelChartFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.funnel_chart_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a FunnelChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12080,6 +17081,30 @@ pub struct FunnelChartSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FunnelChartSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A funnel chart.
 ///
@@ -12173,6 +17198,56 @@ pub struct FunnelChartVisual {
 
 
 
+impl cfn_resources::CfnResource for FunnelChartVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of the arc of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12194,6 +17269,22 @@ pub struct GaugeChartArcConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for GaugeChartArcConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.foreground_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12217,6 +17308,28 @@ pub struct GaugeChartConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for GaugeChartConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.conditional_formatting_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'conditional_formatting_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Conditional formatting options of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12250,6 +17363,24 @@ pub struct GaugeChartConditionalFormattingOption {
 
 
 
+impl cfn_resources::CfnResource for GaugeChartConditionalFormattingOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.arc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12319,6 +17450,30 @@ pub struct GaugeChartConfiguration {
 
 
 
+impl cfn_resources::CfnResource for GaugeChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.gauge_chart_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12356,6 +17511,36 @@ pub struct GaugeChartFieldWells {
 
 
 
+impl cfn_resources::CfnResource for GaugeChartFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.target_values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'target_values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of the GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12450,6 +17635,28 @@ impl Default for GaugeChartOptionsPrimaryValueDisplayTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for GaugeChartOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.arc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.arc_axis.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.comparison.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_value_font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting for the primary value of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12483,6 +17690,24 @@ pub struct GaugeChartPrimaryValueConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for GaugeChartPrimaryValueConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.icon.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A gauge chart.
 ///
@@ -12574,6 +17799,50 @@ pub struct GaugeChartVisual {
 
 
 
+impl cfn_resources::CfnResource for GaugeChartVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.conditional_formatting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The bound       options (north, south, west, east) of the geospatial window options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12631,6 +17900,20 @@ pub struct GeospatialCoordinateBounds {
 
 
 
+impl cfn_resources::CfnResource for GeospatialCoordinateBounds {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The aggregated field wells for a geospatial map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12682,6 +17965,44 @@ pub struct GeospatialMapAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for GeospatialMapAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.colors {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'colors'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.geospatial {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'geospatial'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a GeospatialMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12774,6 +18095,34 @@ pub struct GeospatialMapConfiguration {
 
 
 
+impl cfn_resources::CfnResource for GeospatialMapConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.map_style_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.point_style_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.window_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells of a GeospatialMapVisual.
 ///
@@ -12797,6 +18146,22 @@ pub struct GeospatialMapFieldWells {
 
 
 
+impl cfn_resources::CfnResource for GeospatialMapFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.geospatial_map_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The map style options of the geospatial map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12847,6 +18212,20 @@ impl Default for GeospatialMapStyleOptionsBaseMapStyleEnum {
 }
 
 
+impl cfn_resources::CfnResource for GeospatialMapStyleOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A geospatial map or a points on map visual.
 ///
@@ -12940,6 +18319,56 @@ pub struct GeospatialMapVisual {
 
 
 
+impl cfn_resources::CfnResource for GeospatialMapVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The point style of the geospatial map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -12994,6 +18423,22 @@ impl Default for GeospatialPointStyleOptionsSelectedPointStyleEnum {
 }
 
 
+impl cfn_resources::CfnResource for GeospatialPointStyleOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cluster_marker_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The window options of the geospatial map visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13048,6 +18493,22 @@ impl Default for GeospatialWindowOptionsMapZoomModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for GeospatialWindowOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bounds.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Determines the border options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13081,6 +18542,24 @@ pub struct GlobalTableBorderOptions {
 
 
 
+impl cfn_resources::CfnResource for GlobalTableBorderOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.side_specific_border.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.uniform_border.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Determines the gradient color settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13104,6 +18583,28 @@ pub struct GradientColor {
 
 
 
+impl cfn_resources::CfnResource for GradientColor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.stops {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'stops'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Determines the gradient stop configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13151,6 +18652,20 @@ pub struct GradientStop {
 
 
 
+impl cfn_resources::CfnResource for GradientStop {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration options for the canvas of a grid layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13172,6 +18687,22 @@ pub struct GridLayoutCanvasSizeOptions {
 
 
 
+impl cfn_resources::CfnResource for GridLayoutCanvasSizeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.screen_canvas_size_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for a grid layout. Also called a tiled layout.
 ///
@@ -13208,6 +18739,29 @@ pub struct GridLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for GridLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.canvas_size_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.elements;
+
+        if the_val.len() > 430 as _ {
+            return Err(format!("Max validation failed on field 'elements'. {} is greater than 430", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An element within a grid layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13340,6 +18894,94 @@ impl Default for GridLayoutElementElementTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for GridLayoutElement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.column_index {
+
+        if *the_val > 35 as _ {
+            return Err(format!("Max validation failed on field 'column_index'. {} is greater than 35", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.column_index {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'column_index'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.column_span;
+
+        if *the_val > 36 as _ {
+            return Err(format!("Max validation failed on field 'column_span'. {} is greater than 36", the_val));
+        }
+
+        
+        let the_val = &self.column_span;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'column_span'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.element_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'element_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.element_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'element_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.row_index {
+
+        if *the_val > 9009 as _ {
+            return Err(format!("Max validation failed on field 'row_index'. {} is greater than 9009", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.row_index {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'row_index'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.row_span;
+
+        if *the_val > 21 as _ {
+            return Err(format!("Max validation failed on field 'row_span'. {} is greater than 21", the_val));
+        }
+
+        
+        let the_val = &self.row_span;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'row_span'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the sizing of the canvas used in a grid layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13396,6 +19038,20 @@ impl Default for GridLayoutScreenCanvasSizeOptionsResizeOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for GridLayoutScreenCanvasSizeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The growth rate computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13475,6 +19131,54 @@ pub struct GrowthRateComputation {
 
 
 
+impl cfn_resources::CfnResource for GrowthRateComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.period_size {
+
+        if *the_val > 52 as _ {
+            return Err(format!("Max validation failed on field 'period_size'. {} is greater than 52", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.period_size {
+
+        if *the_val < 2 as _ {
+            return Err(format!("Min validation failed on field 'period_size'. {} is less than 2", the_val));
+        }
+
+        }
+        
+        self.time.validate()?;
+
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of a header or footer section.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13526,6 +19230,38 @@ pub struct HeaderFooterSectionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for HeaderFooterSectionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.layout.validate()?;
+
+        let the_val = &self.section_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'section_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.section_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'section_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The aggregated field wells of a heat map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13577,6 +19313,44 @@ pub struct HeatMapAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for HeatMapAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.columns {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'columns'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rows {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'rows'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a heat map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13682,6 +19456,36 @@ pub struct HeatMapConfiguration {
 
 
 
+impl cfn_resources::CfnResource for HeatMapConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.color_scale.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a heat map.
 ///
@@ -13705,6 +19509,22 @@ pub struct HeatMapFieldWells {
 
 
 
+impl cfn_resources::CfnResource for HeatMapFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.heat_map_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a heat map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13766,6 +19586,40 @@ pub struct HeatMapSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for HeatMapSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.heat_map_column_items_limit_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.heat_map_column_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'heat_map_column_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.heat_map_row_items_limit_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.heat_map_row_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'heat_map_row_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A heat map.
 ///
@@ -13859,6 +19713,56 @@ pub struct HeatMapVisual {
 
 
 
+impl cfn_resources::CfnResource for HeatMapVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The field well configuration of a histogram.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13882,6 +19786,28 @@ pub struct HistogramAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for HistogramAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of histogram bins.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -13960,6 +19886,24 @@ impl Default for HistogramBinOptionsSelectedBinTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for HistogramBinOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bin_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.bin_width.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for a HistogramVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14065,6 +20009,36 @@ pub struct HistogramConfiguration {
 
 
 
+impl cfn_resources::CfnResource for HistogramConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bin_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.yaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a histogram.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14086,6 +20060,22 @@ pub struct HistogramFieldWells {
 
 
 
+impl cfn_resources::CfnResource for HistogramFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.histogram_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A histogram.
 ///
@@ -14165,6 +20155,48 @@ pub struct HistogramVisual {
 
 
 
+impl cfn_resources::CfnResource for HistogramVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration of an insight visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14200,6 +20232,30 @@ pub struct InsightConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InsightConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.computations {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'computations'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.custom_narrative.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An insight visual.
 ///
@@ -14295,6 +20351,62 @@ pub struct InsightVisual {
 
 
 
+impl cfn_resources::CfnResource for InsightVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_set_identifier'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_set_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.insight_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The default values of the IntegerParameterDeclaration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14330,6 +20442,30 @@ pub struct IntegerDefaultValues {
 
 
 
+impl cfn_resources::CfnResource for IntegerDefaultValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dynamic_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.static_values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'static_values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An integer parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14365,6 +20501,20 @@ pub struct IntegerParameter {
 
 
 
+impl cfn_resources::CfnResource for IntegerParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A parameter declaration for the Integer data type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14460,6 +20610,38 @@ impl Default for IntegerParameterDeclarationParameterValueTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for IntegerParameterDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.value_when_unset.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A parameter declaration for the Integer data type.
 ///
@@ -14518,6 +20700,20 @@ impl Default for IntegerValueWhenUnsetConfigurationValueWhenUnsetOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for IntegerValueWhenUnsetConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The limit configuration of the visual display for an axis.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14574,6 +20770,20 @@ impl Default for ItemsLimitConfigurationOtherCategoriesEnum {
 }
 
 
+impl cfn_resources::CfnResource for ItemsLimitConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14597,6 +20807,28 @@ pub struct KPIConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for KPIConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.conditional_formatting_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'conditional_formatting_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The conditional formatting options of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14630,6 +20862,24 @@ pub struct KPIConditionalFormattingOption {
 
 
 
+impl cfn_resources::CfnResource for KPIConditionalFormattingOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.primary_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.progress_bar.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14675,6 +20925,26 @@ pub struct KPIConfiguration {
 
 
 
+impl cfn_resources::CfnResource for KPIConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kpioptions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14726,6 +20996,44 @@ pub struct KPIFieldWells {
 
 
 
+impl cfn_resources::CfnResource for KPIFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.target_values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'target_values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.trend_groups {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'trend_groups'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14844,6 +21152,32 @@ impl Default for KPIOptionsPrimaryValueDisplayTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for KPIOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.comparison.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_value_font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.progress_bar.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.secondary_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.secondary_value_font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.trend_arrows.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting for the primary value of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14877,6 +21211,24 @@ pub struct KPIPrimaryValueConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for KPIPrimaryValueConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.icon.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting for the progress bar of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14898,6 +21250,22 @@ pub struct KPIProgressBarConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for KPIProgressBarConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.foreground_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -14921,6 +21289,28 @@ pub struct KPISortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for KPISortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.trend_group_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'trend_group_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A key performance indicator (KPI).
 ///
@@ -15026,6 +21416,58 @@ pub struct KPIVisual {
 
 
 
+impl cfn_resources::CfnResource for KPIVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.conditional_formatting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The share label options for the labels.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15092,6 +21534,22 @@ impl Default for LabelOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for LabelOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A Layout defines the placement of elements within a sheet.
 ///
@@ -15117,6 +21575,22 @@ pub struct Layout {
 
 
 
+impl cfn_resources::CfnResource for Layout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration that determines what the type of layout will be used on a sheet.
 ///
@@ -15164,6 +21638,26 @@ pub struct LayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.free_form_layout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.grid_layout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.section_based_layout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options for the legend setup of a visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15285,6 +21779,22 @@ impl Default for LegendOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for LegendOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15350,6 +21860,52 @@ pub struct LineChartAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for LineChartAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'category'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.colors {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'colors'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.small_multiples {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'small_multiples'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15620,6 +22176,80 @@ impl Default for LineChartConfigurationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for LineChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.contribution_analysis_defaults {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'contribution_analysis_defaults'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_series_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.forecast_configurations {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'forecast_configurations'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_yaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_yaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.reference_lines {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'reference_lines'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        self.secondary_yaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.secondary_yaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.series {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'series'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.small_multiples_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the default presentation of all line series in LineChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15686,6 +22316,24 @@ impl Default for LineChartDefaultSeriesSettingsAxisBindingEnum {
 }
 
 
+impl cfn_resources::CfnResource for LineChartDefaultSeriesSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.line_style_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.marker_style_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15707,6 +22355,22 @@ pub struct LineChartFieldWells {
 
 
 
+impl cfn_resources::CfnResource for LineChartFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.line_chart_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Line styles options for a line series in LineChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15839,6 +22503,20 @@ impl Default for LineChartLineStyleSettingsLineVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for LineChartLineStyleSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Marker styles options for a line series in LineChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15954,6 +22632,20 @@ impl Default for LineChartMarkerStyleSettingsMarkerVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for LineChartMarkerStyleSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of a line series in the visual
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -15987,6 +22679,24 @@ pub struct LineChartSeriesSettings {
 
 
 
+impl cfn_resources::CfnResource for LineChartSeriesSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.line_style_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.marker_style_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16060,6 +22770,42 @@ pub struct LineChartSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LineChartSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_items_limit_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.color_items_limit_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.small_multiples_limit_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.small_multiples_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'small_multiples_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A line chart.
 ///
@@ -16153,6 +22899,56 @@ pub struct LineChartVisual {
 
 
 
+impl cfn_resources::CfnResource for LineChartVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The series axis configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16188,6 +22984,30 @@ pub struct LineSeriesAxisDisplayOptions {
 
 
 
+impl cfn_resources::CfnResource for LineSeriesAxisDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.axis_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.missing_data_configurations {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'missing_data_configurations'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16233,6 +23053,26 @@ pub struct ListControlDisplayOptions {
 
 
 
+impl cfn_resources::CfnResource for ListControlDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.search_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.select_all_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of the search options in a list control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16275,6 +23115,20 @@ impl Default for ListControlSearchOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for ListControlSearchOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of the Select all options in a list control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16317,6 +23171,20 @@ impl Default for ListControlSelectAllOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for ListControlSelectAllOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of loading animation in free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16359,6 +23227,20 @@ impl Default for LoadingAnimationVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for LoadingAnimation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The navigation configuration for CustomActionNavigationOperation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16386,6 +23268,34 @@ pub struct LocalNavigationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LocalNavigationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.target_sheet_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'target_sheet_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_sheet_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_sheet_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The text format for a subtitle.
 ///
@@ -16429,6 +23339,52 @@ pub struct LongFormatText {
 
 
 
+impl cfn_resources::CfnResource for LongFormatText {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.plain_text {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'plain_text'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.plain_text {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'plain_text'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rich_text {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'rich_text'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rich_text {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'rich_text'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A dataset parameter that is mapped to an analysis parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16472,6 +23428,48 @@ pub struct MappedDataSetParameter {
 
 
 
+impl cfn_resources::CfnResource for MappedDataSetParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_set_identifier'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_set_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_parameter_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_set_parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_set_parameter_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_set_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The maximum label of a data path label.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16514,6 +23512,20 @@ impl Default for MaximumLabelTypeVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for MaximumLabelType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The maximum and minimum computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16612,6 +23624,38 @@ impl Default for MaximumMinimumComputationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for MaximumMinimumComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.time.validate()?;
+
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The measure (metric) type field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16669,6 +23713,28 @@ pub struct MeasureField {
 
 
 
+impl cfn_resources::CfnResource for MeasureField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.calculated_measure_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.categorical_measure_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.date_measure_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numerical_measure_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The metric comparison computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16744,6 +23810,40 @@ pub struct MetricComparisonComputation {
 
 
 
+impl cfn_resources::CfnResource for MetricComparisonComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.from_value.validate()?;
+
+        self.target_value.validate()?;
+
+        self.time.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The minimum label of a data path label.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16786,6 +23886,20 @@ impl Default for MinimumLabelTypeVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for MinimumLabelType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration options that determine how missing data is treated during the rendering of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16834,6 +23948,20 @@ impl Default for MissingDataConfigurationTreatmentOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for MissingDataConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options that determine the negative value configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16876,6 +24004,20 @@ impl Default for NegativeValueConfigurationDisplayModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for NegativeValueConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options that determine the null value format configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -16901,6 +24043,34 @@ pub struct NullValueFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NullValueFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.null_string;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'null_string'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.null_string;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'null_string'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the number display format configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17039,6 +24209,60 @@ impl Default for NumberDisplayFormatConfigurationNumberScaleEnum {
 }
 
 
+impl cfn_resources::CfnResource for NumberDisplayFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.decimal_places_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.negative_value_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.null_value_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.separator_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'suffix'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'suffix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Formatting configuration for number fields.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17060,6 +24284,22 @@ pub struct NumberFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NumberFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options for an axis with a numeric field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17093,6 +24333,24 @@ pub struct NumericAxisOptions {
 
 
 
+impl cfn_resources::CfnResource for NumericAxisOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scale.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The category drill down filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17126,6 +24384,22 @@ pub struct NumericEqualityDrillDownFilter {
 
 
 
+impl cfn_resources::CfnResource for NumericEqualityDrillDownFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A NumericEqualityFilter filters values that are equal to the specified value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17310,6 +24584,54 @@ impl Default for NumericEqualityFilterSelectAllOptionsEnum {
 }
 
 
+impl cfn_resources::CfnResource for NumericEqualityFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aggregation_function.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column.validate()?;
+
+        let the_val = &self.filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the numeric format configuration.
 ///
@@ -17357,6 +24679,26 @@ pub struct NumericFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NumericFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.currency_display_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.number_display_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.percentage_display_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A NumericRangeFilter filters values that are within the value range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17526,6 +24868,42 @@ impl Default for NumericRangeFilterSelectAllOptionsEnum {
 }
 
 
+impl cfn_resources::CfnResource for NumericRangeFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aggregation_function.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column.validate()?;
+
+        let the_val = &self.filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.range_maximum.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.range_minimum.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The value input pf the numeric range filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17565,6 +24943,36 @@ pub struct NumericRangeFilterValue {
 
 
 
+impl cfn_resources::CfnResource for NumericRangeFilterValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.parameter {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'parameter'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the numeric separator configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17623,6 +25031,22 @@ impl Default for NumericSeparatorConfigurationDecimalSeparatorEnum {
 }
 
 
+impl cfn_resources::CfnResource for NumericSeparatorConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.thousands_separator.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Aggregation for numerical values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17715,6 +25139,22 @@ impl Default for NumericalAggregationFunctionSimpleNumericalAggregationEnum {
 }
 
 
+impl cfn_resources::CfnResource for NumericalAggregationFunction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.percentile_aggregation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The dimension type field with numerical type columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17780,6 +25220,54 @@ pub struct NumericalDimensionField {
 
 
 
+impl cfn_resources::CfnResource for NumericalDimensionField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.hierarchy_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'hierarchy_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hierarchy_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'hierarchy_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The measure type field with numerical type columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17841,6 +25329,40 @@ pub struct NumericalMeasureField {
 
 
 
+impl cfn_resources::CfnResource for NumericalMeasureField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aggregation_function.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column.validate()?;
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The pagination configuration for a table visual or boxplot.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -17874,6 +25396,20 @@ pub struct PaginationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PaginationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A collection of options that configure how each panel displays in a small multiples chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18083,6 +25619,22 @@ impl Default for PanelConfigurationGutterVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for PanelConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the title styles for each small multiples       panel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18177,6 +25729,22 @@ impl Default for PanelTitleOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for PanelTitleOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The control of a parameter that users can interact with in a dashboard or an analysis.
 ///
@@ -18260,6 +25828,32 @@ pub struct ParameterControl {
 
 
 
+impl cfn_resources::CfnResource for ParameterControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.date_time_picker.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dropdown.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.list.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.slider.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_area.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A control from a date parameter that specifies date and time.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18333,6 +25927,64 @@ pub struct ParameterDateTimePickerControl {
 
 
 
+impl cfn_resources::CfnResource for ParameterDateTimePickerControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'parameter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'source_parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The declaration definition of a parameter.
 ///
@@ -18394,6 +26046,28 @@ pub struct ParameterDeclaration {
 
 
 
+impl cfn_resources::CfnResource for ParameterDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.date_time_parameter_declaration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.decimal_parameter_declaration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.integer_parameter_declaration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.string_parameter_declaration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A control to display a dropdown list with buttons that are used to select a single value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18524,6 +26198,68 @@ impl Default for ParameterDropDownControlTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ParameterDropDownControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cascading_control_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'parameter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.selectable_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'source_parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A control to display a list with buttons or boxes that are used to select either a single value or multiple values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18654,6 +26390,68 @@ impl Default for ParameterListControlTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ParameterListControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cascading_control_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'parameter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.selectable_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'source_parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A list of selectable values that are used in a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18689,6 +26487,30 @@ pub struct ParameterSelectableValues {
 
 
 
+impl cfn_resources::CfnResource for ParameterSelectableValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.link_to_data_set_column.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A control to display a horizontal toggle bar. This is used to change a value by sliding the toggle.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18798,6 +26620,64 @@ pub struct ParameterSliderControl {
 
 
 
+impl cfn_resources::CfnResource for ParameterSliderControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'parameter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'source_parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A control to display a text box that is used to enter multiple entries.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18887,6 +26767,80 @@ pub struct ParameterTextAreaControl {
 
 
 
+impl cfn_resources::CfnResource for ParameterTextAreaControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'delimiter'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'parameter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'source_parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A control to display a text box that is used to enter a single entry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -18960,6 +26914,64 @@ pub struct ParameterTextFieldControl {
 
 
 
+impl cfn_resources::CfnResource for ParameterTextFieldControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'parameter_control_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_control_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_control_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'source_parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_parameter_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.title;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A list of Amazon QuickSight parameters and the list's override values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19025,6 +27037,52 @@ pub struct Parameters {
 
 
 
+impl cfn_resources::CfnResource for Parameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_time_parameters {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'date_time_parameters'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.decimal_parameters {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'decimal_parameters'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.integer_parameters {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'integer_parameters'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.string_parameters {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'string_parameters'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The percent range in the visible range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19058,6 +27116,20 @@ pub struct PercentVisibleRange {
 
 
 
+impl cfn_resources::CfnResource for PercentVisibleRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options that determine the percentage display format configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19147,6 +27219,60 @@ pub struct PercentageDisplayFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PercentageDisplayFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.decimal_places_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.negative_value_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.null_value_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.separator_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'suffix'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'suffix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An aggregation based on the percentile of values in a dimension or measure.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19168,6 +27294,20 @@ pub struct PercentileAggregation {
 
 
 
+impl cfn_resources::CfnResource for PercentileAggregation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The period over period computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19231,6 +27371,38 @@ pub struct PeriodOverPeriodComputation {
 
 
 
+impl cfn_resources::CfnResource for PeriodOverPeriodComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.time.validate()?;
+
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The period to date computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19357,6 +27529,38 @@ impl Default for PeriodToDateComputationPeriodTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for PeriodToDateComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.time.validate()?;
+
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a pie chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19408,6 +27612,44 @@ pub struct PieChartAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for PieChartAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'category'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.small_multiples {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'small_multiples'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a pie chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19551,6 +27793,48 @@ pub struct PieChartConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PieChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.contribution_analysis_defaults {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'contribution_analysis_defaults'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.donut_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.small_multiples_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a pie chart.
 ///
@@ -19574,6 +27858,22 @@ pub struct PieChartFieldWells {
 
 
 
+impl cfn_resources::CfnResource for PieChartFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.pie_chart_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a pie chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19635,6 +27935,40 @@ pub struct PieChartSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PieChartSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.small_multiples_limit_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.small_multiples_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'small_multiples_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A pie or donut chart.
 ///
@@ -19734,6 +28068,56 @@ pub struct PieChartVisual {
 
 
 
+impl cfn_resources::CfnResource for PieChartVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The field sort options for a pivot table sort configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19771,6 +28155,36 @@ pub struct PivotFieldSortOptions {
 
 
 
+impl cfn_resources::CfnResource for PivotFieldSortOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.sort_by.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The aggregated field well for the pivot table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19822,6 +28236,44 @@ pub struct PivotTableAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for PivotTableAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.columns {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'columns'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rows {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'rows'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The cell conditional formatting option for a pivot table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19871,6 +28323,38 @@ pub struct PivotTableCellConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for PivotTableCellConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.scope.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_format.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19894,6 +28378,28 @@ pub struct PivotTableConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for PivotTableConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.conditional_formatting_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'conditional_formatting_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Conditional formatting options for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19915,6 +28421,22 @@ pub struct PivotTableConditionalFormattingOption {
 
 
 
+impl cfn_resources::CfnResource for PivotTableConditionalFormattingOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cell.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The scope of the cell for conditional formatting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -19961,6 +28483,20 @@ impl Default for PivotTableConditionalFormattingScopeRoleEnum {
 }
 
 
+impl cfn_resources::CfnResource for PivotTableConditionalFormattingScope {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20042,6 +28578,32 @@ pub struct PivotTableConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PivotTableConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.paginated_report_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.total_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The data path options for the pivot table field options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20077,6 +28639,27 @@ pub struct PivotTableDataPathOption {
 
 
 
+impl cfn_resources::CfnResource for PivotTableDataPathOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.data_path_list;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'data_path_list'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The selected field options for the pivot table field options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20151,6 +28734,50 @@ impl Default for PivotTableFieldOptionVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for PivotTableFieldOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_label {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'custom_label'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'custom_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The field options for a pivot table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20188,6 +28815,36 @@ pub struct PivotTableFieldOptions {
 
 
 
+impl cfn_resources::CfnResource for PivotTableFieldOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.data_path_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'data_path_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.selected_field_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'selected_field_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The optional configuration of subtotals cells.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20213,6 +28870,36 @@ pub struct PivotTableFieldSubtotalOptions {
 
 
 
+impl cfn_resources::CfnResource for PivotTableFieldSubtotalOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.field_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The field wells for a pivot table visual.
 ///
@@ -20236,6 +28923,22 @@ pub struct PivotTableFieldWells {
 
 
 
+impl cfn_resources::CfnResource for PivotTableFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.pivot_table_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The table options for a pivot table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20437,6 +29140,30 @@ impl Default for PivotTableOptionsToggleButtonsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for PivotTableOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column_header_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row_alternate_color_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row_field_names_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row_header_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The paginated report options for a pivot table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20512,6 +29239,20 @@ impl Default for PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum 
 }
 
 
+impl cfn_resources::CfnResource for PivotTablePaginatedReportOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The sort by field for the field sort options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20557,6 +29298,26 @@ pub struct PivotTableSortBy {
 
 
 
+impl cfn_resources::CfnResource for PivotTableSortBy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_path.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20580,6 +29341,28 @@ pub struct PivotTableSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PivotTableSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.field_sort_options {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'field_sort_options'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The total options for a pivot table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20637,6 +29420,28 @@ pub struct PivotTableTotalOptions {
 
 
 
+impl cfn_resources::CfnResource for PivotTableTotalOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column_subtotal_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column_total_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row_subtotal_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row_total_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A pivot table.
 ///
@@ -20728,6 +29533,50 @@ pub struct PivotTableVisual {
 
 
 
+impl cfn_resources::CfnResource for PivotTableVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.conditional_formatting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The optional configuration of totals cells in a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20884,6 +29733,26 @@ impl Default for PivotTotalOptionsTotalsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for PivotTotalOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.metric_header_cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.total_cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value_cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The option that determines the hierarchy of the fields that are defined during data preparation. These fields are available to use in any analysis that uses the data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20937,6 +29806,49 @@ pub struct PredefinedHierarchy {
 
 
 
+impl cfn_resources::CfnResource for PredefinedHierarchy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.columns;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'columns'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.drill_down_filters {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'drill_down_filters'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.hierarchy_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'hierarchy_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.hierarchy_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'hierarchy_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of the progress bar of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -20979,6 +29891,20 @@ impl Default for ProgressBarOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for ProgressBarOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The aggregated field well configuration of a RadarChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21030,6 +29956,44 @@ pub struct RadarChartAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for RadarChartAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'category'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.color {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'color'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configured style settings of a radar chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21072,6 +30036,20 @@ impl Default for RadarChartAreaStyleSettingsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for RadarChartAreaStyleSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of a RadarChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21295,6 +30273,38 @@ impl Default for RadarChartConfigurationShapeEnum {
 }
 
 
+impl cfn_resources::CfnResource for RadarChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.base_series_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.category_axis.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.category_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.color_axis.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.color_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells of a radar chart visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21316,6 +30326,22 @@ pub struct RadarChartFieldWells {
 
 
 
+impl cfn_resources::CfnResource for RadarChartFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.radar_chart_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The series settings of a radar chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21337,6 +30363,22 @@ pub struct RadarChartSeriesSettings {
 
 
 
+impl cfn_resources::CfnResource for RadarChartSeriesSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.area_style_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a RadarChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21398,6 +30440,40 @@ pub struct RadarChartSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for RadarChartSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.color_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.color_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'color_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A radar chart visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21489,6 +30565,56 @@ pub struct RadarChartVisual {
 
 
 
+impl cfn_resources::CfnResource for RadarChartVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The range ends label type of a data path label.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21531,6 +30657,20 @@ impl Default for RangeEndsLabelTypeVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for RangeEndsLabelType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The reference line visual display options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21611,6 +30751,26 @@ impl Default for ReferenceLineStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReferenceLine {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_configuration.validate()?;
+
+        self.label_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.style_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for a custom label on a ReferenceLine.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21634,6 +30794,20 @@ pub struct ReferenceLineCustomLabelConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ReferenceLineCustomLabelConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The data configuration of the reference line.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21702,6 +30876,24 @@ impl Default for ReferenceLineDataConfigurationAxisBindingEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReferenceLineDataConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dynamic_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.static_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The dynamic configuration of the reference line data configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21747,6 +30939,26 @@ pub struct ReferenceLineDynamicDataConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ReferenceLineDynamicDataConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.calculation.validate()?;
+
+        self.column.validate()?;
+
+        self.measure_aggregation_function.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The label configuration of a reference line.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21880,6 +31092,26 @@ impl Default for ReferenceLineLabelConfigurationVerticalPositionEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReferenceLineLabelConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_label_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value_label_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The static data configuration of the reference line data configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21901,6 +31133,20 @@ pub struct ReferenceLineStaticDataConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ReferenceLineStaticDataConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The style configuration of the reference       line.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -21963,6 +31209,20 @@ impl Default for ReferenceLineStyleConfigurationPatternEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReferenceLineStyleConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The value label configuration of the label in a reference line.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22019,6 +31279,22 @@ impl Default for ReferenceLineValueLabelConfigurationRelativePositionEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReferenceLineValueLabelConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22056,6 +31332,38 @@ pub struct RelativeDateTimeControlDisplayOptions {
 
 
 
+impl cfn_resources::CfnResource for RelativeDateTimeControlDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_time_format {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'date_time_format'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_time_format {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'date_time_format'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.title_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A RelativeDatesFilter filters relative dates values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22357,6 +31665,56 @@ impl Default for RelativeDatesFilterTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for RelativeDatesFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.anchor_date_configuration.validate()?;
+
+        self.column.validate()?;
+
+        self.exclude_period_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Permission for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22403,6 +31761,20 @@ pub struct ResourcePermission {
 
 
 
+impl cfn_resources::CfnResource for ResourcePermission {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The rolling date configuration of a date time filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22444,6 +31816,50 @@ pub struct RollingDateConfiguration {
 
 
 
+impl cfn_resources::CfnResource for RollingDateConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.data_set_identifier {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_set_identifier'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.data_set_identifier {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_set_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Determines the row alternate color options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22500,6 +31916,28 @@ impl Default for RowAlternateColorOptionsStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for RowAlternateColorOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.row_alternate_colors {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'row_alternate_colors'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of the same-sheet target visuals that you want to be filtered.
 ///
@@ -22558,6 +31996,28 @@ impl Default for SameSheetTargetVisualConfigurationTargetVisualOptionsEnum {
 }
 
 
+impl cfn_resources::CfnResource for SameSheetTargetVisualConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.target_visuals {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'target_visuals'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The field well configuration of a sankey diagram.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22609,6 +32069,44 @@ pub struct SankeyDiagramAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for SankeyDiagramAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.destination {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'destination'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'source'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.weight {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'weight'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a sankey diagram.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22654,6 +32152,26 @@ pub struct SankeyDiagramChartConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SankeyDiagramChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a sankey diagram.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22675,6 +32193,22 @@ pub struct SankeyDiagramFieldWells {
 
 
 
+impl cfn_resources::CfnResource for SankeyDiagramFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sankey_diagram_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a sankey diagram.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22722,6 +32256,32 @@ pub struct SankeyDiagramSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SankeyDiagramSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.weight_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'weight_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A sankey diagram.
 ///
@@ -22801,6 +32361,48 @@ pub struct SankeyDiagramVisual {
 
 
 
+impl cfn_resources::CfnResource for SankeyDiagramVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The aggregated field well of a scatter plot.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22870,6 +32472,52 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for ScatterPlotCategoricallyAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.category {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'category'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'size'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.xaxis {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'xaxis'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.yaxis {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'yaxis'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a scatter plot.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -22987,6 +32635,38 @@ pub struct ScatterPlotConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ScatterPlotConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.yaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.yaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a scatter plot.
 ///
@@ -23022,6 +32702,24 @@ pub struct ScatterPlotFieldWells {
 
 
 
+impl cfn_resources::CfnResource for ScatterPlotFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.scatter_plot_categorically_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scatter_plot_unaggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The unaggregated field wells of a scatter plot.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23077,6 +32775,44 @@ pub struct ScatterPlotUnaggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for ScatterPlotUnaggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.size {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'size'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.xaxis {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'xaxis'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.yaxis {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'yaxis'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A scatter plot.
 ///
@@ -23170,6 +32906,56 @@ pub struct ScatterPlotVisual {
 
 
 
+impl cfn_resources::CfnResource for ScatterPlotVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The visual display options for a data zoom scroll bar.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23224,6 +33010,22 @@ impl Default for ScrollBarOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for ScrollBarOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.visible_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of the secondary value of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23266,6 +33068,20 @@ impl Default for SecondaryValueOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for SecondaryValueOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of a page break after a section.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23308,6 +33124,20 @@ impl Default for SectionAfterPageBreakStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for SectionAfterPageBreak {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options for the canvas of a section-based layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23329,6 +33159,22 @@ pub struct SectionBasedLayoutCanvasSizeOptions {
 
 
 
+impl cfn_resources::CfnResource for SectionBasedLayoutCanvasSizeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.paper_canvas_size_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for a       section-based layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23392,6 +33238,43 @@ pub struct SectionBasedLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SectionBasedLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.body_sections;
+
+        if the_val.len() > 28 as _ {
+            return Err(format!("Max validation failed on field 'body_sections'. {} is greater than 28", the_val.len()));
+        }
+
+        
+        self.canvas_size_options.validate()?;
+
+        let the_val = &self.footer_sections;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'footer_sections'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.header_sections;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'header_sections'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The options for a paper canvas of a section-based layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23517,6 +33400,22 @@ impl Default for SectionBasedLayoutPaperCanvasSizeOptionsPaperSizeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SectionBasedLayoutPaperCanvasSizeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.paper_margin.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The layout configuration of a section.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23538,6 +33437,22 @@ pub struct SectionLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SectionLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.free_form_layout.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of a page break for a section.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23559,6 +33474,22 @@ pub struct SectionPageBreakConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SectionPageBreakConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.after.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that style a section.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23596,6 +33527,22 @@ pub struct SectionStyle {
 
 
 
+impl cfn_resources::CfnResource for SectionStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.padding.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for applying a filter to specific sheets or visuals. You can apply this filter to multiple visuals that are on one sheet or to all visuals on a sheet.
 ///
@@ -23621,6 +33568,28 @@ pub struct SelectedSheetsFilterScopeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SelectedSheetsFilterScopeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.sheet_visual_scoping_configurations {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'sheet_visual_scoping_configurations'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The series item configuration of a line chart.
 ///
@@ -23656,6 +33625,24 @@ pub struct SeriesItem {
 
 
 
+impl cfn_resources::CfnResource for SeriesItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_field_series_item.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_series_item.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of adding parameters in action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23694,6 +33681,36 @@ pub struct SetParameterValueConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SetParameterValueConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.destination_parameter_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'destination_parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.destination_parameter_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'destination_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The shape conditional formatting of a filled map visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23715,6 +33732,22 @@ pub struct ShapeConditionalFormat {
 
 
 
+impl cfn_resources::CfnResource for ShapeConditionalFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.background_color.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A sheet, which is an object that contains a set of visuals that       are viewed together on one page in Amazon QuickSight. Every analysis and dashboard       contains at least one sheet. Each sheet contains at least one visualization widget, for       example a chart, pivot table, or narrative insight. Sheets can be associated with other       components, such as controls, filters, and so on.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23758,6 +33791,52 @@ pub struct Sheet {
 
 
 
+impl cfn_resources::CfnResource for Sheet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sheet_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'sheet_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sheet_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sheet_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A grid layout to define the placement of sheet control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23779,6 +33858,22 @@ pub struct SheetControlLayout {
 
 
 
+impl cfn_resources::CfnResource for SheetControlLayout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration that determines the elements and canvas size options of sheet control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23800,6 +33895,22 @@ pub struct SheetControlLayoutConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SheetControlLayoutConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.grid_layout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Sheet controls option.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -23842,6 +33953,20 @@ impl Default for SheetControlsOptionVisibilityStateEnum {
 }
 
 
+impl cfn_resources::CfnResource for SheetControlsOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A sheet is an object that contains a set of visuals that       are viewed together on one page in a paginated report. Every analysis and dashboard must contain at least one sheet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24042,6 +34167,130 @@ impl Default for SheetDefinitionContentTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SheetDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.filter_controls {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'filter_controls'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.layouts {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'layouts'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_controls {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'parameter_controls'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sheet_control_layouts {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'sheet_control_layouts'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.sheet_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'sheet_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.sheet_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sheet_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.text_boxes {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'text_boxes'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.title {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.title {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.visuals {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'visuals'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The override configuration of the rendering rules of a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24086,6 +34335,20 @@ impl Default for SheetElementConfigurationOverridesVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for SheetElementConfigurationOverrides {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The rendering rules of a sheet that uses a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24123,6 +34386,36 @@ pub struct SheetElementRenderingRule {
 
 
 
+impl cfn_resources::CfnResource for SheetElementRenderingRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration_overrides.validate()?;
+
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The sheet layout maximization options of a dashbaord.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24165,6 +34458,20 @@ impl Default for SheetLayoutElementMaximizationOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for SheetLayoutElementMaximizationOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A text box.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24206,6 +34513,42 @@ pub struct SheetTextBox {
 
 
 
+impl cfn_resources::CfnResource for SheetTextBox {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.content {
+
+        if the_val.len() > 150000 as _ {
+            return Err(format!("Max validation failed on field 'content'. {} is greater than 150000", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.sheet_text_box_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'sheet_text_box_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.sheet_text_box_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sheet_text_box_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The filter that is applied to the options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24282,6 +34625,42 @@ impl Default for SheetVisualScopingConfigurationScopeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SheetVisualScopingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.sheet_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'sheet_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.sheet_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sheet_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.visual_ids {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'visual_ids'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The text format for the title.
 ///
@@ -24325,6 +34704,52 @@ pub struct ShortFormatText {
 
 
 
+impl cfn_resources::CfnResource for ShortFormatText {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.plain_text {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'plain_text'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.plain_text {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'plain_text'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rich_text {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'rich_text'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rich_text {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'rich_text'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The simple cluster marker of the cluster marker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24348,6 +34773,20 @@ pub struct SimpleClusterMarker {
 
 
 
+impl cfn_resources::CfnResource for SimpleClusterMarker {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24369,6 +34808,22 @@ pub struct SliderControlDisplayOptions {
 
 
 
+impl cfn_resources::CfnResource for SliderControlDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.title_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Options that determine the layout and display options of a chart's small multiples.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24418,6 +34873,22 @@ pub struct SmallMultiplesOptions {
 
 
 
+impl cfn_resources::CfnResource for SmallMultiplesOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.panel_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of spacing (often a margin or padding).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24475,6 +34946,20 @@ pub struct Spacing {
 
 
 
+impl cfn_resources::CfnResource for Spacing {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The default values of the StringParameterDeclaration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24510,6 +34995,30 @@ pub struct StringDefaultValues {
 
 
 
+impl cfn_resources::CfnResource for StringDefaultValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dynamic_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.static_values {
+
+        if the_val.len() > 50000 as _ {
+            return Err(format!("Max validation failed on field 'static_values'. {} is greater than 50000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Formatting configuration for string fields.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24543,6 +35052,24 @@ pub struct StringFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for StringFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.null_value_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numeric_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A string parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24578,6 +35105,20 @@ pub struct StringParameter {
 
 
 
+impl cfn_resources::CfnResource for StringParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A parameter declaration for the String data type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24673,6 +35214,38 @@ impl Default for StringParameterDeclarationParameterValueTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for StringParameterDeclaration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.value_when_unset.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration that defines the default value of a String parameter when a value has not been set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24729,6 +35302,20 @@ impl Default for StringValueWhenUnsetConfigurationValueWhenUnsetOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for StringValueWhenUnsetConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The subtotal options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24870,6 +35457,34 @@ impl Default for SubtotalOptionsTotalsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for SubtotalOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.field_level_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_level_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.metric_header_cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.total_cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value_cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The aggregated field well for the table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24907,6 +35522,36 @@ pub struct TableAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for TableAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.group_by {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'group_by'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The border options for a table border.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -24979,6 +35624,36 @@ impl Default for TableBorderOptionsStyleEnum {
 }
 
 
+impl cfn_resources::CfnResource for TableBorderOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.thickness {
+
+        if *the_val > 4 as _ {
+            return Err(format!("Max validation failed on field 'thickness'. {} is greater than 4", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.thickness {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'thickness'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The cell conditional formatting option for a table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25016,6 +35691,36 @@ pub struct TableCellConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for TableCellConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.text_format.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sizing options for the table image configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25062,6 +35767,20 @@ impl Default for TableCellImageSizingConfigurationTableCellImageScalingConfigura
 }
 
 
+impl cfn_resources::CfnResource for TableCellImageSizingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The table cell style for a cell in pivot table or table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25269,6 +35988,40 @@ impl Default for TableCellStyleVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TableCellStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.border.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.font_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.height {
+
+        if *the_val > 500 as _ {
+            return Err(format!("Max validation failed on field 'height'. {} is greater than 500", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.height {
+
+        if *the_val < 8 as _ {
+            return Err(format!("Min validation failed on field 'height'. {} is less than 8", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The conditional formatting for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25292,6 +36045,28 @@ pub struct TableConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for TableConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.conditional_formatting_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'conditional_formatting_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Conditional formatting options for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25325,6 +36100,24 @@ pub struct TableConditionalFormattingOption {
 
 
 
+impl cfn_resources::CfnResource for TableConditionalFormattingOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cell.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for a TableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25420,6 +36213,40 @@ pub struct TableConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TableConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.paginated_report_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.table_inline_visualizations {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'table_inline_visualizations'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.table_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.total_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The custom icon content for the table link content configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25458,6 +36285,20 @@ impl Default for TableFieldCustomIconContentIconEnum {
 }
 
 
+impl cfn_resources::CfnResource for TableFieldCustomIconContent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The custom text content (value, font configuration) for the table link content configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25491,6 +36332,22 @@ pub struct TableFieldCustomTextContent {
 
 
 
+impl cfn_resources::CfnResource for TableFieldCustomTextContent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.font_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The image configuration of a table field URL.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25512,6 +36369,22 @@ pub struct TableFieldImageConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TableFieldImageConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sizing_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The link configuration of a table field URL.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25570,6 +36443,22 @@ impl Default for TableFieldLinkConfigurationTargetEnum {
 }
 
 
+impl cfn_resources::CfnResource for TableFieldLinkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.content.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The URL content (text, icon) for the table link configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25603,6 +36492,24 @@ pub struct TableFieldLinkContentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TableFieldLinkContentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_icon_content.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom_text_content.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options for a table field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25701,6 +36608,52 @@ impl Default for TableFieldOptionVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TableFieldOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_label {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'custom_label'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'custom_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.urlstyling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25738,6 +36691,36 @@ pub struct TableFieldOptions {
 
 
 
+impl cfn_resources::CfnResource for TableFieldOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.order {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'order'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.selected_field_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'selected_field_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The URL configuration for a table field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25771,6 +36754,24 @@ pub struct TableFieldURLConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TableFieldURLConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.image_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.link_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells for a table visual.
 ///
@@ -25806,6 +36807,24 @@ pub struct TableFieldWells {
 
 
 
+impl cfn_resources::CfnResource for TableFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.table_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table_unaggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The inline visualization of a specific type to display within a chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25827,6 +36846,22 @@ pub struct TableInlineVisualization {
 
 
 
+impl cfn_resources::CfnResource for TableInlineVisualization {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_bars.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The table options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25905,6 +36940,26 @@ impl Default for TableOptionsOrientationEnum {
 }
 
 
+impl cfn_resources::CfnResource for TableOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.header_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row_alternate_color_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The paginated report options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -25980,6 +37035,20 @@ impl Default for TablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TablePaginatedReportOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting of a table row.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26013,6 +37082,24 @@ pub struct TableRowConditionalFormatting {
 
 
 
+impl cfn_resources::CfnResource for TableRowConditionalFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.background_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The side border options for a table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26094,6 +37181,32 @@ pub struct TableSideBorderOptions {
 
 
 
+impl cfn_resources::CfnResource for TableSideBorderOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bottom.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.inner_horizontal.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.inner_vertical.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.left.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.right.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.top.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration for a TableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26129,6 +37242,30 @@ pub struct TableSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TableSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.pagination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.row_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'row_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The unaggregated field well for the table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26152,6 +37289,28 @@ pub struct TableUnaggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for TableUnaggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A table visual.
 ///
@@ -26243,6 +37402,50 @@ pub struct TableVisual {
 
 
 
+impl cfn_resources::CfnResource for TableVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.conditional_formatting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -26280,6 +37483,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26313,6 +37530,24 @@ pub struct TextAreaControlDisplayOptions {
 
 
 
+impl cfn_resources::CfnResource for TextAreaControlDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.placeholder_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The conditional formatting for the text.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26358,6 +37593,26 @@ pub struct TextConditionalFormat {
 
 
 
+impl cfn_resources::CfnResource for TextConditionalFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.background_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.icon.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.text_color.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of the placeholder options in a text control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26400,6 +37655,20 @@ impl Default for TextControlPlaceholderOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TextControlPlaceholderOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26433,6 +37702,24 @@ pub struct TextFieldControlDisplayOptions {
 
 
 
+impl cfn_resources::CfnResource for TextFieldControlDisplayOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.placeholder_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the thousands separator configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26512,6 +37799,20 @@ impl Default for ThousandSeparatorOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for ThousandSeparatorOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The forecast properties setup of a forecast in the line chart.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26611,6 +37912,84 @@ pub struct TimeBasedForecastProperties {
 
 
 
+impl cfn_resources::CfnResource for TimeBasedForecastProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.periods_backward {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'periods_backward'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.periods_backward {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'periods_backward'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.periods_forward {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'periods_forward'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.periods_forward {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'periods_forward'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prediction_interval {
+
+        if *the_val > 95 as _ {
+            return Err(format!("Max validation failed on field 'prediction_interval'. {} is greater than 95", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prediction_interval {
+
+        if *the_val < 50 as _ {
+            return Err(format!("Min validation failed on field 'prediction_interval'. {} is less than 50", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.seasonality {
+
+        if *the_val > 180 as _ {
+            return Err(format!("Max validation failed on field 'seasonality'. {} is greater than 180", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.seasonality {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'seasonality'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A TimeEqualityFilter filters values that are equal to a given value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26745,6 +38124,52 @@ impl Default for TimeEqualityFilterTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TimeEqualityFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        let the_val = &self.filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The time range drill down filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -26851,6 +38276,22 @@ impl Default for TimeRangeDrillDownFilterTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TimeRangeDrillDownFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A TimeRangeFilter filters values that are between two specified values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27050,6 +38491,42 @@ impl Default for TimeRangeFilterTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TimeRangeFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        self.exclude_period_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.range_maximum_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.range_minimum_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The value of a time range filter.
 ///
@@ -27103,6 +38580,38 @@ pub struct TimeRangeFilterValue {
 
 
 
+impl cfn_resources::CfnResource for TimeRangeFilterValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.parameter {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'parameter'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.rolling_date.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The tooltip.
 ///
@@ -27138,6 +38647,24 @@ pub struct TooltipItem {
 
 
 
+impl cfn_resources::CfnResource for TooltipItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column_tooltip_item.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_tooltip_item.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The display options for the visual tooltip.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27227,6 +38754,22 @@ impl Default for TooltipOptionsTooltipVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TooltipOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_based_tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A TopBottomFilter filters values that are at the top or the bottom.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27371,6 +38914,59 @@ impl Default for TopBottomFilterTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopBottomFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.aggregation_sort_configurations;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'aggregation_sort_configurations'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        self.column.validate()?;
+
+        let the_val = &self.filter_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameter_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The top movers and bottom movers computation setup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27530,6 +39126,56 @@ impl Default for TopBottomMoversComputationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopBottomMoversComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category.validate()?;
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.mover_size {
+
+        if *the_val > 20 as _ {
+            return Err(format!("Max validation failed on field 'mover_size'. {} is greater than 20", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.mover_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'mover_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.time.validate()?;
+
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The top ranked and bottom ranked computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27644,6 +39290,54 @@ impl Default for TopBottomRankedComputationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopBottomRankedComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category.validate()?;
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.result_size {
+
+        if *the_val > 20 as _ {
+            return Err(format!("Max validation failed on field 'result_size'. {} is greater than 20", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.result_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'result_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The total aggregation computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27695,6 +39389,36 @@ pub struct TotalAggregationComputation {
 
 
 
+impl cfn_resources::CfnResource for TotalAggregationComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The total options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27827,6 +39551,22 @@ impl Default for TotalOptionsTotalsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TotalOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.total_cell_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Aggregated field wells of a tree map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27878,6 +39618,44 @@ pub struct TreeMapAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for TreeMapAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.colors {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'colors'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.groups {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'groups'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sizes {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'sizes'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a tree map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -27995,6 +39773,38 @@ pub struct TreeMapConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TreeMapConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.color_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.color_scale.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.group_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.size_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tooltip.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells of a tree map.
 ///
@@ -28018,6 +39828,22 @@ pub struct TreeMapFieldWells {
 
 
 
+impl cfn_resources::CfnResource for TreeMapFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.tree_map_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a tree map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28053,6 +39879,30 @@ pub struct TreeMapSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TreeMapSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.tree_map_group_items_limit_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tree_map_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'tree_map_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A tree map.
 ///
@@ -28146,6 +39996,56 @@ pub struct TreeMapVisual {
 
 
 
+impl cfn_resources::CfnResource for TreeMapVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of trend arrows in a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28188,6 +40088,20 @@ impl Default for TrendArrowOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TrendArrowOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The unaggregated field for a table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28237,6 +40151,38 @@ pub struct UnaggregatedField {
 
 
 
+impl cfn_resources::CfnResource for UnaggregatedField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        let the_val = &self.field_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'field_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.field_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The unique values computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28288,6 +40234,36 @@ pub struct UniqueValuesComputation {
 
 
 
+impl cfn_resources::CfnResource for UniqueValuesComputation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category.validate()?;
+
+        let the_val = &self.computation_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'computation_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.computation_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'computation_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The range options for the data zoom scroll bar.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28309,6 +40285,22 @@ pub struct VisibleRangeOptions {
 
 
 
+impl cfn_resources::CfnResource for VisibleRangeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.percent_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A visual displayed on a sheet in an analysis, dashboard, or template.
 ///
@@ -28640,6 +40632,66 @@ pub struct Visual {
 
 
 
+impl cfn_resources::CfnResource for Visual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bar_chart_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.box_plot_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.combo_chart_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom_content_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.empty_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filled_map_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.funnel_chart_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.gauge_chart_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.geospatial_map_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.heat_map_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.histogram_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.insight_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kpivisual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.line_chart_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pie_chart_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pivot_table_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.radar_chart_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sankey_diagram_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scatter_plot_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tree_map_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.waterfall_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.word_cloud_visual.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The axis sort options for a visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28682,6 +40734,20 @@ impl Default for VisualAxisSortOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for VisualAxisSortOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A custom action defined on a visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28811,6 +40877,55 @@ impl Default for VisualCustomActionTriggerEnum {
 }
 
 
+impl cfn_resources::CfnResource for VisualCustomAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.action_operations;
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'action_operations'. {} is greater than 2", the_val.len()));
+        }
+
+        
+        let the_val = &self.custom_action_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'custom_action_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.custom_action_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'custom_action_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The operation that is defined by the custom action.
 ///
@@ -28870,6 +40985,28 @@ pub struct VisualCustomActionOperation {
 
 
 
+impl cfn_resources::CfnResource for VisualCustomActionOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.filter_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.navigation_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.set_parameters_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.urloperation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The menu options for a visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28912,6 +41049,20 @@ impl Default for VisualMenuOptionAvailabilityStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for VisualMenuOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The visual display options for the visual palette.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -28949,6 +41100,28 @@ pub struct VisualPalette {
 
 
 
+impl cfn_resources::CfnResource for VisualPalette {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.color_map {
+
+        if the_val.len() > 5000 as _ {
+            return Err(format!("Max validation failed on field 'color_map'. {} is greater than 5000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The subtitle label options for a visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29003,6 +41176,22 @@ impl Default for VisualSubtitleLabelOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for VisualSubtitleLabelOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.format_text.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The title label options for a visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29057,6 +41246,22 @@ impl Default for VisualTitleLabelOptionsVisibilityEnum {
 }
 
 
+impl cfn_resources::CfnResource for VisualTitleLabelOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.format_text.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29108,6 +41313,44 @@ pub struct WaterfallChartAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for WaterfallChartAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.breakdowns {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'breakdowns'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.categories {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'categories'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration for a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29237,6 +41480,40 @@ pub struct WaterfallChartConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WaterfallChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_axis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.category_axis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_labels.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.legend.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_yaxis_display_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_yaxis_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.waterfall_chart_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field well configuration of a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29258,6 +41535,22 @@ pub struct WaterfallChartFieldWells {
 
 
 
+impl cfn_resources::CfnResource for WaterfallChartFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.waterfall_chart_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The options that determine the presentation of a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29279,6 +41572,20 @@ pub struct WaterfallChartOptions {
 
 
 
+impl cfn_resources::CfnResource for WaterfallChartOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The sort configuration of a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29314,6 +41621,30 @@ pub struct WaterfallChartSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WaterfallChartSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.breakdown_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A waterfall chart.
 ///
@@ -29407,6 +41738,56 @@ pub struct WaterfallVisual {
 
 
 
+impl cfn_resources::CfnResource for WaterfallVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the forecast to meet the target for a particular date.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29440,6 +41821,20 @@ pub struct WhatIfPointScenario {
 
 
 
+impl cfn_resources::CfnResource for WhatIfPointScenario {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides the forecast to meet the target for a particular date range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29485,6 +41880,20 @@ pub struct WhatIfRangeScenario {
 
 
 
+impl cfn_resources::CfnResource for WhatIfRangeScenario {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The aggregated field wells of a word cloud.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29522,6 +41931,36 @@ pub struct WordCloudAggregatedFieldWells {
 
 
 
+impl cfn_resources::CfnResource for WordCloudAggregatedFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.group_by {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'group_by'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'size'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a word cloud visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29579,6 +42018,28 @@ pub struct WordCloudChartConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WordCloudChartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_label_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sort_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.word_cloud_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The field wells of a word cloud visual.
 ///
@@ -29602,6 +42063,22 @@ pub struct WordCloudFieldWells {
 
 
 
+impl cfn_resources::CfnResource for WordCloudFieldWells {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.word_cloud_aggregated_field_wells.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The word cloud options for a word cloud visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29800,6 +42277,36 @@ impl Default for WordCloudOptionsWordScalingEnum {
 }
 
 
+impl cfn_resources::CfnResource for WordCloudOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.maximum_string_length {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'maximum_string_length'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_string_length {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'maximum_string_length'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The sort configuration of a word cloud visual.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -29835,6 +42342,30 @@ pub struct WordCloudSortConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WordCloudSortConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_items_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.category_sort {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'category_sort'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A word cloud.
 ///
@@ -29927,3 +42458,54 @@ pub struct WordCloudVisual {
 }
 
 
+
+impl cfn_resources::CfnResource for WordCloudVisual {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.chart_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.column_hierarchies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'column_hierarchies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.subtitle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.title.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.visual_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'visual_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.visual_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'visual_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

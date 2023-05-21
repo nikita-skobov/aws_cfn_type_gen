@@ -191,8 +191,82 @@ impl cfn_resources::CfnResource for CfnEnvironmentEC2 {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.automatic_stop_time_minutes {
+
+        if *the_val > 20160 as _ {
+            return Err(format!("Max validation failed on field 'automatic_stop_time_minutes'. {} is greater than 20160", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.automatic_stop_time_minutes {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'automatic_stop_time_minutes'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.image_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'image_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.instance_type;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'instance_type'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_type;
+
+        if the_val.len() < 5 as _ {
+            return Err(format!("Min validation failed on field 'instance_type'. {} is less than 5", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.subnet_id {
+
+        if the_val.len() > 24 as _ {
+            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 24", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_id {
+
+        if the_val.len() < 15 as _ {
+            return Err(format!("Min validation failed on field 'subnet_id'. {} is less than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The Repository property type specifies an AWS CodeCommit source code repository to be cloned into an AWS Cloud9 development environment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -226,6 +300,20 @@ pub struct Repository {
 
 
 
+impl cfn_resources::CfnResource for Repository {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -262,3 +350,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

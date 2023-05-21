@@ -42,8 +42,12 @@ impl cfn_resources::CfnResource for CfnMultiRegionAccessPointPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The container element for a bucket's policy status.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -64,3 +68,18 @@ pub struct PolicyStatus {
 }
 
 
+
+impl cfn_resources::CfnResource for PolicyStatus {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

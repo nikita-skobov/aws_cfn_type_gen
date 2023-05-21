@@ -70,4 +70,51 @@ impl cfn_resources::CfnResource for CfnServiceActionAssociation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.product_id;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'product_id'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.product_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'product_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.provisioning_artifact_id;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.provisioning_artifact_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'provisioning_artifact_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_action_id;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'service_action_id'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_action_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'service_action_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

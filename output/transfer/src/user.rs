@@ -197,8 +197,96 @@ impl cfn_resources::CfnResource for CfnUser {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.home_directory {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'home_directory'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.home_directory_mappings {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'home_directory_mappings'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.policy {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'policy'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        self.posix_profile.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.role;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role'. {} is less than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.server_id;
+
+        if the_val.len() > 19 as _ {
+            return Err(format!("Max validation failed on field 'server_id'. {} is greater than 19", the_val.len()));
+        }
+
+        
+        let the_val = &self.server_id;
+
+        if the_val.len() < 19 as _ {
+            return Err(format!("Min validation failed on field 'server_id'. {} is less than 19", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.ssh_public_keys {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'ssh_public_keys'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.user_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'user_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'user_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents an object that contains entries and targets for       HomeDirectoryMappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -240,6 +328,34 @@ pub struct HomeDirectoryMapEntry {
 
 
 
+impl cfn_resources::CfnResource for HomeDirectoryMapEntry {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.entry;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'entry'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.target;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'target'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The full POSIX identity, including user ID (Uid), group ID    (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon EFS file systems. The POSIX permissions that are set on    files and directories in your file system determine the level of access your users get when    transferring files into and out of your Amazon EFS file systems.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -287,6 +403,28 @@ pub struct PosixProfile {
 
 
 
+impl cfn_resources::CfnResource for PosixProfile {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.secondary_gids {
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'secondary_gids'. {} is greater than 16", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides information about the public Secure Shell (SSH) key that is associated with a    Transfer Family user account for the specific file transfer protocol-enabled server (as identified by     ServerId). The information returned includes the date the key was imported, the    public key contents, and the public key ID. A user can store more than one SSH public key    associated with their user name on a specific server.
 ///
@@ -308,6 +446,20 @@ pub struct SshPublicKey {
 
 
 
+impl cfn_resources::CfnResource for SshPublicKey {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -344,3 +496,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

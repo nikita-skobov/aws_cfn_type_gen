@@ -266,8 +266,36 @@ impl cfn_resources::CfnResource for CfnBucket {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.accelerate_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.bucket_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cors_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lifecycle_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.logging_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.notification_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.object_lock_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ownership_controls.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.public_access_block_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.replication_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.versioning_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.website_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the days since the initiation of an incomplete multipart upload that Amazon S3    will wait before permanently removing all parts of the upload. For more information, see         Stopping Incomplete Multipart Uploads Using a Bucket Lifecycle Policy in the     Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -289,6 +317,20 @@ pub struct AbortIncompleteMultipartUpload {
 
 
 
+impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see       Amazon S3       Transfer Acceleration in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -331,6 +373,20 @@ impl Default for AccelerateConfigurationAccelerationStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for AccelerateConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specify this only in a cross-account scenario (where source and destination bucket     owners are not the same), and you want to change replica ownership to the AWS account     that owns the destination bucket. If this is not specified in the replication     configuration, the replicas are owned by same AWS account that owns the source     object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -369,6 +425,20 @@ impl Default for AccessControlTranslationOwnerEnum {
 }
 
 
+impl cfn_resources::CfnResource for AccessControlTranslation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration and any analyses for the analytics filter of an Amazon S3     bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -428,6 +498,22 @@ pub struct AnalyticsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AnalyticsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.storage_class_analysis.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies default encryption for a bucket using server-side encryption with Amazon    S3-managed keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS) bucket. For    information about the Amazon S3 default encryption feature, see Amazon S3 Default Encryption for S3     Buckets in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -449,6 +535,20 @@ pub struct BucketEncryption {
 
 
 
+impl cfn_resources::CfnResource for BucketEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more     information, see Enabling       Cross-Origin Resource Sharing in the     Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -470,6 +570,20 @@ pub struct CorsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CorsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a cross-origin access rule for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -553,6 +667,20 @@ pub struct CorsRule {
 
 
 
+impl cfn_resources::CfnResource for CorsRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies how data related to the storage class analysis for an Amazon S3 bucket should be     exported.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -603,6 +731,22 @@ impl Default for DataExportOutputSchemaVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataExport {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The container element for specifying the default Object Lock retention settings for new     objects placed in the specified bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -669,6 +813,20 @@ impl Default for DefaultRetentionModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DefaultRetention {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies whether Amazon S3 replicates delete markers. If you specify a Filter     in your replication configuration, you must also include a       DeleteMarkerReplication element. If your Filter includes a       Tag element, the DeleteMarkerReplication       Status must be set to Disabled, because Amazon S3 does not support replicating     delete markers for tag-based rules. For an example configuration, see Basic Rule Configuration.
 ///
@@ -713,6 +871,20 @@ impl Default for DeleteMarkerReplicationStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for DeleteMarkerReplication {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies information about where to publish analysis or configuration results for an    Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -797,6 +969,20 @@ impl Default for DestinationFormatEnum {
 }
 
 
+impl cfn_resources::CfnResource for Destination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies encryption-related information for an Amazon S3 bucket that is a destination for     replicated objects.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -818,6 +1004,20 @@ pub struct EncryptionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Amazon S3 can send events to Amazon EventBridge whenever certain events happen in your    bucket, see Using     EventBridge in the Amazon S3 User Guide.
 ///
@@ -841,6 +1041,20 @@ pub struct EventBridgeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EventBridgeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the Amazon S3 object key name to filter on and whether to filter on the suffix or     prefix of the key name.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -895,6 +1109,20 @@ impl Default for FilterRuleNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for FilterRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the S3 Intelligent-Tiering configuration for an Amazon S3 bucket.
 ///
@@ -989,6 +1217,20 @@ impl Default for IntelligentTieringConfigurationStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for IntelligentTieringConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the inventory configuration for an Amazon S3 bucket. For more information, see       GET Bucket inventory in the Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1126,6 +1368,22 @@ impl Default for InventoryConfigurationScheduleFrequencyEnum {
 }
 
 
+impl cfn_resources::CfnResource for InventoryConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Describes the AWS Lambda functions to invoke and the events for which to invoke     them.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1171,6 +1429,22 @@ pub struct LambdaConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LambdaConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the lifecycle configuration for objects in an Amazon S3 bucket. For more     information, see Object Lifecycle Management     in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1192,6 +1466,20 @@ pub struct LifecycleConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LifecycleConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes where logs are stored and the prefix that Amazon S3 assigns to all log object    keys for a bucket. For examples and more information, see PUT Bucket logging in the     Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1225,6 +1513,20 @@ pub struct LoggingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LoggingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A container specifying replication metrics-related settings enabling replication     metrics and events.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1279,6 +1581,22 @@ impl Default for MetricsStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for Metrics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.event_threshold.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies a metrics configuration for the CloudWatch request metrics (specified by the    metrics configuration ID) from an Amazon S3 bucket. If you're updating an existing metrics    configuration, note that this is a full replacement of the existing metrics configuration. If    you don't include the elements you want to keep, they are erased. For examples, see AWS::S3::Bucket. For more information, see PUT Bucket metrics    in the Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1336,6 +1654,20 @@ pub struct MetricsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for MetricsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies when noncurrent object versions expire. Upon expiration, Amazon S3    permanently deletes the noncurrent object versions. You set this lifecycle configuration    action on a bucket that has versioning enabled (or suspended) to request that Amazon S3 delete noncurrent object versions at a specific period in the object's    lifetime.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1369,6 +1701,20 @@ pub struct NoncurrentVersionExpiration {
 
 
 
+impl cfn_resources::CfnResource for NoncurrentVersionExpiration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Container for the transition rule that describes when noncurrent objects transition to the     STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING,     GLACIER_IR, GLACIER, or DEEP_ARCHIVE storage class.    If your bucket is versioning-enabled (or versioning is suspended), you can set this action to    request that Amazon S3 transition noncurrent object versions to the STANDARD_IA,     ONEZONE_IA, INTELLIGENT_TIERING, GLACIER_IR,     GLACIER, or DEEP_ARCHIVE storage class at a specific period in the    object's lifetime. If you specify this property, don't specify the     NoncurrentVersionTransitions property.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1451,6 +1797,20 @@ impl Default for NoncurrentVersionTransitionStorageClassEnum {
 }
 
 
+impl cfn_resources::CfnResource for NoncurrentVersionTransition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the notification configuration for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1508,6 +1868,22 @@ pub struct NotificationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NotificationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.event_bridge_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies object key name filtering rules. For information about key name filtering, see     Configuring event notifications using object key name filtering in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1529,6 +1905,22 @@ pub struct NotificationFilter {
 
 
 
+impl cfn_resources::CfnResource for NotificationFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_key.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Places an Object Lock configuration on the specified bucket. The rule specified in the    Object Lock configuration will be applied by default to every new object placed in the    specified bucket. For more information, see Locking Objects.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1579,6 +1971,22 @@ impl Default for ObjectLockConfigurationObjectLockEnabledEnum {
 }
 
 
+impl cfn_resources::CfnResource for ObjectLockConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the Object Lock rule for the specified object. Enable the this rule when you    apply ObjectLockConfiguration to a bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1600,6 +2008,22 @@ pub struct ObjectLockRule {
 
 
 
+impl cfn_resources::CfnResource for ObjectLockRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_retention.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the container element for Object Ownership rules.
 ///
@@ -1623,6 +2047,20 @@ pub struct OwnershipControls {
 
 
 
+impl cfn_resources::CfnResource for OwnershipControls {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an Object Ownership rule.
 ///
@@ -1671,6 +2109,20 @@ impl Default for OwnershipControlsRuleObjectOwnershipEnum {
 }
 
 
+impl cfn_resources::CfnResource for OwnershipControlsRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can     enable the configuration options in any combination. For more information about when Amazon S3     considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1738,6 +2190,20 @@ pub struct PublicAccessBlockConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration for publishing messages to an Amazon Simple Queue Service     (Amazon SQS) queue when Amazon S3 detects specified events.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1783,6 +2249,22 @@ pub struct QueueConfiguration {
 
 
 
+impl cfn_resources::CfnResource for QueueConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3     bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1837,6 +2319,20 @@ impl Default for RedirectAllRequestsToProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for RedirectAllRequestsTo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies how requests are redirected. In the event of an error, you can specify a     different error code to return.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1931,6 +2427,20 @@ impl Default for RedirectRuleProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for RedirectRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A filter that you can specify for selection for modifications on replicas.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1973,6 +2483,20 @@ impl Default for ReplicaModificationsStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReplicaModifications {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A container for replication rules. You can add up to 1,000 rules. The maximum size of a     replication configuration is 2 MB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2006,6 +2530,20 @@ pub struct ReplicationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ReplicationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A container for information about the replication destination and its configurations     including enabling the S3 Replication Time Control (S3 RTC).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2156,6 +2694,28 @@ impl Default for ReplicationDestinationStorageClassEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReplicationDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.access_control_translation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.replication_time.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies which Amazon S3 objects to replicate and where to store the replicas.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2292,6 +2852,28 @@ impl Default for ReplicationRuleStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReplicationRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.delete_marker_replication.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.destination.validate()?;
+
+        self.filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_selection_criteria.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A container for specifying rule filters. The filters determine the subset of objects to    which the rule applies. This element is required only if you specify more than one filter.
 ///
@@ -2327,6 +2909,20 @@ pub struct ReplicationRuleAndOperator {
 
 
 
+impl cfn_resources::CfnResource for ReplicationRuleAndOperator {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A filter that identifies the subset of objects to which the replication rule applies. A     Filter must specify exactly one Prefix, TagFilter, or    an And child element.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2378,6 +2974,24 @@ pub struct ReplicationRuleFilter {
 
 
 
+impl cfn_resources::CfnResource for ReplicationRuleFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.and.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tag_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is     enabled and the time when all objects and operations on objects must be replicated. Must be     specified together with a Metrics block.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2432,6 +3046,22 @@ impl Default for ReplicationTimeStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReplicationTime {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.time.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics       EventThreshold.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2455,6 +3085,20 @@ pub struct ReplicationTimeValue {
 
 
 
+impl cfn_resources::CfnResource for ReplicationTimeValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the redirect behavior and when a redirect is applied. For more information     about routing rules, see Configuring advanced conditional redirects in the       Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2488,6 +3132,24 @@ pub struct RoutingRule {
 
 
 
+impl cfn_resources::CfnResource for RoutingRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.redirect_rule.validate()?;
+
+        self.routing_rule_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A container for describing a condition that must be met for the specified redirect to     apply. For example, 1. If request is for pages in the /docs folder, redirect     to the /documents folder. 2. If request results in HTTP error 4xx, redirect     request to another host where you might process the error.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2525,6 +3187,20 @@ pub struct RoutingRuleCondition {
 
 
 
+impl cfn_resources::CfnResource for RoutingRuleCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies lifecycle rules for an Amazon S3 bucket. For more information, see Put Bucket     Lifecycle Configuration in the Amazon S3 API Reference.
 ///
@@ -2751,6 +3427,28 @@ impl Default for RuleStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for Rule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.abort_incomplete_multipart_upload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.noncurrent_version_expiration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.noncurrent_version_transition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A container for object key name prefix and suffix filtering rules. For more information about object key name filtering, see Configuring event notifications using object key name filtering in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2772,6 +3470,20 @@ pub struct S3KeyFilter {
 
 
 
+impl cfn_resources::CfnResource for S3KeyFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the default server-side encryption to apply to new objects in the bucket. If a     PUT Object request doesn't specify any server-side encryption, this default encryption will     be applied. If you don't specify a customer managed key at configuration, Amazon S3 automatically creates     an AWS KMS key in your AWS account the first time that you add an object encrypted     with SSE-KMS to a bucket. By default, Amazon S3 uses this KMS key for SSE-KMS. For more     information, see PUT Bucket encryption in     the Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2834,6 +3546,20 @@ impl Default for ServerSideEncryptionByDefaultSSEAlgorithmEnum {
 }
 
 
+impl cfn_resources::CfnResource for ServerSideEncryptionByDefault {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the default server-side encryption configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2869,6 +3595,22 @@ pub struct ServerSideEncryptionRule {
 
 
 
+impl cfn_resources::CfnResource for ServerSideEncryptionRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.server_side_encryption_by_default.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A container that describes additional filters for identifying the source objects that you    want to replicate. You can choose to enable or disable the replication of these    objects.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2902,6 +3644,24 @@ pub struct SourceSelectionCriteria {
 
 
 
+impl cfn_resources::CfnResource for SourceSelectionCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.replica_modifications.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sse_kms_encrypted_objects.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A container for filter information for the selection of S3 objects encrypted with AWS     KMS.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2944,6 +3704,20 @@ impl Default for SseKmsEncryptedObjectsStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for SseKmsEncryptedObjects {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies data related to access patterns to be collected and made available to analyze     the tradeoffs between different storage classes for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2965,6 +3739,22 @@ pub struct StorageClassAnalysis {
 
 
 
+impl cfn_resources::CfnResource for StorageClassAnalysis {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_export.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -3002,6 +3792,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies tags to use to identify a subset of objects for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3035,6 +3839,20 @@ pub struct TagFilter {
 
 
 
+impl cfn_resources::CfnResource for TagFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The S3 Intelligent-Tiering storage class is designed to optimize storage costs by     automatically moving data to the most cost-effective storage access tier, without     additional operational overhead.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3089,6 +3907,20 @@ impl Default for TieringAccessTierEnum {
 }
 
 
+impl cfn_resources::CfnResource for Tiering {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A container for specifying the configuration for publication of messages to an Amazon     Simple Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3134,6 +3966,22 @@ pub struct TopicConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TopicConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies when an object transitions to a specified storage class. For more information     about Amazon S3 lifecycle configuration rules, see Transitioning       Objects Using Amazon S3 Lifecycle in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3216,6 +4064,20 @@ impl Default for TransitionStorageClassEnum {
 }
 
 
+impl cfn_resources::CfnResource for Transition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the versioning state of an Amazon S3 bucket. For more information, see PUT       Bucket versioning in the Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3258,6 +4120,20 @@ impl Default for VersioningConfigurationStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for VersioningConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies website configuration parameters for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3316,3 +4192,20 @@ pub struct WebsiteConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for WebsiteConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.redirect_all_requests_to.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

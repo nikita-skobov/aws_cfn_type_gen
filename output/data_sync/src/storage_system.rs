@@ -133,8 +133,55 @@ impl cfn_resources::CfnResource for CfnStorageSystem {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.agent_arns;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'agent_arns'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.cloud_watch_log_group_arn {
+
+        if the_val.len() > 562 as _ {
+            return Err(format!("Max validation failed on field 'cloud_watch_log_group_arn'. {} is greater than 562", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.server_configuration.validate()?;
+
+        self.server_credentials.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The network settings that DataSync Discovery uses to connect with your on-premises storage system's    management interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -176,6 +223,43 @@ pub struct ServerConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ServerConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.server_hostname;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'server_hostname'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.server_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'server_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.server_port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'server_port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The credentials that provide DataSync Discovery read access to your on-premises storage system's    management interface.
 ///
@@ -219,6 +303,34 @@ pub struct ServerCredentials {
 
 
 
+impl cfn_resources::CfnResource for ServerCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.password;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'password'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -255,3 +367,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

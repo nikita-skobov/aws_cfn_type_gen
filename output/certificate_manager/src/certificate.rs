@@ -170,8 +170,66 @@ impl cfn_resources::CfnResource for CfnCertificate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.certificate_authority_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'certificate_authority_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.certificate_authority_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'certificate_authority_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.domain_name;
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 253", the_val.len()));
+        }
+
+        
+        let the_val = &self.domain_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'domain_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.domain_validation_options {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'domain_validation_options'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subject_alternative_names {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'subject_alternative_names'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// DomainValidationOption is a property of the AWS::CertificateManager::Certificate resource that specifies the AWS Certificate Manager (ACM) certificate domain to validate. Depending on the     chosen validation method, ACM checks the domain's DNS record for a validation CNAME, or it     attempts to send a validation email message to the domain owner.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -239,6 +297,50 @@ pub struct DomainValidationOption {
 
 
 
+impl cfn_resources::CfnResource for DomainValidationOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.domain_name;
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 253", the_val.len()));
+        }
+
+        
+        let the_val = &self.domain_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'domain_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.validation_domain {
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'validation_domain'. {} is greater than 253", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.validation_domain {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'validation_domain'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -275,3 +377,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

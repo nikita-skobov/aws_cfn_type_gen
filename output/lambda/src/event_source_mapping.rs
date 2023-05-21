@@ -356,8 +356,160 @@ impl cfn_resources::CfnResource for CfnEventSourceMapping {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.amazon_managed_kafka_event_source_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.batch_size {
+
+        if *the_val > 10000 as _ {
+            return Err(format!("Max validation failed on field 'batch_size'. {} is greater than 10000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.batch_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'batch_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.destination_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.document_dbevent_source_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter_criteria.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.function_name;
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'function_name'. {} is greater than 140", the_val.len()));
+        }
+
+        
+        let the_val = &self.function_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'function_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.maximum_batching_window_in_seconds {
+
+        if *the_val > 300 as _ {
+            return Err(format!("Max validation failed on field 'maximum_batching_window_in_seconds'. {} is greater than 300", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_batching_window_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'maximum_batching_window_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_record_age_in_seconds {
+
+        if *the_val > 604800 as _ {
+            return Err(format!("Max validation failed on field 'maximum_record_age_in_seconds'. {} is greater than 604800", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_record_age_in_seconds {
+
+        if *the_val < -1 as _ {
+            return Err(format!("Min validation failed on field 'maximum_record_age_in_seconds'. {} is less than -1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_retry_attempts {
+
+        if *the_val > 10000 as _ {
+            return Err(format!("Max validation failed on field 'maximum_retry_attempts'. {} is greater than 10000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_retry_attempts {
+
+        if *the_val < -1 as _ {
+            return Err(format!("Min validation failed on field 'maximum_retry_attempts'. {} is less than -1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parallelization_factor {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'parallelization_factor'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parallelization_factor {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'parallelization_factor'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.queues {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'queues'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        self.scaling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.self_managed_event_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.self_managed_kafka_event_source_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.source_access_configurations {
+
+        if the_val.len() > 22 as _ {
+            return Err(format!("Max validation failed on field 'source_access_configurations'. {} is greater than 22", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.topics {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'topics'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tumbling_window_in_seconds {
+
+        if *the_val > 900 as _ {
+            return Err(format!("Max validation failed on field 'tumbling_window_in_seconds'. {} is greater than 900", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tumbling_window_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'tumbling_window_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -385,6 +537,36 @@ pub struct AmazonManagedKafkaEventSourceConfig {
 
 
 
+impl cfn_resources::CfnResource for AmazonManagedKafkaEventSourceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.consumer_group_id {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'consumer_group_id'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.consumer_group_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'consumer_group_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A configuration object that specifies the destination of an event after Lambda processes it.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -406,6 +588,22 @@ pub struct DestinationConfig {
 
 
 
+impl cfn_resources::CfnResource for DestinationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.on_failure.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specific configuration settings for a DocumentDB event source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -484,6 +682,52 @@ impl Default for DocumentDBEventSourceConfigFullDocumentEnum {
 }
 
 
+impl cfn_resources::CfnResource for DocumentDBEventSourceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.collection_name {
+
+        if the_val.len() > 57 as _ {
+            return Err(format!("Max validation failed on field 'collection_name'. {} is greater than 57", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.collection_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'collection_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -505,6 +749,20 @@ pub struct Endpoints {
 
 
 
+impl cfn_resources::CfnResource for Endpoints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure within a FilterCriteria object that defines an event filtering pattern.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -532,6 +790,36 @@ pub struct Filter {
 
 
 
+impl cfn_resources::CfnResource for Filter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.pattern {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'pattern'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pattern {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'pattern'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that contains the filters for an event source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -553,6 +841,20 @@ pub struct FilterCriteria {
 
 
 
+impl cfn_resources::CfnResource for FilterCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A destination for events that failed processing.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -580,6 +882,36 @@ pub struct OnFailure {
 
 
 
+impl cfn_resources::CfnResource for OnFailure {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.destination {
+
+        if the_val.len() > 350 as _ {
+            return Err(format!("Max validation failed on field 'destination'. {} is greater than 350", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.destination {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'destination'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// (Amazon SQS only) The scaling configuration for the event source. To remove the configuration, pass an empty value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -605,6 +937,36 @@ pub struct ScalingConfig {
 
 
 
+impl cfn_resources::CfnResource for ScalingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.maximum_concurrency {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'maximum_concurrency'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_concurrency {
+
+        if *the_val < 2 as _ {
+            return Err(format!("Min validation failed on field 'maximum_concurrency'. {} is less than 2", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The self-managed Apache Kafka cluster for your event source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -626,6 +988,22 @@ pub struct SelfManagedEventSource {
 
 
 
+impl cfn_resources::CfnResource for SelfManagedEventSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.endpoints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specific configuration settings for a self-managed Apache Kafka event source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -653,6 +1031,36 @@ pub struct SelfManagedKafkaEventSourceConfig {
 
 
 
+impl cfn_resources::CfnResource for SelfManagedKafkaEventSourceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.consumer_group_id {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'consumer_group_id'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.consumer_group_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'consumer_group_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An array of the authentication protocol, VPC components, or virtual host to secure and define your event source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -738,3 +1146,34 @@ impl Default for SourceAccessConfigurationTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for SourceAccessConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.uri {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'uri'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.uri {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'uri'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

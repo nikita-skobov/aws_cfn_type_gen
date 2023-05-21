@@ -157,8 +157,28 @@ impl cfn_resources::CfnResource for CfnContainer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.container_service_deployment.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.scale;
+
+        if *the_val > 20 as _ {
+            return Err(format!("Max validation failed on field 'scale'. {} is greater than 20", the_val));
+        }
+
+        
+        let the_val = &self.scale;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'scale'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Container is a property of the ContainerServiceDeployment property. It describes the settings of a container     that will be launched, or that is launched, to an Amazon Lightsail container     service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -232,6 +252,20 @@ pub struct Container {
 
 
 
+impl cfn_resources::CfnResource for Container {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// ContainerServiceDeployment is a property of the AWS::Lightsail::Container resource. It describes a container deployment     configuration of a container service.
 ///
@@ -267,6 +301,22 @@ pub struct ContainerServiceDeployment {
 
 
 
+impl cfn_resources::CfnResource for ContainerServiceDeployment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.public_endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// EnvironmentVariable is a property of the Container property. It describes the environment variables of a container on a container service which are key-value parameters that     provide dynamic configuration of the application or script run by the container.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -300,6 +350,20 @@ pub struct EnvironmentVariable {
 
 
 
+impl cfn_resources::CfnResource for EnvironmentVariable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// HealthCheckConfig is a property of the PublicEndpoint property. It describes the healthcheck configuration of a     container deployment on a container service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -381,6 +445,20 @@ pub struct HealthCheckConfig {
 
 
 
+impl cfn_resources::CfnResource for HealthCheckConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// PortInfo is a property of the Container property. It describes the ports to open and the protocols to use for     a container on a Amazon Lightsail container service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -443,6 +521,20 @@ impl Default for PortInfoProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for PortInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// PublicDomainName is a property of the AWS::Lightsail::Container resource. It describes the public domain names to use     with a container service, such as example.com and     www.example.com. It also describes the certificates to use with a container     service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -476,6 +568,20 @@ pub struct PublicDomainName {
 
 
 
+impl cfn_resources::CfnResource for PublicDomainName {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// PublicEndpoint is a property of the ContainerServiceDeployment property. It describes describes the settings of the     public endpoint of a container on a container service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -521,6 +627,22 @@ pub struct PublicEndpoint {
 
 
 
+impl cfn_resources::CfnResource for PublicEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.health_check_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -557,3 +679,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

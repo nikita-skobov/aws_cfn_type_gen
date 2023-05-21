@@ -52,4 +52,39 @@ impl cfn_resources::CfnResource for CfnSimulationApplicationVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application;
+
+        if the_val.len() > 1224 as _ {
+            return Err(format!("Max validation failed on field 'application'. {} is greater than 1224", the_val.len()));
+        }
+
+        
+        let the_val = &self.application;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.current_revision_id {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'current_revision_id'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.current_revision_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'current_revision_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

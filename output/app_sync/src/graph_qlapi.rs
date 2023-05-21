@@ -151,8 +151,20 @@ impl cfn_resources::CfnResource for CfnGraphQLApi {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.lambda_authorizer_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.log_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.open_idconnect_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.user_pool_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an additional authentication provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -243,6 +255,26 @@ impl Default for AdditionalAuthenticationProviderAuthenticationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for AdditionalAuthenticationProvider {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.lambda_authorizer_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.open_idconnect_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.user_pool_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an Amazon Cognito user pool configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -288,6 +320,20 @@ pub struct CognitoUserPoolConfig {
 
 
 
+impl cfn_resources::CfnResource for CognitoUserPoolConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration for AWS Lambda function authorization.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -337,6 +383,20 @@ pub struct LambdaAuthorizerConfig {
 
 
 
+impl cfn_resources::CfnResource for LambdaAuthorizerConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LogConfig property type specifies the logging configuration when writing GraphQL operations     and tracing to Amazon CloudWatch for an AWS AppSync GraphQL API.
 ///
@@ -386,6 +446,20 @@ pub struct LogConfig {
 
 
 
+impl cfn_resources::CfnResource for LogConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The OpenIDConnectConfig property type specifies the optional authorization configuration for     using an OpenID Connect compliant service with your GraphQL endpoint for an AWS AppSync GraphQL     API.
 ///
@@ -445,6 +519,20 @@ pub struct OpenIDConnectConfig {
 
 
 
+impl cfn_resources::CfnResource for OpenIDConnectConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -482,6 +570,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The UserPoolConfig property type specifies the optional authorization configuration for using       Amazon Cognito user pools with your GraphQL endpoint for an AWS AppSync GraphQL API.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -540,3 +642,18 @@ pub struct UserPoolConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for UserPoolConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

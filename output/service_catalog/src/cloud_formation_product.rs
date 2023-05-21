@@ -221,8 +221,84 @@ impl cfn_resources::CfnResource for CfnCloudFormationProduct {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.accept_language {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'accept_language'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 8191 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 8191", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.distributor {
+
+        if the_val.len() > 8191 as _ {
+            return Err(format!("Max validation failed on field 'distributor'. {} is greater than 8191", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 8191 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 8191", the_val.len()));
+        }
+
+        
+        let the_val = &self.owner;
+
+        if the_val.len() > 8191 as _ {
+            return Err(format!("Max validation failed on field 'owner'. {} is greater than 8191", the_val.len()));
+        }
+
+        
+        self.source_connection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.support_description {
+
+        if the_val.len() > 8191 as _ {
+            return Err(format!("Max validation failed on field 'support_description'. {} is greater than 8191", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.support_email {
+
+        if the_val.len() > 254 as _ {
+            return Err(format!("Max validation failed on field 'support_email'. {} is greater than 254", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.support_url {
+
+        if the_val.len() > 2083 as _ {
+            return Err(format!("Max validation failed on field 'support_url'. {} is greater than 2083", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The subtype containing details about the Codestar connection Type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -298,6 +374,76 @@ pub struct CodeStarParameters {
 
 
 
+impl cfn_resources::CfnResource for CodeStarParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.artifact_path;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'artifact_path'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.artifact_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'artifact_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.branch;
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'branch'. {} is greater than 250", the_val.len()));
+        }
+
+        
+        let the_val = &self.branch;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'branch'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.connection_arn;
+
+        if the_val.len() > 1224 as _ {
+            return Err(format!("Max validation failed on field 'connection_arn'. {} is greater than 1224", the_val.len()));
+        }
+
+        
+        let the_val = &self.connection_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'connection_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.repository;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'repository'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.repository;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'repository'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides connection details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -319,6 +465,22 @@ pub struct ConnectionParameters {
 
 
 
+impl cfn_resources::CfnResource for ConnectionParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.code_star.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about a provisioning artifact (also known as a version) for a product.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -429,6 +591,36 @@ impl Default for ProvisioningArtifactPropertiesTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ProvisioningArtifactProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 8192 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 8192", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 8192 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 8192", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A top level ProductViewDetail response containing details about the product’s connection.     AWS Service Catalog returns this field for the CreateProduct, UpdateProduct,      DescribeProductAsAdmin, and SearchProductAsAdmin APIs.      This response contains the same fields as the ConnectionParameters request, with the      addition of the LastSync response.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -462,6 +654,22 @@ pub struct SourceConnection {
 
 
 
+impl cfn_resources::CfnResource for SourceConnection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.connection_parameters.validate()?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -498,3 +706,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

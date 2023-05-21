@@ -76,8 +76,42 @@ impl cfn_resources::CfnResource for CfnWebACL {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_action.validate()?;
+
+        let the_val = &self.metric_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.metric_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The ActivatedRule object in an UpdateWebACL request specifies a Rule that you want to insert or delete, 			the priority of the Rule in the WebACL, and the action that you want AWS WAF to take when a web request matches the Rule 			(ALLOW, BLOCK, or COUNT).
 ///
@@ -137,6 +171,36 @@ pub struct ActivatedRule {
 
 
 
+impl cfn_resources::CfnResource for ActivatedRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.rule_id;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'rule_id'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.rule_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'rule_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// For the action that is associated with a rule in a WebACL, specifies the action that you want AWS WAF to perform when a 			web request matches all of the conditions in a rule. For the default action in a WebACL, specifies the action that you want             AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a WebACL.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -184,3 +248,18 @@ impl Default for WafActionTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for WafAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

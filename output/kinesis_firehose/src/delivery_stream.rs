@@ -220,8 +220,56 @@ impl cfn_resources::CfnResource for CfnDeliveryStream {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.amazon_open_search_serverless_destination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.amazonopensearchservice_destination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.delivery_stream_encryption_configuration_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.delivery_stream_name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'delivery_stream_name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delivery_stream_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'delivery_stream_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.elasticsearch_destination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.extended_s3_destination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http_endpoint_destination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_stream_source_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redshift_destination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_destination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.splunk_destination_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The AmazonOpenSearchServerlessBufferingHints property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -253,6 +301,20 @@ pub struct AmazonOpenSearchServerlessBufferingHints {
 
 
 
+impl cfn_resources::CfnResource for AmazonOpenSearchServerlessBufferingHints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AmazonOpenSearchServerlessDestinationConfiguration property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -372,6 +434,32 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AmazonOpenSearchServerlessDestinationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.buffering_hints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloud_watch_logging_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_configuration.validate()?;
+
+        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AmazonOpenSearchServerlessRetryOptions property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -392,6 +480,20 @@ pub struct AmazonOpenSearchServerlessRetryOptions {
 
 
 
+impl cfn_resources::CfnResource for AmazonOpenSearchServerlessRetryOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the buffering to perform before delivering data to the Amazon OpenSearch     Service destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -433,6 +535,52 @@ pub struct AmazonopensearchserviceBufferingHints {
 
 
 
+impl cfn_resources::CfnResource for AmazonopensearchserviceBufferingHints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.interval_in_seconds {
+
+        if *the_val > 900 as _ {
+            return Err(format!("Max validation failed on field 'interval_in_seconds'. {} is greater than 900", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.interval_in_seconds {
+
+        if *the_val < 60 as _ {
+            return Err(format!("Min validation failed on field 'interval_in_seconds'. {} is less than 60", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size_in_mbs {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'size_in_mbs'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size_in_mbs {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'size_in_mbs'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes the configuration of a destination in Amazon OpenSearch Service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -693,6 +841,110 @@ impl Default for AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum
 }
 
 
+impl cfn_resources::CfnResource for AmazonopensearchserviceDestinationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.buffering_hints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloud_watch_logging_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.cluster_endpoint {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'cluster_endpoint'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cluster_endpoint {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'cluster_endpoint'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.document_id_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.domain_arn {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'domain_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.domain_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'domain_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() > 80 as _ {
+            return Err(format!("Max validation failed on field 'index_name'. {} is greater than 80", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'index_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.s3_configuration.validate()?;
+
+        if let Some(the_val) = &self.type_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'type_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.type_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'type_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configures retry behavior in case Kinesis Data Firehose is unable to deliver documents     to Amazon OpenSearch Service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -718,6 +970,36 @@ pub struct AmazonopensearchserviceRetryOptions {
 
 
 
+impl cfn_resources::CfnResource for AmazonopensearchserviceRetryOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val > 7200 as _ {
+            return Err(format!("Max validation failed on field 'duration_in_seconds'. {} is greater than 7200", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'duration_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The BufferingHints property type specifies how Amazon Kinesis Data     Firehose (Kinesis Data Firehose) buffers incoming data before delivering it to the     destination. The first buffer condition that is satisfied triggers Kinesis Data Firehose to     deliver the data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -759,6 +1041,52 @@ pub struct BufferingHints {
 
 
 
+impl cfn_resources::CfnResource for BufferingHints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.interval_in_seconds {
+
+        if *the_val > 900 as _ {
+            return Err(format!("Max validation failed on field 'interval_in_seconds'. {} is greater than 900", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.interval_in_seconds {
+
+        if *the_val < 60 as _ {
+            return Err(format!("Min validation failed on field 'interval_in_seconds'. {} is less than 60", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size_in_mbs {
+
+        if *the_val > 128 as _ {
+            return Err(format!("Max validation failed on field 'size_in_mbs'. {} is greater than 128", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size_in_mbs {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'size_in_mbs'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The CloudWatchLoggingOptions property type specifies Amazon CloudWatch     Logs (CloudWatch Logs) logging options that Amazon Kinesis Data Firehose (Kinesis Data     Firehose) uses for the delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -820,6 +1148,52 @@ pub struct CloudWatchLoggingOptions {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchLoggingOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.log_group_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'log_group_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_group_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'log_group_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_stream_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'log_stream_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_stream_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'log_stream_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The CopyCommand property type configures the Amazon Redshift       COPY command that Amazon Kinesis Data Firehose (Kinesis Data Firehose) uses     to load data into an Amazon Redshift cluster from an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -883,6 +1257,66 @@ pub struct CopyCommand {
 
 
 
+impl cfn_resources::CfnResource for CopyCommand {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.copy_options {
+
+        if the_val.len() > 204800 as _ {
+            return Err(format!("Max validation failed on field 'copy_options'. {} is greater than 204800", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.copy_options {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'copy_options'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.data_table_columns {
+
+        if the_val.len() > 204800 as _ {
+            return Err(format!("Max validation failed on field 'data_table_columns'. {} is greater than 204800", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.data_table_columns {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'data_table_columns'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.data_table_name;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'data_table_name'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_table_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_table_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies that you want Kinesis Data Firehose to convert data from the JSON format to     the Parquet or ORC format before writing it to Amazon S3. Kinesis Data Firehose uses the     serializer and deserializer that you specify, in addition to the column information from     the AWS Glue table, to deserialize your input data from JSON and then     serialize it to the Parquet or ORC format. For more information, see Kinesis       Data Firehose Record Format Conversion.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -940,6 +1374,26 @@ pub struct DataFormatConversionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DataFormatConversionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.output_format_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.schema_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the type and Amazon Resource Name (ARN) of the CMK to use for Server-Side     Encryption (SSE).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1004,6 +1458,36 @@ impl Default for DeliveryStreamEncryptionConfigurationInputKeyTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DeliveryStreamEncryptionConfigurationInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key_arn {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'key_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The deserializer you want Kinesis Data Firehose to use for converting the input data     from JSON. Kinesis Data Firehose then serializes the data to its final format using the       Serializer. Kinesis Data Firehose supports two types of deserializers: the       Apache Hive JSON SerDe and the OpenX JSON SerDe.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1037,6 +1521,24 @@ pub struct Deserializer {
 
 
 
+impl cfn_resources::CfnResource for Deserializer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.hive_json_ser_de.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.open_xjson_ser_de.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The DocumentIdOptions property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1057,6 +1559,20 @@ pub struct DocumentIdOptions {
 
 
 
+impl cfn_resources::CfnResource for DocumentIdOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The DynamicPartitioningConfiguration property type specifies the     configuration of the dynamic partitioning mechanism that creates targeted data sets from     the streaming data by partitioning it based on partition keys.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1090,6 +1606,22 @@ pub struct DynamicPartitioningConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DynamicPartitioningConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.retry_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ElasticsearchBufferingHints property type specifies how Amazon     Kinesis Data Firehose (Kinesis Data Firehose) buffers incoming data while delivering it to     the destination. The first buffer condition that is satisfied triggers Kinesis Data     Firehose to deliver the data.
 ///
@@ -1133,6 +1665,52 @@ pub struct ElasticsearchBufferingHints {
 
 
 
+impl cfn_resources::CfnResource for ElasticsearchBufferingHints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.interval_in_seconds {
+
+        if *the_val > 900 as _ {
+            return Err(format!("Max validation failed on field 'interval_in_seconds'. {} is greater than 900", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.interval_in_seconds {
+
+        if *the_val < 60 as _ {
+            return Err(format!("Min validation failed on field 'interval_in_seconds'. {} is less than 60", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size_in_mbs {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'size_in_mbs'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size_in_mbs {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'size_in_mbs'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The ElasticsearchDestinationConfiguration property type specifies an Amazon     Elasticsearch Service (Amazon ES) domain that Amazon Kinesis Data Firehose (Kinesis Data     Firehose) delivers data to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1389,6 +1967,94 @@ impl Default for ElasticsearchDestinationConfigurationS3BackupModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ElasticsearchDestinationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.buffering_hints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloud_watch_logging_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.document_id_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.domain_arn {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'domain_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.domain_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'domain_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() > 80 as _ {
+            return Err(format!("Max validation failed on field 'index_name'. {} is greater than 80", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'index_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.s3_configuration.validate()?;
+
+        if let Some(the_val) = &self.type_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'type_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.type_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'type_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ElasticsearchRetryOptions property type configures the retry behavior     for when Amazon Kinesis Data Firehose (Kinesis Data Firehose) can't deliver data to Amazon     Elasticsearch Service (Amazon ES).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1414,6 +2080,36 @@ pub struct ElasticsearchRetryOptions {
 
 
 
+impl cfn_resources::CfnResource for ElasticsearchRetryOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val > 7200 as _ {
+            return Err(format!("Max validation failed on field 'duration_in_seconds'. {} is greater than 7200", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'duration_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The EncryptionConfiguration property type specifies the encryption     settings that Amazon Kinesis Data Firehose (Kinesis Data Firehose) uses when delivering     data to Amazon Simple Storage Service (Amazon S3).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1464,6 +2160,22 @@ impl Default for EncryptionConfigurationNoEncryptionConfigEnum {
 }
 
 
+impl cfn_resources::CfnResource for EncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.kmsencryption_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ExtendedS3DestinationConfiguration property type configures an     Amazon S3 destination for an Amazon Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1707,6 +2419,94 @@ impl Default for ExtendedS3DestinationConfigurationS3BackupModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ExtendedS3DestinationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'bucket_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.buffering_hints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloud_watch_logging_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_format_conversion_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynamic_partitioning_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.error_output_prefix {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'error_output_prefix'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.error_output_prefix {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'error_output_prefix'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'prefix'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.s3_backup_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The native Hive / HCatalog JsonSerDe. Used by Kinesis Data Firehose for deserializing     data, which means converting it from the JSON format in preparation for serializing it to     the Parquet or ORC format. This is one of two deserializers you can choose, depending on     which one offers the functionality you need. The other option is the OpenX SerDe.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1728,6 +2528,20 @@ pub struct HiveJsonSerDe {
 
 
 
+impl cfn_resources::CfnResource for HiveJsonSerDe {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the metadata that's delivered to the specified HTTP endpoint destination.     Kinesis Firehose supports any custom HTTP endpoint or HTTP endpoints owned by supported     third-party service providers, including Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1773,6 +2587,48 @@ pub struct HttpEndpointCommonAttribute {
 
 
 
+impl cfn_resources::CfnResource for HttpEndpointCommonAttribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attribute_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'attribute_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute_value;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'attribute_value'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute_value;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'attribute_value'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes the configuration of the HTTP endpoint to which Kinesis Firehose delivers     data. Kinesis Firehose supports any custom HTTP endpoint or HTTP endpoints owned by     supported third-party service providers, including Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1836,6 +2692,66 @@ pub struct HttpEndpointConfiguration {
 
 
 
+impl cfn_resources::CfnResource for HttpEndpointConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_key {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'access_key'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.access_key {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'access_key'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.url;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'url'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        let the_val = &self.url;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'url'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes the configuration of the HTTP endpoint destination. Kinesis Firehose     supports any custom HTTP endpoint or HTTP endpoints owned by supported third-party service     providers, including Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1980,6 +2896,50 @@ impl Default for HttpEndpointDestinationConfigurationS3BackupModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for HttpEndpointDestinationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.buffering_hints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloud_watch_logging_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.endpoint_configuration.validate()?;
+
+        self.processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.request_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.s3_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of the HTTP endpoint request. Kinesis Firehose supports any custom     HTTP endpoint or HTTP endpoints owned by supported third-party service providers, including     Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2036,6 +2996,28 @@ impl Default for HttpEndpointRequestConfigurationContentEncodingEnum {
 }
 
 
+impl cfn_resources::CfnResource for HttpEndpointRequestConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.common_attributes {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'common_attributes'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the deserializer you want to use to convert the format of the input data.     This parameter is required if Enabled is set to true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2057,6 +3039,22 @@ pub struct InputFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InputFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.deserializer.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The KMSEncryptionConfig property type specifies the AWS     Key Management Service (AWS KMS) encryption key that Amazon Simple Storage     Service (Amazon S3) uses to encrypt data delivered by the Amazon Kinesis Data Firehose     (Kinesis Data Firehose) stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2084,6 +3082,34 @@ pub struct KMSEncryptionConfig {
 
 
 
+impl cfn_resources::CfnResource for KMSEncryptionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.awskmskey_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'awskmskey_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.awskmskey_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'awskmskey_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The KinesisStreamSourceConfiguration property type specifies the stream and     role Amazon Resource Names (ARNs) for a Kinesis stream used as the source for a delivery     stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2129,6 +3155,48 @@ pub struct KinesisStreamSourceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for KinesisStreamSourceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.kinesis_stream_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'kinesis_stream_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.kinesis_stream_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kinesis_stream_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The OpenX SerDe. Used by Kinesis Data Firehose for deserializing data, which means     converting it from the JSON format in preparation for serializing it to the Parquet or ORC     format. This is one of two deserializers you can choose, depending on which one offers the     functionality you need. The other option is the native Hive / HCatalog JsonSerDe.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2176,6 +3244,20 @@ pub struct OpenXJsonSerDe {
 
 
 
+impl cfn_resources::CfnResource for OpenXJsonSerDe {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A serializer to use for converting data to the ORC format before storing it in Amazon     S3. For more information, see Apache     ORC.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2361,6 +3443,44 @@ impl Default for OrcSerDeFormatVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for OrcSerDe {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.block_size_bytes {
+
+        if *the_val < 67108864 as _ {
+            return Err(format!("Min validation failed on field 'block_size_bytes'. {} is less than 67108864", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.row_index_stride {
+
+        if *the_val < 1000 as _ {
+            return Err(format!("Min validation failed on field 'row_index_stride'. {} is less than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.stripe_size_bytes {
+
+        if *the_val < 8388608 as _ {
+            return Err(format!("Min validation failed on field 'stripe_size_bytes'. {} is less than 8388608", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the serializer that you want Kinesis Data Firehose to use to convert the     format of your data before it writes it to Amazon S3. This parameter is required if       Enabled is set to true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2382,6 +3502,22 @@ pub struct OutputFormatConfiguration {
 
 
 
+impl cfn_resources::CfnResource for OutputFormatConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.serializer.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A serializer to use for converting data to the Parquet format before storing it in     Amazon S3. For more information, see Apache Parquet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2515,6 +3651,44 @@ impl Default for ParquetSerDeWriterVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for ParquetSerDe {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.block_size_bytes {
+
+        if *the_val < 67108864 as _ {
+            return Err(format!("Min validation failed on field 'block_size_bytes'. {} is less than 67108864", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_padding_bytes {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_padding_bytes'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.page_size_bytes {
+
+        if *the_val < 65536 as _ {
+            return Err(format!("Min validation failed on field 'page_size_bytes'. {} is less than 65536", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The ProcessingConfiguration property configures data processing for an     Amazon Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2548,6 +3722,20 @@ pub struct ProcessingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ProcessingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Processor property specifies a data processor for an Amazon Kinesis     Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2610,6 +3798,20 @@ impl Default for ProcessorTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Processor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ProcessorParameter property specifies a processor parameter in a data     processor for an Amazon Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2698,6 +3900,34 @@ impl Default for ProcessorParameterParameterNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for ProcessorParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.parameter_value;
+
+        if the_val.len() > 5120 as _ {
+            return Err(format!("Max validation failed on field 'parameter_value'. {} is greater than 5120", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameter_value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The RedshiftDestinationConfiguration property type specifies an Amazon     Redshift cluster to which Amazon Kinesis Data Firehose (Kinesis Data Firehose) delivers     data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2884,6 +4114,88 @@ impl Default for RedshiftDestinationConfigurationS3BackupModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for RedshiftDestinationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_logging_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.cluster_jdbcurl;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'cluster_jdbcurl'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.cluster_jdbcurl;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'cluster_jdbcurl'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.copy_command.validate()?;
+
+        let the_val = &self.password;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'password'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.password;
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'password'. {} is less than 6", the_val.len()));
+        }
+
+        
+        self.processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.s3_backup_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_configuration.validate()?;
+
+        let the_val = &self.username;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'username'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configures retry behavior in case Kinesis Data Firehose is unable to deliver     documents to Amazon Redshift.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2909,6 +4221,36 @@ pub struct RedshiftRetryOptions {
 
 
 
+impl cfn_resources::CfnResource for RedshiftRetryOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val > 7200 as _ {
+            return Err(format!("Max validation failed on field 'duration_in_seconds'. {} is greater than 7200", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'duration_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes the retry behavior in case Kinesis Data Firehose is unable to deliver data     to the specified HTTP endpoint destination, or if it doesn't receive a valid acknowledgment     of receipt from the specified HTTP endpoint destination. Kinesis Firehose supports any     custom HTTP endpoint or HTTP endpoints owned by supported third-party service providers,     including Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2934,6 +4276,36 @@ pub struct RetryOptions {
 
 
 
+impl cfn_resources::CfnResource for RetryOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val > 7200 as _ {
+            return Err(format!("Max validation failed on field 'duration_in_seconds'. {} is greater than 7200", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'duration_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The S3DestinationConfiguration property type specifies an Amazon Simple     Storage Service (Amazon S3) destination to which Amazon Kinesis Data Firehose (Kinesis Data     Firehose) delivers data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3096,6 +4468,86 @@ impl Default for S3DestinationConfigurationCompressionFormatEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3DestinationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'bucket_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.buffering_hints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloud_watch_logging_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.error_output_prefix {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'error_output_prefix'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.error_output_prefix {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'error_output_prefix'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'prefix'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the schema to which you want Kinesis Data Firehose to configure your data     before it writes it to Amazon S3. This parameter is required if Enabled is set     to true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3219,6 +4671,116 @@ pub struct SchemaConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SchemaConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.catalog_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'catalog_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.catalog_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'catalog_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.region {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'region'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.region {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'region'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'version_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The serializer that you want Kinesis Data Firehose to use to convert data to the target     format before writing it to Amazon S3. Kinesis Data Firehose supports two types of     serializers: the ORC SerDe and the Parquet SerDe.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3252,6 +4814,24 @@ pub struct Serializer {
 
 
 
+impl cfn_resources::CfnResource for Serializer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.orc_ser_de.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.parquet_ser_de.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The SplunkDestinationConfiguration property type specifies the     configuration of a destination in Splunk for a Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3429,6 +5009,72 @@ impl Default for SplunkDestinationConfigurationS3BackupModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SplunkDestinationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_logging_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.hecacknowledgment_timeout_in_seconds {
+
+        if *the_val > 600 as _ {
+            return Err(format!("Max validation failed on field 'hecacknowledgment_timeout_in_seconds'. {} is greater than 600", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hecacknowledgment_timeout_in_seconds {
+
+        if *the_val < 180 as _ {
+            return Err(format!("Min validation failed on field 'hecacknowledgment_timeout_in_seconds'. {} is less than 180", the_val));
+        }
+
+        }
+        
+        let the_val = &self.hecendpoint;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'hecendpoint'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.hecendpoint;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'hecendpoint'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.hectoken;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'hectoken'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.hectoken;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'hectoken'. {} is less than 0", the_val.len()));
+        }
+
+        
+        self.processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The SplunkRetryOptions property type specifies retry behavior in case     Kinesis Data Firehose is unable to deliver documents to Splunk or if it doesn't receive an     acknowledgment from Splunk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3454,6 +5100,36 @@ pub struct SplunkRetryOptions {
 
 
 
+impl cfn_resources::CfnResource for SplunkRetryOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val > 7200 as _ {
+            return Err(format!("Max validation failed on field 'duration_in_seconds'. {} is greater than 7200", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.duration_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'duration_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -3491,6 +5167,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details of the VPC of the Amazon ES destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3541,3 +5231,18 @@ pub struct VpcConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

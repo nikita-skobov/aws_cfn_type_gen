@@ -142,8 +142,42 @@ impl cfn_resources::CfnResource for CfnModelCard {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.content.validate()?;
+
+        self.created_by.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.last_modified_by.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.model_card_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'model_card_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.model_card_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'model_card_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.security_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Additional information about the model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -189,6 +223,20 @@ pub struct AdditionalInformation {
 
 
 
+impl cfn_resources::CfnResource for AdditionalInformation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about how the model supports business goals.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -234,6 +282,20 @@ pub struct BusinessDetails {
 
 
 
+impl cfn_resources::CfnResource for BusinessDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Container property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -276,6 +338,20 @@ pub struct Container {
 
 
 
+impl cfn_resources::CfnResource for Container {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The content of the model card. It follows the model card json         schema.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -368,6 +444,32 @@ pub struct Content {
 
 
 
+impl cfn_resources::CfnResource for Content {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.additional_information.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.business_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.intended_uses.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.model_overview.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.model_package_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.training_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The evaluation details of the model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -449,6 +551,20 @@ pub struct EvaluationDetail {
 
 
 
+impl cfn_resources::CfnResource for EvaluationDetail {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Function details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -498,6 +614,20 @@ pub struct Function {
 
 
 
+impl cfn_resources::CfnResource for Function {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An overview of a model's inference environment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -519,6 +649,20 @@ pub struct InferenceEnvironment {
 
 
 
+impl cfn_resources::CfnResource for InferenceEnvironment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The InferenceSpecification property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -539,6 +683,20 @@ pub struct InferenceSpecification {
 
 
 
+impl cfn_resources::CfnResource for InferenceSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The intended uses of a model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -610,6 +768,20 @@ pub struct IntendedUses {
 
 
 
+impl cfn_resources::CfnResource for IntendedUses {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Metric data. The type determines the data types that you specify for         value, XAxisName and YAxisName. For       information about specifying values for metrics, see model card JSON         schema.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -693,6 +865,20 @@ pub struct MetricDataItems {
 
 
 
+impl cfn_resources::CfnResource for MetricDataItems {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A group of metric data that you use to initialize a metric group object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -730,6 +916,20 @@ pub struct MetricGroup {
 
 
 
+impl cfn_resources::CfnResource for MetricGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An overview about the model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -859,6 +1059,22 @@ pub struct ModelOverview {
 
 
 
+impl cfn_resources::CfnResource for ModelOverview {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.inference_environment.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ModelPackageCreator property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -879,6 +1095,20 @@ pub struct ModelPackageCreator {
 
 
 
+impl cfn_resources::CfnResource for ModelPackageCreator {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ModelPackageDetails property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1031,6 +1261,24 @@ pub struct ModelPackageDetails {
 
 
 
+impl cfn_resources::CfnResource for ModelPackageDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.created_by.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.inference_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The function that is optimized during model training.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1064,6 +1312,22 @@ pub struct ObjectiveFunction {
 
 
 
+impl cfn_resources::CfnResource for ObjectiveFunction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.function.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The security configuration used to protect model card data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1085,6 +1349,20 @@ pub struct SecurityConfig {
 
 
 
+impl cfn_resources::CfnResource for SecurityConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The SourceAlgorithm property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1116,6 +1394,20 @@ pub struct SourceAlgorithm {
 
 
 
+impl cfn_resources::CfnResource for SourceAlgorithm {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1153,6 +1445,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The training details of the model
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1198,6 +1504,24 @@ pub struct TrainingDetails {
 
 
 
+impl cfn_resources::CfnResource for TrainingDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.objective_function.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.training_job_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// SageMaker training image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1219,6 +1543,20 @@ pub struct TrainingEnvironment {
 
 
 
+impl cfn_resources::CfnResource for TrainingEnvironment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A hyper parameter that was configured in training the model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1252,6 +1590,20 @@ pub struct TrainingHyperParameter {
 
 
 
+impl cfn_resources::CfnResource for TrainingHyperParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The overview of a training job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1345,6 +1697,22 @@ pub struct TrainingJobDetails {
 
 
 
+impl cfn_resources::CfnResource for TrainingJobDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.training_environment.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A result from a SageMaker training job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1390,6 +1758,20 @@ pub struct TrainingMetric {
 
 
 
+impl cfn_resources::CfnResource for TrainingMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the user who created or modified an experiment, trial, trial    component, lineage group, project, or model card.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1434,3 +1816,18 @@ pub struct UserContext {
 }
 
 
+
+impl cfn_resources::CfnResource for UserContext {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

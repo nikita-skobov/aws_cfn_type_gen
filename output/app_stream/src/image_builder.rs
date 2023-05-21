@@ -198,8 +198,71 @@ impl cfn_resources::CfnResource for CfnImageBuilder {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_endpoints {
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'access_endpoints'. {} is greater than 4", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.appstream_agent_version {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'appstream_agent_version'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.appstream_agent_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'appstream_agent_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.display_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'display_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.domain_join_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.image_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'image_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.instance_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.vpc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an interface VPC endpoint (interface endpoint) that lets you create a private connection between the virtual private cloud (VPC) that you specify and AppStream 2.0. When you specify an interface endpoint for a stack, users of the stack can connect to AppStream 2.0 only through that endpoint. When you specify an interface endpoint for an image builder, administrators can connect to the image builder only through that endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -252,6 +315,27 @@ impl Default for AccessEndpointEndpointTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for AccessEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.vpce_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'vpce_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -287,6 +371,28 @@ pub struct DomainJoinInfo {
 
 
 
+impl cfn_resources::CfnResource for DomainJoinInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.organizational_unit_distinguished_name {
+
+        if the_val.len() > 2000 as _ {
+            return Err(format!("Max validation failed on field 'organizational_unit_distinguished_name'. {} is greater than 2000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -324,6 +430,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The VPC configuration for the image builder.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -358,3 +478,26 @@ pub struct VpcConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.security_group_ids {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

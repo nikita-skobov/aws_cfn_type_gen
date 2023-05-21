@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnStreamingDistribution {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.streaming_distribution_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A complex type that controls whether access logs are written for the streaming 			distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -87,6 +93,20 @@ pub struct Logging {
 
 
 
+impl cfn_resources::CfnResource for Logging {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about the Amazon S3 bucket from which you want 			CloudFront to get your media files for distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -128,6 +148,20 @@ pub struct S3Origin {
 
 
 
+impl cfn_resources::CfnResource for S3Origin {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The RTMP distribution's configuration information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -246,6 +280,26 @@ impl Default for StreamingDistributionConfigPriceClassEnum {
 }
 
 
+impl cfn_resources::CfnResource for StreamingDistributionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.logging.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_origin.validate()?;
+
+        self.trusted_signers.validate()?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -283,6 +337,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of AWS accounts whose public keys CloudFront can use to verify the signatures of 			signed URLs and signed cookies.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -315,3 +383,18 @@ pub struct TrustedSigners {
 }
 
 
+
+impl cfn_resources::CfnResource for TrustedSigners {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

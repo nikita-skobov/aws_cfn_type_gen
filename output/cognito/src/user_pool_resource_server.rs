@@ -84,8 +84,62 @@ impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.identifier;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'identifier'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.scopes {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'scopes'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A resource server scope.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -128,3 +182,46 @@ pub struct ResourceServerScopeType {
 }
 
 
+
+impl cfn_resources::CfnResource for ResourceServerScopeType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.scope_description;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'scope_description'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.scope_description;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'scope_description'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.scope_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'scope_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.scope_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'scope_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -118,8 +118,36 @@ impl cfn_resources::CfnResource for CfnConfigurationTemplate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.source_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ConfigurationOptionSetting property type specifies an option for an AWS Elastic Beanstalk configuration template.
 ///
@@ -185,6 +213,36 @@ pub struct ConfigurationOptionSetting {
 
 
 
+impl cfn_resources::CfnResource for ConfigurationOptionSetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.resource_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'resource_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An AWS Elastic Beanstalk configuration template to base a new one on. You can use it to    define a AWS::ElasticBeanstalk::ConfigurationTemplate resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -225,3 +283,46 @@ pub struct SourceConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for SourceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.template_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'template_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.template_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'template_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

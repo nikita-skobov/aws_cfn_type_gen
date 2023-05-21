@@ -74,8 +74,38 @@ impl cfn_resources::CfnResource for CfnInput {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_definition.validate()?;
+
+        if let Some(the_val) = &self.input_description {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'input_description'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.input_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'input_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.input_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'input_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload. Those attributes (and their paired values) specified here are    available for use in the condition expressions used by detectors.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -105,6 +135,34 @@ pub struct Attribute {
 
 
 
+impl cfn_resources::CfnResource for Attribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.json_path;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'json_path'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.json_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'json_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The definition of the input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -128,6 +186,27 @@ pub struct InputDefinition {
 
 
 
+impl cfn_resources::CfnResource for InputDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attributes;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'attributes'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -164,3 +243,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

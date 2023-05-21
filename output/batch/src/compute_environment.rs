@@ -200,8 +200,18 @@ impl cfn_resources::CfnResource for CfnComputeEnvironment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.compute_resources.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.eks_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.update_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Details about the compute resources managed by the compute environment. This parameter is required for managed  compute environments. For more information, see Compute Environments in the         AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -559,6 +569,22 @@ impl Default for ComputeResourcesTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ComputeResources {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.launch_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides information used to select Amazon Machine Images (AMIs) for instances in the  compute environment. If Ec2Configuration isn't specified, the default is   ECS_AL2 (Amazon Linux 2).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -620,6 +646,66 @@ pub struct Ec2ConfigurationObject {
 
 
 
+impl cfn_resources::CfnResource for Ec2ConfigurationObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.image_id_override {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'image_id_override'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.image_id_override {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'image_id_override'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.image_kubernetes_version {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'image_kubernetes_version'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.image_kubernetes_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'image_kubernetes_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.image_type;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'image_type'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.image_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'image_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration for the Amazon EKS cluster that supports the AWS Batch compute environment. The  cluster must exist before the compute environment can be created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -653,6 +739,20 @@ pub struct EksConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EksConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a launch template that's associated with a compute resource. You  must specify either the launch template ID or launch template name in the request, but not  both.
 ///
@@ -706,6 +806,20 @@ pub struct LaunchTemplateSpecification {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplateSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the infrastructure update policy for the compute environment. For more information  about infrastructure updates, see Updating compute environments in the           AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -738,3 +852,18 @@ pub struct UpdatePolicy {
 }
 
 
+
+impl cfn_resources::CfnResource for UpdatePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

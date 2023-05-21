@@ -160,8 +160,16 @@ impl cfn_resources::CfnResource for CfnIdentityPool {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.cognito_streams.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.push_sync.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// CognitoIdentityProvider is a property of the AWS::Cognito::IdentityPool resource that represents an Amazon Cognito user pool and    its client ID.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -211,6 +219,20 @@ pub struct CognitoIdentityProvider {
 
 
 
+impl cfn_resources::CfnResource for CognitoIdentityProvider {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// CognitoStreams is a property of the AWS::Cognito::IdentityPool resource that defines configuration options for Amazon    Cognito streams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -256,6 +278,20 @@ pub struct CognitoStreams {
 
 
 
+impl cfn_resources::CfnResource for CognitoStreams {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// PushSync is a property of the AWS::Cognito::IdentityPool resource that defines the configuration options to be    applied to an Amazon Cognito identity pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -288,3 +324,18 @@ pub struct PushSync {
 }
 
 
+
+impl cfn_resources::CfnResource for PushSync {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

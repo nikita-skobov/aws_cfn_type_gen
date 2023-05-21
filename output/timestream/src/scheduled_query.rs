@@ -142,8 +142,20 @@ impl cfn_resources::CfnResource for CfnScheduledQuery {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.error_report_configuration.validate()?;
+
+        self.notification_configuration.validate()?;
+
+        self.schedule_configuration.validate()?;
+
+        self.target_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This type is used to map column(s) from the query result to a dimension in the destination    table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -177,6 +189,20 @@ pub struct DimensionMapping {
 
 
 
+impl cfn_resources::CfnResource for DimensionMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration required for error reporting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -198,6 +224,22 @@ pub struct ErrorReportConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ErrorReportConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// MixedMeasureMappings are mappings that can be used to ingest data into a mixture of narrow    and multi measures in the derived table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -267,6 +309,20 @@ pub struct MixedMeasureMapping {
 
 
 
+impl cfn_resources::CfnResource for MixedMeasureMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Attribute mapping for MULTI value measures.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -312,6 +368,20 @@ pub struct MultiMeasureAttributeMapping {
 
 
 
+impl cfn_resources::CfnResource for MultiMeasureAttributeMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Only one of MixedMeasureMappings or MultiMeasureMappings is to be provided.    MultiMeasureMappings can be used to ingest data as multi measures in the derived table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -345,6 +415,20 @@ pub struct MultiMeasureMappings {
 
 
 
+impl cfn_resources::CfnResource for MultiMeasureMappings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Notification configuration for a scheduled query. A notification is sent by Timestream    when a scheduled query is created, its state is updated or when it is deleted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -366,6 +450,22 @@ pub struct NotificationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NotificationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sns_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Details on S3 location for error reports that result from running a query.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -444,6 +544,50 @@ impl Default for S3ConfigurationEncryptionOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3Configuration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.object_key_prefix {
+
+        if the_val.len() > 928 as _ {
+            return Err(format!("Max validation failed on field 'object_key_prefix'. {} is greater than 928", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.object_key_prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'object_key_prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration of the schedule of the query.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -465,6 +609,20 @@ pub struct ScheduleConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ScheduleConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details on SNS that are required to send the notification.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -486,6 +644,20 @@ pub struct SnsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SnsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -523,6 +695,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration used for writing the output of a query.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -544,6 +730,22 @@ pub struct TargetConfiguration {
 
 
 
+impl cfn_resources::CfnResource for TargetConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.timestream_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Configuration to write data into Timestream database and table. This configuration allows    the user to map the query result select columns into the destination table columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -636,3 +838,20 @@ pub struct TimestreamConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for TimestreamConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.multi_measure_mappings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

@@ -174,8 +174,30 @@ impl cfn_resources::CfnResource for CfnIndex {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.capacity_units.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.server_side_encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies additional capacity units configured for your Enterprise Edition index. You can    add and remove capacity units to fit your usage requirements.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -217,6 +239,34 @@ pub struct CapacityUnitsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CapacityUnitsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.query_capacity_units;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'query_capacity_units'. {} is less than 0", the_val));
+        }
+
+        
+        let the_val = &self.storage_capacity_units;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'storage_capacity_units'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the properties, such as relevance tuning and searchability, of an index       field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -307,6 +357,38 @@ impl Default for DocumentMetadataConfigurationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DocumentMetadataConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 30", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.relevance.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.search.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for the JSON token type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -348,6 +430,48 @@ pub struct JsonTokenTypeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for JsonTokenTypeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.group_attribute_field;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'group_attribute_field'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.group_attribute_field;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'group_attribute_field'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_name_attribute_field;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'user_name_attribute_field'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_name_attribute_field;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_name_attribute_field'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for the JWT token type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -498,6 +622,116 @@ impl Default for JwtTokenTypeConfigurationKeyLocationEnum {
 }
 
 
+impl cfn_resources::CfnResource for JwtTokenTypeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.claim_regex {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'claim_regex'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.claim_regex {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'claim_regex'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.group_attribute_field {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'group_attribute_field'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.group_attribute_field {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'group_attribute_field'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.issuer {
+
+        if the_val.len() > 65 as _ {
+            return Err(format!("Max validation failed on field 'issuer'. {} is greater than 65", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.issuer {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'issuer'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secret_manager_arn {
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'secret_manager_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secret_manager_arn {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'secret_manager_arn'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.url {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'url'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.url {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'url'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_name_attribute_field {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'user_name_attribute_field'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_name_attribute_field {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_name_attribute_field'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides information for tuning the relevance of a field in a search. When a query       includes terms that match the field, the results are given a boost in the response based       on these tuning parameters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -608,6 +842,52 @@ impl Default for RelevanceRankOrderEnum {
 }
 
 
+impl cfn_resources::CfnResource for Relevance {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.duration {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'duration'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.duration {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'duration'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.importance {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'importance'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.importance {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'importance'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides information about how a custom index field is used during a search.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -665,6 +945,20 @@ pub struct Search {
 
 
 
+impl cfn_resources::CfnResource for Search {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides the identifier of the AWS KMS customer master key (CMK)       used to encrypt data indexed by Amazon Kendra. We suggest that you       use a CMK from your account to help secure your index. Amazon Kendra       doesn't support asymmetric CMKs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -690,6 +984,36 @@ pub struct ServerSideEncryptionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ServerSideEncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -727,6 +1051,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for a token.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -760,6 +1098,24 @@ pub struct UserTokenConfiguration {
 
 
 
+impl cfn_resources::CfnResource for UserTokenConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.json_token_type_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.jwt_token_type_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies a key-value pair of the search boost value       for a document when the key is part of the metadata of a       document.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -792,3 +1148,18 @@ pub struct ValueImportanceItem {
 }
 
 
+
+impl cfn_resources::CfnResource for ValueImportanceItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

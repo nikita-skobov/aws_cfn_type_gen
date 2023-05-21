@@ -100,8 +100,12 @@ impl cfn_resources::CfnResource for CfnConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A key-value pair to associate with the configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -134,3 +138,18 @@ pub struct TagsEntry {
 }
 
 
+
+impl cfn_resources::CfnResource for TagsEntry {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

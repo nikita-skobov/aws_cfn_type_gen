@@ -80,8 +80,14 @@ impl cfn_resources::CfnResource for CfnGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.initial_version.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A group version in AWS IoT Greengrass, 		   which references of a core definition version,      device definition version, subscription definition version, and other version types 				 that contain the components you want to deploy to a Greengrass core device. 		The group version must reference a core definition version that contains one core. 		Other version types are optionally included, depending on your business need.
 ///
@@ -178,3 +184,18 @@ pub struct GroupVersion {
 }
 
 
+
+impl cfn_resources::CfnResource for GroupVersion {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

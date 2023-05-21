@@ -234,8 +234,50 @@ impl cfn_resources::CfnResource for CfnDomain {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.advanced_security_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cluster_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cognito_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.domain_endpoint_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ebsoptions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_at_rest_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.engine_version {
+
+        if the_val.len() > 18 as _ {
+            return Err(format!("Max validation failed on field 'engine_version'. {} is greater than 18", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.engine_version {
+
+        if the_val.len() < 14 as _ {
+            return Err(format!("Min validation failed on field 'engine_version'. {} is less than 14", the_val.len()));
+        }
+
+        }
+        
+        self.node_to_node_encryption_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.off_peak_window_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snapshot_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.software_update_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpcoptions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies options for fine-grained access control.
 ///
@@ -316,6 +358,24 @@ pub struct AdvancedSecurityOptionsInput {
 
 
 
+impl cfn_resources::CfnResource for AdvancedSecurityOptionsInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.master_user_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.samloptions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The cluster configuration for the OpenSearch Service domain. You can specify options such    as the instance type and the number of instances. For more information, see Creating and managing Amazon OpenSearch Service domains in the Amazon OpenSearch Service     Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1256,6 +1316,22 @@ impl Default for ClusterConfigWarmTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ClusterConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.zone_awareness_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configures OpenSearch Service to use Amazon Cognito authentication for OpenSearch    Dashboards.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1337,6 +1413,68 @@ pub struct CognitoOptions {
 
 
 
+impl cfn_resources::CfnResource for CognitoOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.identity_pool_id {
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'identity_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.identity_pool_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'identity_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_pool_id {
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_pool_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies additional options for the domain endpoint, such as whether to require HTTPS for all traffic or whether to use a custom endpoint rather than the default endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1430,6 +1568,36 @@ impl Default for DomainEndpointOptionsTLSSecurityPolicyEnum {
 }
 
 
+impl cfn_resources::CfnResource for DomainEndpointOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_endpoint {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'custom_endpoint'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_endpoint {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'custom_endpoint'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configurations of Amazon Elastic Block Store (Amazon EBS) volumes that are attached to    data nodes in the OpenSearch Service domain. For more information, see EBS volume size limits in the Amazon OpenSearch Service Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1528,6 +1696,20 @@ impl Default for EBSOptionsVolumeTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EBSOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Whether the domain should encrypt data at rest, and if so, the AWS Key Management Service key to use.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1569,6 +1751,36 @@ pub struct EncryptionAtRestOptions {
 
 
 
+impl cfn_resources::CfnResource for EncryptionAtRestOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The SAML Identity Provider's information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1610,6 +1822,48 @@ pub struct Idp {
 
 
 
+impl cfn_resources::CfnResource for Idp {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.entity_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'entity_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.entity_id;
+
+        if the_val.len() < 8 as _ {
+            return Err(format!("Min validation failed on field 'entity_id'. {} is less than 8", the_val.len()));
+        }
+
+        
+        let the_val = &self.metadata_content;
+
+        if the_val.len() > 1048576 as _ {
+            return Err(format!("Max validation failed on field 'metadata_content'. {} is greater than 1048576", the_val.len()));
+        }
+
+        
+        let the_val = &self.metadata_content;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metadata_content'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies whether the OpenSearch Service domain publishes application, search slow logs,    or index slow logs to Amazon CloudWatch. Each option must be an object of name     SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS,     INDEX_SLOW_LOGS, or AUDIT_LOGS depending on the type of logs you    want to publish. For the full syntax, see the examples.
 ///
@@ -1647,6 +1901,20 @@ pub struct LogPublishingOption {
 
 
 
+impl cfn_resources::CfnResource for LogPublishingOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies information about the master user.
 ///
@@ -1707,6 +1975,52 @@ pub struct MasterUserOptions {
 
 
 
+impl cfn_resources::CfnResource for MasterUserOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.master_user_name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'master_user_name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.master_user_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'master_user_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.master_user_password {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'master_user_password'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.master_user_password {
+
+        if the_val.len() < 8 as _ {
+            return Err(format!("Min validation failed on field 'master_user_password'. {} is less than 8", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies options for node-to-node encryption.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1728,6 +2042,20 @@ pub struct NodeToNodeEncryptionOptions {
 
 
 
+impl cfn_resources::CfnResource for NodeToNodeEncryptionOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A custom 10-hour, low-traffic window during which OpenSearch Service can perform mandatory configuration changes on the domain.    These actions can include scheduled service software updates and blue/green Auto-Tune enhancements. OpenSearch Service will    schedule these actions during the window that you specify. If you don't specify a window start time, it defaults to 10:00 P.M. local time.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1749,6 +2077,22 @@ pub struct OffPeakWindow {
 
 
 
+impl cfn_resources::CfnResource for OffPeakWindow {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.window_start_time.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Off-peak window settings for the domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1782,6 +2126,22 @@ pub struct OffPeakWindowOptions {
 
 
 
+impl cfn_resources::CfnResource for OffPeakWindowOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.off_peak_window.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Container for information about the SAML configuration for OpenSearch Dashboards.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1885,6 +2245,54 @@ pub struct SAMLOptions {
 
 
 
+impl cfn_resources::CfnResource for SAMLOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.idp.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.master_backend_role {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'master_backend_role'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.master_backend_role {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'master_backend_role'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.master_user_name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'master_user_name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.master_user_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'master_user_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The current status of the service software for an Amazon OpenSearch Service domain. For more  information, see Service software updates in   Amazon OpenSearch Service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2023,6 +2431,20 @@ impl Default for ServiceSoftwareOptionsUpdateStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ServiceSoftwareOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// DEPRECATED. This setting is only relevant to domains    running legacy Elasticsearch OSS versions earlier than 5.3. It does not apply to OpenSearch    domains.
 ///
@@ -2046,6 +2468,20 @@ pub struct SnapshotOptions {
 
 
 
+impl cfn_resources::CfnResource for SnapshotOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Options for configuring service software updates for a domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2067,6 +2503,20 @@ pub struct SoftwareUpdateOptions {
 
 
 
+impl cfn_resources::CfnResource for SoftwareUpdateOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -2104,6 +2554,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The virtual private cloud (VPC) configuration for the OpenSearch Service domain. For more    information, see Launching your Amazon OpenSearch     Service domains using a VPC in the Amazon OpenSearch Service Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2139,6 +2603,20 @@ pub struct VPCOptions {
 
 
 
+impl cfn_resources::CfnResource for VPCOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A custom start time for the off-peak window, in Coordinated Universal Time (UTC). The window length will always be 10 hours, so you can't    specify an end time. For example, if you specify 11:00 P.M. UTC as a start time, the end time will automatically be set to 9:00 A.M.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2172,6 +2650,20 @@ pub struct WindowStartTime {
 
 
 
+impl cfn_resources::CfnResource for WindowStartTime {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies zone awareness configuration options. Only use if     ZoneAwarenessEnabled is true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2194,3 +2686,18 @@ pub struct ZoneAwarenessConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for ZoneAwarenessConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

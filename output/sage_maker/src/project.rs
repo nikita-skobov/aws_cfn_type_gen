@@ -76,8 +76,36 @@ impl cfn_resources::CfnResource for CfnProject {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.project_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'project_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.project_name;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'project_name'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.project_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'project_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.service_catalog_provisioning_details.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A key value pair used when you provision a project as a service catalog product. For       information, see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -121,6 +149,41 @@ pub struct ProvisioningParameter {
 
 
 
+impl cfn_resources::CfnResource for ProvisioningParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Details of a provisioned service catalog product. For information about service catalog,       see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -164,6 +227,36 @@ pub struct ServiceCatalogProvisionedProductDetails {
 
 
 
+impl cfn_resources::CfnResource for ServiceCatalogProvisionedProductDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.provisioned_product_id {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'provisioned_product_id'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.provisioned_product_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'provisioned_product_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Details that you specify to provision a service catalog product. For information about       service catalog, see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -239,6 +332,66 @@ pub struct ServiceCatalogProvisioningDetails {
 
 
 
+impl cfn_resources::CfnResource for ServiceCatalogProvisioningDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.path_id {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'path_id'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.product_id;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'product_id'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.product_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'product_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.provisioning_artifact_id {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.provisioning_artifact_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'provisioning_artifact_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -275,3 +428,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -326,8 +326,102 @@ impl cfn_resources::CfnResource for CfnAssociation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.automation_target_parameter_name {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'automation_target_parameter_name'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.automation_target_parameter_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'automation_target_parameter_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_concurrency {
+
+        if the_val.len() > 7 as _ {
+            return Err(format!("Max validation failed on field 'max_concurrency'. {} is greater than 7", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_concurrency {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_concurrency'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_errors {
+
+        if the_val.len() > 7 as _ {
+            return Err(format!("Max validation failed on field 'max_errors'. {} is greater than 7", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_errors {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_errors'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.output_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.schedule_expression {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'schedule_expression'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.schedule_expression {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'schedule_expression'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.schedule_offset {
+
+        if *the_val > 6 as _ {
+            return Err(format!("Max validation failed on field 'schedule_offset'. {} is greater than 6", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.schedule_offset {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'schedule_offset'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.targets {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'targets'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// InstanceAssociationOutputLocation is a property of the AWS::SSM::Association resource that specifies an Amazon S3 bucket where you want to    store the results of this association request.
 ///
@@ -351,6 +445,22 @@ pub struct InstanceAssociationOutputLocation {
 
 
 
+impl cfn_resources::CfnResource for InstanceAssociationOutputLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// S3OutputLocation is a property of the AWS::SSM::Association resource that specifies an Amazon S3 bucket where you want to    store the results of this association request.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -406,6 +516,60 @@ pub struct S3OutputLocation {
 
 
 
+impl cfn_resources::CfnResource for S3OutputLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.output_s3_bucket_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'output_s3_bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.output_s3_bucket_name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'output_s3_bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.output_s3_key_prefix {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'output_s3_key_prefix'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.output_s3_region {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'output_s3_region'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.output_s3_region {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'output_s3_region'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Target is a property of the AWS::SSM::Association resource that specifies the targets for an SSM document in    Systems Manager. You can target all instances in an AWS account by specifying the InstanceIds key with a value of *. To view a JSON and a YAML example that targets all instances, see "Create an association for all managed instances in an AWS account" on the Examples page.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -448,3 +612,39 @@ pub struct Target {
 }
 
 
+
+impl cfn_resources::CfnResource for Target {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 163 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 163", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.values;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

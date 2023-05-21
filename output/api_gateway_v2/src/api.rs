@@ -220,8 +220,16 @@ impl cfn_resources::CfnResource for CfnApi {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.body_s3_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cors_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The BodyS3Location property specifies an S3 location from which to          import an OpenAPI definition. Supported only for HTTP APIs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -279,6 +287,20 @@ pub struct BodyS3Location {
 
 
 
+impl cfn_resources::CfnResource for BodyS3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Cors property specifies a CORS configuration for an API.          Supported only for HTTP APIs. See Configuring CORS for more information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -359,3 +381,18 @@ pub struct Cors {
 }
 
 
+
+impl cfn_resources::CfnResource for Cors {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

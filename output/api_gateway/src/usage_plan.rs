@@ -90,8 +90,16 @@ impl cfn_resources::CfnResource for CfnUsagePlan {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.quota.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.throttle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// API stage name of the associated API stage in a usage plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -137,6 +145,20 @@ pub struct ApiStage {
 
 
 
+impl cfn_resources::CfnResource for ApiStage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// QuotaSettings is a property of the AWS::ApiGateway::UsagePlan resource that specifies a target for the maximum number of requests users can make to your REST APIs.
 ///
@@ -209,6 +231,20 @@ impl Default for QuotaSettingsPeriodEnum {
 }
 
 
+impl cfn_resources::CfnResource for QuotaSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -246,6 +282,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// ThrottleSettings is a property of the AWS::ApiGateway::UsagePlan resource that specifies the overall request rate (average requests per second) and burst capacity when users call your REST APIs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -278,3 +328,18 @@ pub struct ThrottleSettings {
 }
 
 
+
+impl cfn_resources::CfnResource for ThrottleSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

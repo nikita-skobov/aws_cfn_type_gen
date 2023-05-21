@@ -52,8 +52,16 @@ impl cfn_resources::CfnResource for CfnTopicRuleDestination {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.http_url_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// HTTP URL destination properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -75,6 +83,20 @@ pub struct HttpUrlDestinationSummary {
 
 
 
+impl cfn_resources::CfnResource for HttpUrlDestinationSummary {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The properties of a virtual private cloud (VPC) destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -131,3 +153,18 @@ pub struct VpcDestinationProperties {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcDestinationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

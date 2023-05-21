@@ -30,8 +30,14 @@ impl cfn_resources::CfnResource for CfnKeyGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.key_group_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A key group configuration.
 ///
@@ -78,3 +84,18 @@ pub struct KeyGroupConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for KeyGroupConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

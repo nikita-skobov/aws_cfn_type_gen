@@ -222,8 +222,112 @@ impl cfn_resources::CfnResource for CfnCanary {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.artifact_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.artifact_s3_location;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'artifact_s3_location'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.artifact_s3_location;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'artifact_s3_location'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.code.validate()?;
+
+        let the_val = &self.execution_role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'execution_role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.execution_role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'execution_role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.failure_retention_period {
+
+        if *the_val > 1024 as _ {
+            return Err(format!("Max validation failed on field 'failure_retention_period'. {} is greater than 1024", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.failure_retention_period {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'failure_retention_period'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 21 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 21", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.run_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.runtime_version;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'runtime_version'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.runtime_version;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'runtime_version'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.schedule.validate()?;
+
+        if let Some(the_val) = &self.success_retention_period {
+
+        if *the_val > 1024 as _ {
+            return Err(format!("Max validation failed on field 'success_retention_period'. {} is greater than 1024", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.success_retention_period {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'success_retention_period'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.vpcconfig.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.visual_reference.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that contains the configuration for canary artifacts,    including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -244,6 +348,22 @@ pub struct ArtifactConfig {
 
 
 
+impl cfn_resources::CfnResource for ArtifactConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure representing a screenshot that is used as a baseline during visual monitoring comparisons made by the canary.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -275,6 +395,20 @@ pub struct BaseScreenshot {
 
 
 
+impl cfn_resources::CfnResource for BaseScreenshot {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use this structure to input your script code for the canary. This structure contains the     Lambda handler with the location where the canary should start running the script. If the     script is stored in an S3 bucket, the bucket name, key, and version are also included. If     the script is passed into the canary directly, the script code is contained in the value     of Script.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -378,6 +512,98 @@ pub struct Code {
 
 
 
+impl cfn_resources::CfnResource for Code {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.handler;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'handler'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.handler;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'handler'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.s3_bucket {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_bucket {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_key {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_key'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_object_version {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_object_version'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_object_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_object_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_location_arn {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'source_location_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_location_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_location_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that contains input information for a canary run. This structure     is required.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -450,6 +676,52 @@ pub struct RunConfig {
 
 
 
+impl cfn_resources::CfnResource for RunConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.memory_in_mb {
+
+        if *the_val > 3008 as _ {
+            return Err(format!("Max validation failed on field 'memory_in_mb'. {} is greater than 3008", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.memory_in_mb {
+
+        if *the_val < 960 as _ {
+            return Err(format!("Min validation failed on field 'memory_in_mb'. {} is less than 960", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout_in_seconds {
+
+        if *the_val > 840 as _ {
+            return Err(format!("Max validation failed on field 'timeout_in_seconds'. {} is greater than 840", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout_in_seconds {
+
+        if *the_val < 3 as _ {
+            return Err(format!("Min validation failed on field 'timeout_in_seconds'. {} is less than 3", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that contains the configuration      of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.      Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3      or later. For more information, see     Encrypting canary artifacts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -484,6 +756,20 @@ pub struct S3Encryption {
 
 
 
+impl cfn_resources::CfnResource for S3Encryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure specifies how often a canary is to make runs and the date and time     when it should stop making runs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -529,6 +815,34 @@ pub struct Schedule {
 
 
 
+impl cfn_resources::CfnResource for Schedule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.expression;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -566,6 +880,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// If this canary is to test an endpoint in a VPC, this structure contains    information about the subnet and security groups of the VPC endpoint.    For more information, see      Running a Canary in a VPC.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -615,6 +943,34 @@ pub struct VPCConfig {
 
 
 
+impl cfn_resources::CfnResource for VPCConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.security_group_ids;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnet_ids;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Defines the screenshots to use as the baseline for comparisons during visual monitoring comparisons during future runs of this canary. If you omit this      parameter, no changes are made to any baseline screenshots that the canary might be using already.
 ///
@@ -647,3 +1003,18 @@ pub struct VisualReference {
 }
 
 
+
+impl cfn_resources::CfnResource for VisualReference {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -78,8 +78,12 @@ impl cfn_resources::CfnResource for CfnRuleset {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Selector of a column from a dataset for profile job configuration.       One selector includes either a column name or a regular expression.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -121,6 +125,52 @@ pub struct ColumnSelector {
 
 
 
+impl cfn_resources::CfnResource for ColumnSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'regex'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'regex'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents a single data quality requirement that should be validated in the       scope of this dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -202,6 +252,22 @@ pub struct Rule {
 
 
 
+impl cfn_resources::CfnResource for Rule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.threshold.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A key-value pair to associate an expression's substitution variable names with their       values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +301,20 @@ pub struct SubstitutionValue {
 
 
 
+impl cfn_resources::CfnResource for SubstitutionValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -272,6 +352,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The threshold used with a non-aggregate check expression. The non-aggregate check       expression will be applied to each row in a specific column. Then the threshold will be       used to determine whether the validation succeeds.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -316,3 +410,18 @@ pub struct Threshold {
 }
 
 
+
+impl cfn_resources::CfnResource for Threshold {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

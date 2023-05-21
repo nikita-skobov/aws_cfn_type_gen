@@ -325,8 +325,16 @@ impl cfn_resources::CfnResource for CfnEnvironment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.logging_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The type of Apache Airflow logs to send to CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -396,6 +404,30 @@ pub struct LoggingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LoggingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dag_processing_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scheduler_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.task_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.webserver_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.worker_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines the type of logs to send for the Apache Airflow log type (e.g. DagProcessingLogs).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -443,6 +475,20 @@ pub struct ModuleLoggingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ModuleLoggingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The VPC networking components used to secure and enable network traffic between the AWS resources for your environment. To learn more, see About networking on Amazon MWAA.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -475,3 +521,18 @@ pub struct NetworkConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

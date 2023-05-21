@@ -404,8 +404,16 @@ impl cfn_resources::CfnResource for CfnAutoScalingGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.launch_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mixed_instances_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// AcceleratorCountRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of accelerators for an instance type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -443,6 +451,36 @@ pub struct AcceleratorCountRequest {
 
 
 
+impl cfn_resources::CfnResource for AcceleratorCountRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// AcceleratorTotalMemoryMiBRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum total memory size for the accelerators for an instance type,    in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -480,6 +518,36 @@ pub struct AcceleratorTotalMemoryMiBRequest {
 
 
 
+impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// BaselineEbsBandwidthMbpsRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum baseline bandwidth performance for an instance type, in    Mbps.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -517,6 +585,36 @@ pub struct BaselineEbsBandwidthMbpsRequest {
 
 
 
+impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The attributes for the instance types for a mixed instances policy. Amazon EC2 Auto    Scaling uses your specified requirements to identify instance types. Then, it uses your    On-Demand and Spot allocation strategies to launch instances from these instance types.
 ///
@@ -967,6 +1065,70 @@ impl Default for InstanceRequirementsLocalStorageEnum {
 }
 
 
+impl cfn_resources::CfnResource for InstanceRequirements {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.accelerator_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.accelerator_total_memory_mi_b.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.allowed_instance_types {
+
+        if the_val.len() > 400 as _ {
+            return Err(format!("Max validation failed on field 'allowed_instance_types'. {} is greater than 400", the_val.len()));
+        }
+
+        }
+        
+        self.baseline_ebs_bandwidth_mbps.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.excluded_instance_types {
+
+        if the_val.len() > 400 as _ {
+            return Err(format!("Max validation failed on field 'excluded_instance_types'. {} is greater than 400", the_val.len()));
+        }
+
+        }
+        
+        self.memory_gi_bper_vcpu.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.memory_mi_b.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_bandwidth_gbps.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_interface_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.on_demand_max_price_percentage_over_lowest_price {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'on_demand_max_price_percentage_over_lowest_price'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.spot_max_price_percentage_over_lowest_price {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'spot_max_price_percentage_over_lowest_price'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.total_local_storage_gb.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vcpu_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use this structure to specify the distribution of On-Demand Instances and Spot Instances    and the allocation strategies used to fulfill On-Demand and Spot capacities for a mixed    instances policy.
 ///
@@ -1076,6 +1238,20 @@ pub struct InstancesDistribution {
 
 
 
+impl cfn_resources::CfnResource for InstancesDistribution {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use this structure to specify the launch templates and instance types (overrides) for a    mixed instances policy.
 ///
@@ -1097,6 +1273,22 @@ pub struct LaunchTemplate {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.launch_template_specification.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Use this structure to let Amazon EC2 Auto Scaling do the following when the Auto Scaling    group has a mixed instances policy:
 ///
@@ -1172,6 +1364,24 @@ pub struct LaunchTemplateOverrides {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplateOverrides {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.instance_requirements.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.launch_template_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies a launch template to use when provisioning EC2 instances for an Auto Scaling    group.
 ///
@@ -1233,6 +1443,20 @@ pub struct LaunchTemplateSpecification {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplateSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// LifecycleHookSpecification specifies a lifecycle hook for the     LifecycleHookSpecificationList property of the AWS::AutoScaling::AutoScalingGroup resource. A lifecycle hook specifies actions to    perform when Amazon EC2 Auto Scaling launches or terminates instances.
 ///
@@ -1346,6 +1570,50 @@ pub struct LifecycleHookSpecification {
 
 
 
+impl cfn_resources::CfnResource for LifecycleHookSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.lifecycle_hook_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'lifecycle_hook_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.lifecycle_hook_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'lifecycle_hook_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.notification_metadata {
+
+        if the_val.len() > 1023 as _ {
+            return Err(format!("Max validation failed on field 'notification_metadata'. {} is greater than 1023", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.notification_metadata {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'notification_metadata'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// MemoryGiBPerVCpuRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum amount of memory per vCPU for an instance type, in    GiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1379,6 +1647,20 @@ pub struct MemoryGiBPerVCpuRequest {
 
 
 
+impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// MemoryMiBRequest is a property of the InstanceRequirements    property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum instance memory size for an instance type, in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1416,6 +1698,36 @@ pub struct MemoryMiBRequest {
 
 
 
+impl cfn_resources::CfnResource for MemoryMiBRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// MetricsCollection is a property of the AWS::AutoScaling::AutoScalingGroup resource that describes the group metrics that    an Amazon EC2 Auto Scaling group sends to Amazon CloudWatch. These metrics describe the group    rather than any of its instances.
 ///
@@ -1459,6 +1771,20 @@ pub struct MetricsCollection {
 
 
 
+impl cfn_resources::CfnResource for MetricsCollection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use this structure to launch multiple instance types and On-Demand Instances and Spot    Instances within a single Auto Scaling group.
 ///
@@ -1502,6 +1828,24 @@ pub struct MixedInstancesPolicy {
 
 
 
+impl cfn_resources::CfnResource for MixedInstancesPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.instances_distribution.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.launch_template.validate()?;
+
+        Ok(())
+    }
+}
 
 /// NetworkBandwidthGbpsRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum network bandwidth for an instance type, in Gbps.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1535,6 +1879,20 @@ pub struct NetworkBandwidthGbpsRequest {
 
 
 
+impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// NetworkInterfaceCountRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of network interfaces for an instance type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1572,6 +1930,36 @@ pub struct NetworkInterfaceCountRequest {
 
 
 
+impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that specifies an Amazon SNS notification configuration for the     NotificationConfigurations property of the AWS::AutoScaling::AutoScalingGroup resource.
 ///
@@ -1613,6 +2001,20 @@ pub struct NotificationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NotificationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that specifies a tag for the Tags property of AWS::AutoScaling::AutoScalingGroup resource.
 ///
@@ -1674,6 +2076,48 @@ pub struct TagProperty {
 
 
 
+impl cfn_resources::CfnResource for TagProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// TotalLocalStorageGBRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum total local storage size for an instance type, in GB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1707,6 +2151,20 @@ pub struct TotalLocalStorageGBRequest {
 
 
 
+impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// VCpuCountRequest is a property of the InstanceRequirements    property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of vCPUs for an instance type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1743,3 +2201,34 @@ pub struct VCpuCountRequest {
 }
 
 
+
+impl cfn_resources::CfnResource for VCpuCountRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

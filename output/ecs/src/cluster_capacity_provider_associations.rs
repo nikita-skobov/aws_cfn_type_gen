@@ -52,8 +52,12 @@ impl cfn_resources::CfnResource for CfnClusterCapacityProviderAssociations {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The CapacityProviderStrategy property specifies the details of the default capacity provider  strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider  strategy specified, the default capacity provider strategy is used.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -102,3 +106,18 @@ pub struct CapacityProviderStrategy {
 }
 
 
+
+impl cfn_resources::CfnResource for CapacityProviderStrategy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

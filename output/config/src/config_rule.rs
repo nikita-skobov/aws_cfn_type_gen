@@ -155,8 +155,48 @@ impl cfn_resources::CfnResource for CfnConfigRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.config_rule_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'config_rule_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.config_rule_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'config_rule_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.scope.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Provides the runtime system, policy definition, and whether debug logging enabled. You can 			specify the following CustomPolicyDetails parameter values 			only 			for AWS Config Custom Policy rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -212,6 +252,52 @@ pub struct CustomPolicyDetails {
 
 
 
+impl cfn_resources::CfnResource for CustomPolicyDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.policy_runtime {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'policy_runtime'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.policy_runtime {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'policy_runtime'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.policy_text {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'policy_text'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.policy_text {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'policy_text'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Defines which resources trigger an evaluation for an AWS Config 			rule. The scope can include one or more resource types, a 			combination of a tag key and value, or a combination of one resource 			type and one resource ID. Specify a scope to constrain which 			resources trigger an evaluation for a rule. Otherwise, evaluations 			for the rule are triggered when any resource in your recording group 			changes in configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -283,6 +369,76 @@ pub struct Scope {
 
 
 
+impl cfn_resources::CfnResource for Scope {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.compliance_resource_id {
+
+        if the_val.len() > 768 as _ {
+            return Err(format!("Max validation failed on field 'compliance_resource_id'. {} is greater than 768", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.compliance_resource_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'compliance_resource_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.compliance_resource_types {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'compliance_resource_types'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_key {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'tag_key'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'tag_key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_value {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'tag_value'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_value {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'tag_value'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the CustomPolicyDetails, the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule 			identifier, and the events that cause the evaluation of your AWS 			resources.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -381,6 +537,46 @@ impl Default for SourceOwnerEnum {
 }
 
 
+impl cfn_resources::CfnResource for Source {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_policy_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.source_details {
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'source_details'. {} is greater than 25", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_identifier {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'source_identifier'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_identifier {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also 			provides the frequency with which you want AWS Config to run 			evaluations for the rule if the trigger type is periodic. You can 			specify the parameter values for SourceDetail only for 			custom rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -510,3 +706,18 @@ impl Default for SourceDetailMessageTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for SourceDetail {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

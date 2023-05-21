@@ -52,8 +52,16 @@ impl cfn_resources::CfnResource for CfnAccessPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.access_policy_identity.validate()?;
+
+        self.access_policy_resource.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The identity (IAM Identity Center user, IAM Identity Center group, or IAM user) to which this access policy    applies.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -99,6 +107,26 @@ pub struct AccessPolicyIdentity {
 
 
 
+impl cfn_resources::CfnResource for AccessPolicyIdentity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.iam_role.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iam_user.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.user.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -132,6 +160,24 @@ pub struct AccessPolicyResource {
 
 
 
+impl cfn_resources::CfnResource for AccessPolicyResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.portal.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.project.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about an AWS Identity and Access Management role. For more information, see IAM roles in the     IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -153,6 +199,20 @@ pub struct IamRole {
 
 
 
+impl cfn_resources::CfnResource for IamRole {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about an AWS Identity and Access Management user.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -176,6 +236,20 @@ pub struct IamUser {
 
 
 
+impl cfn_resources::CfnResource for IamUser {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Portal property type specifies the AWS IoT SiteWise Monitor portal for an       AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -197,6 +271,20 @@ pub struct Portal {
 
 
 
+impl cfn_resources::CfnResource for Portal {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Project property type specifies the AWS IoT SiteWise Monitor project for an       AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -218,6 +306,20 @@ pub struct Project {
 
 
 
+impl cfn_resources::CfnResource for Project {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The User property type specifies the AWS IoT SiteWise Monitor user for       an AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -238,3 +340,18 @@ pub struct User {
 }
 
 
+
+impl cfn_resources::CfnResource for User {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

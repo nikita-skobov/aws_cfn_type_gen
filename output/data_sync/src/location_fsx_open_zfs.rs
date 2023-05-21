@@ -92,8 +92,45 @@ impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.fsx_filesystem_arn {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'fsx_filesystem_arn'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        self.protocol.validate()?;
+
+        let the_val = &self.security_group_arns;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_arns'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.subdirectory {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'subdirectory'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents the mount options that are available for DataSync to access a Network File System (NFS) location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -148,6 +185,20 @@ impl Default for MountOptionsVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for MountOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents the Network File System (NFS) protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -169,6 +220,22 @@ pub struct NFS {
 
 
 
+impl cfn_resources::CfnResource for NFS {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.mount_options.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Represents the protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -190,6 +257,22 @@ pub struct Protocol {
 
 
 
+impl cfn_resources::CfnResource for Protocol {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.nfs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -226,3 +309,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

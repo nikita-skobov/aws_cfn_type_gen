@@ -133,8 +133,81 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTarget {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.owner_information {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'owner_information'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.owner_information {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'owner_information'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.targets;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'targets'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.window_id;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'window_id'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.window_id;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'window_id'. {} is less than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Targets property type specifies adding a target to a maintenance window    target in AWS Systems Manager.
 ///
@@ -179,3 +252,39 @@ pub struct Targets {
 }
 
 
+
+impl cfn_resources::CfnResource for Targets {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 163 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 163", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.values;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -92,8 +92,60 @@ impl cfn_resources::CfnResource for CfnTopic {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.aws_account_id {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'aws_account_id'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.aws_account_id {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'aws_account_id'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.topic_id {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'topic_id'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents the cell value synonym.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -129,6 +181,28 @@ pub struct CellValueSynonym {
 
 
 
+impl cfn_resources::CfnResource for CellValueSynonym {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.cell_value {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'cell_value'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents a collective constant.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -150,6 +224,20 @@ pub struct CollectiveConstant {
 
 
 
+impl cfn_resources::CfnResource for CollectiveConstant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The order in which data is displayed for the column when     it's used in a comparative context.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -241,6 +329,20 @@ impl Default for ComparativeOrderUseOrderingEnum {
 }
 
 
+impl cfn_resources::CfnResource for ComparativeOrder {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The definition of a data aggregation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -321,6 +423,28 @@ impl Default for DataAggregationDatasetRowDateGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for DataAggregation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.default_date_column_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'default_date_column_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -430,6 +554,38 @@ pub struct DatasetMetadata {
 
 
 
+impl cfn_resources::CfnResource for DatasetMetadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_aggregation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.dataset_description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'dataset_description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.dataset_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'dataset_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents a default formatting definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -500,6 +656,22 @@ impl Default for DefaultFormattingDisplayFormatEnum {
 }
 
 
+impl cfn_resources::CfnResource for DefaultFormatting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_format_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that represents additional options for display formatting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -723,6 +895,70 @@ impl Default for DisplayFormatOptionsUnitScalerEnum {
 }
 
 
+impl cfn_resources::CfnResource for DisplayFormatOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.blank_cell_format {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'blank_cell_format'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.currency_symbol {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'currency_symbol'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_format {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'date_format'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.grouping_separator {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'grouping_separator'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.negative_format.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'suffix'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents a named entity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -842,6 +1078,38 @@ impl Default for NamedEntityDefinitionPropertyUsageEnum {
 }
 
 
+impl cfn_resources::CfnResource for NamedEntityDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.field_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'field_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.metric.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.property_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'property_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents a metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -940,6 +1208,20 @@ impl Default for NamedEntityDefinitionMetricAggregationEnum {
 }
 
 
+impl cfn_resources::CfnResource for NamedEntityDefinitionMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that represents a negative format.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -977,6 +1259,36 @@ pub struct NegativeFormat {
 
 
 
+impl cfn_resources::CfnResource for NegativeFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'suffix'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The value of the constant that is used to specify the endpoints of a range filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1014,6 +1326,36 @@ pub struct RangeConstant {
 
 
 
+impl cfn_resources::CfnResource for RangeConstant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.maximum {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'maximum'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.minimum {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'minimum'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents a semantic entity type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1063,6 +1405,36 @@ pub struct SemanticEntityType {
 
 
 
+impl cfn_resources::CfnResource for SemanticEntityType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.sub_type_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'sub_type_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.type_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'type_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents a semantic type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1160,6 +1532,36 @@ pub struct SemanticType {
 
 
 
+impl cfn_resources::CfnResource for SemanticType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.sub_type_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'sub_type_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.type_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'type_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that represents a calculated field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1460,6 +1862,55 @@ impl Default for TopicCalculatedFieldTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicCalculatedField {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.calculated_field_description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'calculated_field_description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.calculated_field_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'calculated_field_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        self.comparative_order.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_formatting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.semantic_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that represents a category filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1563,6 +2014,22 @@ impl Default for TopicCategoryFilterCategoryFilterTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicCategoryFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constant.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A constant used in a category filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1635,6 +2102,30 @@ impl Default for TopicCategoryFilterConstantConstantTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicCategoryFilterConstant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.collective_constant.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.singular_constant {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'singular_constant'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents a column in a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1933,6 +2424,49 @@ impl Default for TopicColumnTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.column_description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'column_description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.column_friendly_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'column_friendly_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.column_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'column_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        self.comparative_order.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_formatting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.semantic_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A filter used to restrict data based on a range of dates or times.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1966,6 +2500,22 @@ pub struct TopicDateRangeFilter {
 
 
 
+impl cfn_resources::CfnResource for TopicDateRangeFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constant.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that represents a filter used to select items for a topic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2171,6 +2721,52 @@ impl Default for TopicFilterFilterTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.category_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.date_range_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.filter_description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'filter_description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.filter_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'filter_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        self.numeric_equality_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.numeric_range_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.operand_field_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'operand_field_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        self.relative_date_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that represents a named entity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2244,6 +2840,37 @@ pub struct TopicNamedEntity {
 
 
 
+impl cfn_resources::CfnResource for TopicNamedEntity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.entity_description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'entity_description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.entity_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'entity_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        self.semantic_entity_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A filter that filters topics based on the value of a numeric field. The filter includes only topics whose numeric field value matches the specified value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2338,6 +2965,22 @@ impl Default for TopicNumericEqualityFilterAggregationEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicNumericEqualityFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constant.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A filter that filters topics based on the value of a numeric field. The filter includes only topics whose numeric field value falls within the specified range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2444,6 +3087,22 @@ impl Default for TopicNumericRangeFilterAggregationEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicNumericRangeFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constant.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A constant value that is used in a range filter to specify the endpoints of the range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2502,6 +3161,22 @@ impl Default for TopicRangeFilterConstantConstantTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicRangeFilterConstant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.range_constant.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that represents a relative date filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2625,6 +3300,22 @@ impl Default for TopicRelativeDateFilterTimeGranularityEnum {
 }
 
 
+impl cfn_resources::CfnResource for TopicRelativeDateFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constant.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that represents a singular filter constant, used in filters to specify a single value to match against.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2684,3 +3375,26 @@ impl Default for TopicSingularFilterConstantConstantTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TopicSingularFilterConstant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.singular_constant {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'singular_constant'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

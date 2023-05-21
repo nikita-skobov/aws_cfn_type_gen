@@ -103,8 +103,14 @@ impl cfn_resources::CfnResource for CfnConformancePack {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.template_ssmdocument_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -146,6 +152,48 @@ pub struct ConformancePackInputParameter {
 
 
 
+impl cfn_resources::CfnResource for ConformancePackInputParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.parameter_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_name;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'parameter_name'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_value;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'parameter_value'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_value;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'parameter_value'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// This API allows you to create a conformance pack template with an AWS Systems Manager document (SSM document). 			To deploy a conformance pack using an SSM document, first create an SSM document with conformance pack content, and then provide the DocumentName in the PutConformancePack API. You can also provide the DocumentVersion.
 ///
@@ -186,3 +234,18 @@ pub struct TemplateSSMDocumentDetails {
 }
 
 
+
+impl cfn_resources::CfnResource for TemplateSSMDocumentDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

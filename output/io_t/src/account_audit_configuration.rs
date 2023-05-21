@@ -72,8 +72,16 @@ impl cfn_resources::CfnResource for CfnAccountAuditConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.audit_check_configurations.validate()?;
+
+        self.audit_notification_target_configurations.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Which audit checks are enabled and disabled for this account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -95,6 +103,20 @@ pub struct AuditCheckConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AuditCheckConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The types of audit checks that can be performed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -294,6 +316,52 @@ pub struct AuditCheckConfigurations {
 
 
 
+impl cfn_resources::CfnResource for AuditCheckConfigurations {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.authenticated_cognito_role_overly_permissive_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ca_certificate_expiring_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ca_certificate_key_quality_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.conflicting_client_ids_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.device_certificate_expiring_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.device_certificate_key_quality_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.device_certificate_shared_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.intermediate_ca_revoked_for_active_device_certificates_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.io_tpolicy_potential_mis_configuration_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_policy_overly_permissive_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_role_alias_allows_access_to_unused_services_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_role_alias_overly_permissive_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.logging_disabled_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.revoked_ca_certificate_still_active_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.revoked_device_certificate_still_active_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.unauthenticated_cognito_role_overly_permissive_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about the targets to which audit notifications are sent.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -339,6 +407,20 @@ pub struct AuditNotificationTarget {
 
 
 
+impl cfn_resources::CfnResource for AuditNotificationTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of the audit notification target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -359,3 +441,20 @@ pub struct AuditNotificationTargetConfigurations {
 }
 
 
+
+impl cfn_resources::CfnResource for AuditNotificationTargetConfigurations {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sns.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

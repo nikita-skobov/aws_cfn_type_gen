@@ -48,8 +48,28 @@ impl cfn_resources::CfnResource for CfnApplicationReferenceDataSource {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.reference_data_source.validate()?;
+
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, provides additional mapping information when the record    format uses delimiters, such as CSV. For example, the following sample records use CSV format,    where the records use the '\n' as the row delimiter and a comma (",") as    the column delimiter:
 ///
@@ -95,6 +115,48 @@ pub struct CSVMappingParameters {
 
 
 
+impl cfn_resources::CfnResource for CSVMappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_column_delimiter;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'record_column_delimiter'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_column_delimiter;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_column_delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_row_delimiter;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'record_row_delimiter'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_row_delimiter;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_row_delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, provides additional mapping    information when JSON is the record format on the streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -122,6 +184,34 @@ pub struct JSONMappingParameters {
 
 
 
+impl cfn_resources::CfnResource for JSONMappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_row_path;
+
+        if the_val.len() > 65535 as _ {
+            return Err(format!("Max validation failed on field 'record_row_path'. {} is greater than 65535", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_row_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_row_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// When you configure a SQL-based Kinesis Data Analytics application's input at the    time of creating or updating an application, provides additional mapping information specific    to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the    streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -155,6 +245,24 @@ pub struct MappingParameters {
 
 
 
+impl cfn_resources::CfnResource for MappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.csvmapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.jsonmapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, describes the mapping of each    data element in the streaming source to the corresponding column in the in-application    stream.
 ///
@@ -216,6 +324,64 @@ pub struct RecordColumn {
 
 
 
+impl cfn_resources::CfnResource for RecordColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.mapping {
+
+        if the_val.len() > 65535 as _ {
+            return Err(format!("Max validation failed on field 'mapping'. {} is greater than 65535", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.mapping {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'mapping'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.sql_type;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'sql_type'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.sql_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sql_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, describes the record format    and relevant mapping information that should be applied to schematize the records on the    stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -270,6 +436,22 @@ impl Default for RecordFormatRecordFormatTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for RecordFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.mapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, describes the reference data    source by providing the source information (Amazon S3 bucket name and object key name), the    resulting in-application table name that is created, and the necessary schema to map the data    elements in the Amazon S3 object to the in-application table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -319,6 +501,40 @@ pub struct ReferenceDataSource {
 
 
 
+impl cfn_resources::CfnResource for ReferenceDataSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.reference_schema.validate()?;
+
+        self.s3_reference_data_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, describes the format of the    data in the streaming source, and how each data element maps to corresponding columns created    in the in-application stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -372,6 +588,45 @@ pub struct ReferenceSchema {
 
 
 
+impl cfn_resources::CfnResource for ReferenceSchema {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_columns;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'record_columns'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.record_encoding {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'record_encoding'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.record_encoding {
+
+        if the_val.len() < 5 as _ {
+            return Err(format!("Min validation failed on field 'record_encoding'. {} is less than 5", the_val.len()));
+        }
+
+        }
+        
+        self.record_format.validate()?;
+
+        Ok(())
+    }
+}
 
 /// For an SQL-based Amazon Kinesis Data Analytics application, identifies the Amazon S3       bucket and object that contains the reference data.
 ///
@@ -416,3 +671,46 @@ pub struct S3ReferenceDataSource {
 }
 
 
+
+impl cfn_resources::CfnResource for S3ReferenceDataSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'bucket_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.file_key;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'file_key'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.file_key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'file_key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

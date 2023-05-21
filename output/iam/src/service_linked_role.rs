@@ -76,4 +76,47 @@ impl cfn_resources::CfnResource for CfnServiceLinkedRole {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.awsservice_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'awsservice_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.awsservice_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'awsservice_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.custom_suffix {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'custom_suffix'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_suffix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'custom_suffix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

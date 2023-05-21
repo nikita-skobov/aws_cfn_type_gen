@@ -122,8 +122,74 @@ impl cfn_resources::CfnResource for CfnOrganizationConformancePack {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.conformance_pack_input_parameters {
+
+        if the_val.len() > 60 as _ {
+            return Err(format!("Max validation failed on field 'conformance_pack_input_parameters'. {} is greater than 60", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delivery_s3_bucket {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'delivery_s3_bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delivery_s3_bucket {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'delivery_s3_bucket'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delivery_s3_key_prefix {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'delivery_s3_key_prefix'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delivery_s3_key_prefix {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'delivery_s3_key_prefix'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.excluded_accounts {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'excluded_accounts'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.organization_conformance_pack_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'organization_conformance_pack_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.organization_conformance_pack_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'organization_conformance_pack_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -164,3 +230,46 @@ pub struct ConformancePackInputParameter {
 }
 
 
+
+impl cfn_resources::CfnResource for ConformancePackInputParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.parameter_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_name;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'parameter_name'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_value;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'parameter_value'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.parameter_value;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'parameter_value'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

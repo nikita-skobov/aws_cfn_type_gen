@@ -502,8 +502,110 @@ impl cfn_resources::CfnResource for CfnFunction {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.architectures {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'architectures'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        self.code.validate()?;
+
+        if let Some(the_val) = &self.code_signing_config_arn {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'code_signing_config_arn'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.dead_letter_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.environment.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ephemeral_storage.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.file_system_configs {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'file_system_configs'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.handler {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'handler'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        self.image_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.memory_size {
+
+        if *the_val > 10240 as _ {
+            return Err(format!("Max validation failed on field 'memory_size'. {} is greater than 10240", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.memory_size {
+
+        if *the_val < 128 as _ {
+            return Err(format!("Min validation failed on field 'memory_size'. {} is less than 128", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.reserved_concurrent_executions {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'reserved_concurrent_executions'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.runtime_management_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snap_start.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.timeout {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'timeout'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.tracing_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The deployment package    for a Lambda function. To deploy a function defined as a container image,    you specify the location of a container image in the Amazon ECR registry.    For a .zip file deployment package, you can specify the location of an object in    Amazon S3. For Node.js and Python functions, you can specify the function code inline in the template.
 ///
@@ -593,6 +695,68 @@ pub struct Code {
 
 
 
+impl cfn_resources::CfnResource for Code {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.s3_bucket {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_bucket {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_key {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_key'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_object_version {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_object_version'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_object_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_object_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The dead-letter queue for    failed asynchronous invocations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -616,6 +780,20 @@ pub struct DeadLetterConfig {
 
 
 
+impl cfn_resources::CfnResource for DeadLetterConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A function's environment variable settings. You can use environment variables to adjust your function's    behavior without updating code. An environment variable is a pair of strings that are stored in a function's    version-specific configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -637,6 +815,20 @@ pub struct Environment {
 
 
 
+impl cfn_resources::CfnResource for Environment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The size of the function's /tmp directory in MB. The default value is 512,      but it can be any whole number between 512 and 10,240 MB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -662,6 +854,34 @@ pub struct EphemeralStorage {
 
 
 
+impl cfn_resources::CfnResource for EphemeralStorage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.size;
+
+        if *the_val > 10240 as _ {
+            return Err(format!("Max validation failed on field 'size'. {} is greater than 10240", the_val));
+        }
+
+        
+        let the_val = &self.size;
+
+        if *the_val < 512 as _ {
+            return Err(format!("Min validation failed on field 'size'. {} is less than 512", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Details about the connection between a Lambda function and an Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -703,6 +923,34 @@ pub struct FileSystemConfig {
 
 
 
+impl cfn_resources::CfnResource for FileSystemConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.arn;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'arn'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        let the_val = &self.local_mount_path;
+
+        if the_val.len() > 160 as _ {
+            return Err(format!("Max validation failed on field 'local_mount_path'. {} is greater than 160", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration values that override the container image Dockerfile settings. For more information, see Container image    settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -754,6 +1002,44 @@ pub struct ImageConfig {
 
 
 
+impl cfn_resources::CfnResource for ImageConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.command {
+
+        if the_val.len() > 1500 as _ {
+            return Err(format!("Max validation failed on field 'command'. {} is greater than 1500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.entry_point {
+
+        if the_val.len() > 1500 as _ {
+            return Err(format!("Max validation failed on field 'entry_point'. {} is greater than 1500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.working_directory {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'working_directory'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Sets the runtime management configuration for a function's version. For more information,    see Runtime updates.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -822,6 +1108,36 @@ impl Default for RuntimeManagementConfigUpdateRuntimeOnEnum {
 }
 
 
+impl cfn_resources::CfnResource for RuntimeManagementConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.runtime_version_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'runtime_version_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.runtime_version_arn {
+
+        if the_val.len() < 26 as _ {
+            return Err(format!("Min validation failed on field 'runtime_version_arn'. {} is less than 26", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The function's AWS Lambda SnapStart setting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -864,6 +1180,20 @@ impl Default for SnapStartApplyOnEnum {
 }
 
 
+impl cfn_resources::CfnResource for SnapStart {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The function's SnapStart setting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -939,6 +1269,20 @@ impl Default for SnapStartResponseOptimizationStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for SnapStartResponse {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -976,6 +1320,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The function's AWS X-Ray tracing configuration.    To sample and record incoming requests, set Mode to Active.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1018,6 +1376,20 @@ impl Default for TracingConfigModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TracingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a    VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the    function's VPC configuration. The function can only access resources and the internet through that VPC. For more    information, see VPC    Settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1054,3 +1426,34 @@ pub struct VpcConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.security_group_ids {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_ids {
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 16", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

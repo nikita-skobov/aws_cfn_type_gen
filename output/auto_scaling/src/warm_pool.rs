@@ -113,8 +113,30 @@ impl cfn_resources::CfnResource for CfnWarmPool {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.instance_reuse_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.max_group_prepared_capacity {
+
+        if *the_val < -1 as _ {
+            return Err(format!("Min validation failed on field 'max_group_prepared_capacity'. {} is less than -1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min_size {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min_size'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that specifies an instance reuse policy for the     InstanceReusePolicy property of the AWS::AutoScaling::WarmPool resource.
 ///
@@ -137,3 +159,18 @@ pub struct InstanceReusePolicy {
 }
 
 
+
+impl cfn_resources::CfnResource for InstanceReusePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

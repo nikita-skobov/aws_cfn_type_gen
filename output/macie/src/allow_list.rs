@@ -72,8 +72,14 @@ impl cfn_resources::CfnResource for CfnAllowList {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.criteria.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the criteria for an allow list, which is a list that defines specific text       or a text pattern to ignore when inspecting data sources for sensitive data. The       criteria can be:
 ///
@@ -109,6 +115,22 @@ pub struct Criteria {
 
 
 
+impl cfn_resources::CfnResource for Criteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_words_list.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the location and name of an Amazon Simple Storage Service (Amazon S3)       object that lists specific, predefined text to ignore when inspecting data sources for sensitive       data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -146,6 +168,20 @@ pub struct S3WordsList {
 
 
 
+impl cfn_resources::CfnResource for S3WordsList {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -182,3 +218,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

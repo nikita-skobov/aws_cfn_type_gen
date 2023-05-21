@@ -76,8 +76,14 @@ impl cfn_resources::CfnResource for CfnAnomalyDetector {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.anomaly_detector_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about a detector's configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -99,6 +105,20 @@ pub struct AnomalyDetectorConfig {
 
 
 
+impl cfn_resources::CfnResource for AnomalyDetectorConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details about an Amazon AppFlow flow datasource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -132,6 +152,20 @@ pub struct AppFlowConfig {
 
 
 
+impl cfn_resources::CfnResource for AppFlowConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details about an Amazon CloudWatch datasource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -153,6 +187,20 @@ pub struct CloudwatchConfig {
 
 
 
+impl cfn_resources::CfnResource for CloudwatchConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about how a source CSV data file should be analyzed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -234,6 +282,20 @@ pub struct CsvFormatDescriptor {
 
 
 
+impl cfn_resources::CfnResource for CsvFormatDescriptor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about a source file's formatting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -267,6 +329,24 @@ pub struct FileFormatDescriptor {
 
 
 
+impl cfn_resources::CfnResource for FileFormatDescriptor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.csv_format_descriptor.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.json_format_descriptor.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about how a source JSON data file should be analyzed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -300,6 +380,20 @@ pub struct JsonFormatDescriptor {
 
 
 
+impl cfn_resources::CfnResource for JsonFormatDescriptor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A calculation made by contrasting a measure and a dimension from your source data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -345,6 +439,20 @@ pub struct Metric {
 
 
 
+impl cfn_resources::CfnResource for Metric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -462,6 +570,24 @@ pub struct MetricSet {
 
 
 
+impl cfn_resources::CfnResource for MetricSet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.metric_source.validate()?;
+
+        self.timestamp_column.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about how the source data should be interpreted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -531,6 +657,30 @@ pub struct MetricSource {
 
 
 
+impl cfn_resources::CfnResource for MetricSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.app_flow_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloudwatch_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rdssource_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redshift_source_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_source_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about the Amazon Relational Database Service (RDS) configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -636,6 +786,22 @@ pub struct RDSSourceConfig {
 
 
 
+impl cfn_resources::CfnResource for RDSSourceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.vpc_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Provides information about the Amazon Redshift database configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -741,6 +907,22 @@ pub struct RedshiftSourceConfig {
 
 
 
+impl cfn_resources::CfnResource for RedshiftSourceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.vpc_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about the configuration of the S3 bucket that contains source files.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -798,6 +980,22 @@ pub struct S3SourceConfig {
 
 
 
+impl cfn_resources::CfnResource for S3SourceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.file_format_descriptor.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about the column used to track time in a source data file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -831,6 +1029,20 @@ pub struct TimestampColumn {
 
 
 
+impl cfn_resources::CfnResource for TimestampColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains configuration information about the Amazon Virtual Private Cloud (VPC).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -863,3 +1075,18 @@ pub struct VpcConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

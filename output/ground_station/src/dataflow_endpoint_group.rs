@@ -66,8 +66,12 @@ impl cfn_resources::CfnResource for CfnDataflowEndpointGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AwsGroundStationAgentEndpoint property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -132,6 +136,24 @@ pub struct AwsGroundStationAgentEndpoint {
 
 
 
+impl cfn_resources::CfnResource for AwsGroundStationAgentEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.egress_address.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ingress_address.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -163,6 +185,22 @@ pub struct ConnectionDetails {
 
 
 
+impl cfn_resources::CfnResource for ConnectionDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.socket_address.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information such as socket address and name that defines an endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -210,6 +248,22 @@ pub struct DataflowEndpoint {
 
 
 
+impl cfn_resources::CfnResource for DataflowEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.address.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The security details and endpoint information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -254,6 +308,26 @@ pub struct EndpointDetails {
 
 
 
+impl cfn_resources::CfnResource for EndpointDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aws_ground_station_agent_endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.security_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The IntegerRange property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -285,6 +359,20 @@ pub struct IntegerRange {
 
 
 
+impl cfn_resources::CfnResource for IntegerRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The RangedConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -316,6 +404,22 @@ pub struct RangedConnectionDetails {
 
 
 
+impl cfn_resources::CfnResource for RangedConnectionDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.socket_address.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The RangedSocketAddress property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -347,6 +451,22 @@ pub struct RangedSocketAddress {
 
 
 
+impl cfn_resources::CfnResource for RangedSocketAddress {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about IAM roles, subnets, and security groups needed for this DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -394,6 +514,20 @@ pub struct SecurityDetails {
 
 
 
+impl cfn_resources::CfnResource for SecurityDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The address of the endpoint, such as       192.168.1.1.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -427,6 +561,20 @@ pub struct SocketAddress {
 
 
 
+impl cfn_resources::CfnResource for SocketAddress {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -463,3 +611,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

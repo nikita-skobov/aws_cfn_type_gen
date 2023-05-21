@@ -85,4 +85,30 @@ impl cfn_resources::CfnResource for CfnSchema {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.schema;
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'schema'. {} is greater than 10000", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

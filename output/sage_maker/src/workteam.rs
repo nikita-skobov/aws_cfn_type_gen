@@ -105,8 +105,54 @@ impl cfn_resources::CfnResource for CfnWorkteam {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.member_definitions {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'member_definitions'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.notification_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.workteam_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'workteam_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.workteam_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'workteam_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Identifies a Amazon Cognito user group. A user group can be used in on or more work       teams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -152,6 +198,20 @@ pub struct CognitoMemberDefinition {
 
 
 
+impl cfn_resources::CfnResource for CognitoMemberDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines an Amazon Cognito or your own OIDC IdP user group that is part of a work team.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -185,6 +245,24 @@ pub struct MemberDefinition {
 
 
 
+impl cfn_resources::CfnResource for MemberDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cognito_member_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.oidc_member_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configures Amazon SNS notifications of available or expiring work items for work       teams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -208,6 +286,20 @@ pub struct NotificationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NotificationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of user groups that exist in your OIDC Identity Provider (IdP).       One to ten groups can be used to create a single private work team.       When you add a user group to the list of Groups, you can add that user group to one or more       private work teams. If you add a user group to a private work team, all workers in that user group       are added to the work team.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -228,6 +320,20 @@ pub struct OidcMemberDefinition {
 
 
 
+impl cfn_resources::CfnResource for OidcMemberDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -264,3 +370,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

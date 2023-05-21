@@ -76,8 +76,16 @@ impl cfn_resources::CfnResource for CfnPrincipalPermissions {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.principal.validate()?;
+
+        self.resource.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -99,6 +107,20 @@ pub struct ColumnWildcard {
 
 
 
+impl cfn_resources::CfnResource for ColumnWildcard {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that describes certain columns on certain rows.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -156,6 +178,20 @@ pub struct DataCellsFilterResource {
 
 
 
+impl cfn_resources::CfnResource for DataCellsFilterResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS Lake Formation principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -177,6 +213,20 @@ pub struct DataLakePrincipal {
 
 
 
+impl cfn_resources::CfnResource for DataLakePrincipal {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for a data location object where permissions are granted or revoked.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -210,6 +260,20 @@ pub struct DataLocationResource {
 
 
 
+impl cfn_resources::CfnResource for DataLocationResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for the database object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -243,6 +307,20 @@ pub struct DatabaseResource {
 
 
 
+impl cfn_resources::CfnResource for DatabaseResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LF-tag key and values attached to a resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -276,6 +354,20 @@ pub struct LFTag {
 
 
 
+impl cfn_resources::CfnResource for LFTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure containing an LF-tag key and values for a resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -321,6 +413,20 @@ pub struct LFTagKeyResource {
 
 
 
+impl cfn_resources::CfnResource for LFTagKeyResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of LF-tag conditions that define a resource's LF-tag policy.
 ///
@@ -368,6 +474,20 @@ pub struct LFTagPolicyResource {
 
 
 
+impl cfn_resources::CfnResource for LFTagPolicyResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -473,6 +593,34 @@ pub struct Resource {
 
 
 
+impl cfn_resources::CfnResource for Resource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_cells_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.database.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lftag.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lftag_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table_with_columns.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -531,6 +679,20 @@ pub struct TableResource {
 
 
 
+impl cfn_resources::CfnResource for TableResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for a table with columns object. This object is only used when granting a SELECT permission.
 ///
@@ -601,3 +763,20 @@ pub struct TableWithColumnsResource {
 }
 
 
+
+impl cfn_resources::CfnResource for TableWithColumnsResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column_wildcard.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

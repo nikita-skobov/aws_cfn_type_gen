@@ -84,8 +84,56 @@ impl cfn_resources::CfnResource for CfnPartition {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.catalog_id;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'catalog_id'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.catalog_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'catalog_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.database_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.database_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.partition_input.validate()?;
+
+        let the_val = &self.table_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.table_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A column in a Table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -149,6 +197,66 @@ pub struct Column {
 
 
 
+impl cfn_resources::CfnResource for Column {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.comment {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'comment'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.comment {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'comment'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.cfn_type {
+
+        if the_val.len() > 131072 as _ {
+            return Err(format!("Max validation failed on field 'cfn_type'. {} is greater than 131072", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cfn_type {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'cfn_type'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the sort order of a sorted column.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -192,6 +300,50 @@ pub struct Order {
 
 
 
+impl cfn_resources::CfnResource for Order {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.column;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'column'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.column;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'column'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.sort_order {
+
+        if *the_val > 1 as _ {
+            return Err(format!("Max validation failed on field 'sort_order'. {} is greater than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sort_order {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'sort_order'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The structure used to create and update a partition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -239,6 +391,22 @@ pub struct PartitionInput {
 
 
 
+impl cfn_resources::CfnResource for PartitionInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.storage_descriptor.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -284,6 +452,20 @@ pub struct SchemaId {
 
 
 
+impl cfn_resources::CfnResource for SchemaId {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that references a schema stored in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -329,6 +511,22 @@ pub struct SchemaReference {
 
 
 
+impl cfn_resources::CfnResource for SchemaReference {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.schema_id.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about a serialization/deserialization program (SerDe) that serves as an    extractor and loader.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -374,6 +572,20 @@ pub struct SerdeInfo {
 
 
 
+impl cfn_resources::CfnResource for SerdeInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies skewed values in a table. Skewed values are those that occur with very high    frequency.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -419,6 +631,20 @@ pub struct SkewedInfo {
 
 
 
+impl cfn_resources::CfnResource for SkewedInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the physical storage of table data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -597,3 +823,48 @@ pub struct StorageDescriptor {
 }
 
 
+
+impl cfn_resources::CfnResource for StorageDescriptor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.input_format {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'input_format'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.location {
+
+        if the_val.len() > 2056 as _ {
+            return Err(format!("Max validation failed on field 'location'. {} is greater than 2056", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.output_format {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'output_format'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        self.schema_reference.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.serde_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.skewed_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

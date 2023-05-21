@@ -322,8 +322,20 @@ impl cfn_resources::CfnResource for CfnNodegroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.launch_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.remote_access.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scaling_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.update_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object representing a node group launch template specification. The launch template       can't include SubnetId, IamInstanceProfile, RequestSpotInstances, HibernationOptions, or TerminateInstances, or the node group deployment or       update will fail. For more information about launch templates, see CreateLaunchTemplate in the Amazon EC2 API       Reference. For more information about using launch templates with Amazon EKS, see Launch template support in the Amazon EKS User Guide.
 ///
@@ -375,6 +387,20 @@ pub struct LaunchTemplateSpecification {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplateSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object representing the remote access configuration for the managed node       group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -408,6 +434,20 @@ pub struct RemoteAccess {
 
 
 
+impl cfn_resources::CfnResource for RemoteAccess {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object representing the scaling configuration details for the Auto Scaling group       that is associated with your node group. When creating a node group, you must specify       all or none of the properties. When updating a node group, you can specify any or none       of the properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -465,6 +505,44 @@ pub struct ScalingConfig {
 
 
 
+impl cfn_resources::CfnResource for ScalingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.desired_size {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'desired_size'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min_size {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min_size'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A property that allows a node to repel a set of pods. For more information, see Node taints on managed node groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -543,6 +621,52 @@ impl Default for TaintEffectEnum {
 }
 
 
+impl cfn_resources::CfnResource for Taint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The update configuration for the node group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -581,3 +705,42 @@ pub struct UpdateConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for UpdateConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max_unavailable {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_unavailable'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_unavailable_percentage {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'max_unavailable_percentage'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_unavailable_percentage {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_unavailable_percentage'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

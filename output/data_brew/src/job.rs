@@ -346,8 +346,112 @@ impl cfn_resources::CfnResource for CfnJob {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.dataset_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'dataset_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.dataset_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'dataset_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.encryption_key_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'encryption_key_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.encryption_key_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'encryption_key_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        self.job_sample.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.max_retries {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_retries'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 240 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 240", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.output_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.profile_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.project_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'project_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.project_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'project_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.recipe.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.timeout {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'timeout'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration of statistics that are allowed to be run on columns that       contain detected entities. When undefined, no statistics will be computed       on columns that contain detected entities.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -369,6 +473,20 @@ pub struct AllowedStatistics {
 
 
 
+impl cfn_resources::CfnResource for AllowedStatistics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Selector of a column from a dataset for profile job configuration.       One selector includes either a column name or a regular expression.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -410,6 +528,52 @@ pub struct ColumnSelector {
 
 
 
+impl cfn_resources::CfnResource for ColumnSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'regex'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'regex'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration for column evaluations for a profile job. ColumnStatisticsConfiguration can be used to select       evaluations and override parameters of evaluations for particular columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -443,6 +607,22 @@ pub struct ColumnStatisticsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ColumnStatisticsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.statistics.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Represents a set of options that define how DataBrew will write a       comma-separated value (CSV) file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -468,6 +648,36 @@ pub struct CsvOutputOptions {
 
 
 
+impl cfn_resources::CfnResource for CsvOutputOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'delimiter'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents options that specify how and where in the AWS Glue Data Catalog DataBrew       writes the output generated by recipe jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -561,6 +771,68 @@ pub struct DataCatalogOutput {
 
 
 
+impl cfn_resources::CfnResource for DataCatalogOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.catalog_id {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'catalog_id'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.catalog_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'catalog_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.database_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.database_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.database_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.table_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.table_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents a JDBC database output object which defines the output destination for       a DataBrew recipe job to write into.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -627,6 +899,36 @@ impl Default for DatabaseOutputDatabaseOutputModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DatabaseOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.database_options.validate()?;
+
+        let the_val = &self.glue_connection_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'glue_connection_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.glue_connection_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'glue_connection_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents options that specify how and where DataBrew writes the database       output generated by recipe jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -664,6 +966,36 @@ pub struct DatabaseTableOutputOptions {
 
 
 
+impl cfn_resources::CfnResource for DatabaseTableOutputOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.table_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.table_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.temp_directory.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration of entity detection for a profile job. When undefined, entity       detection is disabled.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -701,6 +1033,22 @@ pub struct EntityDetectorConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EntityDetectorConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.allowed_statistics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A sample configuration for profile jobs only, which determines the number of rows on which the       profile job is run. If a JobSample value isn't provided, the       default is used. The default value is CUSTOM_ROWS for the mode parameter and       20,000 for the size parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -759,6 +1107,20 @@ impl Default for JobSampleModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for JobSample {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents options that specify how and where in Amazon S3 DataBrew writes the output generated by       recipe jobs or profile jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -948,6 +1310,32 @@ impl Default for OutputFormatEnum {
 }
 
 
+impl cfn_resources::CfnResource for Output {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.format_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.location.validate()?;
+
+        if let Some(the_val) = &self.partition_columns {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'partition_columns'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents a set of options that define the structure of comma-separated (CSV) job output.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -969,6 +1357,22 @@ pub struct OutputFormatOptions {
 
 
 
+impl cfn_resources::CfnResource for OutputFormatOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.csv.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The location in Amazon S3 or AWS Glue Data Catalog where the job       writes its output.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1013,6 +1417,20 @@ pub struct OutputLocation {
 
 
 
+impl cfn_resources::CfnResource for OutputLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration for profile jobs. Configuration can be used to select columns, do evaluations, and override default       parameters of evaluations. When configuration is undefined, the profile job will apply default settings to all       supported columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1070,6 +1488,24 @@ pub struct ProfileConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ProfileConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dataset_statistics_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.entity_detector_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents one or more actions to be performed on a DataBrew dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1107,6 +1543,34 @@ pub struct Recipe {
 
 
 
+impl cfn_resources::CfnResource for Recipe {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents an Amazon S3 location (bucket name, bucket owner, and object key) where DataBrew can read       input data, or write output from a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1166,6 +1630,66 @@ pub struct S3Location {
 
 
 
+impl cfn_resources::CfnResource for S3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket'. {} is less than 3", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.bucket_owner {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'bucket_owner'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_owner {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'bucket_owner'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 1280 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 1280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents options that specify how and where DataBrew writes the Amazon S3 output       generated by recipe jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1187,6 +1711,22 @@ pub struct S3TableOutputOptions {
 
 
 
+impl cfn_resources::CfnResource for S3TableOutputOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.location.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Override of a particular evaluation for a profile job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1226,6 +1766,34 @@ pub struct StatisticOverride {
 
 
 
+impl cfn_resources::CfnResource for StatisticOverride {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.statistic;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'statistic'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.statistic;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'statistic'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration of evaluations for a profile job. This configuration can be used to select       evaluations and override the parameters of selected evaluations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1259,6 +1827,20 @@ pub struct StatisticsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for StatisticsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1296,6 +1878,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration for data quality validation. Used to select the Rulesets and Validation Mode       to be used in the profile job. When ValidationConfiguration is null, the profile       job will run without data quality validation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1328,3 +1924,18 @@ pub struct ValidationConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for ValidationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -58,8 +58,14 @@ impl cfn_resources::CfnResource for CfnLoggingConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.logging_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Defines where AWS Network Firewall sends logs for the firewall for one log type. This is used     in AWS::NetworkFirewall::LoggingConfiguration. You can send each type of log to an Amazon S3 bucket, a CloudWatch log group, or a Kinesis Data Firehose delivery stream.
 ///
@@ -155,6 +161,20 @@ impl Default for LogDestinationConfigLogTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for LogDestinationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines how AWS Network Firewall performs logging for a AWS::NetworkFirewall::Firewall.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -175,3 +195,18 @@ pub struct LoggingConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for LoggingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

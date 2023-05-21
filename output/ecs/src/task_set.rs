@@ -163,8 +163,16 @@ impl cfn_resources::CfnResource for CfnTaskSet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scale.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object representing the networking details for a task or service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +243,20 @@ impl Default for AwsVpcConfigurationAssignPublicIpEnum {
 }
 
 
+impl cfn_resources::CfnResource for AwsVpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The load balancer configuration to use with a service or task set.
 ///
@@ -308,6 +330,20 @@ pub struct LoadBalancer {
 
 
 
+impl cfn_resources::CfnResource for LoadBalancer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The network configuration for a task or service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -331,6 +367,22 @@ pub struct NetworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aws_vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A floating-point percentage of the desired number of tasks to place and keep running 			in the task set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -381,6 +433,20 @@ impl Default for ScaleUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for Scale {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details for the service registry.
 ///
@@ -441,3 +507,18 @@ pub struct ServiceRegistry {
 }
 
 
+
+impl cfn_resources::CfnResource for ServiceRegistry {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

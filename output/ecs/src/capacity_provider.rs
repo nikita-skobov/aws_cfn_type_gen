@@ -60,8 +60,22 @@ impl cfn_resources::CfnResource for CfnCapacityProvider {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_scaling_group_provider.validate()?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The details of the Auto Scaling group for the capacity provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -134,6 +148,22 @@ impl Default for AutoScalingGroupProviderManagedTerminationProtectionEnum {
 }
 
 
+impl cfn_resources::CfnResource for AutoScalingGroupProvider {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.managed_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The managed scaling settings for the Auto Scaling group capacity provider.
 ///
@@ -248,6 +278,84 @@ impl Default for ManagedScalingStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ManagedScaling {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.instance_warmup_period {
+
+        if *the_val > 10000 as _ {
+            return Err(format!("Max validation failed on field 'instance_warmup_period'. {} is greater than 10000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.instance_warmup_period {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'instance_warmup_period'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_scaling_step_size {
+
+        if *the_val > 10000 as _ {
+            return Err(format!("Max validation failed on field 'maximum_scaling_step_size'. {} is greater than 10000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_scaling_step_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'maximum_scaling_step_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.minimum_scaling_step_size {
+
+        if *the_val > 10000 as _ {
+            return Err(format!("Max validation failed on field 'minimum_scaling_step_size'. {} is greater than 10000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.minimum_scaling_step_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'minimum_scaling_step_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_capacity {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'target_capacity'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_capacity {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_capacity'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -284,3 +392,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

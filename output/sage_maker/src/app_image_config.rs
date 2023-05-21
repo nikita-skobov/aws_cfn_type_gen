@@ -58,8 +58,21 @@ impl cfn_resources::CfnResource for CfnAppImageConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.app_image_config_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'app_image_config_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        self.kernel_gateway_image_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -117,6 +130,60 @@ pub struct FileSystemConfig {
 
 
 
+impl cfn_resources::CfnResource for FileSystemConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.default_gid {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'default_gid'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.default_gid {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'default_gid'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.default_uid {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'default_uid'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.default_uid {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'default_uid'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.mount_path {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'mount_path'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration for the file system and kernels in a SageMaker image running as a     KernelGateway app.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -152,6 +219,29 @@ pub struct KernelGatewayImageConfig {
 
 
 
+impl cfn_resources::CfnResource for KernelGatewayImageConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.file_system_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.kernel_specs;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'kernel_specs'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The specification of a Jupyter kernel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -189,6 +279,35 @@ pub struct KernelSpec {
 
 
 
+impl cfn_resources::CfnResource for KernelSpec {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.display_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'display_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -225,3 +344,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

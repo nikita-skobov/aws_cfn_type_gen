@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnDistribution {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.distribution_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A complex type that describes how CloudFront processes requests.
 ///
@@ -372,6 +378,22 @@ impl Default for CacheBehaviorViewerProtocolPolicyEnum {
 }
 
 
+impl cfn_resources::CfnResource for CacheBehavior {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.forwarded_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This field is deprecated. We recommend that you use a cache policy or an origin 			request policy instead of this field.
 ///
@@ -454,6 +476,20 @@ impl Default for CookiesForwardEnum {
 }
 
 
+impl cfn_resources::CfnResource for Cookies {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A complex type that controls:
 ///
@@ -525,6 +561,20 @@ pub struct CustomErrorResponse {
 
 
 
+impl cfn_resources::CfnResource for CustomErrorResponse {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A custom origin. A custom origin is any origin that is not an 			Amazon S3 bucket, with one exception. An Amazon S3 bucket that is configured with 				static website hosting       is a custom origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -639,6 +689,20 @@ impl Default for CustomOriginConfigOriginProtocolPolicyEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomOriginConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A complex type that describes the default cache behavior if you don't specify a 				CacheBehavior element or if request URLs don't match any of the values 			of PathPattern in CacheBehavior elements. You must create 			exactly one default cache behavior.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -939,6 +1003,22 @@ impl Default for DefaultCacheBehaviorViewerProtocolPolicyEnum {
 }
 
 
+impl cfn_resources::CfnResource for DefaultCacheBehavior {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.forwarded_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A distribution configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1287,6 +1367,34 @@ impl Default for DistributionConfigPriceClassEnum {
 }
 
 
+impl cfn_resources::CfnResource for DistributionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_origin.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_cache_behavior.validate()?;
+
+        self.logging.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.origin_groups.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.restrictions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_origin.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.viewer_certificate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This field is deprecated. We recommend that you use a cache policy or an origin 			request policy instead of this field.
 ///
@@ -1384,6 +1492,22 @@ pub struct ForwardedValues {
 
 
 
+impl cfn_resources::CfnResource for ForwardedValues {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cookies.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A CloudFront function that is associated with a cache behavior in a CloudFront 			distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1450,6 +1574,28 @@ impl Default for FunctionAssociationEventTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FunctionAssociation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.function_arn {
+
+        if the_val.len() > 108 as _ {
+            return Err(format!("Max validation failed on field 'function_arn'. {} is greater than 108", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A complex type that controls the countries in which your content is distributed. CloudFront 			determines the location of your users using MaxMind GeoIP databases. To disable geo restriction, remove the Restrictions property from your stack template.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1514,6 +1660,20 @@ impl Default for GeoRestrictionRestrictionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for GeoRestriction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A complex type that contains a Lambda@Edge function association.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1590,6 +1750,20 @@ impl Default for LambdaFunctionAssociationEventTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for LambdaFunctionAssociation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LegacyCustomOrigin property type specifies Property description not available. for an AWS::CloudFront::Distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1654,6 +1828,20 @@ pub struct LegacyCustomOrigin {
 
 
 
+impl cfn_resources::CfnResource for LegacyCustomOrigin {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LegacyS3Origin property type specifies Property description not available. for an AWS::CloudFront::Distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1685,6 +1873,20 @@ pub struct LegacyS3Origin {
 
 
 
+impl cfn_resources::CfnResource for LegacyS3Origin {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A complex type that controls whether access logs are written for the 			distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1730,6 +1932,20 @@ pub struct Logging {
 
 
 
+impl cfn_resources::CfnResource for Logging {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An origin.
 ///
@@ -1881,6 +2097,26 @@ pub struct Origin {
 
 
 
+impl cfn_resources::CfnResource for Origin {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_origin_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.origin_shield.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_origin_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A complex type that contains HeaderName and HeaderValue 			elements, if any, for this distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1914,6 +2150,20 @@ pub struct OriginCustomHeader {
 
 
 
+impl cfn_resources::CfnResource for OriginCustomHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An origin group includes two origins (a primary origin and a second origin to failover 			to) and a failover criteria that you specify. You create an origin group to support 			origin failover in CloudFront. When you create or update a distribution, you can 			specifiy the origin group instead of a single origin, and CloudFront will failover from 			the primary origin to the second origin under the failover conditions that you've 			chosen.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1959,6 +2209,24 @@ pub struct OriginGroup {
 
 
 
+impl cfn_resources::CfnResource for OriginGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.failover_criteria.validate()?;
+
+        self.members.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A complex data type that includes information about the failover criteria for an 			origin group, including the status codes for which CloudFront will failover from the 			primary origin to the second origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1980,6 +2248,22 @@ pub struct OriginGroupFailoverCriteria {
 
 
 
+impl cfn_resources::CfnResource for OriginGroupFailoverCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.status_codes.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An origin in an origin group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2001,6 +2285,20 @@ pub struct OriginGroupMember {
 
 
 
+impl cfn_resources::CfnResource for OriginGroupMember {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A complex data type for the origins included in an origin group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2036,6 +2334,27 @@ pub struct OriginGroupMembers {
 
 
 
+impl cfn_resources::CfnResource for OriginGroupMembers {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.items;
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'items'. {} is greater than 2", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A complex data type for the origin groups specified for a distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2069,6 +2388,20 @@ pub struct OriginGroups {
 
 
 
+impl cfn_resources::CfnResource for OriginGroups {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// CloudFront Origin Shield.
 ///
@@ -2116,6 +2449,36 @@ pub struct OriginShield {
 
 
 
+impl cfn_resources::CfnResource for OriginShield {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.origin_shield_region {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'origin_shield_region'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.origin_shield_region {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'origin_shield_region'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A complex type that identifies ways in which you want to restrict distribution of your 			content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2137,6 +2500,22 @@ pub struct Restrictions {
 
 
 
+impl cfn_resources::CfnResource for Restrictions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.geo_restriction.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about the Amazon S3 origin. If the origin is a 			custom origin or an S3 bucket that is configured as a website endpoint, use the 				CustomOriginConfig element instead.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2170,6 +2549,20 @@ pub struct S3OriginConfig {
 
 
 
+impl cfn_resources::CfnResource for S3OriginConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A complex data type for the status codes that you specify that, when returned by a 			primary origin, trigger CloudFront to failover to a second origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2203,6 +2596,20 @@ pub struct StatusCodes {
 
 
 
+impl cfn_resources::CfnResource for StatusCodes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -2240,6 +2647,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A complex type that determines the distribution's SSL/TLS configuration for 			communicating with viewers.
 ///
@@ -2410,3 +2831,18 @@ impl Default for ViewerCertificateSslSupportMethodEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for ViewerCertificate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -126,8 +126,12 @@ impl cfn_resources::CfnResource for CfnFeature {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A set of key-value pairs that specify users who should always be served a specific       variation of a feature. Each key specifies a user using their user ID, account ID, or some       other identifier. The value specifies the name of the variation that the user is to be       served.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -161,6 +165,20 @@ pub struct EntityOverride {
 
 
 
+impl cfn_resources::CfnResource for EntityOverride {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -198,6 +216,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure contains the name and variation value of one variation of a feature. It       can contain only one of the following parameters: BooleanValue, DoubleValue, LongValue       or StringValue.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -266,3 +298,18 @@ pub struct VariationObject {
 }
 
 
+
+impl cfn_resources::CfnResource for VariationObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

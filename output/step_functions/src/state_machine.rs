@@ -146,8 +146,18 @@ impl cfn_resources::CfnResource for CfnStateMachine {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.definition_s3_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.logging_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tracing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines a CloudWatch log group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -169,6 +179,20 @@ pub struct CloudWatchLogsLogGroup {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchLogsLogGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a destination for LoggingConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -190,6 +214,22 @@ pub struct LogDestination {
 
 
 
+impl cfn_resources::CfnResource for LogDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_logs_log_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines what execution history events are logged and where they are logged.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +275,20 @@ pub struct LoggingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LoggingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines the S3 bucket location where a state machine definition is stored. The state machine definition must be a JSON or YAML file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -280,6 +334,20 @@ pub struct S3Location {
 
 
 
+impl cfn_resources::CfnResource for S3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The TagsEntry property specifies tags to identify a     state machine.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -313,6 +381,20 @@ pub struct TagsEntry {
 
 
 
+impl cfn_resources::CfnResource for TagsEntry {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Selects whether or not the state machine's AWS X-Ray tracing is enabled. To configure     your state machine to send trace data to X-Ray, set Enabled to       true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -333,3 +415,18 @@ pub struct TracingConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for TracingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -42,8 +42,22 @@ impl cfn_resources::CfnResource for CfnBudget {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.budget.validate()?;
+
+        if let Some(the_val) = &self.notifications_with_subscribers {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'notifications_with_subscribers'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The AutoAdjustData property type specifies Property description not available. for an AWS::Budgets::Budget.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -75,6 +89,22 @@ pub struct AutoAdjustData {
 
 
 
+impl cfn_resources::CfnResource for AutoAdjustData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.historical_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the output of the CreateBudget operation. The content consists of the detailed metadata and data file information, and the current status of the budget object.
 ///
@@ -289,6 +319,28 @@ impl Default for BudgetDataTimeUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for BudgetData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_adjust_data.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.budget_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cost_types.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.time_period.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The types of cost that are included in a COST budget, such as tax and subscriptions.
 ///
@@ -454,6 +506,20 @@ pub struct CostTypes {
 
 
 
+impl cfn_resources::CfnResource for CostTypes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The HistoricalOptions property type specifies Property description not available. for an AWS::Budgets::Budget.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -474,6 +540,20 @@ pub struct HistoricalOptions {
 
 
 
+impl cfn_resources::CfnResource for HistoricalOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A notification that's associated with a budget. A budget can have up to ten notifications.
 ///
@@ -602,6 +682,20 @@ impl Default for NotificationThresholdTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Notification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A notification with subscribers. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -637,6 +731,29 @@ pub struct NotificationWithSubscribers {
 
 
 
+impl cfn_resources::CfnResource for NotificationWithSubscribers {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.notification.validate()?;
+
+        let the_val = &self.subscribers;
+
+        if the_val.len() > 11 as _ {
+            return Err(format!("Max validation failed on field 'subscribers'. {} is greater than 11", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The amount of cost or usage that's measured for a budget.
 ///
@@ -672,6 +789,20 @@ pub struct Spend {
 
 
 
+impl cfn_resources::CfnResource for Spend {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Subscriber property type specifies who to notify for a Billing and Cost Management budget notification. 			The subscriber consists of a subscription type, and either an Amazon SNS topic or an email address.
 ///
@@ -730,6 +861,20 @@ impl Default for SubscriberSubscriptionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Subscriber {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The period of time that is covered by a budget. The period has a start date and an end 			date. The start date must come before the end date. There are no restrictions on the end date.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -770,3 +915,18 @@ pub struct TimePeriod {
 }
 
 
+
+impl cfn_resources::CfnResource for TimePeriod {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -845,8 +845,138 @@ impl cfn_resources::CfnResource for CfnFleet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.anywhere_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.certificate_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.desired_ec2_instances {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'desired_ec2_instances'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ec2_inbound_permissions {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'ec2_inbound_permissions'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.instance_role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.locations {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'locations'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_size {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_size'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.metric_groups {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'metric_groups'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min_size {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min_size'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.peer_vpc_aws_account_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'peer_vpc_aws_account_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.peer_vpc_aws_account_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'peer_vpc_aws_account_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.peer_vpc_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'peer_vpc_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.peer_vpc_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'peer_vpc_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.resource_creation_limit_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.runtime_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Amazon GameLift Anywhere configuration options for your Anywhere fleets.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -874,6 +1004,34 @@ pub struct AnywhereConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AnywhereConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cost;
+
+        if the_val.len() > 11 as _ {
+            return Err(format!("Max validation failed on field 'cost'. {} is greater than 11", the_val.len()));
+        }
+
+        
+        let the_val = &self.cost;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'cost'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Determines whether a TLS/SSL certificate is generated for a fleet. This feature must be       enabled when creating the fleet. All instances in a fleet share the same       certificate. The certificate can be retrieved by calling the         GameLift Server         SDK operation GetInstanceCertificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -920,6 +1078,20 @@ impl Default for CertificateConfigurationCertificateTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CertificateConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A range of IP addresses and port settings that allow inbound traffic to connect to    server processes on an instance in a fleet. New game sessions are assigned an IP    address/port number combination, which must fall into the fleet's allowed ranges. Fleets    with custom game builds must have permissions explicitly set. For Realtime Servers fleets, GameLift    automatically opens two port ranges, one for TCP messaging and one for UDP.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1016,6 +1188,48 @@ impl Default for IpPermissionProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for IpPermission {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.from_port;
+
+        if *the_val > 60000 as _ {
+            return Err(format!("Max validation failed on field 'from_port'. {} is greater than 60000", the_val));
+        }
+
+        
+        let the_val = &self.from_port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'from_port'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.to_port;
+
+        if *the_val > 60000 as _ {
+            return Err(format!("Max validation failed on field 'to_port'. {} is greater than 60000", the_val));
+        }
+
+        
+        let the_val = &self.to_port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'to_port'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Current resource capacity settings in a specified fleet or location. The location       value might refer to a fleet's remote location or its home Region.
 ///
@@ -1071,6 +1285,41 @@ pub struct LocationCapacity {
 
 
 
+impl cfn_resources::CfnResource for LocationCapacity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.desired_ec2_instances;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'desired_ec2_instances'. {} is less than 0", the_val));
+        }
+
+        
+        let the_val = &self.max_size;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_size'. {} is less than 0", the_val));
+        }
+
+        
+        let the_val = &self.min_size;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min_size'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A remote location where a multi-location fleet can deploy game servers for game       hosting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1114,6 +1363,36 @@ pub struct LocationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LocationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.location;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'location'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.location;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'location'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.location_capacity.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A policy that limits the number of game sessions a player can create on the same fleet.    This optional policy gives game owners control over how players can consume available game    server resources. A resource creation policy makes the following statement: "An individual    player can create a maximum number of new game sessions within a specified time    period".
 ///
@@ -1155,6 +1434,36 @@ pub struct ResourceCreationLimitPolicy {
 
 
 
+impl cfn_resources::CfnResource for ResourceCreationLimitPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.new_game_sessions_per_creator {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'new_game_sessions_per_creator'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.policy_period_in_minutes {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'policy_period_in_minutes'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A collection of server process configurations that describe the set of processes to    run on each instance in a fleet. Server processes run either an executable in a custom    game build or a Realtime Servers script. GameLift launches the configured processes, manages their    life cycle, and replaces them as needed. Each instance checks regularly for an updated    runtime configuration.
 ///
@@ -1212,6 +1521,60 @@ pub struct RuntimeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for RuntimeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.game_session_activation_timeout_seconds {
+
+        if *the_val > 600 as _ {
+            return Err(format!("Max validation failed on field 'game_session_activation_timeout_seconds'. {} is greater than 600", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.game_session_activation_timeout_seconds {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'game_session_activation_timeout_seconds'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_concurrent_game_session_activations {
+
+        if *the_val > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'max_concurrent_game_session_activations'. {} is greater than 2147483647", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_concurrent_game_session_activations {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_concurrent_game_session_activations'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.server_processes {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'server_processes'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A set of instructions for launching server processes on each instance in a fleet.       Server processes run either an executable in a custom game build or a Realtime Servers script.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1272,3 +1635,55 @@ pub struct ServerProcess {
 }
 
 
+
+impl cfn_resources::CfnResource for ServerProcess {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.concurrent_executions;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'concurrent_executions'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.launch_path;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'launch_path'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.launch_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'launch_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.parameters {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'parameters'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parameters {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parameters'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

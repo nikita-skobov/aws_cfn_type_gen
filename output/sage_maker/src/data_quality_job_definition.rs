@@ -149,8 +149,26 @@ impl cfn_resources::CfnResource for CfnDataQualityJobDefinition {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_quality_app_specification.validate()?;
+
+        self.data_quality_baseline_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_quality_job_input.validate()?;
+
+        self.data_quality_job_output_config.validate()?;
+
+        self.job_resources.validate()?;
+
+        self.network_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.stopping_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The BatchTransformInput property type specifies Property description not available. for an AWS::SageMaker::DataQualityJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -215,6 +233,22 @@ pub struct BatchTransformInput {
 
 
 
+impl cfn_resources::CfnResource for BatchTransformInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dataset_format.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for the cluster of resources used to run the processing job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -272,6 +306,20 @@ pub struct ClusterConfig {
 
 
 
+impl cfn_resources::CfnResource for ClusterConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The constraints resource for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -293,6 +341,20 @@ pub struct ConstraintsResource {
 
 
 
+impl cfn_resources::CfnResource for ConstraintsResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Csv property type specifies Property description not available. for an AWS::SageMaker::DataQualityJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -313,6 +375,20 @@ pub struct Csv {
 
 
 
+impl cfn_resources::CfnResource for Csv {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the container that a data quality monitoring job runs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -410,6 +486,59 @@ pub struct DataQualityAppSpecification {
 
 
 
+impl cfn_resources::CfnResource for DataQualityAppSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.container_arguments {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'container_arguments'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.container_entrypoint {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'container_entrypoint'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.image_uri;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'image_uri'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.post_analytics_processor_source_uri {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'post_analytics_processor_source_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.record_preprocessor_source_uri {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'record_preprocessor_source_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration for monitoring constraints and monitoring statistics. These baseline     resources are compared against the results of the current job from the series of jobs     scheduled to collect data periodically.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -461,6 +590,40 @@ pub struct DataQualityBaselineConfig {
 
 
 
+impl cfn_resources::CfnResource for DataQualityBaselineConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.baselining_job_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'baselining_job_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.baselining_job_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'baselining_job_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.constraints_resource.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.statistics_resource.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The input for the data quality monitoring job. Currently endpoints are supported for     input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -493,6 +656,24 @@ pub struct DataQualityJobInput {
 
 
 
+impl cfn_resources::CfnResource for DataQualityJobInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.batch_transform_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.endpoint_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The DatasetFormat property type specifies Property description not available. for an AWS::SageMaker::DataQualityJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -535,6 +716,24 @@ pub struct DatasetFormat {
 
 
 
+impl cfn_resources::CfnResource for DatasetFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.csv.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.json.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Input object for the endpoint
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -642,6 +841,34 @@ impl Default for EndpointInputS3InputModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EndpointInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.endpoint_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.local_path;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'local_path'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Json property type specifies Property description not available. for an AWS::SageMaker::DataQualityJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -662,6 +889,20 @@ pub struct Json {
 
 
 
+impl cfn_resources::CfnResource for Json {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The output object for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -683,6 +924,22 @@ pub struct MonitoringOutput {
 
 
 
+impl cfn_resources::CfnResource for MonitoringOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_output.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The output configuration for monitoring jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -722,6 +979,35 @@ pub struct MonitoringOutputConfig {
 
 
 
+impl cfn_resources::CfnResource for MonitoringOutputConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.monitoring_outputs;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'monitoring_outputs'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Identifies the resources to deploy for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -743,6 +1029,22 @@ pub struct MonitoringResources {
 
 
 
+impl cfn_resources::CfnResource for MonitoringResources {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cluster_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Networking options for a job, such as network traffic encryption between containers,     whether to allow inbound and outbound network calls to and from containers, and the VPC     subnets and security groups to use for VPC-enabled jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -788,6 +1090,22 @@ pub struct NetworkConfig {
 
 
 
+impl cfn_resources::CfnResource for NetworkConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.vpc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Amazon S3 storage location where the results of a monitoring job are saved.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -833,6 +1151,20 @@ pub struct S3Output {
 
 
 
+impl cfn_resources::CfnResource for S3Output {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The statistics resource for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -854,6 +1186,20 @@ pub struct StatisticsResource {
 
 
 
+impl cfn_resources::CfnResource for StatisticsResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a limit to how long a model training job or model compilation job can run.       It also specifies how long a managed spot training job has to complete. When the job       reaches the time limit, SageMaker ends the training or compilation job. Use this API to cap       model training costs.
 ///
@@ -887,6 +1233,27 @@ pub struct StoppingCondition {
 
 
 
+impl cfn_resources::CfnResource for StoppingCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.max_runtime_in_seconds;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_runtime_in_seconds'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -924,6 +1291,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -960,3 +1341,32 @@ pub struct VpcConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.security_group_ids;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnets;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'subnets'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -405,8 +405,106 @@ impl cfn_resources::CfnResource for CfnModelPackage {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.additional_inference_specification_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.additional_inference_specifications {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'additional_inference_specifications'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.approval_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'approval_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        self.created_by.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.drift_check_baselines.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.inference_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.last_modified_by.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.metadata_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.model_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.model_package_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'model_package_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model_package_group_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'model_package_group_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model_package_group_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'model_package_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model_package_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'model_package_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model_package_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'model_package_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.model_package_status_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.model_package_status_item.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.model_package_version {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'model_package_version'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.source_algorithm_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        self.validation_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure of additional Inference Specification. Additional Inference Specification       specifies details about inference jobs that can be run with models based on       this model package
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -512,6 +610,49 @@ pub struct AdditionalInferenceSpecificationDefinition {
 
 
 
+impl cfn_resources::CfnResource for AdditionalInferenceSpecificationDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.containers;
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'containers'. {} is greater than 15", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Contains bias metrics for a model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -557,6 +698,26 @@ pub struct Bias {
 
 
 
+impl cfn_resources::CfnResource for Bias {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.post_training_report.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pre_training_report.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.report.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the location of the channel data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -578,6 +739,22 @@ pub struct DataSource {
 
 
 
+impl cfn_resources::CfnResource for DataSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_data_source.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Represents the drift check baselines that can be used when the model monitor is set using the model       package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -635,6 +812,28 @@ pub struct DriftCheckBaselines {
 
 
 
+impl cfn_resources::CfnResource for DriftCheckBaselines {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bias.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.explainability.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.model_data_quality.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.model_quality.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the drift check bias baselines that can be used when the model monitor is set using the       model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -680,6 +879,26 @@ pub struct DriftCheckBias {
 
 
 
+impl cfn_resources::CfnResource for DriftCheckBias {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.config_file.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.post_training_constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pre_training_constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the drift check explainability baselines that can be used when the model monitor is set       using the model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -713,6 +932,24 @@ pub struct DriftCheckExplainability {
 
 
 
+impl cfn_resources::CfnResource for DriftCheckExplainability {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.config_file.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the drift check data quality baselines that can be used when the model monitor is set using       the model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -746,6 +983,24 @@ pub struct DriftCheckModelDataQuality {
 
 
 
+impl cfn_resources::CfnResource for DriftCheckModelDataQuality {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.statistics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the drift check model quality baselines that can be used when the model monitor is set using       the model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -779,6 +1034,24 @@ pub struct DriftCheckModelQuality {
 
 
 
+impl cfn_resources::CfnResource for DriftCheckModelQuality {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.statistics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains explainability metrics for a model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -800,6 +1073,22 @@ pub struct Explainability {
 
 
 
+impl cfn_resources::CfnResource for Explainability {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.report.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains details regarding the file source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -857,6 +1146,43 @@ pub struct FileSource {
 
 
 
+impl cfn_resources::CfnResource for FileSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.content_digest {
+
+        if the_val.len() > 72 as _ {
+            return Err(format!("Max validation failed on field 'content_digest'. {} is greater than 72", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.content_type {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'content_type'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.s3_uri;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Defines how to perform inference generation after a training job is run.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -932,6 +1258,27 @@ pub struct InferenceSpecification {
 
 
 
+impl cfn_resources::CfnResource for InferenceSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.containers;
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'containers'. {} is greater than 15", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Metadata properties of the tracking entity, trial, or trial component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1005,6 +1352,52 @@ pub struct MetadataProperties {
 
 
 
+impl cfn_resources::CfnResource for MetadataProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.commit_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'commit_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.generated_by {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'generated_by'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.project_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'project_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.repository {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'repository'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Details about the metrics source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1062,6 +1455,42 @@ pub struct MetricsSource {
 
 
 
+impl cfn_resources::CfnResource for MetricsSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.content_digest {
+
+        if the_val.len() > 72 as _ {
+            return Err(format!("Max validation failed on field 'content_digest'. {} is greater than 72", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.content_type;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'content_type'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_uri;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Data quality constraints and statistics for a model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1095,6 +1524,24 @@ pub struct ModelDataQuality {
 
 
 
+impl cfn_resources::CfnResource for ModelDataQuality {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.statistics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Input object for the model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1122,6 +1569,34 @@ pub struct ModelInput {
 
 
 
+impl cfn_resources::CfnResource for ModelInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.data_input_config;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'data_input_config'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_input_config;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_input_config'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Contains metrics captured from a model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1179,6 +1654,28 @@ pub struct ModelMetrics {
 
 
 
+impl cfn_resources::CfnResource for ModelMetrics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bias.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.explainability.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.model_data_quality.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.model_quality.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the Docker container for the model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1338,6 +1835,77 @@ pub struct ModelPackageContainerDefinition {
 
 
 
+impl cfn_resources::CfnResource for ModelPackageContainerDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.container_hostname {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'container_hostname'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.framework_version {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'framework_version'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.framework_version {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'framework_version'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.image;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'image'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.image_digest {
+
+        if the_val.len() > 72 as _ {
+            return Err(format!("Max validation failed on field 'image_digest'. {} is greater than 72", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model_data_url {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'model_data_url'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        self.model_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.product_id {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'product_id'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the validation and image scan statuses of the model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1371,6 +1939,20 @@ pub struct ModelPackageStatusDetails {
 
 
 
+impl cfn_resources::CfnResource for ModelPackageStatusDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents the overall status of a model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1451,6 +2033,34 @@ impl Default for ModelPackageStatusItemStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ModelPackageStatusItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Model quality statistics and constraints.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1484,6 +2094,24 @@ pub struct ModelQuality {
 
 
 
+impl cfn_resources::CfnResource for ModelQuality {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.statistics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the S3 data source.
 ///
@@ -1556,6 +2184,27 @@ impl Default for S3DataSourceS3DataTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3DataSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.s3_uri;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies an algorithm that was used to create the model package. The algorithm must       be either an algorithm resource in your SageMaker account or an algorithm in AWS Marketplace that you are subscribed to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1601,6 +2250,42 @@ pub struct SourceAlgorithm {
 
 
 
+impl cfn_resources::CfnResource for SourceAlgorithm {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.algorithm_name;
+
+        if the_val.len() > 170 as _ {
+            return Err(format!("Max validation failed on field 'algorithm_name'. {} is greater than 170", the_val.len()));
+        }
+
+        
+        let the_val = &self.algorithm_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'algorithm_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.model_data_url {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'model_data_url'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A list of algorithms that were used to create a model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1624,6 +2309,27 @@ pub struct SourceAlgorithmSpecification {
 
 
 
+impl cfn_resources::CfnResource for SourceAlgorithmSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.source_algorithms;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'source_algorithms'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1661,6 +2367,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the input source of a transform job and the way the transform job consumes       it.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1778,6 +2498,30 @@ impl Default for TransformInputSplitTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TransformInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.content_type {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'content_type'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.data_source.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Defines the input needed to run a transform job using the inference specification       specified in the algorithm.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1898,6 +2642,42 @@ impl Default for TransformJobDefinitionBatchStrategyEnum {
 }
 
 
+impl cfn_resources::CfnResource for TransformJobDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max_concurrent_transforms {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_concurrent_transforms'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_payload_in_mb {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_payload_in_mb'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.transform_input.validate()?;
+
+        self.transform_output.validate()?;
+
+        self.transform_resources.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Describes the results of a transform job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1996,6 +2776,43 @@ impl Default for TransformOutputAssembleWithEnum {
 }
 
 
+impl cfn_resources::CfnResource for TransformOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.accept {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'accept'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.s3_output_path;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_output_path'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes the resources, including ML instance types and ML instance count, to use for       transform job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2194,6 +3011,35 @@ impl Default for TransformResourcesInstanceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TransformResources {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_count;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_count'. {} is less than 1", the_val));
+        }
+
+        
+        if let Some(the_val) = &self.volume_kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'volume_kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information about the user who created or modified an experiment, trial, trial    component, lineage group, project, or model card.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2239,6 +3085,20 @@ pub struct UserContext {
 
 
 
+impl cfn_resources::CfnResource for UserContext {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains data, such as the inputs and targeted instance types that are used in the       process of validating the model package.
 ///
@@ -2280,6 +3140,36 @@ pub struct ValidationProfile {
 
 
 
+impl cfn_resources::CfnResource for ValidationProfile {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.profile_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'profile_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.profile_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'profile_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.transform_job_definition.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies batch transform jobs that SageMaker runs to validate your model package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2320,3 +3210,39 @@ pub struct ValidationSpecification {
 }
 
 
+
+impl cfn_resources::CfnResource for ValidationSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.validation_profiles;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'validation_profiles'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.validation_role;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'validation_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.validation_role;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'validation_role'. {} is less than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

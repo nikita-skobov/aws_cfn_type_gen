@@ -100,8 +100,12 @@ impl cfn_resources::CfnResource for CfnSecurityProfile {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure containing the alert target ARN and the role ARN.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -135,6 +139,20 @@ pub struct AlertTarget {
 
 
 
+impl cfn_resources::CfnResource for AlertTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A Device Defender security profile behavior.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -204,6 +222,24 @@ pub struct Behavior {
 
 
 
+impl cfn_resources::CfnResource for Behavior {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.criteria.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.metric_dimension.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The criteria by which the behavior is determined to be normal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -299,6 +335,26 @@ pub struct BehaviorCriteria {
 
 
 
+impl cfn_resources::CfnResource for BehaviorCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ml_detection_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.statistical_threshold.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The MachineLearningDetectionConfig property type controls confidence of the machine learning model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -324,6 +380,20 @@ pub struct MachineLearningDetectionConfig {
 
 
 
+impl cfn_resources::CfnResource for MachineLearningDetectionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The dimension of the metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -357,6 +427,20 @@ pub struct MetricDimension {
 
 
 
+impl cfn_resources::CfnResource for MetricDimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The metric you want to retain. Dimensions are optional.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -390,6 +474,22 @@ pub struct MetricToRetain {
 
 
 
+impl cfn_resources::CfnResource for MetricToRetain {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.metric_dimension.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The value to be compared with the metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -471,6 +571,20 @@ pub struct MetricValue {
 
 
 
+impl cfn_resources::CfnResource for MetricValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A statistical ranking (percentile) that    indicates a threshold value by which a behavior is determined to be in compliance or in    violation of the behavior.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -492,6 +606,20 @@ pub struct StatisticalThreshold {
 
 
 
+impl cfn_resources::CfnResource for StatisticalThreshold {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -528,3 +656,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

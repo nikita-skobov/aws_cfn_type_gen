@@ -64,8 +64,14 @@ impl cfn_resources::CfnResource for CfnFilter {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.filter_criteria.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains details on the time range used to filter findings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -99,6 +105,20 @@ pub struct DateFilter {
 
 
 
+impl cfn_resources::CfnResource for DateFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details on the criteria used to define the filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -479,6 +499,20 @@ pub struct FilterCriteria {
 
 
 
+impl cfn_resources::CfnResource for FilterCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that describes details of a map filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -524,6 +558,20 @@ pub struct MapFilter {
 
 
 
+impl cfn_resources::CfnResource for MapFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that describes the details of a number filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -557,6 +605,20 @@ pub struct NumberFilter {
 
 
 
+impl cfn_resources::CfnResource for NumberFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information on the details of a package filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -638,6 +700,32 @@ pub struct PackageFilter {
 
 
 
+impl cfn_resources::CfnResource for PackageFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.architecture.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.epoch.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.name.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.release.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_layer_hash.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.version.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that describes the details of a port range filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -670,6 +758,20 @@ pub struct PortRangeFilter {
 
 
 
+impl cfn_resources::CfnResource for PortRangeFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that describes the details of a string filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -702,3 +804,18 @@ pub struct StringFilter {
 }
 
 
+
+impl cfn_resources::CfnResource for StringFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -232,8 +232,45 @@ impl cfn_resources::CfnResource for CfnConnectorProfile {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.connector_label {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'connector_label'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.connector_profile_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.connector_profile_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'connector_profile_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.kmsarn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kmsarn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kmsarn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'kmsarn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific credentials required when using Amplitude.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -275,6 +312,34 @@ pub struct AmplitudeConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for AmplitudeConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.api_key;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_key'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_key;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'secret_key'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The API key credentials required for API key authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -316,6 +381,35 @@ pub struct ApiKeyCredentials {
 
 
 
+impl cfn_resources::CfnResource for ApiKeyCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.api_key;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_key'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.api_secret_key {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_secret_key'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The basic auth credentials required for basic authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -357,6 +451,34 @@ pub struct BasicAuthCredentials {
 
 
 
+impl cfn_resources::CfnResource for BasicAuthCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.password;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'password'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Used by select connectors for which the OAuth workflow is supported, such as Salesforce,    Google Analytics, Marketo, Zendesk, and Slack.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -398,6 +520,36 @@ pub struct ConnectorOAuthRequest {
 
 
 
+impl cfn_resources::CfnResource for ConnectorOAuthRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.auth_code {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'auth_code'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.redirect_uri {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'redirect_uri'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Defines the connector-specific configuration and credentials for the connector profile.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -431,6 +583,24 @@ pub struct ConnectorProfileConfig {
 
 
 
+impl cfn_resources::CfnResource for ConnectorProfileConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.connector_profile_credentials.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.connector_profile_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The connector-specific credentials required by a connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -655,6 +825,56 @@ pub struct ConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for ConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.amplitude.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom_connector.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.datadog.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynatrace.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.google_analytics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.infor_nexus.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.marketo.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pardot.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redshift.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sapodata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.salesforce.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.service_now.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.singular.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.slack.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snowflake.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.trendmicro.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.veeva.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.zendesk.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required by each connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -831,6 +1051,48 @@ pub struct ConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for ConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_connector.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.datadog.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynatrace.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.infor_nexus.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.marketo.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pardot.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redshift.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sapodata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.salesforce.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.service_now.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.slack.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snowflake.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.veeva.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.zendesk.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The custom credentials required for custom authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -868,6 +1130,27 @@ pub struct CustomAuthCredentials {
 
 
 
+impl cfn_resources::CfnResource for CustomAuthCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.custom_authentication_type;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'custom_authentication_type'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials that are required when using the custom    connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -966,6 +1249,28 @@ impl Default for CustomConnectorProfileCredentialsAuthenticationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.api_key.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.basic.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.oauth2.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The profile properties required by the custom connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -999,6 +1304,22 @@ pub struct CustomConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for CustomConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.oauth2_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The connector-specific credentials required by Datadog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1040,6 +1361,34 @@ pub struct DatadogConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for DatadogConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.api_key;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_key'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_key;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'application_key'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required by Datadog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1065,6 +1414,27 @@ pub struct DatadogConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for DatadogConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_url;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required by Dynatrace.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1090,6 +1460,27 @@ pub struct DynatraceConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for DynatraceConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.api_token;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_token'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required by Dynatrace.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1115,6 +1506,27 @@ pub struct DynatraceConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for DynatraceConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_url;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required by Google Analytics.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1200,6 +1612,52 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for GoogleAnalyticsConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'access_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.client_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_secret;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_secret'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        self.connector_oauth_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.refresh_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'refresh_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required by Infor Nexus.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1273,6 +1731,48 @@ pub struct InforNexusConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for InforNexusConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.access_key_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'access_key_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.datakey;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'datakey'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_access_key;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'secret_access_key'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'user_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required by Infor Nexus.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1298,6 +1798,27 @@ pub struct InforNexusConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for InforNexusConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_url;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required by Marketo.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1367,6 +1888,44 @@ pub struct MarketoConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for MarketoConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'access_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.client_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_secret;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_secret'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        self.connector_oauth_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required when using Marketo.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1392,6 +1951,27 @@ pub struct MarketoConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for MarketoConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_url;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The OAuth 2.0 credentials required for OAuth 2.0 authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1476,6 +2056,54 @@ pub struct OAuth2Credentials {
 
 
 
+impl cfn_resources::CfnResource for OAuth2Credentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'access_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_secret {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_secret'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        self.oauth_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.refresh_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'refresh_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The OAuth 2.0 properties required for OAuth 2.0 authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1550,6 +2178,28 @@ impl Default for OAuth2PropertiesOAuth2GrantTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for OAuth2Properties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.token_url {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'token_url'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The OAuth credentials required for OAuth type authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1634,6 +2284,54 @@ pub struct OAuthCredentials {
 
 
 
+impl cfn_resources::CfnResource for OAuthCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'access_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_secret {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_secret'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        self.connector_oauth_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.refresh_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'refresh_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The OAuth properties required for OAuth type authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1687,6 +2385,36 @@ pub struct OAuthProperties {
 
 
 
+impl cfn_resources::CfnResource for OAuthProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.auth_code_url {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'auth_code_url'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.token_url {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'token_url'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The PardotConnectorProfileCredentials property type specifies Property description not available. for an AWS::AppFlow::ConnectorProfile.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1740,6 +2468,22 @@ pub struct PardotConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for PardotConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.connector_oauth_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The PardotConnectorProfileProperties property type specifies Property description not available. for an AWS::AppFlow::ConnectorProfile.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1782,6 +2526,20 @@ pub struct PardotConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for PardotConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using Amazon Redshift.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1823,6 +2581,36 @@ pub struct RedshiftConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for RedshiftConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.password {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'password'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.username {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties when using Amazon Redshift.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1953,6 +2741,57 @@ pub struct RedshiftConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for RedshiftConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_url {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'database_url'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using SAPOData.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1986,6 +2825,24 @@ pub struct SAPODataConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for SAPODataConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.basic_auth_credentials.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.oauth_credentials.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required when using SAPOData.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2105,6 +2962,86 @@ pub struct SAPODataConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for SAPODataConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.application_host_url {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'application_host_url'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_service_path {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'application_service_path'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_number {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'client_number'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_number {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'client_number'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.logon_language {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'logon_language'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        self.oauth_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.port_number {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port_number'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port_number {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port_number'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.private_link_service_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'private_link_service_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using Salesforce.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2198,6 +3135,54 @@ pub struct SalesforceConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for SalesforceConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'access_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_credentials_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'client_credentials_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_credentials_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'client_credentials_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        self.connector_oauth_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.refresh_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'refresh_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required when using Salesforce.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2246,6 +3231,28 @@ pub struct SalesforceConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for SalesforceConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.instance_url {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using ServiceNow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2287,6 +3294,34 @@ pub struct ServiceNowConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for ServiceNowConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.password;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'password'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required when using ServiceNow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2312,6 +3347,27 @@ pub struct ServiceNowConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for ServiceNowConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_url;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using Singular.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2337,6 +3393,27 @@ pub struct SingularConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for SingularConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.api_key;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_key'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using Slack.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2406,6 +3483,44 @@ pub struct SlackConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for SlackConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'access_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.client_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_secret;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_secret'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        self.connector_oauth_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required when using Slack.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2431,6 +3546,27 @@ pub struct SlackConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for SlackConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_url;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using Snowflake.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2472,6 +3608,34 @@ pub struct SnowflakeConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for SnowflakeConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.password;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'password'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required when using Snowflake.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2595,6 +3759,80 @@ pub struct SnowflakeConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for SnowflakeConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.account_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'account_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.private_link_service_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'private_link_service_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.region {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'region'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.stage;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'stage'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.warehouse;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'warehouse'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using Trend Micro.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2620,6 +3858,27 @@ pub struct TrendmicroConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for TrendmicroConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.api_secret_key;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'api_secret_key'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using Veeva.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2661,6 +3920,34 @@ pub struct VeevaConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for VeevaConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.password;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'password'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required when using Veeva.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2686,6 +3973,27 @@ pub struct VeevaConnectorProfileProperties {
 
 
 
+impl cfn_resources::CfnResource for VeevaConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_url;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The connector-specific profile credentials required when using Zendesk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2755,6 +4063,44 @@ pub struct ZendeskConnectorProfileCredentials {
 
 
 
+impl cfn_resources::CfnResource for ZendeskConnectorProfileCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_token {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'access_token'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.client_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_secret;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_secret'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        self.connector_oauth_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The connector-specific profile properties required when using Zendesk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2779,3 +4125,25 @@ pub struct ZendeskConnectorProfileProperties {
 }
 
 
+
+impl cfn_resources::CfnResource for ZendeskConnectorProfileProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_url;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_url'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

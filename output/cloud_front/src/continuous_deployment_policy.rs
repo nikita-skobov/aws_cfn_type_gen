@@ -32,8 +32,14 @@ impl cfn_resources::CfnResource for CfnContinuousDeploymentPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.continuous_deployment_policy_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains the configuration for a continuous deployment policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -79,6 +85,22 @@ pub struct ContinuousDeploymentPolicyConfig {
 
 
 
+impl cfn_resources::CfnResource for ContinuousDeploymentPolicyConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.traffic_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Session stickiness provides the ability to define multiple requests from a single 			viewer as a single session. This prevents the potentially inconsistent experience of 			sending some of a given user's requests to your staging distribution, while others are 			sent to your primary distribution. Define the session duration using TTL values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -112,6 +134,20 @@ pub struct SessionStickinessConfig {
 
 
 
+impl cfn_resources::CfnResource for SessionStickinessConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Determines which HTTP requests are sent to the staging distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -145,6 +181,20 @@ pub struct SingleHeaderConfig {
 
 
 
+impl cfn_resources::CfnResource for SingleHeaderConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This configuration determines the percentage of HTTP requests that are sent to the       staging distribution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -178,6 +228,22 @@ pub struct SingleWeightConfig {
 
 
 
+impl cfn_resources::CfnResource for SingleWeightConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.session_stickiness_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The traffic configuration of your continuous deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -243,3 +309,22 @@ impl Default for TrafficConfigTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TrafficConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.single_header_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.single_weight_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

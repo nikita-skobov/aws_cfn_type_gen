@@ -54,4 +54,23 @@ impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

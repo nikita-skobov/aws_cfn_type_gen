@@ -86,8 +86,14 @@ impl cfn_resources::CfnResource for CfnDBProxyTargetGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.connection_pool_configuration_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the settings that control the size and behavior of the connection pool       associated with a DBProxyTargetGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -176,3 +182,18 @@ pub struct ConnectionPoolConfigurationInfoFormat {
 }
 
 
+
+impl cfn_resources::CfnResource for ConnectionPoolConfigurationInfoFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

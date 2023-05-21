@@ -217,8 +217,14 @@ impl cfn_resources::CfnResource for CfnCluster {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.ssespecification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the settings used to enable server-side encryption.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -239,3 +245,18 @@ pub struct SSESpecification {
 }
 
 
+
+impl cfn_resources::CfnResource for SSESpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

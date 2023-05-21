@@ -221,8 +221,74 @@ impl cfn_resources::CfnResource for CfnDataSet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.aws_account_id {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'aws_account_id'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.aws_account_id {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'aws_account_id'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.column_groups {
+
+        if the_val.len() > 8 as _ {
+            return Err(format!("Max validation failed on field 'column_groups'. {} is greater than 8", the_val.len()));
+        }
+
+        }
+        
+        self.data_set_usage_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ingestion_wait_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.permissions {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'permissions'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        self.row_level_permission_data_set.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A calculated column for a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -280,6 +346,62 @@ pub struct CalculatedColumn {
 
 
 
+impl cfn_resources::CfnResource for CalculatedColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.column_id;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'column_id'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.column_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'column_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.column_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'column_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A transform operation that casts a column to a different type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -360,6 +482,42 @@ impl Default for CastColumnTypeOperationNewColumnTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CastColumnTypeOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.column_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'column_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.format {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'format'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Metadata that contains a description for a column.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -385,6 +543,36 @@ pub struct ColumnDescription {
 
 
 
+impl cfn_resources::CfnResource for ColumnDescription {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.text {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'text'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.text {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'text'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Groupings of columns that work together in certain Amazon QuickSight features. This is       a variant type structure. For this structure to be valid, only one of the attributes can       be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -406,6 +594,22 @@ pub struct ColumnGroup {
 
 
 
+impl cfn_resources::CfnResource for ColumnGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.geo_spatial_column_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A rule defined to grant access on one or more restricted columns. Each dataset can have multiple rules. To  create a restricted column, you add it to one or more rules. Each rule must contain at least one column and at least  one user or group. To be able to see a restricted column, a user or group needs to be added to a rule for that  column.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -439,6 +643,20 @@ pub struct ColumnLevelPermissionRule {
 
 
 
+impl cfn_resources::CfnResource for ColumnLevelPermissionRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A tag for a column in a               TagColumnOperation             structure. This is a       variant type structure. For this structure to be valid, only one of the attributes can       be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -513,6 +731,22 @@ impl Default for ColumnTagColumnGeographicRoleEnum {
 }
 
 
+impl cfn_resources::CfnResource for ColumnTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column_description.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A transform operation that creates calculated columns. Columns created in one such       operation form a lexical closure.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -536,6 +770,27 @@ pub struct CreateColumnsOperation {
 
 
 
+impl cfn_resources::CfnResource for CreateColumnsOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.columns;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'columns'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A physical table type built from the results of the custom SQL query.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -603,6 +858,55 @@ pub struct CustomSql {
 
 
 
+impl cfn_resources::CfnResource for CustomSql {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.columns;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'columns'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.sql_query;
+
+        if the_val.len() > 65536 as _ {
+            return Err(format!("Max validation failed on field 'sql_query'. {} is greater than 65536", the_val.len()));
+        }
+
+        
+        let the_val = &self.sql_query;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sql_query'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The usage configuration to apply to child datasets that reference this dataset as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -636,6 +940,20 @@ pub struct DataSetUsageConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DataSetUsageConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A FieldFolder element is a folder that contains fields and nested subfolders.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -669,6 +987,20 @@ pub struct FieldFolder {
 
 
 
+impl cfn_resources::CfnResource for FieldFolder {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A transform operation that filters rows based on a condition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -694,6 +1026,34 @@ pub struct FilterOperation {
 
 
 
+impl cfn_resources::CfnResource for FilterOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.condition_expression;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'condition_expression'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.condition_expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'condition_expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Geospatial column group that denotes a hierarchy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -762,6 +1122,41 @@ impl Default for GeoSpatialColumnGroupCountryCodeEnum {
 }
 
 
+impl cfn_resources::CfnResource for GeoSpatialColumnGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.columns;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'columns'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The wait policy to use when creating or updating a Dataset. The default is to wait for SPICE ingestion to finish  with timeout of 36 hours.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -795,6 +1190,20 @@ pub struct IngestionWaitPolicy {
 
 
 
+impl cfn_resources::CfnResource for IngestionWaitPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Metadata for a column that is used as the input of a transform operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -873,6 +1282,34 @@ impl Default for InputColumnTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for InputColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The instructions associated with a join.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -987,6 +1424,38 @@ impl Default for JoinInstructionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for JoinInstruction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.left_join_key_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.on_clause;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'on_clause'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.on_clause;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'on_clause'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.right_join_key_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Properties associated with the columns participating in a join.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1008,6 +1477,20 @@ pub struct JoinKeyProperties {
 
 
 
+impl cfn_resources::CfnResource for JoinKeyProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A logical table is a unit that joins and that data       transformations operate on. A logical table has a source, which can be either a physical       table or result of a join. When a logical table points to a physical table, the logical       table acts as a mutable copy of that physical table through transform operations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1059,6 +1542,44 @@ pub struct LogicalTable {
 
 
 
+impl cfn_resources::CfnResource for LogicalTable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.alias;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'alias'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.alias;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'alias'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.data_transforms {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'data_transforms'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        self.source.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Information about the source of a logical table. This is a variant type structure. For       this structure to be valid, only one of the attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1110,6 +1631,38 @@ pub struct LogicalTableSource {
 
 
 
+impl cfn_resources::CfnResource for LogicalTableSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.join_instruction.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.physical_table_id {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'physical_table_id'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.physical_table_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'physical_table_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Output column.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1192,6 +1745,52 @@ impl Default for OutputColumnTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for OutputColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A view of a data source that contains information about the shape of the data in the       underlying source. This is a variant type structure. For this structure to be valid,       only one of the attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1237,6 +1836,26 @@ pub struct PhysicalTable {
 
 
 
+impl cfn_resources::CfnResource for PhysicalTable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_sql.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.relational_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A transform operation that projects columns. Operations that come after a projection       can only refer to projected columns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1260,6 +1879,27 @@ pub struct ProjectOperation {
 
 
 
+impl cfn_resources::CfnResource for ProjectOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.projected_columns;
+
+        if the_val.len() > 2000 as _ {
+            return Err(format!("Max validation failed on field 'projected_columns'. {} is greater than 2000", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A physical table type for relational data sources.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1336,6 +1976,49 @@ pub struct RelationalTable {
 
 
 
+impl cfn_resources::CfnResource for RelationalTable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.input_columns;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'input_columns'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.schema {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'schema'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A transform operation that renames a column.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1377,6 +2060,48 @@ pub struct RenameColumnOperation {
 
 
 
+impl cfn_resources::CfnResource for RenameColumnOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.column_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'column_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.new_column_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'new_column_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.new_column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'new_column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Permission for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1412,6 +2137,20 @@ pub struct ResourcePermission {
 
 
 
+impl cfn_resources::CfnResource for ResourcePermission {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about a dataset that contains permissions for row-level security (RLS).       The permissions dataset maps fields to users or groups. For more information, see       Using Row-Level Security (RLS) to Restrict Access to a Dataset in the Amazon QuickSight User         Guide.
 ///
@@ -1519,6 +2258,28 @@ impl Default for RowLevelPermissionDataSetPermissionPolicyEnum {
 }
 
 
+impl cfn_resources::CfnResource for RowLevelPermissionDataSet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'namespace'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A physical table type for an S3 data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1568,6 +2329,29 @@ pub struct S3Source {
 
 
 
+impl cfn_resources::CfnResource for S3Source {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.input_columns;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'input_columns'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        self.upload_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1605,6 +2389,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A transform operation that tags a column with additional information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1646,6 +2444,41 @@ pub struct TagColumnOperation {
 
 
 
+impl cfn_resources::CfnResource for TagColumnOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.column_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'column_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.tags;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A data transformation on a logical table. This is a variant type structure. For this       structure to be valid, only one of the attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1727,6 +2560,32 @@ pub struct TransformOperation {
 
 
 
+impl cfn_resources::CfnResource for TransformOperation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cast_column_type_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.create_columns_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.project_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rename_column_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tag_column_operation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about the format for a source file or files.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1859,3 +2718,42 @@ impl Default for UploadSettingsTextQualifierEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for UploadSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'delimiter'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.start_from_row {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'start_from_row'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

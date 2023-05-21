@@ -111,8 +111,12 @@ impl cfn_resources::CfnResource for CfnDBProxyEndpoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Metadata assigned to a DB proxy endpoint consisting of a key-value pair.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -145,3 +149,18 @@ pub struct TagFormat {
 }
 
 
+
+impl cfn_resources::CfnResource for TagFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

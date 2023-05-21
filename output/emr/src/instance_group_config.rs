@@ -212,8 +212,78 @@ impl cfn_resources::CfnResource for CfnInstanceGroupConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_scaling_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.bid_price {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'bid_price'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bid_price {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'bid_price'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'custom_ami_id'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'custom_ami_id'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.ebs_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.instance_type;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_type'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// AutoScalingPolicy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. For more information, see Using Automatic Scaling in Amazon EMR in the Amazon EMR Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -247,6 +317,22 @@ pub struct AutoScalingPolicy {
 
 
 
+impl cfn_resources::CfnResource for AutoScalingPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.constraints.validate()?;
+
+        Ok(())
+    }
+}
 
 /// CloudWatchAlarmDefinition is a subproperty of the ScalingTrigger property, which determines when to trigger an automatic scaling activity. Scaling activity begins when you satisfy the defined alarm conditions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -547,6 +633,20 @@ impl Default for CloudWatchAlarmDefinitionUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for CloudWatchAlarmDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configurations is a property of the AWS::EMR::Cluster resource that specifies the configuration of applications on an Amazon EMR cluster.
 ///
@@ -594,6 +694,20 @@ pub struct Configuration {
 
 
 
+impl cfn_resources::CfnResource for Configuration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration of requested EBS block device associated with the instance group with     count of volumes that are associated to every instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -627,6 +741,22 @@ pub struct EbsBlockDeviceConfig {
 
 
 
+impl cfn_resources::CfnResource for EbsBlockDeviceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.volume_specification.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The Amazon EBS configuration of a cluster instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -660,6 +790,20 @@ pub struct EbsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EbsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// MetricDimension is a subproperty of the CloudWatchAlarmDefinition property type. MetricDimension specifies a CloudWatch dimension, which is specified with a Key Value pair. The key is known as a Name in CloudWatch. By default, Amazon EMR uses one dimension whose Key is JobFlowID and Value is a variable representing the cluster ID, which is ${emr.clusterId}. This enables the automatic scaling rule for EMR to bootstrap when the cluster ID becomes available during cluster creation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -693,6 +837,20 @@ pub struct MetricDimension {
 
 
 
+impl cfn_resources::CfnResource for MetricDimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// ScalingAction is a subproperty of the ScalingRule property type. ScalingAction determines the type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -747,6 +905,22 @@ impl Default for ScalingActionMarketEnum {
 }
 
 
+impl cfn_resources::CfnResource for ScalingAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.simple_scaling_policy_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// ScalingConstraints is a subproperty of the AutoScalingPolicy property type. ScalingConstraints defines the upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or shrink below these limits.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -780,6 +954,20 @@ pub struct ScalingConstraints {
 
 
 
+impl cfn_resources::CfnResource for ScalingConstraints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// ScalingRule is a subproperty of the AutoScalingPolicy property type. ScalingRule defines the scale-in or scale-out rules for scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -837,6 +1025,24 @@ pub struct ScalingRule {
 
 
 
+impl cfn_resources::CfnResource for ScalingRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.validate()?;
+
+        self.trigger.validate()?;
+
+        Ok(())
+    }
+}
 
 /// ScalingTrigger is a subproperty of the ScalingRule property type. ScalingTrigger determines the conditions that trigger an automatic scaling activity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -858,6 +1064,22 @@ pub struct ScalingTrigger {
 
 
 
+impl cfn_resources::CfnResource for ScalingTrigger {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_alarm_definition.validate()?;
+
+        Ok(())
+    }
+}
 
 /// SimpleScalingPolicyConfiguration is a subproperty of the ScalingAction property type. SimpleScalingPolicyConfiguration determines how an automatic scaling action adds or removes instances, the cooldown period, and the number of EC2 instances that are added each time the CloudWatch metric alarm condition is satisfied.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -928,6 +1150,20 @@ impl Default for SimpleScalingPolicyConfigurationAdjustmentTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SimpleScalingPolicyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -972,3 +1208,18 @@ pub struct VolumeSpecification {
 }
 
 
+
+impl cfn_resources::CfnResource for VolumeSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

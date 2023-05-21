@@ -159,4 +159,69 @@ impl cfn_resources::CfnResource for CfnApiDestination {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.connection_arn;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'connection_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.connection_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'connection_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.invocation_endpoint;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'invocation_endpoint'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.invocation_endpoint;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'invocation_endpoint'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.invocation_rate_limit_per_second {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'invocation_rate_limit_per_second'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

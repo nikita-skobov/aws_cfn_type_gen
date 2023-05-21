@@ -161,8 +161,22 @@ impl cfn_resources::CfnResource for CfnChannel {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.cdi_input_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encoder_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.input_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.maintenance.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for an AAC audio encode in the output.
 ///
@@ -282,6 +296,20 @@ pub struct AacSettings {
 
 
 
+impl cfn_resources::CfnResource for AacSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for an AC3 audio encode in the output.
 ///
@@ -377,6 +405,20 @@ pub struct Ac3Settings {
 
 
 
+impl cfn_resources::CfnResource for Ac3Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the ancillary captions to extract from the       input.
 ///
@@ -400,6 +442,20 @@ pub struct AncillarySourceSettings {
 
 
 
+impl cfn_resources::CfnResource for AncillarySourceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings to configure the destination of an Archive output.
 ///
@@ -423,6 +479,22 @@ pub struct ArchiveCdnSettings {
 
 
 
+impl cfn_resources::CfnResource for ArchiveCdnSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.archive_s3_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The archive container settings.
 ///
@@ -458,6 +530,24 @@ pub struct ArchiveContainerSettings {
 
 
 
+impl cfn_resources::CfnResource for ArchiveContainerSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.m2ts_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.raw_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for an archive output group.
 ///
@@ -505,6 +595,24 @@ pub struct ArchiveGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for ArchiveGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.archive_cdn_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The archive output settings.
 ///
@@ -552,6 +660,22 @@ pub struct ArchiveOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for ArchiveOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.container_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Sets up Amazon S3 as the destination for this Archive       output.
 ///
@@ -575,6 +699,20 @@ pub struct ArchiveS3Settings {
 
 
 
+impl cfn_resources::CfnResource for ArchiveS3Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of ARIB captions in the output.
 ///
@@ -586,6 +724,20 @@ pub struct AribDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for AribDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the ARIB captions to extract from the       input.
 ///
@@ -597,6 +749,20 @@ pub struct AribSourceSettings {
 
 
 
+impl cfn_resources::CfnResource for AribSourceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for remixing audio.
 ///
@@ -632,6 +798,20 @@ pub struct AudioChannelMapping {
 
 
 
+impl cfn_resources::CfnResource for AudioChannelMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of the audio codec in the audio output.
 ///
@@ -726,6 +906,34 @@ pub struct AudioCodecSettings {
 
 
 
+impl cfn_resources::CfnResource for AudioCodecSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aac_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ac3_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.eac3_atmos_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.eac3_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mp2_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pass_through_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.wav_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The encoding information for one output audio.
 ///
@@ -869,6 +1077,28 @@ pub struct AudioDescription {
 
 
 
+impl cfn_resources::CfnResource for AudioDescription {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.audio_normalization_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.audio_watermarking_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.codec_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.remix_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AudioDolbyEDecode property type specifies Property description not available. for an AWS::MediaLive::Channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -889,6 +1119,20 @@ pub struct AudioDolbyEDecode {
 
 
 
+impl cfn_resources::CfnResource for AudioDolbyEDecode {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Selector for HLS audio rendition.
 ///
@@ -924,6 +1168,20 @@ pub struct AudioHlsRenditionSelection {
 
 
 
+impl cfn_resources::CfnResource for AudioHlsRenditionSelection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the audio language to extract.
 ///
@@ -959,6 +1217,20 @@ pub struct AudioLanguageSelection {
 
 
 
+impl cfn_resources::CfnResource for AudioLanguageSelection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for normalizing video.
 ///
@@ -1006,6 +1278,20 @@ pub struct AudioNormalizationSettings {
 
 
 
+impl cfn_resources::CfnResource for AudioNormalizationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of an audio-only HLS output.
 ///
@@ -1065,6 +1351,22 @@ pub struct AudioOnlyHlsSettings {
 
 
 
+impl cfn_resources::CfnResource for AudioOnlyHlsSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.audio_only_image.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Used to extract audio by The PID.
 ///
@@ -1088,6 +1390,20 @@ pub struct AudioPidSelection {
 
 
 
+impl cfn_resources::CfnResource for AudioPidSelection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about one audio to extract from the input.
 ///
@@ -1123,6 +1439,22 @@ pub struct AudioSelector {
 
 
 
+impl cfn_resources::CfnResource for AudioSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.selector_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about the audio to extract from the input.
 ///
@@ -1180,6 +1512,28 @@ pub struct AudioSelectorSettings {
 
 
 
+impl cfn_resources::CfnResource for AudioSelectorSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.audio_hls_rendition_selection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.audio_language_selection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.audio_pid_selection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.audio_track_selection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// MediaLive will perform a failover if audio is not detected in this       input for the specified period.
 ///
@@ -1215,6 +1569,20 @@ pub struct AudioSilenceFailoverSettings {
 
 
 
+impl cfn_resources::CfnResource for AudioSilenceFailoverSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about one audio track to extract. You can select       multiple tracks.
 ///
@@ -1238,6 +1606,20 @@ pub struct AudioTrack {
 
 
 
+impl cfn_resources::CfnResource for AudioTrack {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the audio track to extract.
 ///
@@ -1272,6 +1654,22 @@ pub struct AudioTrackSelection {
 
 
 
+impl cfn_resources::CfnResource for AudioTrackSelection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dolby_edecode.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Audio Watermark Settings
 ///
@@ -1295,6 +1693,22 @@ pub struct AudioWatermarkSettings {
 
 
 
+impl cfn_resources::CfnResource for AudioWatermarkSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.nielsen_watermarks_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings to configure the conditions that will define the input as       unhealthy and that will make MediaLive fail over to the other input       in the input failover pair.
 ///
@@ -1354,6 +1768,20 @@ pub struct AutomaticInputFailoverSettings {
 
 
 
+impl cfn_resources::CfnResource for AutomaticInputFailoverSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of ad avail blanking in the output.
 ///
@@ -1389,6 +1817,22 @@ pub struct AvailBlanking {
 
 
 
+impl cfn_resources::CfnResource for AvailBlanking {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.avail_blanking_image.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The setup of ad avail handling in the output.
 ///
@@ -1412,6 +1856,22 @@ pub struct AvailConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AvailConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.avail_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for the ad avail setup in the output.
 ///
@@ -1458,6 +1918,26 @@ pub struct AvailSettings {
 
 
 
+impl cfn_resources::CfnResource for AvailSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.esam.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scte35_splice_insert.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scte35_time_signal_apos.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for a blackout slate.
 ///
@@ -1529,6 +2009,24 @@ pub struct BlackoutSlate {
 
 
 
+impl cfn_resources::CfnResource for BlackoutSlate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.blackout_slate_image.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_end_blackout_image.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for burn-in captions in the output.
 ///
@@ -1744,6 +2242,22 @@ pub struct BurnInDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for BurnInDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.font.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The encoding information for output captions.
 ///
@@ -1826,6 +2340,22 @@ pub struct CaptionDescription {
 
 
 
+impl cfn_resources::CfnResource for CaptionDescription {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of one captions encode in the output.
 ///
@@ -1992,6 +2522,46 @@ pub struct CaptionDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for CaptionDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.arib_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.burn_in_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dvb_sub_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ebu_tt_ddestination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.embedded_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.embedded_plus_scte20_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rtmp_caption_info_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scte20_plus_embedded_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scte27_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.smpte_tt_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.teletext_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ttml_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.webvtt_destination_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Maps a captions channel to an ISO 693-2 language code       (http://www.loc.gov/standards/iso639-2), with an optional       description.
 ///
@@ -2039,6 +2609,20 @@ pub struct CaptionLanguageMapping {
 
 
 
+impl cfn_resources::CfnResource for CaptionLanguageMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings to configure the caption rectangle for an output captions       that will be created using this Teletext source captions.
 ///
@@ -2106,6 +2690,20 @@ pub struct CaptionRectangle {
 
 
 
+impl cfn_resources::CfnResource for CaptionRectangle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about one caption to extract from the input.
 ///
@@ -2153,6 +2751,22 @@ pub struct CaptionSelector {
 
 
 
+impl cfn_resources::CfnResource for CaptionSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.selector_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Captions Selector Settings
 ///
@@ -2248,6 +2862,34 @@ pub struct CaptionSelectorSettings {
 
 
 
+impl cfn_resources::CfnResource for CaptionSelectorSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ancillary_source_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.arib_source_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dvb_sub_source_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.embedded_source_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scte20_source_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scte27_source_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.teletext_source_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The input specification for this channel. It specifies the key       characteristics of CDI inputs for this channel, when those       characteristics are different from other inputs.
 ///
@@ -2271,6 +2913,20 @@ pub struct CdiInputSpecification {
 
 
 
+impl cfn_resources::CfnResource for CdiInputSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Passthrough applies no color space conversion to the output.
 ///
@@ -2282,6 +2938,20 @@ pub struct ColorSpacePassthroughSettings {
 
 
 
+impl cfn_resources::CfnResource for ColorSpacePassthroughSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The DolbyVision81Settings property type specifies Property description not available. for an AWS::MediaLive::Channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2291,6 +2961,20 @@ pub struct DolbyVision81Settings {
 
 
 
+impl cfn_resources::CfnResource for DolbyVision81Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of DVB NIT.
 ///
@@ -2338,6 +3022,20 @@ pub struct DvbNitSettings {
 
 
 
+impl cfn_resources::CfnResource for DvbNitSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A DVB Service Description Table (SDT).
 ///
@@ -2397,6 +3095,20 @@ pub struct DvbSdtSettings {
 
 
 
+impl cfn_resources::CfnResource for DvbSdtSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for DVB Sub captions in the output.
 ///
@@ -2612,6 +3324,22 @@ pub struct DvbSubDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for DvbSubDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.font.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about the DVB Sub captions to extract from the       input.
 ///
@@ -2647,6 +3375,20 @@ pub struct DvbSubSourceSettings {
 
 
 
+impl cfn_resources::CfnResource for DvbSubSourceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The DVB Time and Date Table (TDT).
 ///
@@ -2670,6 +3412,20 @@ pub struct DvbTdtSettings {
 
 
 
+impl cfn_resources::CfnResource for DvbTdtSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Eac3AtmosSettings property type specifies Property description not available. for an AWS::MediaLive::Channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2756,6 +3512,20 @@ pub struct Eac3AtmosSettings {
 
 
 
+impl cfn_resources::CfnResource for Eac3AtmosSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for an EAC3 audio encode in the output.
 ///
@@ -3007,6 +3777,20 @@ pub struct Eac3Settings {
 
 
 
+impl cfn_resources::CfnResource for Eac3Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings for EBU-TT captions in the output.
 ///
@@ -3066,6 +3850,20 @@ pub struct EbuTtDDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for EbuTtDDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of embedded captions in the output.
 ///
@@ -3077,6 +3875,20 @@ pub struct EmbeddedDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for EmbeddedDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for embedded plus SCTE-20 captions in the       output.
 ///
@@ -3088,6 +3900,20 @@ pub struct EmbeddedPlusScte20DestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for EmbeddedPlusScte20DestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the embedded captions to extract from the       input.
 ///
@@ -3147,6 +3973,20 @@ pub struct EmbeddedSourceSettings {
 
 
 
+impl cfn_resources::CfnResource for EmbeddedSourceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for the encoding of outputs.
 ///
@@ -3302,6 +4142,36 @@ pub struct EncoderSettings {
 
 
 
+impl cfn_resources::CfnResource for EncoderSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.avail_blanking.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.avail_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.blackout_slate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.feature_activations.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.global_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.motion_graphics_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.nielsen_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timecode_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Esam property type specifies Property description not available. for an AWS::MediaLive::Channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3377,6 +4247,20 @@ pub struct Esam {
 
 
 
+impl cfn_resources::CfnResource for Esam {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Failover Condition settings. There can be multiple failover       conditions inside AutomaticInputFailoverSettings.
 ///
@@ -3400,6 +4284,22 @@ pub struct FailoverCondition {
 
 
 
+impl cfn_resources::CfnResource for FailoverCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.failover_condition_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for one failover condition.
 ///
@@ -3447,6 +4347,26 @@ pub struct FailoverConditionSettings {
 
 
 
+impl cfn_resources::CfnResource for FailoverConditionSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.audio_silence_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.input_loss_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.video_black_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings to enable specific features. You can't configure these       features until you have enabled them in the channel.
 ///
@@ -3470,6 +4390,20 @@ pub struct FeatureActivations {
 
 
 
+impl cfn_resources::CfnResource for FeatureActivations {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for FEC.
 ///
@@ -3517,6 +4451,20 @@ pub struct FecOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for FecOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings for the fMP4 containers.
 ///
@@ -3564,6 +4512,20 @@ pub struct Fmp4HlsSettings {
 
 
 
+impl cfn_resources::CfnResource for Fmp4HlsSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings to configure the destination of a Frame Capture       output.
 ///
@@ -3587,6 +4549,22 @@ pub struct FrameCaptureCdnSettings {
 
 
 
+impl cfn_resources::CfnResource for FrameCaptureCdnSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.frame_capture_s3_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for a frame capture output group.
 ///
@@ -3622,6 +4600,24 @@ pub struct FrameCaptureGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for FrameCaptureGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.frame_capture_cdn_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for a frame capture output in an HLS output group.
 ///
@@ -3633,6 +4629,20 @@ pub struct FrameCaptureHlsSettings {
 
 
 
+impl cfn_resources::CfnResource for FrameCaptureHlsSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The frame capture output settings.
 ///
@@ -3656,6 +4666,20 @@ pub struct FrameCaptureOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for FrameCaptureOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Sets up Amazon S3 as the destination for this Frame Capture       output.
 ///
@@ -3679,6 +4703,20 @@ pub struct FrameCaptureS3Settings {
 
 
 
+impl cfn_resources::CfnResource for FrameCaptureS3Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The frame capture settings.
 ///
@@ -3725,6 +4763,22 @@ pub struct FrameCaptureSettings {
 
 
 
+impl cfn_resources::CfnResource for FrameCaptureSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.timecode_burnin_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration settings that apply to the entire       channel.
 ///
@@ -3808,6 +4862,22 @@ pub struct GlobalConfiguration {
 
 
 
+impl cfn_resources::CfnResource for GlobalConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_loss_behavior.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for configuring color space in an H264 video       encode.
 ///
@@ -3854,6 +4924,26 @@ pub struct H264ColorSpaceSettings {
 
 
 
+impl cfn_resources::CfnResource for H264ColorSpaceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.color_space_passthrough_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rec601_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rec709_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings to configure video filters that apply to the H264       codec.
 ///
@@ -3877,6 +4967,22 @@ pub struct H264FilterSettings {
 
 
 
+impl cfn_resources::CfnResource for H264FilterSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.temporal_filter_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for the H.264 codec in the output.
 ///
@@ -4391,6 +5497,26 @@ pub struct H264Settings {
 
 
 
+impl cfn_resources::CfnResource for H264Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.color_space_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timecode_burnin_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// H265 Color Space Settings
 ///
@@ -4461,6 +5587,30 @@ pub struct H265ColorSpaceSettings {
 
 
 
+impl cfn_resources::CfnResource for H265ColorSpaceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.color_space_passthrough_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dolby_vision81_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hdr10_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rec601_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rec709_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings to configure video filters that apply to the H265       codec.
 ///
@@ -4483,6 +5633,22 @@ pub struct H265FilterSettings {
 
 
 
+impl cfn_resources::CfnResource for H265FilterSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.temporal_filter_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// H265 Settings
 ///
@@ -4853,6 +6019,26 @@ pub struct H265Settings {
 
 
 
+impl cfn_resources::CfnResource for H265Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.color_space_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timecode_burnin_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Hdr10 Settings
 ///
@@ -4888,6 +6074,20 @@ pub struct Hdr10Settings {
 
 
 
+impl cfn_resources::CfnResource for Hdr10Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Akamai settings in an HLS output.
 ///
@@ -4983,6 +6183,20 @@ pub struct HlsAkamaiSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsAkamaiSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of HLS Basic Put Settings.
 ///
@@ -5042,6 +6256,20 @@ pub struct HlsBasicPutSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsBasicPutSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for the CDN of an HLS output.
 ///
@@ -5115,6 +6343,30 @@ pub struct HlsCdnSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsCdnSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.hls_akamai_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_basic_put_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_media_store_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_s3_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_webdav_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for an HLS output group.
 ///
@@ -5641,6 +6893,26 @@ pub struct HlsGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_cdn_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.key_provider_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about how to connect to the upstream system.
 ///
@@ -5712,6 +6984,20 @@ pub struct HlsInputSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsInputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of a MediaStore container as the destination for       an HLS output.
 ///
@@ -5783,6 +7069,20 @@ pub struct HlsMediaStoreSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsMediaStoreSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for an HLS output.
 ///
@@ -5842,6 +7142,22 @@ pub struct HlsOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.hls_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Sets up Amazon S3 as the destination for this HLS output.
 ///
@@ -5865,6 +7181,20 @@ pub struct HlsS3Settings {
 
 
 
+impl cfn_resources::CfnResource for HlsS3Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for an HLS output.
 ///
@@ -5924,6 +7254,28 @@ pub struct HlsSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.audio_only_hls_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.fmp4_hls_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.frame_capture_hls_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.standard_hls_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of a WebDav server as the downstream system for       an HLS output.
 ///
@@ -5995,6 +7347,20 @@ pub struct HlsWebdavSettings {
 
 
 
+impl cfn_resources::CfnResource for HlsWebdavSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings to configure the motion graphics overlay to use an HTML       asset.
 ///
@@ -6006,6 +7372,20 @@ pub struct HtmlMotionGraphicsSettings {
 
 
 
+impl cfn_resources::CfnResource for HtmlMotionGraphicsSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An input to attach to this channel.
 ///
@@ -6065,6 +7445,24 @@ pub struct InputAttachment {
 
 
 
+impl cfn_resources::CfnResource for InputAttachment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.automatic_input_failover_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.input_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The setting to remix the audio.
 ///
@@ -6100,6 +7498,20 @@ pub struct InputChannelLevel {
 
 
 
+impl cfn_resources::CfnResource for InputChannelLevel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The input location.
 ///
@@ -6147,6 +7559,20 @@ pub struct InputLocation {
 
 
 
+impl cfn_resources::CfnResource for InputLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of channel behavior when the input is       lost.
 ///
@@ -6218,6 +7644,22 @@ pub struct InputLossBehavior {
 
 
 
+impl cfn_resources::CfnResource for InputLossBehavior {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_loss_image_slate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// MediaLive will perform a failover if content is not detected in       this input for the specified period.
 ///
@@ -6241,6 +7683,20 @@ pub struct InputLossFailoverSettings {
 
 
 
+impl cfn_resources::CfnResource for InputLossFailoverSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about extracting content from the input and about       handling the content.
 ///
@@ -6385,6 +7841,24 @@ pub struct InputSettings {
 
 
 
+impl cfn_resources::CfnResource for InputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.network_input_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.video_selector.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The input specification for this channel. It specifies the key       characteristics of the inputs for this channel: the maximum bitrate,       the resolution, and the codec.
 ///
@@ -6432,6 +7906,20 @@ pub struct InputSpecification {
 
 
 
+impl cfn_resources::CfnResource for InputSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of key provider settings.
 ///
@@ -6455,6 +7943,22 @@ pub struct KeyProviderSettings {
 
 
 
+impl cfn_resources::CfnResource for KeyProviderSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.static_key_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of the M2TS in the output.
 ///
@@ -7041,6 +8545,26 @@ pub struct M2tsSettings {
 
 
 
+impl cfn_resources::CfnResource for M2tsSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dvb_nit_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dvb_sdt_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dvb_tdt_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for the M3U8 container.
 ///
@@ -7256,6 +8780,20 @@ pub struct M3u8Settings {
 
 
 
+impl cfn_resources::CfnResource for M3u8Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The MaintenanceCreateSettings property type specifies Property description not available. for an AWS::MediaLive::Channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7287,6 +8825,20 @@ pub struct MaintenanceCreateSettings {
 
 
 
+impl cfn_resources::CfnResource for MaintenanceCreateSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The MaintenanceUpdateSettings property type specifies Property description not available. for an AWS::MediaLive::Channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -7329,6 +8881,20 @@ pub struct MaintenanceUpdateSettings {
 
 
 
+impl cfn_resources::CfnResource for MaintenanceUpdateSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for the MediaPackage group.
 ///
@@ -7352,6 +8918,22 @@ pub struct MediaPackageGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for MediaPackageGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Destination settings for a MediaPackage output.
 ///
@@ -7375,6 +8957,20 @@ pub struct MediaPackageOutputDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for MediaPackageOutputDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for a MediaPackage output.
 ///
@@ -7386,6 +8982,20 @@ pub struct MediaPackageOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for MediaPackageOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings to enable and configure the motion graphics overlay       feature in the channel.
 ///
@@ -7421,6 +9031,22 @@ pub struct MotionGraphicsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for MotionGraphicsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.motion_graphics_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings to enable and configure the motion graphics overlay       feature in the channel.
 ///
@@ -7444,6 +9070,22 @@ pub struct MotionGraphicsSettings {
 
 
 
+impl cfn_resources::CfnResource for MotionGraphicsSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.html_motion_graphics_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for this MP2 audio.
 ///
@@ -7491,6 +9133,20 @@ pub struct Mp2Settings {
 
 
 
+impl cfn_resources::CfnResource for Mp2Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings to configure video filters that apply to the MPEG-2       codec.
 ///
@@ -7513,6 +9169,22 @@ pub struct Mpeg2FilterSettings {
 
 
 
+impl cfn_resources::CfnResource for Mpeg2FilterSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.temporal_filter_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for the MPEG-2 codec in the output.
 ///
@@ -7727,6 +9399,24 @@ pub struct Mpeg2Settings {
 
 
 
+impl cfn_resources::CfnResource for Mpeg2Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.filter_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timecode_burnin_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for a Microsoft Smooth output group.
 ///
@@ -7966,6 +9656,22 @@ pub struct MsSmoothGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for MsSmoothGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration of a Microsoft Smooth output.
 ///
@@ -8001,6 +9707,20 @@ pub struct MsSmoothOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for MsSmoothOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for a Multiplex output group.
 ///
@@ -8012,6 +9732,20 @@ pub struct MultiplexGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for MultiplexGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration of a Multiplex output.
 ///
@@ -8035,6 +9769,22 @@ pub struct MultiplexOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for MultiplexOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Destination settings for a Multiplex output.
 ///
@@ -8070,6 +9820,20 @@ pub struct MultiplexProgramChannelDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for MultiplexProgramChannelDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about how to connect to the upstream system.
 ///
@@ -8105,6 +9869,22 @@ pub struct NetworkInputSettings {
 
 
 
+impl cfn_resources::CfnResource for NetworkInputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.hls_input_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Complete these fields only if you want to insert watermarks of type Nielsen CBET
 ///
@@ -8152,6 +9932,20 @@ pub struct NielsenCBET {
 
 
 
+impl cfn_resources::CfnResource for NielsenCBET {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings to configure Nielsen watermarks.
 ///
@@ -8187,6 +9981,20 @@ pub struct NielsenConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NielsenConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Complete these fields only if you want to insert watermarks of type Nielsen NAES II (N2) and Nielsen NAES VI (NW).
 ///
@@ -8233,6 +10041,20 @@ pub struct NielsenNaesIiNw {
 
 
 
+impl cfn_resources::CfnResource for NielsenNaesIiNw {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings to configure Nielsen Watermarks in the audio encode.
 ///
@@ -8280,6 +10102,24 @@ pub struct NielsenWatermarksSettings {
 
 
 
+impl cfn_resources::CfnResource for NielsenWatermarksSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.nielsen_cbet_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.nielsen_naes_ii_nw_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The output settings.
 ///
@@ -8351,6 +10191,22 @@ pub struct Output {
 
 
 
+impl cfn_resources::CfnResource for Output {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration information for an output.
 ///
@@ -8410,6 +10266,22 @@ pub struct OutputDestination {
 
 
 
+impl cfn_resources::CfnResource for OutputDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.multiplex_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration information for this output.
 ///
@@ -8469,6 +10341,20 @@ pub struct OutputDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for OutputDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for one output group.
 ///
@@ -8516,6 +10402,22 @@ pub struct OutputGroup {
 
 
 
+impl cfn_resources::CfnResource for OutputGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.output_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of the output group.
 ///
@@ -8624,6 +10526,36 @@ pub struct OutputGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for OutputGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.archive_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.frame_capture_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.media_package_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ms_smooth_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.multiplex_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rtmp_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.udp_group_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A reference to an OutputDestination ID that is defined in the       channel.
 ///
@@ -8647,6 +10579,20 @@ pub struct OutputLocationRef {
 
 
 
+impl cfn_resources::CfnResource for OutputLocationRef {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The output settings.
 ///
@@ -8763,6 +10709,36 @@ pub struct OutputSettings {
 
 
 
+impl cfn_resources::CfnResource for OutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.archive_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.frame_capture_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.media_package_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ms_smooth_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.multiplex_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rtmp_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.udp_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for passing through audio to the output.
 ///
@@ -8774,6 +10750,20 @@ pub struct PassThroughSettings {
 
 
 
+impl cfn_resources::CfnResource for PassThroughSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The container for WAV audio in the output group.
 ///
@@ -8785,6 +10775,20 @@ pub struct RawSettings {
 
 
 
+impl cfn_resources::CfnResource for RawSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Rec601 Settings
 ///
@@ -8796,6 +10800,20 @@ pub struct Rec601Settings {
 
 
 
+impl cfn_resources::CfnResource for Rec601Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Rec709 Settings
 ///
@@ -8807,6 +10825,20 @@ pub struct Rec709Settings {
 
 
 
+impl cfn_resources::CfnResource for Rec709Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for remixing audio in the output.
 ///
@@ -8854,6 +10886,20 @@ pub struct RemixSettings {
 
 
 
+impl cfn_resources::CfnResource for RemixSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for RTMPCaptionInfo captions encode in the       output.
 ///
@@ -8865,6 +10911,20 @@ pub struct RtmpCaptionInfoDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for RtmpCaptionInfoDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of an RTMP output group.
 ///
@@ -8960,6 +11020,20 @@ pub struct RtmpGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for RtmpGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for one RTMP output.
 ///
@@ -9019,6 +11093,22 @@ pub struct RtmpOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for RtmpOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of SCTE-20 plus embedded captions in the       output.
 ///
@@ -9030,6 +11120,20 @@ pub struct Scte20PlusEmbeddedDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for Scte20PlusEmbeddedDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the SCTE-20 captions to extract from the       input.
 ///
@@ -9065,6 +11169,20 @@ pub struct Scte20SourceSettings {
 
 
 
+impl cfn_resources::CfnResource for Scte20SourceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of SCTE-27 captions in the output.
 ///
@@ -9076,6 +11194,20 @@ pub struct Scte27DestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for Scte27DestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the SCTE-27 captions to extract from the       input.
 ///
@@ -9111,6 +11243,20 @@ pub struct Scte27SourceSettings {
 
 
 
+impl cfn_resources::CfnResource for Scte27SourceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The setup of SCTE-35 splice insert handling.
 ///
@@ -9158,6 +11304,20 @@ pub struct Scte35SpliceInsert {
 
 
 
+impl cfn_resources::CfnResource for Scte35SpliceInsert {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for the SCTE-35 time signal APOS mode.
 ///
@@ -9205,6 +11365,20 @@ pub struct Scte35TimeSignalApos {
 
 
 
+impl cfn_resources::CfnResource for Scte35TimeSignalApos {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The setup of SMPTE-TT captions in the output.
 ///
@@ -9216,6 +11390,20 @@ pub struct SmpteTtDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for SmpteTtDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of an HLS output that is a standard output (not       an audio-only output).
 ///
@@ -9251,6 +11439,22 @@ pub struct StandardHlsSettings {
 
 
 
+impl cfn_resources::CfnResource for StandardHlsSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.m3u8_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The static key settings.
 ///
@@ -9286,6 +11490,22 @@ pub struct StaticKeySettings {
 
 
 
+impl cfn_resources::CfnResource for StaticKeySettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.key_provider_server.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for a Teletext captions output encode.
 ///
@@ -9297,6 +11517,20 @@ pub struct TeletextDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for TeletextDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the Teletext captions to extract from the       input.
 ///
@@ -9332,6 +11566,22 @@ pub struct TeletextSourceSettings {
 
 
 
+impl cfn_resources::CfnResource for TeletextSourceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.output_rectangle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for the temporal filter to apply to the video.
 ///
@@ -9367,6 +11617,20 @@ pub struct TemporalFilterSettings {
 
 
 
+impl cfn_resources::CfnResource for TemporalFilterSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The TimecodeBurninSettings property type specifies Property description not available. for an AWS::MediaLive::Channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -9409,6 +11673,20 @@ pub struct TimecodeBurninSettings {
 
 
 
+impl cfn_resources::CfnResource for TimecodeBurninSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of the timecode in the output.
 ///
@@ -9444,6 +11722,20 @@ pub struct TimecodeConfig {
 
 
 
+impl cfn_resources::CfnResource for TimecodeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The setup of TTML captions in the output.
 ///
@@ -9467,6 +11759,20 @@ pub struct TtmlDestinationSettings {
 
 
 
+impl cfn_resources::CfnResource for TtmlDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of a UDP output.
 ///
@@ -9490,6 +11796,22 @@ pub struct UdpContainerSettings {
 
 
 
+impl cfn_resources::CfnResource for UdpContainerSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.m2ts_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration of a UDP output group.
 ///
@@ -9537,6 +11859,20 @@ pub struct UdpGroupSettings {
 
 
 
+impl cfn_resources::CfnResource for UdpGroupSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for one UDP output.
 ///
@@ -9596,6 +11932,26 @@ pub struct UdpOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for UdpOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.container_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.fec_output_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// MediaLive will perform a failover if content is considered black       for the specified period.
 ///
@@ -9631,6 +11987,20 @@ pub struct VideoBlackFailoverSettings {
 
 
 
+impl cfn_resources::CfnResource for VideoBlackFailoverSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for the video codec in the output.
 ///
@@ -9690,6 +12060,28 @@ pub struct VideoCodecSettings {
 
 
 
+impl cfn_resources::CfnResource for VideoCodecSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.frame_capture_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.h264_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.h265_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mpeg2_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Encoding information for one output video.
 ///
@@ -9785,6 +12177,22 @@ pub struct VideoDescription {
 
 
 
+impl cfn_resources::CfnResource for VideoDescription {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.codec_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about the video to extract from the input. An input       can contain only one video selector.
 ///
@@ -9844,6 +12252,24 @@ pub struct VideoSelector {
 
 
 
+impl cfn_resources::CfnResource for VideoSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.color_space_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.selector_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings to configure color space settings in the incoming       video.
 ///
@@ -9867,6 +12293,22 @@ pub struct VideoSelectorColorSpaceSettings {
 
 
 
+impl cfn_resources::CfnResource for VideoSelectorColorSpaceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.hdr10_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Selects a specific PID from within a video source.
 ///
@@ -9890,6 +12332,20 @@ pub struct VideoSelectorPid {
 
 
 
+impl cfn_resources::CfnResource for VideoSelectorPid {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Used to extract video by the program ID.
 ///
@@ -9913,6 +12369,20 @@ pub struct VideoSelectorProgramId {
 
 
 
+impl cfn_resources::CfnResource for VideoSelectorProgramId {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the video to extract from the input.
 ///
@@ -9948,6 +12418,24 @@ pub struct VideoSelectorSettings {
 
 
 
+impl cfn_resources::CfnResource for VideoSelectorSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.video_selector_pid.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.video_selector_program_id.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings to enable VPC mode in the channel, so that the endpoints       for all outputs are in your VPC.
 ///
@@ -9995,6 +12483,20 @@ pub struct VpcOutputSettings {
 
 
 
+impl cfn_resources::CfnResource for VpcOutputSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The setup of WAV audio in the output.
 ///
@@ -10042,6 +12544,20 @@ pub struct WavSettings {
 
 
 
+impl cfn_resources::CfnResource for WavSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of Web VTT captions in the output.
 ///
@@ -10064,3 +12580,18 @@ pub struct WebvttDestinationSettings {
 }
 
 
+
+impl cfn_resources::CfnResource for WebvttDestinationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

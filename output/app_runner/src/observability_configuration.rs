@@ -68,8 +68,30 @@ impl cfn_resources::CfnResource for CfnObservabilityConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.observability_configuration_name {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'observability_configuration_name'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.observability_configuration_name {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'observability_configuration_name'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        self.trace_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -107,6 +129,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the configuration of the tracing feature within an AWS App Runner observability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -144,3 +180,18 @@ impl Default for TraceConfigurationVendorEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TraceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

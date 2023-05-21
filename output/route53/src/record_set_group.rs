@@ -76,8 +76,36 @@ impl cfn_resources::CfnResource for CfnRecordSetGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.comment {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'comment'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hosted_zone_id {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'hosted_zone_id'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hosted_zone_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'hosted_zone_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Alias records only: Information about the AWS resource, such as a CloudFront distribution or 			an Amazon S3 bucket, that you want to route traffic to.
 ///
@@ -139,6 +167,34 @@ pub struct AliasTarget {
 
 
 
+impl cfn_resources::CfnResource for AliasTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.dnsname;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'dnsname'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.hosted_zone_id;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'hosted_zone_id'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
 ///
@@ -182,6 +238,34 @@ pub struct CidrRoutingConfig {
 
 
 
+impl cfn_resources::CfnResource for CidrRoutingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.location_name;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'location_name'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        let the_val = &self.location_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'location_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about a geographic location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -247,6 +331,68 @@ pub struct GeoLocation {
 
 
 
+impl cfn_resources::CfnResource for GeoLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.continent_code {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'continent_code'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.continent_code {
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'continent_code'. {} is less than 2", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.country_code {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'country_code'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.country_code {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'country_code'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subdivision_code {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'subdivision_code'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subdivision_code {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'subdivision_code'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information about the record that you want to create.
 ///
@@ -754,3 +900,71 @@ impl Default for RecordSetTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for RecordSet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.alias_target.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cidr_routing_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.geo_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.health_check_id {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'health_check_id'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hosted_zone_id {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'hosted_zone_id'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hosted_zone_name {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'hosted_zone_name'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.set_identifier {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'set_identifier'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.set_identifier {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'set_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

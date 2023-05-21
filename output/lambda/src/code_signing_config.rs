@@ -56,8 +56,32 @@ impl cfn_resources::CfnResource for CfnCodeSigningConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.allowed_publishers.validate()?;
+
+        self.code_signing_policies.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// List of signing profiles that can sign a code package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -81,6 +105,27 @@ pub struct AllowedPublishers {
 
 
 
+impl cfn_resources::CfnResource for AllowedPublishers {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.signing_profile_version_arns;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'signing_profile_version_arns'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Code signing configuration policies specify the validation failure action for signature mismatch or    expiry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -124,3 +169,18 @@ impl Default for CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for CodeSigningPolicies {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -46,8 +46,26 @@ impl cfn_resources::CfnResource for CfnCidrCollection {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the list of CIDR blocks for a CIDR location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -88,3 +106,39 @@ pub struct Location {
 }
 
 
+
+impl cfn_resources::CfnResource for Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cidr_list;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'cidr_list'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        let the_val = &self.location_name;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'location_name'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        let the_val = &self.location_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'location_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

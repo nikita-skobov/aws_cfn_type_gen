@@ -226,8 +226,46 @@ impl cfn_resources::CfnResource for CfnFileSystem {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.availability_zone_name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'availability_zone_name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.availability_zone_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'availability_zone_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.backup_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.lifecycle_policies {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'lifecycle_policies'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The backup policy turns automatic backups for the file system on or off.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -280,6 +318,20 @@ impl Default for BackupPolicyStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for BackupPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A tag is a key-value pair attached to a file system. Allowed characters in the Key and Value properties        are letters, white space, and numbers that    can be represented in UTF-8, and the following characters: + - = . _ : /
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -323,6 +375,41 @@ pub struct ElasticFileSystemTag {
 
 
 
+impl cfn_resources::CfnResource for ElasticFileSystemTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes a policy used by EFS lifecycle management and EFS Intelligent-Tiering that    specifies when to transition files into and out of the file system's Infrequent Access (IA)    storage class. For more information, see EFS Intelligent‐Tiering and EFS Lifecycle     Management.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -409,3 +496,18 @@ impl Default for LifecyclePolicyTransitionToPrimaryStorageClassEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for LifecyclePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -118,4 +118,55 @@ impl cfn_resources::CfnResource for CfnHostedConfigurationVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.content_type;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'content_type'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.content_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'content_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_label {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'version_label'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

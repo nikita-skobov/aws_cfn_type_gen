@@ -92,8 +92,71 @@ impl cfn_resources::CfnResource for CfnAssessmentTemplate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.assessment_target_arn;
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'assessment_target_arn'. {} is greater than 300", the_val.len()));
+        }
+
+        
+        let the_val = &self.assessment_target_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'assessment_target_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.assessment_template_name {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'assessment_template_name'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.assessment_template_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'assessment_template_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.duration_in_seconds;
+
+        if *the_val > 86400 as _ {
+            return Err(format!("Max validation failed on field 'duration_in_seconds'. {} is greater than 86400", the_val));
+        }
+
+        
+        let the_val = &self.duration_in_seconds;
+
+        if *the_val < 180 as _ {
+            return Err(format!("Min validation failed on field 'duration_in_seconds'. {} is less than 180", the_val));
+        }
+
+        
+        let the_val = &self.rules_package_arns;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'rules_package_arns'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.user_attributes_for_findings {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'user_attributes_for_findings'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -130,3 +193,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

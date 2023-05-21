@@ -255,8 +255,160 @@ impl cfn_resources::CfnResource for CfnStudio {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.default_s3_location;
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'default_s3_location'. {} is greater than 10280", the_val.len()));
+        }
+
+        
+        let the_val = &self.default_s3_location;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'default_s3_location'. {} is less than 0", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.engine_security_group_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'engine_security_group_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.engine_security_group_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'engine_security_group_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.idp_auth_url {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'idp_auth_url'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.idp_auth_url {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'idp_auth_url'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.idp_relay_state_parameter_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'idp_relay_state_parameter_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.idp_relay_state_parameter_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'idp_relay_state_parameter_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_role;
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'service_role'. {} is greater than 10280", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_role;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'service_role'. {} is less than 0", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.user_role {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'user_role'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_role {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'user_role'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.vpc_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'vpc_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.vpc_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'vpc_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.workspace_security_group_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'workspace_security_group_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.workspace_security_group_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'workspace_security_group_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -293,3 +445,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

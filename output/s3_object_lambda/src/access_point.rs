@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.object_lambda_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The alias of an Object Lambda Access Point. For more information, see How to use a bucket-style alias for your S3 bucket     Object Lambda Access Point.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -75,6 +81,20 @@ pub struct Alias {
 
 
 
+impl cfn_resources::CfnResource for Alias {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AwsLambda property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -106,6 +126,20 @@ pub struct AwsLambda {
 
 
 
+impl cfn_resources::CfnResource for AwsLambda {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ContentTransformation property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -126,6 +160,22 @@ pub struct ContentTransformation {
 
 
 
+impl cfn_resources::CfnResource for ContentTransformation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aws_lambda.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A configuration used when creating an Object Lambda Access Point.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -183,6 +233,20 @@ pub struct ObjectLambdaConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ObjectLambdaConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Indicates whether this access point policy is public. For more information about how Amazon S3     evaluates policies to determine whether they are public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -204,6 +268,20 @@ pub struct PolicyStatus {
 
 
 
+impl cfn_resources::CfnResource for PolicyStatus {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3     account. You can enable the configuration options in any combination. For more information     about when Amazon S3 considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 ///
@@ -281,6 +359,20 @@ pub struct PublicAccessBlockConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A configuration used when creating an Object Lambda Access Point transformation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -313,3 +405,20 @@ pub struct TransformationConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for TransformationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.content_transformation.validate()?;
+
+        Ok(())
+    }
+}

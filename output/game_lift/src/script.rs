@@ -74,8 +74,54 @@ impl cfn_resources::CfnResource for CfnScript {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.storage_location.validate()?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'version'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The location in Amazon S3 where build or script files can be stored for access by    Amazon GameLift.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -143,6 +189,49 @@ pub struct S3Location {
 
 
 
+impl cfn_resources::CfnResource for S3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.object_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'object_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -179,3 +268,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

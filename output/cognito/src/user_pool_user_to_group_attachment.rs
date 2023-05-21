@@ -72,4 +72,51 @@ impl cfn_resources::CfnResource for CfnUserPoolUserToGroupAttachment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.group_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'group_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.group_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'group_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'username'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

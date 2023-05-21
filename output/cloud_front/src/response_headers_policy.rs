@@ -34,8 +34,14 @@ impl cfn_resources::CfnResource for CfnResponseHeadersPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.response_headers_policy_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A list of HTTP header names that CloudFront includes as values for the 				Access-Control-Allow-Headers HTTP response header.
 ///
@@ -59,6 +65,20 @@ pub struct AccessControlAllowHeaders {
 
 
 
+impl cfn_resources::CfnResource for AccessControlAllowHeaders {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of HTTP methods that CloudFront includes as values for the 				Access-Control-Allow-Methods HTTP response header.
 ///
@@ -86,6 +106,20 @@ pub struct AccessControlAllowMethods {
 
 
 
+impl cfn_resources::CfnResource for AccessControlAllowMethods {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of origins (domain names) that CloudFront can use as the value for the 				Access-Control-Allow-Origin HTTP response header.
 ///
@@ -109,6 +143,20 @@ pub struct AccessControlAllowOrigins {
 
 
 
+impl cfn_resources::CfnResource for AccessControlAllowOrigins {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of HTTP headers that CloudFront includes as values for the 				Access-Control-Expose-Headers HTTP response header.
 ///
@@ -132,6 +180,20 @@ pub struct AccessControlExposeHeaders {
 
 
 
+impl cfn_resources::CfnResource for AccessControlExposeHeaders {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The policy directives and their values that CloudFront includes as values for the 				Content-Security-Policy HTTP response header.
 ///
@@ -167,6 +229,20 @@ pub struct ContentSecurityPolicy {
 
 
 
+impl cfn_resources::CfnResource for ContentSecurityPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Determines whether CloudFront includes the X-Content-Type-Options HTTP response 			header with its value set to nosniff.
 ///
@@ -190,6 +266,20 @@ pub struct ContentTypeOptions {
 
 
 
+impl cfn_resources::CfnResource for ContentTypeOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A configuration for a set of HTTP response headers that are used for cross-origin 			resource sharing (CORS). CloudFront adds these headers to HTTP responses that it sends for 			CORS requests that match a cache behavior associated with this response headers 			policy.
 ///
@@ -297,6 +387,28 @@ pub struct CorsConfig {
 
 
 
+impl cfn_resources::CfnResource for CorsConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.access_control_allow_headers.validate()?;
+
+        self.access_control_allow_methods.validate()?;
+
+        self.access_control_allow_origins.validate()?;
+
+        self.access_control_expose_headers.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An HTTP response header name and its value. CloudFront includes this header in HTTP 			responses that it sends for requests that match a cache behavior that's associated with 			this response headers policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -342,6 +454,20 @@ pub struct CustomHeader {
 
 
 
+impl cfn_resources::CfnResource for CustomHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of HTTP response header names and their values. CloudFront includes these headers in 			HTTP responses that it sends for requests that match a cache behavior that's associated 			with this response headers policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -363,6 +489,20 @@ pub struct CustomHeadersConfig {
 
 
 
+impl cfn_resources::CfnResource for CustomHeadersConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Determines whether CloudFront includes the X-Frame-Options HTTP response header 			and the header's value.
 ///
@@ -421,6 +561,20 @@ impl Default for FrameOptionsFrameOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for FrameOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Determines whether CloudFront includes the Referrer-Policy HTTP response header 			and the header's value.
 ///
@@ -505,6 +659,20 @@ impl Default for ReferrerPolicyReferrerPolicyEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReferrerPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The name of an HTTP header that CloudFront removes from HTTP responses to requests that match the 			cache behavior that this response headers policy is attached to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -526,6 +694,20 @@ pub struct RemoveHeader {
 
 
 
+impl cfn_resources::CfnResource for RemoveHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of HTTP header names that CloudFront removes from HTTP responses to requests that match the 			cache behavior that this response headers policy is attached to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -547,6 +729,20 @@ pub struct RemoveHeadersConfig {
 
 
 
+impl cfn_resources::CfnResource for RemoveHeadersConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A response headers policy configuration.
 ///
@@ -646,6 +842,30 @@ pub struct ResponseHeadersPolicyConfig {
 
 
 
+impl cfn_resources::CfnResource for ResponseHeadersPolicyConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cors_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom_headers_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.remove_headers_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.security_headers_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.server_timing_headers_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A configuration for a set of security-related HTTP response headers. CloudFront adds these 			headers to HTTP responses that it sends for requests that match a cache behavior 			associated with this response headers policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -739,6 +959,32 @@ pub struct SecurityHeadersConfig {
 
 
 
+impl cfn_resources::CfnResource for SecurityHeadersConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.content_security_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.content_type_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.frame_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.referrer_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.strict_transport_security.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xssprotection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A configuration for enabling the Server-Timing header in HTTP responses 			sent from CloudFront.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -772,6 +1018,20 @@ pub struct ServerTimingHeadersConfig {
 
 
 
+impl cfn_resources::CfnResource for ServerTimingHeadersConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Determines whether CloudFront includes the Strict-Transport-Security HTTP 			response header and the header's value.
 ///
@@ -831,6 +1091,20 @@ pub struct StrictTransportSecurity {
 
 
 
+impl cfn_resources::CfnResource for StrictTransportSecurity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Determines whether CloudFront includes the X-XSS-Protection HTTP response 			header and the header's value.
 ///
@@ -897,3 +1171,18 @@ pub struct XSSProtection {
 }
 
 
+
+impl cfn_resources::CfnResource for XSSProtection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

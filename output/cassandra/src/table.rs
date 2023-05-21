@@ -169,8 +169,16 @@ impl cfn_resources::CfnResource for CfnTable {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.billing_mode.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Determines the billing mode for the table - on-demand or provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -208,6 +216,22 @@ pub struct BillingMode {
 
 
 
+impl cfn_resources::CfnResource for BillingMode {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.provisioned_throughput.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines an individual column within the clustering key.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -243,6 +267,22 @@ pub struct ClusteringKeyColumn {
 
 
 
+impl cfn_resources::CfnResource for ClusteringKeyColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The name and data type of an individual column in a table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -276,6 +316,20 @@ pub struct Column {
 
 
 
+impl cfn_resources::CfnResource for Column {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the encryption at rest option selected for the table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -312,6 +366,20 @@ pub struct EncryptionSpecification {
 
 
 
+impl cfn_resources::CfnResource for EncryptionSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The provisioned throughput for the table, which consists of         ReadCapacityUnits and WriteCapacityUnits.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -345,6 +413,20 @@ pub struct ProvisionedThroughput {
 
 
 
+impl cfn_resources::CfnResource for ProvisionedThroughput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -381,3 +463,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

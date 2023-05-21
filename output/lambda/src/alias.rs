@@ -116,8 +116,74 @@ impl cfn_resources::CfnResource for CfnAlias {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.function_name;
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'function_name'. {} is greater than 140", the_val.len()));
+        }
+
+        
+        let the_val = &self.function_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'function_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.function_version;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'function_version'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.function_version;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'function_version'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.provisioned_concurrency_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.routing_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The traffic-shifting configuration of a Lambda function alias.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -139,6 +205,20 @@ pub struct AliasRoutingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AliasRoutingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A provisioned concurrency configuration for a function's alias.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -160,6 +240,20 @@ pub struct ProvisionedConcurrencyConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ProvisionedConcurrencyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The traffic-shifting configuration of a Lambda function alias.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -192,3 +286,18 @@ pub struct VersionWeight {
 }
 
 
+
+impl cfn_resources::CfnResource for VersionWeight {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

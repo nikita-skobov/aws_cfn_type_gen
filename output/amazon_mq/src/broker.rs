@@ -240,8 +240,22 @@ impl cfn_resources::CfnResource for CfnBroker {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ldap_server_metadata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.maintenance_window_start_time.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A list of information about the configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -275,6 +289,20 @@ pub struct ConfigurationId {
 
 
 
+impl cfn_resources::CfnResource for ConfigurationId {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Encryption options for the broker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -308,6 +336,20 @@ pub struct EncryptionOptions {
 
 
 
+impl cfn_resources::CfnResource for EncryptionOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Optional. The metadata of the LDAP server used to authenticate and authorize        connections to the broker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -446,6 +488,20 @@ pub struct LdapServerMetadata {
 
 
 
+impl cfn_resources::CfnResource for LdapServerMetadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The list of information about logs to be enabled for the specified broker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -479,6 +535,20 @@ pub struct LogList {
 
 
 
+impl cfn_resources::CfnResource for LogList {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters that determine the WeeklyStartTime to apply pending updates or    patches to the broker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -524,6 +594,20 @@ pub struct MaintenanceWindow {
 
 
 
+impl cfn_resources::CfnResource for MaintenanceWindow {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A key-value pair to associate with the broker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -557,6 +641,20 @@ pub struct TagsEntry {
 
 
 
+impl cfn_resources::CfnResource for TagsEntry {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The list of broker users (persons or applications) who can access queues and topics.    For Amazon MQ for RabbitMQ brokers, one and only one administrative user is accepted and created when a broker is first provisioned.     All subsequent broker users are created via the RabbitMQ web console or by using the RabbitMQ management API.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -615,3 +713,18 @@ pub struct User {
 }
 
 
+
+impl cfn_resources::CfnResource for User {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

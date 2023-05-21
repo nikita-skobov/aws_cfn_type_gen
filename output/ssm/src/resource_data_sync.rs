@@ -179,8 +179,110 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.bucket_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_region {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'bucket_region'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_region {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_region'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kmskey_arn {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'kmskey_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kmskey_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kmskey_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.s3_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.sync_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'sync_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.sync_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sync_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.sync_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.sync_type {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'sync_type'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sync_type {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sync_type'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information about the AwsOrganizationsSource resource data sync source. A sync  source of this type can synchronize data from AWS Organizations or, if an AWS organization isn't  present, from multiple AWS Regions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -220,6 +322,42 @@ pub struct AwsOrganizationsSource {
 
 
 
+impl cfn_resources::CfnResource for AwsOrganizationsSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.organization_source_type;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'organization_source_type'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.organization_source_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'organization_source_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.organizational_units {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'organizational_units'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information about the target S3 bucket for the resource data sync.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -324,6 +462,80 @@ impl Default for S3DestinationSyncFormatEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3Destination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bucket_prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.bucket_region;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'bucket_region'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_region;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_region'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.kmskey_arn {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'kmskey_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kmskey_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kmskey_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information about the source of the data included in the resource data sync.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -384,3 +596,34 @@ pub struct SyncSource {
 }
 
 
+
+impl cfn_resources::CfnResource for SyncSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aws_organizations_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.source_type;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'source_type'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'source_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

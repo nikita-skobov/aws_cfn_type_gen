@@ -186,8 +186,42 @@ impl cfn_resources::CfnResource for CfnStreamProcessor {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.connected_home_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_sharing_preference.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.face_search_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_data_stream.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_video_stream.validate()?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.notification_channel.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Identifies the bounding box around the label, face, text, or personal protective equipment.    The left (x-coordinate) and top (y-coordinate) are coordinates representing the top and    left sides of the bounding box. Note that the upper-left corner of the image is the origin    (0,0).
 ///
@@ -249,6 +283,20 @@ pub struct BoundingBox {
 
 
 
+impl cfn_resources::CfnResource for BoundingBox {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Connected home settings to use on a streaming video. Defining the settings is required in the request parameter for CreateStreamProcessor.      Including this setting in the CreateStreamProcessor request lets you use the stream processor for connected home features. You can then select      what you want the stream processor to detect, such as people or pets.
 ///
@@ -284,6 +332,20 @@ pub struct ConnectedHomeSettings {
 
 
 
+impl cfn_resources::CfnResource for ConnectedHomeSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Allows you to opt in or opt out to share data with Rekognition to improve model performance.      You can choose this option at the account level or on a per-stream basis. Note that if you opt out at the account level, this setting is ignored on individual streams.     For more information, see StreamProcessorDataSharingPreference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -305,6 +367,20 @@ pub struct DataSharingPreference {
 
 
 
+impl cfn_resources::CfnResource for DataSharingPreference {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The input parameters used to recognize faces in a streaming video analyzed by a Amazon Rekognition stream processor. FaceSearchSettings is a request      parameter for CreateStreamProcessor.       For more information, see FaceSearchSettings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -344,6 +420,34 @@ pub struct FaceSearchSettings {
 
 
 
+impl cfn_resources::CfnResource for FaceSearchSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.collection_id;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'collection_id'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.collection_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'collection_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Amazon Rekognition Video Stream Processor take as input a Kinesis video stream (Input) and a Kinesis data stream (Output).      This is the Amazon Kinesis Data Streams instance to which the Amazon Rekognition stream processor streams the analysis results.      This must be created within the constraints specified at      KinesisDataStream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -367,6 +471,20 @@ pub struct KinesisDataStream {
 
 
 
+impl cfn_resources::CfnResource for KinesisDataStream {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Kinesis video stream that provides the source of the streaming video for an Amazon Rekognition Video stream processor. For more information, see     KinesisVideoStream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -390,6 +508,20 @@ pub struct KinesisVideoStream {
 
 
 
+impl cfn_resources::CfnResource for KinesisVideoStream {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the object detection results and completion status of a video analysis operation.      Amazon Rekognition publishes a notification the first time an object of interest or a person is detected in the video stream.       Amazon Rekognition also publishes an an end-of-session notification with a summary when the stream processing session is complete.      For more information, see StreamProcessorNotificationChannel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -411,6 +543,20 @@ pub struct NotificationChannel {
 
 
 
+impl cfn_resources::CfnResource for NotificationChannel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation.      These results include the name of the stream processor resource, the session ID of the stream processing session,      and labeled timestamps and bounding boxes for detected labels. For more information, see      S3Destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -444,6 +590,20 @@ pub struct S3Destination {
 
 
 
+impl cfn_resources::CfnResource for S3Destination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -480,3 +640,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

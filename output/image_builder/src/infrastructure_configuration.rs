@@ -196,8 +196,94 @@ impl cfn_resources::CfnResource for CfnInfrastructureConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.instance_metadata_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.instance_profile_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_profile_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_profile_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_profile_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.key_pair {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'key_pair'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key_pair {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key_pair'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.logging.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.sns_topic_arn {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'sns_topic_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sns_topic_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sns_topic_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'subnet_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The instance metadata options that apply to the HTTP requests that pipeline builds use 			to launch EC2 build and test instances. For more information about instance metadata 			options, see Configure the instance metadata options in the 				        Amazon EC2 User Guide       for Linux instances, or Configure the instance metadata options in the 				        Amazon EC2 Windows Guide       for Windows instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -241,6 +327,36 @@ pub struct InstanceMetadataOptions {
 
 
 
+impl cfn_resources::CfnResource for InstanceMetadataOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.http_put_response_hop_limit {
+
+        if *the_val > 64 as _ {
+            return Err(format!("Max validation failed on field 'http_put_response_hop_limit'. {} is greater than 64", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.http_put_response_hop_limit {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'http_put_response_hop_limit'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Logging configuration defines where Image Builder uploads your logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -262,6 +378,22 @@ pub struct Logging {
 
 
 
+impl cfn_resources::CfnResource for Logging {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Amazon S3 logging configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -302,3 +434,50 @@ pub struct S3Logs {
 }
 
 
+
+impl cfn_resources::CfnResource for S3Logs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.s3_bucket_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_bucket_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_bucket_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_key_prefix {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_key_prefix'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_key_prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_key_prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

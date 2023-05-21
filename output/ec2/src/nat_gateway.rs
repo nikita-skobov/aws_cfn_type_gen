@@ -163,8 +163,44 @@ impl cfn_resources::CfnResource for CfnNatGateway {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.max_drain_duration_seconds {
+
+        if *the_val > 4000 as _ {
+            return Err(format!("Max validation failed on field 'max_drain_duration_seconds'. {} is greater than 4000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_drain_duration_seconds {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_drain_duration_seconds'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secondary_private_ip_address_count {
+
+        if *the_val > 31 as _ {
+            return Err(format!("Max validation failed on field 'secondary_private_ip_address_count'. {} is greater than 31", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secondary_private_ip_address_count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'secondary_private_ip_address_count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -201,3 +237,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

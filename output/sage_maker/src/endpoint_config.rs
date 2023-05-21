@@ -133,8 +133,57 @@ impl cfn_resources::CfnResource for CfnEndpointConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.async_inference_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_capture_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.endpoint_config_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_config_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        self.explainer_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.production_variants;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'production_variants'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.shadow_production_variants {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'shadow_production_variants'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configures the behavior of the client used by SageMaker to interact with the model       container during asynchronous inference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -156,6 +205,20 @@ pub struct AsyncInferenceClientConfig {
 
 
 
+impl cfn_resources::CfnResource for AsyncInferenceClientConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies configuration for how an endpoint performs asynchronous inference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -189,6 +252,24 @@ pub struct AsyncInferenceConfig {
 
 
 
+impl cfn_resources::CfnResource for AsyncInferenceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.client_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.output_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration for notifications of inference results for asynchronous       inference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -233,6 +314,20 @@ pub struct AsyncInferenceNotificationConfig {
 
 
 
+impl cfn_resources::CfnResource for AsyncInferenceNotificationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration for asynchronous inference invocation outputs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -289,6 +384,22 @@ pub struct AsyncInferenceOutputConfig {
 
 
 
+impl cfn_resources::CfnResource for AsyncInferenceOutputConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.notification_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the JSON and CSV content types of the data that the endpoint       captures.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -326,6 +437,36 @@ pub struct CaptureContentTypeHeader {
 
 
 
+impl cfn_resources::CfnResource for CaptureContentTypeHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.csv_content_types {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'csv_content_types'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.json_content_types {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'json_content_types'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies whether the endpoint captures input data or output data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -368,6 +509,20 @@ impl Default for CaptureOptionCaptureModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CaptureOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ClarifyExplainerConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -410,6 +565,24 @@ pub struct ClarifyExplainerConfig {
 
 
 
+impl cfn_resources::CfnResource for ClarifyExplainerConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.inference_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.shap_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The ClarifyFeatureType property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -419,6 +592,20 @@ pub struct ClarifyFeatureType {
 
 
 
+impl cfn_resources::CfnResource for ClarifyFeatureType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ClarifyHeader property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -428,6 +615,20 @@ pub struct ClarifyHeader {
 
 
 
+impl cfn_resources::CfnResource for ClarifyHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ClarifyInferenceConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -558,6 +759,20 @@ pub struct ClarifyInferenceConfig {
 
 
 
+impl cfn_resources::CfnResource for ClarifyInferenceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ClarifyShapBaselineConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -600,6 +815,20 @@ pub struct ClarifyShapBaselineConfig {
 
 
 
+impl cfn_resources::CfnResource for ClarifyShapBaselineConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ClarifyShapConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -664,6 +893,24 @@ pub struct ClarifyShapConfig {
 
 
 
+impl cfn_resources::CfnResource for ClarifyShapConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.shap_baseline_config.validate()?;
+
+        self.text_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ClarifyTextConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -695,6 +942,20 @@ pub struct ClarifyTextConfig {
 
 
 
+impl cfn_resources::CfnResource for ClarifyTextConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration of your endpoint for model monitor data capture.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -790,6 +1051,58 @@ pub struct DataCaptureConfig {
 
 
 
+impl cfn_resources::CfnResource for DataCaptureConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.capture_content_type_header.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.capture_options;
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'capture_options'. {} is greater than 2", the_val.len()));
+        }
+
+        
+        let the_val = &self.destination_s3_uri;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'destination_s3_uri'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.initial_sampling_percentage;
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'initial_sampling_percentage'. {} is greater than 100", the_val));
+        }
+
+        
+        let the_val = &self.initial_sampling_percentage;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'initial_sampling_percentage'. {} is less than 0", the_val));
+        }
+
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The ExplainerConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -810,6 +1123,22 @@ pub struct ExplainerConfig {
 
 
 
+impl cfn_resources::CfnResource for ExplainerConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.clarify_explainer_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies a model that you want to host and the resources to deploy for hosting it.       If you are deploying multiple models, tell Amazon SageMaker how to distribute traffic       among the models by specifying the InitialVariantWeight objects.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1595,6 +1924,44 @@ impl Default for ProductionVariantInstanceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ProductionVariant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.initial_instance_count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'initial_instance_count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        let the_val = &self.model_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'model_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        self.serverless_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.variant_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'variant_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the serverless configuration for an endpoint variant.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1647,6 +2014,48 @@ pub struct ServerlessConfig {
 
 
 
+impl cfn_resources::CfnResource for ServerlessConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.max_concurrency;
+
+        if *the_val > 200 as _ {
+            return Err(format!("Max validation failed on field 'max_concurrency'. {} is greater than 200", the_val));
+        }
+
+        
+        let the_val = &self.max_concurrency;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_concurrency'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.memory_size_in_mb;
+
+        if *the_val > 6144 as _ {
+            return Err(format!("Max validation failed on field 'memory_size_in_mb'. {} is greater than 6144", the_val));
+        }
+
+        
+        let the_val = &self.memory_size_in_mb;
+
+        if *the_val < 1024 as _ {
+            return Err(format!("Min validation failed on field 'memory_size_in_mb'. {} is less than 1024", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1683,3 +2092,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

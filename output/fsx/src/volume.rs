@@ -117,8 +117,30 @@ impl cfn_resources::CfnResource for CfnVolume {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 203 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 203", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.ontap_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.open_zfsconfiguration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies who can mount an OpenZFS file system and the options available while       mounting the file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -162,6 +184,41 @@ pub struct ClientConfigurations {
 
 
 
+impl cfn_resources::CfnResource for ClientConfigurations {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.clients;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'clients'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.clients;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'clients'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.options;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'options'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration object for mounting a Network File System (NFS) file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -185,6 +242,27 @@ pub struct NfsExports {
 
 
 
+impl cfn_resources::CfnResource for NfsExports {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.client_configurations;
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'client_configurations'. {} is greater than 25", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the configuration of the ONTAP volume that you are creating.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -390,6 +468,82 @@ impl Default for OntapConfigurationSecurityStyleEnum {
 }
 
 
+impl cfn_resources::CfnResource for OntapConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.junction_path {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'junction_path'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.junction_path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'junction_path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.size_in_megabytes;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'size_in_megabytes'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        let the_val = &self.size_in_megabytes;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'size_in_megabytes'. {} is less than 0", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.snapshot_policy {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'snapshot_policy'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.snapshot_policy {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'snapshot_policy'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.storage_virtual_machine_id;
+
+        if the_val.len() > 21 as _ {
+            return Err(format!("Max validation failed on field 'storage_virtual_machine_id'. {} is greater than 21", the_val.len()));
+        }
+
+        
+        let the_val = &self.storage_virtual_machine_id;
+
+        if the_val.len() < 21 as _ {
+            return Err(format!("Min validation failed on field 'storage_virtual_machine_id'. {} is less than 21", the_val.len()));
+        }
+
+        
+        self.tiering_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration of the Amazon FSx for OpenZFS volume that you are creating.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -584,6 +738,108 @@ impl Default for OpenZFSConfigurationDataCompressionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for OpenZFSConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.nfs_exports {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'nfs_exports'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.options {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'options'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        self.origin_snapshot.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.parent_volume_id;
+
+        if the_val.len() > 23 as _ {
+            return Err(format!("Max validation failed on field 'parent_volume_id'. {} is greater than 23", the_val.len()));
+        }
+
+        
+        let the_val = &self.parent_volume_id;
+
+        if the_val.len() < 23 as _ {
+            return Err(format!("Min validation failed on field 'parent_volume_id'. {} is less than 23", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.record_size_ki_b {
+
+        if *the_val > 1024 as _ {
+            return Err(format!("Max validation failed on field 'record_size_ki_b'. {} is greater than 1024", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.record_size_ki_b {
+
+        if *the_val < 4 as _ {
+            return Err(format!("Min validation failed on field 'record_size_ki_b'. {} is less than 4", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.storage_capacity_quota_gi_b {
+
+        if *the_val > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'storage_capacity_quota_gi_b'. {} is greater than 2147483647", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.storage_capacity_quota_gi_b {
+
+        if *the_val < -1 as _ {
+            return Err(format!("Min validation failed on field 'storage_capacity_quota_gi_b'. {} is less than -1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.storage_capacity_reservation_gi_b {
+
+        if *the_val > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'storage_capacity_reservation_gi_b'. {} is greater than 2147483647", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.storage_capacity_reservation_gi_b {
+
+        if *the_val < -1 as _ {
+            return Err(format!("Min validation failed on field 'storage_capacity_reservation_gi_b'. {} is less than -1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_and_group_quotas {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'user_and_group_quotas'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -640,6 +896,20 @@ impl Default for OriginSnapshotCopyStrategyEnum {
 }
 
 
+impl cfn_resources::CfnResource for OriginSnapshot {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -677,6 +947,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the data tiering policy for an ONTAP volume. When enabled, Amazon FSx for ONTAP's intelligent       tiering automatically transitions a volume's data between the file system's primary storage and capacity       pool storage based on your access patterns.
 ///
@@ -747,6 +1031,36 @@ impl Default for TieringPolicyNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for TieringPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.cooling_period {
+
+        if *the_val > 183 as _ {
+            return Err(format!("Max validation failed on field 'cooling_period'. {} is greater than 183", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cooling_period {
+
+        if *the_val < 2 as _ {
+            return Err(format!("Min validation failed on field 'cooling_period'. {} is less than 2", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object specifying how much storage users or groups can use on the volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -820,3 +1134,46 @@ impl Default for UserAndGroupQuotasTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for UserAndGroupQuotas {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.id;
+
+        if *the_val > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'id'. {} is greater than 2147483647", the_val));
+        }
+
+        
+        let the_val = &self.id;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'id'. {} is less than 0", the_val));
+        }
+
+        
+        let the_val = &self.storage_capacity_quota_gi_b;
+
+        if *the_val > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'storage_capacity_quota_gi_b'. {} is greater than 2147483647", the_val));
+        }
+
+        
+        let the_val = &self.storage_capacity_quota_gi_b;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'storage_capacity_quota_gi_b'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -28,8 +28,14 @@ impl cfn_resources::CfnResource for CfnTemplate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The content of the email, composed of a subject line and either an HTML part or a       text-only part.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -86,3 +92,18 @@ pub struct Template {
 }
 
 
+
+impl cfn_resources::CfnResource for Template {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

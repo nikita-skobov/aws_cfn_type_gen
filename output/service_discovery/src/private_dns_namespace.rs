@@ -86,8 +86,44 @@ impl cfn_resources::CfnResource for CfnPrivateDnsNamespace {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 253", the_val.len()));
+        }
+
+        
+        self.properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.vpc;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'vpc'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// DNS properties for  the private DNS namespace.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -109,6 +145,22 @@ pub struct PrivateDnsPropertiesMutable {
 
 
 
+impl cfn_resources::CfnResource for PrivateDnsPropertiesMutable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.soa.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Properties for the  private DNS namespace.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -130,6 +182,22 @@ pub struct Properties {
 
 
 
+impl cfn_resources::CfnResource for Properties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dns_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Start of Authority  (SOA) properties for a public or private DNS namespace.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -151,6 +219,20 @@ pub struct SOA {
 
 
 
+impl cfn_resources::CfnResource for SOA {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -187,3 +269,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -288,8 +288,123 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTask {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.logging_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.max_concurrency {
+
+        if the_val.len() > 7 as _ {
+            return Err(format!("Max validation failed on field 'max_concurrency'. {} is greater than 7", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_concurrency {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_concurrency'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_errors {
+
+        if the_val.len() > 7 as _ {
+            return Err(format!("Max validation failed on field 'max_errors'. {} is greater than 7", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_errors {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_errors'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.priority;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 0", the_val));
+        }
+
+        
+        if let Some(the_val) = &self.targets {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'targets'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.task_arn;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'task_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.task_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'task_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.task_invocation_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.window_id;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'window_id'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.window_id;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'window_id'. {} is less than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration options for sending command output to Amazon CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -329,6 +444,36 @@ pub struct CloudWatchOutputConfig {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchOutputConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.cloud_watch_log_group_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'cloud_watch_log_group_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cloud_watch_log_group_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'cloud_watch_log_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The LoggingInfo property type specifies information about the Amazon S3    bucket to write instance-level logs to.
 ///
@@ -386,6 +531,56 @@ pub struct LoggingInfo {
 
 
 
+impl cfn_resources::CfnResource for LoggingInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.region;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'region'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.region;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'region'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 3", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.s3_prefix {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 's3_prefix'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The MaintenanceWindowAutomationParameters property type specifies the    parameters for an AUTOMATION task type for a maintenance window task in AWS Systems Manager.
 ///
@@ -425,6 +620,20 @@ pub struct MaintenanceWindowAutomationParameters {
 
 
 
+impl cfn_resources::CfnResource for MaintenanceWindowAutomationParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The MaintenanceWindowLambdaParameters property type specifies the parameters    for a LAMBDA task type for a maintenance window task in AWS Systems Manager.
 ///
@@ -484,6 +693,52 @@ pub struct MaintenanceWindowLambdaParameters {
 
 
 
+impl cfn_resources::CfnResource for MaintenanceWindowLambdaParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.client_context {
+
+        if the_val.len() > 8000 as _ {
+            return Err(format!("Max validation failed on field 'client_context'. {} is greater than 8000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_context {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'client_context'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.qualifier {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'qualifier'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.qualifier {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'qualifier'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The MaintenanceWindowRunCommandParameters property type specifies the    parameters for a RUN_COMMAND task type for a maintenance window task in AWS Systems Manager. This means that these parameters are the same as those for the     SendCommand API call. For more information about SendCommand    parameters, see SendCommand in the     AWS Systems Manager API Reference.
 ///
@@ -674,6 +929,80 @@ impl Default for MaintenanceWindowRunCommandParametersDocumentHashTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for MaintenanceWindowRunCommandParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_output_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.comment {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'comment'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_hash {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'document_hash'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.notification_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.output_s3_bucket_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'output_s3_bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.output_s3_bucket_name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'output_s3_bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.output_s3_key_prefix {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'output_s3_key_prefix'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout_seconds {
+
+        if *the_val > 2592000 as _ {
+            return Err(format!("Max validation failed on field 'timeout_seconds'. {} is greater than 2592000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout_seconds {
+
+        if *the_val < 30 as _ {
+            return Err(format!("Min validation failed on field 'timeout_seconds'. {} is less than 30", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The MaintenanceWindowStepFunctionsParameters property type specifies the    parameters for the execution of a STEP_FUNCTIONS task in a Systems Manager    maintenance window.
 ///
@@ -715,6 +1044,44 @@ pub struct MaintenanceWindowStepFunctionsParameters {
 
 
 
+impl cfn_resources::CfnResource for MaintenanceWindowStepFunctionsParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.input {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'input'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 80 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 80", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The NotificationConfig property type specifies configurations for sending    notifications for a maintenance window task in AWS Systems Manager.
 ///
@@ -785,6 +1152,20 @@ impl Default for NotificationConfigNotificationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for NotificationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Target property type specifies targets (either instances or window    target IDs). You specify instances by using Key=InstanceIds,Values=<instanceid1>,<instanceid2>. You specify window target IDs using    Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2> for a maintenance window task in AWS Systems Manager.
 ///
@@ -828,6 +1209,41 @@ pub struct Target {
 
 
 
+impl cfn_resources::CfnResource for Target {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 163 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 163", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.values;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The TaskInvocationParameters property type specifies the task execution    parameters for a maintenance window task in AWS Systems Manager.
 ///
@@ -886,3 +1302,26 @@ pub struct TaskInvocationParameters {
 }
 
 
+
+impl cfn_resources::CfnResource for TaskInvocationParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.maintenance_window_automation_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.maintenance_window_lambda_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.maintenance_window_run_command_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.maintenance_window_step_functions_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

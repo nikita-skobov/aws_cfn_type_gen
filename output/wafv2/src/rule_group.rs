@@ -162,8 +162,46 @@ impl cfn_resources::CfnResource for CfnRuleGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.visibility_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies that AWS WAF should allow the request and optionally defines additional     custom handling for the request.
 ///
@@ -189,6 +227,22 @@ pub struct AllowAction {
 
 
 
+impl cfn_resources::CfnResource for AllowAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_request_handling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -210,6 +264,20 @@ pub struct AndStatement {
 
 
 
+impl cfn_resources::CfnResource for AndStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies that AWS WAF should block the request and optionally defines additional     custom handling for the response to the web request.
 ///
@@ -235,6 +303,22 @@ pub struct BlockAction {
 
 
 
+impl cfn_resources::CfnResource for BlockAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_response.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Inspect the body of the web request. The body immediately follows the request     headers.
 ///
@@ -293,6 +377,20 @@ impl Default for BodyOversizeHandlingEnum {
 }
 
 
+impl cfn_resources::CfnResource for Body {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A rule statement that defines a string match search for AWS WAF to apply to web requests. The byte match statement provides the bytes to search for, the location in requests that you want AWS WAF to search, and other settings. The bytes to search for are typically a string that corresponds with ASCII characters. In the AWS WAF console and the developer guide, this is called a string match statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -425,6 +523,22 @@ impl Default for ByteMatchStatementPositionalConstraintEnum {
 }
 
 
+impl cfn_resources::CfnResource for ByteMatchStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_to_match.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies that AWS WAF should run a CAPTCHA check against the request:
 ///
@@ -452,6 +566,22 @@ pub struct CaptchaAction {
 
 
 
+impl cfn_resources::CfnResource for CaptchaAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_request_handling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies how AWS WAF should handle CAPTCHA evaluations. This is     available at the web ACL level and in each rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -473,6 +603,22 @@ pub struct CaptchaConfig {
 
 
 
+impl cfn_resources::CfnResource for CaptchaConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.immunity_time_property.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies that AWS WAF should run a Challenge check against the request to verify that the request is coming from a legitimate client session:
 ///
@@ -500,6 +646,22 @@ pub struct ChallengeAction {
 
 
 
+impl cfn_resources::CfnResource for ChallengeAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_request_handling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies how AWS WAF should handle Challenge evaluations. This is     available at the web ACL level and in each rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -521,6 +683,22 @@ pub struct ChallengeConfig {
 
 
 
+impl cfn_resources::CfnResource for ChallengeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.immunity_time_property.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The filter to use to identify the subset of cookies to inspect in a web request.
 ///
@@ -574,6 +752,36 @@ pub struct CookieMatchPattern {
 
 
 
+impl cfn_resources::CfnResource for CookieMatchPattern {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.excluded_cookies {
+
+        if the_val.len() > 199 as _ {
+            return Err(format!("Max validation failed on field 'excluded_cookies'. {} is greater than 199", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.included_cookies {
+
+        if the_val.len() > 199 as _ {
+            return Err(format!("Max validation failed on field 'included_cookies'. {} is greater than 199", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Inspect the cookies in the web request. You can specify the parts of the cookies to     inspect and you can narrow the set of cookies to inspect by including or excluding specific     keys.
 ///
@@ -681,6 +889,22 @@ impl Default for CookiesOversizeHandlingEnum {
 }
 
 
+impl cfn_resources::CfnResource for Cookies {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.match_pattern.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies that AWS WAF should count the request. Optionally defines additional custom     handling for the request.
 ///
@@ -706,6 +930,22 @@ pub struct CountAction {
 
 
 
+impl cfn_resources::CfnResource for CountAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_request_handling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A custom header for custom request and response handling. This is used in CustomResponse and CustomRequestHandling
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -753,6 +993,48 @@ pub struct CustomHTTPHeader {
 
 
 
+impl cfn_resources::CfnResource for CustomHTTPHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Custom request handling behavior that inserts custom headers into a web request. You can    add custom request handling for AWS WAF to use when the rule action doesn't block the request.      For example, CaptchaAction for requests with valid t okens, and AllowAction.
 ///
@@ -778,6 +1060,20 @@ pub struct CustomRequestHandling {
 
 
 
+impl cfn_resources::CfnResource for CustomRequestHandling {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A custom response to send to the client. You can define a custom response for rule       actions and default web ACL actions that are set to Block.
 ///
@@ -839,6 +1135,50 @@ pub struct CustomResponse {
 
 
 
+impl cfn_resources::CfnResource for CustomResponse {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_response_body_key {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'custom_response_body_key'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_response_body_key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'custom_response_body_key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.response_code;
+
+        if *the_val > 599 as _ {
+            return Err(format!("Max validation failed on field 'response_code'. {} is greater than 599", the_val));
+        }
+
+        
+        let the_val = &self.response_code;
+
+        if *the_val < 200 as _ {
+            return Err(format!("Min validation failed on field 'response_code'. {} is less than 200", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The response body to use in a custom response to a web request. This is referenced by     key from CustomResponse       CustomResponseBodyKey.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -907,6 +1247,34 @@ impl Default for CustomResponseBodyContentTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomResponseBody {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.content;
+
+        if the_val.len() > 10240 as _ {
+            return Err(format!("Max validation failed on field 'content'. {} is greater than 10240", the_val.len()));
+        }
+
+        
+        let the_val = &self.content;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'content'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The part of the web request that you want AWS WAF to inspect. Include the single       FieldToMatch type that you want to inspect, with additional specifications     as needed, according to the type. You specify a single request component in       FieldToMatch for each rule statement that requires it. To inspect more than     one component of the web request, create a separate rule statement for each     component.
 ///
@@ -1062,6 +1430,32 @@ pub struct FieldToMatch {
 
 
 
+impl cfn_resources::CfnResource for FieldToMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.body.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cookies.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.headers.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.json_body.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.single_header.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.single_query_argument.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
 ///
@@ -1134,6 +1528,34 @@ impl Default for ForwardedIPConfigurationFallbackBehaviorEnum {
 }
 
 
+impl cfn_resources::CfnResource for ForwardedIPConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.header_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'header_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.header_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'header_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A rule statement that labels web requests by country and region and that matches against web requests based on country code. A geo match rule labels every request that it inspects regardless of whether it finds a match.
 ///
@@ -1179,6 +1601,22 @@ pub struct GeoMatchStatement {
 
 
 
+impl cfn_resources::CfnResource for GeoMatchStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.forwarded_ipconfig.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The filter to use to identify the subset of headers to inspect in a web request.
 ///
@@ -1232,6 +1670,36 @@ pub struct HeaderMatchPattern {
 
 
 
+impl cfn_resources::CfnResource for HeaderMatchPattern {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.excluded_headers {
+
+        if the_val.len() > 199 as _ {
+            return Err(format!("Max validation failed on field 'excluded_headers'. {} is greater than 199", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.included_headers {
+
+        if the_val.len() > 199 as _ {
+            return Err(format!("Max validation failed on field 'included_headers'. {} is greater than 199", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Inspect all headers in the web request. You can specify the parts of the headers to     inspect and you can narrow the set of headers to inspect by including or excluding specific     keys.
 ///
@@ -1341,6 +1809,22 @@ impl Default for HeadersOversizeHandlingEnum {
 }
 
 
+impl cfn_resources::CfnResource for Headers {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.match_pattern.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
 ///
@@ -1452,6 +1936,34 @@ impl Default for IPSetForwardedIPConfigurationPositionEnum {
 }
 
 
+impl cfn_resources::CfnResource for IPSetForwardedIPConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.header_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'header_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.header_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'header_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A rule statement used to detect web requests coming from particular IP addresses or address ranges. To use this, create an AWS::WAFv2::IPSet that specifies the addresses you want to detect, then use the ARN of that set in this statement.
 ///
@@ -1495,6 +2007,36 @@ pub struct IPSetReferenceStatement {
 
 
 
+impl cfn_resources::CfnResource for IPSetReferenceStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        self.ipset_forwarded_ipconfig.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Used for CAPTCHA and challenge token settings. Determines     how long a CAPTCHA or challenge timestamp remains valid after AWS WAF updates it for a successful CAPTCHA or challenge response.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1518,6 +2060,20 @@ pub struct ImmunityTimeProperty {
 
 
 
+impl cfn_resources::CfnResource for ImmunityTimeProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Inspect the body of the web request as JSON. The body immediately follows the request     headers.
 ///
@@ -1676,6 +2232,22 @@ impl Default for JsonBodyOversizeHandlingEnum {
 }
 
 
+impl cfn_resources::CfnResource for JsonBody {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.match_pattern.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria. This is used with the FieldToMatch option JsonBody.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1717,6 +2289,20 @@ pub struct JsonMatchPattern {
 
 
 
+impl cfn_resources::CfnResource for JsonMatchPattern {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A single label container. This is used as an element of a label array in RuleLabels inside a rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1744,6 +2330,34 @@ pub struct Label {
 
 
 
+impl cfn_resources::CfnResource for Label {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A rule statement to match against labels that have been added to the web request by rules that have already run in the web ACL.
 ///
@@ -1810,6 +2424,34 @@ impl Default for LabelMatchStatementScopeEnum {
 }
 
 
+impl cfn_resources::CfnResource for LabelMatchStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// List of labels used by one or more of the rules of a AWS::WAFv2::RuleGroup. This     summary object is used for the following rule group lists:
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1837,6 +2479,36 @@ pub struct LabelSummary {
 
 
 
+impl cfn_resources::CfnResource for LabelSummary {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A logical rule statement used to negate the results of another rule statement. You provide one Statement within the NotStatement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1858,6 +2530,22 @@ pub struct NotStatement {
 
 
 
+impl cfn_resources::CfnResource for NotStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.statement.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A logical rule statement used to combine other rule statements with OR logic. You provide more than one Statement within the OrStatement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1879,6 +2567,20 @@ pub struct OrStatement {
 
 
 
+impl cfn_resources::CfnResource for OrStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A rate-based rule counts incoming requests and rate limits requests when they are coming at too fast a rate. The rule categorizes requests according to your aggregation criteria, collects them into aggregation instances, and counts and rate limits the requests for each instance.
 ///
@@ -1997,6 +2699,24 @@ impl Default for RateBasedStatementAggregateKeyTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for RateBasedStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.forwarded_ipconfig.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scope_down_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A rule statement used to search web request components for a match against a single regular expression.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2048,6 +2768,36 @@ pub struct RegexMatchStatement {
 
 
 
+impl cfn_resources::CfnResource for RegexMatchStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_to_match.validate()?;
+
+        let the_val = &self.regex_string;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'regex_string'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.regex_string;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'regex_string'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A rule statement used to search web request components for matches with regular expressions. To use this, create a AWS::WAFv2::RegexPatternSet that specifies the expressions that you want to detect, then use the ARN of that set in this statement. A web request matches the pattern set rule statement if the request component matches any of the patterns in the set.
 ///
@@ -2101,6 +2851,36 @@ pub struct RegexPatternSetReferenceStatement {
 
 
 
+impl cfn_resources::CfnResource for RegexPatternSetReferenceStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        self.field_to_match.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A single rule, which you can use in a AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup to identify web requests that you want to allow, block, or count.     Each rule includes one top-level Statement that AWS WAF uses to     identify matching web requests, and parameters that govern how AWS WAF handles them.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2222,6 +3002,51 @@ pub struct Rule {
 
 
 
+impl cfn_resources::CfnResource for Rule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.captcha_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.challenge_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.priority;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 0", the_val));
+        }
+
+        
+        self.statement.validate()?;
+
+        self.visibility_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The action that AWS WAF should take on a web request when it matches a rule's     statement. Settings at the web ACL level can override the rule action setting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2297,6 +3122,30 @@ pub struct RuleAction {
 
 
 
+impl cfn_resources::CfnResource for RuleAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.allow.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.block.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.captcha.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.challenge.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.count.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Inspect one of the headers in the web request, identified by name, for example,       User-Agent or Referer. The name isn't case sensitive.
 ///
@@ -2330,6 +3179,34 @@ pub struct SingleHeader {
 
 
 
+impl cfn_resources::CfnResource for SingleHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Inspect one query argument in the web request, identified by name, for example       UserName or SalesRegion. The name isn't case     sensitive.
 ///
@@ -2361,6 +3238,34 @@ pub struct SingleQueryArgument {
 
 
 
+impl cfn_resources::CfnResource for SingleQueryArgument {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (>) or less than (<). For example, you can use a size constraint statement to look for query strings that are longer than 100 bytes.
 ///
@@ -2459,6 +3364,22 @@ impl Default for SizeConstraintStatementComparisonOperatorEnum {
 }
 
 
+impl cfn_resources::CfnResource for SizeConstraintStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_to_match.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A rule statement that inspects for malicious SQL code. Attackers insert malicious SQL code into web requests to do things like modify your database or extract data from it.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2531,6 +3452,22 @@ impl Default for SqliMatchStatementSensitivityLevelEnum {
 }
 
 
+impl cfn_resources::CfnResource for SqliMatchStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_to_match.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The processing guidance for a rule, used by AWS WAF to determine whether a web request matches the rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2740,6 +3677,46 @@ pub struct Statement {
 
 
 
+impl cfn_resources::CfnResource for Statement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.and_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.byte_match_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.geo_match_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ipset_reference_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.label_match_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.not_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.or_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rate_based_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.regex_match_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.regex_pattern_set_reference_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.size_constraint_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sqli_match_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xss_match_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -2777,6 +3754,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Text transformations eliminate some of the unusual formatting that attackers use in web     requests in an effort to bypass detection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2959,6 +3950,27 @@ impl Default for TextTransformationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TextTransformation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.priority;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Defines and enables Amazon CloudWatch metrics and web request sample collection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3012,6 +4024,34 @@ pub struct VisibilityConfig {
 
 
 
+impl cfn_resources::CfnResource for VisibilityConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.metric_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.metric_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A rule statement that inspects for cross-site scripting (XSS) attacks. In XSS attacks, the attacker uses vulnerabilities in a benign website as a vehicle to inject malicious client-site scripts into other legitimate web browsers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3044,3 +4084,20 @@ pub struct XssMatchStatement {
 }
 
 
+
+impl cfn_resources::CfnResource for XssMatchStatement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_to_match.validate()?;
+
+        Ok(())
+    }
+}

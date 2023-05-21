@@ -236,8 +236,16 @@ impl cfn_resources::CfnResource for CfnApp {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_branch_creation_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.basic_auth_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use the AutoBranchCreationConfig property type to automatically create branches that    match a certain pattern.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -397,6 +405,22 @@ pub struct AutoBranchCreationConfig {
 
 
 
+impl cfn_resources::CfnResource for AutoBranchCreationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.basic_auth_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use the BasicAuthConfig property type to set password protection at an app level to all    your branches.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -446,6 +470,20 @@ pub struct BasicAuthConfig {
 
 
 
+impl cfn_resources::CfnResource for BasicAuthConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The CustomRule property type allows you to specify redirects, rewrites, and reverse    proxies. Redirects enable a web app to reroute navigation from one URL to another.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -521,6 +559,20 @@ pub struct CustomRule {
 
 
 
+impl cfn_resources::CfnResource for CustomRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Environment variables are key-value pairs that are available at build time. Set    environment variables for all branches in your app.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -562,6 +614,20 @@ pub struct EnvironmentVariable {
 
 
 
+impl cfn_resources::CfnResource for EnvironmentVariable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -598,3 +664,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

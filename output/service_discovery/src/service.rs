@@ -145,8 +145,42 @@ impl cfn_resources::CfnResource for CfnService {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        self.dns_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.health_check_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.health_check_custom_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.namespace_id {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'namespace_id'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about the Amazon Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -223,6 +257,28 @@ impl Default for DnsConfigRoutingPolicyEnum {
 }
 
 
+impl cfn_resources::CfnResource for DnsConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.namespace_id {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'namespace_id'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about the Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -297,6 +353,20 @@ impl Default for DnsRecordTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DnsRecord {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Public DNS and HTTP namespaces only. A complex type that contains  settings for an optional health check. If you specify settings for a health check, AWS Cloud Map  associates the health check with the records that you specify in DnsConfig.
 ///
@@ -387,6 +457,44 @@ impl Default for HealthCheckConfigTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for HealthCheckConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.failure_threshold {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'failure_threshold'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.failure_threshold {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'failure_threshold'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_path {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'resource_path'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about an optional custom health check. A custom  health check, which requires that you use a third-party health checker to evaluate the health of  your resources, is useful in the following circumstances:
 ///
@@ -420,6 +528,36 @@ pub struct HealthCheckCustomConfig {
 
 
 
+impl cfn_resources::CfnResource for HealthCheckCustomConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.failure_threshold {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'failure_threshold'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.failure_threshold {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'failure_threshold'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -456,3 +594,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

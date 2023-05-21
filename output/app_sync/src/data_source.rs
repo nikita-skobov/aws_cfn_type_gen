@@ -166,8 +166,26 @@ impl cfn_resources::CfnResource for CfnDataSource {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.dynamo_dbconfig.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.elasticsearch_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.event_bridge_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lambda_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.open_search_service_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.relational_database_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AuthorizationConfig property type specifies the authorization type and configuration for an       AWS AppSync http data source.
 ///
@@ -205,6 +223,22 @@ pub struct AuthorizationConfig {
 
 
 
+impl cfn_resources::CfnResource for AuthorizationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aws_iam_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use the AwsIamConfig property type to specify AwsIamConfig for a AWS AppSync authorizaton.
 ///
@@ -240,6 +274,20 @@ pub struct AwsIamConfig {
 
 
 
+impl cfn_resources::CfnResource for AwsIamConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a Delta Sync configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -285,6 +333,20 @@ pub struct DeltaSyncConfig {
 
 
 
+impl cfn_resources::CfnResource for DeltaSyncConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The DynamoDBConfig property type specifies the AwsRegion and       TableName for an Amazon DynamoDB table in your account for an AWS AppSync data source.
 ///
@@ -356,6 +418,22 @@ pub struct DynamoDBConfig {
 
 
 
+impl cfn_resources::CfnResource for DynamoDBConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.delta_sync_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ElasticsearchConfig property type specifies the AwsRegion and       Endpoints for an Amazon OpenSearch Service domain in your account for an AWS AppSync data source.
 ///
@@ -393,6 +471,20 @@ pub struct ElasticsearchConfig {
 
 
 
+impl cfn_resources::CfnResource for ElasticsearchConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The data source. This can be an API destination, resource, or AWS service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -414,6 +506,20 @@ pub struct EventBridgeConfig {
 
 
 
+impl cfn_resources::CfnResource for EventBridgeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use the HttpConfig property type to specify HttpConfig for an AWS AppSync data source.
 ///
@@ -449,6 +555,22 @@ pub struct HttpConfig {
 
 
 
+impl cfn_resources::CfnResource for HttpConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.authorization_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The LambdaConfig property type specifies the Lambda function ARN for an AWS AppSync data source.
 ///
@@ -472,6 +594,20 @@ pub struct LambdaConfig {
 
 
 
+impl cfn_resources::CfnResource for LambdaConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The OpenSearchServiceConfig property type specifies the AwsRegion and       Endpoints for an Amazon OpenSearch Service domain in your account for an AWS AppSync data source.
 ///
@@ -507,6 +643,20 @@ pub struct OpenSearchServiceConfig {
 
 
 
+impl cfn_resources::CfnResource for OpenSearchServiceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use the RdsHttpEndpointConfig property type to specify the RdsHttpEndpoint for an       AWS AppSync relational database.
 ///
@@ -578,6 +728,20 @@ pub struct RdsHttpEndpointConfig {
 
 
 
+impl cfn_resources::CfnResource for RdsHttpEndpointConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use the RelationalDatabaseConfig property type to specify RelationalDatabaseConfig     for an AWS AppSync data source.
 ///
@@ -612,3 +776,20 @@ pub struct RelationalDatabaseConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for RelationalDatabaseConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.rds_http_endpoint_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

@@ -64,8 +64,20 @@ impl cfn_resources::CfnResource for CfnClassifier {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.csv_classifier.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.grok_classifier.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.json_classifier.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.xmlclassifier.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A classifier for custom CSV content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -208,6 +220,68 @@ impl Default for CsvClassifierContainsHeaderEnum {
 }
 
 
+impl cfn_resources::CfnResource for CsvClassifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'delimiter'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.quote_symbol {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'quote_symbol'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.quote_symbol {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'quote_symbol'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A classifier that uses grok patterns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -283,6 +357,66 @@ pub struct GrokClassifier {
 
 
 
+impl cfn_resources::CfnResource for GrokClassifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_patterns {
+
+        if the_val.len() > 16000 as _ {
+            return Err(format!("Max validation failed on field 'custom_patterns'. {} is greater than 16000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_patterns {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'custom_patterns'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.grok_pattern;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'grok_pattern'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.grok_pattern;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'grok_pattern'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A classifier for JSON content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -322,6 +456,36 @@ pub struct JsonClassifier {
 
 
 
+impl cfn_resources::CfnResource for JsonClassifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A classifier for XML content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -372,3 +536,34 @@ pub struct XMLClassifier {
 }
 
 
+
+impl cfn_resources::CfnResource for XMLClassifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

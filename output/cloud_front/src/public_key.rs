@@ -28,8 +28,14 @@ impl cfn_resources::CfnResource for CfnPublicKey {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.public_key_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Configuration information about a public key that you can use with signed URLs and signed cookies, or with field-level encryption.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -86,3 +92,18 @@ pub struct PublicKeyConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for PublicKeyConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

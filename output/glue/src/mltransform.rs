@@ -237,8 +237,58 @@ impl cfn_resources::CfnResource for CfnMLTransform {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.input_record_tables.validate()?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'timeout'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.transform_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transform_parameters.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The parameters to configure the find matches transform.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -312,6 +362,34 @@ pub struct FindMatchesParameters {
 
 
 
+impl cfn_resources::CfnResource for FindMatchesParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.primary_key_column_name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'primary_key_column_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.primary_key_column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'primary_key_column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The database and table in the AWS Glue Data Catalog that is used for input or output data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -365,6 +443,20 @@ pub struct GlueTables {
 
 
 
+impl cfn_resources::CfnResource for GlueTables {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of AWS Glue table definitions used by the transform.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -385,6 +477,20 @@ pub struct InputRecordTables {
 
 
 
+impl cfn_resources::CfnResource for InputRecordTables {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The encryption-at-rest settings of the transform that apply to accessing user data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -420,6 +526,20 @@ pub struct MLUserDataEncryption {
 
 
 
+impl cfn_resources::CfnResource for MLUserDataEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The encryption-at-rest settings of the transform that apply to accessing user data. Machine learning transforms can access user data encrypted in Amazon S3 using KMS.
 ///
@@ -455,6 +575,22 @@ pub struct TransformEncryption {
 
 
 
+impl cfn_resources::CfnResource for TransformEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.mluser_data_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The algorithm-specific parameters that are associated with the machine learning    transform.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -506,3 +642,20 @@ impl Default for TransformParametersTransformTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TransformParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.find_matches_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

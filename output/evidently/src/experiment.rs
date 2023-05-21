@@ -173,8 +173,16 @@ impl cfn_resources::CfnResource for CfnExperiment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.online_ab_config.validate()?;
+
+        self.running_status.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use this structure to tell Evidently whether higher or lower values are desired for a metric that is       used in an experiment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -260,6 +268,20 @@ pub struct MetricGoalObject {
 
 
 
+impl cfn_resources::CfnResource for MetricGoalObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that contains the configuration of which variation to use as the "control"       version. The "control" version is used for comparison with other variations. This structure       also specifies how much experiment traffic is allocated to each variation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -293,6 +315,20 @@ pub struct OnlineAbConfigObject {
 
 
 
+impl cfn_resources::CfnResource for OnlineAbConfigObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use this structure to start and stop the experiment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -346,6 +382,20 @@ pub struct RunningStatusObject {
 
 
 
+impl cfn_resources::CfnResource for RunningStatusObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -383,6 +433,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that defines one treatment in an experiment. A treatment is a variation of the feature       that you are including in the experiment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -440,6 +504,20 @@ pub struct TreatmentObject {
 
 
 
+impl cfn_resources::CfnResource for TreatmentObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure defines how much experiment traffic to allocate to     one treatment used in the experiment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -472,3 +550,18 @@ pub struct TreatmentToWeight {
 }
 
 
+
+impl cfn_resources::CfnResource for TreatmentToWeight {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

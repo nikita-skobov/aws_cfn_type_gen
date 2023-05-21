@@ -139,8 +139,18 @@ impl cfn_resources::CfnResource for CfnPipe {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.enrichment_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.target_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This structure specifies the VPC subnets and security groups for the task, and whether a public IP address is to be used.      This structure is relevant only for ECS tasks that use the awsvpc network mode.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -186,6 +196,20 @@ pub struct AwsVpcConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AwsVpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000.      If you specify array properties for a job, it becomes an array job. This parameter is used only if the target is an AWS Batch job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -207,6 +231,20 @@ pub struct BatchArrayProperties {
 
 
 
+impl cfn_resources::CfnResource for BatchArrayProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The overrides that are sent to a container.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -268,6 +306,20 @@ pub struct BatchContainerOverrides {
 
 
 
+impl cfn_resources::CfnResource for BatchContainerOverrides {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing      environment variables from the Docker image or the task definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -301,6 +353,20 @@ pub struct BatchEnvironmentVariable {
 
 
 
+impl cfn_resources::CfnResource for BatchEnvironmentVariable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents an AWS Batch job dependency.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -334,6 +400,20 @@ pub struct BatchJobDependency {
 
 
 
+impl cfn_resources::CfnResource for BatchJobDependency {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The type and amount of a resource to assign to a container. The supported resources include GPU, MEMORY, and VCPU.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -369,6 +449,20 @@ pub struct BatchResourceRequirement {
 
 
 
+impl cfn_resources::CfnResource for BatchResourceRequirement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The retry strategy that's associated with a job. For more information, see      Automated job retries in the AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -390,6 +484,20 @@ pub struct BatchRetryStrategy {
 
 
 
+impl cfn_resources::CfnResource for BatchRetryStrategy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details of a capacity provider strategy. To learn more, see CapacityProviderStrategyItem in the Amazon ECS API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -435,6 +543,20 @@ pub struct CapacityProviderStrategyItem {
 
 
 
+impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A DeadLetterConfig object that contains information about a dead-letter queue configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -456,6 +578,20 @@ pub struct DeadLetterConfig {
 
 
 
+impl cfn_resources::CfnResource for DeadLetterConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The overrides that are sent to a container. An empty container override can be passed in. An example of an empty      container override is {"containerOverrides": [ ] }. If a non-empty container override is specified, the name parameter must be included.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -561,6 +697,20 @@ pub struct EcsContainerOverride {
 
 
 
+impl cfn_resources::CfnResource for EcsContainerOverride {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of files containing the environment variables to pass to a container. You can     specify up to ten environment files. The file must have a .env file     extension. Each line in an environment file should contain an environment variable in     VARIABLE=VALUE format. Lines beginning with # are treated     as comments and are ignored. For more information about the environment variable file     syntax, see Declare default       environment variables in file.
 ///
@@ -598,6 +748,20 @@ pub struct EcsEnvironmentFile {
 
 
 
+impl cfn_resources::CfnResource for EcsEnvironmentFile {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can      override the existing environment variables from the Docker image or the task definition. You must also specify a container name.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -631,6 +795,20 @@ pub struct EcsEnvironmentVariable {
 
 
 
+impl cfn_resources::CfnResource for EcsEnvironmentVariable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The amount of ephemeral storage to allocate for the task. This parameter is used to     expand the total amount of ephemeral storage available, beyond the default amount, for     tasks hosted on Fargate. For more information, see Fargate task       storage in the Amazon ECS User Guide for Fargate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -652,6 +830,20 @@ pub struct EcsEphemeralStorage {
 
 
 
+impl cfn_resources::CfnResource for EcsEphemeralStorage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details on an Elastic Inference accelerator task override. This parameter is used to     override the Elastic Inference accelerator specified in the task definition. For more     information, see Working with Amazon       Elastic Inference on Amazon ECS in the     Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -685,6 +877,20 @@ pub struct EcsInferenceAcceleratorOverride {
 
 
 
+impl cfn_resources::CfnResource for EcsInferenceAcceleratorOverride {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The type and amount of a resource to assign to a container. The supported resource     types are GPUs and Elastic Inference accelerators. For more information, see Working with       GPUs on Amazon ECS or Working with        Amazon Elastic Inference on Amazon ECS in the     Amazon Elastic Container Service Developer Guide
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -722,6 +928,20 @@ pub struct EcsResourceRequirement {
 
 
 
+impl cfn_resources::CfnResource for EcsResourceRequirement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The overrides that are associated with a task.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -817,6 +1037,22 @@ pub struct EcsTaskOverride {
 
 
 
+impl cfn_resources::CfnResource for EcsTaskOverride {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ephemeral_storage.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Filter events using an event pattern. For more information, see Events and Event     Patterns in the Amazon EventBridge User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -838,6 +1074,20 @@ pub struct Filter {
 
 
 
+impl cfn_resources::CfnResource for Filter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The collection of event patterns used to filter events.
 ///
@@ -863,6 +1113,20 @@ pub struct FilterCriteria {
 
 
 
+impl cfn_resources::CfnResource for FilterCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS Secrets Manager secret that stores your broker credentials.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -884,6 +1148,20 @@ pub struct MQBrokerAccessCredentials {
 
 
 
+impl cfn_resources::CfnResource for MQBrokerAccessCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS Secrets Manager secret that stores your stream credentials.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -917,6 +1195,20 @@ pub struct MSKAccessCredentials {
 
 
 
+impl cfn_resources::CfnResource for MSKAccessCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure specifies the network configuration for an Amazon ECS task.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -938,6 +1230,22 @@ pub struct NetworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.awsvpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// These are custom parameter to be used when the target is an API Gateway REST APIs or     EventBridge ApiDestinations. In the latter case, these are merged with any     InvocationParameters specified on the Connection, with any values from the Connection taking     precedence.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -983,6 +1291,20 @@ pub struct PipeEnrichmentHttpParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeEnrichmentHttpParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters required to set up enrichment on your pipe.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1020,6 +1342,22 @@ pub struct PipeEnrichmentParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeEnrichmentParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.http_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using an Active MQ broker as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1073,6 +1411,22 @@ pub struct PipeSourceActiveMQBrokerParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeSourceActiveMQBrokerParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.credentials.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a DynamoDB stream as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1172,6 +1526,22 @@ pub struct PipeSourceDynamoDBStreamParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeSourceDynamoDBStreamParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dead_letter_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a Kinesis stream as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1281,6 +1651,22 @@ pub struct PipeSourceKinesisStreamParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeSourceKinesisStreamParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dead_letter_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using an MSK stream as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1356,6 +1742,22 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeSourceManagedStreamingKafkaParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.credentials.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parameters required to set up a source for your pipe.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1457,6 +1859,36 @@ pub struct PipeSourceParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeSourceParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.active_mqbroker_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynamo_dbstream_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter_criteria.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_stream_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.managed_streaming_kafka_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rabbit_mqbroker_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.self_managed_kafka_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sqs_queue_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a Rabbit MQ broker as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1522,6 +1954,22 @@ pub struct PipeSourceRabbitMQBrokerParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeSourceRabbitMQBrokerParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.credentials.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a self-managed Apache Kafka stream as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1631,6 +2079,24 @@ pub struct PipeSourceSelfManagedKafkaParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeSourceSelfManagedKafkaParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.credentials.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a Amazon SQS stream as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1662,6 +2128,20 @@ pub struct PipeSourceSqsQueueParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeSourceSqsQueueParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters for using an AWS Batch job as a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1753,6 +2233,26 @@ pub struct PipeTargetBatchJobParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetBatchJobParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.array_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.container_overrides.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_strategy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using an CloudWatch Logs log stream as a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1786,6 +2286,20 @@ pub struct PipeTargetCloudWatchLogsParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetCloudWatchLogsParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters for using an Amazon ECS task as a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1980,6 +2494,24 @@ pub struct PipeTargetEcsTaskParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetEcsTaskParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.overrides.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parameters for using an EventBridge event bus as a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2049,6 +2581,20 @@ pub struct PipeTargetEventBridgeEventBusParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetEventBridgeEventBusParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// These are custom parameter to be used when the target is an API Gateway REST APIs or    EventBridge ApiDestinations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2094,6 +2640,20 @@ pub struct PipeTargetHttpParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetHttpParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a Kinesis stream as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2115,6 +2675,20 @@ pub struct PipeTargetKinesisStreamParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetKinesisStreamParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a Lambda function as a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2140,6 +2714,20 @@ pub struct PipeTargetLambdaFunctionParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetLambdaFunctionParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters required to set up a target for your pipe.
 ///
@@ -2286,6 +2874,42 @@ pub struct PipeTargetParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.batch_job_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloud_watch_logs_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ecs_task_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.event_bridge_event_bus_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_stream_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lambda_function_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redshift_data_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sage_maker_pipeline_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sqs_queue_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.step_function_state_machine_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the    Amazon Redshift Data API BatchExecuteStatement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2367,6 +2991,20 @@ pub struct PipeTargetRedshiftDataParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetRedshiftDataParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a SageMaker pipeline as a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2388,6 +3026,20 @@ pub struct PipeTargetSageMakerPipelineParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetSageMakerPipelineParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a Amazon SQS stream as a source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2423,6 +3075,20 @@ pub struct PipeTargetSqsQueueParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetSqsQueueParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The parameters for using a Step Functions state machine as a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2448,6 +3114,20 @@ pub struct PipeTargetStateMachineParameters {
 
 
 
+impl cfn_resources::CfnResource for PipeTargetStateMachineParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object representing a constraint on task placement. To learn more, see Task Placement Constraints in the Amazon Elastic Container Service Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2481,6 +3161,20 @@ pub struct PlacementConstraint {
 
 
 
+impl cfn_resources::CfnResource for PlacementConstraint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The task placement strategy for a task or service. To learn more, see Task Placement Strategies in the Amazon Elastic Container Service Service Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2514,6 +3208,20 @@ pub struct PlacementStrategy {
 
 
 
+impl cfn_resources::CfnResource for PlacementStrategy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Name/Value pair of a parameter to start execution of a SageMaker Model Building     Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2547,6 +3255,20 @@ pub struct SageMakerPipelineParameter {
 
 
 
+impl cfn_resources::CfnResource for SageMakerPipelineParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS Secrets Manager secret that stores your stream credentials.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2604,6 +3326,20 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
 
 
 
+impl cfn_resources::CfnResource for SelfManagedKafkaAccessConfigurationCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure specifies the VPC subnets and security groups for the stream, and whether a public IP address is to be used.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2637,6 +3373,20 @@ pub struct SelfManagedKafkaAccessConfigurationVpc {
 
 
 
+impl cfn_resources::CfnResource for SelfManagedKafkaAccessConfigurationVpc {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -2673,3 +3423,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

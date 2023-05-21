@@ -839,8 +839,173 @@ impl cfn_resources::CfnResource for CfnCluster {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.availability_zone {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'availability_zone'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.availability_zone_relocation_status {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'availability_zone_relocation_status'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cluster_identifier {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cluster_parameter_group_name {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_parameter_group_name'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cluster_subnet_group_name {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_subnet_group_name'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cluster_version {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_version'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.dbname;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'dbname'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.destination_region {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'destination_region'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.elastic_ip {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'elastic_ip'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        self.endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.hsm_client_certificate_identifier {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'hsm_client_certificate_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.hsm_configuration_identifier {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'hsm_configuration_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        self.logging_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.maintenance_track_name {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'maintenance_track_name'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.master_user_password;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'master_user_password'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        let the_val = &self.master_username;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'master_username'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.owner_account {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'owner_account'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.preferred_maintenance_window {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'preferred_maintenance_window'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.snapshot_cluster_identifier {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'snapshot_cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.snapshot_copy_grant_name {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'snapshot_copy_grant_name'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.snapshot_identifier {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'snapshot_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a connection endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -876,6 +1041,28 @@ pub struct Endpoint {
 
 
 
+impl cfn_resources::CfnResource for Endpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.address {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'address'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies logging information, such as queries and connection attempts, for the       specified Amazon Redshift cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -921,6 +1108,35 @@ pub struct LoggingProperties {
 
 
 
+impl cfn_resources::CfnResource for LoggingProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.s3_key_prefix {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 's3_key_prefix'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -957,3 +1173,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

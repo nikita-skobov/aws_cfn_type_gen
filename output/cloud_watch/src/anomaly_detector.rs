@@ -100,8 +100,18 @@ impl cfn_resources::CfnResource for CfnAnomalyDetector {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.metric_math_anomaly_detector.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.single_metric_anomaly_detector.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies details about how the anomaly detection model is to be trained, including time ranges to exclude         when training and updating the model. The configuration can also include the time zone to use for the metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -137,6 +147,20 @@ pub struct Configuration {
 
 
 
+impl cfn_resources::CfnResource for Configuration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A dimension is a name/value pair that is part of the identity of a metric. Because dimensions are part of the unique 			identifier for a metric, whenever you add a unique name/value pair to one of 			your metrics, you are creating a new variation of that metric. For example, many Amazon EC2 metrics publish 		InstanceId as a dimension name, and the actual instance ID as the value for that dimension.
 ///
@@ -180,6 +204,48 @@ pub struct Dimension {
 
 
 
+impl cfn_resources::CfnResource for Dimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents a specific metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -237,6 +303,56 @@ pub struct Metric {
 
 
 
+impl cfn_resources::CfnResource for Metric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.dimensions {
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'dimensions'. {} is greater than 30", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.metric_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.metric_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.namespace;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'namespace'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.namespace;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'namespace'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -246,6 +362,20 @@ pub struct MetricDataQueries {
 
 
 
+impl cfn_resources::CfnResource for MetricDataQueries {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure is used in both GetMetricData and PutMetricAlarm. The supported 			use of this structure is different for those two operations.
 ///
@@ -375,6 +505,76 @@ pub struct MetricDataQuery {
 
 
 
+impl cfn_resources::CfnResource for MetricDataQuery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.account_id {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'account_id'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.account_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'account_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.expression {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.expression {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.id;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'id'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.metric_stat.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.period {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'period'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Indicates the CloudWatch math expression that provides the time series the anomaly detector 			uses as input. 			The designated math expression must return a single time series.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -396,6 +596,20 @@ pub struct MetricMathAnomalyDetector {
 
 
 
+impl cfn_resources::CfnResource for MetricMathAnomalyDetector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure defines the metric to be returned, along with the statistics, period, and units.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -582,6 +796,29 @@ impl Default for MetricStatUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for MetricStat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.metric.validate()?;
+
+        let the_val = &self.period;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'period'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Each Range specifies one range of days or times to exclude from use for training or updating an     anomaly detection model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -615,6 +852,20 @@ pub struct Range {
 
 
 
+impl cfn_resources::CfnResource for Range {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Designates the CloudWatch metric and statistic that provides the time series the anomaly detector 			uses as input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -687,3 +938,66 @@ pub struct SingleMetricAnomalyDetector {
 }
 
 
+
+impl cfn_resources::CfnResource for SingleMetricAnomalyDetector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.dimensions {
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'dimensions'. {} is greater than 30", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.metric_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.metric_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'namespace'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.namespace {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'namespace'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.stat {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'stat'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

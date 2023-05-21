@@ -135,8 +135,34 @@ impl cfn_resources::CfnResource for CfnRepository {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.image_scanning_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lifecycle_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.repository_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'repository_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.repository_name {
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'repository_name'. {} is less than 2", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The encryption configuration for the repository. This determines how the contents of       your repository are encrypted at rest.
 ///
@@ -203,6 +229,36 @@ impl Default for EncryptionConfigurationEncryptionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The image scanning configuration for a repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -224,6 +280,20 @@ pub struct ImageScanningConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ImageScanningConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LifecyclePolicy property type specifies a lifecycle policy. For       information about lifecycle policy syntax, see Lifecycle policy         template in the Amazon ECR User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -263,6 +333,36 @@ pub struct LifecyclePolicy {
 
 
 
+impl cfn_resources::CfnResource for LifecyclePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.lifecycle_policy_text {
+
+        if the_val.len() > 30720 as _ {
+            return Err(format!("Max validation failed on field 'lifecycle_policy_text'. {} is greater than 30720", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.lifecycle_policy_text {
+
+        if the_val.len() < 100 as _ {
+            return Err(format!("Min validation failed on field 'lifecycle_policy_text'. {} is less than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -299,3 +399,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

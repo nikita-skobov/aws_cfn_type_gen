@@ -84,4 +84,60 @@ impl cfn_resources::CfnResource for CfnPermission {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.actions;
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.certificate_authority_arn;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'certificate_authority_arn'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        let the_val = &self.certificate_authority_arn;
+
+        if the_val.len() < 5 as _ {
+            return Err(format!("Min validation failed on field 'certificate_authority_arn'. {} is less than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.principal;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'principal'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.principal;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'principal'. {} is less than 0", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.source_account {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'source_account'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_account {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'source_account'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

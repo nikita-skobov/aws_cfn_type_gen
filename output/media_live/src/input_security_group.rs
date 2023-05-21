@@ -42,8 +42,12 @@ impl cfn_resources::CfnResource for CfnInputSecurityGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An IPv4 CIDR range to include in this input security group.
 ///
@@ -66,3 +70,18 @@ pub struct InputWhitelistRuleCidr {
 }
 
 
+
+impl cfn_resources::CfnResource for InputWhitelistRuleCidr {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

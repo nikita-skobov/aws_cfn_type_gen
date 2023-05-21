@@ -106,8 +106,70 @@ impl cfn_resources::CfnResource for CfnLayerVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.compatible_architectures {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'compatible_architectures'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.compatible_runtimes {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'compatible_runtimes'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        self.content.validate()?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.layer_name {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'layer_name'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.layer_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'layer_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.license_info {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'license_info'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A ZIP archive that contains the contents of an Lambda layer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -166,3 +228,62 @@ pub struct Content {
 }
 
 
+
+impl cfn_resources::CfnResource for Content {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_key;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_key'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.s3_object_version {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_object_version'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_object_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_object_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

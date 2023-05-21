@@ -82,4 +82,53 @@ impl cfn_resources::CfnResource for CfnMountTarget {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.file_system_id;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'file_system_id'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.ip_address {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'ip_address'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ip_address {
+
+        if the_val.len() < 7 as _ {
+            return Err(format!("Min validation failed on field 'ip_address'. {} is less than 7", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.security_groups;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'security_groups'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnet_id;
+
+        if the_val.len() > 47 as _ {
+            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 47", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnet_id;
+
+        if the_val.len() < 15 as _ {
+            return Err(format!("Min validation failed on field 'subnet_id'. {} is less than 15", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

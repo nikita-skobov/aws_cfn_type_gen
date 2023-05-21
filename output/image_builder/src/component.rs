@@ -181,4 +181,81 @@ impl cfn_resources::CfnResource for CfnComponent {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.change_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'change_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.change_description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'change_description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.data {
+
+        if the_val.len() > 16000 as _ {
+            return Err(format!("Max validation failed on field 'data'. {} is greater than 16000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.data {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.supported_os_versions {
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'supported_os_versions'. {} is greater than 25", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

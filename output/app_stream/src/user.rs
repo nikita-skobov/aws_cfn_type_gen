@@ -144,4 +144,39 @@ impl cfn_resources::CfnResource for CfnUser {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.first_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'first_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.last_name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'last_name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.user_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'user_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

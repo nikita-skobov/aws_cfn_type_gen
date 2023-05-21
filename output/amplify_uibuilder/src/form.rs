@@ -159,8 +159,18 @@ impl cfn_resources::CfnResource for CfnForm {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.cta.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_type.validate()?;
+
+        self.style.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The FieldConfig property specifies the configuration information for a field in a table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -230,6 +240,24 @@ pub struct FieldConfig {
 
 
 
+impl cfn_resources::CfnResource for FieldConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.position.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The FieldInputConfig property specifies the configuration for the default input values to display for a field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -429,6 +457,24 @@ pub struct FieldInputConfig {
 
 
 
+impl cfn_resources::CfnResource for FieldInputConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.file_uploader_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value_mappings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The FieldPosition property specifies the field position.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -471,6 +517,20 @@ pub struct FieldPosition {
 
 
 
+impl cfn_resources::CfnResource for FieldPosition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FieldValidationConfiguration property specifies the validation configuration for a field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -528,6 +588,20 @@ pub struct FieldValidationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FieldValidationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FileUploaderFieldConfig property type specifies Property description not available. for an AWS::AmplifyUIBuilder::Form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -603,6 +677,20 @@ pub struct FileUploaderFieldConfig {
 
 
 
+impl cfn_resources::CfnResource for FileUploaderFieldConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FormButton property specifies the configuration for a button UI element that is a part of a form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -648,6 +736,22 @@ pub struct FormButton {
 
 
 
+impl cfn_resources::CfnResource for FormButton {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.position.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The FormCTA property specifies the call to action button configuration for the form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -705,6 +809,26 @@ pub struct FormCTA {
 
 
 
+impl cfn_resources::CfnResource for FormCTA {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cancel.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.clear.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.submit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The FormDataTypeConfig property specifies the data type configuration for the data source associated with a form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -738,6 +862,20 @@ pub struct FormDataTypeConfig {
 
 
 
+impl cfn_resources::CfnResource for FormDataTypeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FormInputValueProperty property specifies the configuration for an input field on a form. Use    FormInputValueProperty to specify the values to render or bind by    default.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -759,6 +897,20 @@ pub struct FormInputValueProperty {
 
 
 
+impl cfn_resources::CfnResource for FormInputValueProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FormStyle property specifies the configuration for the form's style.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -804,6 +956,26 @@ pub struct FormStyle {
 
 
 
+impl cfn_resources::CfnResource for FormStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.horizontal_gap.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.outer_padding.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vertical_gap.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The FormStyleConfig property specifies the configuration settings for the form's style properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -835,6 +1007,20 @@ pub struct FormStyleConfig {
 
 
 
+impl cfn_resources::CfnResource for FormStyleConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The SectionalElement property specifies the configuration information for a visual helper element for a form. A sectional    element can be a header, a text block, or a divider. These elements are static and not    associated with any data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -915,6 +1101,22 @@ pub struct SectionalElement {
 
 
 
+impl cfn_resources::CfnResource for SectionalElement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.position.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ValueMapping property specifies the association between a complex object and a display value. Use ValueMapping to store    how to represent complex objects when they are displayed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -948,6 +1150,24 @@ pub struct ValueMapping {
 
 
 
+impl cfn_resources::CfnResource for ValueMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.display_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The ValueMappings property specifies the data binding configuration for a value map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -968,3 +1188,18 @@ pub struct ValueMappings {
 }
 
 
+
+impl cfn_resources::CfnResource for ValueMappings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

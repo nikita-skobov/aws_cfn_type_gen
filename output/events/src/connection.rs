@@ -101,8 +101,38 @@ impl cfn_resources::CfnResource for CfnConnection {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.auth_parameters.validate()?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains the API key authorization parameters for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -148,6 +178,48 @@ pub struct ApiKeyAuthParameters {
 
 
 
+impl cfn_resources::CfnResource for ApiKeyAuthParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.api_key_name;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'api_key_name'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.api_key_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'api_key_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.api_key_value;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'api_key_value'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.api_key_value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'api_key_value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Contains the authorization parameters to use for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -205,6 +277,28 @@ pub struct AuthParameters {
 
 
 
+impl cfn_resources::CfnResource for AuthParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.api_key_auth_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.basic_auth_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.invocation_http_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.oauth_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains the Basic authorization parameters for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -250,6 +344,48 @@ pub struct BasicAuthParameters {
 
 
 
+impl cfn_resources::CfnResource for BasicAuthParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.password;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'password'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.password;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'password'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'username'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.username;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'username'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Contains the OAuth authorization parameters to use for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -295,6 +431,48 @@ pub struct ClientParameters {
 
 
 
+impl cfn_resources::CfnResource for ClientParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.client_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'client_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_secret;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'client_secret'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_secret;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'client_secret'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Contains additional parameters for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -346,6 +524,44 @@ pub struct ConnectionHttpParameters {
 
 
 
+impl cfn_resources::CfnResource for ConnectionHttpParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.body_parameters {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'body_parameters'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.header_parameters {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'header_parameters'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.query_string_parameters {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'query_string_parameters'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains the OAuth authorization parameters to use for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -434,6 +650,38 @@ impl Default for OAuthParametersHttpMethodEnum {
 }
 
 
+impl cfn_resources::CfnResource for OAuthParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.authorization_endpoint;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'authorization_endpoint'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.authorization_endpoint;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'authorization_endpoint'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.client_parameters.validate()?;
+
+        self.oauth_http_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Additional query string parameter for the connection. You can include up to 100 additional    query string parameters per request. Each additional parameter counts towards the event    payload size, which cannot exceed 64 KB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -486,3 +734,32 @@ pub struct Parameter {
 }
 
 
+
+impl cfn_resources::CfnResource for Parameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

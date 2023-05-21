@@ -133,8 +133,14 @@ impl cfn_resources::CfnResource for CfnLaunch {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.execution_status.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use this structure to start and stop     the launch.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -178,6 +184,20 @@ pub struct ExecutionStatusObject {
 
 
 
+impl cfn_resources::CfnResource for ExecutionStatusObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure containing the percentage of launch traffic to allocate to one launch group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -213,6 +233,20 @@ pub struct GroupToWeight {
 
 
 
+impl cfn_resources::CfnResource for GroupToWeight {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that defines one launch group in a launch. A launch group is a variation of       the feature that you are including in the launch.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -270,6 +304,20 @@ pub struct LaunchGroupObject {
 
 
 
+impl cfn_resources::CfnResource for LaunchGroupObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure defines a metric that you want to use to evaluate the variations       during a launch or experiment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -341,6 +389,20 @@ pub struct MetricDefinitionObject {
 
 
 
+impl cfn_resources::CfnResource for MetricDefinitionObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use this structure to specify different traffic splits for one or more audience segments. A       segment is a portion of your audience that share one or more characteristics. Examples could be       Chrome browser users, users in Europe, or Firefox browser users in Europe who also fit       other criteria that your application collects, such as age.
 ///
@@ -390,6 +452,20 @@ pub struct SegmentOverride {
 
 
 
+impl cfn_resources::CfnResource for SegmentOverride {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that defines when each step of the launch is to start, and how much launch traffic     is to be allocated to each variation during each step.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -437,6 +513,20 @@ pub struct StepConfig {
 
 
 
+impl cfn_resources::CfnResource for StepConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -473,3 +563,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

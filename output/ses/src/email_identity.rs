@@ -94,8 +94,22 @@ impl cfn_resources::CfnResource for CfnEmailIdentity {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration_set_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dkim_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dkim_signing_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.feedback_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mail_from_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Used to associate a configuration set with an email identity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -117,6 +131,20 @@ pub struct ConfigurationSetAttributes {
 
 
 
+impl cfn_resources::CfnResource for ConfigurationSetAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Used to enable or disable DKIM authentication for an email identity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -140,6 +168,20 @@ pub struct DkimAttributes {
 
 
 
+impl cfn_resources::CfnResource for DkimAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Used to configure or change the DKIM authentication settings for an email domain       identity. You can use this operation to do any of the following:
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -210,6 +252,20 @@ impl Default for DkimSigningAttributesNextSigningKeyLengthEnum {
 }
 
 
+impl cfn_resources::CfnResource for DkimSigningAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Used to enable or disable feedback forwarding for an identity. This setting determines       what happens when an identity is used to send an email that results in a bounce or       complaint event.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +291,20 @@ pub struct FeedbackAttributes {
 
 
 
+impl cfn_resources::CfnResource for FeedbackAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -292,3 +362,18 @@ impl Default for MailFromAttributesBehaviorOnMxFailureEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for MailFromAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

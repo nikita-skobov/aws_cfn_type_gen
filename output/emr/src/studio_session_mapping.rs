@@ -103,4 +103,51 @@ impl cfn_resources::CfnResource for CfnStudioSessionMapping {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.identity_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'identity_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.identity_name;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'identity_name'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.session_policy_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'session_policy_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.session_policy_arn;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'session_policy_arn'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.studio_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'studio_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.studio_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'studio_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

@@ -46,8 +46,28 @@ impl cfn_resources::CfnResource for CfnApplicationCloudWatchLoggingOption {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.cloud_watch_logging_option.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -74,3 +94,32 @@ pub struct CloudWatchLoggingOption {
 }
 
 
+
+impl cfn_resources::CfnResource for CloudWatchLoggingOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.log_stream_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'log_stream_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.log_stream_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'log_stream_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

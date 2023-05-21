@@ -114,8 +114,45 @@ impl cfn_resources::CfnResource for CfnEndpoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.deployment_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.endpoint_config_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_config_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.endpoint_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exclude_retained_variant_properties {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'exclude_retained_variant_properties'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An Amazon CloudWatch alarm configured to monitor metrics on an endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -143,6 +180,34 @@ pub struct Alarm {
 
 
 
+impl cfn_resources::CfnResource for Alarm {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.alarm_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'alarm_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.alarm_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'alarm_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Automatic rollback configuration for handling endpoint deployment failures and       recovery.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -166,6 +231,27 @@ pub struct AutoRollbackConfig {
 
 
 
+impl cfn_resources::CfnResource for AutoRollbackConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.alarms;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'alarms'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Update policy for a blue/green deployment. If this update policy is specified, SageMaker       creates a new fleet during the deployment while maintaining the old fleet. SageMaker flips       traffic to the new fleet according to the specified traffic routing configuration. Only       one update policy should be used in the deployment configuration. If no update policy is       specified, SageMaker uses a blue/green deployment strategy with all at once traffic shifting       by default.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -219,6 +305,54 @@ pub struct BlueGreenUpdatePolicy {
 
 
 
+impl cfn_resources::CfnResource for BlueGreenUpdatePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.maximum_execution_timeout_in_seconds {
+
+        if *the_val > 14400 as _ {
+            return Err(format!("Max validation failed on field 'maximum_execution_timeout_in_seconds'. {} is greater than 14400", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_execution_timeout_in_seconds {
+
+        if *the_val < 600 as _ {
+            return Err(format!("Min validation failed on field 'maximum_execution_timeout_in_seconds'. {} is less than 600", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.termination_wait_in_seconds {
+
+        if *the_val > 3600 as _ {
+            return Err(format!("Max validation failed on field 'termination_wait_in_seconds'. {} is greater than 3600", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.termination_wait_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'termination_wait_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.traffic_routing_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the endpoint capacity to activate for production.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -277,6 +411,27 @@ impl Default for CapacitySizeTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CapacitySize {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.value;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The deployment configuration for an endpoint, which contains the desired deployment       strategy and rollback configurations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -310,6 +465,24 @@ pub struct DeploymentConfig {
 
 
 
+impl cfn_resources::CfnResource for DeploymentConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_rollback_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.blue_green_update_policy.validate()?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -347,6 +520,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines the traffic routing strategy during an endpoint deployment to shift traffic from the       old fleet to the new fleet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -435,6 +622,40 @@ impl Default for TrafficRoutingConfigTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TrafficRoutingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.canary_size.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.linear_step_size.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.wait_interval_in_seconds {
+
+        if *the_val > 3600 as _ {
+            return Err(format!("Max validation failed on field 'wait_interval_in_seconds'. {} is greater than 3600", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.wait_interval_in_seconds {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'wait_interval_in_seconds'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies a production variant property type for an Endpoint.
 ///
@@ -459,3 +680,18 @@ pub struct VariantProperty {
 }
 
 
+
+impl cfn_resources::CfnResource for VariantProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

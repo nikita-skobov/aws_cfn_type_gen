@@ -74,8 +74,46 @@ impl cfn_resources::CfnResource for CfnConfigurationAggregator {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.account_aggregation_sources {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'account_aggregation_sources'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.configuration_aggregator_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'configuration_aggregator_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.configuration_aggregator_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'configuration_aggregator_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.organization_aggregation_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A collection of accounts and regions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -121,6 +159,20 @@ pub struct AccountAggregationSource {
 
 
 
+impl cfn_resources::CfnResource for AccountAggregationSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This object contains regions to set up the aggregator and an IAM 			role to retrieve organization details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -166,6 +218,20 @@ pub struct OrganizationAggregationSource {
 
 
 
+impl cfn_resources::CfnResource for OrganizationAggregationSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -202,3 +268,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -269,8 +269,60 @@ impl cfn_resources::CfnResource for CfnIPAMPool {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.allocation_default_netmask_length {
+
+        if *the_val > 128 as _ {
+            return Err(format!("Max validation failed on field 'allocation_default_netmask_length'. {} is greater than 128", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allocation_default_netmask_length {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'allocation_default_netmask_length'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allocation_max_netmask_length {
+
+        if *the_val > 128 as _ {
+            return Err(format!("Max validation failed on field 'allocation_max_netmask_length'. {} is greater than 128", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allocation_max_netmask_length {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'allocation_max_netmask_length'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allocation_min_netmask_length {
+
+        if *the_val > 128 as _ {
+            return Err(format!("Max validation failed on field 'allocation_min_netmask_length'. {} is greater than 128", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allocation_min_netmask_length {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'allocation_min_netmask_length'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -292,6 +344,20 @@ pub struct ProvisionedCidr {
 
 
 
+impl cfn_resources::CfnResource for ProvisionedCidr {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -328,3 +394,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -115,8 +115,44 @@ impl cfn_resources::CfnResource for CfnPlaceIndex {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_source_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'index_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'index_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the data storage option requesting Places.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -164,3 +200,18 @@ impl Default for DataSourceConfigurationIntendedUseEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for DataSourceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

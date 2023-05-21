@@ -44,4 +44,23 @@ impl cfn_resources::CfnResource for CfnResolverConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_id;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'resource_id'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

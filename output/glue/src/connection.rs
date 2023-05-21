@@ -42,8 +42,14 @@ impl cfn_resources::CfnResource for CfnConnection {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.connection_input.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A structure that is used to specify a connection to create or update.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -188,6 +194,62 @@ impl Default for ConnectionInputConnectionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConnectionInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.match_criteria {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'match_criteria'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.physical_connection_requirements.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the physical requirements for a connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -246,3 +308,58 @@ pub struct PhysicalConnectionRequirements {
 }
 
 
+
+impl cfn_resources::CfnResource for PhysicalConnectionRequirements {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.availability_zone {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'availability_zone'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.availability_zone {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'availability_zone'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.security_group_id_list {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'security_group_id_list'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_id {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'subnet_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

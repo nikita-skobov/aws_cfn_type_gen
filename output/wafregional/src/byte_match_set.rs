@@ -46,8 +46,26 @@ impl cfn_resources::CfnResource for CfnByteMatchSet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -257,6 +275,22 @@ impl Default for ByteMatchTupleTextTransformationEnum {
 }
 
 
+impl cfn_resources::CfnResource for ByteMatchTuple {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_to_match.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies where in a web request to look for TargetString.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -342,3 +376,34 @@ impl Default for FieldToMatchTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for FieldToMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.data {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'data'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.data {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

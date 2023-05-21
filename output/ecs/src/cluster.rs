@@ -114,8 +114,24 @@ impl cfn_resources::CfnResource for CfnCluster {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.service_connect_defaults.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The CapacityProviderStrategyItem property specifies the details of the default capacity provider  strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider  strategy specified, the default capacity provider strategy is used.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -173,6 +189,52 @@ pub struct CapacityProviderStrategyItem {
 
 
 
+impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.base {
+
+        if *the_val > 100000 as _ {
+            return Err(format!("Max validation failed on field 'base'. {} is greater than 100000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.base {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'base'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.weight {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'weight'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.weight {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'weight'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The execute command configuration for the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -194,6 +256,22 @@ pub struct ClusterConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ClusterConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.execute_command_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings to use when creating a cluster. This parameter is used to turn on CloudWatch 			Container Insights for a cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -246,6 +324,20 @@ impl Default for ClusterSettingsNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for ClusterSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details of the execute command configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -318,6 +410,22 @@ impl Default for ExecuteCommandConfigurationLoggingEnum {
 }
 
 
+impl cfn_resources::CfnResource for ExecuteCommandConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.log_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The log configuration for the results of the execute command actions. The logs can be 			sent to CloudWatch Logs or an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -391,6 +499,20 @@ pub struct ExecuteCommandLogConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ExecuteCommandLogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use this parameter to set a default Service Connect namespace. After you set a default 	Service Connect namespace, any new services with Service Connect turned on that are created in the cluster are added as 	client services in the namespace. This setting only applies to new services that set the enabled parameter to 	true in the ServiceConnectConfiguration. 	You can set the namespace of each service individually in the ServiceConnectConfiguration to override this default 	parameter.
 ///
@@ -422,6 +544,20 @@ pub struct ServiceConnectDefaults {
 
 
 
+impl cfn_resources::CfnResource for ServiceConnectDefaults {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -458,3 +594,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

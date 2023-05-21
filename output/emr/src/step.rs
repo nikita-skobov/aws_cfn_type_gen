@@ -70,8 +70,28 @@ impl cfn_resources::CfnResource for CfnStep {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.hadoop_jar_step.validate()?;
+
+        let the_val = &self.job_flow_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'job_flow_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.job_flow_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'job_flow_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A job flow step consisting of a JAR file whose main function will be executed. The main     function submits a job for Hadoop to execute and waits for the job to finish or     fail.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -141,6 +161,50 @@ pub struct HadoopJarStepConfig {
 
 
 
+impl cfn_resources::CfnResource for HadoopJarStepConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.jar;
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'jar'. {} is greater than 10280", the_val.len()));
+        }
+
+        
+        let the_val = &self.jar;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'jar'. {} is less than 0", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.main_class {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'main_class'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.main_class {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'main_class'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// KeyValue is a subproperty of the HadoopJarStepConfig property type. KeyValue is used to pass parameters to a step.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -185,3 +249,50 @@ pub struct KeyValue {
 }
 
 
+
+impl cfn_resources::CfnResource for KeyValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 10280 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 10280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

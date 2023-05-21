@@ -164,8 +164,22 @@ impl cfn_resources::CfnResource for CfnJobTemplate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.abort_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.job_executions_retry_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.job_executions_rollout_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.presigned_url_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timeout_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The criteria that determine when and how a job abort takes place.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -187,6 +201,20 @@ pub struct AbortConfig {
 
 
 
+impl cfn_resources::CfnResource for AbortConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The criteria that determine when and how a job abort takes place.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -246,6 +274,20 @@ pub struct AbortCriteria {
 
 
 
+impl cfn_resources::CfnResource for AbortCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Allows you to create an exponential rate of rollout for a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -293,6 +335,22 @@ pub struct ExponentialRolloutRate {
 
 
 
+impl cfn_resources::CfnResource for ExponentialRolloutRate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.rate_increase_criteria.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The configuration that determines how many retries are allowed for each failure       type for a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -313,6 +371,20 @@ pub struct JobExecutionsRetryConfig {
 
 
 
+impl cfn_resources::CfnResource for JobExecutionsRetryConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Allows you to create a staged rollout of a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -345,6 +417,22 @@ pub struct JobExecutionsRolloutConfig {
 
 
 
+impl cfn_resources::CfnResource for JobExecutionsRolloutConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.exponential_rollout_rate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An optional configuration within the SchedulingConfig to setup a recurring maintenance window with a predetermined start time and duration for the rollout of a job document to all devices in a target group for a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -378,6 +466,20 @@ pub struct MaintenanceWindow {
 
 
 
+impl cfn_resources::CfnResource for MaintenanceWindow {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration for pre-signed S3 URLs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -413,6 +515,20 @@ pub struct PresignedUrlConfig {
 
 
 
+impl cfn_resources::CfnResource for PresignedUrlConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Allows you to define a criteria to initiate the increase in rate of rollout for a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -446,6 +562,20 @@ pub struct RateIncreaseCriteria {
 
 
 
+impl cfn_resources::CfnResource for RateIncreaseCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The criteria that determines how many retries are allowed for each failure       type for a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -479,6 +609,20 @@ pub struct RetryCriteria {
 
 
 
+impl cfn_resources::CfnResource for RetryCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -516,6 +660,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the amount of time each device has to finish its execution of the job. A timer       is started when the job execution status is set to IN_PROGRESS. If the job       execution status is not set to another terminal state before the timer expires, it will      be automatically set to TIMED_OUT.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -536,3 +694,18 @@ pub struct TimeoutConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for TimeoutConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

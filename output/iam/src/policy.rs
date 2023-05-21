@@ -122,4 +122,55 @@ impl cfn_resources::CfnResource for CfnPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.groups {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'groups'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.groups {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'groups'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.policy_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'policy_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.policy_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'policy_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.users {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'users'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.users {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'users'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

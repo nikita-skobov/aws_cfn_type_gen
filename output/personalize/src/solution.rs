@@ -118,8 +118,51 @@ impl cfn_resources::CfnResource for CfnSolution {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.dataset_group_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'dataset_group_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.event_type {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'event_type'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.recipe_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'recipe_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.solution_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AlgorithmHyperParameterRanges property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -162,6 +205,20 @@ pub struct AlgorithmHyperParameterRanges {
 
 
 
+impl cfn_resources::CfnResource for AlgorithmHyperParameterRanges {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AutoMLConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -193,6 +250,20 @@ pub struct AutoMLConfig {
 
 
 
+impl cfn_resources::CfnResource for AutoMLConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The CategoricalHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -224,6 +295,20 @@ pub struct CategoricalHyperParameterRange {
 
 
 
+impl cfn_resources::CfnResource for CategoricalHyperParameterRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ContinuousHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -266,6 +351,20 @@ pub struct ContinuousHyperParameterRange {
 
 
 
+impl cfn_resources::CfnResource for ContinuousHyperParameterRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The HpoConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -308,6 +407,26 @@ pub struct HpoConfig {
 
 
 
+impl cfn_resources::CfnResource for HpoConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.algorithm_hyper_parameter_ranges.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hpo_objective.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hpo_resource_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The HpoObjective property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -350,6 +469,20 @@ pub struct HpoObjective {
 
 
 
+impl cfn_resources::CfnResource for HpoObjective {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The HpoResourceConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -381,6 +514,20 @@ pub struct HpoResourceConfig {
 
 
 
+impl cfn_resources::CfnResource for HpoResourceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The IntegerHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -423,6 +570,20 @@ pub struct IntegerHyperParameterRange {
 
 
 
+impl cfn_resources::CfnResource for IntegerHyperParameterRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the configuration properties for the solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -493,3 +654,30 @@ pub struct SolutionConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for SolutionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_mlconfig.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.event_value_threshold {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'event_value_threshold'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.hpo_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

@@ -76,8 +76,14 @@ impl cfn_resources::CfnResource for CfnAlert {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A configuration that specifies the action to perform when anomalies are detected.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -111,6 +117,24 @@ pub struct Action {
 
 
 
+impl cfn_resources::CfnResource for Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.lambda_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snsconfiguration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about a Lambda configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -144,6 +168,20 @@ pub struct LambdaConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LambdaConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about the SNS topic to which you want to send your alerts and the IAM role that has    access to that topic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -176,3 +214,18 @@ pub struct SNSConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for SNSConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

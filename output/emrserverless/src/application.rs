@@ -184,8 +184,52 @@ impl cfn_resources::CfnResource for CfnApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_start_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.auto_stop_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.image_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.maximum_capacity.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.release_label;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'release_label'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.release_label;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'release_label'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The conﬁguration for an application to automatically start on job submission.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -207,6 +251,20 @@ pub struct AutoStartConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AutoStartConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The conﬁguration for an application to automatically stop after a certain amount of       time being idle.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -244,6 +302,36 @@ pub struct AutoStopConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AutoStopConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.idle_timeout_minutes {
+
+        if *the_val > 10080 as _ {
+            return Err(format!("Max validation failed on field 'idle_timeout_minutes'. {} is greater than 10080", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.idle_timeout_minutes {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'idle_timeout_minutes'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The ImageConfigurationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -264,6 +352,20 @@ pub struct ImageConfigurationInput {
 
 
 
+impl cfn_resources::CfnResource for ImageConfigurationInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The initial capacity configuration per worker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -301,6 +403,36 @@ pub struct InitialCapacityConfig {
 
 
 
+impl cfn_resources::CfnResource for InitialCapacityConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.worker_configuration.validate()?;
+
+        let the_val = &self.worker_count;
+
+        if *the_val > 1000000 as _ {
+            return Err(format!("Max validation failed on field 'worker_count'. {} is greater than 1000000", the_val));
+        }
+
+        
+        let the_val = &self.worker_count;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'worker_count'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The initial capacity configuration per worker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -340,6 +472,36 @@ pub struct InitialCapacityConfigKeyValuePair {
 
 
 
+impl cfn_resources::CfnResource for InitialCapacityConfigKeyValuePair {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The maximum allowed cumulative resources for an application. No new resources will be     created once the limit is hit.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -403,6 +565,64 @@ pub struct MaximumAllowedResources {
 
 
 
+impl cfn_resources::CfnResource for MaximumAllowedResources {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cpu;
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'cpu'. {} is greater than 15", the_val.len()));
+        }
+
+        
+        let the_val = &self.cpu;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'cpu'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.disk {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'disk'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.disk {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'disk'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.memory;
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'memory'. {} is greater than 15", the_val.len()));
+        }
+
+        
+        let the_val = &self.memory;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'memory'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The network configuration for customer VPC connectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -448,6 +668,52 @@ pub struct NetworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.security_group_ids {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.security_group_ids {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'security_group_ids'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_ids {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_ids {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'subnet_ids'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -485,6 +751,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The resource configuration of the initial capacity configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -542,6 +822,64 @@ pub struct WorkerConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WorkerConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cpu;
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'cpu'. {} is greater than 15", the_val.len()));
+        }
+
+        
+        let the_val = &self.cpu;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'cpu'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.disk {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'disk'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.disk {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'disk'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.memory;
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'memory'. {} is greater than 15", the_val.len()));
+        }
+
+        
+        let the_val = &self.memory;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'memory'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The WorkerTypeSpecificationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -561,3 +899,20 @@ pub struct WorkerTypeSpecificationInput {
 }
 
 
+
+impl cfn_resources::CfnResource for WorkerTypeSpecificationInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.image_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

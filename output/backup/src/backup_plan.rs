@@ -42,8 +42,14 @@ impl cfn_resources::CfnResource for CfnBackupPlan {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.backup_plan.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies an object containing resource type and backup options. This is only supported     for Windows VSS backups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -87,6 +93,20 @@ pub struct AdvancedBackupSettingResourceType {
 
 
 
+impl cfn_resources::CfnResource for AdvancedBackupSettingResourceType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an object containing properties used to create a backup plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -132,6 +152,20 @@ pub struct BackupPlanResourceType {
 
 
 
+impl cfn_resources::CfnResource for BackupPlanResourceType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an object containing properties used to schedule a task to back up a selection     of resources.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -251,6 +285,22 @@ pub struct BackupRuleResourceType {
 
 
 
+impl cfn_resources::CfnResource for BackupRuleResourceType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.lifecycle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Copies backups created by a backup rule to another vault.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -286,6 +336,22 @@ pub struct CopyActionResourceType {
 
 
 
+impl cfn_resources::CfnResource for CopyActionResourceType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.lifecycle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies an object containing an array of Transition objects that     determine how long in days before a recovery point transitions to cold storage or is     deleted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -318,3 +384,18 @@ pub struct LifecycleResourceType {
 }
 
 
+
+impl cfn_resources::CfnResource for LifecycleResourceType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -129,8 +129,16 @@ impl cfn_resources::CfnResource for CfnDomainConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.authorizer_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tls_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that specifies the authorization service for a domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -164,6 +172,20 @@ pub struct AuthorizerConfig {
 
 
 
+impl cfn_resources::CfnResource for AuthorizerConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that contains information about a server certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -209,6 +231,20 @@ pub struct ServerCertificateSummary {
 
 
 
+impl cfn_resources::CfnResource for ServerCertificateSummary {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -246,6 +282,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The TlsConfig property type specifies Property description not available. for an AWS::IoT::DomainConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -265,3 +315,18 @@ pub struct TlsConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for TlsConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

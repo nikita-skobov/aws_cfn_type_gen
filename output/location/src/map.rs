@@ -95,8 +95,44 @@ impl cfn_resources::CfnResource for CfnMap {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration.validate()?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.map_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'map_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.map_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'map_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the map tile style selected from an available provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -141,3 +177,32 @@ pub struct MapConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for MapConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.style;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'style'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.style;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'style'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

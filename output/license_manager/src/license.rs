@@ -150,8 +150,18 @@ impl cfn_resources::CfnResource for CfnLicense {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.consumption_configuration.validate()?;
+
+        self.issuer.validate()?;
+
+        self.validity.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Details about a borrow configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -185,6 +195,20 @@ pub struct BorrowConfiguration {
 
 
 
+impl cfn_resources::CfnResource for BorrowConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details about a consumption configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -230,6 +254,24 @@ pub struct ConsumptionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ConsumptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.borrow_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.provisional_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a resource entitled for use with a license.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -311,6 +353,20 @@ pub struct Entitlement {
 
 
 
+impl cfn_resources::CfnResource for Entitlement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details associated with the issuer of a license.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -344,6 +400,20 @@ pub struct IssuerData {
 
 
 
+impl cfn_resources::CfnResource for IssuerData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes key/value pairs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -377,6 +447,20 @@ pub struct Metadata {
 
 
 
+impl cfn_resources::CfnResource for Metadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details about a provisional configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -398,6 +482,20 @@ pub struct ProvisionalConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ProvisionalConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Date and time range during which the license is valid, in ISO8601-UTC format.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -430,3 +528,18 @@ pub struct ValidityDateFormat {
 }
 
 
+
+impl cfn_resources::CfnResource for ValidityDateFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

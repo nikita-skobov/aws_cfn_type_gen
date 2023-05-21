@@ -76,4 +76,25 @@ impl cfn_resources::CfnResource for CfnHookTypeConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.type_name {
+
+        if the_val.len() > 196 as _ {
+            return Err(format!("Max validation failed on field 'type_name'. {} is greater than 196", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.type_name {
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'type_name'. {} is less than 10", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

@@ -126,8 +126,58 @@ impl cfn_resources::CfnResource for CfnDataRepositoryAssociation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.data_repository_path;
+
+        if the_val.len() > 4357 as _ {
+            return Err(format!("Max validation failed on field 'data_repository_path'. {} is greater than 4357", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_repository_path;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'data_repository_path'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.file_system_path;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'file_system_path'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.file_system_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'file_system_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.imported_file_chunk_size {
+
+        if *the_val > 512000 as _ {
+            return Err(format!("Max validation failed on field 'imported_file_chunk_size'. {} is greater than 512000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.imported_file_chunk_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'imported_file_chunk_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a data repository association's automatic export policy. The       AutoExportPolicy defines the types of updated objects on the       file system that will be automatically exported to the data repository.       As you create, modify, or delete files, Amazon FSx for Lustre       automatically exports the defined changes asynchronously once your application finishes       modifying the file.
 ///
@@ -157,6 +207,27 @@ pub struct AutoExportPolicy {
 
 
 
+impl cfn_resources::CfnResource for AutoExportPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.events;
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'events'. {} is greater than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes the data repository association's automatic import policy.       The AutoImportPolicy defines how Amazon FSx keeps your file metadata and directory       listings up to date by importing changes to your Amazon FSx for Lustre file system       as you modify objects in a linked S3 bucket.
 ///
@@ -186,6 +257,27 @@ pub struct AutoImportPolicy {
 
 
 
+impl cfn_resources::CfnResource for AutoImportPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.events;
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'events'. {} is greater than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration for an Amazon S3 data repository linked to an       Amazon FSx Lustre file system with a data repository association.       The configuration defines which file events (new, changed, or       deleted files or directories) are automatically imported from       the linked data repository to the file system or automatically       exported from the file system to the data repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -223,6 +315,24 @@ pub struct S3 {
 
 
 
+impl cfn_resources::CfnResource for S3 {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_export_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.auto_import_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -259,3 +369,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

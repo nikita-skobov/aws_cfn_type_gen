@@ -126,8 +126,45 @@ impl cfn_resources::CfnResource for CfnScheduledAction {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.iam_role {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'iam_role'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.schedule {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'schedule'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.scheduled_action_description {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'scheduled_action_description'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.scheduled_action_name;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'scheduled_action_name'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        self.target_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a pause cluster operation. For example, a scheduled action to run the PauseCluster API operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -151,6 +188,27 @@ pub struct PauseClusterMessage {
 
 
 
+impl cfn_resources::CfnResource for PauseClusterMessage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cluster_identifier;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes a resize cluster operation. For example, a scheduled action to run the ResizeCluster API operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -226,6 +284,43 @@ pub struct ResizeClusterMessage {
 
 
 
+impl cfn_resources::CfnResource for ResizeClusterMessage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cluster_identifier;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.cluster_type {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_type'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.node_type {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'node_type'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a resume cluster operation. For example, a scheduled action to run the ResumeCluster API operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -249,6 +344,27 @@ pub struct ResumeClusterMessage {
 
 
 
+impl cfn_resources::CfnResource for ResumeClusterMessage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cluster_identifier;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The action type that specifies an Amazon Redshift API operation that is supported by the Amazon Redshift scheduler.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -293,3 +409,24 @@ pub struct ScheduledActionType {
 }
 
 
+
+impl cfn_resources::CfnResource for ScheduledActionType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.pause_cluster.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.resize_cluster.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.resume_cluster.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

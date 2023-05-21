@@ -144,8 +144,106 @@ impl cfn_resources::CfnResource for CfnTheme {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.aws_account_id;
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'aws_account_id'. {} is greater than 12", the_val.len()));
+        }
+
+        
+        let the_val = &self.aws_account_id;
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'aws_account_id'. {} is less than 12", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.base_theme_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'base_theme_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.base_theme_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'base_theme_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.permissions {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'permissions'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.theme_id;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'theme_id'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.theme_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'theme_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.version_description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'version_description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version_description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The display options for tile borders for visuals.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -167,6 +265,20 @@ pub struct BorderStyle {
 
 
 
+impl cfn_resources::CfnResource for BorderStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The theme colors that are used for data colors in charts. The colors description is a       hexadecimal color code that consists of six alphanumerical characters, prefixed with         #, for example #37BFF5.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -218,6 +330,36 @@ pub struct DataColorPalette {
 
 
 
+impl cfn_resources::CfnResource for DataColorPalette {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.colors {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'colors'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min_max_gradient {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'min_max_gradient'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The Font property type specifies Property description not available. for an AWS::QuickSight::Theme.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -238,6 +380,20 @@ pub struct Font {
 
 
 
+impl cfn_resources::CfnResource for Font {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The display options for gutter spacing between tiles on a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -259,6 +415,20 @@ pub struct GutterStyle {
 
 
 
+impl cfn_resources::CfnResource for GutterStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The display options for margins around the outside edge of sheets.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -280,6 +450,20 @@ pub struct MarginStyle {
 
 
 
+impl cfn_resources::CfnResource for MarginStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Permission for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -315,6 +499,20 @@ pub struct ResourcePermission {
 
 
 
+impl cfn_resources::CfnResource for ResourcePermission {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The theme display options for sheets.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -348,6 +546,24 @@ pub struct SheetStyle {
 
 
 
+impl cfn_resources::CfnResource for SheetStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.tile.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tile_layout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -385,6 +601,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The theme configuration. This configuration contains all of the display properties for       a theme.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -441,6 +671,28 @@ pub struct ThemeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ThemeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_color_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sheet.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.typography.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.uicolor_palette.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Theme error.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -493,6 +745,20 @@ impl Default for ThemeErrorTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ThemeError {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A version of a theme.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -649,6 +915,54 @@ impl Default for ThemeVersionStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for ThemeVersion {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.base_theme_id {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'base_theme_id'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.base_theme_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'base_theme_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The display options for the layout of tiles on a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -682,6 +996,24 @@ pub struct TileLayoutStyle {
 
 
 
+impl cfn_resources::CfnResource for TileLayoutStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.gutter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.margin.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Display options related to tiles on a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -703,6 +1035,22 @@ pub struct TileStyle {
 
 
 
+impl cfn_resources::CfnResource for TileStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.border.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Typography property type specifies Property description not available. for an AWS::QuickSight::Theme.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -723,6 +1071,20 @@ pub struct Typography {
 
 
 
+impl cfn_resources::CfnResource for Typography {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The theme colors that apply to UI and to charts, excluding data colors. The colors description is a hexadecimal  color code that consists of six alphanumerical characters, prefixed with #, for example #37BFF5. For  more information, see Using Themes  in Amazon QuickSight in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -955,3 +1317,18 @@ pub struct UIColorPalette {
 }
 
 
+
+impl cfn_resources::CfnResource for UIColorPalette {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

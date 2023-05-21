@@ -330,8 +330,113 @@ impl cfn_resources::CfnResource for CfnServer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.backup_id {
+
+        if the_val.len() > 79 as _ {
+            return Err(format!("Max validation failed on field 'backup_id'. {} is greater than 79", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.backup_retention_count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'backup_retention_count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_certificate {
+
+        if the_val.len() > 2097152 as _ {
+            return Err(format!("Max validation failed on field 'custom_certificate'. {} is greater than 2097152", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_domain {
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'custom_domain'. {} is greater than 253", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_private_key {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'custom_private_key'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.engine {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'engine'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.engine_model {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'engine_model'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.engine_version {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'engine_version'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.instance_profile_arn;
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'instance_profile_arn'. {} is greater than 10000", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_type;
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'instance_type'. {} is greater than 10000", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.key_pair {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'key_pair'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.service_role_arn;
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'service_role_arn'. {} is greater than 10000", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The EngineAttribute property type specifies administrator credentials for      an AWS OpsWorks for Chef Automate or OpsWorks for Puppet Enterprise server.     EngineAttribute is a property of the AWS::OpsWorksCM::Server    resource type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -389,6 +494,36 @@ pub struct EngineAttribute {
 
 
 
+impl cfn_resources::CfnResource for EngineAttribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -425,3 +560,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

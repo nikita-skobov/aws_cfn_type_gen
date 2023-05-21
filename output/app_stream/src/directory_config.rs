@@ -64,8 +64,16 @@ impl cfn_resources::CfnResource for CfnDirectoryConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.certificate_based_auth_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.service_account_credentials.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The certificate-based authentication properties used to authenticate SAML 2.0 Identity       Provider (IdP) user identities to Active Directory domain-joined streaming instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -126,6 +134,20 @@ impl Default for CertificateBasedAuthPropertiesStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for CertificateBasedAuthProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The credentials for the service account used by the streaming instance to connect to the directory.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -164,3 +186,39 @@ pub struct ServiceAccountCredentials {
 }
 
 
+
+impl cfn_resources::CfnResource for ServiceAccountCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.account_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'account_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.account_password;
+
+        if the_val.len() > 127 as _ {
+            return Err(format!("Max validation failed on field 'account_password'. {} is greater than 127", the_val.len()));
+        }
+
+        
+        let the_val = &self.account_password;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'account_password'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

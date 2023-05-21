@@ -107,8 +107,14 @@ impl cfn_resources::CfnResource for CfnDetector {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_sources.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes whether S3 data event logs, Kubernetes audit logs, or Malware Protection          will be enabled as a data source when the detector is created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -154,6 +160,26 @@ pub struct CFNDataSourceConfigurations {
 
 
 
+impl cfn_resources::CfnResource for CFNDataSourceConfigurations {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.kubernetes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.malware_protection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes which optional data sources are enabled for a detector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -175,6 +201,20 @@ pub struct CFNKubernetesAuditLogsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CFNKubernetesAuditLogsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes which Kubernetes protection data sources are enabled for the          detector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -196,6 +236,22 @@ pub struct CFNKubernetesConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CFNKubernetesConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.audit_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes whether Malware Protection will be enabled as a data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -217,6 +273,22 @@ pub struct CFNMalwareProtectionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CFNMalwareProtectionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.scan_ec2_instance_with_findings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes whether S3 data event logs will be enabled as a data source when the          detector is created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -238,6 +310,20 @@ pub struct CFNS3LogsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CFNS3LogsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes whether Malware Protection for EC2 instances with findings will be          enabled as a data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -259,6 +345,20 @@ pub struct CFNScanEc2InstanceWithFindingsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CFNScanEc2InstanceWithFindingsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the additional configuration for a feature. If you want to specify any additional          configuration for your feature, it is required to provide the Name and Status          for that additional configuration. For more information, see          DetectorAdditionalConfiguration.
 ///
@@ -294,6 +394,20 @@ pub struct FeatureAdditionalConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FeatureAdditionalConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the configuration for a feature.
 ///
@@ -341,6 +455,20 @@ pub struct FeatureConfigurations {
 
 
 
+impl cfn_resources::CfnResource for FeatureConfigurations {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -377,3 +505,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

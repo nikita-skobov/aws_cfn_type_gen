@@ -147,8 +147,18 @@ impl cfn_resources::CfnResource for CfnCertificate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.api_passthrough.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.validity.validate()?;
+
+        self.validity_not_before.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains X.509 certificate information to be placed in an issued certificate. An 				APIPassthrough or APICSRPassthrough template variant must 			be selected, or else this parameter is ignored.
 ///
@@ -184,6 +194,24 @@ pub struct ApiPassthrough {
 
 
 
+impl cfn_resources::CfnResource for ApiPassthrough {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.extensions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subject.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines the X.500 relative distinguished name (RDN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -229,6 +257,48 @@ pub struct CustomAttribute {
 
 
 
+impl cfn_resources::CfnResource for CustomAttribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object_identifier;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'object_identifier'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.object_identifier;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'object_identifier'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// 
 /// Specifies the X.509 extension information for a certificate.
@@ -295,6 +365,48 @@ pub struct CustomExtension {
 
 
 
+impl cfn_resources::CfnResource for CustomExtension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.object_identifier;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'object_identifier'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.object_identifier;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'object_identifier'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes an Electronic Data Interchange (EDI) entity as described in as defined in 				Subject Alternative 				Name in RFC 5280.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -336,6 +448,48 @@ pub struct EdiPartyName {
 
 
 
+impl cfn_resources::CfnResource for EdiPartyName {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name_assigner;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name_assigner'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name_assigner;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name_assigner'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.party_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'party_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.party_name;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'party_name'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies additional purposes for which the certified public key may be used other 			than basic purposes indicated in the KeyUsage extension.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -424,6 +578,36 @@ impl Default for ExtendedKeyUsageExtendedKeyUsageTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ExtendedKeyUsage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.extended_key_usage_object_identifier {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'extended_key_usage_object_identifier'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.extended_key_usage_object_identifier {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'extended_key_usage_object_identifier'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains X.509 extension information for a certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -505,6 +689,54 @@ pub struct Extensions {
 
 
 
+impl cfn_resources::CfnResource for Extensions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.certificate_policies {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'certificate_policies'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_extensions {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'custom_extensions'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.extended_key_usage {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'extended_key_usage'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        self.key_usage.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.subject_alternative_names {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'subject_alternative_names'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes an ASN.1 X.400 GeneralName as defined in RFC 5280. Only one of 			the following naming options should be provided. Providing more than one option results 			in an InvalidArgsException error.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -632,6 +864,106 @@ pub struct GeneralName {
 
 
 
+impl cfn_resources::CfnResource for GeneralName {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.directory_name.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.dns_name {
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'dns_name'. {} is greater than 253", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.dns_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'dns_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.edi_party_name.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.ip_address {
+
+        if the_val.len() > 39 as _ {
+            return Err(format!("Max validation failed on field 'ip_address'. {} is greater than 39", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ip_address {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'ip_address'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.other_name.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.registered_id {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'registered_id'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.registered_id {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'registered_id'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rfc822_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'rfc822_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rfc822_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'rfc822_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.uniform_resource_identifier {
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'uniform_resource_identifier'. {} is greater than 253", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.uniform_resource_identifier {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'uniform_resource_identifier'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Defines one or more purposes for which the key contained in the certificate can be 			used. Default value for each option is false.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -749,6 +1081,20 @@ pub struct KeyUsage {
 
 
 
+impl cfn_resources::CfnResource for KeyUsage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a custom ASN.1 X.400 GeneralName using an object identifier (OID) 			and value. The OID must satisfy the regular expression shown below. For more 			information, see NIST's definition of Object Identifier 				(OID).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -792,6 +1138,48 @@ pub struct OtherName {
 
 
 
+impl cfn_resources::CfnResource for OtherName {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.type_id;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'type_id'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.type_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'type_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Defines the X.509 CertificatePolicies extension.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -833,6 +1221,42 @@ pub struct PolicyInformation {
 
 
 
+impl cfn_resources::CfnResource for PolicyInformation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cert_policy_id;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'cert_policy_id'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.cert_policy_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'cert_policy_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.policy_qualifiers {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'policy_qualifiers'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Modifies the CertPolicyId of a PolicyInformation object with 			a qualifier. AWS Private CA supports the certification practice statement (CPS) 			qualifier.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -883,6 +1307,22 @@ impl Default for PolicyQualifierInfoPolicyQualifierIdEnum {
 }
 
 
+impl cfn_resources::CfnResource for PolicyQualifierInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.qualifier.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Defines a PolicyInformation qualifier. AWS Private CA supports the certification 				practice statement (CPS) qualifier defined in RFC 5280.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -908,6 +1348,34 @@ pub struct Qualifier {
 
 
 
+impl cfn_resources::CfnResource for Qualifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cps_uri;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'cps_uri'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.cps_uri;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'cps_uri'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Contains information about the certificate subject. The Subject field in       the certificate identifies the entity that owns or controls the public key in the       certificate. The entity can be a user, computer, device, or service. The Subject       must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1167,6 +1635,252 @@ pub struct Subject {
 
 
 
+impl cfn_resources::CfnResource for Subject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.common_name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'common_name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.common_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'common_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.country {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'country'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.country {
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'country'. {} is less than 2", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_attributes {
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'custom_attributes'. {} is greater than 30", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.distinguished_name_qualifier {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'distinguished_name_qualifier'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.distinguished_name_qualifier {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'distinguished_name_qualifier'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.generation_qualifier {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'generation_qualifier'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.generation_qualifier {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'generation_qualifier'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.given_name {
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'given_name'. {} is greater than 16", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.given_name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'given_name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.initials {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'initials'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.initials {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'initials'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.locality {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'locality'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.locality {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'locality'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.organization {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'organization'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.organization {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'organization'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.organizational_unit {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'organizational_unit'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.organizational_unit {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'organizational_unit'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pseudonym {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'pseudonym'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pseudonym {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'pseudonym'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.serial_number {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'serial_number'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.serial_number {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'serial_number'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.state {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'state'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.state {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'state'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.surname {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'surname'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.surname {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'surname'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.title {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'title'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.title {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'title'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Length of time for which the certificate issued by your private certificate authority       (CA), or by the private CA itself, is valid in days, months, or years. You can issue a       certificate by calling the IssueCertificate operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1232,3 +1946,18 @@ impl Default for ValidityTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for Validity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

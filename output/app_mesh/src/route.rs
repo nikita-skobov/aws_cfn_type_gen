@@ -110,8 +110,82 @@ impl cfn_resources::CfnResource for CfnRoute {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.mesh_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'mesh_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.mesh_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'mesh_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.mesh_owner {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'mesh_owner'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.mesh_owner {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'mesh_owner'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.route_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'route_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.route_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'route_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.spec.validate()?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.virtual_router_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'virtual_router_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.virtual_router_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'virtual_router_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents a duration of time.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -166,6 +240,20 @@ impl Default for DurationUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for Duration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a retry policy. Specify at least one value for at least one of the types of RetryEvents, a value for maxRetries, and a value for perRetryTimeout.         Both server-error and gateway-error under httpRetryEvents include the Envoy reset policy. For more information on the         reset policy, see the Envoy documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -243,6 +331,46 @@ pub struct GrpcRetryPolicy {
 
 
 
+impl cfn_resources::CfnResource for GrpcRetryPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.grpc_retry_events {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'grpc_retry_events'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.http_retry_events {
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'http_retry_events'. {} is greater than 25", the_val.len()));
+        }
+
+        }
+        
+        self.per_retry_timeout.validate()?;
+
+        if let Some(the_val) = &self.tcp_retry_events {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'tcp_retry_events'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents a gRPC route type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -300,6 +428,28 @@ pub struct GrpcRoute {
 
 
 
+impl cfn_resources::CfnResource for GrpcRoute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.validate()?;
+
+        self.cfn_match.validate()?;
+
+        self.retry_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timeout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the action to take if a match is determined.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -323,6 +473,27 @@ pub struct GrpcRouteAction {
 
 
 
+impl cfn_resources::CfnResource for GrpcRouteAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.weighted_targets;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'weighted_targets'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the criteria for determining a request match.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -390,6 +561,60 @@ pub struct GrpcRouteMatch {
 
 
 
+impl cfn_resources::CfnResource for GrpcRouteMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.metadata {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'metadata'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.method_name {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'method_name'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.method_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'method_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the match metadata for the route.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -439,6 +664,36 @@ pub struct GrpcRouteMetadata {
 
 
 
+impl cfn_resources::CfnResource for GrpcRouteMetadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cfn_match.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the match method. Specify one of the match values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -524,6 +779,86 @@ pub struct GrpcRouteMetadataMatchMethod {
 
 
 
+impl cfn_resources::CfnResource for GrpcRouteMetadataMatchMethod {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.exact {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'exact'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exact {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'exact'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'regex'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'regex'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'suffix'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'suffix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -557,6 +892,24 @@ pub struct GrpcTimeout {
 
 
 
+impl cfn_resources::CfnResource for GrpcTimeout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.idle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.per_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the method and value to match with the header value sent in a     request. Specify one match method.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -642,6 +995,86 @@ pub struct HeaderMatchMethod {
 
 
 
+impl cfn_resources::CfnResource for HeaderMatchMethod {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.exact {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'exact'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exact {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'exact'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'prefix'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'regex'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'regex'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'suffix'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.suffix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'suffix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object representing the path to match in the request.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -683,6 +1116,52 @@ pub struct HttpPathMatch {
 
 
 
+impl cfn_resources::CfnResource for HttpPathMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.exact {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'exact'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exact {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'exact'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'regex'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regex {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'regex'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object representing the query parameter to match.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -704,6 +1183,20 @@ pub struct HttpQueryParameterMatch {
 
 
 
+impl cfn_resources::CfnResource for HttpQueryParameterMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a retry policy. Specify at least one value for at least one of the types of RetryEvents, a value for maxRetries, and a value for perRetryTimeout.         Both server-error and gateway-error under httpRetryEvents include the Envoy reset policy. For more information on the         reset policy, see the Envoy documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -767,6 +1260,38 @@ pub struct HttpRetryPolicy {
 
 
 
+impl cfn_resources::CfnResource for HttpRetryPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.http_retry_events {
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'http_retry_events'. {} is greater than 25", the_val.len()));
+        }
+
+        }
+        
+        self.per_retry_timeout.validate()?;
+
+        if let Some(the_val) = &self.tcp_retry_events {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'tcp_retry_events'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents an HTTP or HTTP/2 route type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -824,6 +1349,28 @@ pub struct HttpRoute {
 
 
 
+impl cfn_resources::CfnResource for HttpRoute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.validate()?;
+
+        self.cfn_match.validate()?;
+
+        self.retry_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timeout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the action to take if a match is determined.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -847,6 +1394,27 @@ pub struct HttpRouteAction {
 
 
 
+impl cfn_resources::CfnResource for HttpRouteAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.weighted_targets;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'weighted_targets'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the HTTP header in the request.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -896,6 +1464,36 @@ pub struct HttpRouteHeader {
 
 
 
+impl cfn_resources::CfnResource for HttpRouteHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cfn_match.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the requirements for a route to match HTTP requests for a     virtual router.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1067,6 +1665,54 @@ impl Default for HttpRouteMatchSchemeEnum {
 }
 
 
+impl cfn_resources::CfnResource for HttpRouteMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.headers {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'headers'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.path.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.query_parameters {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'query_parameters'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1100,6 +1746,24 @@ pub struct HttpTimeout {
 
 
 
+impl cfn_resources::CfnResource for HttpTimeout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.idle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.per_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the range of values to match on. The first character of the range is included in the range, though the last character is not. For example, if the range specified were 1-100, only values 1-99 would be matched.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1133,6 +1797,20 @@ pub struct MatchRange {
 
 
 
+impl cfn_resources::CfnResource for MatchRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents the query parameter in the request.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1166,6 +1844,22 @@ pub struct QueryParameter {
 
 
 
+impl cfn_resources::CfnResource for QueryParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cfn_match.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a route specification. Specify one route type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1239,6 +1933,44 @@ pub struct RouteSpec {
 
 
 
+impl cfn_resources::CfnResource for RouteSpec {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.grpc_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http2_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.priority {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'priority'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.priority {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.tcp_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1276,6 +2008,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a TCP route type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1321,6 +2067,26 @@ pub struct TcpRoute {
 
 
 
+impl cfn_resources::CfnResource for TcpRoute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.validate()?;
+
+        self.cfn_match.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timeout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the action to take if a match is determined.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1344,6 +2110,27 @@ pub struct TcpRouteAction {
 
 
 
+impl cfn_resources::CfnResource for TcpRouteAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.weighted_targets;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'weighted_targets'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object representing the TCP route to match.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1369,6 +2156,36 @@ pub struct TcpRouteMatch {
 
 
 
+impl cfn_resources::CfnResource for TcpRouteMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1390,6 +2207,22 @@ pub struct TcpTimeout {
 
 
 
+impl cfn_resources::CfnResource for TcpTimeout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.idle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a target and its relative weight. Traffic is distributed     across targets according to their relative weight. For example, a weighted target with a     relative weight of 50 receives five times as much traffic as one with a relative weight of     10. The total weight for all targets combined must be less than or equal to 100.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1446,3 +2279,62 @@ pub struct WeightedTarget {
 }
 
 
+
+impl cfn_resources::CfnResource for WeightedTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        let the_val = &self.virtual_node;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'virtual_node'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.virtual_node;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'virtual_node'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.weight;
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'weight'. {} is greater than 100", the_val));
+        }
+
+        
+        let the_val = &self.weight;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'weight'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -313,8 +313,84 @@ impl cfn_resources::CfnResource for CfnServer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.certificate {
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'certificate'. {} is greater than 1600", the_val.len()));
+        }
+
+        }
+        
+        self.endpoint_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.identity_provider_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.logging_role {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'logging_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.logging_role {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'logging_role'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.post_authentication_login_banner {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'post_authentication_login_banner'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pre_authentication_login_banner {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'pre_authentication_login_banner'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        self.protocol_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.protocols {
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'protocols'. {} is greater than 4", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.security_policy_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'security_policy_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        self.workflow_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -324,6 +400,20 @@ pub struct As2Transport {
 
 
 
+impl cfn_resources::CfnResource for As2Transport {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The virtual private cloud (VPC) endpoint settings that are configured for your server.    When you host your endpoint within your VPC, you can make your endpoint accessible only to resources    within your VPC, or you can attach Elastic IP addresses and make your endpoint accessible to clients over    the internet. Your VPC's default security groups are automatically assigned to your    endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -409,6 +499,36 @@ pub struct EndpointDetails {
 
 
 
+impl cfn_resources::CfnResource for EndpointDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.vpc_endpoint_id {
+
+        if the_val.len() > 22 as _ {
+            return Err(format!("Max validation failed on field 'vpc_endpoint_id'. {} is greater than 22", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.vpc_endpoint_id {
+
+        if the_val.len() < 22 as _ {
+            return Err(format!("Min validation failed on field 'vpc_endpoint_id'. {} is less than 22", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Required when IdentityProviderType is set to     AWS_DIRECTORY_SERVICE,         AWS_LAMBDA or API_GATEWAY. Accepts an array containing    all of the information required to use a directory in AWS_DIRECTORY_SERVICE or    invoke a customer-supplied authentication API, including the API Gateway URL. Not required    when IdentityProviderType is set to SERVICE_MANAGED.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -529,6 +649,76 @@ impl Default for IdentityProviderDetailsSftpAuthenticationMethodsEnum {
 }
 
 
+impl cfn_resources::CfnResource for IdentityProviderDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.directory_id {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'directory_id'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.directory_id {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'directory_id'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.function {
+
+        if the_val.len() > 170 as _ {
+            return Err(format!("Max validation failed on field 'function'. {} is greater than 170", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.function {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'function'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.invocation_role {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'invocation_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.invocation_role {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'invocation_role'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.url {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'url'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the file transfer protocol or protocols over which your file transfer protocol    client can connect to your server's endpoint. The available protocols are:
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -538,6 +728,20 @@ pub struct Protocol {
 
 
 
+impl cfn_resources::CfnResource for Protocol {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The protocol settings that are configured for your server.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -663,6 +867,36 @@ impl Default for ProtocolDetailsTlsSessionResumptionModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ProtocolDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.as2_transports {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'as2_transports'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.passive_ip {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'passive_ip'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -700,6 +934,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow.
 ///
@@ -747,6 +995,48 @@ pub struct WorkflowDetail {
 
 
 
+impl cfn_resources::CfnResource for WorkflowDetail {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.execution_role;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'execution_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.execution_role;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'execution_role'. {} is less than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.workflow_id;
+
+        if the_val.len() > 19 as _ {
+            return Err(format!("Max validation failed on field 'workflow_id'. {} is greater than 19", the_val.len()));
+        }
+
+        
+        let the_val = &self.workflow_id;
+
+        if the_val.len() < 19 as _ {
+            return Err(format!("Min validation failed on field 'workflow_id'. {} is less than 19", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Container for the WorkflowDetail data type.    It is used by actions that trigger a workflow to begin execution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -789,3 +1079,34 @@ pub struct WorkflowDetails {
 }
 
 
+
+impl cfn_resources::CfnResource for WorkflowDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.on_partial_upload {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'on_partial_upload'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.on_upload {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'on_upload'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

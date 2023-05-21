@@ -400,8 +400,122 @@ impl cfn_resources::CfnResource for CfnUserPool {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.account_recovery_setting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.admin_create_user_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.device_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.email_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.email_verification_message {
+
+        if the_val.len() > 20000 as _ {
+            return Err(format!("Max validation failed on field 'email_verification_message'. {} is greater than 20000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_verification_message {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'email_verification_message'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_verification_subject {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'email_verification_subject'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_verification_subject {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'email_verification_subject'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.lambda_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.policies.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.schema {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'schema'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sms_authentication_message {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'sms_authentication_message'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sms_authentication_message {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'sms_authentication_message'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        self.sms_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.sms_verification_message {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'sms_verification_message'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sms_verification_message {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'sms_verification_message'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        self.user_attribute_update_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.user_pool_add_ons.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.user_pool_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_pool_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.username_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.verification_message_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use this setting to define which verified available method a user can use to recover their    password when they call ForgotPassword. It allows you to define a preferred    method when a user has more than one method available. With this setting, SMS does not qualify    for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence    of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS    is preferred over email.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -425,6 +539,28 @@ pub struct AccountRecoverySetting {
 
 
 
+impl cfn_resources::CfnResource for AccountRecoverySetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.recovery_mechanisms {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'recovery_mechanisms'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration for AdminCreateUser requests.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -478,6 +614,38 @@ pub struct AdminCreateUserConfig {
 
 
 
+impl cfn_resources::CfnResource for AdminCreateUserConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.invite_message_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.unused_account_validity_days {
+
+        if *the_val > 365 as _ {
+            return Err(format!("Max validation failed on field 'unused_account_validity_days'. {} is greater than 365", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.unused_account_validity_days {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'unused_account_validity_days'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A custom email sender AWS Lambda trigger.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -511,6 +679,20 @@ pub struct CustomEmailSender {
 
 
 
+impl cfn_resources::CfnResource for CustomEmailSender {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A custom SMS sender AWS Lambda trigger.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -544,6 +726,20 @@ pub struct CustomSMSSender {
 
 
 
+impl cfn_resources::CfnResource for CustomSMSSender {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The device-remembering configuration for a user pool. A         DescribeUserPool request returns a null value for this object when the user       pool isn't configured to remember devices. When device remembering is active, you can       remember a user's device with a ConfirmDevice API request. Additionally. when the property         DeviceOnlyRememberedOnUserPrompt is true, you must follow         ConfirmDevice with an UpdateDeviceStatus API request that sets the user's device to         remembered or not_remembered.
 ///
@@ -583,6 +779,20 @@ pub struct DeviceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DeviceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The email configuration of your user pool. The email configuration type sets your       preferred sending method, AWS Region, and sender for messages from your user       pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -695,6 +905,52 @@ impl Default for EmailConfigurationEmailSendingAccountEnum {
 }
 
 
+impl cfn_resources::CfnResource for EmailConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.configuration_set {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'configuration_set'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.configuration_set {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'configuration_set'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'source_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'source_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The message template to be used for the welcome message to new users.
 ///
@@ -760,6 +1016,68 @@ pub struct InviteMessageTemplate {
 
 
 
+impl cfn_resources::CfnResource for InviteMessageTemplate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.email_message {
+
+        if the_val.len() > 20000 as _ {
+            return Err(format!("Max validation failed on field 'email_message'. {} is greater than 20000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_message {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'email_message'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_subject {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'email_subject'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_subject {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'email_subject'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.smsmessage {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'smsmessage'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.smsmessage {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'smsmessage'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the configuration for AWS Lambda triggers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -985,6 +1303,184 @@ pub struct LambdaConfig {
 
 
 
+impl cfn_resources::CfnResource for LambdaConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.create_auth_challenge {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'create_auth_challenge'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.create_auth_challenge {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'create_auth_challenge'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        self.custom_email_sender.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.custom_message {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'custom_message'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_message {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'custom_message'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        self.custom_smssender.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.define_auth_challenge {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'define_auth_challenge'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.define_auth_challenge {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'define_auth_challenge'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.post_authentication {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'post_authentication'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.post_authentication {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'post_authentication'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.post_confirmation {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'post_confirmation'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.post_confirmation {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'post_confirmation'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pre_authentication {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'pre_authentication'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pre_authentication {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'pre_authentication'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pre_sign_up {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'pre_sign_up'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pre_sign_up {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'pre_sign_up'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pre_token_generation {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'pre_token_generation'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pre_token_generation {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'pre_token_generation'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_migration {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'user_migration'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_migration {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'user_migration'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.verify_auth_challenge_response {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'verify_auth_challenge_response'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.verify_auth_challenge_response {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'verify_auth_challenge_response'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The minimum and maximum values of an attribute that is of the number data type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1018,6 +1514,20 @@ pub struct NumberAttributeConstraints {
 
 
 
+impl cfn_resources::CfnResource for NumberAttributeConstraints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The password policy type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1109,6 +1619,52 @@ pub struct PasswordPolicy {
 
 
 
+impl cfn_resources::CfnResource for PasswordPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.minimum_length {
+
+        if *the_val > 99 as _ {
+            return Err(format!("Max validation failed on field 'minimum_length'. {} is greater than 99", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.minimum_length {
+
+        if *the_val < 6 as _ {
+            return Err(format!("Min validation failed on field 'minimum_length'. {} is less than 6", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.temporary_password_validity_days {
+
+        if *the_val > 365 as _ {
+            return Err(format!("Max validation failed on field 'temporary_password_validity_days'. {} is greater than 365", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.temporary_password_validity_days {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'temporary_password_validity_days'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The policy associated with a user pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1130,6 +1686,22 @@ pub struct Policies {
 
 
 
+impl cfn_resources::CfnResource for Policies {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.password_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A map containing a priority as a key, and recovery method name as a value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1192,6 +1764,36 @@ impl Default for RecoveryOptionNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for RecoveryOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.priority {
+
+        if *the_val > 2 as _ {
+            return Err(format!("Max validation failed on field 'priority'. {} is greater than 2", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.priority {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains information about the schema attribute.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1324,6 +1926,40 @@ impl Default for SchemaAttributeAttributeDataTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SchemaAttribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.number_attribute_constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.string_attribute_constraints.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The SMS configuration type that includes the settings the Cognito User Pool needs to call    for the Amazon SNS service to send an SMS message from your AWS account. The    Cognito User Pool makes the request to the Amazon SNS Service by using an IAM    role that you provide for your AWS account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1381,6 +2017,52 @@ pub struct SmsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SmsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.sns_caller_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'sns_caller_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sns_caller_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'sns_caller_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sns_region {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'sns_region'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sns_region {
+
+        if the_val.len() < 5 as _ {
+            return Err(format!("Min validation failed on field 'sns_region'. {} is less than 5", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The StringAttributeConstraints property type defines the string attribute    constraints of an Amazon Cognito user pool. StringAttributeConstraints is a    subproperty of the SchemaAttribute property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1414,6 +2096,20 @@ pub struct StringAttributeConstraints {
 
 
 
+impl cfn_resources::CfnResource for StringAttributeConstraints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for updates to user attributes. These settings include the property AttributesRequireVerificationBeforeUpdate, a user-pool setting that tells Amazon Cognito how to handle changes to the value of your users' email address and phone number attributes. For more information, see Verifying updates to email addresses and phone numbers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1439,6 +2135,20 @@ pub struct UserAttributeUpdateSettings {
 
 
 
+impl cfn_resources::CfnResource for UserAttributeUpdateSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The user pool add-ons type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1485,6 +2195,20 @@ impl Default for UserPoolAddOnsAdvancedSecurityModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for UserPoolAddOns {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The UsernameConfiguration property type specifies case sensitivity on the    username input for the selected sign-in option.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1510,6 +2234,20 @@ pub struct UsernameConfiguration {
 
 
 
+impl cfn_resources::CfnResource for UsernameConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The template for verification messages.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1641,3 +2379,98 @@ impl Default for VerificationMessageTemplateDefaultEmailOptionEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for VerificationMessageTemplate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.email_message {
+
+        if the_val.len() > 20000 as _ {
+            return Err(format!("Max validation failed on field 'email_message'. {} is greater than 20000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_message {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'email_message'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_message_by_link {
+
+        if the_val.len() > 20000 as _ {
+            return Err(format!("Max validation failed on field 'email_message_by_link'. {} is greater than 20000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_message_by_link {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'email_message_by_link'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_subject {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'email_subject'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_subject {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'email_subject'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_subject_by_link {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'email_subject_by_link'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_subject_by_link {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'email_subject_by_link'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sms_message {
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'sms_message'. {} is greater than 140", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sms_message {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'sms_message'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

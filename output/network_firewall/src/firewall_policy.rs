@@ -78,8 +78,44 @@ impl cfn_resources::CfnResource for CfnFirewallPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        self.firewall_policy.validate()?;
+
+        let the_val = &self.firewall_policy_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'firewall_policy_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.firewall_policy_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'firewall_policy_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A custom action to use in stateless rule actions settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -103,6 +139,22 @@ pub struct ActionDefinition {
 
 
 
+impl cfn_resources::CfnResource for ActionDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.publish_metric_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An optional, non-standard action to use for stateless packet handling. You can define     this in addition to the standard action that you must specify.
 ///
@@ -146,6 +198,36 @@ pub struct CustomAction {
 
 
 
+impl cfn_resources::CfnResource for CustomAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action_definition.validate()?;
+
+        let the_val = &self.action_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'action_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.action_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'action_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The value to use in an Amazon CloudWatch custom metric dimension. This is used in the       PublishMetrics custom action. A CloudWatch custom metric dimension is a name/value pair that's     part of the identity of a metric.
 ///
@@ -177,6 +259,34 @@ pub struct Dimension {
 
 
 
+impl cfn_resources::CfnResource for Dimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.value;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The traffic filtering behavior of a firewall policy, defined in a collection of stateless     and stateful rule groups and other settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -296,6 +406,24 @@ pub struct FirewallPolicy {
 
 
 
+impl cfn_resources::CfnResource for FirewallPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.policy_variables.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.stateful_engine_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A list of IP addresses and address ranges, in CIDR notation. This is part of a RuleVariables.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -317,6 +445,20 @@ pub struct IPSet {
 
 
 
+impl cfn_resources::CfnResource for IPSet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains variables that you can use to override default Suricata settings in your firewall policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -338,6 +480,20 @@ pub struct PolicyVariables {
 
 
 
+impl cfn_resources::CfnResource for PolicyVariables {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the     matching packet. This setting defines a CloudWatch dimension value to be published.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -361,6 +517,27 @@ pub struct PublishMetricAction {
 
 
 
+impl cfn_resources::CfnResource for PublishMetricAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.dimensions;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'dimensions'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration settings for the handling of the stateful rule groups in a firewall policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -442,6 +619,20 @@ impl Default for StatefulEngineOptionsStreamExceptionPolicyEnum {
 }
 
 
+impl cfn_resources::CfnResource for StatefulEngineOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The setting that allows the policy owner to change the behavior of the rule group within a policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -480,6 +671,20 @@ impl Default for StatefulRuleGroupOverrideActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for StatefulRuleGroupOverride {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Identifier for a single stateful rule group, used in a firewall policy to refer to a     rule group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -539,6 +744,52 @@ pub struct StatefulRuleGroupReference {
 
 
 
+impl cfn_resources::CfnResource for StatefulRuleGroupReference {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cfn_override.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.priority {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'priority'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.priority {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Identifier for a single stateless rule group, used in a firewall policy to refer to the     rule group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -582,6 +833,48 @@ pub struct StatelessRuleGroupReference {
 
 
 
+impl cfn_resources::CfnResource for StatelessRuleGroupReference {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.priority;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'priority'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.priority;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -618,3 +911,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

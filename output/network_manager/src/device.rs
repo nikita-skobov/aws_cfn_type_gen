@@ -174,8 +174,124 @@ impl cfn_resources::CfnResource for CfnDevice {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.global_network_id;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'global_network_id'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.global_network_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'global_network_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        self.location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.model {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'model'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'model'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.serial_number {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'serial_number'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.serial_number {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'serial_number'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.site_id {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'site_id'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.site_id {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'site_id'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cfn_type {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'cfn_type'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cfn_type {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'cfn_type'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.vendor {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'vendor'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.vendor {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'vendor'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -239,6 +355,68 @@ pub struct Location {
 
 
 
+impl cfn_resources::CfnResource for Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.address {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'address'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.address {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'address'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.latitude {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'latitude'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.latitude {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'latitude'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.longitude {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'longitude'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.longitude {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'longitude'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -275,3 +453,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

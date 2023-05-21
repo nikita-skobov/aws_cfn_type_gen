@@ -90,8 +90,30 @@ impl cfn_resources::CfnResource for CfnFunction {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.function_config.validate()?;
+
+        self.function_metadata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Contains configuration information about a CloudFront function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -142,6 +164,20 @@ impl Default for FunctionConfigRuntimeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FunctionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains metadata about a CloudFront function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -162,3 +198,18 @@ pub struct FunctionMetadata {
 }
 
 
+
+impl cfn_resources::CfnResource for FunctionMetadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

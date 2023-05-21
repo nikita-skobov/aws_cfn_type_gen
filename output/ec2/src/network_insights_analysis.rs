@@ -64,8 +64,12 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAnalysis {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an additional detail for a path analysis. For more information, see Reachability Analyzer additional detail codes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -123,6 +127,22 @@ pub struct AdditionalDetail {
 
 
 
+impl cfn_resources::CfnResource for AdditionalDetail {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.component.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an potential intermediate component of a feasible path.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -156,6 +176,20 @@ pub struct AlternatePathHint {
 
 
 
+impl cfn_resources::CfnResource for AlternatePathHint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a network access control (ACL) rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -237,6 +271,22 @@ pub struct AnalysisAclRule {
 
 
 
+impl cfn_resources::CfnResource for AnalysisAclRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a path component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -270,6 +320,20 @@ pub struct AnalysisComponent {
 
 
 
+impl cfn_resources::CfnResource for AnalysisComponent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a load balancer listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -311,6 +375,52 @@ pub struct AnalysisLoadBalancerListener {
 
 
 
+impl cfn_resources::CfnResource for AnalysisLoadBalancerListener {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.instance_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'instance_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.instance_port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'instance_port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.load_balancer_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'load_balancer_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.load_balancer_port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'load_balancer_port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a load balancer target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -378,6 +488,54 @@ pub struct AnalysisLoadBalancerTarget {
 
 
 
+impl cfn_resources::CfnResource for AnalysisLoadBalancerTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.address {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'address'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.address {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'address'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.instance.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes a header. Reflects any changes made by a component as traffic passes through.     The fields of an inbound header are null except for the first component of a path.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -447,6 +605,20 @@ pub struct AnalysisPacketHeader {
 
 
 
+impl cfn_resources::CfnResource for AnalysisPacketHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a route table route.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -592,6 +764,20 @@ pub struct AnalysisRouteTableRoute {
 
 
 
+impl cfn_resources::CfnResource for AnalysisRouteTableRoute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a security group rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -675,6 +861,22 @@ pub struct AnalysisSecurityGroupRule {
 
 
 
+impl cfn_resources::CfnResource for AnalysisSecurityGroupRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an explanation code for an unreachable path. For more information, see Reachability Analyzer explanation codes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1324,6 +1526,164 @@ pub struct Explanation {
 
 
 
+impl cfn_resources::CfnResource for Explanation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.acl.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.acl_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.address {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'address'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.address {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'address'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.attached_to.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.classic_load_balancer_listener.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.component.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.customer_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.destination_vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.elastic_load_balancer_listener.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ingress_route_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.internet_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.load_balancer_arn {
+
+        if the_val.len() > 1283 as _ {
+            return Err(format!("Max validation failed on field 'load_balancer_arn'. {} is greater than 1283", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.load_balancer_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'load_balancer_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.load_balancer_listener_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'load_balancer_listener_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.load_balancer_listener_port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'load_balancer_listener_port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.load_balancer_target.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.load_balancer_target_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.load_balancer_target_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'load_balancer_target_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.load_balancer_target_port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'load_balancer_target_port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.nat_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_interface.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        self.prefix_list.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.route_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.route_table_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.security_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.security_group_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subnet.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subnet_route_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transit_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transit_gateway_attachment.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transit_gateway_route_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transit_gateway_route_table_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_peering_connection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpn_connection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpn_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a path component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1537,6 +1897,46 @@ pub struct PathComponent {
 
 
 
+impl cfn_resources::CfnResource for PathComponent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.acl_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.component.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.destination_vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.elastic_load_balancer_listener.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.inbound_header.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.outbound_header.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.route_table_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.security_group_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.subnet.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transit_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transit_gateway_route_table_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a range of ports.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1570,6 +1970,20 @@ pub struct PortRange {
 
 
 
+impl cfn_resources::CfnResource for PortRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1607,6 +2021,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a route in a transit gateway route table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1701,3 +2129,18 @@ pub struct TransitGatewayRouteTableRoute {
 }
 
 
+
+impl cfn_resources::CfnResource for TransitGatewayRouteTableRoute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

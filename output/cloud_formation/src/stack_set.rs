@@ -286,8 +286,105 @@ impl cfn_resources::CfnResource for CfnStackSet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.administration_role_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'administration_role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.administration_role_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'administration_role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        self.auto_deployment.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.execution_role_name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'execution_role_name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.execution_role_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'execution_role_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.managed_execution.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.operation_preferences.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.stack_set_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'stack_set_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.template_body {
+
+        if the_val.len() > 51200 as _ {
+            return Err(format!("Max validation failed on field 'template_body'. {} is greater than 51200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.template_body {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'template_body'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.template_url {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'template_url'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.template_url {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'template_url'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// [Service-managed permissions] Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to a target organizational unit (OU).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -321,6 +418,20 @@ pub struct AutoDeployment {
 
 
 
+impl cfn_resources::CfnResource for AutoDeployment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified  Regions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -403,6 +514,20 @@ impl Default for DeploymentTargetsAccountFilterTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DeploymentTargets {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting  operations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -428,6 +553,20 @@ pub struct ManagedExecution {
 
 
 
+impl cfn_resources::CfnResource for ManagedExecution {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The user-specified preferences for how AWS CloudFormation performs a stack set operation. For more  information on maximum concurrent accounts and failure tolerance, see Stack set operation   options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -560,6 +699,68 @@ impl Default for OperationPreferencesRegionConcurrencyTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for OperationPreferences {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.failure_tolerance_count {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'failure_tolerance_count'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.failure_tolerance_percentage {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'failure_tolerance_percentage'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.failure_tolerance_percentage {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'failure_tolerance_percentage'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_concurrent_count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_concurrent_count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_concurrent_percentage {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'max_concurrent_percentage'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_concurrent_percentage {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_concurrent_percentage'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The Parameter data type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -593,6 +794,20 @@ pub struct Parameter {
 
 
 
+impl cfn_resources::CfnResource for Parameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Stack instances in some specific accounts and Regions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -638,6 +853,22 @@ pub struct StackInstances {
 
 
 
+impl cfn_resources::CfnResource for StackInstances {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.deployment_targets.validate()?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -674,3 +905,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

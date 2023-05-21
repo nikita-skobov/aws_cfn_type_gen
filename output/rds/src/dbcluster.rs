@@ -1011,8 +1011,18 @@ impl cfn_resources::CfnResource for CfnDBCluster {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.master_user_secret.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scaling_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.serverless_v2_scaling_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an AWS Identity and Access Management (IAM) role that is associated with a DB cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1046,6 +1056,20 @@ pub struct DBClusterRole {
 
 
 
+impl cfn_resources::CfnResource for DBClusterRole {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the connection endpoint for the primary instance of the DB cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1079,6 +1103,20 @@ pub struct Endpoint {
 
 
 
+impl cfn_resources::CfnResource for Endpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The MasterUserSecret return value specifies the secret managed by RDS in AWS Secrets Manager for the master user password.
 ///
@@ -1114,6 +1152,20 @@ pub struct MasterUserSecret {
 
 
 
+impl cfn_resources::CfnResource for MasterUserSecret {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ReadEndpoint return value specifies the reader endpoint for the DB cluster.
 ///
@@ -1141,6 +1193,20 @@ pub struct ReadEndpoint {
 
 
 
+impl cfn_resources::CfnResource for ReadEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ScalingConfiguration property type specifies the scaling       configuration of an Aurora Serverless DB cluster.
 ///
@@ -1254,6 +1320,20 @@ pub struct ScalingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ScalingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ServerlessV2ScalingConfiguration property type specifies the scaling       configuration of an Aurora Serverless V2 DB cluster.
 ///
@@ -1295,6 +1375,20 @@ pub struct ServerlessV2ScalingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ServerlessV2ScalingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1331,3 +1425,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

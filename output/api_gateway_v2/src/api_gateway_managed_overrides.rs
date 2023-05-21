@@ -64,8 +64,18 @@ impl cfn_resources::CfnResource for CfnApiGatewayManagedOverrides {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.integration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.stage.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AccessLogSettings property overrides the access log settings for an API Gateway-managed stage.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -99,6 +109,20 @@ pub struct AccessLogSettings {
 
 
 
+impl cfn_resources::CfnResource for AccessLogSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The IntegrationOverrides property overrides the integration settings for       an API Gateway-managed integration. If you remove this property, API Gateway restores the default values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -156,6 +180,20 @@ pub struct IntegrationOverrides {
 
 
 
+impl cfn_resources::CfnResource for IntegrationOverrides {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The RouteOverrides property overrides the route configuration for an API       Gateway-managed route. If you remove this property, API Gateway restores the default values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -225,6 +263,20 @@ pub struct RouteOverrides {
 
 
 
+impl cfn_resources::CfnResource for RouteOverrides {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The RouteSettings property overrides the route settings for an API Gateway-managed route.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -294,6 +346,20 @@ pub struct RouteSettings {
 
 
 
+impl cfn_resources::CfnResource for RouteSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The StageOverrides property overrides the stage configuration for an API       Gateway-managed stage. If you remove this property, API Gateway restores the default values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -374,3 +440,22 @@ pub struct StageOverrides {
 }
 
 
+
+impl cfn_resources::CfnResource for StageOverrides {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.access_log_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_route_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

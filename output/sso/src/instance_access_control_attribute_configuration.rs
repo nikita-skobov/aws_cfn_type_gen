@@ -48,8 +48,34 @@ impl cfn_resources::CfnResource for CfnInstanceAccessControlAttributeConfigurati
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_control_attributes {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'access_control_attributes'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.instance_arn;
+
+        if the_val.len() > 1224 as _ {
+            return Err(format!("Max validation failed on field 'instance_arn'. {} is greater than 1224", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_arn;
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'instance_arn'. {} is less than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// These are IAM Identity Center identity store attributes that you can configure for use in     attributes-based access control (ABAC). You can create permissions policies that determine     who can access your AWS resources based upon the configured attribute values. When you     enable ABAC and specify AccessControlAttributes, IAM Identity Center passes the attribute     values of the authenticated user into IAM for use in policy evaluation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -89,6 +115,36 @@ pub struct AccessControlAttribute {
 
 
 
+impl cfn_resources::CfnResource for AccessControlAttribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The value used for mapping a specified attribute to an identity source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -111,3 +167,25 @@ pub struct AccessControlAttributeValue {
 }
 
 
+
+impl cfn_resources::CfnResource for AccessControlAttributeValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.source;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'source'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

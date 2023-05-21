@@ -134,4 +134,41 @@ impl cfn_resources::CfnResource for CfnLifecycleHook {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.lifecycle_hook_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'lifecycle_hook_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.lifecycle_hook_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'lifecycle_hook_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.notification_metadata {
+
+        if the_val.len() > 1023 as _ {
+            return Err(format!("Max validation failed on field 'notification_metadata'. {} is greater than 1023", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.notification_metadata {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'notification_metadata'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

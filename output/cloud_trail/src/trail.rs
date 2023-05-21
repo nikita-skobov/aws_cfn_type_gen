@@ -216,8 +216,12 @@ impl cfn_resources::CfnResource for CfnTrail {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Amazon S3 buckets, AWS Lambda functions, or Amazon DynamoDB tables that you specify     in event selectors in your AWS CloudFormation template for your trail to log data events. Data events provide information     about the resource operations performed on or within a resource itself. These are also     known as data plane operations. You can specify up to 250 data resources for a     trail. Currently, advanced event selectors for      data events are not supported in AWS CloudFormation templates.
 ///
@@ -259,6 +263,20 @@ pub struct DataResource {
 
 
 
+impl cfn_resources::CfnResource for DataResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Use event selectors to further specify the management and data event settings for your     trail. By default, trails created without specific event selectors will be configured to     log all read and write management events, and no data events. When an event occurs in your     account, CloudTrail evaluates the event selector for all trails. For each trail, if     the event matches any event selector, the trail processes and logs the event. If the event     doesn't match any event selector, the trail doesn't log the event.
 ///
@@ -355,6 +373,20 @@ impl Default for EventSelectorReadWriteTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EventSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A JSON string that contains a list of Insights types that are logged on a trail.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -401,6 +433,20 @@ impl Default for InsightSelectorInsightTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for InsightSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -437,3 +483,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

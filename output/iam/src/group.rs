@@ -90,8 +90,28 @@ impl cfn_resources::CfnResource for CfnGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'path'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains information about an attached policy.
 ///
@@ -134,3 +154,32 @@ pub struct Policy {
 }
 
 
+
+impl cfn_resources::CfnResource for Policy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.policy_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'policy_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.policy_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'policy_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

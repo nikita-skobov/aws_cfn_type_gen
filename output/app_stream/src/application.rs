@@ -170,8 +170,60 @@ impl cfn_resources::CfnResource for CfnApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.display_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'display_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.icon_s3_location.validate()?;
+
+        if let Some(the_val) = &self.launch_parameters {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'launch_parameters'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.launch_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'launch_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.working_directory {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'working_directory'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The S3 location of the application icon.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -205,6 +257,20 @@ pub struct S3Location {
 
 
 
+impl cfn_resources::CfnResource for S3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -241,3 +307,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

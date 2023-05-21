@@ -235,8 +235,78 @@ impl cfn_resources::CfnResource for CfnContainerRecipe {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.instance_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.parent_image;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'parent_image'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.parent_image;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'parent_image'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.target_repository.validate()?;
+
+        if let Some(the_val) = &self.working_directory {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'working_directory'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.working_directory {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'working_directory'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration details of the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -271,6 +341,20 @@ pub struct ComponentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ComponentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ComponentParameter property type specifies Property description not available. for an AWS::ImageBuilder::ContainerRecipe.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -302,6 +386,20 @@ pub struct ComponentParameter {
 
 
 
+impl cfn_resources::CfnResource for ComponentParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Amazon EBS-specific block device mapping specifications.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -468,6 +566,100 @@ impl Default for EbsInstanceBlockDeviceSpecificationVolumeTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EbsInstanceBlockDeviceSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.iops {
+
+        if *the_val > 64000 as _ {
+            return Err(format!("Max validation failed on field 'iops'. {} is greater than 64000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.iops {
+
+        if *the_val < 100 as _ {
+            return Err(format!("Min validation failed on field 'iops'. {} is less than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.snapshot_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'snapshot_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.snapshot_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'snapshot_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.throughput {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'throughput'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.throughput {
+
+        if *the_val < 125 as _ {
+            return Err(format!("Min validation failed on field 'throughput'. {} is less than 125", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.volume_size {
+
+        if *the_val > 16000 as _ {
+            return Err(format!("Max validation failed on field 'volume_size'. {} is greater than 16000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.volume_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'volume_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Defines block device mappings for the instance used to configure your image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -537,6 +729,70 @@ pub struct InstanceBlockDeviceMapping {
 
 
 
+impl cfn_resources::CfnResource for InstanceBlockDeviceMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.device_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'device_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.device_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'device_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.ebs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.no_device {
+
+        if the_val.len() > 0 as _ {
+            return Err(format!("Max validation failed on field 'no_device'. {} is greater than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.no_device {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'no_device'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.virtual_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'virtual_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.virtual_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'virtual_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Defines a custom base AMI and block device mapping configurations of an instance    used for building and testing container images.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -574,6 +830,36 @@ pub struct InstanceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InstanceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.image {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'image'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.image {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'image'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The container repository where the output container image is stored.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -627,3 +913,34 @@ impl Default for TargetContainerRepositoryServiceEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TargetContainerRepository {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.repository_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'repository_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.repository_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'repository_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

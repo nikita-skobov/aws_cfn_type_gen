@@ -60,8 +60,38 @@ impl cfn_resources::CfnResource for CfnApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.application_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.resource_lifecycle_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The resource lifecycle configuration for an application. Defines lifecycle settings for    resources that belong to the application, and the service role that Elastic Beanstalk assumes    in order to apply lifecycle settings. The version lifecycle configuration defines lifecycle    settings for application versions.
 ///
@@ -99,6 +129,22 @@ pub struct ApplicationResourceLifecycleConfig {
 
 
 
+impl cfn_resources::CfnResource for ApplicationResourceLifecycleConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.version_lifecycle_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The application version lifecycle settings for an application. Defines the rules that    Elastic Beanstalk applies to an application's versions in order to avoid hitting the    per-region limit for application versions.
 ///
@@ -136,6 +182,24 @@ pub struct ApplicationVersionLifecycleConfig {
 
 
 
+impl cfn_resources::CfnResource for ApplicationVersionLifecycleConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.max_age_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.max_count_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A lifecycle rule that deletes application versions after the specified number of    days.
 ///
@@ -183,6 +247,20 @@ pub struct MaxAgeRule {
 
 
 
+impl cfn_resources::CfnResource for MaxAgeRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A lifecycle rule that deletes the oldest application version when the maximum count is    exceeded.
 ///
@@ -229,3 +307,18 @@ pub struct MaxCountRule {
 }
 
 
+
+impl cfn_resources::CfnResource for MaxCountRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

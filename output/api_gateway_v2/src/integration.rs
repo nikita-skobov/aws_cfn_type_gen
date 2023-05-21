@@ -262,8 +262,14 @@ impl cfn_resources::CfnResource for CfnIntegration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.tls_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key      must match the pattern <action>:<header>.<location> or       overwrite.statuscode. The action can be append, overwrite or       remove. The value can be a static value, or map to response data, stage variables, or context      variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -297,6 +303,20 @@ pub struct ResponseParameter {
 
 
 
+impl cfn_resources::CfnResource for ResponseParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a list of response parameters for an HTTP API.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -318,6 +338,20 @@ pub struct ResponseParameterList {
 
 
 
+impl cfn_resources::CfnResource for ResponseParameterList {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The TlsConfig property specifies the TLS configuration for a private       integration. If you specify a TLS configuration, private integration traffic uses the       HTTPS protocol. Supported only for HTTP APIs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -338,3 +372,18 @@ pub struct TlsConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for TlsConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

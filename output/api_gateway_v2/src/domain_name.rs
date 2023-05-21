@@ -66,8 +66,14 @@ impl cfn_resources::CfnResource for CfnDomainName {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.mutual_tls_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The DomainNameConfiguration property type specifies the configuration          for a an API's domain name.
 ///
@@ -139,6 +145,20 @@ pub struct DomainNameConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DomainNameConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// If specified, API Gateway performs two-way authentication between the client and the server. Clients must present a trusted certificate to access your API.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -171,3 +191,18 @@ pub struct MutualTlsAuthentication {
 }
 
 
+
+impl cfn_resources::CfnResource for MutualTlsAuthentication {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

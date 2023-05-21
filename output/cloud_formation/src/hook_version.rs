@@ -74,8 +74,28 @@ impl cfn_resources::CfnResource for CfnHookVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.logging_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.type_name;
+
+        if the_val.len() > 196 as _ {
+            return Err(format!("Max validation failed on field 'type_name'. {} is greater than 196", the_val.len()));
+        }
+
+        
+        let the_val = &self.type_name;
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'type_name'. {} is less than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The LoggingConfig property type specifies logging configuration information for an  extension.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -120,3 +140,50 @@ pub struct LoggingConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for LoggingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.log_group_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'log_group_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_group_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'log_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_role_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'log_role_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'log_role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

@@ -96,8 +96,16 @@ impl cfn_resources::CfnResource for CfnBackupVault {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.lock_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.notifications.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The LockConfigurationType property type specifies configuration for AWS Backup Vault Lock.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -157,6 +165,20 @@ pub struct LockConfigurationType {
 
 
 
+impl cfn_resources::CfnResource for LockConfigurationType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an object containing SNS event notification properties for the target backup     vault.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -189,3 +211,18 @@ pub struct NotificationObjectType {
 }
 
 
+
+impl cfn_resources::CfnResource for NotificationObjectType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

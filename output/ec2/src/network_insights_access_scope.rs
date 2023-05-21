@@ -54,8 +54,12 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScope {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a path.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -101,6 +105,24 @@ pub struct AccessScopePathRequest {
 
 
 
+impl cfn_resources::CfnResource for AccessScopePathRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a packet header statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -194,6 +216,20 @@ pub struct PacketHeaderStatementRequest {
 
 
 
+impl cfn_resources::CfnResource for PacketHeaderStatementRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a path statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -227,6 +263,24 @@ pub struct PathStatementRequest {
 
 
 
+impl cfn_resources::CfnResource for PathStatementRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.packet_header_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.resource_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a resource statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -260,6 +314,20 @@ pub struct ResourceStatementRequest {
 
 
 
+impl cfn_resources::CfnResource for ResourceStatementRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -297,6 +365,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a through resource statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -317,3 +399,20 @@ pub struct ThroughResourcesStatementRequest {
 }
 
 
+
+impl cfn_resources::CfnResource for ThroughResourcesStatementRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.resource_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

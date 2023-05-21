@@ -54,8 +54,14 @@ impl cfn_resources::CfnResource for CfnTopicRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.topic_rule_payload.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Describes the actions associated with a rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -331,6 +337,64 @@ pub struct Action {
 
 
 
+impl cfn_resources::CfnResource for Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloudwatch_alarm.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloudwatch_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cloudwatch_metric.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynamo_db.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynamo_dbv2.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.elasticsearch.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.firehose.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_analytics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_events.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_site_wise.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kafka.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lambda.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.open_search.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.republish.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sns.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sqs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.step_functions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timestream.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An asset property timestamp entry containing the following information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -364,6 +428,20 @@ pub struct AssetPropertyTimestamp {
 
 
 
+impl cfn_resources::CfnResource for AssetPropertyTimestamp {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An asset property value entry containing the following information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -409,6 +487,24 @@ pub struct AssetPropertyValue {
 
 
 
+impl cfn_resources::CfnResource for AssetPropertyValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.timestamp.validate()?;
+
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains an asset property value (of a single type).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -466,6 +562,20 @@ pub struct AssetPropertyVariant {
 
 
 
+impl cfn_resources::CfnResource for AssetPropertyVariant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action that updates a CloudWatch alarm.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -523,6 +633,20 @@ pub struct CloudwatchAlarmAction {
 
 
 
+impl cfn_resources::CfnResource for CloudwatchAlarmAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action that updates a CloudWatch log.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -568,6 +692,20 @@ pub struct CloudwatchLogsAction {
 
 
 
+impl cfn_resources::CfnResource for CloudwatchLogsAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action that captures a CloudWatch metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -649,6 +787,20 @@ pub struct CloudwatchMetricAction {
 
 
 
+impl cfn_resources::CfnResource for CloudwatchMetricAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to write to a DynamoDB table.
 ///
@@ -780,6 +932,20 @@ pub struct DynamoDBAction {
 
 
 
+impl cfn_resources::CfnResource for DynamoDBAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to write to a DynamoDB table.
 ///
@@ -819,6 +985,22 @@ pub struct DynamoDBv2Action {
 
 
 
+impl cfn_resources::CfnResource for DynamoDBv2Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.put_item.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an action that writes data to an Amazon OpenSearch Service     domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -888,6 +1070,20 @@ pub struct ElasticsearchAction {
 
 
 
+impl cfn_resources::CfnResource for ElasticsearchAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action that writes data to an Amazon Kinesis Firehose stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -947,6 +1143,20 @@ pub struct FirehoseAction {
 
 
 
+impl cfn_resources::CfnResource for FirehoseAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Send data to an HTTPS endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1004,6 +1214,22 @@ pub struct HttpAction {
 
 
 
+impl cfn_resources::CfnResource for HttpAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auth.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The HTTP action header.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1037,6 +1263,20 @@ pub struct HttpActionHeader {
 
 
 
+impl cfn_resources::CfnResource for HttpActionHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The authorization method used to send messages.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1058,6 +1298,22 @@ pub struct HttpAuthorization {
 
 
 
+impl cfn_resources::CfnResource for HttpAuthorization {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sigv4.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Sends message data to an AWS IoT Analytics channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1105,6 +1361,20 @@ pub struct IotAnalyticsAction {
 
 
 
+impl cfn_resources::CfnResource for IotAnalyticsAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Sends an input to an AWS IoT Events detector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1170,6 +1440,20 @@ pub struct IotEventsAction {
 
 
 
+impl cfn_resources::CfnResource for IotEventsAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to send data from an MQTT message that triggered the rule to AWS IoT    SiteWise asset properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1203,6 +1487,20 @@ pub struct IotSiteWiseAction {
 
 
 
+impl cfn_resources::CfnResource for IotSiteWiseAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or self-managed Apache Kafka cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1272,6 +1570,20 @@ pub struct KafkaAction {
 
 
 
+impl cfn_resources::CfnResource for KafkaAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to write data to an Amazon Kinesis stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1317,6 +1629,20 @@ pub struct KinesisAction {
 
 
 
+impl cfn_resources::CfnResource for KinesisAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to invoke a Lambda function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1338,6 +1664,20 @@ pub struct LambdaAction {
 
 
 
+impl cfn_resources::CfnResource for LambdaAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to send device location updates from an MQTT message to an Amazon Location tracker resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1419,6 +1759,22 @@ pub struct LocationAction {
 
 
 
+impl cfn_resources::CfnResource for LocationAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.timestamp.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an action that writes data to an Amazon OpenSearch Service domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1488,6 +1844,20 @@ pub struct OpenSearchAction {
 
 
 
+impl cfn_resources::CfnResource for OpenSearchAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An asset property value entry containing the following information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1557,6 +1927,20 @@ pub struct PutAssetPropertyValueEntry {
 
 
 
+impl cfn_resources::CfnResource for PutAssetPropertyValueEntry {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The input for the DynamoActionVS action that specifies the DynamoDB table to which     the message data will be written.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1578,6 +1962,20 @@ pub struct PutItemInput {
 
 
 
+impl cfn_resources::CfnResource for PutItemInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to republish to another topic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1635,6 +2033,22 @@ pub struct RepublishAction {
 
 
 
+impl cfn_resources::CfnResource for RepublishAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.headers.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies MQTT Version 5.0 headers information. For more information, see MQTT in the IoT Core Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1738,6 +2152,20 @@ pub struct RepublishActionHeaders {
 
 
 
+impl cfn_resources::CfnResource for RepublishActionHeaders {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to write data to an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1795,6 +2223,20 @@ pub struct S3Action {
 
 
 
+impl cfn_resources::CfnResource for S3Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// For more information, see Signature Version 4 signing process.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1840,6 +2282,20 @@ pub struct SigV4Authorization {
 
 
 
+impl cfn_resources::CfnResource for SigV4Authorization {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to publish to an Amazon SNS topic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1885,6 +2341,20 @@ pub struct SnsAction {
 
 
 
+impl cfn_resources::CfnResource for SnsAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action to publish data to an Amazon SQS queue.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1930,6 +2400,20 @@ pub struct SqsAction {
 
 
 
+impl cfn_resources::CfnResource for SqsAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Starts execution of a Step Functions state machine.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1975,6 +2459,20 @@ pub struct StepFunctionsAction {
 
 
 
+impl cfn_resources::CfnResource for StepFunctionsAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -2012,6 +2510,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes how to interpret an application-defined timestamp value from an MQTT message payload and the precision of that value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2045,6 +2557,20 @@ pub struct Timestamp {
 
 
 
+impl cfn_resources::CfnResource for Timestamp {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an action that writes records into an Amazon Timestream table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2114,6 +2640,22 @@ pub struct TimestreamAction {
 
 
 
+impl cfn_resources::CfnResource for TimestreamAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.timestamp.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Metadata attributes of the time series that are written in each measure record.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2147,6 +2689,20 @@ pub struct TimestreamDimension {
 
 
 
+impl cfn_resources::CfnResource for TimestreamDimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The value to use for the entry's timestamp. If blank, the time that the entry was processed is used.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2180,6 +2736,20 @@ pub struct TimestreamTimestamp {
 
 
 
+impl cfn_resources::CfnResource for TimestreamTimestamp {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2263,6 +2833,22 @@ pub struct TopicRulePayload {
 
 
 
+impl cfn_resources::CfnResource for TopicRulePayload {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.error_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A key-value pair that you define in the header.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2295,3 +2881,18 @@ pub struct UserProperty {
 }
 
 
+
+impl cfn_resources::CfnResource for UserProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

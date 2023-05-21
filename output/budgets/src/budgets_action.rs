@@ -177,8 +177,30 @@ impl cfn_resources::CfnResource for CfnBudgetsAction {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.action_threshold.validate()?;
+
+        self.definition.validate()?;
+
+        let the_val = &self.execution_role_arn;
+
+        if the_val.len() > 618 as _ {
+            return Err(format!("Max validation failed on field 'execution_role_arn'. {} is greater than 618", the_val.len()));
+        }
+
+        
+        let the_val = &self.execution_role_arn;
+
+        if the_val.len() < 32 as _ {
+            return Err(format!("Min validation failed on field 'execution_role_arn'. {} is less than 32", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The trigger threshold of the action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -231,6 +253,20 @@ impl Default for ActionThresholdTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ActionThreshold {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The definition is where you specify all of the type-specific parameters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -273,6 +309,26 @@ pub struct Definition {
 
 
 
+impl cfn_resources::CfnResource for Definition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.iam_action_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scp_action_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ssm_action_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AWS Identity and Access Management (IAM) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -338,6 +394,58 @@ pub struct IamActionDefinition {
 
 
 
+impl cfn_resources::CfnResource for IamActionDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.groups {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'groups'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.policy_arn;
+
+        if the_val.len() > 684 as _ {
+            return Err(format!("Max validation failed on field 'policy_arn'. {} is greater than 684", the_val.len()));
+        }
+
+        
+        let the_val = &self.policy_arn;
+
+        if the_val.len() < 25 as _ {
+            return Err(format!("Min validation failed on field 'policy_arn'. {} is less than 25", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.roles {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'roles'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.users {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'users'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The service control policies (SCP) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -377,6 +485,41 @@ pub struct ScpActionDefinition {
 
 
 
+impl cfn_resources::CfnResource for ScpActionDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.policy_id;
+
+        if the_val.len() > 130 as _ {
+            return Err(format!("Max validation failed on field 'policy_id'. {} is greater than 130", the_val.len()));
+        }
+
+        
+        let the_val = &self.policy_id;
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'policy_id'. {} is less than 10", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_ids;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'target_ids'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Amazon EC2 Systems Manager (SSM) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -448,6 +591,41 @@ impl Default for SsmActionDefinitionSubtypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SsmActionDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_ids;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'instance_ids'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.region;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'region'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.region;
+
+        if the_val.len() < 9 as _ {
+            return Err(format!("Min validation failed on field 'region'. {} is less than 9", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The subscriber to a budget notification. The subscriber consists of a subscription type and either an Amazon SNS topic or an email address.
 ///
@@ -483,3 +661,18 @@ pub struct Subscriber {
 }
 
 
+
+impl cfn_resources::CfnResource for Subscriber {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

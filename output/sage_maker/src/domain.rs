@@ -246,8 +246,25 @@ impl cfn_resources::CfnResource for CfnDomain {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_space_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_user_settings.validate()?;
+
+        let the_val = &self.domain_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        self.domain_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -305,6 +322,49 @@ pub struct CustomImage {
 
 
 
+impl cfn_resources::CfnResource for CustomImage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.app_image_config_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'app_image_config_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.image_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'image_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.image_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'image_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.image_version_number {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'image_version_number'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A collection of settings that apply to spaces created in the Domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -370,6 +430,46 @@ pub struct DefaultSpaceSettings {
 
 
 
+impl cfn_resources::CfnResource for DefaultSpaceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.execution_role;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'execution_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.execution_role;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'execution_role'. {} is less than 20", the_val.len()));
+        }
+
+        
+        self.jupyter_server_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kernel_gateway_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.security_groups {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_groups'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A collection of settings that apply to the SageMaker Domain. These       settings are specified through the CreateDomain API call.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -405,6 +505,30 @@ pub struct DomainSettings {
 
 
 
+impl cfn_resources::CfnResource for DomainSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.rstudio_server_pro_domain_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.security_group_ids {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The JupyterServer app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -426,6 +550,22 @@ pub struct JupyterServerAppSettings {
 
 
 
+impl cfn_resources::CfnResource for JupyterServerAppSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The KernelGateway app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -463,6 +603,30 @@ pub struct KernelGatewayAppSettings {
 
 
 
+impl cfn_resources::CfnResource for KernelGatewayAppSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_images {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'custom_images'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A collection of settings that apply to an RSessionGateway app.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -498,6 +662,30 @@ pub struct RSessionAppSettings {
 
 
 
+impl cfn_resources::CfnResource for RSessionAppSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_images {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'custom_images'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A collection of settings that configure user interaction with the         RStudioServerPro app. RStudioServerProAppSettings cannot       be updated. The RStudioServerPro app must be deleted and a new one created       to make any changes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -573,6 +761,20 @@ impl Default for RStudioServerProAppSettingsUserGroupEnum {
 }
 
 
+impl cfn_resources::CfnResource for RStudioServerProAppSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A collection of settings that configure the RStudioServerPro Domain-level       app.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -636,6 +838,36 @@ pub struct RStudioServerProDomainSettings {
 
 
 
+impl cfn_resources::CfnResource for RStudioServerProDomainSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.domain_execution_role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'domain_execution_role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.domain_execution_role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'domain_execution_role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -960,6 +1192,44 @@ impl Default for ResourceSpecInstanceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ResourceSpec {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.lifecycle_config_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'lifecycle_config_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sage_maker_image_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sage_maker_image_version_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies options when sharing an Amazon SageMaker Studio notebook. These settings are       specified as part of DefaultUserSettings when the CreateDomain API is called, and as part of UserSettings when       the CreateUserProfile API is called.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1034,6 +1304,36 @@ impl Default for SharingSettingsNotebookOutputOptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for SharingSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.s3_kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 's3_kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_output_path {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_output_path'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1071,6 +1371,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A collection of settings that apply to users of Amazon SageMaker Studio. These       settings are specified when the CreateUserProfile API is called, and as DefaultUserSettings       when the CreateDomain API       is called.
 ///
@@ -1179,3 +1493,50 @@ pub struct UserSettings {
 }
 
 
+
+impl cfn_resources::CfnResource for UserSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.execution_role;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'execution_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.execution_role;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'execution_role'. {} is less than 20", the_val.len()));
+        }
+
+        
+        self.jupyter_server_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kernel_gateway_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rsession_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.rstudio_server_pro_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.security_groups {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_groups'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        self.sharing_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

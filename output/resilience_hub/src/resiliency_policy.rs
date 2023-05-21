@@ -88,8 +88,12 @@ impl cfn_resources::CfnResource for CfnResiliencyPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a failure policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -122,3 +126,18 @@ pub struct FailurePolicy {
 }
 
 
+
+impl cfn_resources::CfnResource for FailurePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

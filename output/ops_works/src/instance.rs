@@ -351,8 +351,12 @@ impl cfn_resources::CfnResource for CfnInstance {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a block device mapping. This data type maps directly to the Amazon EC2 BlockDeviceMapping data type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -410,6 +414,22 @@ pub struct BlockDeviceMapping {
 
 
 
+impl cfn_resources::CfnResource for BlockDeviceMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ebs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -444,6 +464,20 @@ pub struct EbsBlockDevice {
 
 
 
+impl cfn_resources::CfnResource for EbsBlockDevice {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an instance's time-based auto scaling configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -536,3 +570,18 @@ pub struct TimeBasedAutoScaling {
 }
 
 
+
+impl cfn_resources::CfnResource for TimeBasedAutoScaling {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

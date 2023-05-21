@@ -66,8 +66,14 @@ impl cfn_resources::CfnResource for CfnGateway {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.gateway_platform.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains a summary of a gateway capability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -103,6 +109,20 @@ pub struct GatewayCapabilitySummary {
 
 
 
+impl cfn_resources::CfnResource for GatewayCapabilitySummary {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains a gateway's platform information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -136,6 +156,24 @@ pub struct GatewayPlatform {
 
 
 
+impl cfn_resources::CfnResource for GatewayPlatform {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.greengrass.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.greengrass_v2.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains details for a gateway that runs on AWS IoT Greengrass. To create a gateway that runs on AWS IoT Greengrass,    you must add the IoT SiteWise connector to a Greengrass group and deploy it. Your Greengrass    group must also have permissions to upload data to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the      AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -157,6 +195,20 @@ pub struct Greengrass {
 
 
 
+impl cfn_resources::CfnResource for Greengrass {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains details for a gateway that runs on AWS IoT Greengrass V2. To create a gateway that runs on AWS IoT Greengrass    V2, you must deploy the IoT SiteWise Edge component to your gateway device. Your Greengrass     device role must use the AWSIoTSiteWiseEdgeAccess policy. For more    information, see Using AWS IoT SiteWise at the edge in the             AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -178,6 +230,20 @@ pub struct GreengrassV2 {
 
 
 
+impl cfn_resources::CfnResource for GreengrassV2 {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -214,3 +280,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

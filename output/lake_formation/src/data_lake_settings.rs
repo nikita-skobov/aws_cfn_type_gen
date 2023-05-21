@@ -132,8 +132,20 @@ impl cfn_resources::CfnResource for CfnDataLakeSettings {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.admins.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.create_database_default_permissions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.create_table_default_permissions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.external_data_filtering_allow_list.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A list of AWS Lake Formation principals.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -143,6 +155,20 @@ pub struct Admins {
 
 
 
+impl cfn_resources::CfnResource for Admins {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies whether access control on a newly created database is managed by Lake Formation permissions or exclusively by IAM permissions.
 ///
@@ -158,6 +184,20 @@ pub struct CreateDatabaseDefaultPermissions {
 
 
 
+impl cfn_resources::CfnResource for CreateDatabaseDefaultPermissions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies whether access control on a newly created table is managed by Lake Formation permissions or exclusively by IAM permissions.
 ///
@@ -173,6 +213,20 @@ pub struct CreateTableDefaultPermissions {
 
 
 
+impl cfn_resources::CfnResource for CreateTableDefaultPermissions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Lake Formation principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -194,6 +248,20 @@ pub struct DataLakePrincipal {
 
 
 
+impl cfn_resources::CfnResource for DataLakePrincipal {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of the account IDs of AWS accounts with Amazon EMR     clusters that are allowed to perform data filtering.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -203,6 +271,20 @@ pub struct ExternalDataFilteringAllowList {
 
 
 
+impl cfn_resources::CfnResource for ExternalDataFilteringAllowList {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Permissions granted to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -212,6 +294,20 @@ pub struct Permissions {
 
 
 
+impl cfn_resources::CfnResource for Permissions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Permissions granted to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -244,3 +340,22 @@ pub struct PrincipalPermissions {
 }
 
 
+
+impl cfn_resources::CfnResource for PrincipalPermissions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.permissions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.principal.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

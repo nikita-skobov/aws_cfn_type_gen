@@ -134,8 +134,64 @@ impl cfn_resources::CfnResource for CfnRepository {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.domain_name;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.domain_name;
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'domain_name'. {} is less than 2", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.domain_owner {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'domain_owner'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.domain_owner {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'domain_owner'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.repository_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'repository_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.repository_name;
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'repository_name'. {} is less than 2", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -172,3 +228,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

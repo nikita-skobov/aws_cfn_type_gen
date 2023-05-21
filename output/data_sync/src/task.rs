@@ -152,8 +152,71 @@ impl cfn_resources::CfnResource for CfnTask {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.cloud_watch_log_group_arn {
+
+        if the_val.len() > 562 as _ {
+            return Err(format!("Max validation failed on field 'cloud_watch_log_group_arn'. {} is greater than 562", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.excludes {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'excludes'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.includes {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'includes'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.schedule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.source_location_arn;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'source_location_arn'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies which files, folders, and objects to include or exclude when transferring files    from source to destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -210,6 +273,28 @@ impl Default for FilterRuleFilterTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FilterRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 102400 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 102400", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents the options that are available to control the behavior of a StartTaskExecution operation. This behavior includes preserving metadata, such     as user ID (UID), group ID (GID), and file permissions; overwriting files in the     destination; data integrity verification; and so on.
 ///
@@ -815,6 +900,20 @@ impl Default for OptionsVerifyModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Options {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -852,6 +951,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the schedule you want your task to use for repeated executions. For more    information, see Schedule Expressions for     Rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -876,3 +989,25 @@ pub struct TaskSchedule {
 }
 
 
+
+impl cfn_resources::CfnResource for TaskSchedule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.schedule_expression;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'schedule_expression'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -40,8 +40,14 @@ impl cfn_resources::CfnResource for CfnStorageLens {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.storage_lens_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// This resource contains the details of the account-level metrics for Amazon S3 Storage    Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -111,6 +117,30 @@ pub struct AccountLevel {
 
 
 
+impl cfn_resources::CfnResource for AccountLevel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.activity_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.advanced_cost_optimization_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.advanced_data_protection_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.bucket_level.validate()?;
+
+        self.detailed_status_codes_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This resource enables Amazon S3 Storage Lens activity metrics. Activity metrics show details about    how your storage is requested, such as requests (for example, All requests, Get requests,    Put requests), bytes uploaded or downloaded, and errors.
 ///
@@ -134,6 +164,20 @@ pub struct ActivityMetrics {
 
 
 
+impl cfn_resources::CfnResource for ActivityMetrics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This resource enables Amazon S3 Storage Lens advanced cost optimization metrics. Advanced    cost optimization metrics provide insights that you can use to manage and optimize your    storage costs, for example, lifecycle rule counts for transitions, expirations, and    incomplete multipart uploads.
 ///
@@ -157,6 +201,20 @@ pub struct AdvancedCostOptimizationMetrics {
 
 
 
+impl cfn_resources::CfnResource for AdvancedCostOptimizationMetrics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This resource enables Amazon S3 Storage Lens advanced data protection metrics. Advanced data    protection metrics provide insights that you can use to perform audits and protect your data,    for example replication rule counts within and across Regions.
 ///
@@ -180,6 +238,20 @@ pub struct AdvancedDataProtectionMetrics {
 
 
 
+impl cfn_resources::CfnResource for AdvancedDataProtectionMetrics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This resource contains the details of the AWS Organization for Amazon S3    Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -201,6 +273,20 @@ pub struct AwsOrg {
 
 
 
+impl cfn_resources::CfnResource for AwsOrg {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A property for the bucket-level storage metrics for Amazon S3 Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -270,6 +356,30 @@ pub struct BucketLevel {
 
 
 
+impl cfn_resources::CfnResource for BucketLevel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.activity_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.advanced_cost_optimization_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.advanced_data_protection_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.detailed_status_codes_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.prefix_level.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This resource contains the details of the buckets and Regions for the Amazon S3 Storage    Lens configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -303,6 +413,20 @@ pub struct BucketsAndRegions {
 
 
 
+impl cfn_resources::CfnResource for BucketsAndRegions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This resource enables the Amazon CloudWatch publishing option for Amazon S3 Storage Lens    metrics.
 ///
@@ -326,6 +450,20 @@ pub struct CloudWatchMetrics {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchMetrics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This resource contains the details of the Amazon S3 Storage Lens metrics export.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -359,6 +497,24 @@ pub struct DataExport {
 
 
 
+impl cfn_resources::CfnResource for DataExport {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_bucket_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This resource enables Amazon S3 Storage Lens detailed status code metrics. Detailed status    code metrics generate metrics for HTTP status codes, such as 200 OK, 403     Forbidden, 503 Service Unavailable and others.
 ///
@@ -382,6 +538,20 @@ pub struct DetailedStatusCodesMetrics {
 
 
 
+impl cfn_resources::CfnResource for DetailedStatusCodesMetrics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This resource contains the type of server-side encryption used to encrypt an Amazon S3    Storage Lens metrics export. For valid values, see the     StorageLensDataExportEncryption in the Amazon S3 API    Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -415,6 +585,22 @@ pub struct Encryption {
 
 
 
+impl cfn_resources::CfnResource for Encryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ssekms.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This resource contains the details of the prefix-level of the Amazon S3 Storage    Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -436,6 +622,22 @@ pub struct PrefixLevel {
 
 
 
+impl cfn_resources::CfnResource for PrefixLevel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.storage_metrics.validate()?;
+
+        Ok(())
+    }
+}
 
 /// This resource contains the details of the prefix-level storage metrics for Amazon S3    Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -469,6 +671,22 @@ pub struct PrefixLevelStorageMetrics {
 
 
 
+impl cfn_resources::CfnResource for PrefixLevelStorageMetrics {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.selection_criteria.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// This resource contains the details of the bucket where the Amazon S3 Storage Lens metrics    export will be placed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -550,6 +768,22 @@ pub struct S3BucketDestination {
 
 
 
+impl cfn_resources::CfnResource for S3BucketDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the use of server-side encryption using an AWS Key Management Service key (SSE-KMS) to    encrypt the delivered S3 Storage Lens metrics export file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -571,6 +805,20 @@ pub struct SSEKMS {
 
 
 
+impl cfn_resources::CfnResource for SSEKMS {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This resource contains the details of the Amazon S3 Storage Lens selection    criteria.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -616,6 +864,20 @@ pub struct SelectionCriteria {
 
 
 
+impl cfn_resources::CfnResource for SelectionCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This is the property of the Amazon S3 Storage Lens configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -721,6 +983,30 @@ pub struct StorageLensConfiguration {
 
 
 
+impl cfn_resources::CfnResource for StorageLensConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.account_level.validate()?;
+
+        self.aws_org.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_export.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.exclude.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.include.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -757,3 +1043,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

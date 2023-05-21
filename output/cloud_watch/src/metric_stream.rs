@@ -145,8 +145,12 @@ impl cfn_resources::CfnResource for CfnMetricStream {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure contains a metric namespace and optionally, a list of metric names, to either include in a metric '       stream or exclude from a metric stream.
 ///
@@ -188,6 +192,20 @@ pub struct MetricStreamFilter {
 
 
 
+impl cfn_resources::CfnResource for MetricStreamFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This structure specifies a list of additional statistics to stream, and the metrics to stream those     additional statistics for.
 ///
@@ -221,6 +239,20 @@ pub struct MetricStreamStatisticsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for MetricStreamStatisticsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that specifies the   metric name and namespace for one metric that is going to have additional statistics included in the stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -252,6 +284,20 @@ pub struct MetricStreamStatisticsMetric {
 
 
 
+impl cfn_resources::CfnResource for MetricStreamStatisticsMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -288,3 +334,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

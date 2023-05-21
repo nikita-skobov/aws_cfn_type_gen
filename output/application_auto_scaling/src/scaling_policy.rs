@@ -327,8 +327,46 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.policy_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'policy_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.policy_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'policy_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.resource_id {
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'resource_id'. {} is greater than 1600", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.step_scaling_policy_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.target_tracking_scaling_policy_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains customized metric specification information for a target tracking scaling policy    for Application Auto Scaling.
 ///
@@ -443,6 +481,20 @@ impl Default for CustomizedMetricSpecificationStatisticEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomizedMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// MetricDimension specifies a name/value pair that is part of the identity of a    CloudWatch metric for the Dimensions property of the AWS::ApplicationAutoScaling::ScalingPolicy CustomizedMetricSpecification property    type. Duplicate dimensions are not allowed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -476,6 +528,20 @@ pub struct MetricDimension {
 
 
 
+impl cfn_resources::CfnResource for MetricDimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains predefined metric specification information for a target tracking scaling policy    for Application Auto Scaling.
 ///
@@ -626,6 +692,36 @@ impl Default for PredefinedMetricSpecificationPredefinedMetricTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PredefinedMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() > 1023 as _ {
+            return Err(format!("Max validation failed on field 'resource_label'. {} is greater than 1023", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// StepAdjustment specifies a step adjustment for the StepAdjustments    property of the AWS::ApplicationAutoScaling::ScalingPolicy StepScalingPolicyConfiguration property    type.
 ///
@@ -681,6 +777,20 @@ pub struct StepAdjustment {
 
 
 
+impl cfn_resources::CfnResource for StepAdjustment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// StepScalingPolicyConfiguration is a property of the AWS::ApplicationAutoScaling::ScalingPolicy resource that specifies a step scaling    policy configuration for Application Auto Scaling.
 ///
@@ -804,6 +914,20 @@ impl Default for StepScalingPolicyConfigurationMetricAggregationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for StepScalingPolicyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// TargetTrackingScalingPolicyConfiguration is a property of the AWS::ApplicationAutoScaling::ScalingPolicy resource that specifies a target    tracking scaling policy configuration for Application Auto Scaling. Use a target tracking    scaling policy to adjust the capacity of the specified scalable target in response to actual    workloads, so that resource utilization remains at or near the target utilization value.
 ///
@@ -886,3 +1010,22 @@ pub struct TargetTrackingScalingPolicyConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for TargetTrackingScalingPolicyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.customized_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.predefined_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

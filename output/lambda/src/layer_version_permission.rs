@@ -80,4 +80,38 @@ impl cfn_resources::CfnResource for CfnLayerVersionPermission {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.action;
+
+        if the_val.len() > 22 as _ {
+            return Err(format!("Max validation failed on field 'action'. {} is greater than 22", the_val.len()));
+        }
+
+        
+        let the_val = &self.layer_version_arn;
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'layer_version_arn'. {} is greater than 140", the_val.len()));
+        }
+
+        
+        let the_val = &self.layer_version_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'layer_version_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.organization_id {
+
+        if the_val.len() > 34 as _ {
+            return Err(format!("Max validation failed on field 'organization_id'. {} is greater than 34", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

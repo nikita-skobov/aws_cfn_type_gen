@@ -177,8 +177,58 @@ impl cfn_resources::CfnResource for CfnAssessment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.assessment_reports_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.aws_account.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.framework_id {
+
+        if the_val.len() > 36 as _ {
+            return Err(format!("Max validation failed on field 'framework_id'. {} is greater than 36", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.framework_id {
+
+        if the_val.len() < 36 as _ {
+            return Err(format!("Min validation failed on field 'framework_id'. {} is less than 36", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 300", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.scope.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AWSAccount property type specifies the wrapper of the AWS account details, such as account ID, email address, and so on.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -242,6 +292,68 @@ pub struct AWSAccount {
 
 
 
+impl cfn_resources::CfnResource for AWSAccount {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.email_address {
+
+        if the_val.len() > 320 as _ {
+            return Err(format!("Max validation failed on field 'email_address'. {} is greater than 320", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.email_address {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'email_address'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.id {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'id'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.id {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'id'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The AWSService property type specifies an AWS service     such as Amazon S3, AWS CloudTrail, and so on.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -269,6 +381,36 @@ pub struct AWSService {
 
 
 
+impl cfn_resources::CfnResource for AWSService {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.service_name {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'service_name'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.service_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'service_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The AssessmentReportsDestination property type specifies the location in     which AWS Audit Manager saves assessment reports for the given assessment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -325,6 +467,36 @@ impl Default for AssessmentReportsDestinationDestinationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for AssessmentReportsDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.destination {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'destination'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.destination {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'destination'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The Delegation property type specifies the assignment of a control set to a delegate for review.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -554,6 +726,124 @@ impl Default for DelegationStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for Delegation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.assessment_id {
+
+        if the_val.len() > 36 as _ {
+            return Err(format!("Max validation failed on field 'assessment_id'. {} is greater than 36", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.assessment_id {
+
+        if the_val.len() < 36 as _ {
+            return Err(format!("Min validation failed on field 'assessment_id'. {} is less than 36", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.assessment_name {
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'assessment_name'. {} is greater than 300", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.assessment_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'assessment_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.comment {
+
+        if the_val.len() > 350 as _ {
+            return Err(format!("Max validation failed on field 'comment'. {} is greater than 350", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.control_set_id {
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'control_set_id'. {} is greater than 300", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.control_set_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'control_set_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.created_by {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'created_by'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.created_by {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'created_by'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.id {
+
+        if the_val.len() > 36 as _ {
+            return Err(format!("Max validation failed on field 'id'. {} is greater than 36", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.id {
+
+        if the_val.len() < 36 as _ {
+            return Err(format!("Min validation failed on field 'id'. {} is less than 36", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The Role property type specifies the wrapper that contains AWS Audit Manager role information, such as the role type and IAM Amazon     Resource Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -616,6 +906,36 @@ impl Default for RoleRoleTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Role {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The Scope property type specifies the wrapper that contains the AWS accounts and services that are in scope for the assessment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -649,6 +969,20 @@ pub struct Scope {
 
 
 
+impl cfn_resources::CfnResource for Scope {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -685,3 +1019,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

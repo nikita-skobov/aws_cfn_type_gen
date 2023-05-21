@@ -106,8 +106,56 @@ impl cfn_resources::CfnResource for CfnEndpoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.replication_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.routing_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The event buses the endpoint is associated with.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -135,6 +183,34 @@ pub struct EndpointEventBus {
 
 
 
+impl cfn_resources::CfnResource for EndpointEventBus {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.event_bus_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'event_bus_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.event_bus_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'event_bus_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The failover configuration for an endpoint. This includes what triggers failover and what happens when it's triggered.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -168,6 +244,24 @@ pub struct FailoverConfig {
 
 
 
+impl cfn_resources::CfnResource for FailoverConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.primary.validate()?;
+
+        self.secondary.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The primary Region of the endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -195,6 +289,34 @@ pub struct Primary {
 
 
 
+impl cfn_resources::CfnResource for Primary {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.health_check;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'health_check'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.health_check;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'health_check'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Endpoints can replicate all events to the secondary Region.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -237,6 +359,20 @@ impl Default for ReplicationConfigStateEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReplicationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The routing configuration of the endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -258,6 +394,22 @@ pub struct RoutingConfig {
 
 
 
+impl cfn_resources::CfnResource for RoutingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.failover_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The secondary Region that processes events when failover is triggered or replication is enabled.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -284,3 +436,32 @@ pub struct Secondary {
 }
 
 
+
+impl cfn_resources::CfnResource for Secondary {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.route;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'route'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.route;
+
+        if the_val.len() < 9 as _ {
+            return Err(format!("Min validation failed on field 'route'. {} is less than 9", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

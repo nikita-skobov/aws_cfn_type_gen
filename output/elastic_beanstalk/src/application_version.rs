@@ -60,8 +60,36 @@ impl cfn_resources::CfnResource for CfnApplicationVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.source_bundle.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The SourceBundle property is an embedded property of the AWS::ElasticBeanstalk::ApplicationVersion resource. It specifies the Amazon S3     location of the source bundle for an AWS Elastic Beanstalk application version.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -98,3 +126,32 @@ pub struct SourceBundle {
 }
 
 
+
+impl cfn_resources::CfnResource for SourceBundle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_key;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_key'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -184,8 +184,12 @@ impl cfn_resources::CfnResource for CfnComponent {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents the event action configuration for an element of a Component or     ComponentChild. Use for the workflow feature in Amplify Studio    that allows you to bind events and actions to components. ActionParameters    defines the action that is performed when an event occurs on the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -303,6 +307,34 @@ pub struct ActionParameters {
 
 
 
+impl cfn_resources::CfnResource for ActionParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.anchor.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.global.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.id.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.state.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.target.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cfn_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.url.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ComponentBindingPropertiesValue property specifies the data binding configuration for a component at runtime. You can use     ComponentBindingPropertiesValue to add exposed properties to a component to    allow different values to be entered when a component is reused in different places in an    app.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -348,6 +380,22 @@ pub struct ComponentBindingPropertiesValue {
 
 
 
+impl cfn_resources::CfnResource for ComponentBindingPropertiesValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.binding_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ComponentBindingPropertiesValueProperties property specifies the data    binding configuration for a specific property using data stored in AWS. For     AWS connected properties, you can bind a property to data stored in an     Amazon S3 bucket, an Amplify DataStore model or an authenticated user    attribute.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -441,6 +489,20 @@ pub struct ComponentBindingPropertiesValueProperties {
 
 
 
+impl cfn_resources::CfnResource for ComponentBindingPropertiesValueProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ComponentChild property specifies a nested UI configuration within a    parent Component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -510,6 +572,20 @@ pub struct ComponentChild {
 
 
 
+impl cfn_resources::CfnResource for ComponentChild {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ComponentConditionProperty property specifies a conditional expression    for setting a component property. Use ComponentConditionProperty to set a    property to different values conditionally, based on the value of another property.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -603,6 +679,24 @@ pub struct ComponentConditionProperty {
 
 
 
+impl cfn_resources::CfnResource for ComponentConditionProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cfn_else.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.then.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ComponentDataConfiguration property specifies the configuration for    binding a component's properties to data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -660,6 +754,22 @@ pub struct ComponentDataConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ComponentDataConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.predicate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ComponentEvent property specifies the configuration of an event. You can bind an event and a corresponding    action to a Component or a ComponentChild. A button click    is an example of an event.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -693,6 +803,22 @@ pub struct ComponentEvent {
 
 
 
+impl cfn_resources::CfnResource for ComponentEvent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ComponentProperty property specifies the configuration for all of a    component's properties. Use ComponentProperty to specify the values to render or    bind by default.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -882,6 +1008,26 @@ pub struct ComponentProperty {
 
 
 
+impl cfn_resources::CfnResource for ComponentProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.binding_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.collection_binding_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ComponentPropertyBindingProperties property specifies a component    property to associate with a binding property. This enables exposed properties on the top    level component to propagate data to the component's property values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -915,6 +1061,20 @@ pub struct ComponentPropertyBindingProperties {
 
 
 
+impl cfn_resources::CfnResource for ComponentPropertyBindingProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ComponentVariant property specifies the style configuration of a unique    variation of a main component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -948,6 +1108,20 @@ pub struct ComponentVariant {
 
 
 
+impl cfn_resources::CfnResource for ComponentVariant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FormBindingElement property type specifies Property description not available. for an AWS::AmplifyUIBuilder::Component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -979,6 +1153,20 @@ pub struct FormBindingElement {
 
 
 
+impl cfn_resources::CfnResource for FormBindingElement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents the state configuration when an action modifies a property of another element    within the same component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1024,6 +1212,22 @@ pub struct MutationActionSetStateParameter {
 
 
 
+impl cfn_resources::CfnResource for MutationActionSetStateParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.set.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The Predicate property specifies information for generating Amplify DataStore queries. Use Predicate to retrieve a subset of the    data in a collection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1093,6 +1297,20 @@ pub struct Predicate {
 
 
 
+impl cfn_resources::CfnResource for Predicate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The SortProperty property specifies how to sort the data that you bind to a    component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1125,3 +1343,18 @@ pub struct SortProperty {
 }
 
 
+
+impl cfn_resources::CfnResource for SortProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

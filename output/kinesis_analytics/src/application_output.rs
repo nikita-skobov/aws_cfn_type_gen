@@ -56,8 +56,28 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.output.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -100,6 +120,20 @@ impl Default for DestinationSchemaRecordFormatTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DestinationSchema {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// When configuring application output, identifies an Amazon Kinesis Firehose delivery       stream as the destination. You provide the stream Amazon Resource Name (ARN) and an IAM       role that enables Amazon Kinesis Analytics to write to the stream on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -145,6 +179,48 @@ pub struct KinesisFirehoseOutput {
 
 
 
+impl cfn_resources::CfnResource for KinesisFirehoseOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// When configuring application output, identifies an Amazon Kinesis stream as the       destination. You provide the stream Amazon Resource Name (ARN) and also an IAM role ARN       that Amazon Kinesis Analytics can use to write to the stream on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -190,6 +266,48 @@ pub struct KinesisStreamsOutput {
 
 
 
+impl cfn_resources::CfnResource for KinesisStreamsOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// When configuring application output, identifies an AWS Lambda function       as the destination. You provide the function Amazon Resource Name (ARN) and also an IAM       role ARN that Amazon Kinesis Analytics can use to write to the function on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -237,6 +355,48 @@ pub struct LambdaOutput {
 
 
 
+impl cfn_resources::CfnResource for LambdaOutput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes application output configuration in which you identify an in-application       stream and a destination where you want the in-application stream data to be written.       The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery       stream.
 /// 
@@ -311,3 +471,42 @@ pub struct Output {
 }
 
 
+
+impl cfn_resources::CfnResource for Output {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination_schema.validate()?;
+
+        self.kinesis_firehose_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_streams_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lambda_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

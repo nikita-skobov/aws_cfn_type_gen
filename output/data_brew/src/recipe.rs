@@ -70,8 +70,34 @@ impl cfn_resources::CfnResource for CfnRecipe {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents a transformation and associated parameters that are used to apply a change       to an AWS Glue DataBrew dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -105,6 +131,22 @@ pub struct Action {
 
 
 
+impl cfn_resources::CfnResource for Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents an individual condition that evaluates to true or false.
 ///
@@ -166,6 +208,56 @@ pub struct ConditionExpression {
 
 
 
+impl cfn_resources::CfnResource for ConditionExpression {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.condition;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'condition'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.condition;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'condition'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_column;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'target_column'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_column;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_column'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents how metadata stored in the AWS Glue Data Catalog is defined in a DataBrew       dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +327,70 @@ pub struct DataCatalogInputDefinition {
 
 
 
+impl cfn_resources::CfnResource for DataCatalogInputDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.catalog_id {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'catalog_id'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.catalog_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'catalog_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.temp_directory.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Input property type specifies Property description not available. for an AWS::DataBrew::Recipe.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -266,6 +422,24 @@ pub struct Input {
 
 
 
+impl cfn_resources::CfnResource for Input {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_catalog_input_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_input_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Parameters that are used as inputs for various recipe actions. The parameters are       specific to the context in which they're used.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1487,6 +1661,22 @@ pub struct RecipeParameters {
 
 
 
+impl cfn_resources::CfnResource for RecipeParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents a single step from a DataBrew recipe to be performed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1522,6 +1712,22 @@ pub struct RecipeStep {
 
 
 
+impl cfn_resources::CfnResource for RecipeStep {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Represents an Amazon S3 location (bucket name, bucket owner, and object key) where DataBrew can read       input data, or write output from a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1563,6 +1769,50 @@ pub struct S3Location {
 
 
 
+impl cfn_resources::CfnResource for S3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket'. {} is less than 3", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 1280 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 1280", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents secondary inputs in a UNION transform.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1596,6 +1846,24 @@ pub struct SecondaryInput {
 
 
 
+impl cfn_resources::CfnResource for SecondaryInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_catalog_input_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_input_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1632,3 +1900,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

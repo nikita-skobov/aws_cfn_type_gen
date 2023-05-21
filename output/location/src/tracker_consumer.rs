@@ -58,4 +58,37 @@ impl cfn_resources::CfnResource for CfnTrackerConsumer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.consumer_arn;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'consumer_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.consumer_arn;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'consumer_arn'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.tracker_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'tracker_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.tracker_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'tracker_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

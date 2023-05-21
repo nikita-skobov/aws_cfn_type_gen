@@ -54,8 +54,14 @@ impl cfn_resources::CfnResource for CfnSchedulingPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.fairshare_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The fair share policy for a scheduling policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -107,6 +113,20 @@ pub struct FairsharePolicy {
 
 
 
+impl cfn_resources::CfnResource for FairsharePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the weights for the fair share identifiers for the fair share policy. Fair share  identifiers that aren't included have a default weight of 1.0.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -145,3 +165,18 @@ pub struct ShareAttributes {
 }
 
 
+
+impl cfn_resources::CfnResource for ShareAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

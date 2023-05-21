@@ -240,8 +240,64 @@ impl cfn_resources::CfnResource for CfnPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.exclude_map.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.include_map.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.policy_description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'policy_description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.policy_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'policy_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.policy_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'policy_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.resource_tags {
+
+        if the_val.len() > 8 as _ {
+            return Err(format!("Max validation failed on field 'resource_tags'. {} is greater than 8", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_type {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'resource_type'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_type {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_type'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.security_service_policy_data.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the AWS account IDs and AWS Organizations organizational units (OUs) to include in or exclude from the policy.      Specifying an OU is the equivalent of specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time.
 ///
@@ -279,6 +335,20 @@ pub struct IEMap {
 
 
 
+impl cfn_resources::CfnResource for IEMap {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configures the firewall policy deployment model of AWS Network Firewall. For information about     Network Firewall deployment models, see AWS Network Firewall example       architectures with routing in the Network Firewall Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -321,6 +391,20 @@ impl Default for NetworkFirewallPolicyFirewallDeploymentModelEnum {
 }
 
 
+impl cfn_resources::CfnResource for NetworkFirewallPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains the AWS Network Firewall firewall policy options to configure the policy's deployment model and third-party firewall policy settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -354,6 +438,24 @@ pub struct PolicyOption {
 
 
 
+impl cfn_resources::CfnResource for PolicyOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.network_firewall_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.third_party_firewall_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A collection of key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -399,6 +501,48 @@ pub struct PolicyTag {
 
 
 
+impl cfn_resources::CfnResource for PolicyTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The resource tags that AWS Firewall Manager uses to determine if a particular resource    should be included or excluded from the AWS Firewall Manager policy. Tags enable you to    categorize your AWS resources in different ways, for example, by purpose, owner, or    environment. Each tag consists of a key and an optional value. Firewall Manager combines the    tags with "AND" so that, if you add more than one tag to a policy scope, a resource must have     all the specified tags to be included or excluded. For more information, see   Working with Tag Editor.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -442,6 +586,42 @@ pub struct ResourceTag {
 
 
 
+impl cfn_resources::CfnResource for ResourceTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Details about the security service that is being used to protect the resources.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -548,6 +728,38 @@ impl Default for SecurityServicePolicyDataTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for SecurityServicePolicyData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.managed_service_data {
+
+        if the_val.len() > 10000 as _ {
+            return Err(format!("Max validation failed on field 'managed_service_data'. {} is greater than 10000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.managed_service_data {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'managed_service_data'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.policy_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configures the deployment model for the third-party firewall.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -589,3 +801,18 @@ impl Default for ThirdPartyFirewallPolicyFirewallDeploymentModelEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for ThirdPartyFirewallPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

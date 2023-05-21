@@ -164,8 +164,97 @@ impl cfn_resources::CfnResource for CfnFeatureGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.event_time_feature_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'event_time_feature_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.event_time_feature_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'event_time_feature_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.feature_definitions;
+
+        if the_val.len() > 2500 as _ {
+            return Err(format!("Max validation failed on field 'feature_definitions'. {} is greater than 2500", the_val.len()));
+        }
+
+        
+        let the_val = &self.feature_group_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'feature_group_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.feature_group_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'feature_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.offline_store_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.online_store_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.record_identifier_feature_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'record_identifier_feature_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_identifier_feature_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_identifier_feature_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The meta data of the Glue table which serves as data catalog for the       OfflineStore.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -229,6 +318,62 @@ pub struct DataCatalogConfig {
 
 
 
+impl cfn_resources::CfnResource for DataCatalogConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.catalog;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'catalog'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.catalog;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'catalog'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.database;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'database'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.database;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.table_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.table_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A list of features. You must include FeatureName and       FeatureType. Valid feature FeatureTypes are       Integral, Fractional and String.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -293,6 +438,34 @@ impl Default for FeatureDefinitionFeatureTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FeatureDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.feature_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'feature_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.feature_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'feature_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration of an OfflineStore.
 ///
@@ -355,6 +528,24 @@ pub struct OfflineStoreConfig {
 
 
 
+impl cfn_resources::CfnResource for OfflineStoreConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_catalog_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_storage_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Use this to specify the AWS Key Management Service (KMS) Key ID, or       KMSKeyId, for at rest data encryption. You can turn       OnlineStore on or off by specifying the EnableOnlineStore flag     at General Assembly.
 ///
@@ -392,6 +583,22 @@ pub struct OnlineStoreConfig {
 
 
 
+impl cfn_resources::CfnResource for OnlineStoreConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.security_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The security configuration for OnlineStore.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -425,6 +632,28 @@ pub struct OnlineStoreSecurityConfig {
 
 
 
+impl cfn_resources::CfnResource for OnlineStoreSecurityConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The Amazon Simple Storage (Amazon S3) location and and security configuration for OfflineStore.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -472,6 +701,35 @@ pub struct S3StorageConfig {
 
 
 
+impl cfn_resources::CfnResource for S3StorageConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.s3_uri;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -508,3 +766,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

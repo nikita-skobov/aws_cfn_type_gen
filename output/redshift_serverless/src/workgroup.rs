@@ -136,8 +136,12 @@ impl cfn_resources::CfnResource for CfnWorkgroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A array of parameters to set for more control over a serverless database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -171,6 +175,20 @@ pub struct ConfigParameter {
 
 
 
+impl cfn_resources::CfnResource for ConfigParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The VPC endpoint object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -216,6 +234,20 @@ pub struct Endpoint {
 
 
 
+impl cfn_resources::CfnResource for Endpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about a network interface      in an Amazon Redshift Serverless managed VPC endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -273,6 +305,20 @@ pub struct NetworkInterface {
 
 
 
+impl cfn_resources::CfnResource for NetworkInterface {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -310,6 +356,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The connection endpoint for connecting to Amazon Redshift Serverless through the proxy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -355,6 +415,20 @@ pub struct VpcEndpoint {
 
 
 
+impl cfn_resources::CfnResource for VpcEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The collection of computing resources from which an endpoint is created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -519,3 +593,20 @@ pub struct Workgroup {
 }
 
 
+
+impl cfn_resources::CfnResource for Workgroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

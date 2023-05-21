@@ -116,8 +116,26 @@ impl cfn_resources::CfnResource for CfnListener {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.accelerator_arn;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'accelerator_arn'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.port_ranges;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'port_ranges'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A complex type for a range of ports for a listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -158,3 +176,46 @@ pub struct PortRange {
 }
 
 
+
+impl cfn_resources::CfnResource for PortRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.from_port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'from_port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.from_port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'from_port'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.to_port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'to_port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.to_port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'to_port'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}

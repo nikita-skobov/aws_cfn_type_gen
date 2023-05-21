@@ -454,8 +454,46 @@ impl cfn_resources::CfnResource for CfnEndpoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.doc_db_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynamo_db_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.elasticsearch_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.gcp_my_sqlsettings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ibm_db2_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kafka_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.microsoft_sql_server_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mongo_db_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.my_sql_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.neptune_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.oracle_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.postgre_sql_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redis_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redshift_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sybase_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines a DocumentDB endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Using extra connections attributes with Amazon DocumentDB as a source and               Using Amazon DocumentDB as a target for AWS Database Migration Service       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -554,6 +592,20 @@ impl Default for DocDbSettingsNestingLevelEnum {
 }
 
 
+impl cfn_resources::CfnResource for DocDbSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information, including the Amazon Resource Name (ARN) of the IAM        role used to define an Amazon DynamoDB target endpoint. This       information also includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Using object mapping to migrate data to DynamoDB       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -575,6 +627,20 @@ pub struct DynamoDbSettings {
 
 
 
+impl cfn_resources::CfnResource for DynamoDbSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines an OpenSearch endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Extra connection attributes when using OpenSearch as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -634,6 +700,20 @@ pub struct ElasticsearchSettings {
 
 
 
+impl cfn_resources::CfnResource for ElasticsearchSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines a GCP MySQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. These settings are much the same as       the settings for any MySQL-compatible endpoint. For more information, see               Extra connection attributes when using MySQL as a source for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -813,6 +893,20 @@ pub struct GcpMySQLSettings {
 
 
 
+impl cfn_resources::CfnResource for GcpMySQLSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines an IBMDB2 endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Extra connection attributes when using Db2 LUW as a source for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -884,6 +978,20 @@ pub struct IbmDb2Settings {
 
 
 
+impl cfn_resources::CfnResource for IbmDb2Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that describes an Apache Kafka endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Using object mapping to migrate data to a Kafka topic       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1159,6 +1267,20 @@ impl Default for KafkaSettingsSecurityProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for KafkaSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that describes an Amazon Kinesis Data Stream endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see                Using object mapping to migrate data to a Kinesis data stream       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1309,6 +1431,20 @@ impl Default for KinesisSettingsMessageFormatEnum {
 }
 
 
+impl cfn_resources::CfnResource for KinesisSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines a Microsoft SQL Server endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using SQL Server as a source for AWS DMS and                Extra connection attributes when using SQL Server as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1432,6 +1568,20 @@ pub struct MicrosoftSqlServerSettings {
 
 
 
+impl cfn_resources::CfnResource for MicrosoftSqlServerSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines a MongoDB endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see                Endpoint configuration settings when using MongoDB as a source for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1678,6 +1828,20 @@ impl Default for MongoDbSettingsNestingLevelEnum {
 }
 
 
+impl cfn_resources::CfnResource for MongoDbSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines a MySQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using MySQL as a source for AWS DMS and               Extra connection attributes when using a MySQL-compatible database as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1813,6 +1977,20 @@ pub struct MySqlSettings {
 
 
 
+impl cfn_resources::CfnResource for MySqlSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines an Amazon Neptune endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Specifying endpoint settings for Amazon Neptune as a target       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1908,6 +2086,20 @@ pub struct NeptuneSettings {
 
 
 
+impl cfn_resources::CfnResource for NeptuneSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines an Oracle endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Extra connection attributes when using Oracle as a source for AWS DMS and                Extra connection attributes when using Oracle as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2390,6 +2582,20 @@ impl Default for OracleSettingsCharLengthSemanticsEnum {
 }
 
 
+impl cfn_resources::CfnResource for OracleSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines a PostgreSQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Extra connection attributes when using PostgreSQL as a source for AWS DMS and               Extra connection attributes when using PostgreSQL as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2584,6 +2790,20 @@ pub struct PostgreSqlSettings {
 
 
 
+impl cfn_resources::CfnResource for PostgreSqlSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines a Redis target endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Specifying endpoint settings for Redis as a target       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2725,6 +2945,20 @@ impl Default for RedisSettingsSslSecurityProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for RedisSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines an Amazon Redshift endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Extra connection attributes when using Amazon Redshift as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3086,6 +3320,20 @@ impl Default for RedshiftSettingsEncryptionModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for RedshiftSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines an Amazon S3 endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Extra connection attributes when using Amazon S3 as a source for AWS DMS and               Extra connection attributes when using Amazon S3 as a target for AWS DMS       in theAWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3859,6 +4107,20 @@ impl Default for S3SettingsParquetVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information that defines a SAP ASE endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using SAP ASE as a source for AWS DMS and               Extra connection attributes when using SAP ASE as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3894,6 +4156,20 @@ pub struct SybaseSettings {
 
 
 
+impl cfn_resources::CfnResource for SybaseSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -3930,3 +4206,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

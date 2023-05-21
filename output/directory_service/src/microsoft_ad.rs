@@ -131,8 +131,14 @@ impl cfn_resources::CfnResource for CfnMicrosoftAD {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.vpc_settings.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains VPC information for the CreateDirectory or     CreateMicrosoftAD    operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -167,3 +173,18 @@ pub struct VpcSettings {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

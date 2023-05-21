@@ -42,8 +42,14 @@ impl cfn_resources::CfnResource for CfnSamplingRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.sampling_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A sampling rule that services use to decide whether to instrument a request. Rule    fields can match properties of the service, or properties of a request. The service can ignore    rules that don't match its properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -241,6 +247,107 @@ pub struct SamplingRule {
 
 
 
+impl cfn_resources::CfnResource for SamplingRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.httpmethod;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'httpmethod'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        let the_val = &self.host;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'host'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.priority;
+
+        if *the_val > 9999 as _ {
+            return Err(format!("Max validation failed on field 'priority'. {} is greater than 9999", the_val));
+        }
+
+        
+        let the_val = &self.priority;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.reservoir_size;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'reservoir_size'. {} is less than 0", the_val));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 500", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.rule_name {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'rule_name'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.rule_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'rule_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.service_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'service_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_type;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'service_type'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.urlpath;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'urlpath'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.version {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'version'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -277,3 +384,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

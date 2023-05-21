@@ -32,8 +32,14 @@ impl cfn_resources::CfnResource for CfnCachePolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.cache_policy_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A cache policy configuration.
 ///
@@ -123,6 +129,22 @@ pub struct CachePolicyConfig {
 
 
 
+impl cfn_resources::CfnResource for CachePolicyConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.parameters_in_cache_key_and_forwarded_to_origin.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An object that determines whether any cookies in viewer requests (and if so, which cookies) 			are included in the cache key and in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -187,6 +209,20 @@ impl Default for CookiesConfigCookieBehaviorEnum {
 }
 
 
+impl cfn_resources::CfnResource for CookiesConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that determines whether any HTTP headers (and if so, which headers) are included 			in the cache key and in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -243,6 +279,20 @@ impl Default for HeadersConfigHeaderBehaviorEnum {
 }
 
 
+impl cfn_resources::CfnResource for HeadersConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This object determines the values that CloudFront includes in the cache key. These values 			can include HTTP headers, cookies, and URL query strings. CloudFront uses the cache key to 			find an object in its cache that it can return to the viewer.
 ///
@@ -334,6 +384,26 @@ pub struct ParametersInCacheKeyAndForwardedToOrigin {
 
 
 
+impl cfn_resources::CfnResource for ParametersInCacheKeyAndForwardedToOrigin {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cookies_config.validate()?;
+
+        self.headers_config.validate()?;
+
+        self.query_strings_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An object that determines whether any URL query strings in viewer requests (and if so, which 			query strings) are included in the cache key and in requests that CloudFront sends to the 			origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -397,3 +467,18 @@ impl Default for QueryStringsConfigQueryStringBehaviorEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for QueryStringsConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

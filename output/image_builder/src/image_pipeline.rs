@@ -186,8 +186,34 @@ impl cfn_resources::CfnResource for CfnImagePipeline {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.image_scanning_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.image_tests_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.schedule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::ImagePipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -219,6 +245,20 @@ pub struct EcrConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EcrConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ImageScanningConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::ImagePipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -250,6 +290,22 @@ pub struct ImageScanningConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ImageScanningConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ecr_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// When you create an image or container recipe with Image Builder, you can add the build or   		test components that your image pipeline uses to create the final image. You must   		have at least one build component to create a recipe, but test components are not required.   		Your pipeline runs tests after it builds the image, to ensure that the target image is   		functional and can be used reliably for launching Amazon EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -289,6 +345,36 @@ pub struct ImageTestsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ImageTestsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.timeout_minutes {
+
+        if *the_val > 1440 as _ {
+            return Err(format!("Max validation failed on field 'timeout_minutes'. {} is greater than 1440", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout_minutes {
+
+        if *the_val < 60 as _ {
+            return Err(format!("Min validation failed on field 'timeout_minutes'. {} is less than 60", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A schedule configures how often and when a pipeline will automatically create a new 			image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -348,3 +434,34 @@ impl Default for SchedulePipelineExecutionStartConditionEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for Schedule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.schedule_expression {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'schedule_expression'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.schedule_expression {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'schedule_expression'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

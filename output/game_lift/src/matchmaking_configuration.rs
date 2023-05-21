@@ -282,8 +282,151 @@ impl cfn_resources::CfnResource for CfnMatchmakingConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.acceptance_timeout_seconds {
+
+        if *the_val > 600 as _ {
+            return Err(format!("Max validation failed on field 'acceptance_timeout_seconds'. {} is greater than 600", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.acceptance_timeout_seconds {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'acceptance_timeout_seconds'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.additional_player_count {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'additional_player_count'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_event_data {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'custom_event_data'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_event_data {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'custom_event_data'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.game_properties {
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'game_properties'. {} is greater than 16", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.game_session_data {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'game_session_data'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.game_session_data {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'game_session_data'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.notification_target {
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'notification_target'. {} is greater than 300", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.notification_target {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'notification_target'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.request_timeout_seconds;
+
+        if *the_val > 43200 as _ {
+            return Err(format!("Max validation failed on field 'request_timeout_seconds'. {} is greater than 43200", the_val));
+        }
+
+        
+        let the_val = &self.request_timeout_seconds;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'request_timeout_seconds'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.rule_set_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'rule_set_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.rule_set_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'rule_set_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Set of key-value pairs that contain information about a game session. When included in       a game session request, these properties communicate details to be used when setting up       the new game session. For example, a game property might specify a game mode, level, or       map. Game properties are passed to the game server process when initiating a new game       session. For more information, see the Amazon GameLift Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -321,6 +464,34 @@ pub struct GameProperty {
 
 
 
+impl cfn_resources::CfnResource for GameProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 96 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 96", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -357,3 +528,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

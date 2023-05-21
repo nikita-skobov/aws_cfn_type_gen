@@ -144,8 +144,72 @@ impl cfn_resources::CfnResource for CfnAlarmModel {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.alarm_capabilities.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.alarm_event_actions.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.alarm_model_description {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'alarm_model_description'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.alarm_model_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'alarm_model_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.alarm_model_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'alarm_model_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.alarm_rule.validate()?;
+
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies whether to get notified for alarm state changes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -167,6 +231,20 @@ pub struct AcknowledgeFlow {
 
 
 
+impl cfn_resources::CfnResource for AcknowledgeFlow {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies one of the following actions to receive notifications when the alarm state    changes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -308,6 +386,38 @@ pub struct AlarmAction {
 
 
 
+impl cfn_resources::CfnResource for AlarmAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dynamo_db.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dynamo_dbv2.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.firehose.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_events.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_site_wise.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.iot_topic_publish.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lambda.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sns.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sqs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains the configuration information of alarm state changes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -341,6 +451,24 @@ pub struct AlarmCapabilities {
 
 
 
+impl cfn_resources::CfnResource for AlarmCapabilities {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.acknowledge_flow.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.initialization_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about one or more alarm actions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -362,6 +490,20 @@ pub struct AlarmEventActions {
 
 
 
+impl cfn_resources::CfnResource for AlarmEventActions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines when your alarm is invoked.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -383,6 +525,22 @@ pub struct AlarmRule {
 
 
 
+impl cfn_resources::CfnResource for AlarmRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.simple_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure that contains timestamp information. For more information, see TimeInNanos in the         AWS IoT SiteWise API Reference.
 ///
@@ -420,6 +578,20 @@ pub struct AssetPropertyTimestamp {
 
 
 
+impl cfn_resources::CfnResource for AssetPropertyTimestamp {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure that contains value information. For more information, see AssetPropertyValue in the         AWS IoT SiteWise API Reference.
 ///
@@ -469,6 +641,24 @@ pub struct AssetPropertyValue {
 
 
 
+impl cfn_resources::CfnResource for AssetPropertyValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.timestamp.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A structure that contains an asset property value. For more information, see Variant    in the         AWS IoT SiteWise API Reference.
 ///
@@ -532,6 +722,20 @@ pub struct AssetPropertyVariant {
 
 
 
+impl cfn_resources::CfnResource for AssetPropertyVariant {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines an action to write to the Amazon DynamoDB table that you created. The standard action    payload contains all the information about the detector model instance and the event that    triggered the action. You can customize the payload. One column of the    DynamoDB table receives all attribute-value pairs in the payload that you specify.
 ///
@@ -683,6 +887,22 @@ pub struct DynamoDB {
 
 
 
+impl cfn_resources::CfnResource for DynamoDB {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.payload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Defines an action to write to the Amazon DynamoDB table that you created. The default action    payload contains all the information about the detector model instance and the event that    triggered the action. You can customize the payload. A separate column of    the DynamoDB table receives one attribute-value pair in the payload that you specify.
 ///
@@ -724,6 +944,22 @@ pub struct DynamoDBv2 {
 
 
 
+impl cfn_resources::CfnResource for DynamoDBv2 {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.payload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Sends information about the detector model instance and the event that triggered the    action to an Amazon Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -771,6 +1007,22 @@ pub struct Firehose {
 
 
 
+impl cfn_resources::CfnResource for Firehose {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.payload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the default alarm state. The configuration applies to all alarms that were created based on this alarm model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -792,6 +1044,20 @@ pub struct InitializationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InitializationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Sends an AWS IoT Events input, passing in information about the detector model instance and the    event that triggered the action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -831,6 +1097,36 @@ pub struct IotEvents {
 
 
 
+impl cfn_resources::CfnResource for IotEvents {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.input_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'input_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.input_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'input_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.payload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Sends information about the detector model instance and the event that triggered the    action to a specified asset property in AWS IoT SiteWise.
 ///
@@ -906,6 +1202,22 @@ pub struct IotSiteWise {
 
 
 
+impl cfn_resources::CfnResource for IotSiteWise {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.property_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information required to publish the MQTT message through the AWS IoT message broker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -943,6 +1255,36 @@ pub struct IotTopicPublish {
 
 
 
+impl cfn_resources::CfnResource for IotTopicPublish {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.mqtt_topic;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'mqtt_topic'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.mqtt_topic;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'mqtt_topic'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.payload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Calls a Lambda function, passing in information about the detector model instance and the    event that triggered the action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -980,6 +1322,36 @@ pub struct Lambda {
 
 
 
+impl cfn_resources::CfnResource for Lambda {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.function_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'function_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.function_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'function_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.payload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information needed to configure the payload.
 ///
@@ -1038,6 +1410,27 @@ impl Default for PayloadTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Payload {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.content_expression;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'content_expression'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A rule that compares an input property value to a threshold value with a comparison operator.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1128,6 +1521,48 @@ impl Default for SimpleRuleComparisonOperatorEnum {
 }
 
 
+impl cfn_resources::CfnResource for SimpleRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.input_property;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'input_property'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.input_property;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'input_property'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.threshold;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'threshold'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.threshold;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'threshold'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information required to publish the Amazon SNS message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1165,6 +1600,36 @@ pub struct Sns {
 
 
 
+impl cfn_resources::CfnResource for Sns {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.payload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.target_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'target_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Sends information about the detector model instance and the event that triggered the    action to an Amazon SQS queue.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1210,6 +1675,22 @@ pub struct Sqs {
 
 
 
+impl cfn_resources::CfnResource for Sqs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.payload.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1246,3 +1727,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

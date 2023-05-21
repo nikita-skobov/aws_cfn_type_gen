@@ -52,8 +52,14 @@ impl cfn_resources::CfnResource for CfnRefreshSchedule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.schedule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The day that you want yout dataset to refresh.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -87,6 +93,20 @@ pub struct RefreshOnDay {
 
 
 
+impl cfn_resources::CfnResource for RefreshOnDay {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A summary of a configured refresh schedule for a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -148,6 +168,22 @@ pub struct RefreshScheduleMap {
 
 
 
+impl cfn_resources::CfnResource for RefreshScheduleMap {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.schedule_frequency.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The frequency for the refresh schedule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -206,3 +242,20 @@ pub struct ScheduleFrequency {
 }
 
 
+
+impl cfn_resources::CfnResource for ScheduleFrequency {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.refresh_on_day.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

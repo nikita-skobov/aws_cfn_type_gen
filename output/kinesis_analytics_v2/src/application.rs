@@ -204,8 +204,64 @@ impl cfn_resources::CfnResource for CfnApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.application_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.application_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'application_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'application_description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.application_maintenance_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.application_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.application_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.run_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.service_execution_role;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'service_execution_role'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_execution_role;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'service_execution_role'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes code configuration for an application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -260,6 +316,22 @@ impl Default for ApplicationCodeConfigurationCodeContentTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ApplicationCodeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.code_content.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the creation parameters for a Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -353,6 +425,32 @@ pub struct ApplicationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ApplicationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.application_code_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.application_snapshot_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.environment_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.flink_application_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sql_application_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.zeppelin_application_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the maintence window parameters for a Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -373,6 +471,20 @@ pub struct ApplicationMaintenanceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ApplicationMaintenanceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the method and snapshot to use when restarting an application using previously saved application state.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -437,6 +549,36 @@ impl Default for ApplicationRestoreConfigurationApplicationRestoreTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ApplicationRestoreConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.snapshot_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'snapshot_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.snapshot_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'snapshot_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -458,6 +600,20 @@ pub struct ApplicationSnapshotConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ApplicationSnapshotConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, provides additional mapping information when the record    format uses delimiters, such as CSV. For example, the following sample records use CSV format,    where the records use the '\n' as the row delimiter and a comma (",") as    the column delimiter:
 ///
@@ -503,6 +659,48 @@ pub struct CSVMappingParameters {
 
 
 
+impl cfn_resources::CfnResource for CSVMappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_column_delimiter;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'record_column_delimiter'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_column_delimiter;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_column_delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_row_delimiter;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'record_row_delimiter'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_row_delimiter;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_row_delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration parameters for the default Amazon Glue database. You use this database       for SQL queries that you write in a Kinesis Data Analytics Studio notebook.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -524,6 +722,22 @@ pub struct CatalogConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CatalogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.glue_data_catalog_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an application's checkpointing configuration. Checkpointing is the process of persisting application state for fault    tolerance.    For more information, see         Checkpoints for Fault Tolerance in the    Apache Flink Documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -610,6 +824,20 @@ impl Default for CheckpointConfigurationConfigurationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CheckpointConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies either the application code, or the location of the application code, for a    Flink-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -659,6 +887,38 @@ pub struct CodeContent {
 
 
 
+impl cfn_resources::CfnResource for CodeContent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_content_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.text_content {
+
+        if the_val.len() > 102400 as _ {
+            return Err(format!("Max validation failed on field 'text_content'. {} is greater than 102400", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.text_content {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'text_content'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The configuration of connectors and user-defined functions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -724,6 +984,24 @@ impl Default for CustomArtifactConfigurationArtifactTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomArtifactConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.maven_reference.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_content_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The information required to deploy a Kinesis Data Analytics Studio notebook as an       application with durable state.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -745,6 +1023,22 @@ pub struct DeployAsApplicationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DeployAsApplicationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_content_location.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Describes execution properties for a Flink-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -768,6 +1062,28 @@ pub struct EnvironmentProperties {
 
 
 
+impl cfn_resources::CfnResource for EnvironmentProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.property_groups {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'property_groups'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes configuration parameters for a Flink-based Kinesis Data Analytics application or a Studio notebook.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -813,6 +1129,26 @@ pub struct FlinkApplicationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FlinkApplicationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.checkpoint_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.monitoring_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.parallelism_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the starting parameters for a Flink-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -836,6 +1172,20 @@ pub struct FlinkRunConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FlinkRunConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of the Glue Data Catalog that you use for Apache Flink SQL queries       and table API transforms that you write in an application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -863,6 +1213,36 @@ pub struct GlueDataCatalogConfiguration {
 
 
 
+impl cfn_resources::CfnResource for GlueDataCatalogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.database_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'database_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// When you configure the application input for a SQL-based Kinesis Data Analytics application, you specify the streaming source, the in-application stream    name that is created,    and the mapping between the two.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -952,6 +1332,44 @@ pub struct Input {
 
 
 
+impl cfn_resources::CfnResource for Input {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_parallelism.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.input_processing_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.input_schema.validate()?;
+
+        self.kinesis_firehose_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_streams_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name_prefix;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'name_prefix'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.name_prefix;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name_prefix'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that contains the Amazon Resource Name (ARN) of the Amazon Lambda function that is    used to preprocess records in the stream in a SQL-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -981,6 +1399,34 @@ pub struct InputLambdaProcessor {
 
 
 
+impl cfn_resources::CfnResource for InputLambdaProcessor {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, describes the number of    in-application streams to create for a given streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1006,6 +1452,36 @@ pub struct InputParallelism {
 
 
 
+impl cfn_resources::CfnResource for InputParallelism {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.count {
+
+        if *the_val > 64 as _ {
+            return Err(format!("Max validation failed on field 'count'. {} is greater than 64", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// For an SQL-based Amazon Kinesis Data Analytics application, describes a processor that       is used to preprocess the records in the stream before being processed by your       application code. Currently, the only input processor available is Amazon Lambda.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1027,6 +1503,22 @@ pub struct InputProcessingConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InputProcessingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_lambda_processor.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, describes the format of the    data in the streaming source, and how each data element maps to corresponding columns created    in the in-application stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1080,6 +1572,45 @@ pub struct InputSchema {
 
 
 
+impl cfn_resources::CfnResource for InputSchema {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_columns;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'record_columns'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.record_encoding {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'record_encoding'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.record_encoding {
+
+        if the_val.len() < 5 as _ {
+            return Err(format!("Min validation failed on field 'record_encoding'. {} is less than 5", the_val.len()));
+        }
+
+        }
+        
+        self.record_format.validate()?;
+
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, provides additional mapping    information when JSON is the record format on the streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1107,6 +1638,34 @@ pub struct JSONMappingParameters {
 
 
 
+impl cfn_resources::CfnResource for JSONMappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.record_row_path;
+
+        if the_val.len() > 65535 as _ {
+            return Err(format!("Max validation failed on field 'record_row_path'. {} is greater than 65535", the_val.len()));
+        }
+
+        
+        let the_val = &self.record_row_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'record_row_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, identifies a Kinesis Data    Firehose delivery stream as the streaming source. You provide the delivery stream's Amazon    Resource Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1134,6 +1693,34 @@ pub struct KinesisFirehoseInput {
 
 
 
+impl cfn_resources::CfnResource for KinesisFirehoseInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Identifies a Kinesis data stream as the streaming source. You provide the    stream's Amazon Resource Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1161,6 +1748,34 @@ pub struct KinesisStreamsInput {
 
 
 
+impl cfn_resources::CfnResource for KinesisStreamsInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// When you configure a SQL-based Kinesis Data Analytics application's input at the    time of creating or updating an application, provides additional mapping information specific    to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the    streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1194,6 +1809,24 @@ pub struct MappingParameters {
 
 
 
+impl cfn_resources::CfnResource for MappingParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.csvmapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.jsonmapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The information required to specify a Maven reference. You can use Maven references to       specify dependency JAR files.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1257,6 +1890,62 @@ pub struct MavenReference {
 
 
 
+impl cfn_resources::CfnResource for MavenReference {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.artifact_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'artifact_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.artifact_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'artifact_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.group_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'group_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.group_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'group_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.version;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'version'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.version;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes configuration parameters for Amazon CloudWatch logging for a Java-based       Kinesis Data Analytics application. For more information about CloudWatch logging, see         Monitoring.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1381,6 +2070,20 @@ impl Default for MonitoringConfigurationMetricsLevelEnum {
 }
 
 
+impl cfn_resources::CfnResource for MonitoringConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes parameters for how a Flink-based Kinesis Data Analytics application    executes multiple tasks simultaneously. For more information about parallelism,    see Parallel Execution in the Apache Flink     Documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1463,6 +2166,36 @@ impl Default for ParallelismConfigurationConfigurationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ParallelismConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.parallelism {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'parallelism'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.parallelism_per_kpu {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'parallelism_per_kpu'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Property key-value pairs passed into an application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1502,6 +2235,36 @@ pub struct PropertyGroup {
 
 
 
+impl cfn_resources::CfnResource for PropertyGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.property_group_id {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'property_group_id'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.property_group_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'property_group_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, describes the mapping of each    data element in the streaming source to the corresponding column in the in-application    stream.
 ///
@@ -1563,6 +2326,64 @@ pub struct RecordColumn {
 
 
 
+impl cfn_resources::CfnResource for RecordColumn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.mapping {
+
+        if the_val.len() > 65535 as _ {
+            return Err(format!("Max validation failed on field 'mapping'. {} is greater than 65535", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.mapping {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'mapping'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.sql_type;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'sql_type'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.sql_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sql_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// For a SQL-based Kinesis Data Analytics application, describes the record format    and relevant mapping information that should be applied to schematize the records on the    stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1617,6 +2438,22 @@ impl Default for RecordFormatRecordFormatTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for RecordFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.mapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the starting parameters for an Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1650,6 +2487,24 @@ pub struct RunConfiguration {
 
 
 
+impl cfn_resources::CfnResource for RunConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.application_restore_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.flink_run_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The base location of the Amazon Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1695,6 +2550,50 @@ pub struct S3ContentBaseLocation {
 
 
 
+impl cfn_resources::CfnResource for S3ContentBaseLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.base_path {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'base_path'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.base_path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'base_path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'bucket_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The location of an application or a custom artifact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1754,6 +2653,64 @@ pub struct S3ContentLocation {
 
 
 
+impl cfn_resources::CfnResource for S3ContentLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'bucket_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.file_key;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'file_key'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.file_key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'file_key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.object_version {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'object_version'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.object_version {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'object_version'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Describes the inputs, outputs, and reference data sources for a SQL-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1775,6 +2732,20 @@ pub struct SqlApplicationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SqlApplicationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1812,6 +2783,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the parameters of a VPC used by the application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1849,6 +2834,34 @@ pub struct VpcConfiguration {
 
 
 
+impl cfn_resources::CfnResource for VpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.security_group_ids;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnet_ids;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration of a Kinesis Data Analytics Studio notebook.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1908,6 +2921,34 @@ pub struct ZeppelinApplicationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ZeppelinApplicationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.catalog_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.custom_artifacts_configuration {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'custom_artifacts_configuration'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        self.deploy_as_application_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.monitoring_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes configuration parameters for Amazon CloudWatch logging for a Kinesis Data       Analytics Studio notebook. For more information about CloudWatch logging, see Monitoring.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1957,3 +2998,18 @@ impl Default for ZeppelinMonitoringConfigurationLogLevelEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for ZeppelinMonitoringConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

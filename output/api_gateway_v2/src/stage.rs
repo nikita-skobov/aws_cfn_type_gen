@@ -160,8 +160,16 @@ impl cfn_resources::CfnResource for CfnStage {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.access_log_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_route_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for logging access in a stage.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -195,6 +203,20 @@ pub struct AccessLogSettings {
 
 
 
+impl cfn_resources::CfnResource for AccessLogSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents a collection of route settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -263,3 +285,18 @@ pub struct RouteSettings {
 }
 
 
+
+impl cfn_resources::CfnResource for RouteSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

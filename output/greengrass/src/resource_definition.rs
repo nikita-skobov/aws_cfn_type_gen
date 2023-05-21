@@ -60,8 +60,14 @@ impl cfn_resources::CfnResource for CfnResourceDefinition {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.initial_version.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings that define additional 		Linux OS group permissions to give to the Lambda function process. You can give the permissions of the Linux group that 		owns the resource or choose another Linux group. These permissions are in addition to the function's RunAs permissions.
 ///
@@ -97,6 +103,20 @@ pub struct GroupOwnerSetting {
 
 
 
+impl cfn_resources::CfnResource for GroupOwnerSetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings for a 		local device resource, which represents a file under /dev. 		 For more information,   see Access Local Resources with Lambda Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -132,6 +152,22 @@ pub struct LocalDeviceResourceData {
 
 
 
+impl cfn_resources::CfnResource for LocalDeviceResourceData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.group_owner_setting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for a 		local volume resource, which represents a file or directory on the root file system. 		 For more information,   see Access Local Resources with Lambda Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -179,6 +215,22 @@ pub struct LocalVolumeResourceData {
 
 
 
+impl cfn_resources::CfnResource for LocalVolumeResourceData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.group_owner_setting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A container for resource data, which  		defines the resource type. The container takes only one of the following supported resource data types: 		LocalDeviceResourceData, LocalVolumeResourceData, SageMakerMachineLearningModelResourceData, 		S3MachineLearningModelResourceData, or SecretsManagerSecretResourceData.
 ///
@@ -250,6 +302,30 @@ pub struct ResourceDataContainer {
 
 
 
+impl cfn_resources::CfnResource for ResourceDataContainer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.local_device_resource_data.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.local_volume_resource_data.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_machine_learning_model_resource_data.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sage_maker_machine_learning_model_resource_data.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.secrets_manager_secret_resource_data.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A resource definition version contains a list of resources. 		(In AWS CloudFormation, resources are named resource instances.)
 ///
@@ -273,6 +349,20 @@ pub struct ResourceDefinitionVersion {
 
 
 
+impl cfn_resources::CfnResource for ResourceDefinitionVersion {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The owner setting for a downloaded machine learning resource. For more information, see 	  Access Machine Learning Resources from Lambda 	  Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -308,6 +398,20 @@ pub struct ResourceDownloadOwnerSetting {
 
 
 
+impl cfn_resources::CfnResource for ResourceDownloadOwnerSetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A local resource, 		machine learning resource, or secret resource. 	For more information,   see Access Local Resources with Lambda Functions, 	Perform Machine Learning Inference, and 	Deploy Secrets to the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -357,6 +461,22 @@ pub struct ResourceInstance {
 
 
 
+impl cfn_resources::CfnResource for ResourceInstance {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.resource_data_container.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Settings for an 		Amazon S3 machine learning resource. 		 For more information,   see Perform Machine Learning Inference in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -404,6 +524,22 @@ pub struct S3MachineLearningModelResourceData {
 
 
 
+impl cfn_resources::CfnResource for S3MachineLearningModelResourceData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.owner_setting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for an 		Secrets Manager machine learning resource. 		 For more information,   see Perform Machine Learning Inference in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -451,6 +587,22 @@ pub struct SageMakerMachineLearningModelResourceData {
 
 
 
+impl cfn_resources::CfnResource for SageMakerMachineLearningModelResourceData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.owner_setting.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for a secret resource, 		which references a secret from AWS Secrets Manager. AWS IoT Greengrass stores a local, encrypted copy of the secret on the Greengrass core, 		where it can be securely accessed by connectors and Lambda functions. 		For more information,   see Deploy Secrets to the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -485,3 +637,18 @@ pub struct SecretsManagerSecretResourceData {
 }
 
 
+
+impl cfn_resources::CfnResource for SecretsManagerSecretResourceData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

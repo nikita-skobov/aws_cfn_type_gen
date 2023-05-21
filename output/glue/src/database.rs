@@ -48,8 +48,28 @@ impl cfn_resources::CfnResource for CfnDatabase {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.catalog_id;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'catalog_id'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.catalog_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'catalog_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.database_input.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The AWS Lake Formation principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -75,6 +95,36 @@ pub struct DataLakePrincipal {
 
 
 
+impl cfn_resources::CfnResource for DataLakePrincipal {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.data_lake_principal_identifier {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'data_lake_principal_identifier'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.data_lake_principal_identifier {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_lake_principal_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A structure that describes a target database for resource linking.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -108,6 +158,20 @@ pub struct DatabaseIdentifier {
 
 
 
+impl cfn_resources::CfnResource for DatabaseIdentifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The structure used to create or update a database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -218,6 +282,72 @@ pub struct DatabaseInput {
 
 
 
+impl cfn_resources::CfnResource for DatabaseInput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.federated_database.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.location_uri {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'location_uri'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.location_uri {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'location_uri'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.target_database.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The FederatedDatabase property type specifies Property description not available. for an AWS::Glue::Database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -249,6 +379,20 @@ pub struct FederatedDatabase {
 
 
 
+impl cfn_resources::CfnResource for FederatedDatabase {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// the permissions granted to a principal
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -281,3 +425,20 @@ pub struct PrincipalPrivileges {
 }
 
 
+
+impl cfn_resources::CfnResource for PrincipalPrivileges {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.principal.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

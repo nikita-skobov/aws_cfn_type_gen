@@ -28,8 +28,14 @@ impl cfn_resources::CfnResource for CfnCloudFrontOriginAccessIdentity {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_front_origin_access_identity_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Origin access identity configuration. Send a GET request to the 					/CloudFront API version/CloudFront/identity ID/config 			resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -50,3 +56,18 @@ pub struct CloudFrontOriginAccessIdentityConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for CloudFrontOriginAccessIdentityConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

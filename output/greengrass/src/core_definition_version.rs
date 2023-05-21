@@ -40,8 +40,12 @@ impl cfn_resources::CfnResource for CfnCoreDefinitionVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A core is an AWS IoT device that runs the AWS IoT Greengrass core 		software and manages local processes for a Greengrass group. For more information,   see What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
@@ -100,3 +104,18 @@ pub struct Core {
 }
 
 
+
+impl cfn_resources::CfnResource for Core {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

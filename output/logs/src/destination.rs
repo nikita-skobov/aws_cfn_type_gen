@@ -76,4 +76,45 @@ impl cfn_resources::CfnResource for CfnDestination {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.destination_name;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'destination_name'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.destination_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'destination_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.destination_policy {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'destination_policy'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

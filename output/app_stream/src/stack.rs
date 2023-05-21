@@ -199,8 +199,64 @@ impl cfn_resources::CfnResource for CfnStack {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.access_endpoints {
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'access_endpoints'. {} is greater than 4", the_val.len()));
+        }
+
+        }
+        
+        self.application_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.display_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'display_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.embed_host_domains {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'embed_host_domains'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.feedback_url {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'feedback_url'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.redirect_url {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'redirect_url'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        self.streaming_experience_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes an interface VPC endpoint (interface endpoint) that lets you create a private connection between the virtual private cloud (VPC) that you specify and AppStream 2.0. When you specify an interface endpoint for a stack, users of the stack can connect to AppStream 2.0 only through that endpoint. When you specify an interface endpoint for an image builder, administrators can connect to the image builder only through that endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -253,6 +309,27 @@ impl Default for AccessEndpointEndpointTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for AccessEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.vpce_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'vpce_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The persistent application settings for users of a stack.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -288,6 +365,28 @@ pub struct ApplicationSettings {
 
 
 
+impl cfn_resources::CfnResource for ApplicationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.settings_group {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'settings_group'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A connector that enables persistent storage for users.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -360,6 +459,28 @@ impl Default for StorageConnectorConnectorTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for StorageConnector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.domains {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'domains'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The streaming protocol that you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -401,6 +522,20 @@ impl Default for StreamingExperienceSettingsPreferredProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for StreamingExperienceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -438,6 +573,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an action and whether the action is enabled or disabled for users during their streaming sessions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -532,3 +681,18 @@ impl Default for UserSettingPermissionEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for UserSetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

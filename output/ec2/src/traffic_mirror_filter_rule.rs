@@ -184,8 +184,16 @@ impl cfn_resources::CfnResource for CfnTrafficMirrorFilterRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination_port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the Traffic Mirror port range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -218,3 +226,18 @@ pub struct TrafficMirrorPortRange {
 }
 
 
+
+impl cfn_resources::CfnResource for TrafficMirrorPortRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -52,8 +52,14 @@ impl cfn_resources::CfnResource for CfnHealthCheck {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.health_check_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -224,6 +230,34 @@ impl Default for AlarmIdentifierRegionEnum {
 }
 
 
+impl cfn_resources::CfnResource for AlarmIdentifier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A complex type that contains information about the health check.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -606,6 +640,134 @@ impl Default for HealthCheckConfigTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for HealthCheckConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.alarm_identifier.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.child_health_checks {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'child_health_checks'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.failure_threshold {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'failure_threshold'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.failure_threshold {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'failure_threshold'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.fully_qualified_domain_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'fully_qualified_domain_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_threshold {
+
+        if *the_val > 256 as _ {
+            return Err(format!("Max validation failed on field 'health_threshold'. {} is greater than 256", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_threshold {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'health_threshold'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ipaddress {
+
+        if the_val.len() > 45 as _ {
+            return Err(format!("Max validation failed on field 'ipaddress'. {} is greater than 45", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.regions {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'regions'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.request_interval {
+
+        if *the_val > 30 as _ {
+            return Err(format!("Max validation failed on field 'request_interval'. {} is greater than 30", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.request_interval {
+
+        if *the_val < 10 as _ {
+            return Err(format!("Min validation failed on field 'request_interval'. {} is less than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_path {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'resource_path'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.search_string {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'search_string'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The HealthCheckTag property describes one key-value pair that is associated with an AWS::Route53::HealthCheck resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -646,3 +808,32 @@ pub struct HealthCheckTag {
 }
 
 
+
+impl cfn_resources::CfnResource for HealthCheckTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

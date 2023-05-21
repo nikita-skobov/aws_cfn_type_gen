@@ -134,8 +134,14 @@ impl cfn_resources::CfnResource for CfnMonitor {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.internet_measurements_log_delivery.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The InternetMeasurementsLogDelivery property type specifies Property description not available. for an AWS::InternetMonitor::Monitor.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -157,6 +163,22 @@ pub struct InternetMeasurementsLogDelivery {
 
 
 
+impl cfn_resources::CfnResource for InternetMeasurementsLogDelivery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to S3 logs, and DISABLED otherwise.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -202,6 +224,20 @@ pub struct S3Config {
 
 
 
+impl cfn_resources::CfnResource for S3Config {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -238,3 +274,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

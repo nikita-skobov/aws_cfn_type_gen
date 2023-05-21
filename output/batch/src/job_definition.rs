@@ -185,8 +185,22 @@ impl cfn_resources::CfnResource for CfnJobDefinition {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.container_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.eks_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.node_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_strategy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timeout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The authorization configuration details for the Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -241,6 +255,20 @@ impl Default for AuthorizationConfigIamEnum {
 }
 
 
+impl cfn_resources::CfnResource for AuthorizationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Container properties are used  for  Amazon ECS based job definitions. These properties to describe the container that's  launched as part of a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -525,6 +553,30 @@ pub struct ContainerProperties {
 
 
 
+impl cfn_resources::CfnResource for ContainerProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ephemeral_storage.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.fargate_platform_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.linux_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.log_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a container instance host device.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -570,6 +622,20 @@ pub struct Device {
 
 
 
+impl cfn_resources::CfnResource for Device {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This is used when you're using an Amazon Elastic File System file system for job storage. For more  information, see Amazon EFS   Volumes in the         AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -641,6 +707,22 @@ pub struct EfsVolumeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EfsVolumeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.authorization_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// EKS container properties are used in job definitions for Amazon EKS based job definitions to  describe the properties for a container node in the pod that's launched as part of a job. This  can't be specified for Amazon ECS based job definitions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -764,6 +846,24 @@ pub struct EksContainer {
 
 
 
+impl cfn_resources::CfnResource for EksContainer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.resources.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.security_context.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An environment variable.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -797,6 +897,20 @@ pub struct EksContainerEnvironmentVariable {
 
 
 
+impl cfn_resources::CfnResource for EksContainerEnvironmentVariable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The EksContainerResourceRequirements property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -828,6 +942,20 @@ pub struct EksContainerResourceRequirements {
 
 
 
+impl cfn_resources::CfnResource for EksContainerResourceRequirements {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The EksContainerSecurityContext property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -892,6 +1020,20 @@ pub struct EksContainerSecurityContext {
 
 
 
+impl cfn_resources::CfnResource for EksContainerSecurityContext {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The volume mounts for a container for an Amazon EKS job. For more information about volumes and  volume mounts in Kubernetes, see Volumes in the Kubernetes documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -937,6 +1079,20 @@ pub struct EksContainerVolumeMount {
 
 
 
+impl cfn_resources::CfnResource for EksContainerVolumeMount {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The EksEmptyDir property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -968,6 +1124,20 @@ pub struct EksEmptyDir {
 
 
 
+impl cfn_resources::CfnResource for EksEmptyDir {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The EksHostPath property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -988,6 +1158,20 @@ pub struct EksHostPath {
 
 
 
+impl cfn_resources::CfnResource for EksHostPath {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that contains the properties for the Kubernetes resources of a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1009,6 +1193,22 @@ pub struct EksProperties {
 
 
 
+impl cfn_resources::CfnResource for EksProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.pod_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The EksSecret property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1040,6 +1240,20 @@ pub struct EksSecret {
 
 
 
+impl cfn_resources::CfnResource for EksSecret {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an Amazon EKS volume for a job definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1097,6 +1311,26 @@ pub struct EksVolume {
 
 
 
+impl cfn_resources::CfnResource for EksVolume {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.empty_dir.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.host_path.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.secret.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Environment property type specifies environment variables to use in a job definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1130,6 +1364,20 @@ pub struct Environment {
 
 
 
+impl cfn_resources::CfnResource for Environment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The EphemeralStorage property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1150,6 +1398,20 @@ pub struct EphemeralStorage {
 
 
 
+impl cfn_resources::CfnResource for EphemeralStorage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an array of up to 5 conditions to be met, and an action to take   (RETRY or EXIT) if all conditions are met. If none of the   EvaluateOnExit conditions in a RetryStrategy match, then the job is  retried.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1230,6 +1492,20 @@ impl Default for EvaluateOnExitActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for EvaluateOnExit {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The platform configuration for jobs that are running on Fargate resources. Jobs that run  on EC2 resources must not specify this parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1251,6 +1527,20 @@ pub struct FargatePlatformConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FargatePlatformConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Linux-specific modifications that are applied to the container, such as details for device  mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1348,6 +1638,20 @@ pub struct LinuxParameters {
 
 
 
+impl cfn_resources::CfnResource for LinuxParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Log configuration options to send to a custom log driver for the container.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1444,6 +1748,20 @@ impl Default for LogConfigurationLogDriverEnum {
 }
 
 
+impl cfn_resources::CfnResource for LogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Metadata property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1464,6 +1782,20 @@ pub struct Metadata {
 
 
 
+impl cfn_resources::CfnResource for Metadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details for a Docker volume mount point that's used in a job's container properties. This  parameter maps to Volumes in the Create a container section of the Docker Remote API and the   --volume option to docker run.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1509,6 +1841,20 @@ pub struct MountPoints {
 
 
 
+impl cfn_resources::CfnResource for MountPoints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The network configuration for jobs that are running on Fargate resources. Jobs that are  running on EC2 resources must not specify this parameter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1551,6 +1897,20 @@ impl Default for NetworkConfigurationAssignPublicIpEnum {
 }
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents the node properties of a multi-node parallel job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1596,6 +1956,20 @@ pub struct NodeProperties {
 
 
 
+impl cfn_resources::CfnResource for NodeProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents the properties of the node range for a multi-node parallel  job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1629,6 +2003,22 @@ pub struct NodeRangeProperty {
 
 
 
+impl cfn_resources::CfnResource for NodeRangeProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.container.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The properties for the pod.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1711,6 +2101,22 @@ pub struct PodProperties {
 
 
 
+impl cfn_resources::CfnResource for PodProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.metadata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The type and amount of a resource to assign to a container. The supported resources include   GPU, MEMORY, and VCPU.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1771,6 +2177,20 @@ impl Default for ResourceRequirementTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ResourceRequirement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The retry strategy that's associated with a job. For more information, see Automated job retries in the           AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1804,6 +2224,20 @@ pub struct RetryStrategy {
 
 
 
+impl cfn_resources::CfnResource for RetryStrategy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents the secret to expose to your container. Secrets can be exposed to  a container in the following ways:
 ///
@@ -1841,6 +2275,20 @@ pub struct Secret {
 
 
 
+impl cfn_resources::CfnResource for Secret {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a job timeout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1866,6 +2314,20 @@ pub struct Timeout {
 
 
 
+impl cfn_resources::CfnResource for Timeout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The container path, mount options, and size of the tmpfs mount.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1913,6 +2375,20 @@ pub struct Tmpfs {
 
 
 
+impl cfn_resources::CfnResource for Tmpfs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ulimit settings to pass to the container.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1958,6 +2434,20 @@ pub struct Ulimit {
 
 
 
+impl cfn_resources::CfnResource for Ulimit {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of volumes that are associated with the job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2005,6 +2495,24 @@ pub struct Volumes {
 
 
 
+impl cfn_resources::CfnResource for Volumes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.efs_volume_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.host.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Determine whether your data volume persists on the host container instance and where it's  stored. If this parameter is empty, then the Docker daemon assigns a host path for your data  volume. However, the data isn't guaranteed to persist after the containers that are associated  with it stop running.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2027,3 +2535,18 @@ pub struct VolumesHost {
 }
 
 
+
+impl cfn_resources::CfnResource for VolumesHost {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

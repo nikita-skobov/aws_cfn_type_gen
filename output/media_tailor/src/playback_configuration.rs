@@ -183,8 +183,26 @@ impl cfn_resources::CfnResource for CfnPlaybackConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.avail_suppression.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.bumper.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.cdn_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dash_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.live_pre_roll_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.manifest_processing_rules.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AdMarkerPassthrough property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -205,6 +223,20 @@ pub struct AdMarkerPassthrough {
 
 
 
+impl cfn_resources::CfnResource for AdMarkerPassthrough {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AvailSuppression property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -236,6 +268,20 @@ pub struct AvailSuppression {
 
 
 
+impl cfn_resources::CfnResource for AvailSuppression {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Bumper property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -267,6 +313,20 @@ pub struct Bumper {
 
 
 
+impl cfn_resources::CfnResource for Bumper {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The CdnConfiguration property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -298,6 +358,20 @@ pub struct CdnConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CdnConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration for DASH content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -343,6 +417,20 @@ pub struct DashConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DashConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration for HLS content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -364,6 +452,20 @@ pub struct HlsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for HlsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LivePreRollConfiguration property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -395,6 +497,20 @@ pub struct LivePreRollConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LivePreRollConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ManifestProcessingRules property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -415,6 +531,22 @@ pub struct ManifestProcessingRules {
 
 
 
+impl cfn_resources::CfnResource for ManifestProcessingRules {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ad_marker_passthrough.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -451,3 +583,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

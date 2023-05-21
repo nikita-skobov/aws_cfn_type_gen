@@ -108,8 +108,16 @@ impl cfn_resources::CfnResource for CfnDataCellsFilter {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.column_wildcard.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.row_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -131,6 +139,20 @@ pub struct ColumnWildcard {
 
 
 
+impl cfn_resources::CfnResource for ColumnWildcard {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A PartiQL predicate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -163,3 +185,18 @@ pub struct RowFilter {
 }
 
 
+
+impl cfn_resources::CfnResource for RowFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

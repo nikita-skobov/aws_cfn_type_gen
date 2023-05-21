@@ -3153,8 +3153,24 @@ impl cfn_resources::CfnResource for CfnInstance {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.cpu_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.credit_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.enclave_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hibernation_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.launch_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.private_dns_name_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies input parameter values for an SSM document in AWS Systems Manager.
 ///
@@ -3190,6 +3206,20 @@ pub struct AssociationParameter {
 
 
 
+impl cfn_resources::CfnResource for AssociationParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a block device mapping for an instance. You must specify exactly one of the     following properties: VirtualName, Ebs, or     NoDevice.
 ///
@@ -3261,6 +3291,24 @@ pub struct BlockDeviceMapping {
 
 
 
+impl cfn_resources::CfnResource for BlockDeviceMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ebs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.no_device.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the CPU options for the instance. When you specify CPU options, you must     specify both the number of CPU cores and threads per core.
 ///
@@ -3296,6 +3344,20 @@ pub struct CpuOptions {
 
 
 
+impl cfn_resources::CfnResource for CpuOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the credit option for CPU usage of a T instance.
 ///
@@ -3325,6 +3387,20 @@ pub struct CreditSpecification {
 
 
 
+impl cfn_resources::CfnResource for CreditSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a block device for an EBS volume.
 ///
@@ -3493,6 +3569,20 @@ impl Default for EbsVolumeTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Ebs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the type of Elastic GPU. An Elastic GPU is a GPU resource that you can attach     to your Amazon EC2 instance to accelerate the graphics performance of your applications.     For more information, see Amazon EC2 Elastic GPUs     in the Amazon EC2 User Guide for Windows Instances.
 ///
@@ -3516,6 +3606,20 @@ pub struct ElasticGpuSpecification {
 
 
 
+impl cfn_resources::CfnResource for ElasticGpuSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the Elastic Inference Accelerator for the instance.
 ///
@@ -3551,6 +3655,20 @@ pub struct ElasticInferenceAccelerator {
 
 
 
+impl cfn_resources::CfnResource for ElasticInferenceAccelerator {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Indicates whether the instance is enabled for AWS Nitro       Enclaves.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3572,6 +3690,20 @@ pub struct EnclaveOptions {
 
 
 
+impl cfn_resources::CfnResource for EnclaveOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the hibernation options for the instance.
 ///
@@ -3597,6 +3729,20 @@ pub struct HibernationOptions {
 
 
 
+impl cfn_resources::CfnResource for HibernationOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the IPv6 address for the instance.
 ///
@@ -3620,6 +3766,20 @@ pub struct InstanceIpv6Address {
 
 
 
+impl cfn_resources::CfnResource for InstanceIpv6Address {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a launch template to use when launching an Amazon EC2 instance.
 ///
@@ -3679,6 +3839,20 @@ pub struct LaunchTemplateSpecification {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplateSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the license configuration to use.
 ///
@@ -3702,6 +3876,20 @@ pub struct LicenseSpecification {
 
 
 
+impl cfn_resources::CfnResource for LicenseSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a network interface that is to be attached to an instance.
 ///
@@ -3875,6 +4063,20 @@ pub struct NetworkInterface {
 
 
 
+impl cfn_resources::CfnResource for NetworkInterface {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Suppresses the specified device included in the block device mapping of the AMI. To     suppress a device, specify an empty string.
 ///
@@ -3886,6 +4088,20 @@ pub struct NoDevice {
 
 
 
+impl cfn_resources::CfnResource for NoDevice {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The type of hostnames to assign to instances in the subnet at launch. For IPv4 only subnets, an     instance DNS name must be based on the instance IPv4 address. For IPv6 only subnets, an instance     DNS name must be based on the instance ID. For dual-stack subnets, you can specify whether DNS     names use the instance IPv4 address or the instance ID. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3952,6 +4168,20 @@ impl Default for PrivateDnsNameOptionsHostnameTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PrivateDnsNameOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a secondary private IPv4 address for a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3985,6 +4215,20 @@ pub struct PrivateIpAddressSpecification {
 
 
 
+impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the SSM document and parameter values in AWS Systems Manager to associate     with an instance.
 ///
@@ -4020,6 +4264,20 @@ pub struct SsmAssociation {
 
 
 
+impl cfn_resources::CfnResource for SsmAssociation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -4057,6 +4315,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a volume to attach to an instance.
 ///
@@ -4091,3 +4363,18 @@ pub struct Volume {
 }
 
 
+
+impl cfn_resources::CfnResource for Volume {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

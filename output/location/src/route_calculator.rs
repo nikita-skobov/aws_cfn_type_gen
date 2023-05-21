@@ -105,4 +105,39 @@ impl cfn_resources::CfnResource for CfnRouteCalculator {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.calculator_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'calculator_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.calculator_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'calculator_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

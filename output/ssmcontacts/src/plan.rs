@@ -58,8 +58,26 @@ impl cfn_resources::CfnResource for CfnPlan {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.contact_id;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'contact_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.contact_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'contact_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information about the contact channel that Incident Manager uses to engage the     contact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -103,6 +121,48 @@ pub struct ChannelTargetInfo {
 
 
 
+impl cfn_resources::CfnResource for ChannelTargetInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.channel_id;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'channel_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.channel_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'channel_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.retry_interval_in_minutes;
+
+        if *the_val > 60 as _ {
+            return Err(format!("Max validation failed on field 'retry_interval_in_minutes'. {} is greater than 60", the_val));
+        }
+
+        
+        let the_val = &self.retry_interval_in_minutes;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'retry_interval_in_minutes'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The contact that Incident Manager is engaging during an incident.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -142,6 +202,34 @@ pub struct ContactTargetInfo {
 
 
 
+impl cfn_resources::CfnResource for ContactTargetInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.contact_id;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'contact_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.contact_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'contact_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A set amount of time that an escalation plan or engagement plan engages the specified     contacts or contact methods.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -179,6 +267,34 @@ pub struct Stage {
 
 
 
+impl cfn_resources::CfnResource for Stage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.duration_in_minutes;
+
+        if *the_val > 30 as _ {
+            return Err(format!("Max validation failed on field 'duration_in_minutes'. {} is greater than 30", the_val));
+        }
+
+        
+        let the_val = &self.duration_in_minutes;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'duration_in_minutes'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The contact or contact channel that's being engaged.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -211,3 +327,22 @@ pub struct Targets {
 }
 
 
+
+impl cfn_resources::CfnResource for Targets {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.channel_target_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.contact_target_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

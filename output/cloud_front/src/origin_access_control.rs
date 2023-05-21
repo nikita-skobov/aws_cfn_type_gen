@@ -32,8 +32,14 @@ impl cfn_resources::CfnResource for CfnOriginAccessControl {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.origin_access_control_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Creates a new origin access control in CloudFront. After you create an origin access 			control, you can add it to an origin in a CloudFront distribution so that CloudFront sends 			authenticated (signed) requests to the origin.
 ///
@@ -173,3 +179,18 @@ impl Default for OriginAccessControlConfigSigningProtocolEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for OriginAccessControlConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

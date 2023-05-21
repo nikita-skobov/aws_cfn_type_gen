@@ -68,8 +68,43 @@ impl cfn_resources::CfnResource for CfnPipeline {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.pipeline_activities;
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'pipeline_activities'. {} is greater than 25", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.pipeline_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'pipeline_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pipeline_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'pipeline_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An activity that performs a transformation on a message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -199,6 +234,40 @@ pub struct Activity {
 
 
 
+impl cfn_resources::CfnResource for Activity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.add_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.channel.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.datastore.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.device_registry_enrich.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.device_shadow_enrich.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lambda.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.math.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.remove_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.select_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An activity that adds other attributes based on existing attributes in the message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -254,6 +323,50 @@ pub struct AddAttributes {
 
 
 
+impl cfn_resources::CfnResource for AddAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Determines the source of the messages to be processed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -313,6 +426,64 @@ pub struct Channel {
 
 
 
+impl cfn_resources::CfnResource for Channel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.channel_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'channel_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.channel_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'channel_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The datastore activity that specifies where to store the processed data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -356,6 +527,48 @@ pub struct Datastore {
 
 
 
+impl cfn_resources::CfnResource for Datastore {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.datastore_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'datastore_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.datastore_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'datastore_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An activity that adds data from the AWS IoT device registry to your message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -445,6 +658,92 @@ pub struct DeviceRegistryEnrich {
 
 
 
+impl cfn_resources::CfnResource for DeviceRegistryEnrich {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attribute;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'attribute'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.thing_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'thing_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.thing_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'thing_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An activity that adds information from the AWS IoT Device Shadows service to a message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -534,6 +833,92 @@ pub struct DeviceShadowEnrich {
 
 
 
+impl cfn_resources::CfnResource for DeviceShadowEnrich {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attribute;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'attribute'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.thing_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'thing_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.thing_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'thing_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An activity that filters a message based on its attributes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -591,6 +976,64 @@ pub struct Filter {
 
 
 
+impl cfn_resources::CfnResource for Filter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.filter;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'filter'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.filter;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An activity that runs a Lambda function to modify the message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -668,6 +1111,78 @@ pub struct Lambda {
 
 
 
+impl cfn_resources::CfnResource for Lambda {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.batch_size;
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'batch_size'. {} is greater than 1000", the_val));
+        }
+
+        
+        let the_val = &self.batch_size;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'batch_size'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.lambda_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'lambda_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.lambda_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'lambda_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An activity that computes an arithmetic expression using the message's attributes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -741,6 +1256,78 @@ pub struct Math {
 
 
 
+impl cfn_resources::CfnResource for Math {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attribute;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'attribute'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.math;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'math'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.math;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'math'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An activity that removes attributes from a message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -796,6 +1383,57 @@ pub struct RemoveAttributes {
 
 
 
+impl cfn_resources::CfnResource for RemoveAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attributes;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'attributes'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Creates a new message using only the specified attributes     from the original message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -851,6 +1489,57 @@ pub struct SelectAttributes {
 
 
 
+impl cfn_resources::CfnResource for SelectAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attributes;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'attributes'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'next'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.next {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'next'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -887,3 +1576,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

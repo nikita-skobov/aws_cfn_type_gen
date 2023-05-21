@@ -54,8 +54,14 @@ impl cfn_resources::CfnResource for CfnConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.config_data.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Provides information about how AWS Ground Station should configure an antenna for downlink during a contact.       Use an antenna downlink config in a mission profile to receive the downlink data in raw DigIF format.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -77,6 +83,22 @@ pub struct AntennaDownlinkConfig {
 
 
 
+impl cfn_resources::CfnResource for AntennaDownlinkConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.spectrum_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides information about how AWS Ground Station should configure an antenna for downlink during a contact.       Use an antenna downlink demod decode config in a mission profile to receive the downlink data that has been demodulated and decoded.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -122,6 +144,26 @@ pub struct AntennaDownlinkDemodDecodeConfig {
 
 
 
+impl cfn_resources::CfnResource for AntennaDownlinkDemodDecodeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.decode_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.demodulation_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.spectrum_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides information about how AWS Ground Station should configure an antenna for uplink during a contact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -167,6 +209,24 @@ pub struct AntennaUplinkConfig {
 
 
 
+impl cfn_resources::CfnResource for AntennaUplinkConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.spectrum_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.target_eirp.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Config objects provide information to Ground Station about how to configure the antenna and how data flows during a contact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -260,6 +320,34 @@ pub struct ConfigData {
 
 
 
+impl cfn_resources::CfnResource for ConfigData {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.antenna_downlink_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.antenna_downlink_demod_decode_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.antenna_uplink_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dataflow_endpoint_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_recording_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tracking_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.uplink_echo_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides information to AWS Ground Station about which IP endpoints to use during a contact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -293,6 +381,20 @@ pub struct DataflowEndpointConfig {
 
 
 
+impl cfn_resources::CfnResource for DataflowEndpointConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines decoding settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -314,6 +416,20 @@ pub struct DecodeConfig {
 
 
 
+impl cfn_resources::CfnResource for DecodeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines demodulation settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -335,6 +451,20 @@ pub struct DemodulationConfig {
 
 
 
+impl cfn_resources::CfnResource for DemodulationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines an equivalent isotropically radiated power (EIRP).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -368,6 +498,20 @@ pub struct Eirp {
 
 
 
+impl cfn_resources::CfnResource for Eirp {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a frequency.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -401,6 +545,20 @@ pub struct Frequency {
 
 
 
+impl cfn_resources::CfnResource for Frequency {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a bandwidth.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -436,6 +594,20 @@ pub struct FrequencyBandwidth {
 
 
 
+impl cfn_resources::CfnResource for FrequencyBandwidth {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information about how AWS Ground Station should save downlink data to S3.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -483,6 +655,20 @@ pub struct S3RecordingConfig {
 
 
 
+impl cfn_resources::CfnResource for S3RecordingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a spectrum.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -530,6 +716,24 @@ pub struct SpectrumConfig {
 
 
 
+impl cfn_resources::CfnResource for SpectrumConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.bandwidth.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.center_frequency.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -567,6 +771,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information about how AWS Ground Station should track the satellite through the sky during a contact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -588,6 +806,20 @@ pub struct TrackingConfig {
 
 
 
+impl cfn_resources::CfnResource for TrackingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides information about how AWS Ground Station should echo back uplink transmissions to a dataflow endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -621,6 +853,20 @@ pub struct UplinkEchoConfig {
 
 
 
+impl cfn_resources::CfnResource for UplinkEchoConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a uplink spectrum.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -653,3 +899,20 @@ pub struct UplinkSpectrumConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for UplinkSpectrumConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.center_frequency.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

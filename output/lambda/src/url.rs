@@ -124,8 +124,14 @@ impl cfn_resources::CfnResource for CfnUrl {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.cors.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Cross-Origin Resource Sharing (CORS)    settings for your function URL. Use CORS to grant access to your function URL from any origin. You can also use CORS    to control access for specific HTTP headers and methods in requests to your function URL.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -220,3 +226,66 @@ pub struct Cors {
 }
 
 
+
+impl cfn_resources::CfnResource for Cors {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.allow_headers {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'allow_headers'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allow_methods {
+
+        if the_val.len() > 6 as _ {
+            return Err(format!("Max validation failed on field 'allow_methods'. {} is greater than 6", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allow_origins {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'allow_origins'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.expose_headers {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'expose_headers'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_age {
+
+        if *the_val > 86400 as _ {
+            return Err(format!("Max validation failed on field 'max_age'. {} is greater than 86400", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_age {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_age'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

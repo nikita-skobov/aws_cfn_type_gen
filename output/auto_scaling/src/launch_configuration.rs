@@ -284,8 +284,38 @@ impl cfn_resources::CfnResource for CfnLaunchConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.launch_configuration_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'launch_configuration_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.launch_configuration_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'launch_configuration_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.metadata_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.user_data {
+
+        if the_val.len() > 21847 as _ {
+            return Err(format!("Max validation failed on field 'user_data'. {} is greater than 21847", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// BlockDevice is a property of the EBS property of the AWS::AutoScaling::LaunchConfiguration BlockDeviceMapping property type that    describes an Amazon EBS volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -405,6 +435,52 @@ pub struct BlockDevice {
 
 
 
+impl cfn_resources::CfnResource for BlockDevice {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.throughput {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'throughput'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.throughput {
+
+        if *the_val < 125 as _ {
+            return Err(format!("Min validation failed on field 'throughput'. {} is less than 125", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.volume_size {
+
+        if *the_val > 16384 as _ {
+            return Err(format!("Max validation failed on field 'volume_size'. {} is greater than 16384", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.volume_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'volume_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// BlockDeviceMapping specifies a block device mapping for the     BlockDeviceMappings property of the AWS::AutoScaling::LaunchConfiguration resource.
 ///
@@ -470,6 +546,22 @@ pub struct BlockDeviceMapping {
 
 
 
+impl cfn_resources::CfnResource for BlockDeviceMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ebs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// MetadataOptions is a property of AWS::AutoScaling::LaunchConfiguration that describes metadata options for the    instances.
 ///
@@ -570,3 +662,34 @@ impl Default for MetadataOptionsHttpTokensEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for MetadataOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.http_put_response_hop_limit {
+
+        if *the_val > 64 as _ {
+            return Err(format!("Max validation failed on field 'http_put_response_hop_limit'. {} is greater than 64", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.http_put_response_hop_limit {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'http_put_response_hop_limit'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

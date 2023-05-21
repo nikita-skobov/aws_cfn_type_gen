@@ -102,8 +102,20 @@ impl cfn_resources::CfnResource for CfnPackagingConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.cmaf_package.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dash_package.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hls_package.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mss_package.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -125,6 +137,22 @@ pub struct CmafEncryption {
 
 
 
+impl cfn_resources::CfnResource for CmafEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.speke_key_provider.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Parameters for a packaging configuration that uses Common Media Application Format (CMAF) packaging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -182,6 +210,22 @@ pub struct CmafPackage {
 
 
 
+impl cfn_resources::CfnResource for CmafPackage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -203,6 +247,22 @@ pub struct DashEncryption {
 
 
 
+impl cfn_resources::CfnResource for DashEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.speke_key_provider.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Parameters for a DASH manifest.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -288,6 +348,22 @@ pub struct DashManifest {
 
 
 
+impl cfn_resources::CfnResource for DashManifest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.stream_selection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Parameters for a packaging configuration that uses Dynamic Adaptive Streaming over HTTP (DASH) packaging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -385,6 +461,22 @@ pub struct DashPackage {
 
 
 
+impl cfn_resources::CfnResource for DashPackage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Use encryptionContractConfiguration to configure one or more content        encryption keys for your endpoints that use SPEKE Version 2.0. The encryption contract        defines the content keys used to encrypt the audio and video tracks in your stream.        To configure the encryption contract, specify which audio and video encryption        presets to use. For more information about these presets, see SPEKE Version 2.0 Presets.
 ///
@@ -396,6 +488,20 @@ pub struct EncryptionContractConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EncryptionContractConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -441,6 +547,22 @@ pub struct HlsEncryption {
 
 
 
+impl cfn_resources::CfnResource for HlsEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.speke_key_provider.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Parameters for an HLS manifest.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -530,6 +652,22 @@ pub struct HlsManifest {
 
 
 
+impl cfn_resources::CfnResource for HlsManifest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.stream_selection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Parameters for a packaging configuration that uses HTTP Live Streaming (HLS) packaging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -599,6 +737,22 @@ pub struct HlsPackage {
 
 
 
+impl cfn_resources::CfnResource for HlsPackage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -620,6 +774,22 @@ pub struct MssEncryption {
 
 
 
+impl cfn_resources::CfnResource for MssEncryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.speke_key_provider.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Parameters for a Microsoft Smooth manifest.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -653,6 +823,22 @@ pub struct MssManifest {
 
 
 
+impl cfn_resources::CfnResource for MssManifest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.stream_selection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Parameters for a packaging configuration that uses Microsoft Smooth Streaming (MSS) packaging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -698,6 +884,22 @@ pub struct MssPackage {
 
 
 
+impl cfn_resources::CfnResource for MssPackage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A configuration for accessing an external Secure Packager and Encoder Key Exchange     (SPEKE) service that provides encryption keys.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -755,6 +957,22 @@ pub struct SpekeKeyProvider {
 
 
 
+impl cfn_resources::CfnResource for SpekeKeyProvider {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption_contract_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Limitations for outputs from the endpoint, based on the video bitrate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -802,6 +1020,20 @@ pub struct StreamSelection {
 
 
 
+impl cfn_resources::CfnResource for StreamSelection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -838,3 +1070,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

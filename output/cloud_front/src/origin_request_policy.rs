@@ -32,8 +32,14 @@ impl cfn_resources::CfnResource for CfnOriginRequestPolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.origin_request_policy_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An object that determines whether any cookies in viewer requests (and if so, which 			cookies) are included in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -98,6 +104,20 @@ impl Default for CookiesConfigCookieBehaviorEnum {
 }
 
 
+impl cfn_resources::CfnResource for CookiesConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that determines whether any HTTP headers (and if so, which headers) are 			included in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -166,6 +186,20 @@ impl Default for HeadersConfigHeaderBehaviorEnum {
 }
 
 
+impl cfn_resources::CfnResource for HeadersConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An origin request policy configuration.
 ///
@@ -239,6 +273,26 @@ pub struct OriginRequestPolicyConfig {
 
 
 
+impl cfn_resources::CfnResource for OriginRequestPolicyConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cookies_config.validate()?;
+
+        self.headers_config.validate()?;
+
+        self.query_strings_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An object that determines whether any URL query strings in viewer requests (and if so, 			which query strings) are included in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -302,3 +356,18 @@ impl Default for QueryStringsConfigQueryStringBehaviorEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for QueryStringsConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

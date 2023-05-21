@@ -97,8 +97,40 @@ impl cfn_resources::CfnResource for CfnOrganizationConfigRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.excluded_accounts {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'excluded_accounts'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.organization_config_rule_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'organization_config_rule_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.organization_config_rule_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'organization_config_rule_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.organization_custom_policy_rule_metadata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.organization_custom_rule_metadata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.organization_managed_rule_metadata.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The OrganizationCustomPolicyRuleMetadata property type specifies Property description not available. for an AWS::Config::OrganizationConfigRule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -229,6 +261,20 @@ pub struct OrganizationCustomPolicyRuleMetadata {
 
 
 
+impl cfn_resources::CfnResource for OrganizationCustomPolicyRuleMetadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that specifies organization custom rule metadata such as resource type, resource ID of AWS resource, Lambda function ARN, 			and organization trigger types that trigger AWS Config to evaluate your AWS resources against a rule. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -409,6 +455,122 @@ impl Default for OrganizationCustomRuleMetadataMaximumExecutionFrequencyEnum {
 }
 
 
+impl cfn_resources::CfnResource for OrganizationCustomRuleMetadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.input_parameters {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'input_parameters'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.input_parameters {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'input_parameters'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.lambda_function_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'lambda_function_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.lambda_function_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'lambda_function_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.resource_id_scope {
+
+        if the_val.len() > 768 as _ {
+            return Err(format!("Max validation failed on field 'resource_id_scope'. {} is greater than 768", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_id_scope {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_id_scope'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_types_scope {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'resource_types_scope'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_key_scope {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'tag_key_scope'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_key_scope {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'tag_key_scope'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_value_scope {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'tag_value_scope'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_value_scope {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'tag_value_scope'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that specifies organization managed rule metadata such as resource type and ID of AWS resource along with the rule identifier. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -574,3 +736,120 @@ impl Default for OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for OrganizationManagedRuleMetadata {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.input_parameters {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'input_parameters'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.input_parameters {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'input_parameters'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_id_scope {
+
+        if the_val.len() > 768 as _ {
+            return Err(format!("Max validation failed on field 'resource_id_scope'. {} is greater than 768", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_id_scope {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_id_scope'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_types_scope {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'resource_types_scope'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.rule_identifier;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'rule_identifier'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.rule_identifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'rule_identifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.tag_key_scope {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'tag_key_scope'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_key_scope {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'tag_key_scope'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_value_scope {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'tag_value_scope'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tag_value_scope {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'tag_value_scope'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

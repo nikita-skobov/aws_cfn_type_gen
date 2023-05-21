@@ -270,8 +270,18 @@ impl cfn_resources::CfnResource for CfnClientVpnEndpoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.client_connect_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.client_login_banner_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.connection_log_options.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Information about the client certificate to be used for authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -293,6 +303,20 @@ pub struct CertificateAuthenticationRequest {
 
 
 
+impl cfn_resources::CfnResource for CertificateAuthenticationRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the authentication method to be used by a Client VPN endpoint. For more information, see Authentication 			in the         AWS Client VPN Administrator Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -375,6 +399,26 @@ impl Default for ClientAuthenticationRequestTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ClientAuthenticationRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.active_directory.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.federated_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mutual_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Indicates whether client connect options are enabled. The default is false     (not enabled).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -408,6 +452,20 @@ pub struct ClientConnectOptions {
 
 
 
+impl cfn_resources::CfnResource for ClientConnectOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Options for enabling a customizable text banner that will be displayed on 			AWS provided clients when a VPN session is established.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -445,6 +503,20 @@ pub struct ClientLoginBannerOptions {
 
 
 
+impl cfn_resources::CfnResource for ClientLoginBannerOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the client connection logging options for the Client VPN endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -490,6 +562,20 @@ pub struct ConnectionLogOptions {
 
 
 
+impl cfn_resources::CfnResource for ConnectionLogOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the Active Directory to be used for client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -511,6 +597,20 @@ pub struct DirectoryServiceAuthenticationRequest {
 
 
 
+impl cfn_resources::CfnResource for DirectoryServiceAuthenticationRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The IAM SAML identity provider used for federated authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -544,6 +644,20 @@ pub struct FederatedAuthenticationRequest {
 
 
 
+impl cfn_resources::CfnResource for FederatedAuthenticationRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -581,6 +695,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The tags to apply to a resource when the resource is being created. When you specify a tag, you must     specify the resource type to tag, otherwise the request will fail.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -966,3 +1094,18 @@ impl Default for TagSpecificationResourceTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TagSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

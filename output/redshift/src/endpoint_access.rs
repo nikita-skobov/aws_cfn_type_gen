@@ -84,8 +84,41 @@ impl cfn_resources::CfnResource for CfnEndpointAccess {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cluster_identifier;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        let the_val = &self.endpoint_name;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_name'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.resource_owner {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'resource_owner'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.subnet_group_name;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'subnet_group_name'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Describes a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -151,6 +184,52 @@ pub struct NetworkInterface {
 
 
 
+impl cfn_resources::CfnResource for NetworkInterface {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.availability_zone {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'availability_zone'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.network_interface_id {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'network_interface_id'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.private_ip_address {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'private_ip_address'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_id {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The connection endpoint for connecting to an Amazon Redshift cluster through the proxy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -200,6 +279,36 @@ pub struct VpcEndpoint {
 
 
 
+impl cfn_resources::CfnResource for VpcEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.vpc_endpoint_id {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'vpc_endpoint_id'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.vpc_id {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'vpc_id'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The security groups associated with the endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -236,3 +345,34 @@ pub struct VpcSecurityGroup {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcSecurityGroup {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.status {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'status'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.vpc_security_group_id {
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'vpc_security_group_id'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

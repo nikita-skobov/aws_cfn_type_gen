@@ -173,4 +173,63 @@ impl cfn_resources::CfnResource for CfnPermission {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.event_source_token {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'event_source_token'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.event_source_token {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'event_source_token'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.function_name;
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'function_name'. {} is greater than 140", the_val.len()));
+        }
+
+        
+        let the_val = &self.function_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'function_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.principal_org_id {
+
+        if the_val.len() > 34 as _ {
+            return Err(format!("Max validation failed on field 'principal_org_id'. {} is greater than 34", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.principal_org_id {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'principal_org_id'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.source_account {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'source_account'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

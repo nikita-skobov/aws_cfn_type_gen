@@ -387,8 +387,28 @@ impl cfn_resources::CfnResource for CfnService {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.deployment_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.deployment_controller.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.service_connect_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object representing the networking details for a task or service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -459,6 +479,20 @@ impl Default for AwsVpcConfigurationAssignPublicIpEnum {
 }
 
 
+impl cfn_resources::CfnResource for AwsVpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details of a capacity provider strategy. A capacity provider strategy can be set when using the   RunTask or CreateService APIs or as the default capacity provider strategy for a cluster  with the CreateCluster API.
 ///
@@ -522,6 +556,52 @@ pub struct CapacityProviderStrategyItem {
 
 
 
+impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.base {
+
+        if *the_val > 100000 as _ {
+            return Err(format!("Max validation failed on field 'base'. {} is greater than 100000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.base {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'base'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.weight {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'weight'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.weight {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'weight'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// One of the methods which provide a way for you to quickly identify when a deployment 			has failed, and then to optionally roll back the failure to the last working 			deployment.
 ///
@@ -573,6 +653,20 @@ pub struct DeploymentAlarms {
 
 
 
+impl cfn_resources::CfnResource for DeploymentAlarms {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The deployment circuit breaker determines whether a 			service deployment will fail if the service can't reach a steady state. If it is turned on, a 			service deployment will transition to a failed state and stop launching new tasks. You 			can also configure Amazon ECS to roll back your service to the last completed deployment 			after a failure. For more information, see Rolling 				update in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -606,6 +700,20 @@ pub struct DeploymentCircuitBreaker {
 
 
 
+impl cfn_resources::CfnResource for DeploymentCircuitBreaker {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The DeploymentConfiguration property specifies optional deployment parameters that control how many  tasks run during the deployment and the ordering of stopping and starting tasks.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -677,6 +785,24 @@ pub struct DeploymentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DeploymentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.alarms.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.deployment_circuit_breaker.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The deployment controller to use for the service. For more information, see Amazon ECS deployment types in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -725,6 +851,20 @@ impl Default for DeploymentControllerTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DeploymentController {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LoadBalancer property specifies details on a load balancer that is used with a service.
 ///
@@ -796,6 +936,20 @@ pub struct LoadBalancer {
 
 
 
+impl cfn_resources::CfnResource for LoadBalancer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The log configuration for the container. This parameter maps to LogConfig 			in the Create a container section of the Docker Remote API and the 				--log-driver option to docker 					run.
 ///
@@ -900,6 +1054,20 @@ impl Default for LogConfigurationLogDriverEnum {
 }
 
 
+impl cfn_resources::CfnResource for LogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The NetworkConfiguration property specifies an object representing the network configuration for a  task or service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -923,6 +1091,22 @@ pub struct NetworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.awsvpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The PlacementConstraint property specifies an object representing a constraint on task placement in  the task definition. For more information, see Task Placement Constraints in the   Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -977,6 +1161,20 @@ impl Default for PlacementConstraintTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PlacementConstraint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The PlacementStrategy property specifies the task placement strategy for a task or service. For  more information, see Task Placement Strategies in the   Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1035,6 +1233,20 @@ impl Default for PlacementStrategyTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PlacementStrategy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object representing the secret to expose to your container. Secrets can be exposed 			to a container in the following ways:
 ///
@@ -1074,6 +1286,20 @@ pub struct Secret {
 
 
 
+impl cfn_resources::CfnResource for Secret {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Each alias ("endpoint") is a fully-qualified name and port number that other tasks 			("clients") can use to connect to this service.
 ///
@@ -1121,6 +1347,34 @@ pub struct ServiceConnectClientAlias {
 
 
 
+impl cfn_resources::CfnResource for ServiceConnectClientAlias {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.port;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Service Connect configuration of your Amazon ECS service. The configuration for this 			service to discover and connect to services, and be discovered by, and connected from, 			other services within a namespace.
 ///
@@ -1190,6 +1444,22 @@ pub struct ServiceConnectConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ServiceConnectConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.log_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Service Connect service object configuration. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1263,6 +1533,36 @@ pub struct ServiceConnectService {
 
 
 
+impl cfn_resources::CfnResource for ServiceConnectService {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.ingress_port_override {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'ingress_port_override'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ingress_port_override {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'ingress_port_override'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The ServiceRegistry property specifies details of the service registry. For more information, see   Service Discovery  in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1320,6 +1620,20 @@ pub struct ServiceRegistry {
 
 
 
+impl cfn_resources::CfnResource for ServiceRegistry {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1356,3 +1670,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

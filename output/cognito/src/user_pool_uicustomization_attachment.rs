@@ -68,4 +68,37 @@ impl cfn_resources::CfnResource for CfnUserPoolUICustomizationAttachment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.client_id;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'client_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

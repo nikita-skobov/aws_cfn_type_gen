@@ -66,8 +66,12 @@ impl cfn_resources::CfnResource for CfnRealtimeLogConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about the Amazon Kinesis data stream where you are sending real-time 			log data in a real-time log configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -101,6 +105,22 @@ pub struct EndPoint {
 
 
 
+impl cfn_resources::CfnResource for EndPoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.kinesis_stream_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about the Amazon Kinesis data stream where you are sending real-time 			log data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -135,3 +155,18 @@ pub struct KinesisStreamConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for KinesisStreamConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -111,8 +111,12 @@ impl cfn_resources::CfnResource for CfnJobQueue {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The order that compute environments are tried in for job placement within a queue. Compute  environments are tried in ascending order. For example, if two compute environments are  associated with a job queue, the compute environment with a lower order integer value is tried  for job placement first. Compute environments must be in the VALID state before you  can associate them with a job queue. All of the compute environments must be either EC2   (EC2 or SPOT) or Fargate (FARGATE or   FARGATE_SPOT); EC2 and Fargate compute environments can't be mixed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -145,3 +149,18 @@ pub struct ComputeEnvironmentOrder {
 }
 
 
+
+impl cfn_resources::CfnResource for ComputeEnvironmentOrder {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

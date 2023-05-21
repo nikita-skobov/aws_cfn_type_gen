@@ -78,8 +78,44 @@ impl cfn_resources::CfnResource for CfnVpcIngressConnection {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.ingress_vpc_configuration.validate()?;
+
+        let the_val = &self.service_arn;
+
+        if the_val.len() > 1011 as _ {
+            return Err(format!("Max validation failed on field 'service_arn'. {} is greater than 1011", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'service_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.vpc_ingress_connection_name {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'vpc_ingress_connection_name'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.vpc_ingress_connection_name {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'vpc_ingress_connection_name'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifications for the customer’s VPC and related PrivateLink VPC endpoint that are used to associate with the VPC Ingress Connection resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -125,6 +161,48 @@ pub struct IngressVpcConfiguration {
 
 
 
+impl cfn_resources::CfnResource for IngressVpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.vpc_endpoint_id;
+
+        if the_val.len() > 51200 as _ {
+            return Err(format!("Max validation failed on field 'vpc_endpoint_id'. {} is greater than 51200", the_val.len()));
+        }
+
+        
+        let the_val = &self.vpc_endpoint_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'vpc_endpoint_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        let the_val = &self.vpc_id;
+
+        if the_val.len() > 51200 as _ {
+            return Err(format!("Max validation failed on field 'vpc_id'. {} is greater than 51200", the_val.len()));
+        }
+
+        
+        let the_val = &self.vpc_id;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'vpc_id'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -161,3 +239,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

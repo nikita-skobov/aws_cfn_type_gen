@@ -144,8 +144,68 @@ impl cfn_resources::CfnResource for CfnEventDataStore {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 350 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 350", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.retention_period {
+
+        if *the_val > 2557 as _ {
+            return Err(format!("Max validation failed on field 'retention_period'. {} is greater than 2557", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.retention_period {
+
+        if *the_val < 7 as _ {
+            return Err(format!("Min validation failed on field 'retention_period'. {} is less than 7", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Advanced event selectors let you create fine-grained selectors for the following AWS CloudTrail event record ﬁelds. They help you control costs by logging only those     events that are important to you. For more information about advanced event selectors, see       Logging data events in the         AWS CloudTrail User Guide.
 ///
@@ -187,6 +247,36 @@ pub struct AdvancedEventSelector {
 
 
 
+impl cfn_resources::CfnResource for AdvancedEventSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A single selector statement in an advanced event selector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -292,6 +382,34 @@ pub struct AdvancedFieldSelector {
 
 
 
+impl cfn_resources::CfnResource for AdvancedFieldSelector {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.field;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'field'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        let the_val = &self.field;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'field'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -328,3 +446,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

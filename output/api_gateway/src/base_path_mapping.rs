@@ -75,4 +75,9 @@ impl cfn_resources::CfnResource for CfnBasePathMapping {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
 }

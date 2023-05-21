@@ -90,8 +90,39 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.client_token {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'client_token'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.client_token {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'client_token'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.file_system_id;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'file_system_id'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        self.posix_user.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.root_directory.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A tag is a key-value pair attached to a file system. Allowed characters in the Key and Value properties       are letters, white space, and numbers that       can be represented in UTF-8, and the following characters: + - = . _ : /
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -135,6 +166,44 @@ pub struct AccessPointTag {
 
 
 
+impl cfn_resources::CfnResource for AccessPointTag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Required if the RootDirectory > Path specified does not exist.    Specifies the POSIX IDs and permissions to apply to the access point's RootDirectory > Path.    If the access point root directory does not exist, EFS creates it with these settings when a client connects to the access point.    When specifying CreationInfo, you must include values for all properties.
 ///
@@ -188,6 +257,34 @@ pub struct CreationInfo {
 
 
 
+impl cfn_resources::CfnResource for CreationInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.permissions;
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'permissions'. {} is greater than 4", the_val.len()));
+        }
+
+        
+        let the_val = &self.permissions;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'permissions'. {} is less than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The full POSIX identity, including the user ID, group ID, and any secondary group IDs, on the access point that is used for all file system operations performed by    NFS clients using the access point.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +332,28 @@ pub struct PosixUser {
 
 
 
+impl cfn_resources::CfnResource for PosixUser {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.secondary_gids {
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'secondary_gids'. {} is greater than 16", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the directory on the Amazon EFS file system that the access point provides access to.    The access point exposes the specified file system path as    the root directory of your file system to applications using the access point.    NFS clients using the access point can only access data in the access point's RootDirectory and it's subdirectories.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -275,3 +394,36 @@ pub struct RootDirectory {
 }
 
 
+
+impl cfn_resources::CfnResource for RootDirectory {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.creation_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'path'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

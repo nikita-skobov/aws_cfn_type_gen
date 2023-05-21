@@ -104,8 +104,70 @@ impl cfn_resources::CfnResource for CfnProject {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.dataset_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'dataset_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.dataset_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'dataset_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.recipe_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'recipe_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.recipe_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'recipe_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        self.sample.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents the sample size and sampling type for DataBrew to use for interactive data       analysis.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -168,6 +230,36 @@ impl Default for SampleTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Sample {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.size {
+
+        if *the_val > 5000 as _ {
+            return Err(format!("Max validation failed on field 'size'. {} is greater than 5000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -204,3 +296,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

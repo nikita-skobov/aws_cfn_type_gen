@@ -149,8 +149,16 @@ impl cfn_resources::CfnResource for CfnNetworkAclEntry {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.icmp.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the ICMP type and code.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -184,6 +192,20 @@ pub struct Icmp {
 
 
 
+impl cfn_resources::CfnResource for Icmp {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a range of ports.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -216,3 +238,18 @@ pub struct PortRange {
 }
 
 
+
+impl cfn_resources::CfnResource for PortRange {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

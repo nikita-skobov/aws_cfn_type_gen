@@ -109,8 +109,38 @@ impl cfn_resources::CfnResource for CfnReportGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.export_config.validate()?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 2", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information about the location where the run of a report is exported.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -167,6 +197,22 @@ impl Default for ReportExportConfigExportConfigTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ReportExportConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.s3_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about the S3 bucket where the raw data of a report are exported.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -275,6 +321,35 @@ impl Default for S3ReportExportConfigPackagingEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3ReportExportConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'bucket'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.encryption_key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'encryption_key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -311,3 +386,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

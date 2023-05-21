@@ -166,8 +166,60 @@ impl cfn_resources::CfnResource for CfnRole {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_session_duration {
+
+        if *the_val > 43200 as _ {
+            return Err(format!("Max validation failed on field 'max_session_duration'. {} is greater than 43200", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_session_duration {
+
+        if *the_val < 3600 as _ {
+            return Err(format!("Min validation failed on field 'max_session_duration'. {} is less than 3600", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'path'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains information about an attached policy.
 ///
@@ -211,6 +263,34 @@ pub struct Policy {
 
 
 
+impl cfn_resources::CfnResource for Policy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.policy_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'policy_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.policy_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'policy_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -247,3 +327,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

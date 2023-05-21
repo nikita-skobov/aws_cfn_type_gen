@@ -64,8 +64,16 @@ impl cfn_resources::CfnResource for CfnPermissions {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_lake_principal.validate()?;
+
+        self.resource.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -87,6 +95,20 @@ pub struct ColumnWildcard {
 
 
 
+impl cfn_resources::CfnResource for ColumnWildcard {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Lake Formation principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -108,6 +130,20 @@ pub struct DataLakePrincipal {
 
 
 
+impl cfn_resources::CfnResource for DataLakePrincipal {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for a data location object where permissions are granted or revoked.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -141,6 +177,20 @@ pub struct DataLocationResource {
 
 
 
+impl cfn_resources::CfnResource for DataLocationResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for the database object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -174,6 +224,20 @@ pub struct DatabaseResource {
 
 
 
+impl cfn_resources::CfnResource for DatabaseResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -231,6 +295,28 @@ pub struct Resource {
 
 
 
+impl cfn_resources::CfnResource for Resource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.data_location_resource.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.database_resource.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table_resource.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table_with_columns_resource.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -288,6 +374,22 @@ pub struct TableResource {
 
 
 
+impl cfn_resources::CfnResource for TableResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.table_wildcard.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A wildcard object representing every table under a database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -297,6 +399,20 @@ pub struct TableWildcard {
 
 
 
+impl cfn_resources::CfnResource for TableWildcard {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for a table with columns object. This object is only used when granting a SELECT permission.
 ///
@@ -367,3 +483,20 @@ pub struct TableWithColumnsResource {
 }
 
 
+
+impl cfn_resources::CfnResource for TableWithColumnsResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.column_wildcard.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

@@ -42,8 +42,14 @@ impl cfn_resources::CfnResource for CfnTagAssociation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.resource.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A structure for the database object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -77,6 +83,20 @@ pub struct DatabaseResource {
 
 
 
+impl cfn_resources::CfnResource for DatabaseResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure containing the catalog ID, tag key, and tag values of an LF-tag key-value pair.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -122,6 +142,20 @@ pub struct LFTagPair {
 
 
 
+impl cfn_resources::CfnResource for LFTagPair {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -179,6 +213,26 @@ pub struct Resource {
 
 
 
+impl cfn_resources::CfnResource for Resource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.database.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.table_with_columns.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -238,6 +292,20 @@ pub struct TableResource {
 
 
 
+impl cfn_resources::CfnResource for TableResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A structure for a table with columns object. This object is only used when granting a SELECT permission.
 ///
@@ -298,3 +366,18 @@ pub struct TableWithColumnsResource {
 }
 
 
+
+impl cfn_resources::CfnResource for TableWithColumnsResource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

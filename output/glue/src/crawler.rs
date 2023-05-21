@@ -194,8 +194,84 @@ impl cfn_resources::CfnResource for CfnCrawler {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.crawler_security_configuration {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'crawler_security_configuration'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.crawler_security_configuration {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'crawler_security_configuration'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.recrawl_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.schedule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.schema_change_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.table_prefix {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'table_prefix'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.table_prefix {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'table_prefix'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.targets.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies an AWS Glue Data Catalog target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +311,36 @@ pub struct CatalogTarget {
 
 
 
+impl cfn_resources::CfnResource for CatalogTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.database_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.database_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The DeltaTarget property type specifies Property description not available. for an AWS::Glue::Crawler.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -288,6 +394,20 @@ pub struct DeltaTarget {
 
 
 
+impl cfn_resources::CfnResource for DeltaTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an Amazon DynamoDB table to crawl.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -309,6 +429,20 @@ pub struct DynamoDBTarget {
 
 
 
+impl cfn_resources::CfnResource for DynamoDBTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a JDBC data store to crawl.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -354,6 +488,20 @@ pub struct JdbcTarget {
 
 
 
+impl cfn_resources::CfnResource for JdbcTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an Amazon DocumentDB or MongoDB data store to crawl.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -387,6 +535,20 @@ pub struct MongoDBTarget {
 
 
 
+impl cfn_resources::CfnResource for MongoDBTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// When crawling an Amazon S3 data source after the first crawl is complete, specifies whether to crawl the entire dataset again or to crawl only folders that were added since the last crawler run. For more information, see Incremental Crawls in AWS Glue in the developer guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -439,6 +601,20 @@ impl Default for RecrawlPolicyRecrawlBehaviorEnum {
 }
 
 
+impl cfn_resources::CfnResource for RecrawlPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a data store in Amazon Simple Storage Service (Amazon S3).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -520,6 +696,20 @@ pub struct S3Target {
 
 
 
+impl cfn_resources::CfnResource for S3Target {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A scheduling object using a cron statement to schedule an event.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -541,6 +731,20 @@ pub struct Schedule {
 
 
 
+impl cfn_resources::CfnResource for Schedule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The policy that specifies update and delete behaviors for the crawler. The policy tells the crawler what to do in the event that it detects a change in a table that already exists in the customer's database at the time of the crawl. The SchemaChangePolicy does not affect whether or how new tables and partitions are added. New tables and partitions are always created regardless of the SchemaChangePolicy on a crawler.
 ///
@@ -632,6 +836,20 @@ impl Default for SchemaChangePolicyUpdateBehaviorEnum {
 }
 
 
+impl cfn_resources::CfnResource for SchemaChangePolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies data stores to crawl.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -711,3 +929,18 @@ pub struct Targets {
 }
 
 
+
+impl cfn_resources::CfnResource for Targets {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

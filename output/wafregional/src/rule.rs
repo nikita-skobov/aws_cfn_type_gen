@@ -66,8 +66,40 @@ impl cfn_resources::CfnResource for CfnRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.metric_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.metric_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects      that you want to add to a Rule and, for each object, indicates whether you want to negate the settings, for example, requests that do      NOT originate from the IP address 192.0.2.44.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -161,3 +193,32 @@ impl Default for PredicateTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for Predicate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.data_id;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'data_id'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

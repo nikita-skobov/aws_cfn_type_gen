@@ -213,8 +213,76 @@ impl cfn_resources::CfnResource for CfnRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.event_bus_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'event_bus_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.event_bus_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'event_bus_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.schedule_expression {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'schedule_expression'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// This structure specifies the VPC subnets and security groups for the task, and whether a    public IP address is to be used. This structure is relevant only for ECS tasks that use the     awsvpc network mode.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -281,6 +349,20 @@ impl Default for AwsVpcConfigurationAssignPublicIpEnum {
 }
 
 
+impl cfn_resources::CfnResource for AwsVpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The array properties for the submitted job, such as the size of the array. The array size    can be between 2 and 10,000. If you specify array properties for a job, it becomes an array    job. This parameter is used only if the target is an AWS Batch job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -302,6 +384,20 @@ pub struct BatchArrayProperties {
 
 
 
+impl cfn_resources::CfnResource for BatchArrayProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The custom parameters to be used when the target is an AWS Batch job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -359,6 +455,24 @@ pub struct BatchParameters {
 
 
 
+impl cfn_resources::CfnResource for BatchParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.array_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_strategy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The retry strategy to use for failed jobs, if the target is an AWS Batch job. If you    specify a retry strategy here, it overrides the retry strategy defined in the job    definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -380,6 +494,20 @@ pub struct BatchRetryStrategy {
 
 
 
+impl cfn_resources::CfnResource for BatchRetryStrategy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details of a capacity provider strategy. To learn more, see CapacityProviderStrategyItem in the Amazon ECS API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -437,6 +565,66 @@ pub struct CapacityProviderStrategyItem {
 
 
 
+impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.base {
+
+        if *the_val > 100000 as _ {
+            return Err(format!("Max validation failed on field 'base'. {} is greater than 100000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.base {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'base'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.capacity_provider;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'capacity_provider'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.capacity_provider;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'capacity_provider'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.weight {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'weight'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.weight {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'weight'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A DeadLetterConfig object that contains information about a dead-letter queue    configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -462,6 +650,36 @@ pub struct DeadLetterConfig {
 
 
 
+impl cfn_resources::CfnResource for DeadLetterConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.arn {
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The custom parameters to be used when the target is an Amazon ECS task.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -701,6 +919,76 @@ impl Default for EcsParametersPropagateTagsEnum {
 }
 
 
+impl cfn_resources::CfnResource for EcsParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.capacity_provider_strategy {
+
+        if the_val.len() > 6 as _ {
+            return Err(format!("Max validation failed on field 'capacity_provider_strategy'. {} is greater than 6", the_val.len()));
+        }
+
+        }
+        
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.placement_constraints {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'placement_constraints'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.placement_strategies {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'placement_strategies'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.reference_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'reference_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.task_count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'task_count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        let the_val = &self.task_definition_arn;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'task_definition_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.task_definition_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'task_definition_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// These are custom parameter to be used when the target is an API Gateway APIs or    EventBridge ApiDestinations. In the latter case, these are merged with any    InvocationParameters specified on the Connection, with any values from the Connection taking    precedence.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -746,6 +1034,20 @@ pub struct HttpParameters {
 
 
 
+impl cfn_resources::CfnResource for HttpParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains the parameters needed for you to provide custom input to a target based on one or    more pieces of data extracted from the event.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -827,6 +1129,34 @@ pub struct InputTransformer {
 
 
 
+impl cfn_resources::CfnResource for InputTransformer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.input_template;
+
+        if the_val.len() > 8192 as _ {
+            return Err(format!("Max validation failed on field 'input_template'. {} is greater than 8192", the_val.len()));
+        }
+
+        
+        let the_val = &self.input_template;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'input_template'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// This object enables you to specify a JSON path to extract from the event and use as the    partition key for the Amazon Kinesis data stream, so that you can control the shard to which    the event goes. If you do not include this parameter, the default is to use the     eventId as the partition key.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -850,6 +1180,27 @@ pub struct KinesisParameters {
 
 
 
+impl cfn_resources::CfnResource for KinesisParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.partition_key_path;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'partition_key_path'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// This structure specifies the network configuration for an ECS task.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -871,6 +1222,22 @@ pub struct NetworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.aws_vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object representing a constraint on task placement. To learn more, see Task Placement Constraints in the Amazon Elastic Container Service Developer    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -927,6 +1294,28 @@ impl Default for PlacementConstraintTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PlacementConstraint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.expression {
+
+        if the_val.len() > 2000 as _ {
+            return Err(format!("Max validation failed on field 'expression'. {} is greater than 2000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The task placement strategy for a task or service. To learn more, see Task Placement Strategies in the Amazon Elastic Container Service Service Developer    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -987,6 +1376,28 @@ impl Default for PlacementStrategyTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PlacementStrategy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.field {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'field'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the    Amazon Redshift Data API ExecuteStatement based on EventBridge events.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1090,6 +1501,96 @@ pub struct RedshiftDataParameters {
 
 
 
+impl cfn_resources::CfnResource for RedshiftDataParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.database;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'database'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.database;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.db_user {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'db_user'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.db_user {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'db_user'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secret_manager_arn {
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'secret_manager_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secret_manager_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_manager_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.sql;
+
+        if the_val.len() > 100000 as _ {
+            return Err(format!("Max validation failed on field 'sql'. {} is greater than 100000", the_val.len()));
+        }
+
+        
+        let the_val = &self.sql;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'sql'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.statement_name {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'statement_name'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.statement_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'statement_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A RetryPolicy object that includes information about the retry policy    settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1131,6 +1632,52 @@ pub struct RetryPolicy {
 
 
 
+impl cfn_resources::CfnResource for RetryPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.maximum_event_age_in_seconds {
+
+        if *the_val > 86400 as _ {
+            return Err(format!("Max validation failed on field 'maximum_event_age_in_seconds'. {} is greater than 86400", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_event_age_in_seconds {
+
+        if *the_val < 60 as _ {
+            return Err(format!("Min validation failed on field 'maximum_event_age_in_seconds'. {} is less than 60", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_retry_attempts {
+
+        if *the_val > 185 as _ {
+            return Err(format!("Max validation failed on field 'maximum_retry_attempts'. {} is greater than 185", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_retry_attempts {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'maximum_retry_attempts'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// This parameter contains the criteria (either InstanceIds or a tag) used to specify which    EC2 instances are to be sent the command.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1154,6 +1701,27 @@ pub struct RunCommandParameters {
 
 
 
+impl cfn_resources::CfnResource for RunCommandParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.run_command_targets;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'run_command_targets'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information about the EC2 instances that are to be sent the command, specified as    key-value pairs. Each RunCommandTarget block can include only one key, but this    key may specify multiple values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1195,6 +1763,41 @@ pub struct RunCommandTarget {
 
 
 
+impl cfn_resources::CfnResource for RunCommandTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.values;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Name/Value pair of a parameter to start execution of a SageMaker Model Building    Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1236,6 +1839,41 @@ pub struct SageMakerPipelineParameter {
 
 
 
+impl cfn_resources::CfnResource for SageMakerPipelineParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// These are custom parameters to use when the target is a SageMaker Model Building Pipeline    that starts based on EventBridge events.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1259,6 +1897,28 @@ pub struct SageMakerPipelineParameters {
 
 
 
+impl cfn_resources::CfnResource for SageMakerPipelineParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.pipeline_parameter_list {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'pipeline_parameter_list'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// This structure includes the custom parameter to be used when the target is an SQS FIFO    queue.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1282,6 +1942,27 @@ pub struct SqsParameters {
 
 
 
+impl cfn_resources::CfnResource for SqsParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.message_group_id;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'message_group_id'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A key-value pair associated with an ECS Target of an EventBridge rule. The tag will be propagated to ECS by EventBridge when starting    an ECS task based on a matched event.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1323,6 +2004,52 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Targets are the resources to be invoked when a rule is triggered. For a complete list of    services and resources that can be set as a target, see PutTargets.
 ///
@@ -1551,3 +2278,100 @@ pub struct Target {
 }
 
 
+
+impl cfn_resources::CfnResource for Target {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.arn;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.batch_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dead_letter_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ecs_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.id;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'id'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.input {
+
+        if the_val.len() > 8192 as _ {
+            return Err(format!("Max validation failed on field 'input'. {} is greater than 8192", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.input_path {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'input_path'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.input_transformer.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.redshift_data_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.run_command_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sage_maker_pipeline_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sqs_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

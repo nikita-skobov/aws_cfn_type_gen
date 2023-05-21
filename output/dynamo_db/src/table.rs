@@ -292,8 +292,44 @@ impl cfn_resources::CfnResource for CfnTable {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.contributor_insights_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.import_source_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_stream_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.point_in_time_recovery_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.provisioned_throughput.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ssespecification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.stream_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.table_name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        self.time_to_live_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents an attribute for describing the key schema for the table and       indexes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -358,6 +394,34 @@ impl Default for AttributeDefinitionAttributeTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for AttributeDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attribute_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'attribute_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The settings used to enable or disable CloudWatch Contributor Insights.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -381,6 +445,20 @@ pub struct ContributorInsightsSpecification {
 
 
 
+impl cfn_resources::CfnResource for ContributorInsightsSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The options for imported source files in CSV format. The values are Delimiter and       HeaderList.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -422,6 +500,44 @@ pub struct Csv {
 
 
 
+impl cfn_resources::CfnResource for Csv {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'delimiter'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.delimiter {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'delimiter'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.header_list {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'header_list'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents the properties of a global secondary index.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -505,6 +621,47 @@ pub struct GlobalSecondaryIndex {
 
 
 
+impl cfn_resources::CfnResource for GlobalSecondaryIndex {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.contributor_insights_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.index_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'index_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'index_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.key_schema;
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'key_schema'. {} is greater than 2", the_val.len()));
+        }
+
+        
+        self.projection.validate()?;
+
+        self.provisioned_throughput.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the properties of data being imported from the S3 bucket source to the       table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -612,6 +769,24 @@ impl Default for ImportSourceSpecificationInputFormatEnum {
 }
 
 
+impl cfn_resources::CfnResource for ImportSourceSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.input_format_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_bucket_source.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The format options for the data that was imported into the target table. There is one       value, CsvOption.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -633,6 +808,22 @@ pub struct InputFormatOptions {
 
 
 
+impl cfn_resources::CfnResource for InputFormatOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.csv.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Represents a single element of a key schema. A key schema       specifies the attributes that make up the primary key of a table, or the key attributes       of an index.
 ///
@@ -699,6 +890,34 @@ impl Default for KeySchemaKeyTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for KeySchema {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attribute_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'attribute_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The Kinesis Data Streams configuration for the specified table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -726,6 +945,34 @@ pub struct KinesisStreamSpecification {
 
 
 
+impl cfn_resources::CfnResource for KinesisStreamSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.stream_arn;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'stream_arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.stream_arn;
+
+        if the_val.len() < 37 as _ {
+            return Err(format!("Min validation failed on field 'stream_arn'. {} is less than 37", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Represents the properties of a local secondary index. A local secondary index can only       be created when its parent table is created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -783,6 +1030,43 @@ pub struct LocalSecondaryIndex {
 
 
 
+impl cfn_resources::CfnResource for LocalSecondaryIndex {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.index_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'index_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'index_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.key_schema;
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'key_schema'. {} is greater than 2", the_val.len()));
+        }
+
+        
+        self.projection.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The settings used to enable point in time recovery.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -804,6 +1088,20 @@ pub struct PointInTimeRecoverySpecification {
 
 
 
+impl cfn_resources::CfnResource for PointInTimeRecoverySpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents attributes that are copied (projected) from the table into an index. These       are in addition to the primary key attributes and index key attributes, which are       automatically projected.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -868,6 +1166,28 @@ impl Default for ProjectionProjectionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Projection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.non_key_attributes {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'non_key_attributes'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Throughput for the specified table, which consists of values for         ReadCapacityUnits and WriteCapacityUnits. For more       information about the contents of a provisioned throughput structure, see Amazon DynamoDB Table ProvisionedThroughput.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -905,6 +1225,20 @@ pub struct ProvisionedThroughput {
 
 
 
+impl cfn_resources::CfnResource for ProvisionedThroughput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The S3 bucket that is being imported from.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -958,6 +1292,35 @@ pub struct S3BucketSource {
 
 
 
+impl cfn_resources::CfnResource for S3BucketSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.s3_key_prefix {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_key_prefix'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Represents the settings used to enable server-side encryption.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1005,6 +1368,20 @@ pub struct SSESpecification {
 
 
 
+impl cfn_resources::CfnResource for SSESpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents the DynamoDB Streams configuration for a table in DynamoDB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1057,6 +1434,20 @@ impl Default for StreamSpecificationStreamViewTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for StreamSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1094,6 +1485,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents the settings used to enable or disable Time to Live (TTL) for the specified       table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1132,3 +1537,32 @@ pub struct TimeToLiveSpecification {
 }
 
 
+
+impl cfn_resources::CfnResource for TimeToLiveSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.attribute_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'attribute_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.attribute_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'attribute_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

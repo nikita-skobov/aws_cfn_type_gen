@@ -68,4 +68,23 @@ impl cfn_resources::CfnResource for CfnEndpointAuthorization {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.account;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'account'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        let the_val = &self.cluster_identifier;
+
+        if the_val.len() > 2147483647 as _ {
+            return Err(format!("Max validation failed on field 'cluster_identifier'. {} is greater than 2147483647", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

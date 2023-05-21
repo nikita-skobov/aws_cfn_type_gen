@@ -130,8 +130,56 @@ impl cfn_resources::CfnResource for CfnStream {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.kinesis_configuration.validate()?;
+
+        let the_val = &self.ledger_name;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'ledger_name'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.ledger_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'ledger_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        let the_val = &self.stream_name;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'stream_name'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.stream_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'stream_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration settings of the Amazon Kinesis Data Streams destination for an Amazon QLDB journal     stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -173,6 +221,36 @@ pub struct KinesisConfiguration {
 
 
 
+impl cfn_resources::CfnResource for KinesisConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.stream_arn {
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'stream_arn'. {} is greater than 1600", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.stream_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'stream_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -209,3 +287,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

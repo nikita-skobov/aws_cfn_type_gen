@@ -188,8 +188,16 @@ impl cfn_resources::CfnResource for CfnFunctionConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.runtime.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sync_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync     function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must     also be specified.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -223,6 +231,20 @@ pub struct AppSyncRuntime {
 
 
 
+impl cfn_resources::CfnResource for AppSyncRuntime {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LambdaConflictHandlerConfig object when configuring LAMBDA     as the Conflict Handler.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -244,6 +266,20 @@ pub struct LambdaConflictHandlerConfig {
 
 
 
+impl cfn_resources::CfnResource for LambdaConflictHandlerConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes a Sync configuration for a resolver.
 ///
@@ -294,3 +330,20 @@ pub struct SyncConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for SyncConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.lambda_conflict_handler_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

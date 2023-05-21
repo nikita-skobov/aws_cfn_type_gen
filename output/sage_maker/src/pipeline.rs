@@ -125,8 +125,84 @@ impl cfn_resources::CfnResource for CfnPipeline {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.parallelism_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pipeline_definition.validate()?;
+
+        if let Some(the_val) = &self.pipeline_description {
+
+        if the_val.len() > 3072 as _ {
+            return Err(format!("Max validation failed on field 'pipeline_description'. {} is greater than 3072", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pipeline_description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'pipeline_description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pipeline_display_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'pipeline_display_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.pipeline_display_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'pipeline_display_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.pipeline_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'pipeline_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.pipeline_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'pipeline_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration that controls the parallelism of the pipeline.       By default, the parallelism configuration specified applies to all       executions of the pipeline unless overridden.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -150,6 +226,27 @@ pub struct ParallelismConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ParallelismConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.max_parallel_execution_steps;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_parallel_execution_steps'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The PipelineDefinition property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -181,6 +278,22 @@ pub struct PipelineDefinition {
 
 
 
+impl cfn_resources::CfnResource for PipelineDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.pipeline_definition_s3_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The S3Location property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -234,6 +347,20 @@ pub struct S3Location {
 
 
 
+impl cfn_resources::CfnResource for S3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -270,3 +397,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

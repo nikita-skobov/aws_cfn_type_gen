@@ -232,8 +232,20 @@ impl cfn_resources::CfnResource for CfnLoadBalancer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.access_logging_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.connection_draining_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.connection_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.health_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies where and how access logs are stored for your Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -293,6 +305,20 @@ pub struct AccessLoggingPolicy {
 
 
 
+impl cfn_resources::CfnResource for AccessLoggingPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a policy for application-controlled session stickiness for your Classic Load Balancer.
 ///
@@ -328,6 +354,20 @@ pub struct AppCookieStickinessPolicy {
 
 
 
+impl cfn_resources::CfnResource for AppCookieStickinessPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the connection draining settings for your Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -361,6 +401,20 @@ pub struct ConnectionDrainingPolicy {
 
 
 
+impl cfn_resources::CfnResource for ConnectionDrainingPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the idle timeout value for your Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -386,6 +440,34 @@ pub struct ConnectionSettings {
 
 
 
+impl cfn_resources::CfnResource for ConnectionSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.idle_timeout;
+
+        if *the_val > 3600 as _ {
+            return Err(format!("Max validation failed on field 'idle_timeout'. {} is greater than 3600", the_val));
+        }
+
+        
+        let the_val = &self.idle_timeout;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'idle_timeout'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies health check settings for your Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -481,6 +563,76 @@ pub struct HealthCheck {
 
 
 
+impl cfn_resources::CfnResource for HealthCheck {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.healthy_threshold;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'healthy_threshold'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        let the_val = &self.healthy_threshold;
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'healthy_threshold'. {} is less than 2", the_val.len()));
+        }
+
+        
+        let the_val = &self.interval;
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'interval'. {} is greater than 300", the_val.len()));
+        }
+
+        
+        let the_val = &self.interval;
+
+        if the_val.len() < 5 as _ {
+            return Err(format!("Min validation failed on field 'interval'. {} is less than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.timeout;
+
+        if the_val.len() > 60 as _ {
+            return Err(format!("Max validation failed on field 'timeout'. {} is greater than 60", the_val.len()));
+        }
+
+        
+        let the_val = &self.timeout;
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'timeout'. {} is less than 2", the_val.len()));
+        }
+
+        
+        let the_val = &self.unhealthy_threshold;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'unhealthy_threshold'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        let the_val = &self.unhealthy_threshold;
+
+        if the_val.len() < 2 as _ {
+            return Err(format!("Min validation failed on field 'unhealthy_threshold'. {} is less than 2", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies a policy for duration-based session stickiness for your Classic Load Balancer.
 ///
@@ -516,6 +668,20 @@ pub struct LBCookieStickinessPolicy {
 
 
 
+impl cfn_resources::CfnResource for LBCookieStickinessPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a listener for your Classic Load Balancer.
 ///
@@ -609,6 +775,34 @@ pub struct Listeners {
 
 
 
+impl cfn_resources::CfnResource for Listeners {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.instance_port;
+
+        if the_val.len() > 65535 as _ {
+            return Err(format!("Max validation failed on field 'instance_port'. {} is greater than 65535", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_port;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_port'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies policies for your Classic Load Balancer.
 ///
@@ -680,6 +874,20 @@ pub struct Policies {
 
 
 
+impl cfn_resources::CfnResource for Policies {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -716,3 +924,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

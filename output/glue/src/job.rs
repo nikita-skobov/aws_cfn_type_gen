@@ -333,8 +333,84 @@ impl cfn_resources::CfnResource for CfnJob {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.command.validate()?;
+
+        self.connections.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.execution_property.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.glue_version {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'glue_version'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.glue_version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'glue_version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.notification_property.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.security_configuration {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'security_configuration'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.security_configuration {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'security_configuration'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the connections used by a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -356,6 +432,20 @@ pub struct ConnectionsList {
 
 
 
+impl cfn_resources::CfnResource for ConnectionsList {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An execution property of a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -377,6 +467,20 @@ pub struct ExecutionProperty {
 
 
 
+impl cfn_resources::CfnResource for ExecutionProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies code executed when a job is run.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -426,6 +530,28 @@ pub struct JobCommand {
 
 
 
+impl cfn_resources::CfnResource for JobCommand {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.script_location {
+
+        if the_val.len() > 400000 as _ {
+            return Err(format!("Max validation failed on field 'script_location'. {} is greater than 400000", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies configuration properties of a notification.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -445,3 +571,18 @@ pub struct NotificationProperty {
 }
 
 
+
+impl cfn_resources::CfnResource for NotificationProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

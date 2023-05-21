@@ -115,8 +115,16 @@ impl cfn_resources::CfnResource for CfnImage {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.image_scanning_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.image_tests_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -148,6 +156,20 @@ pub struct EcrConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EcrConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ImageScanningConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -179,6 +201,22 @@ pub struct ImageScanningConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ImageScanningConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ecr_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// When you create an image or container recipe with Image Builder, you can add the build or   		test components that are used to create the final image. You must have at least one build   		component to create a recipe, but test components are not required. If you have added tests,   		they run after the image is created, to ensure that the target image is functional and can   		be used reliably for launching Amazon EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -217,3 +255,34 @@ pub struct ImageTestsConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for ImageTestsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.timeout_minutes {
+
+        if *the_val > 1440 as _ {
+            return Err(format!("Max validation failed on field 'timeout_minutes'. {} is greater than 1440", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.timeout_minutes {
+
+        if *the_val < 60 as _ {
+            return Err(format!("Min validation failed on field 'timeout_minutes'. {} is less than 60", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

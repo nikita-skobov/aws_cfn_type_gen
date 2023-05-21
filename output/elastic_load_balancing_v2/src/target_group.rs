@@ -410,8 +410,110 @@ impl cfn_resources::CfnResource for CfnTargetGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.health_check_interval_seconds {
+
+        if *the_val > 300 as _ {
+            return Err(format!("Max validation failed on field 'health_check_interval_seconds'. {} is greater than 300", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_interval_seconds {
+
+        if *the_val < 5 as _ {
+            return Err(format!("Min validation failed on field 'health_check_interval_seconds'. {} is less than 5", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_path {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'health_check_path'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'health_check_path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_timeout_seconds {
+
+        if *the_val > 120 as _ {
+            return Err(format!("Max validation failed on field 'health_check_timeout_seconds'. {} is greater than 120", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_timeout_seconds {
+
+        if *the_val < 2 as _ {
+            return Err(format!("Min validation failed on field 'health_check_timeout_seconds'. {} is less than 2", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.healthy_threshold_count {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'healthy_threshold_count'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.healthy_threshold_count {
+
+        if *the_val < 2 as _ {
+            return Err(format!("Min validation failed on field 'healthy_threshold_count'. {} is less than 2", the_val));
+        }
+
+        }
+        
+        self.matcher.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.unhealthy_threshold_count {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'unhealthy_threshold_count'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.unhealthy_threshold_count {
+
+        if *the_val < 2 as _ {
+            return Err(format!("Min validation failed on field 'unhealthy_threshold_count'. {} is less than 2", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the HTTP codes that healthy targets must use when responding to an HTTP health     check.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -451,6 +553,20 @@ pub struct Matcher {
 
 
 
+impl cfn_resources::CfnResource for Matcher {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -488,6 +604,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a target to add to a target group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -547,6 +677,36 @@ pub struct TargetDescription {
 
 
 
+impl cfn_resources::CfnResource for TargetDescription {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies a target group attribute.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -607,3 +767,26 @@ pub struct TargetGroupAttribute {
 }
 
 
+
+impl cfn_resources::CfnResource for TargetGroupAttribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

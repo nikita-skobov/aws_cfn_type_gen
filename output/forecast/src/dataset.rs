@@ -192,8 +192,46 @@ impl cfn_resources::CfnResource for CfnDataset {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.data_frequency {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'data_frequency'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.data_frequency {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_frequency'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.dataset_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'dataset_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.dataset_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'dataset_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.encryption_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.schema.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The AttributesItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -225,6 +263,20 @@ pub struct AttributesItems {
 
 
 
+impl cfn_resources::CfnResource for AttributesItems {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An AWS Key Management Service (KMS) key and an AWS Identity and Access Management (IAM) role that Amazon Forecast can assume to    access the key. You can specify this optional object in the    CreateDataset and CreatePredictor requests.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -268,6 +320,36 @@ pub struct EncryptionConfig {
 
 
 
+impl cfn_resources::CfnResource for EncryptionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.kms_key_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Defines the fields of a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -291,6 +373,28 @@ pub struct Schema {
 
 
 
+impl cfn_resources::CfnResource for Schema {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.attributes {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'attributes'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The TagsItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -321,3 +425,18 @@ pub struct TagsItems {
 }
 
 
+
+impl cfn_resources::CfnResource for TagsItems {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

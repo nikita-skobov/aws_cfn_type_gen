@@ -28,8 +28,14 @@ impl cfn_resources::CfnResource for CfnResourceCollection {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.resource_collection_filter.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -51,6 +57,20 @@ pub struct CloudFormationCollectionFilter {
 
 
 
+impl cfn_resources::CfnResource for CloudFormationCollectionFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about a filter used to specify which AWS resources are analyzed for 			anomalous behavior by DevOps Guru.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -94,6 +114,22 @@ pub struct ResourceCollectionFilter {
 
 
 
+impl cfn_resources::CfnResource for ResourceCollectionFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_formation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A collection of AWS tags.
 ///
@@ -142,3 +178,34 @@ pub struct TagCollection {
 }
 
 
+
+impl cfn_resources::CfnResource for TagCollection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.app_boundary_key {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'app_boundary_key'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.app_boundary_key {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'app_boundary_key'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

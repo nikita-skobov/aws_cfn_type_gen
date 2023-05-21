@@ -40,8 +40,16 @@ impl cfn_resources::CfnResource for CfnVdmAttributes {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.dashboard_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.guardian_attributes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Settings for your VDM configuration as applicable to the Dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -65,6 +73,20 @@ pub struct DashboardAttributes {
 
 
 
+impl cfn_resources::CfnResource for DashboardAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Settings for your VDM configuration as applicable to the Guardian.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -87,3 +109,18 @@ pub struct GuardianAttributes {
 }
 
 
+
+impl cfn_resources::CfnResource for GuardianAttributes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

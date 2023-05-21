@@ -90,8 +90,46 @@ impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.account_takeover_risk_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.client_id;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.client_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'client_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.compromised_credentials_risk_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.risk_exception_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Account takeover action type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -156,6 +194,20 @@ impl Default for AccountTakeoverActionTypeEventActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for AccountTakeoverActionType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Account takeover actions type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -201,6 +253,26 @@ pub struct AccountTakeoverActionsType {
 
 
 
+impl cfn_resources::CfnResource for AccountTakeoverActionsType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.high_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.low_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.medium_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration for mitigation actions and notification for different levels of risk       detected for a potential account takeover.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -234,6 +306,24 @@ pub struct AccountTakeoverRiskConfigurationType {
 
 
 
+impl cfn_resources::CfnResource for AccountTakeoverRiskConfigurationType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.actions.validate()?;
+
+        self.notify_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The compromised credentials actions type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -276,6 +366,20 @@ impl Default for CompromisedCredentialsActionsTypeEventActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for CompromisedCredentialsActionsType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The compromised credentials risk configuration type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -309,6 +413,22 @@ pub struct CompromisedCredentialsRiskConfigurationType {
 
 
 
+impl cfn_resources::CfnResource for CompromisedCredentialsRiskConfigurationType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.actions.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The notify configuration type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -396,6 +516,40 @@ pub struct NotifyConfigurationType {
 
 
 
+impl cfn_resources::CfnResource for NotifyConfigurationType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.block_email.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.mfa_email.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.no_action_email.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.source_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'source_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.source_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'source_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The notify email type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -459,6 +613,66 @@ pub struct NotifyEmailType {
 
 
 
+impl cfn_resources::CfnResource for NotifyEmailType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.html_body {
+
+        if the_val.len() > 20000 as _ {
+            return Err(format!("Max validation failed on field 'html_body'. {} is greater than 20000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.html_body {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'html_body'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.subject;
+
+        if the_val.len() > 140 as _ {
+            return Err(format!("Max validation failed on field 'subject'. {} is greater than 140", the_val.len()));
+        }
+
+        
+        let the_val = &self.subject;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'subject'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.text_body {
+
+        if the_val.len() > 20000 as _ {
+            return Err(format!("Max validation failed on field 'text_body'. {} is greater than 20000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.text_body {
+
+        if the_val.len() < 6 as _ {
+            return Err(format!("Min validation failed on field 'text_body'. {} is less than 6", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The type of the configuration to override the risk decision.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -495,3 +709,34 @@ pub struct RiskExceptionConfigurationType {
 }
 
 
+
+impl cfn_resources::CfnResource for RiskExceptionConfigurationType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.blocked_iprange_list {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'blocked_iprange_list'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.skipped_iprange_list {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'skipped_iprange_list'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

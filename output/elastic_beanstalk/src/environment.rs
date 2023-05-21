@@ -204,8 +204,116 @@ impl cfn_resources::CfnResource for CfnEnvironment {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.cnameprefix {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'cnameprefix'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cnameprefix {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'cnameprefix'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.environment_name {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'environment_name'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.environment_name {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'environment_name'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.operations_role {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'operations_role'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.operations_role {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'operations_role'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.template_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'template_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.template_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'template_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.tier.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.version_label {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'version_label'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The OptionSetting property type specifies an option for an AWS Elastic Beanstalk environment.
 ///
@@ -271,6 +379,36 @@ pub struct OptionSetting {
 
 
 
+impl cfn_resources::CfnResource for OptionSetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.resource_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'resource_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -308,6 +446,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the environment tier for an AWS::ElasticBeanstalk::Environment resource. For more information, see Environment Tiers in the AWS Elastic Beanstalk Developer    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -362,3 +514,18 @@ pub struct Tier {
 }
 
 
+
+impl cfn_resources::CfnResource for Tier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

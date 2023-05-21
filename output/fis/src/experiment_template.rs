@@ -114,8 +114,35 @@ impl cfn_resources::CfnResource for CfnExperimentTemplate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.description;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        self.log_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The CloudWatchLogsConfiguration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -136,6 +163,20 @@ pub struct CloudWatchLogsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchLogsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an action for an experiment template.
 ///
@@ -215,6 +256,35 @@ pub struct ExperimentTemplateAction {
 
 
 
+impl cfn_resources::CfnResource for ExperimentTemplateAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.action_id;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'action_id'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the configuration for experiment logging.
 ///
@@ -270,6 +340,24 @@ pub struct ExperimentTemplateLogConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ExperimentTemplateLogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_logs_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies a stop condition for an experiment template.
 ///
@@ -315,6 +403,43 @@ pub struct ExperimentTemplateStopCondition {
 
 
 
+impl cfn_resources::CfnResource for ExperimentTemplateStopCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.source;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'source'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.value {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies a target for an experiment. You must specify at least one Amazon Resource Name (ARN) or      at least one resource tag. You cannot specify both ARNs and tags.
 ///
@@ -410,6 +535,42 @@ pub struct ExperimentTemplateTarget {
 
 
 
+impl cfn_resources::CfnResource for ExperimentTemplateTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.resource_arns {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'resource_arns'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.resource_type;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'resource_type'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.selection_mode;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'selection_mode'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies a filter used for the target resource input in an experiment template.
 ///
@@ -449,6 +610,27 @@ pub struct ExperimentTemplateTargetFilter {
 
 
 
+impl cfn_resources::CfnResource for ExperimentTemplateTargetFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.path;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'path'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The S3Configuration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -479,3 +661,18 @@ pub struct S3Configuration {
 }
 
 
+
+impl cfn_resources::CfnResource for S3Configuration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

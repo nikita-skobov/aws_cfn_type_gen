@@ -172,8 +172,24 @@ impl cfn_resources::CfnResource for CfnCluster {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.broker_node_group_info.validate()?;
+
+        self.client_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.configuration_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.logging_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.open_monitoring.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The broker logs configuration for this MSK cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -219,6 +235,26 @@ pub struct BrokerLogs {
 
 
 
+impl cfn_resources::CfnResource for BrokerLogs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.firehose.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the setup to be used for the broker nodes in the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -304,6 +340,24 @@ pub struct BrokerNodeGroupInfo {
 
 
 
+impl cfn_resources::CfnResource for BrokerNodeGroupInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.connectivity_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.storage_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Includes all client authentication information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -349,6 +403,26 @@ pub struct ClientAuthentication {
 
 
 
+impl cfn_resources::CfnResource for ClientAuthentication {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sasl.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tls.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.unauthenticated.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Details of the CloudWatch Logs destination for broker logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -382,6 +456,20 @@ pub struct CloudWatchLogs {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchLogs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration to use for the brokers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -415,6 +503,20 @@ pub struct ConfigurationInfo {
 
 
 
+impl cfn_resources::CfnResource for ConfigurationInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Broker access controls.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -448,6 +550,24 @@ pub struct ConnectivityInfo {
 
 
 
+impl cfn_resources::CfnResource for ConnectivityInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.public_access.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_connectivity.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about the EBS storage volumes attached to the broker nodes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -481,6 +601,22 @@ pub struct EBSStorageInfo {
 
 
 
+impl cfn_resources::CfnResource for EBSStorageInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.provisioned_throughput.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The data-volume encryption details. You can't update encryption at rest settings for existing clusters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -502,6 +638,20 @@ pub struct EncryptionAtRest {
 
 
 
+impl cfn_resources::CfnResource for EncryptionAtRest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for encrypting data in transit.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -545,6 +695,20 @@ pub struct EncryptionInTransit {
 
 
 
+impl cfn_resources::CfnResource for EncryptionInTransit {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Includes encryption-related information, such as the Amazon KMS key used for encrypting data at rest and whether you want MSK to encrypt your data in transit.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -578,6 +742,24 @@ pub struct EncryptionInfo {
 
 
 
+impl cfn_resources::CfnResource for EncryptionInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption_at_rest.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.encryption_in_transit.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Firehose details for BrokerLogs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -611,6 +793,20 @@ pub struct Firehose {
 
 
 
+impl cfn_resources::CfnResource for Firehose {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details for SASL/IAM client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -632,6 +828,20 @@ pub struct Iam {
 
 
 
+impl cfn_resources::CfnResource for Iam {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Indicates whether you want to enable or disable the JMX Exporter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -653,6 +863,20 @@ pub struct JmxExporter {
 
 
 
+impl cfn_resources::CfnResource for JmxExporter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can configure your MSK cluster to send broker logs to different destination types. This is a container for the configuration details related to broker logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -674,6 +898,22 @@ pub struct LoggingInfo {
 
 
 
+impl cfn_resources::CfnResource for LoggingInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.broker_logs.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Indicates whether you want to enable or disable the Node Exporter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -695,6 +935,20 @@ pub struct NodeExporter {
 
 
 
+impl cfn_resources::CfnResource for NodeExporter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// JMX and Node monitoring for the MSK cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -716,6 +970,22 @@ pub struct OpenMonitoring {
 
 
 
+impl cfn_resources::CfnResource for OpenMonitoring {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.prometheus.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Prometheus settings for open monitoring.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -749,6 +1019,24 @@ pub struct Prometheus {
 
 
 
+impl cfn_resources::CfnResource for Prometheus {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.jmx_exporter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.node_exporter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about provisioned throughput for EBS storage volumes attached to kafka broker nodes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -782,6 +1070,20 @@ pub struct ProvisionedThroughput {
 
 
 
+impl cfn_resources::CfnResource for ProvisionedThroughput {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Broker access controls
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -803,6 +1105,20 @@ pub struct PublicAccess {
 
 
 
+impl cfn_resources::CfnResource for PublicAccess {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details of the Amazon S3 destination for broker logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -848,6 +1164,20 @@ pub struct S3 {
 
 
 
+impl cfn_resources::CfnResource for S3 {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -881,6 +1211,24 @@ pub struct Sasl {
 
 
 
+impl cfn_resources::CfnResource for Sasl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.iam.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scram.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Details for SASL/SCRAM client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -902,6 +1250,20 @@ pub struct Scram {
 
 
 
+impl cfn_resources::CfnResource for Scram {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about storage volumes attached to Amazon MSK broker nodes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -923,6 +1285,22 @@ pub struct StorageInfo {
 
 
 
+impl cfn_resources::CfnResource for StorageInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ebsstorage_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Details for client authentication using TLS.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -956,6 +1334,20 @@ pub struct Tls {
 
 
 
+impl cfn_resources::CfnResource for Tls {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details for allowing no client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -977,6 +1369,20 @@ pub struct Unauthenticated {
 
 
 
+impl cfn_resources::CfnResource for Unauthenticated {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// VPC connection control settings for brokers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -998,6 +1404,22 @@ pub struct VpcConnectivity {
 
 
 
+impl cfn_resources::CfnResource for VpcConnectivity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.client_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Includes all client authentication information for VpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1031,6 +1453,24 @@ pub struct VpcConnectivityClientAuthentication {
 
 
 
+impl cfn_resources::CfnResource for VpcConnectivityClientAuthentication {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sasl.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tls.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Details for SASL/IAM client authentication for VpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1052,6 +1492,20 @@ pub struct VpcConnectivityIam {
 
 
 
+impl cfn_resources::CfnResource for VpcConnectivityIam {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details for client authentication using SASL for VpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1085,6 +1539,24 @@ pub struct VpcConnectivitySasl {
 
 
 
+impl cfn_resources::CfnResource for VpcConnectivitySasl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.iam.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.scram.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Details for SASL/SCRAM client authentication for vpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1106,6 +1578,20 @@ pub struct VpcConnectivityScram {
 
 
 
+impl cfn_resources::CfnResource for VpcConnectivityScram {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details for client authentication using TLS for vpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1126,3 +1612,18 @@ pub struct VpcConnectivityTls {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConnectivityTls {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

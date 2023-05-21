@@ -166,8 +166,35 @@ impl cfn_resources::CfnResource for CfnResolverEndpoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.ip_addresses;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'ip_addresses'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// In a 			CreateResolverEndpoint 			request, the IP address that DNS queries originate from (for outbound endpoints) or that you forward DNS queries to (for inbound endpoints). 			IpAddressRequest also includes the ID of the subnet that contains the IP address.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -225,6 +252,66 @@ pub struct IpAddressRequest {
 
 
 
+impl cfn_resources::CfnResource for IpAddressRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.ip {
+
+        if the_val.len() > 36 as _ {
+            return Err(format!("Max validation failed on field 'ip'. {} is greater than 36", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ip {
+
+        if the_val.len() < 7 as _ {
+            return Err(format!("Min validation failed on field 'ip'. {} is less than 7", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ipv6 {
+
+        if the_val.len() > 39 as _ {
+            return Err(format!("Max validation failed on field 'ipv6'. {} is greater than 39", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ipv6 {
+
+        if the_val.len() < 7 as _ {
+            return Err(format!("Min validation failed on field 'ipv6'. {} is less than 7", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.subnet_id;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnet_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'subnet_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -261,3 +348,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

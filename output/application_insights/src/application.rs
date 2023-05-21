@@ -165,8 +165,42 @@ impl cfn_resources::CfnResource for CfnApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.ops_item_snstopic_arn {
+
+        if the_val.len() > 300 as _ {
+            return Err(format!("Max validation failed on field 'ops_item_snstopic_arn'. {} is greater than 300", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ops_item_snstopic_arn {
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'ops_item_snstopic_arn'. {} is less than 20", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.resource_group_name;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'resource_group_name'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_group_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application Alarm property type defines a CloudWatch alarm to be monitored for the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -200,6 +234,20 @@ pub struct Alarm {
 
 
 
+impl cfn_resources::CfnResource for Alarm {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application AlarmMetric property type defines a metric to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -221,6 +269,20 @@ pub struct AlarmMetric {
 
 
 
+impl cfn_resources::CfnResource for AlarmMetric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application ComponentConfiguration property type defines the configuration settings of the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -254,6 +316,22 @@ pub struct ComponentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ComponentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.configuration_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application ComponentMonitoringSetting property type defines the monitoring setting of the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -337,6 +415,24 @@ pub struct ComponentMonitoringSetting {
 
 
 
+impl cfn_resources::CfnResource for ComponentMonitoringSetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_component_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_overwrite_component_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application ConfigurationDetails property type specifies the configuration settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -430,6 +526,26 @@ pub struct ConfigurationDetails {
 
 
 
+impl cfn_resources::CfnResource for ConfigurationDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.hacluster_prometheus_exporter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.hanaprometheus_exporter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.jmxprometheus_exporter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application CustomComponent property type describes a custom component by grouping similar standalone instances to monitor.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -469,6 +585,34 @@ pub struct CustomComponent {
 
 
 
+impl cfn_resources::CfnResource for CustomComponent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.component_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'component_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.component_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'component_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application HAClusterPrometheusExporter       property type defines the HA cluster Prometheus Exporter settings. For more information,       see the component configuration in the CloudWatch Application Insights       documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -490,6 +634,20 @@ pub struct HAClusterPrometheusExporter {
 
 
 
+impl cfn_resources::CfnResource for HAClusterPrometheusExporter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application HANAPrometheusExporter property       type defines the HANA DB Prometheus Exporter settings. For more information, see the         component configuration in the CloudWatch Application Insights       documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -559,6 +717,20 @@ pub struct HANAPrometheusExporter {
 
 
 
+impl cfn_resources::CfnResource for HANAPrometheusExporter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application JMXPrometheusExporter property type       defines the JMXPrometheus Exporter configuration. For more information, see the      component configuration in the CloudWatch Application Insights    documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -604,6 +776,20 @@ pub struct JMXPrometheusExporter {
 
 
 
+impl cfn_resources::CfnResource for JMXPrometheusExporter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application Log property type specifies a log to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -675,6 +861,20 @@ pub struct Log {
 
 
 
+impl cfn_resources::CfnResource for Log {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application LogPattern property type       specifies an object that defines the log patterns that belong to a         LogPatternSet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -732,6 +932,48 @@ pub struct LogPattern {
 
 
 
+impl cfn_resources::CfnResource for LogPattern {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.pattern;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'pattern'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.pattern;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'pattern'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.pattern_name;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'pattern_name'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.pattern_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'pattern_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application LogPatternSet property type specifies the log pattern set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -771,6 +1013,34 @@ pub struct LogPatternSet {
 
 
 
+impl cfn_resources::CfnResource for LogPatternSet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.pattern_set_name;
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'pattern_set_name'. {} is greater than 30", the_val.len()));
+        }
+
+        
+        let the_val = &self.pattern_set_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'pattern_set_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application SubComponentConfigurationDetails property type specifies the configuration settings of the sub-components.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -816,6 +1086,20 @@ pub struct SubComponentConfigurationDetails {
 
 
 
+impl cfn_resources::CfnResource for SubComponentConfigurationDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application SubComponentTypeConfiguration property type specifies the sub-component configurations for a component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -849,6 +1133,22 @@ pub struct SubComponentTypeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SubComponentTypeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sub_component_configuration_details.validate()?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -886,6 +1186,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AWS::ApplicationInsights::Application WindowsEvent property type specifies a Windows Event to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -942,3 +1256,18 @@ pub struct WindowsEvent {
 }
 
 
+
+impl cfn_resources::CfnResource for WindowsEvent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

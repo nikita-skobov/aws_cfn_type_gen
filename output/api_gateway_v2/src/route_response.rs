@@ -88,8 +88,12 @@ impl cfn_resources::CfnResource for CfnRouteResponse {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies whether the parameter is required.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -110,3 +114,18 @@ pub struct ParameterConstraints {
 }
 
 
+
+impl cfn_resources::CfnResource for ParameterConstraints {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

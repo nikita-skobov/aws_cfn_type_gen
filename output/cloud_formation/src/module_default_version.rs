@@ -78,4 +78,49 @@ impl cfn_resources::CfnResource for CfnModuleDefaultVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.arn {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'arn'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.module_name {
+
+        if the_val.len() > 204 as _ {
+            return Err(format!("Max validation failed on field 'module_name'. {} is greater than 204", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.module_name {
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'module_name'. {} is less than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_id {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'version_id'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

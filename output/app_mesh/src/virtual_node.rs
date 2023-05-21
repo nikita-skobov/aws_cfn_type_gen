@@ -98,8 +98,68 @@ impl cfn_resources::CfnResource for CfnVirtualNode {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.mesh_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'mesh_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.mesh_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'mesh_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.mesh_owner {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'mesh_owner'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.mesh_owner {
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'mesh_owner'. {} is less than 12", the_val.len()));
+        }
+
+        }
+        
+        self.spec.validate()?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.virtual_node_name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'virtual_node_name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.virtual_node_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'virtual_node_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the access logging information for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -121,6 +181,22 @@ pub struct AccessLog {
 
 
 
+impl cfn_resources::CfnResource for AccessLog {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.file.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the AWS Cloud Map attribute information for your     virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -166,6 +242,48 @@ pub struct AwsCloudMapInstanceAttribute {
 
 
 
+impl cfn_resources::CfnResource for AwsCloudMapInstanceAttribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the AWS Cloud Map service discovery information for     your virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -260,6 +378,48 @@ impl Default for AwsCloudMapServiceDiscoveryIpPreferenceEnum {
 }
 
 
+impl cfn_resources::CfnResource for AwsCloudMapServiceDiscovery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.namespace_name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'namespace_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.namespace_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'namespace_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'service_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.service_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'service_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the backends that a virtual node is expected to send outbound     traffic to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -281,6 +441,22 @@ pub struct Backend {
 
 
 
+impl cfn_resources::CfnResource for Backend {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.virtual_service.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the default properties for a backend.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -302,6 +478,22 @@ pub struct BackendDefaults {
 
 
 
+impl cfn_resources::CfnResource for BackendDefaults {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.client_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a client policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -323,6 +515,22 @@ pub struct ClientPolicy {
 
 
 
+impl cfn_resources::CfnResource for ClientPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.tls.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -380,6 +588,24 @@ pub struct ClientPolicyTls {
 
 
 
+impl cfn_resources::CfnResource for ClientPolicyTls {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.certificate.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.validation.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the client's certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -413,6 +639,24 @@ pub struct ClientTlsCertificate {
 
 
 
+impl cfn_resources::CfnResource for ClientTlsCertificate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.file.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sds.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the DNS service discovery information for your virtual     node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -508,6 +752,20 @@ impl Default for DnsServiceDiscoveryResponseTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DnsServiceDiscovery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a duration of time.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -562,6 +820,20 @@ impl Default for DurationUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for Duration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents an access log file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -601,6 +873,36 @@ pub struct FileAccessLog {
 
 
 
+impl cfn_resources::CfnResource for FileAccessLog {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.format.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.path;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'path'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -634,6 +936,24 @@ pub struct GrpcTimeout {
 
 
 
+impl cfn_resources::CfnResource for GrpcTimeout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.idle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.per_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the health check policy for a virtual node's listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -768,6 +1088,64 @@ impl Default for HealthCheckProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for HealthCheck {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.healthy_threshold;
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'healthy_threshold'. {} is greater than 10", the_val));
+        }
+
+        
+        let the_val = &self.healthy_threshold;
+
+        if *the_val < 2 as _ {
+            return Err(format!("Min validation failed on field 'healthy_threshold'. {} is less than 2", the_val));
+        }
+
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        let the_val = &self.unhealthy_threshold;
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'unhealthy_threshold'. {} is greater than 10", the_val));
+        }
+
+        
+        let the_val = &self.unhealthy_threshold;
+
+        if *the_val < 2 as _ {
+            return Err(format!("Min validation failed on field 'unhealthy_threshold'. {} is less than 2", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -801,6 +1179,24 @@ pub struct HttpTimeout {
 
 
 
+impl cfn_resources::CfnResource for HttpTimeout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.idle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.per_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the key value pairs for the JSON.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -842,6 +1238,48 @@ pub struct JsonFormatRef {
 
 
 
+impl cfn_resources::CfnResource for JsonFormatRef {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'value'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents a listener for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -923,6 +1361,32 @@ pub struct Listener {
 
 
 
+impl cfn_resources::CfnResource for Listener {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.connection_pool.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.health_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.outlier_detection.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.port_mapping.validate()?;
+
+        self.tls.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.timeout.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents timeouts for different protocols.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -980,6 +1444,28 @@ pub struct ListenerTimeout {
 
 
 
+impl cfn_resources::CfnResource for ListenerTimeout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.grpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http2.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tcp.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the Transport Layer Security (TLS) properties for a listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1052,6 +1538,24 @@ impl Default for ListenerTlsModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ListenerTls {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.certificate.validate()?;
+
+        self.validation.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents an AWS Certificate Manager certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1073,6 +1577,20 @@ pub struct ListenerTlsAcmCertificate {
 
 
 
+impl cfn_resources::CfnResource for ListenerTlsAcmCertificate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a listener's Transport Layer Security (TLS) certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1118,6 +1636,26 @@ pub struct ListenerTlsCertificate {
 
 
 
+impl cfn_resources::CfnResource for ListenerTlsCertificate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.acm.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.file.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sds.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a local file certificate.     The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1159,6 +1697,48 @@ pub struct ListenerTlsFileCertificate {
 
 
 
+impl cfn_resources::CfnResource for ListenerTlsFileCertificate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.certificate_chain;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'certificate_chain'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.certificate_chain;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'certificate_chain'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.private_key;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'private_key'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.private_key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'private_key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the listener's Secret Discovery Service certificate. The proxy     must be configured with a local SDS provider via a Unix Domain Socket. See App Mesh     TLS       documentation for more info.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1180,6 +1760,20 @@ pub struct ListenerTlsSdsCertificate {
 
 
 
+impl cfn_resources::CfnResource for ListenerTlsSdsCertificate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a listener's Transport Layer Security (TLS) validation context.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1213,6 +1807,24 @@ pub struct ListenerTlsValidationContext {
 
 
 
+impl cfn_resources::CfnResource for ListenerTlsValidationContext {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.subject_alternative_names.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.trust.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a listener's Transport Layer Security (TLS) validation context trust.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1246,6 +1858,24 @@ pub struct ListenerTlsValidationContextTrust {
 
 
 
+impl cfn_resources::CfnResource for ListenerTlsValidationContextTrust {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.file.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sds.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the logging information for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1267,6 +1897,22 @@ pub struct Logging {
 
 
 
+impl cfn_resources::CfnResource for Logging {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.access_log.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the format for the logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1304,6 +1950,36 @@ pub struct LoggingFormat {
 
 
 
+impl cfn_resources::CfnResource for LoggingFormat {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.text {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'text'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.text {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'text'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the outlier detection for a virtual node's listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1365,6 +2041,38 @@ pub struct OutlierDetection {
 
 
 
+impl cfn_resources::CfnResource for OutlierDetection {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.base_ejection_duration.validate()?;
+
+        self.interval.validate()?;
+
+        let the_val = &self.max_ejection_percent;
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'max_ejection_percent'. {} is greater than 100", the_val));
+        }
+
+        
+        let the_val = &self.max_ejection_percent;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'max_ejection_percent'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object representing a virtual node or virtual router listener port mapping.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1431,6 +2139,34 @@ impl Default for PortMappingProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for PortMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the service discovery information for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1464,6 +2200,24 @@ pub struct ServiceDiscovery {
 
 
 
+impl cfn_resources::CfnResource for ServiceDiscovery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.awscloud_map.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.dns.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the methods by which a subject alternative name on a peer     Transport Layer Security (TLS) certificate can be matched.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1485,6 +2239,20 @@ pub struct SubjectAlternativeNameMatchers {
 
 
 
+impl cfn_resources::CfnResource for SubjectAlternativeNameMatchers {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents the subject alternative names secured by the     certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1506,6 +2274,22 @@ pub struct SubjectAlternativeNames {
 
 
 
+impl cfn_resources::CfnResource for SubjectAlternativeNames {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cfn_match.validate()?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1543,6 +2327,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1564,6 +2362,22 @@ pub struct TcpTimeout {
 
 
 
+impl cfn_resources::CfnResource for TcpTimeout {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.idle.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents how the proxy will validate its peer during Transport Layer Security (TLS)     negotiation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1597,6 +2411,24 @@ pub struct TlsValidationContext {
 
 
 
+impl cfn_resources::CfnResource for TlsValidationContext {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.subject_alternative_names.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.trust.validate()?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager     certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1620,6 +2452,27 @@ pub struct TlsValidationContextAcmTrust {
 
 
 
+impl cfn_resources::CfnResource for TlsValidationContextAcmTrust {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.certificate_authority_arns;
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'certificate_authority_arns'. {} is greater than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1645,6 +2498,34 @@ pub struct TlsValidationContextFileTrust {
 
 
 
+impl cfn_resources::CfnResource for TlsValidationContextFileTrust {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.certificate_chain;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'certificate_chain'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.certificate_chain;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'certificate_chain'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents a Transport Layer Security (TLS) Secret Discovery Service validation context trust. The     proxy must be configured with a local SDS provider via a Unix Domain Socket. See App Mesh     TLS       documentation for more info.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1666,6 +2547,20 @@ pub struct TlsValidationContextSdsTrust {
 
 
 
+impl cfn_resources::CfnResource for TlsValidationContextSdsTrust {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1711,6 +2606,26 @@ pub struct TlsValidationContextTrust {
 
 
 
+impl cfn_resources::CfnResource for TlsValidationContextTrust {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.acm.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.file.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sds.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents the type of virtual node connection pool.
 ///
@@ -1773,6 +2688,28 @@ pub struct VirtualNodeConnectionPool {
 
 
 
+impl cfn_resources::CfnResource for VirtualNodeConnectionPool {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.grpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http2.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.tcp.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1796,6 +2733,27 @@ pub struct VirtualNodeGrpcConnectionPool {
 
 
 
+impl cfn_resources::CfnResource for VirtualNodeGrpcConnectionPool {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.max_requests;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_requests'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1819,6 +2777,27 @@ pub struct VirtualNodeHttp2ConnectionPool {
 
 
 
+impl cfn_resources::CfnResource for VirtualNodeHttp2ConnectionPool {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.max_requests;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_requests'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1856,6 +2835,35 @@ pub struct VirtualNodeHttpConnectionPool {
 
 
 
+impl cfn_resources::CfnResource for VirtualNodeHttpConnectionPool {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.max_connections;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_connections'. {} is less than 1", the_val));
+        }
+
+        
+        if let Some(the_val) = &self.max_pending_requests {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_pending_requests'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An object that represents the specification of a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1927,6 +2935,26 @@ pub struct VirtualNodeSpec {
 
 
 
+impl cfn_resources::CfnResource for VirtualNodeSpec {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.backend_defaults.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.logging.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.service_discovery.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1950,6 +2978,27 @@ pub struct VirtualNodeTcpConnectionPool {
 
 
 
+impl cfn_resources::CfnResource for VirtualNodeTcpConnectionPool {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.max_connections;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_connections'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An object that represents a virtual service backend for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1984,3 +3033,20 @@ pub struct VirtualServiceBackend {
 }
 
 
+
+impl cfn_resources::CfnResource for VirtualServiceBackend {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.client_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

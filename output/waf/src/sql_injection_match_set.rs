@@ -46,8 +46,26 @@ impl cfn_resources::CfnResource for CfnSqlInjectionMatchSet {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies where in a web request to look for TargetString.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -67,6 +85,20 @@ pub struct FieldToMatch {
 
 
 
+impl cfn_resources::CfnResource for FieldToMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -170,3 +202,20 @@ impl Default for SqlInjectionMatchTupleTextTransformationEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for SqlInjectionMatchTuple {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.field_to_match.validate()?;
+
+        Ok(())
+    }
+}

@@ -146,8 +146,44 @@ impl cfn_resources::CfnResource for CfnCluster {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.encryption_config {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'encryption_config'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        self.kubernetes_network_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.logging.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.outpost_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.resources_vpc_config.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The cluster control plane logging configuration for your cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -171,6 +207,20 @@ pub struct ClusterLogging {
 
 
 
+impl cfn_resources::CfnResource for ClusterLogging {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The placement configuration for all the control plane instances of your local Amazon EKS cluster on an AWS Outpost. For more information, see         Capacity           considerations in the Amazon EKS User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -192,6 +242,20 @@ pub struct ControlPlanePlacement {
 
 
 
+impl cfn_resources::CfnResource for ControlPlanePlacement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The encryption configuration for the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -225,6 +289,22 @@ pub struct EncryptionConfig {
 
 
 
+impl cfn_resources::CfnResource for EncryptionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.provider.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Kubernetes network configuration for the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -297,6 +377,20 @@ impl Default for KubernetesNetworkConfigIpFamilyEnum {
 }
 
 
+impl cfn_resources::CfnResource for KubernetesNetworkConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Enable or disable exporting the Kubernetes control plane logs for your cluster to       CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch       Logs. For more information, see Amazon EKS Cluster control plane         logs in the         Amazon EKS User Guide       .
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -318,6 +412,22 @@ pub struct Logging {
 
 
 
+impl cfn_resources::CfnResource for Logging {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cluster_logging.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The enabled logging type. For a list of the valid logging types, see the types property of LogSetup in the           Amazon EKS API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -339,6 +449,20 @@ pub struct LoggingTypeConfig {
 
 
 
+impl cfn_resources::CfnResource for LoggingTypeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of your local Amazon EKS cluster on an AWS       Outpost. Before creating a cluster on an Outpost, review Creating a local         cluster on an Outpost in the Amazon EKS User Guide. This API isn't available for         Amazon EKS clusters on the AWS cloud.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -388,6 +512,22 @@ pub struct OutpostConfig {
 
 
 
+impl cfn_resources::CfnResource for OutpostConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.control_plane_placement.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Identifies the AWS Key Management Service (AWS KMS) key used to encrypt the       secrets.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -409,6 +549,20 @@ pub struct Provider {
 
 
 
+impl cfn_resources::CfnResource for Provider {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object representing the VPC configuration to use for an Amazon EKS cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -478,6 +632,20 @@ pub struct ResourcesVpcConfig {
 
 
 
+impl cfn_resources::CfnResource for ResourcesVpcConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -514,3 +682,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

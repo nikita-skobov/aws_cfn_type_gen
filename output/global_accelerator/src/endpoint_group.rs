@@ -191,8 +191,98 @@ impl cfn_resources::CfnResource for CfnEndpointGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.endpoint_configurations {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_configurations'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.endpoint_group_region;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_group_region'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.health_check_interval_seconds {
+
+        if *the_val > 30 as _ {
+            return Err(format!("Max validation failed on field 'health_check_interval_seconds'. {} is greater than 30", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_interval_seconds {
+
+        if *the_val < 10 as _ {
+            return Err(format!("Min validation failed on field 'health_check_interval_seconds'. {} is less than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_path {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'health_check_path'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_port {
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'health_check_port'. {} is greater than 65535", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.health_check_port {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'health_check_port'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        let the_val = &self.listener_arn;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'listener_arn'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.port_overrides {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'port_overrides'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.threshold_count {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'threshold_count'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.threshold_count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'threshold_count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A complex type for endpoints. A resource must be valid and active when you add it as an endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -250,6 +340,43 @@ pub struct EndpointConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EndpointConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.endpoint_id;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_id'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.weight {
+
+        if *the_val > 255 as _ {
+            return Err(format!("Max validation failed on field 'weight'. {} is greater than 255", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.weight {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'weight'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Override specific listener ports used to route traffic to endpoints that are part of an endpoint group. 			For example, you can create a port override in which the listener 			receives user traffic on ports 80 and 443, but your accelerator routes that traffic to ports 1080 			and 1443, respectively, on the endpoints.
 ///
@@ -292,3 +419,46 @@ pub struct PortOverride {
 }
 
 
+
+impl cfn_resources::CfnResource for PortOverride {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.endpoint_port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'endpoint_port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.endpoint_port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'endpoint_port'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.listener_port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'listener_port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.listener_port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'listener_port'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}

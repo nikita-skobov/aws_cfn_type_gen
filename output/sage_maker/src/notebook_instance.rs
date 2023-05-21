@@ -597,8 +597,124 @@ impl cfn_resources::CfnResource for CfnNotebookInstance {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.additional_code_repositories {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'additional_code_repositories'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.default_code_repository {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'default_code_repository'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.default_code_repository {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'default_code_repository'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.instance_metadata_service_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.lifecycle_config_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'lifecycle_config_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.notebook_instance_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'notebook_instance_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.platform_identifier {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'platform_identifier'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.security_group_ids {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_id {
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 32", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.volume_size_in_gb {
+
+        if *the_val > 16384 as _ {
+            return Err(format!("Max validation failed on field 'volume_size_in_gb'. {} is greater than 16384", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.volume_size_in_gb {
+
+        if *the_val < 5 as _ {
+            return Err(format!("Min validation failed on field 'volume_size_in_gb'. {} is less than 5", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information on the IMDS configuration of the notebook instance
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -624,6 +740,27 @@ pub struct InstanceMetadataServiceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InstanceMetadataServiceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.minimum_instance_metadata_service_version;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'minimum_instance_metadata_service_version'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -660,3 +797,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

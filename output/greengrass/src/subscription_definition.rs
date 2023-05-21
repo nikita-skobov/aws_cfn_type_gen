@@ -60,8 +60,14 @@ impl cfn_resources::CfnResource for CfnSubscriptionDefinition {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.initial_version.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Subscriptions define how MQTT messages can be exchanged between devices, functions, and connectors in the group, and with AWS IoT   or the local shadow service. A subscription defines a message source, message target, and a topic (or subject) that's used to route messages from the source to the target. A subscription defines the message flow in   one direction, from the source to the target. For two-way communication, you must set up two subscriptions, one for each direction.
 ///
@@ -121,6 +127,20 @@ pub struct Subscription {
 
 
 
+impl cfn_resources::CfnResource for Subscription {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A subscription definition version contains a list of subscriptions.
 ///
@@ -143,3 +163,18 @@ pub struct SubscriptionDefinitionVersion {
 }
 
 
+
+impl cfn_resources::CfnResource for SubscriptionDefinitionVersion {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

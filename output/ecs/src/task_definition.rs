@@ -349,8 +349,26 @@ impl cfn_resources::CfnResource for CfnTaskDefinition {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.ephemeral_storage.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.proxy_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.runtime_platform.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The authorization configuration details for the Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -405,6 +423,20 @@ impl Default for AuthorizationConfigIAMEnum {
 }
 
 
+impl cfn_resources::CfnResource for AuthorizationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ContainerDefinition property specifies a container definition. Container definitions are used  in task definitions to describe the different containers that are launched as part of a task.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1010,6 +1042,30 @@ pub struct ContainerDefinition {
 
 
 
+impl cfn_resources::CfnResource for ContainerDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.firelens_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.health_check.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.linux_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.log_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.repository_credentials.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The ContainerDependency property specifies the dependencies defined for container startup and  shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for  container shutdown it is reversed.
 ///
@@ -1076,6 +1132,20 @@ impl Default for ContainerDependencyConditionEnum {
 }
 
 
+impl cfn_resources::CfnResource for ContainerDependency {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Device property specifies an object representing a container instance host device.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1121,6 +1191,20 @@ pub struct Device {
 
 
 
+impl cfn_resources::CfnResource for Device {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The DockerVolumeConfiguration property specifies a Docker volume configuration and is used when you  use Docker volumes. Docker volumes are only supported when you are using the EC2 launch type. Windows containers only  support the use of the local driver. To use bind mounts, specify a host instead.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1213,6 +1297,20 @@ impl Default for DockerVolumeConfigurationScopeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DockerVolumeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This parameter is specified when you're using an Amazon Elastic File System file system for task 			storage. For more information, see Amazon EFS volumes in the 			Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1305,6 +1403,22 @@ impl Default for EFSVolumeConfigurationTransitEncryptionEnum {
 }
 
 
+impl cfn_resources::CfnResource for EFSVolumeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.authorization_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A list of files containing the environment variables to pass to a container. You can 			specify up to ten environment files. The file must have a .env file 			extension. Each line in an environment file should contain an environment variable in 				VARIABLE=VALUE format. Lines beginning with # are treated 			as comments and are ignored. For more information about the environment variable file 			syntax, see Declare default 				environment variables in file.
 ///
@@ -1359,6 +1473,20 @@ impl Default for EnvironmentFileTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EnvironmentFile {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The amount of ephemeral storage to allocate for the task. This parameter is used to 			expand the total amount of ephemeral storage available, beyond the default amount, for 			tasks hosted on AWS Fargate. For more information, see Fargate task 				storage in the Amazon ECS User Guide for AWS Fargate       .
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1380,6 +1508,20 @@ pub struct EphemeralStorage {
 
 
 
+impl cfn_resources::CfnResource for EphemeralStorage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FireLens configuration for the container. This is used to specify and configure a 			log router for container logs. For more information, see Custom log routing 			in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1438,6 +1580,20 @@ impl Default for FirelensConfigurationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FirelensConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The HealthCheck property specifies an object representing a container health    check. Health check parameters that are specified in a container definition override any    Docker health checks that exist in the container image (such as those specified in a parent    image or from the image's Dockerfile). This configuration maps to the HEALTHCHECK    parameter of docker    run.
 ///
@@ -1523,6 +1679,20 @@ pub struct HealthCheck {
 
 
 
+impl cfn_resources::CfnResource for HealthCheck {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The HostEntry property specifies a hostname and an IP address that are added to the   /etc/hosts file of a container through the extraHosts parameter of its   ContainerDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1556,6 +1726,20 @@ pub struct HostEntry {
 
 
 
+impl cfn_resources::CfnResource for HostEntry {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The HostVolumeProperties property specifies details on a container instance bind mount host  volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1579,6 +1763,20 @@ pub struct HostVolumeProperties {
 
 
 
+impl cfn_resources::CfnResource for HostVolumeProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details on an Elastic Inference accelerator. For more information, see Working with Amazon Elastic Inference on 				Amazon ECS in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1612,6 +1810,20 @@ pub struct InferenceAccelerator {
 
 
 
+impl cfn_resources::CfnResource for InferenceAccelerator {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The KernelCapabilities property specifies the Linux capabilities for the container that are added  to or dropped from the default configuration that is provided by Docker. For more information on the default  capabilities and the non-default available capabilities, see Runtime privilege and   Linux capabilities in the Docker run reference. For more detailed information on these  Linux capabilities, see the capabilities(7) Linux manual page.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1651,6 +1863,20 @@ pub struct KernelCapabilities {
 
 
 
+impl cfn_resources::CfnResource for KernelCapabilities {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A key-value pair object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1684,6 +1910,20 @@ pub struct KeyValuePair {
 
 
 
+impl cfn_resources::CfnResource for KeyValuePair {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Linux-specific options that are applied to the container, such as Linux KernelCapabilities.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1791,6 +2031,22 @@ pub struct LinuxParameters {
 
 
 
+impl cfn_resources::CfnResource for LinuxParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.capabilities.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The LogConfiguration property specifies log configuration options to send to a custom log driver  for the container.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1891,6 +2147,20 @@ impl Default for LogConfigurationLogDriverEnum {
 }
 
 
+impl cfn_resources::CfnResource for LogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details for a volume mount point that's used in a container definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1936,6 +2206,20 @@ pub struct MountPoint {
 
 
 
+impl cfn_resources::CfnResource for MountPoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The PortMapping property specifies a port mapping. Port mappings allow containers to access ports  on the host container instance to send or receive traffic. Port mappings are specified as part of the container  definition.
 ///
@@ -2095,6 +2379,20 @@ impl Default for PortMappingProtocolEnum {
 }
 
 
+impl cfn_resources::CfnResource for PortMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration details for the App Mesh proxy.
 ///
@@ -2161,6 +2459,20 @@ impl Default for ProxyConfigurationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ProxyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The repository credentials for private registry authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2184,6 +2496,20 @@ pub struct RepositoryCredentials {
 
 
 
+impl cfn_resources::CfnResource for RepositoryCredentials {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The type and amount of a resource to assign to a container. The supported resource types are 			GPUs and Elastic Inference accelerators. For more information, see Working with 				GPUs on Amazon ECS or Working with 				Amazon Elastic Inference on Amazon ECS in the Amazon Elastic Container Service Developer Guide
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2242,6 +2568,20 @@ impl Default for ResourceRequirementTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ResourceRequirement {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the platform for the Amazon ECS service or task.
 ///
@@ -2345,6 +2685,20 @@ impl Default for RuntimePlatformOperatingSystemFamilyEnum {
 }
 
 
+impl cfn_resources::CfnResource for RuntimePlatform {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object representing the secret to expose to your container. Secrets can be exposed 			to a container in the following ways:
 ///
@@ -2384,6 +2738,20 @@ pub struct Secret {
 
 
 
+impl cfn_resources::CfnResource for Secret {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A list of namespaced kernel parameters to set in the container. This parameter maps to 				Sysctls in the Create a container section of the 			Docker Remote API and the --sysctl option to docker run.
 ///
@@ -2419,6 +2787,20 @@ pub struct SystemControl {
 
 
 
+impl cfn_resources::CfnResource for SystemControl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -2456,6 +2838,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The constraint on task placement in the task definition. For more 			information, see Task placement constraints in the 			Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2506,6 +2902,20 @@ impl Default for TaskDefinitionPlacementConstraintTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TaskDefinitionPlacementConstraint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The container path, mount options, and size of the tmpfs mount.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2553,6 +2963,20 @@ pub struct Tmpfs {
 
 
 
+impl cfn_resources::CfnResource for Tmpfs {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ulimit settings to pass to the container.
 ///
@@ -2675,6 +3099,20 @@ impl Default for UlimitNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for Ulimit {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Volume property specifies a data volume used in a task definition. For tasks that use a Docker  volume, specify a DockerVolumeConfiguration. For tasks that use a bind mount host volume, specify a   host and optional sourcePath. For more information about host and optional   sourcePath, see Volumes and Using Data Volumes in   Tasks.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2738,6 +3176,26 @@ pub struct Volume {
 
 
 
+impl cfn_resources::CfnResource for Volume {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.docker_volume_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.efsvolume_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.host.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Details on a data volume from another container in the same task definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2770,3 +3228,18 @@ pub struct VolumeFrom {
 }
 
 
+
+impl cfn_resources::CfnResource for VolumeFrom {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

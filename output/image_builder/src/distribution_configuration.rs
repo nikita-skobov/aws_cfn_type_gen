@@ -70,8 +70,28 @@ impl cfn_resources::CfnResource for CfnDistributionConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Define and configure the output AMIs of the pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -169,6 +189,78 @@ pub struct AmiDistributionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AmiDistributionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.launch_permission_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 127 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 127", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_account_ids {
+
+        if the_val.len() > 1536 as _ {
+            return Err(format!("Max validation failed on field 'target_account_ids'. {} is greater than 1536", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Container distribution settings for encryption, licensing, and sharing in a specific 			Region.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -218,6 +310,38 @@ pub struct ContainerDistributionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ContainerDistributionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.target_repository.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The distribution configuration distribution defines the settings for a specific Region 			in the Distribution Configuration. You must specify whether the distribution is for an AMI 			or a container image. To do so, include exactly one of the following data types for your 			distribution:
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -306,6 +430,54 @@ pub struct Distribution {
 
 
 
+impl cfn_resources::CfnResource for Distribution {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ami_distribution_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.container_distribution_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.launch_template_configurations {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'launch_template_configurations'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.license_configuration_arns {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'license_configuration_arns'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.region;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'region'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.region;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'region'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The FastLaunchConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -370,6 +542,24 @@ pub struct FastLaunchConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FastLaunchConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.launch_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snapshot_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The FastLaunchLaunchTemplateSpecification property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -412,6 +602,20 @@ pub struct FastLaunchLaunchTemplateSpecification {
 
 
 
+impl cfn_resources::CfnResource for FastLaunchLaunchTemplateSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The FastLaunchSnapshotConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -432,6 +636,20 @@ pub struct FastLaunchSnapshotConfiguration {
 
 
 
+impl cfn_resources::CfnResource for FastLaunchSnapshotConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the configuration for a launch permission. The launch permission 			modification request is sent to the Amazon EC2 				ModifyImageAttribute API on behalf of the user for each Region they have 			selected to distribute the AMI. To make an AMI public, set the launch permission 			authorized accounts to all. See the examples for making an AMI public at 				Amazon EC2 				ModifyImageAttribute.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -495,6 +713,44 @@ pub struct LaunchPermissionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LaunchPermissionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.organization_arns {
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'organization_arns'. {} is greater than 25", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.organizational_unit_arns {
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'organizational_unit_arns'. {} is greater than 25", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.user_ids {
+
+        if the_val.len() > 1536 as _ {
+            return Err(format!("Max validation failed on field 'user_ids'. {} is greater than 1536", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Identifies an Amazon EC2 launch template to use for a specific account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -544,6 +800,20 @@ pub struct LaunchTemplateConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplateConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The container repository where the output container image is stored.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -597,3 +867,34 @@ impl Default for TargetContainerRepositoryServiceEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TargetContainerRepository {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.repository_name {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'repository_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.repository_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'repository_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

@@ -92,8 +92,12 @@ impl cfn_resources::CfnResource for CfnInAppTemplate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration of the main body text of the in-app message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -139,6 +143,20 @@ pub struct BodyConfig {
 
 
 
+impl cfn_resources::CfnResource for BodyConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the behavior of buttons that appear in an in-app message template.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -196,6 +214,28 @@ pub struct ButtonConfig {
 
 
 
+impl cfn_resources::CfnResource for ButtonConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.android.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.default_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ios.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.web.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the default behavior of a button that appears in an in-app message. You can       optionally add button configurations that specifically apply to iOS, Android, or web       browser users.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -279,6 +319,20 @@ pub struct DefaultButtonConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DefaultButtonConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration and content of the header or title text of the in-app       message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -324,6 +378,20 @@ pub struct HeaderConfig {
 
 
 
+impl cfn_resources::CfnResource for HeaderConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration of an in-app message, including its header, body, buttons,       colors, and images.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -405,6 +473,28 @@ pub struct InAppMessageContent {
 
 
 
+impl cfn_resources::CfnResource for InAppMessageContent {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.body_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.header_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.primary_btn.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.secondary_btn.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the configuration of a button with settings that are specific to a certain       device type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -439,3 +529,18 @@ pub struct OverrideButtonConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for OverrideButtonConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -28,8 +28,14 @@ impl cfn_resources::CfnResource for CfnAccount {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.expiry_events_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Object containing expiration events options associated with an AWS account. For more information, see ExpiryEventsConfiguration in the API reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -50,3 +56,18 @@ pub struct ExpiryEventsConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for ExpiryEventsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

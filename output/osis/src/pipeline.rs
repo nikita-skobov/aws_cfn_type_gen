@@ -100,8 +100,16 @@ impl cfn_resources::CfnResource for CfnPipeline {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.log_publishing_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The CloudWatchLogDestination property type specifies Property description not available. for an AWS::OSIS::Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -122,6 +130,20 @@ pub struct CloudWatchLogDestination {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchLogDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Container for the values required to configure logging for the pipeline. If you don't  specify these values, OpenSearch Ingestion will not publish logs from your application to  CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -155,6 +177,22 @@ pub struct LogPublishingOptions {
 
 
 
+impl cfn_resources::CfnResource for LogPublishingOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_log_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -192,6 +230,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An OpenSearch Ingestion-managed VPC endpoint that will access one or more  pipelines.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -237,6 +289,22 @@ pub struct VpcEndpoint {
 
 
 
+impl cfn_resources::CfnResource for VpcEndpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.vpc_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Options that specify the subnets and security groups for an OpenSearch Ingestion  VPC endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -273,3 +341,34 @@ pub struct VpcOptions {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcOptions {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.security_group_ids {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subnet_ids {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

@@ -174,8 +174,14 @@ impl cfn_resources::CfnResource for CfnMethod {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.integration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Integration is a property of the AWS::ApiGateway::Method resource that specifies information about the target backend that a method calls.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -434,6 +440,20 @@ impl Default for IntegrationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Integration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// IntegrationResponse is a property of the Amazon API Gateway Method Integration property type that specifies the response that API Gateway sends after a method's backend finishes processing a request.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -526,6 +546,20 @@ impl Default for IntegrationResponseContentHandlingEnum {
 }
 
 
+impl cfn_resources::CfnResource for IntegrationResponse {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -570,3 +604,18 @@ pub struct MethodResponse {
 }
 
 
+
+impl cfn_resources::CfnResource for MethodResponse {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

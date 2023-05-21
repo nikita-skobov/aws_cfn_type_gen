@@ -95,8 +95,14 @@ impl cfn_resources::CfnResource for CfnDisk {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// AddOn is a property of the AWS::Lightsail::Disk resource. It describes the add-ons for a disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -165,6 +171,22 @@ impl Default for AddOnStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for AddOn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_snapshot_add_on_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for a disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -192,6 +214,20 @@ pub struct AutoSnapshotAddOn {
 
 
 
+impl cfn_resources::CfnResource for AutoSnapshotAddOn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Location property type specifies Property description not available. for an AWS::Lightsail::Disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -223,6 +259,20 @@ pub struct Location {
 
 
 
+impl cfn_resources::CfnResource for Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -259,3 +309,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

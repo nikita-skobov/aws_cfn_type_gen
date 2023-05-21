@@ -133,8 +133,46 @@ impl cfn_resources::CfnResource for CfnInstanceFleetConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.launch_specifications.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_on_demand_capacity {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'target_on_demand_capacity'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_spot_capacity {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'target_spot_capacity'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration specifies optional configurations for customizing open-source big data applications and environment parameters. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications in the Amazon EMR Release Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -180,6 +218,20 @@ pub struct Configuration {
 
 
 
+impl cfn_resources::CfnResource for Configuration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// EbsBlockDeviceConfig is a subproperty of the EbsConfiguration property type. EbsBlockDeviceConfig defines the number and type of EBS volumes to associate with all EC2 instances in an EMR cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -213,6 +265,22 @@ pub struct EbsBlockDeviceConfig {
 
 
 
+impl cfn_resources::CfnResource for EbsBlockDeviceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.volume_specification.validate()?;
+
+        Ok(())
+    }
+}
 
 /// EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -246,6 +314,20 @@ pub struct EbsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EbsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// InstanceTypeConfig is a sub-property of InstanceFleetConfig. InstanceTypeConfig determines the EC2 instances that Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -281,6 +363,24 @@ pub struct InstanceFleetProvisioningSpecifications {
 
 
 
+impl cfn_resources::CfnResource for InstanceFleetProvisioningSpecifications {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.on_demand_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.spot_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// InstanceType config is a subproperty of InstanceFleetConfig. An instance type configuration specifies each instance type in an instance fleet. The configuration determines the EC2 instances Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -396,6 +496,76 @@ pub struct InstanceTypeConfig {
 
 
 
+impl cfn_resources::CfnResource for InstanceTypeConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.bid_price {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'bid_price'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.bid_price {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'bid_price'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'custom_ami_id'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.custom_ami_id {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'custom_ami_id'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.ebs_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.instance_type;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'instance_type'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_type;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'instance_type'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.weighted_capacity {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'weighted_capacity'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -434,6 +604,20 @@ impl Default for OnDemandProvisioningSpecificationAllocationStrategyEnum {
 }
 
 
+impl cfn_resources::CfnResource for OnDemandProvisioningSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// SpotProvisioningSpecification is a subproperty of the InstanceFleetProvisioningSpecifications property type. SpotProvisioningSpecification determines the launch specification for Spot instances in the instance fleet, which includes the defined duration and provisioning timeout behavior.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -535,6 +719,35 @@ impl Default for SpotProvisioningSpecificationTimeoutActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for SpotProvisioningSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.block_duration_minutes {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'block_duration_minutes'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.timeout_duration_minutes;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'timeout_duration_minutes'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -579,3 +792,18 @@ pub struct VolumeSpecification {
 }
 
 
+
+impl cfn_resources::CfnResource for VolumeSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

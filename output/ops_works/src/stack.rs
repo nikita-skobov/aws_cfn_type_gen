@@ -381,8 +381,18 @@ impl cfn_resources::CfnResource for CfnStack {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.chef_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.configuration_manager.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.custom_cookbooks_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the Chef configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -416,6 +426,20 @@ pub struct ChefConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ChefConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an Elastic IP address.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -449,6 +473,20 @@ pub struct ElasticIp {
 
 
 
+impl cfn_resources::CfnResource for ElasticIp {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an Amazon RDS instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -494,6 +532,20 @@ pub struct RdsDbInstance {
 
 
 
+impl cfn_resources::CfnResource for RdsDbInstance {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -614,6 +666,20 @@ impl Default for SourceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Source {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes the configuration manager.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -647,6 +713,20 @@ pub struct StackConfigurationManager {
 
 
 
+impl cfn_resources::CfnResource for StackConfigurationManager {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -683,3 +763,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -313,8 +313,18 @@ impl cfn_resources::CfnResource for CfnLayer {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_recipes.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.lifecycle_event_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.load_based_auto_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or      stops load-based instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -404,6 +414,52 @@ pub struct AutoScalingThresholds {
 
 
 
+impl cfn_resources::CfnResource for AutoScalingThresholds {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.ignore_metrics_time {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'ignore_metrics_time'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.ignore_metrics_time {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'ignore_metrics_time'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.thresholds_wait_time {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'thresholds_wait_time'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.thresholds_wait_time {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'thresholds_wait_time'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies the lifecycle event configuration
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -425,6 +481,22 @@ pub struct LifecycleEventConfiguration {
 
 
 
+impl cfn_resources::CfnResource for LifecycleEventConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.shutdown_event_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes a layer's load-based auto scaling configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -470,6 +542,24 @@ pub struct LoadBasedAutoScaling {
 
 
 
+impl cfn_resources::CfnResource for LoadBasedAutoScaling {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.down_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.up_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// AWS OpsWorks Stacks supports five    lifecycle events:     setup, configuration, deploy, undeploy, and shutdown. For      each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. In addition, you can provide      custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the    standard recipes. LayerCustomRecipes specifies the custom recipes for a    particular layer to be run in response to each of the five events.
 ///
@@ -541,6 +631,20 @@ pub struct Recipes {
 
 
 
+impl cfn_resources::CfnResource for Recipes {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Shutdown event configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -574,6 +678,20 @@ pub struct ShutdownEventConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ShutdownEventConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -611,6 +729,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an Amazon EBS volume configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -707,3 +839,18 @@ pub struct VolumeConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for VolumeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

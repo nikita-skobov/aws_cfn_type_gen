@@ -231,8 +231,30 @@ impl cfn_resources::CfnResource for CfnDataSource {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_document_enrichment_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.data_source_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.name;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies access control list files for the documents in a data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -258,6 +280,36 @@ pub struct AccessControlListConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AccessControlListConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.key_path {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'key_path'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.key_path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key_path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides information about the column that should be used for filtering the query       response by groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -285,6 +337,34 @@ pub struct AclConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AclConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.allowed_groups_column_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'allowed_groups_column_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.allowed_groups_column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'allowed_groups_column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides information about how Amazon Kendra should use the columns of a database       in an index.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -376,6 +456,79 @@ pub struct ColumnConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ColumnConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.change_detecting_columns;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'change_detecting_columns'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_data_column_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_data_column_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_data_column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_data_column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_id_column_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_id_column_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_id_column_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_id_column_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.document_title_column_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_column_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_column_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_column_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Configuration of attachment settings for the Confluence data source. Attachment       settings are optional, if you don't specify settings attachments, Amazon Kendra       won't index them.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -413,6 +566,28 @@ pub struct ConfluenceAttachmentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ConfluenceAttachmentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.attachment_field_mappings {
+
+        if the_val.len() > 11 as _ {
+            return Err(format!("Max validation failed on field 'attachment_field_mappings'. {} is greater than 11", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Maps attributes or field names of Confluence attachments to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Confluence fields. For more information, see Mapping data source fields. The       Confuence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -529,6 +704,50 @@ impl Default for ConfluenceAttachmentToIndexFieldMappingDataSourceFieldNameEnum 
 }
 
 
+impl cfn_resources::CfnResource for ConfluenceAttachmentToIndexFieldMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration of blog settings for the Confluence data source. Blogs are always       indexed unless filtered from the index by the ExclusionPatterns or         InclusionPatterns fields in the ConfluenceConfiguration       object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -554,6 +773,28 @@ pub struct ConfluenceBlogConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ConfluenceBlogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.blog_field_mappings {
+
+        if the_val.len() > 9 as _ {
+            return Err(format!("Max validation failed on field 'blog_field_mappings'. {} is greater than 9", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Maps attributes or field names of Confluence blog to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -660,6 +901,50 @@ impl Default for ConfluenceBlogToIndexFieldMappingDataSourceFieldNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConfluenceBlogToIndexFieldMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to Confluence as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -828,6 +1113,74 @@ impl Default for ConfluenceConfigurationVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConfluenceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.attachment_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.blog_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.exclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.inclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        self.page_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.secret_arn;
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.server_url;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'server_url'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.server_url;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'server_url'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.space_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Configuration of the page settings for the Confluence data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -853,6 +1206,28 @@ pub struct ConfluencePageConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ConfluencePageConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.page_field_mappings {
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'page_field_mappings'. {} is greater than 12", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Maps attributes or field names of Confluence pages to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -971,6 +1346,50 @@ impl Default for ConfluencePageToIndexFieldMappingDataSourceFieldNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConfluencePageToIndexFieldMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Configuration information for indexing Confluence spaces.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1044,6 +1463,28 @@ pub struct ConfluenceSpaceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ConfluenceSpaceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.space_field_mappings {
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'space_field_mappings'. {} is greater than 4", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Maps attributes or field names of Confluence spaces to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1130,6 +1571,50 @@ impl Default for ConfluenceSpaceToIndexFieldMappingDataSourceFieldNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConfluenceSpaceToIndexFieldMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information that's required to connect to a       database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1225,6 +1710,90 @@ pub struct ConnectionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ConnectionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.database_host;
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'database_host'. {} is greater than 253", the_val.len()));
+        }
+
+        
+        let the_val = &self.database_host;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_host'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.database_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.database_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.database_port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'database_port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.database_port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'database_port'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.table_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.table_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for altering document metadata and content       during the document ingestion process.
 ///
@@ -1292,6 +1861,48 @@ pub struct CustomDocumentEnrichmentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for CustomDocumentEnrichmentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.inline_configurations {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'inline_configurations'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.post_extraction_hook_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.pre_extraction_hook_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.role_arn {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for an Amazon Kendra data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1421,6 +2032,40 @@ pub struct DataSourceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DataSourceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.confluence_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.database_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.google_drive_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.one_drive_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.salesforce_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.service_now_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.share_point_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.web_crawler_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.work_docs_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Maps a column or attribute in the data source to an index field.       You must first create the fields in the index using the UpdateIndex operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1484,6 +2129,64 @@ pub struct DataSourceToIndexFieldMapping {
 
 
 
+impl cfn_resources::CfnResource for DataSourceToIndexFieldMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.data_source_field_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'data_source_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.data_source_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'data_source_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() > 40 as _ {
+            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.date_field_format {
+
+        if the_val.len() < 4 as _ {
+            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+        }
+
+        
+        let the_val = &self.index_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to an Amazon VPC.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1521,6 +2224,34 @@ pub struct DataSourceVpcConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DataSourceVpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.security_group_ids;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnet_ids;
+
+        if the_val.len() > 6 as _ {
+            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 6", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to a index.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1631,6 +2362,30 @@ impl Default for DatabaseConfigurationDatabaseEngineTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DatabaseConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.acl_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.column_configuration.validate()?;
+
+        self.connection_configuration.validate()?;
+
+        self.sql_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The condition used for the target document attribute or metadata field when ingesting       documents into Amazon Kendra. You use this with DocumentAttributeTarget to         apply the condition.
 ///
@@ -1751,6 +2506,36 @@ impl Default for DocumentAttributeConditionOperatorEnum {
 }
 
 
+impl cfn_resources::CfnResource for DocumentAttributeCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.condition_document_attribute_key;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'condition_document_attribute_key'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        let the_val = &self.condition_document_attribute_key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'condition_document_attribute_key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.condition_on_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The target document attribute or metadata field you want to alter when ingesting       documents into Amazon Kendra.
 ///
@@ -1812,6 +2597,36 @@ pub struct DocumentAttributeTarget {
 
 
 
+impl cfn_resources::CfnResource for DocumentAttributeTarget {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.target_document_attribute_key;
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'target_document_attribute_key'. {} is greater than 200", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_document_attribute_key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_document_attribute_key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.target_document_attribute_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The value of a document attribute. You can only provide one value for a document       attribute.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1875,6 +2690,36 @@ pub struct DocumentAttributeValue {
 
 
 
+impl cfn_resources::CfnResource for DocumentAttributeValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.string_value {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'string_value'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.string_value {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'string_value'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Document metadata files that contain information such as the document access control       information, source URI, document author, and custom attributes. Each metadata file       contains metadata about a single document.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1900,6 +2745,36 @@ pub struct DocumentsMetadataConfiguration {
 
 
 
+impl cfn_resources::CfnResource for DocumentsMetadataConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.s3_prefix {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_prefix'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.s3_prefix {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_prefix'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to Google Drive as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2013,6 +2888,82 @@ pub struct GoogleDriveConfiguration {
 
 
 
+impl cfn_resources::CfnResource for GoogleDriveConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.exclude_mime_types {
+
+        if the_val.len() > 30 as _ {
+            return Err(format!("Max validation failed on field 'exclude_mime_types'. {} is greater than 30", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exclude_shared_drives {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'exclude_shared_drives'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exclude_user_accounts {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'exclude_user_accounts'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.inclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for invoking a Lambda function in AWS Lambda to alter document metadata and content when ingesting documents into         Amazon Kendra. You can configure your Lambda function using PreExtractionHookConfiguration if you want to apply advanced alterations on       the original or raw documents. If you want to apply advanced alterations on the Amazon Kendra structured documents, you must configure your Lambda function using         PostExtractionHookConfiguration. You can only invoke one Lambda function.       However, this function can invoke other functions it requires.
 ///
@@ -2074,6 +3025,50 @@ pub struct HookConfiguration {
 
 
 
+impl cfn_resources::CfnResource for HookConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.invocation_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.lambda_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'lambda_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.lambda_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'lambda_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for applying basic logic to alter document       metadata and content when ingesting documents into Amazon Kendra. To apply advanced       logic, to go beyond what you can do with basic logic, see HookConfiguration.
 ///
@@ -2121,6 +3116,24 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for InlineCustomDocumentEnrichmentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.target.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to OneDrive as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2236,6 +3249,74 @@ pub struct OneDriveConfiguration {
 
 
 
+impl cfn_resources::CfnResource for OneDriveConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.exclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.inclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        self.one_drive_users.validate()?;
+
+        let the_val = &self.secret_arn;
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.tenant_domain;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'tenant_domain'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.tenant_domain;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'tenant_domain'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// User accounts whose documents should be indexed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2271,6 +3352,30 @@ pub struct OneDriveUsers {
 
 
 
+impl cfn_resources::CfnResource for OneDriveUsers {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.one_drive_user_list {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'one_drive_user_list'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        self.one_drive_user_s3_path.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for a web proxy to connect to website       hosts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2338,6 +3443,64 @@ pub struct ProxyConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ProxyConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.credentials {
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'credentials'. {} is greater than 1284", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.credentials {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'credentials'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.host;
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'host'. {} is greater than 253", the_val.len()));
+        }
+
+        
+        let the_val = &self.host;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'host'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to an Amazon S3       bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2439,6 +3602,62 @@ pub struct S3DataSourceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for S3DataSourceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.access_control_list_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.bucket_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        self.documents_metadata_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.exclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.inclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.inclusion_prefixes {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'inclusion_prefixes'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information required to find a specific file in an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2482,6 +3701,48 @@ pub struct S3Path {
 
 
 
+impl cfn_resources::CfnResource for S3Path {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.bucket;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.bucket;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'bucket'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration information for syncing a Salesforce chatter feed. The contents of       the object comes from the Salesforce FeedItem table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2555,6 +3816,66 @@ pub struct SalesforceChatterFeedConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SalesforceChatterFeedConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.include_filter_types {
+
+        if the_val.len() > 2 as _ {
+            return Err(format!("Max validation failed on field 'include_filter_types'. {} is greater than 2", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to Salesforce as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2696,6 +4017,78 @@ pub struct SalesforceConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SalesforceConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.chatter_feed_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.exclude_attachment_file_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.include_attachment_file_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        self.knowledge_article_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.secret_arn;
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.server_url;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'server_url'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.server_url;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'server_url'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.standard_object_attachment_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.standard_object_configurations {
+
+        if the_val.len() > 17 as _ {
+            return Err(format!("Max validation failed on field 'standard_object_configurations'. {} is greater than 17", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for indexing Salesforce custom articles.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2773,6 +4166,72 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SalesforceCustomKnowledgeArticleTypeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for the knowledge article types that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge articles and the       standard fields of knowledge articles, or the custom fields of custom knowledge       articles, but not both
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2822,6 +4281,37 @@ pub struct SalesforceKnowledgeArticleConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SalesforceKnowledgeArticleConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_knowledge_article_type_configurations {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'custom_knowledge_article_type_configurations'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.included_states;
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'included_states'. {} is greater than 3", the_val.len()));
+        }
+
+        
+        self.standard_knowledge_article_type_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for standard Salesforce knowledge       articles.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2881,6 +4371,58 @@ pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SalesforceStandardKnowledgeArticleTypeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for processing attachments to Salesforce       standard objects.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -2922,6 +4464,44 @@ pub struct SalesforceStandardObjectAttachmentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SalesforceStandardObjectAttachmentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies configuration information for indexing a single standard       object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3074,6 +4654,58 @@ impl Default for SalesforceStandardObjectConfigurationNameEnum {
 }
 
 
+impl cfn_resources::CfnResource for SalesforceStandardObjectConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to ServiceNow as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3211,6 +4843,52 @@ impl Default for ServiceNowConfigurationServiceNowBuildVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for ServiceNowConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.host_url;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'host_url'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.host_url;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'host_url'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.knowledge_article_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.secret_arn;
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.service_catalog_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for crawling knowledge articles in the       ServiceNow site.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3334,6 +5012,90 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ServiceNowKnowledgeArticleConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exclude_attachment_file_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.filter_query {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'filter_query'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.filter_query {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_query'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.include_attachment_file_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information for crawling service catalog items in the       ServiceNow site
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3437,6 +5199,74 @@ pub struct ServiceNowServiceCatalogConfiguration {
 
 
 
+impl cfn_resources::CfnResource for ServiceNowServiceCatalogConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.document_data_field_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exclude_attachment_file_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.include_attachment_file_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to Microsoft SharePoint as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3642,6 +5472,85 @@ impl Default for SharePointConfigurationSharePointVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for SharePointConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.document_title_field_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.exclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.inclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+        }
+
+        
+        let the_val = &self.secret_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.ssl_certificate_s3_path.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.urls;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'urls'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides information that configures Amazon Kendra to use a SQL       database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3669,6 +5578,20 @@ pub struct SqlConfiguration {
 
 
 
+impl cfn_resources::CfnResource for SqlConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -3706,6 +5629,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to websites that require 		  user authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3731,6 +5668,28 @@ pub struct WebCrawlerAuthenticationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WebCrawlerAuthenticationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.basic_authentication {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'basic_authentication'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to websites that require basic user       authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3798,6 +5757,62 @@ pub struct WebCrawlerBasicAuthentication {
 
 
 
+impl cfn_resources::CfnResource for WebCrawlerBasicAuthentication {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.credentials;
+
+        if the_val.len() > 1284 as _ {
+            return Err(format!("Max validation failed on field 'credentials'. {} is greater than 1284", the_val.len()));
+        }
+
+        
+        let the_val = &self.credentials;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'credentials'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.host;
+
+        if the_val.len() > 253 as _ {
+            return Err(format!("Max validation failed on field 'host'. {} is greater than 253", the_val.len()));
+        }
+
+        
+        let the_val = &self.host;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'host'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.port;
+
+        if *the_val > 65535 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+        }
+
+        
+        let the_val = &self.port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information required for Amazon Kendra       Web Crawler.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -3961,6 +5976,90 @@ pub struct WebCrawlerConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WebCrawlerConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.authentication_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.crawl_depth {
+
+        if *the_val > 10 as _ {
+            return Err(format!("Max validation failed on field 'crawl_depth'. {} is greater than 10", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.crawl_depth {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'crawl_depth'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_links_per_page {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'max_links_per_page'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_links_per_page {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_links_per_page'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_urls_per_minute_crawl_rate {
+
+        if *the_val > 300 as _ {
+            return Err(format!("Max validation failed on field 'max_urls_per_minute_crawl_rate'. {} is greater than 300", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.max_urls_per_minute_crawl_rate {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_urls_per_minute_crawl_rate'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.proxy_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.url_exclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'url_exclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.url_inclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'url_inclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        self.urls.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information of the seed or starting point URLs to crawl.
 ///
@@ -4029,6 +6128,27 @@ impl Default for WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for WebCrawlerSeedUrlConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.seed_urls;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'seed_urls'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Provides the configuration information of the sitemap URLs to crawl.
 ///
@@ -4056,6 +6176,27 @@ pub struct WebCrawlerSiteMapsConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WebCrawlerSiteMapsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.site_maps;
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'site_maps'. {} is greater than 3", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the seed or starting point URLs of the       websites or the sitemap URLs of the websites you want to crawl.
 ///
@@ -4101,6 +6242,24 @@ pub struct WebCrawlerUrls {
 
 
 
+impl cfn_resources::CfnResource for WebCrawlerUrls {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.seed_url_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.site_maps_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Provides the configuration information to connect to Amazon WorkDocs       as your data source.
 ///
@@ -4199,3 +6358,56 @@ pub struct WorkDocsConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for WorkDocsConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.exclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.field_mappings {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.inclusion_patterns {
+
+        if the_val.len() > 250 as _ {
+            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.organization_id;
+
+        if the_val.len() > 12 as _ {
+            return Err(format!("Max validation failed on field 'organization_id'. {} is greater than 12", the_val.len()));
+        }
+
+        
+        let the_val = &self.organization_id;
+
+        if the_val.len() < 12 as _ {
+            return Err(format!("Min validation failed on field 'organization_id'. {} is less than 12", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

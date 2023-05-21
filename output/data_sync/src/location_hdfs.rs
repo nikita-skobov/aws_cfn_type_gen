@@ -209,8 +209,117 @@ impl cfn_resources::CfnResource for CfnLocationHDFS {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.agent_arns;
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'agent_arns'. {} is greater than 4", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.block_size {
+
+        if *the_val > 1073741824 as _ {
+            return Err(format!("Max validation failed on field 'block_size'. {} is greater than 1073741824", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.block_size {
+
+        if *the_val < 1048576 as _ {
+            return Err(format!("Min validation failed on field 'block_size'. {} is less than 1048576", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kerberos_principal {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'kerberos_principal'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kerberos_principal {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kerberos_principal'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_provider_uri {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'kms_key_provider_uri'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.kms_key_provider_uri {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'kms_key_provider_uri'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.qop_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.replication_factor {
+
+        if *the_val > 512 as _ {
+            return Err(format!("Max validation failed on field 'replication_factor'. {} is greater than 512", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.replication_factor {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'replication_factor'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.simple_user {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'simple_user'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.simple_user {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'simple_user'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.subdirectory {
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'subdirectory'. {} is greater than 4096", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The    NameNode of the Hadoop Distributed File System (HDFS). The NameNode manages the file system's    namespace and performs operations such as opening, closing, and renaming files and    directories. The NameNode also contains the information to map blocks of data to the    DataNodes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -254,6 +363,48 @@ pub struct NameNode {
 
 
 
+impl cfn_resources::CfnResource for NameNode {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.hostname;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'hostname'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.hostname;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'hostname'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.port;
+
+        if *the_val > 65536 as _ {
+            return Err(format!("Max validation failed on field 'port'. {} is greater than 65536", the_val));
+        }
+
+        
+        let the_val = &self.port;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The    Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer privacy settings    configured on the Hadoop Distributed File System (HDFS) cluster.
 /// 
@@ -346,6 +497,20 @@ impl Default for QopConfigurationRpcProtectionEnum {
 }
 
 
+impl cfn_resources::CfnResource for QopConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -382,3 +547,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

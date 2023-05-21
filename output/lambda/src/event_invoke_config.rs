@@ -102,8 +102,74 @@ impl cfn_resources::CfnResource for CfnEventInvokeConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.function_name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'function_name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.function_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'function_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.maximum_event_age_in_seconds {
+
+        if *the_val > 21600 as _ {
+            return Err(format!("Max validation failed on field 'maximum_event_age_in_seconds'. {} is greater than 21600", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_event_age_in_seconds {
+
+        if *the_val < 60 as _ {
+            return Err(format!("Min validation failed on field 'maximum_event_age_in_seconds'. {} is less than 60", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_retry_attempts {
+
+        if *the_val > 2 as _ {
+            return Err(format!("Max validation failed on field 'maximum_retry_attempts'. {} is greater than 2", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_retry_attempts {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'maximum_retry_attempts'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.qualifier;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'qualifier'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.qualifier;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'qualifier'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A configuration object that specifies the destination of an event after Lambda processes it.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -137,6 +203,24 @@ pub struct DestinationConfig {
 
 
 
+impl cfn_resources::CfnResource for DestinationConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.on_failure.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.on_success.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A destination for events that failed processing.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -164,6 +248,34 @@ pub struct OnFailure {
 
 
 
+impl cfn_resources::CfnResource for OnFailure {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.destination;
+
+        if the_val.len() > 350 as _ {
+            return Err(format!("Max validation failed on field 'destination'. {} is greater than 350", the_val.len()));
+        }
+
+        
+        let the_val = &self.destination;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'destination'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A destination for events that were processed successfully.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -190,3 +302,32 @@ pub struct OnSuccess {
 }
 
 
+
+impl cfn_resources::CfnResource for OnSuccess {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.destination;
+
+        if the_val.len() > 350 as _ {
+            return Err(format!("Max validation failed on field 'destination'. {} is greater than 350", the_val.len()));
+        }
+
+        
+        let the_val = &self.destination;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'destination'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

@@ -62,8 +62,28 @@ impl cfn_resources::CfnResource for CfnNode {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.network_id;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'network_id'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.network_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'network_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.node_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Configuration properties of a peer node within a membership.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -96,3 +116,18 @@ pub struct NodeConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for NodeConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

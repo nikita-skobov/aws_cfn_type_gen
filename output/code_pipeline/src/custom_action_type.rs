@@ -165,8 +165,54 @@ impl cfn_resources::CfnResource for CfnCustomActionType {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.configuration_properties {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'configuration_properties'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        self.input_artifact_details.validate()?;
+
+        self.output_artifact_details.validate()?;
+
+        let the_val = &self.provider;
+
+        if the_val.len() > 35 as _ {
+            return Err(format!("Max validation failed on field 'provider'. {} is greater than 35", the_val.len()));
+        }
+
+        
+        let the_val = &self.provider;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'provider'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.version;
+
+        if the_val.len() > 9 as _ {
+            return Err(format!("Max validation failed on field 'version'. {} is greater than 9", the_val.len()));
+        }
+
+        
+        let the_val = &self.version;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Returns information about the details of an artifact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -208,6 +254,48 @@ pub struct ArtifactDetails {
 
 
 
+impl cfn_resources::CfnResource for ArtifactDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.maximum_count;
+
+        if *the_val > 5 as _ {
+            return Err(format!("Max validation failed on field 'maximum_count'. {} is greater than 5", the_val));
+        }
+
+        
+        let the_val = &self.maximum_count;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'maximum_count'. {} is less than 0", the_val));
+        }
+
+        
+        let the_val = &self.minimum_count;
+
+        if *the_val > 5 as _ {
+            return Err(format!("Max validation failed on field 'minimum_count'. {} is greater than 5", the_val));
+        }
+
+        
+        let the_val = &self.minimum_count;
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'minimum_count'. {} is less than 0", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The configuration properties for the custom action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -338,6 +426,50 @@ impl Default for ConfigurationPropertiesTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ConfigurationProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 160 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 160", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Settings is a property of the AWS::CodePipeline::CustomActionType    resource that provides URLs that users can access to view information about the CodePipeline    custom action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -411,6 +543,84 @@ pub struct Settings {
 
 
 
+impl cfn_resources::CfnResource for Settings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.entity_url_template {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'entity_url_template'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.entity_url_template {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'entity_url_template'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.execution_url_template {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'execution_url_template'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.execution_url_template {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'execution_url_template'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.revision_url_template {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'revision_url_template'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.revision_url_template {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'revision_url_template'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.third_party_configuration_url {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'third_party_configuration_url'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.third_party_configuration_url {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'third_party_configuration_url'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -447,3 +657,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

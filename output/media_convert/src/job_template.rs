@@ -176,8 +176,22 @@ impl cfn_resources::CfnResource for CfnJobTemplate {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.acceleration_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.priority {
+
+        if *the_val > 50 as _ {
+            return Err(format!("Max validation failed on field 'priority'. {} is greater than 50", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see       Job         Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -199,6 +213,20 @@ pub struct AccelerationSettings {
 
 
 
+impl cfn_resources::CfnResource for AccelerationSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -243,3 +271,18 @@ pub struct HopDestination {
 }
 
 
+
+impl cfn_resources::CfnResource for HopDestination {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

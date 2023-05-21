@@ -118,4 +118,24 @@ impl cfn_resources::CfnResource for CfnSourceCredential {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.token;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'token'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.username {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'username'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
 }

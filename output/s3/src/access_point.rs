@@ -88,8 +88,16 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.public_access_block_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can     enable the configuration options in any combination. For more information about when Amazon S3     considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -157,6 +165,20 @@ pub struct PublicAccessBlockConfiguration {
 
 
 
+impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Virtual Private Cloud (VPC) configuration for this access point.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -177,3 +199,18 @@ pub struct VpcConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

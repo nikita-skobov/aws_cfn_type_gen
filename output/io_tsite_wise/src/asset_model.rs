@@ -94,8 +94,12 @@ impl cfn_resources::CfnResource for CfnAssetModel {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about a composite model in an asset model. This object contains the       asset property definitions that you define in the composite model. You can use composite asset       models to define alarms on this asset model.
 ///
@@ -157,6 +161,20 @@ pub struct AssetModelCompositeModel {
 
 
 
+impl cfn_resources::CfnResource for AssetModelCompositeModel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an asset hierarchy that contains a hierarchy's name, LogicalID, and child asset model    ID that specifies the type of asset that can be in this hierarchy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -206,6 +224,20 @@ pub struct AssetModelHierarchy {
 
 
 
+impl cfn_resources::CfnResource for AssetModelHierarchy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains information about an asset model property.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -291,6 +323,22 @@ pub struct AssetModelProperty {
 
 
 
+impl cfn_resources::CfnResource for AssetModelProperty {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cfn_type.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains an asset attribute property. For more information, see       Defining data properties in the AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -312,6 +360,20 @@ pub struct Attribute {
 
 
 
+impl cfn_resources::CfnResource for Attribute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains expression variable information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -347,6 +409,22 @@ pub struct ExpressionVariable {
 
 
 
+impl cfn_resources::CfnResource for ExpressionVariable {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.value.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains an asset metric property. With metrics, you can calculate aggregate functions,    such as an average, maximum, or minimum, as specified through an expression. A metric maps    several values to a single value (such as a sum).
 ///
@@ -398,6 +476,22 @@ pub struct Metric {
 
 
 
+impl cfn_resources::CfnResource for Metric {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.window.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains a time interval window used for data aggregate computations (for example,    average, sum, count, and so on).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -419,6 +513,22 @@ pub struct MetricWindow {
 
 
 
+impl cfn_resources::CfnResource for MetricWindow {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.tumbling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains a property type, which can be one of Attribute,     Measurement, Metric, or Transform.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -482,6 +592,26 @@ pub struct PropertyType {
 
 
 
+impl cfn_resources::CfnResource for PropertyType {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.attribute.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.metric.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.transform.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -519,6 +649,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains an asset transform property. A transform is a one-to-one mapping of a property's    data points from one form to another. For example, you can use a transform to convert a    Celsius data stream to Fahrenheit by applying the transformation expression to each data point    of the Celsius stream. Transforms can only input properties that are INTEGER, DOUBLE, or BOOLEAN type.    Booleans convert to 0 (FALSE) and 1 (TRUE)..
 ///
@@ -556,6 +700,20 @@ pub struct Transform {
 
 
 
+impl cfn_resources::CfnResource for Transform {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains a tumbling window, which is a repeating fixed-sized, non-overlapping, and    contiguous time window. You can use this window in metrics to aggregate data from properties    and other assets.
 ///
@@ -599,6 +757,20 @@ pub struct TumblingWindow {
 
 
 
+impl cfn_resources::CfnResource for TumblingWindow {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Identifies a property value used in an expression.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -633,3 +805,18 @@ pub struct VariableValue {
 }
 
 
+
+impl cfn_resources::CfnResource for VariableValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

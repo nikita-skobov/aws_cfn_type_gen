@@ -1392,8 +1392,18 @@ impl cfn_resources::CfnResource for CfnDBInstance {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.certificate_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.master_user_secret.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Returns the details of the DB instance’s server certificate.
 ///
@@ -1429,6 +1439,20 @@ pub struct CertificateDetails {
 
 
 
+impl cfn_resources::CfnResource for CertificateDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Describes an AWS Identity and Access Management (IAM) role that is associated with a DB instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1462,6 +1486,20 @@ pub struct DBInstanceRole {
 
 
 
+impl cfn_resources::CfnResource for DBInstanceRole {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This data type represents the information you need to connect to an Amazon RDS DB instance.    This data type is used as a response element in the following actions:
 ///
@@ -1509,6 +1547,20 @@ pub struct Endpoint {
 
 
 
+impl cfn_resources::CfnResource for Endpoint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The MasterUserSecret return value specifies the secret managed by RDS in AWS Secrets Manager for the master user password.
 ///
@@ -1544,6 +1596,20 @@ pub struct MasterUserSecret {
 
 
 
+impl cfn_resources::CfnResource for MasterUserSecret {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ProcessorFeature property type specifies the processor features of a       DB instance class status.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1577,6 +1643,20 @@ pub struct ProcessorFeature {
 
 
 
+impl cfn_resources::CfnResource for ProcessorFeature {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1613,3 +1693,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

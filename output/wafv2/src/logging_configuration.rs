@@ -84,8 +84,43 @@ impl cfn_resources::CfnResource for CfnLoggingConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.log_destination_configs;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'log_destination_configs'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        self.logging_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.redacted_fields {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'redacted_fields'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// A single action condition for a condition in a logging filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -146,6 +181,20 @@ impl Default for ActionConditionActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for ActionCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A single match condition for a log filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -179,6 +228,24 @@ pub struct Condition {
 
 
 
+impl cfn_resources::CfnResource for Condition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.action_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.label_name_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The parts of the request that you want to keep out of the logs. This is used in the logging configuration RedactedFields specification.
 ///
@@ -258,6 +325,24 @@ pub struct FieldToMatch {
 
 
 
+impl cfn_resources::CfnResource for FieldToMatch {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.json_body.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.single_header.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A single logging filter, used in LoggingFilter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -345,6 +430,20 @@ impl Default for FilterRequirementEnum {
 }
 
 
+impl cfn_resources::CfnResource for Filter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Inspect the body of the web request as JSON. The body immediately follows the request     headers.
 ///
@@ -456,6 +555,22 @@ impl Default for JsonBodyMatchScopeEnum {
 }
 
 
+impl cfn_resources::CfnResource for JsonBody {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.match_pattern.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A single label name condition for a condition in a logging     filter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -483,6 +598,34 @@ pub struct LabelNameCondition {
 
 
 
+impl cfn_resources::CfnResource for LabelNameCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.label_name;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'label_name'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.label_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'label_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Filtering that specifies which web requests are kept in the logs and which are dropped,       defined for a web ACL's LoggingConfiguration.
 ///
@@ -539,6 +682,20 @@ impl Default for LoggingFilterDefaultBehaviorEnum {
 }
 
 
+impl cfn_resources::CfnResource for LoggingFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -580,6 +737,20 @@ pub struct MatchPattern {
 
 
 
+impl cfn_resources::CfnResource for MatchPattern {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Inspect one of the headers in the web request, identified by name, for example,       User-Agent or Referer. The name isn't case sensitive.
 ///
@@ -612,3 +783,32 @@ pub struct SingleHeader {
 }
 
 
+
+impl cfn_resources::CfnResource for SingleHeader {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

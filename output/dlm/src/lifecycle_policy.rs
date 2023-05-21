@@ -115,8 +115,46 @@ impl cfn_resources::CfnResource for CfnLifecyclePolicy {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 500 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 500", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.execution_role_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'execution_role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.execution_role_arn {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'execution_role_arn'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.policy_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// [Event-based policies only] Specifies an action for an event-based policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -158,6 +196,41 @@ pub struct Action {
 
 
 
+impl cfn_resources::CfnResource for Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.cross_region_copy;
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'cross_region_copy'. {} is greater than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 120 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 120", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The ArchiveRetainRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -178,6 +251,22 @@ pub struct ArchiveRetainRule {
 
 
 
+impl cfn_resources::CfnResource for ArchiveRetainRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.retention_archive_tier.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The ArchiveRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -198,6 +287,22 @@ pub struct ArchiveRule {
 
 
 
+impl cfn_resources::CfnResource for ArchiveRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.retain_rule.validate()?;
+
+        Ok(())
+    }
+}
 
 /// [Snapshot and AMI policies only] Specifies when the policy should create snapshots or AMIs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -319,6 +424,52 @@ impl Default for CreateRuleLocationEnum {
 }
 
 
+impl cfn_resources::CfnResource for CreateRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.cron_expression {
+
+        if the_val.len() > 106 as _ {
+            return Err(format!("Max validation failed on field 'cron_expression'. {} is greater than 106", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cron_expression {
+
+        if the_val.len() < 17 as _ {
+            return Err(format!("Min validation failed on field 'cron_expression'. {} is less than 17", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.interval {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'interval'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.times {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'times'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// [Event-based policies only] Specifies a cross-Region copy action for event-based policies.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -370,6 +521,38 @@ pub struct CrossRegionCopyAction {
 
 
 
+impl cfn_resources::CfnResource for CrossRegionCopyAction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption_configuration.validate()?;
+
+        self.retain_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.target;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'target'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.target;
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'target'. {} is less than 0", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The CrossRegionCopyDeprecateRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -401,6 +584,20 @@ pub struct CrossRegionCopyDeprecateRule {
 
 
 
+impl cfn_resources::CfnResource for CrossRegionCopyDeprecateRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a retention rule for cross-Region snapshot copies created by snapshot or 			event-based policies, or cross-Region AMI copies created by AMI policies. After the 			retention period expires, the cross-Region copy is deleted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -465,6 +662,27 @@ impl Default for CrossRegionCopyRetainRuleIntervalUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for CrossRegionCopyRetainRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.interval;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'interval'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// [Snapshot and AMI policies only] Specifies a cross-Region copy rule for snapshot and AMI policies.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -577,6 +795,72 @@ pub struct CrossRegionCopyRule {
 
 
 
+impl cfn_resources::CfnResource for CrossRegionCopyRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.cmk_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'cmk_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cmk_arn {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'cmk_arn'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.deprecate_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retain_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.target {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'target'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'target'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_region {
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'target_region'. {} is greater than 16", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_region {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'target_region'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The DeprecateRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -619,6 +903,20 @@ pub struct DeprecateRule {
 
 
 
+impl cfn_resources::CfnResource for DeprecateRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// [Event-based policies only] Specifies the encryption settings for cross-Region snapshot copies created by 			event-based policies.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -658,6 +956,36 @@ pub struct EncryptionConfiguration {
 
 
 
+impl cfn_resources::CfnResource for EncryptionConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.cmk_arn {
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'cmk_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.cmk_arn {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'cmk_arn'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// [Event-based policies only] Specifies an event that activates an event-based policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -730,6 +1058,43 @@ impl Default for EventParametersEventTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EventParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.description_regex {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'description_regex'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.description_regex {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'description_regex'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.snapshot_owner;
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'snapshot_owner'. {} is greater than 50", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// [Event-based policies only] Specifies an event that activates an event-based policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -780,6 +1145,22 @@ impl Default for EventSourceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EventSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// [Snapshot policies only] Specifies a rule for enabling fast snapshot restore for snapshots created by 			snapshot policies. You can enable fast snapshot restore based on either a count or a 			time interval.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -874,6 +1255,52 @@ impl Default for FastRestoreRuleIntervalUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for FastRestoreRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.availability_zones {
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'availability_zones'. {} is greater than 10", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.count {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'count'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.interval {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'interval'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// [Snapshot and AMI policies only] Specifies optional parameters for snapshot and AMI policies. The 			set of valid parameters depends on the combination of policy type and target resource 			type.
 ///
@@ -920,6 +1347,20 @@ pub struct Parameters {
 
 
 
+impl cfn_resources::CfnResource for Parameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// [All policy types] Specifies the configuration of a lifecycle policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1066,6 +1507,64 @@ impl Default for PolicyDetailsPolicyTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PolicyDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.actions {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'actions'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        self.event_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.resource_locations {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'resource_locations'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_types {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'resource_types'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.schedules {
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'schedules'. {} is greater than 4", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'target_tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// [Snapshot and AMI policies only] Specifies a retention rule for snapshots created by snapshot policies, or for AMIs 			created by AMI policies.
 ///
@@ -1148,6 +1647,44 @@ impl Default for RetainRuleIntervalUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for RetainRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.count {
+
+        if *the_val > 1000 as _ {
+            return Err(format!("Max validation failed on field 'count'. {} is greater than 1000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.count {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'count'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.interval {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'interval'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The RetentionArchiveTier property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1190,6 +1727,20 @@ pub struct RetentionArchiveTier {
 
 
 
+impl cfn_resources::CfnResource for RetentionArchiveTier {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// [Snapshot and AMI policies only] Specifies a schedule for a snapshot or AMI lifecycle policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1345,6 +1896,78 @@ pub struct Schedule {
 
 
 
+impl cfn_resources::CfnResource for Schedule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.archive_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.create_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.cross_region_copy_rules {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'cross_region_copy_rules'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        self.deprecate_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.fast_restore_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 120 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 120", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        self.retain_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.share_rules {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'share_rules'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags_to_add {
+
+        if the_val.len() > 45 as _ {
+            return Err(format!("Max validation failed on field 'tags_to_add'. {} is greater than 45", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.variable_tags {
+
+        if the_val.len() > 45 as _ {
+            return Err(format!("Max validation failed on field 'variable_tags'. {} is greater than 45", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// [Snapshot policies only] Specifies a rule for sharing snapshots across AWS accounts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1421,6 +2044,28 @@ impl Default for ShareRuleUnshareIntervalUnitEnum {
 }
 
 
+impl cfn_resources::CfnResource for ShareRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.unshare_interval {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'unshare_interval'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1457,3 +2102,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -651,8 +651,12 @@ impl cfn_resources::CfnResource for CfnReplicationGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration details of the CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -673,6 +677,20 @@ pub struct CloudWatchLogsDestinationDetails {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchLogsDestinationDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -704,6 +722,24 @@ pub struct DestinationDetails {
 
 
 
+impl cfn_resources::CfnResource for DestinationDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_logs_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_firehose_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -724,6 +760,20 @@ pub struct KinesisFirehoseDestinationDetails {
 
 
 
+impl cfn_resources::CfnResource for KinesisFirehoseDestinationDetails {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the destination, format and type of the logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -777,6 +827,22 @@ pub struct LogDeliveryConfigurationRequest {
 
 
 
+impl cfn_resources::CfnResource for LogDeliveryConfigurationRequest {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.destination_details.validate()?;
+
+        Ok(())
+    }
+}
 
 /// NodeGroupConfiguration is a property of the AWS::ElastiCache::ReplicationGroup resource that configures an Amazon ElastiCache (ElastiCache) Redis cluster node group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -856,6 +922,36 @@ pub struct NodeGroupConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NodeGroupConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.node_group_id {
+
+        if the_val.len() > 4 as _ {
+            return Err(format!("Max validation failed on field 'node_group_id'. {} is greater than 4", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.node_group_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'node_group_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -892,3 +988,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

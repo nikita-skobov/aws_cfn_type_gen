@@ -42,8 +42,14 @@ impl cfn_resources::CfnResource for CfnScalingPlan {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.application_source.validate()?;
+
+        Ok(())
+    }
+}
 
 /// ApplicationSource is a property of ScalingPlan that specifies the application source to use with AWS Auto Scaling (Auto Scaling Plans). You can create one scaling plan per application source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -85,6 +91,20 @@ pub struct ApplicationSource {
 
 
 
+impl cfn_resources::CfnResource for ApplicationSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// CustomizedLoadMetricSpecification is a subproperty of ScalingInstruction that specifies a customized load metric for predictive     scaling to use with AWS Auto Scaling (Auto Scaling Plans).
 ///
@@ -183,6 +203,20 @@ impl Default for CustomizedLoadMetricSpecificationStatisticEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomizedLoadMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// CustomizedScalingMetricSpecification is a subproperty of TargetTrackingConfiguration that specifies a customized scaling metric for a     target tracking configuration to use with AWS Auto Scaling (Auto Scaling Plans).
 ///
@@ -291,6 +325,20 @@ impl Default for CustomizedScalingMetricSpecificationStatisticEnum {
 }
 
 
+impl cfn_resources::CfnResource for CustomizedScalingMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// MetricDimension is a subproperty of CustomizedScalingMetricSpecification that specifies a dimension for a     customized metric to use with AWS Auto Scaling (Auto Scaling Plans).     Dimensions are arbitrary name/value pairs that can be associated with a CloudWatch metric.     Duplicate dimensions are not allowed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -324,6 +372,20 @@ pub struct MetricDimension {
 
 
 
+impl cfn_resources::CfnResource for MetricDimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// PredefinedLoadMetricSpecification is a subproperty of ScalingInstruction that specifies a predefined load metric for predictive     scaling to use with AWS Auto Scaling (Auto Scaling Plans).
 ///
@@ -401,6 +463,36 @@ impl Default for PredefinedLoadMetricSpecificationPredefinedLoadMetricTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for PredefinedLoadMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() > 1023 as _ {
+            return Err(format!("Max validation failed on field 'resource_label'. {} is greater than 1023", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// PredefinedScalingMetricSpecification is a subproperty of TargetTrackingConfiguration that specifies a customized scaling metric for a     target tracking configuration to use with AWS Auto Scaling (Auto Scaling Plans).
 /// 
@@ -512,6 +604,36 @@ impl Default for PredefinedScalingMetricSpecificationPredefinedScalingMetricType
 }
 
 
+impl cfn_resources::CfnResource for PredefinedScalingMetricSpecification {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() > 1023 as _ {
+            return Err(format!("Max validation failed on field 'resource_label'. {} is greater than 1023", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.resource_label {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_label'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// ScalingInstruction is a property of ScalingPlan that specifies the scaling instruction for a scalable resource in a     scaling plan. Each scaling instruction applies to one resource.
 ///
@@ -868,6 +990,46 @@ impl Default for ScalingInstructionServiceNamespaceEnum {
 }
 
 
+impl cfn_resources::CfnResource for ScalingInstruction {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.customized_load_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.predefined_load_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.resource_id;
+
+        if the_val.len() > 1600 as _ {
+            return Err(format!("Max validation failed on field 'resource_id'. {} is greater than 1600", the_val.len()));
+        }
+
+        
+        let the_val = &self.resource_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'resource_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.scheduled_action_buffer_time {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'scheduled_action_buffer_time'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// TagFilter is a subproperty of ApplicationSource that specifies a tag for an application source to use with     AWS Auto Scaling (Auto Scaling Plans).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -907,6 +1069,34 @@ pub struct TagFilter {
 
 
 
+impl cfn_resources::CfnResource for TagFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// TargetTrackingConfiguration is a subproperty of ScalingInstruction that specifies a target tracking configuration to use with       AWS Auto Scaling (Auto Scaling Plans).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1001,3 +1191,22 @@ pub struct TargetTrackingConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for TargetTrackingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.customized_scaling_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.predefined_scaling_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

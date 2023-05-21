@@ -167,8 +167,65 @@ impl cfn_resources::CfnResource for CfnWebhook {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.authentication_configuration.validate()?;
+
+        let the_val = &self.filters;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'filters'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.target_action;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'target_action'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_action;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_action'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_pipeline;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'target_pipeline'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_pipeline;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_pipeline'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The authentication applied to incoming webhook trigger requests.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -210,6 +267,52 @@ pub struct WebhookAuthConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WebhookAuthConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.allowed_iprange {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'allowed_iprange'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.allowed_iprange {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'allowed_iprange'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secret_token {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'secret_token'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.secret_token {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'secret_token'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The event criteria that specify when a webhook notification is sent to your       URL.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -250,3 +353,48 @@ pub struct WebhookFilterRule {
 }
 
 
+
+impl cfn_resources::CfnResource for WebhookFilterRule {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.json_path;
+
+        if the_val.len() > 150 as _ {
+            return Err(format!("Max validation failed on field 'json_path'. {} is greater than 150", the_val.len()));
+        }
+
+        
+        let the_val = &self.json_path;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'json_path'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.match_equals {
+
+        if the_val.len() > 150 as _ {
+            return Err(format!("Max validation failed on field 'match_equals'. {} is greater than 150", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.match_equals {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'match_equals'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

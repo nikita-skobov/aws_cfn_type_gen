@@ -271,8 +271,83 @@ impl cfn_resources::CfnResource for CfnGameServerGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_scaling_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.game_server_group_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'game_server_group_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.game_server_group_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'game_server_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.instance_definitions;
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'instance_definitions'. {} is greater than 20", the_val.len()));
+        }
+
+        
+        self.launch_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.max_size {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'max_size'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.min_size {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'min_size'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.role_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.vpc_subnets {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'vpc_subnets'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// This data type is used with the GameLift FleetIQ and game server groups.
 ///
@@ -310,6 +385,30 @@ pub struct AutoScalingPolicy {
 
 
 
+impl cfn_resources::CfnResource for AutoScalingPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.estimated_instance_warmup {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'estimated_instance_warmup'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.target_tracking_configuration.validate()?;
+
+        Ok(())
+    }
+}
 
 /// This data type is used with the Amazon GameLift FleetIQ and game server groups.
 ///
@@ -716,6 +815,36 @@ impl Default for InstanceDefinitionInstanceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for InstanceDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.weighted_capacity {
+
+        if the_val.len() > 3 as _ {
+            return Err(format!("Max validation failed on field 'weighted_capacity'. {} is greater than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.weighted_capacity {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'weighted_capacity'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// This data type is used with the GameLift FleetIQ and game server groups.
 ///
@@ -781,6 +910,68 @@ pub struct LaunchTemplate {
 
 
 
+impl cfn_resources::CfnResource for LaunchTemplate {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.launch_template_id {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'launch_template_id'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.launch_template_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'launch_template_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.launch_template_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'launch_template_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.launch_template_name {
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'launch_template_name'. {} is less than 3", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'version'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.version {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'version'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -818,6 +1009,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// This data type is used with the Amazon GameLift FleetIQ and game server groups.
 ///
@@ -840,3 +1045,18 @@ pub struct TargetTrackingConfiguration {
 }
 
 
+
+impl cfn_resources::CfnResource for TargetTrackingConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -224,8 +224,36 @@ impl cfn_resources::CfnResource for CfnDocument {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.attachments {
+
+        if the_val.len() > 20 as _ {
+            return Err(format!("Max validation failed on field 'attachments'. {} is greater than 20", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 1000", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.target_type {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'target_type'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Identifying information about a document attachment, including the file name and a key-value  pair that identifies the location of an attachment to a document.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -302,6 +330,28 @@ impl Default for AttachmentsSourceKeyEnum {
 }
 
 
+impl cfn_resources::CfnResource for AttachmentsSource {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// An SSM document required by the current document.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -339,6 +389,20 @@ pub struct DocumentRequires {
 
 
 
+impl cfn_resources::CfnResource for DocumentRequires {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -375,3 +439,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -185,8 +185,16 @@ impl cfn_resources::CfnResource for CfnSchedule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.flexible_time_window.validate()?;
+
+        self.target.validate()?;
+
+        Ok(())
+    }
+}
 
 /// This structure specifies the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -232,6 +240,20 @@ pub struct AwsVpcConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AwsVpcConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details of a capacity provider strategy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -277,6 +299,20 @@ pub struct CapacityProviderStrategyItem {
 
 
 
+impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// An object that contains information about an Amazon SQS queue that EventBridge Scheduler uses as a dead-letter queue for your schedule. If specified, EventBridge Scheduler delivers failed events that could not be successfully delivered to a target to the queue.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -298,6 +334,20 @@ pub struct DeadLetterConfig {
 
 
 
+impl cfn_resources::CfnResource for DeadLetterConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The templated target type for the Amazon ECS RunTask API operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -475,6 +525,22 @@ pub struct EcsParameters {
 
 
 
+impl cfn_resources::CfnResource for EcsParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The templated target type for the EventBridge PutEvents API operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -508,6 +574,20 @@ pub struct EventBridgeParameters {
 
 
 
+impl cfn_resources::CfnResource for EventBridgeParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Allows you to configure a time window during which EventBridge Scheduler invokes the schedule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -566,6 +646,36 @@ impl Default for FlexibleTimeWindowModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FlexibleTimeWindow {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.maximum_window_in_minutes {
+
+        if *the_val > 1440 as _ {
+            return Err(format!("Max validation failed on field 'maximum_window_in_minutes'. {} is greater than 1440", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_window_in_minutes {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'maximum_window_in_minutes'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The templated target type for the Amazon Kinesis PutRecord API operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -587,6 +697,20 @@ pub struct KinesisParameters {
 
 
 
+impl cfn_resources::CfnResource for KinesisParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies the network configuration for an ECS task.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -608,6 +732,22 @@ pub struct NetworkConfiguration {
 
 
 
+impl cfn_resources::CfnResource for NetworkConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.awsvpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// An object representing a constraint on task placement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -641,6 +781,20 @@ pub struct PlacementConstraint {
 
 
 
+impl cfn_resources::CfnResource for PlacementConstraint {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The task placement strategy for a task or service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -674,6 +828,20 @@ pub struct PlacementStrategy {
 
 
 
+impl cfn_resources::CfnResource for PlacementStrategy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A RetryPolicy object that includes information about the retry policy settings, including the maximum age of an event, and the maximum number of times EventBridge Scheduler will try to deliver the event to a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -707,6 +875,20 @@ pub struct RetryPolicy {
 
 
 
+impl cfn_resources::CfnResource for RetryPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The name and value pair of a parameter to use to start execution of a SageMaker Model Building Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -740,6 +922,20 @@ pub struct SageMakerPipelineParameter {
 
 
 
+impl cfn_resources::CfnResource for SageMakerPipelineParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The templated target type for the Amazon SageMaker StartPipelineExecution API operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -761,6 +957,20 @@ pub struct SageMakerPipelineParameters {
 
 
 
+impl cfn_resources::CfnResource for SageMakerPipelineParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The templated target type for the Amazon SQS SendMessage API operation.     Contains the message group ID to use when the target is a FIFO queue. If you specify an Amazon SQS FIFO queue as a target, the queue must have content-based deduplication enabled.     For more information, see Using the Amazon SQS message deduplication ID in the     Amazon SQS Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -782,6 +992,20 @@ pub struct SqsParameters {
 
 
 
+impl cfn_resources::CfnResource for SqsParameters {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The schedule's target. EventBridge Scheduler supports templated target that invoke common API operations, as well as universal targets that you can customize to     invoke over 6,000 API operations across more than 270 services. You can only specify one templated or universal target for a schedule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -910,3 +1134,32 @@ pub struct Target {
 }
 
 
+
+impl cfn_resources::CfnResource for Target {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.dead_letter_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ecs_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.event_bridge_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kinesis_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.retry_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sage_maker_pipeline_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.sqs_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

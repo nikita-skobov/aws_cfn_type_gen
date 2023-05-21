@@ -100,8 +100,14 @@ impl cfn_resources::CfnResource for CfnFlowEntitlement {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about the encryption of the flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -218,3 +224,18 @@ pub struct Encryption {
 }
 
 
+
+impl cfn_resources::CfnResource for Encryption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -80,8 +80,49 @@ impl cfn_resources::CfnResource for CfnMetricFilter {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.filter_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'filter_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.filter_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'filter_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.log_group_name;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'log_group_name'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        let the_val = &self.log_group_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'log_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.metric_transformations;
+
+        if the_val.len() > 1 as _ {
+            return Err(format!("Max validation failed on field 'metric_transformations'. {} is greater than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies the CloudWatch metric dimensions to publish with this metric.
 ///
@@ -121,6 +162,20 @@ pub struct Dimension {
 
 
 
+impl cfn_resources::CfnResource for Dimension {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// MetricTransformation is a property of the AWS::Logs::MetricFilter resource that describes      how to transform log streams into a CloudWatch metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -328,3 +383,25 @@ impl Default for MetricTransformationUnitEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for MetricTransformation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.metric_namespace;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'metric_namespace'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

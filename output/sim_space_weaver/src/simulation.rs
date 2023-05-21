@@ -86,8 +86,16 @@ impl cfn_resources::CfnResource for CfnSimulation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.schema_s3_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.snapshot_s3_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// A location in Amazon Simple Storage Service (Amazon S3) where SimSpace Weaver stores simulation data, such as your app .zip     files and schema file. For more information about Amazon S3, see the Amazon Simple Storage Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -120,3 +128,18 @@ pub struct S3Location {
 }
 
 
+
+impl cfn_resources::CfnResource for S3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -74,8 +74,36 @@ impl cfn_resources::CfnResource for CfnSpace {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.domain_id;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'domain_id'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.space_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'space_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        self.space_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -133,6 +161,49 @@ pub struct CustomImage {
 
 
 
+impl cfn_resources::CfnResource for CustomImage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.app_image_config_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'app_image_config_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.image_name;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'image_name'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.image_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'image_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        if let Some(the_val) = &self.image_version_number {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'image_version_number'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The JupyterServer app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -154,6 +225,22 @@ pub struct JupyterServerAppSettings {
 
 
 
+impl cfn_resources::CfnResource for JupyterServerAppSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The KernelGateway app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -191,6 +278,30 @@ pub struct KernelGatewayAppSettings {
 
 
 
+impl cfn_resources::CfnResource for KernelGatewayAppSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.custom_images {
+
+        if the_val.len() > 200 as _ {
+            return Err(format!("Max validation failed on field 'custom_images'. {} is greater than 200", the_val.len()));
+        }
+
+        }
+        
+        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -499,6 +610,36 @@ impl Default for ResourceSpecInstanceTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ResourceSpec {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.sage_maker_image_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.sage_maker_image_version_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// A collection of space settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -532,6 +673,24 @@ pub struct SpaceSettings {
 
 
 
+impl cfn_resources::CfnResource for SpaceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.jupyter_server_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.kernel_gateway_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -568,3 +727,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

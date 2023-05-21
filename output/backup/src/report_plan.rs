@@ -96,8 +96,48 @@ impl cfn_resources::CfnResource for CfnReportPlan {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.report_delivery_channel.validate()?;
+
+        if let Some(the_val) = &self.report_plan_description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'report_plan_description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.report_plan_description {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'report_plan_description'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.report_plan_name {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'report_plan_name'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.report_plan_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'report_plan_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.report_setting.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Contains information from your report plan about where to deliver your reports,     specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your     reports.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -143,6 +183,20 @@ pub struct ReportDeliveryChannel {
 
 
 
+impl cfn_resources::CfnResource for ReportDeliveryChannel {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains detailed information about a report setting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -214,6 +268,20 @@ pub struct ReportSetting {
 
 
 
+impl cfn_resources::CfnResource for ReportSetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -250,3 +318,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

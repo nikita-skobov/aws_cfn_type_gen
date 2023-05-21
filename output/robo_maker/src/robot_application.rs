@@ -94,8 +94,30 @@ impl cfn_resources::CfnResource for CfnRobotApplication {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.robot_software_suite.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Information about a robot software suite.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -183,6 +205,20 @@ impl Default for RobotSoftwareSuiteVersionEnum {
 }
 
 
+impl cfn_resources::CfnResource for RobotSoftwareSuite {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about a source configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -264,3 +300,46 @@ impl Default for SourceConfigArchitectureEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for SourceConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 63", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_bucket;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_key;
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 's3_key'. {} is greater than 1024", the_val.len()));
+        }
+
+        
+        let the_val = &self.s3_key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 's3_key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

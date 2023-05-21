@@ -98,8 +98,14 @@ impl cfn_resources::CfnResource for CfnGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.resource_query.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// One of the items in the service configuration assigned to a resource group. A service       configuration can consist of one or more items. For details service configurations and       how to construct them, see Service configurations for resource         groups in the AWS Resource Groups User       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -133,6 +139,20 @@ pub struct ConfigurationItem {
 
 
 
+impl cfn_resources::CfnResource for ConfigurationItem {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// One parameter for a group configuration item. For details about service configurations       and how to construct them, see Service configurations for resource         groups in the AWS Resource Groups User       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -166,6 +186,20 @@ pub struct ConfigurationParameter {
 
 
 
+impl cfn_resources::CfnResource for ConfigurationParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies details within a ResourceQuery structure that determines the       membership of the resource group. The contents required in the Query       structure are determined by the Type property of the containing         ResourceQuery structure.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -215,6 +249,20 @@ pub struct Query {
 
 
 
+impl cfn_resources::CfnResource for Query {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The query used to dynamically define the members of a group. For more information       about how to construct a query, see Build queries and groups in           AWS Resource Groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -254,6 +302,22 @@ pub struct ResourceQuery {
 
 
 
+impl cfn_resources::CfnResource for ResourceQuery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.query.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -291,6 +355,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a single tag key and optional values that you can use to specify membership       in a tag-based group. An AWS resource that doesn't have a matching tag       key and value is rejected as a member of the group.
 ///
@@ -329,3 +407,18 @@ pub struct TagFilter {
 }
 
 
+
+impl cfn_resources::CfnResource for TagFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

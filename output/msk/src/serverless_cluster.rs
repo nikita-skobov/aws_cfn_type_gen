@@ -60,8 +60,14 @@ impl cfn_resources::CfnResource for CfnServerlessCluster {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.client_authentication.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Includes all client authentication information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -83,6 +89,22 @@ pub struct ClientAuthentication {
 
 
 
+impl cfn_resources::CfnResource for ClientAuthentication {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.sasl.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Details for SASL/IAM client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -104,6 +126,20 @@ pub struct Iam {
 
 
 
+impl cfn_resources::CfnResource for Iam {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -125,6 +161,22 @@ pub struct Sasl {
 
 
 
+impl cfn_resources::CfnResource for Sasl {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.iam.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The VpcConfig property type specifies Property description not available. for an AWS::MSK::ServerlessCluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -155,3 +207,18 @@ pub struct VpcConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -84,8 +84,14 @@ impl cfn_resources::CfnResource for CfnFindingsFilter {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.finding_criteria.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies a condition that defines the property, operator, and one or more values to       use in a findings filter. A findings filter, also referred to as a filter rule, is a       set of custom criteria that specifies which findings to include or exclude from the results of a query for findings. You can also       configure a findings filter to suppress (automatically archive) findings that match the filter's criteria. For more information,       see Filtering findings in       the Amazon Macie User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -167,6 +173,20 @@ pub struct CriterionAdditionalProperties {
 
 
 
+impl cfn_resources::CfnResource for CriterionAdditionalProperties {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies, as a map, one or more property-based conditions for a findings filter. A findings filter, also referred       to as a filter rule, is a set of custom criteria that specifies which findings to include or exclude       from the results of a query for findings. You can also configure a findings filter to suppress (automatically archive) findings that       match the filter's criteria. For more information,       see Filtering findings in       the Amazon Macie User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -187,3 +207,18 @@ pub struct FindingCriteria {
 }
 
 
+
+impl cfn_resources::CfnResource for FindingCriteria {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

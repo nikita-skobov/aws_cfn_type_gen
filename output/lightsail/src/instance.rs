@@ -180,8 +180,20 @@ impl cfn_resources::CfnResource for CfnInstance {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.hardware.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.networking.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.state.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// AddOn is a property of the AWS::Lightsail::Instance resource. It describes the add-ons for an     instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -250,6 +262,22 @@ impl Default for AddOnStatusEnum {
 }
 
 
+impl cfn_resources::CfnResource for AddOn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_snapshot_add_on_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for an     instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -277,6 +305,20 @@ pub struct AutoSnapshotAddOn {
 
 
 
+impl cfn_resources::CfnResource for AutoSnapshotAddOn {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Disk is a property of the Hardware property. It describes a disk attached to an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -372,6 +414,20 @@ pub struct Disk {
 
 
 
+impl cfn_resources::CfnResource for Disk {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Hardware is a property of the AWS::Lightsail::Instance resource. It describes the hardware properties for the     instance, such as the vCPU count, attached disks, and amount of RAM.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -423,6 +479,20 @@ pub struct Hardware {
 
 
 
+impl cfn_resources::CfnResource for Hardware {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Location is a property of the AWS::Lightsail::Instance resource. It describes the location for an     instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -456,6 +526,20 @@ pub struct Location {
 
 
 
+impl cfn_resources::CfnResource for Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// MonthlyTransfer is a property of the Networking property. It describes the amount of allocated monthly data transfer     (in GB) for an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -477,6 +561,20 @@ pub struct MonthlyTransfer {
 
 
 
+impl cfn_resources::CfnResource for MonthlyTransfer {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Networking is a property of the AWS::Lightsail::Instance resource. It describes the public ports and the     monthly amount of data transfer allocated for the instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -510,6 +608,22 @@ pub struct Networking {
 
 
 
+impl cfn_resources::CfnResource for Networking {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.monthly_transfer.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Port is a property of the Networking property. It describes information about ports for an     instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -663,6 +777,20 @@ pub struct Port {
 
 
 
+impl cfn_resources::CfnResource for Port {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// State is a property of the AWS::Lightsail::Instance resource. It describes the status code and the state     (for example, running) of an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -696,6 +824,20 @@ pub struct State {
 
 
 
+impl cfn_resources::CfnResource for State {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -732,3 +874,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

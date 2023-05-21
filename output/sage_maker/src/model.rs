@@ -130,8 +130,56 @@ impl cfn_resources::CfnResource for CfnModel {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.containers {
+
+        if the_val.len() > 15 as _ {
+            return Err(format!("Max validation failed on field 'containers'. {} is greater than 15", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.execution_role_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'execution_role_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.execution_role_arn;
+
+        if the_val.len() < 20 as _ {
+            return Err(format!("Min validation failed on field 'execution_role_arn'. {} is less than 20", the_val.len()));
+        }
+
+        
+        self.inference_execution_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.model_name {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'model_name'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        self.primary_container.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        self.vpc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Describes the container, as part of model definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -300,6 +348,64 @@ impl Default for ContainerDefinitionModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ContainerDefinition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.container_hostname {
+
+        if the_val.len() > 63 as _ {
+            return Err(format!("Max validation failed on field 'container_hostname'. {} is greater than 63", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.image {
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'image'. {} is greater than 255", the_val.len()));
+        }
+
+        }
+        
+        self.image_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.model_data_url {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'model_data_url'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model_package_name {
+
+        if the_val.len() > 176 as _ {
+            return Err(format!("Max validation failed on field 'model_package_name'. {} is greater than 176", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.model_package_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'model_package_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.multi_model_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -356,6 +462,22 @@ impl Default for ImageConfigRepositoryAccessModeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ImageConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.repository_auth_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies details about how containers in a multi-container endpoint are run.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -379,6 +501,20 @@ pub struct InferenceExecutionConfig {
 
 
 
+impl cfn_resources::CfnResource for InferenceExecutionConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies additional configuration for hosting multi-model endpoints.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -400,6 +536,20 @@ pub struct MultiModelConfig {
 
 
 
+impl cfn_resources::CfnResource for MultiModelConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies an authentication configuration for the private docker registry where your       model image is hosted. Specify a value for this property only if you specified         Vpc as the value for the RepositoryAccessMode field of the         ImageConfig object that you passed to a call to         CreateModel and the private Docker registry where the model image is       hosted requires authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -427,6 +577,34 @@ pub struct RepositoryAuthConfig {
 
 
 
+impl cfn_resources::CfnResource for RepositoryAuthConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.repository_credentials_provider_arn;
+
+        if the_val.len() > 2048 as _ {
+            return Err(format!("Max validation failed on field 'repository_credentials_provider_arn'. {} is greater than 2048", the_val.len()));
+        }
+
+        
+        let the_val = &self.repository_credentials_provider_arn;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'repository_credentials_provider_arn'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -464,6 +642,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -500,3 +692,32 @@ pub struct VpcConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for VpcConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.security_group_ids;
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+        }
+
+        
+        let the_val = &self.subnets;
+
+        if the_val.len() > 16 as _ {
+            return Err(format!("Max validation failed on field 'subnets'. {} is greater than 16", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

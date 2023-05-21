@@ -106,8 +106,12 @@ impl cfn_resources::CfnResource for CfnApp {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a physical resource identifier.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -167,6 +171,20 @@ pub struct PhysicalResourceId {
 
 
 
+impl cfn_resources::CfnResource for PhysicalResourceId {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Defines a resource mapping.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -270,3 +288,20 @@ impl Default for ResourceMappingMappingTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for ResourceMapping {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.physical_resource_id.validate()?;
+
+        Ok(())
+    }
+}

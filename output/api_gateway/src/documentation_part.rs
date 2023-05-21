@@ -52,8 +52,14 @@ impl cfn_resources::CfnResource for CfnDocumentationPart {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.location.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The Location property specifies the location of the Amazon API Gateway API entity that the documentation applies to. Location is a property of the AWS::ApiGateway::DocumentationPart resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -185,3 +191,18 @@ impl Default for LocationTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

@@ -68,4 +68,24 @@ impl cfn_resources::CfnResource for CfnInstance {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.instance_id {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'instance_id'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.service_id;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'service_id'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

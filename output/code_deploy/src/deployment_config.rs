@@ -105,8 +105,32 @@ impl cfn_resources::CfnResource for CfnDeploymentConfig {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.deployment_config_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'deployment_config_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.deployment_config_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'deployment_config_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.minimum_healthy_hosts.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.traffic_routing_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// MinimumHealthyHosts is a property of the DeploymentConfig resource that defines how many instances must remain healthy    during an AWS CodeDeploy deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -169,6 +193,20 @@ impl Default for MinimumHealthyHostsTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for MinimumHealthyHosts {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in two increments. The original and target         Lambda function versions or ECS task sets are specified in the       deployment's AppSpec file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -202,6 +240,20 @@ pub struct TimeBasedCanary {
 
 
 
+impl cfn_resources::CfnResource for TimeBasedCanary {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in equal increments, with an equal number of minutes between       each increment. The original and target Lambda function versions or ECS task       sets are specified in the deployment's AppSpec file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -235,6 +287,20 @@ pub struct TimeBasedLinear {
 
 
 
+impl cfn_resources::CfnResource for TimeBasedLinear {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration that specifies how traffic is shifted from one version of a Lambda function to another version during an AWS Lambda deployment,       or from one Amazon ECS task set to another during an Amazon ECS       deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -304,3 +370,22 @@ impl Default for TrafficRoutingConfigTypeEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for TrafficRoutingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.time_based_canary.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.time_based_linear.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

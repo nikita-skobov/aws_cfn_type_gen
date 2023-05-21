@@ -159,8 +159,24 @@ impl cfn_resources::CfnResource for CfnConnector {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.capacity.validate()?;
+
+        self.kafka_cluster.validate()?;
+
+        self.kafka_cluster_client_authentication.validate()?;
+
+        self.kafka_cluster_encryption_in_transit.validate()?;
+
+        self.log_delivery.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.worker_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The details of the Apache Kafka cluster to which the connector is connected.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -194,6 +210,22 @@ pub struct ApacheKafkaCluster {
 
 
 
+impl cfn_resources::CfnResource for ApacheKafkaCluster {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.vpc.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Specifies how the connector scales.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -263,6 +295,24 @@ pub struct AutoScaling {
 
 
 
+impl cfn_resources::CfnResource for AutoScaling {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.scale_in_policy.validate()?;
+
+        self.scale_out_policy.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Information about the capacity of the connector, whether it is auto scaled or     provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -296,6 +346,24 @@ pub struct Capacity {
 
 
 
+impl cfn_resources::CfnResource for Capacity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.auto_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.provisioned_capacity.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The settings for delivering connector logs to Amazon CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -329,6 +397,20 @@ pub struct CloudWatchLogsLogDelivery {
 
 
 
+impl cfn_resources::CfnResource for CloudWatchLogsLogDelivery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// A plugin is an AWS resource that contains the code that defines a connector's logic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -362,6 +444,20 @@ pub struct CustomPlugin {
 
 
 
+impl cfn_resources::CfnResource for CustomPlugin {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The settings for delivering logs to Amazon Kinesis Data Firehose.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -395,6 +491,20 @@ pub struct FirehoseLogDelivery {
 
 
 
+impl cfn_resources::CfnResource for FirehoseLogDelivery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The details of the Apache Kafka cluster to which the connector is connected.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -416,6 +526,22 @@ pub struct KafkaCluster {
 
 
 
+impl cfn_resources::CfnResource for KafkaCluster {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.apache_kafka_cluster.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The client authentication information used in order to authenticate with the Apache     Kafka cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -437,6 +563,20 @@ pub struct KafkaClusterClientAuthentication {
 
 
 
+impl cfn_resources::CfnResource for KafkaClusterClientAuthentication {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details of encryption in transit to the Apache Kafka cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -458,6 +598,20 @@ pub struct KafkaClusterEncryptionInTransit {
 
 
 
+impl cfn_resources::CfnResource for KafkaClusterEncryptionInTransit {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details about log delivery.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -479,6 +633,22 @@ pub struct LogDelivery {
 
 
 
+impl cfn_resources::CfnResource for LogDelivery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.worker_log_delivery.validate()?;
+
+        Ok(())
+    }
+}
 
 /// A plugin is an AWS resource that contains the code that defines your connector logic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -500,6 +670,22 @@ pub struct Plugin {
 
 
 
+impl cfn_resources::CfnResource for Plugin {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.custom_plugin.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Details about a connector's provisioned capacity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -533,6 +719,20 @@ pub struct ProvisionedCapacity {
 
 
 
+impl cfn_resources::CfnResource for ProvisionedCapacity {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Details about delivering logs to Amazon S3.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -578,6 +778,20 @@ pub struct S3LogDelivery {
 
 
 
+impl cfn_resources::CfnResource for S3LogDelivery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The scale-in policy for the connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -599,6 +813,20 @@ pub struct ScaleInPolicy {
 
 
 
+impl cfn_resources::CfnResource for ScaleInPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The scale-out policy for the connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -620,6 +848,20 @@ pub struct ScaleOutPolicy {
 
 
 
+impl cfn_resources::CfnResource for ScaleOutPolicy {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the VPC in which the connector resides.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -653,6 +895,20 @@ pub struct Vpc {
 
 
 
+impl cfn_resources::CfnResource for Vpc {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The configuration of the workers, which are the processes that run the connector     logic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -686,6 +942,20 @@ pub struct WorkerConfiguration {
 
 
 
+impl cfn_resources::CfnResource for WorkerConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -730,3 +1000,24 @@ pub struct WorkerLogDelivery {
 }
 
 
+
+impl cfn_resources::CfnResource for WorkerLogDelivery {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.cloud_watch_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.firehose.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

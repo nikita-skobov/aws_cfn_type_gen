@@ -52,8 +52,16 @@ impl cfn_resources::CfnResource for CfnSkill {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.authentication_configuration.validate()?;
+
+        self.skill_package.validate()?;
+
+        Ok(())
+    }
+}
 
 /// The AuthenticationConfiguration property type specifies the Login with       Amazon (LWA) configuration used to authenticate with the Alexa service. Only Login with       Amazon security profiles created through the Build Skills with the Alexa Skills Kit developer documentation are supported for authentication. A client ID, client secret, and       refresh token are required. You can generate a client ID and client secret by creating a       new security profile on the Amazon Developer Portal or you can retrieve them       from an existing profile. You can then retrieve the refresh token using the Alexa Skills       Kit CLI. For instructions, see util-command       in the ASK CLI Command Reference.
 ///
@@ -101,6 +109,20 @@ pub struct AuthenticationConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AuthenticationConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The Overrides property type provides overrides to the skill package to       apply when creating or updating the skill. Values provided here do not modify the       contents of the original skill package. Currently, only overriding values inside of the       skill manifest component of the package is supported.
 ///
@@ -124,6 +146,20 @@ pub struct Overrides {
 
 
 
+impl cfn_resources::CfnResource for Overrides {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The SkillPackage property type contains configuration details for the       skill package that contains the components of the Alexa skill. Skill packages are       retrieved from an Amazon S3 bucket and key and used to create and update the skill. More       details about the skill package format are located in the Skill Package API Reference.
 ///
@@ -194,3 +230,20 @@ pub struct SkillPackage {
 }
 
 
+
+impl cfn_resources::CfnResource for SkillPackage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.overrides.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}

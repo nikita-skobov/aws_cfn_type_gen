@@ -92,8 +92,58 @@ impl cfn_resources::CfnResource for CfnResourceVersion {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.execution_role_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'execution_role_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.execution_role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'execution_role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.logging_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.schema_handler_package;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'schema_handler_package'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        let the_val = &self.schema_handler_package;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'schema_handler_package'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.type_name;
+
+        if the_val.len() > 204 as _ {
+            return Err(format!("Max validation failed on field 'type_name'. {} is greater than 204", the_val.len()));
+        }
+
+        
+        let the_val = &self.type_name;
+
+        if the_val.len() < 10 as _ {
+            return Err(format!("Min validation failed on field 'type_name'. {} is less than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Logging configuration information for a resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -138,3 +188,50 @@ pub struct LoggingConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for LoggingConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.log_group_name {
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'log_group_name'. {} is greater than 512", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_group_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'log_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_role_arn {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'log_role_arn'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.log_role_arn {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'log_role_arn'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

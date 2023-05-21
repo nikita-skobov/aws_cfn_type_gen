@@ -185,8 +185,33 @@ impl cfn_resources::CfnResource for CfnNotificationRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.name;
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.targets;
+
+        if the_val.len() > 10 as _ {
+            return Err(format!("Max validation failed on field 'targets'. {} is greater than 10", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information about the AWS Chatbot topics or AWS Chatbot clients associated with a notification rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -227,3 +252,32 @@ pub struct Target {
 }
 
 
+
+impl cfn_resources::CfnResource for Target {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.target_address;
+
+        if the_val.len() > 320 as _ {
+            return Err(format!("Max validation failed on field 'target_address'. {} is greater than 320", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_address;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_address'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

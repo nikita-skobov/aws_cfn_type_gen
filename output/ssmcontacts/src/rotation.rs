@@ -104,8 +104,49 @@ impl cfn_resources::CfnResource for CfnRotation {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.contact_ids;
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'contact_ids'. {} is greater than 25", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.recurrence.validate()?;
+
+        let the_val = &self.time_zone_id;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'time_zone_id'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.time_zone_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'time_zone_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information about when an on-call shift begins and ends.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -139,6 +180,20 @@ pub struct CoverageTime {
 
 
 
+impl cfn_resources::CfnResource for CoverageTime {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about on-call rotations that recur monthly.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -176,6 +231,34 @@ pub struct MonthlySetting {
 
 
 
+impl cfn_resources::CfnResource for MonthlySetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.day_of_month;
+
+        if *the_val > 31 as _ {
+            return Err(format!("Max validation failed on field 'day_of_month'. {} is greater than 31", the_val));
+        }
+
+        
+        let the_val = &self.day_of_month;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'day_of_month'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information about when an on-call rotation is in effect and how long the rotation       period lasts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -263,6 +346,41 @@ pub struct RecurrenceSettings {
 
 
 
+impl cfn_resources::CfnResource for RecurrenceSettings {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.number_of_on_calls;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'number_of_on_calls'. {} is less than 1", the_val));
+        }
+
+        
+        let the_val = &self.recurrence_multiplier;
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'recurrence_multiplier'. {} is greater than 100", the_val));
+        }
+
+        
+        let the_val = &self.recurrence_multiplier;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'recurrence_multiplier'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Information about the days of the week that the on-call rotation coverage includes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -296,6 +414,20 @@ pub struct ShiftCoverage {
 
 
 
+impl cfn_resources::CfnResource for ShiftCoverage {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -333,6 +465,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about rotations that recur weekly.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -406,3 +552,18 @@ impl Default for WeeklySettingDayOfWeekEnum {
     }
 }
 
+
+impl cfn_resources::CfnResource for WeeklySetting {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

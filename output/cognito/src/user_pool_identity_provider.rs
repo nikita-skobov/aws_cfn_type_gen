@@ -141,4 +141,45 @@ impl cfn_resources::CfnResource for CfnUserPoolIdentityProvider {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.idp_identifiers {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'idp_identifiers'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        let the_val = &self.provider_name;
+
+        if the_val.len() > 32 as _ {
+            return Err(format!("Max validation failed on field 'provider_name'. {} is greater than 32", the_val.len()));
+        }
+
+        
+        let the_val = &self.provider_name;
+
+        if the_val.len() < 3 as _ {
+            return Err(format!("Min validation failed on field 'provider_name'. {} is less than 3", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() > 55 as _ {
+            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+        }
+
+        
+        let the_val = &self.user_pool_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

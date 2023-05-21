@@ -175,8 +175,58 @@ impl cfn_resources::CfnResource for CfnRemediationConfiguration {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.config_rule_name;
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'config_rule_name'. {} is greater than 128", the_val.len()));
+        }
+
+        
+        let the_val = &self.config_rule_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'config_rule_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.execution_controls.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.maximum_automatic_attempts {
+
+        if *the_val > 25 as _ {
+            return Err(format!("Max validation failed on field 'maximum_automatic_attempts'. {} is greater than 25", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.maximum_automatic_attempts {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'maximum_automatic_attempts'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        let the_val = &self.target_id;
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'target_id'. {} is greater than 256", the_val.len()));
+        }
+
+        
+        let the_val = &self.target_id;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'target_id'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// An ExecutionControls object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -198,6 +248,22 @@ pub struct ExecutionControls {
 
 
 
+impl cfn_resources::CfnResource for ExecutionControls {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.ssm_controls.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The value is either a dynamic (resource) value or a static value. You must select either a dynamic value or a static value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -231,6 +297,24 @@ pub struct RemediationParameterValue {
 
 
 
+impl cfn_resources::CfnResource for RemediationParameterValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.resource_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.static_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The dynamic value of the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -269,6 +353,20 @@ impl Default for ResourceValueValueEnum {
 }
 
 
+impl cfn_resources::CfnResource for ResourceValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// AWS Systems Manager (SSM) specific remediation controls.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -310,6 +408,52 @@ pub struct SsmControls {
 
 
 
+impl cfn_resources::CfnResource for SsmControls {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.concurrent_execution_rate_percentage {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'concurrent_execution_rate_percentage'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.concurrent_execution_rate_percentage {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'concurrent_execution_rate_percentage'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.error_percentage {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'error_percentage'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.error_percentage {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'error_percentage'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// The static value of the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -332,3 +476,26 @@ pub struct StaticValue {
 }
 
 
+
+impl cfn_resources::CfnResource for StaticValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.values {
+
+        if the_val.len() > 25 as _ {
+            return Err(format!("Max validation failed on field 'values'. {} is greater than 25", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}

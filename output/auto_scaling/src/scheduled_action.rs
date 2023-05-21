@@ -132,4 +132,23 @@ impl cfn_resources::CfnResource for CfnScheduledAction {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.auto_scaling_group_name;
+
+        if the_val.len() > 255 as _ {
+            return Err(format!("Max validation failed on field 'auto_scaling_group_name'. {} is greater than 255", the_val.len()));
+        }
+
+        
+        let the_val = &self.auto_scaling_group_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'auto_scaling_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
 }

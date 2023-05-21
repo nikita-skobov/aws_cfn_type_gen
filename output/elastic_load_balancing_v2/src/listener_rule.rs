@@ -76,8 +76,26 @@ impl cfn_resources::CfnResource for CfnListenerRule {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.priority;
+
+        if *the_val > 50000 as _ {
+            return Err(format!("Max validation failed on field 'priority'. {} is greater than 50000", the_val));
+        }
+
+        
+        let the_val = &self.priority;
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'priority'. {} is less than 1", the_val));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// Specifies an action for a listener rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -220,6 +238,46 @@ impl Default for ActionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for Action {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.authenticate_cognito_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.authenticate_oidc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.fixed_response_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.forward_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.order {
+
+        if *the_val > 50000 as _ {
+            return Err(format!("Max validation failed on field 'order'. {} is greater than 50000", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.order {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'order'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        self.redirect_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Specifies information required when integrating with Amazon Cognito to authenticate     users.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -354,6 +412,20 @@ impl Default for AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
 }
 
 
+impl cfn_resources::CfnResource for AuthenticateCognitoConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -536,6 +608,20 @@ impl Default for AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
 }
 
 
+impl cfn_resources::CfnResource for AuthenticateOidcConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Specifies information required when returning a custom HTTP response.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -624,6 +710,36 @@ impl Default for FixedResponseConfigContentTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for FixedResponseConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.message_body {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'message_body'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.message_body {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'message_body'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -657,6 +773,22 @@ pub struct ForwardConfig {
 
 
 
+impl cfn_resources::CfnResource for ForwardConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.target_group_stickiness_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about a host header condition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -680,6 +812,20 @@ pub struct HostHeaderConfig {
 
 
 
+impl cfn_resources::CfnResource for HostHeaderConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about an HTTP header condition.
 ///
@@ -719,6 +865,20 @@ pub struct HttpHeaderConfig {
 
 
 
+impl cfn_resources::CfnResource for HttpHeaderConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about an HTTP method condition.
 ///
@@ -744,6 +904,20 @@ pub struct HttpRequestMethodConfig {
 
 
 
+impl cfn_resources::CfnResource for HttpRequestMethodConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about a path pattern condition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -767,6 +941,20 @@ pub struct PathPatternConfig {
 
 
 
+impl cfn_resources::CfnResource for PathPatternConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about a query string condition.
 ///
@@ -792,6 +980,20 @@ pub struct QueryStringConfig {
 
 
 
+impl cfn_resources::CfnResource for QueryStringConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about a key/value pair.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -825,6 +1027,20 @@ pub struct QueryStringKeyValue {
 
 
 
+impl cfn_resources::CfnResource for QueryStringKeyValue {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about a redirect action.
 ///
@@ -947,6 +1163,68 @@ impl Default for RedirectConfigStatusCodeEnum {
 }
 
 
+impl cfn_resources::CfnResource for RedirectConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.host {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'host'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.host {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'host'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'path'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.query {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'query'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.query {
+
+        if the_val.len() < 0 as _ {
+            return Err(format!("Min validation failed on field 'query'. {} is less than 0", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Specifies a condition for a listener rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1064,6 +1342,40 @@ pub struct RuleCondition {
 
 
 
+impl cfn_resources::CfnResource for RuleCondition {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.field {
+
+        if the_val.len() > 64 as _ {
+            return Err(format!("Max validation failed on field 'field'. {} is greater than 64", the_val.len()));
+        }
+
+        }
+        
+        self.host_header_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http_header_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.http_request_method_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.path_pattern_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.query_string_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.source_ip_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about a source IP condition.
 ///
@@ -1089,6 +1401,20 @@ pub struct SourceIpConfig {
 
 
 
+impl cfn_resources::CfnResource for SourceIpConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the target group stickiness for a rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1122,6 +1448,20 @@ pub struct TargetGroupStickinessConfig {
 
 
 
+impl cfn_resources::CfnResource for TargetGroupStickinessConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1154,3 +1494,18 @@ pub struct TargetGroupTuple {
 }
 
 
+
+impl cfn_resources::CfnResource for TargetGroupTuple {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

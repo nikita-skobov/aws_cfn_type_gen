@@ -89,8 +89,30 @@ impl cfn_resources::CfnResource for CfnConnector {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.connector_label {
+
+        if the_val.len() > 256 as _ {
+            return Err(format!("Max validation failed on field 'connector_label'. {} is greater than 256", the_val.len()));
+        }
+
+        }
+        
+        self.connector_provisioning_config.validate()?;
+
+        if let Some(the_val) = &self.description {
+
+        if the_val.len() > 1024 as _ {
+            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Contains information about the configuration of the connector being registered.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -112,6 +134,22 @@ pub struct ConnectorProvisioningConfig {
 
 
 
+impl cfn_resources::CfnResource for ConnectorProvisioningConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.lambda.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Contains information about the configuration of the lambda which is being registered as    the connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -136,3 +174,25 @@ pub struct LambdaConnectorProvisioningConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for LambdaConnectorProvisioningConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.lambda_arn;
+
+        if the_val.len() > 512 as _ {
+            return Err(format!("Max validation failed on field 'lambda_arn'. {} is greater than 512", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}

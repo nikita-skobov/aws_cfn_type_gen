@@ -224,8 +224,142 @@ impl cfn_resources::CfnResource for CfnCloudFormationProvisionedProduct {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.accept_language {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'accept_language'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.notification_arns {
+
+        if the_val.len() > 5 as _ {
+            return Err(format!("Max validation failed on field 'notification_arns'. {} is greater than 5", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path_id {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'path_id'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'path_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.path_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'path_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.product_id {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'product_id'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.product_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'product_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.product_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'product_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.product_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'product_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.provisioned_product_name {
+
+        if the_val.len() > 128 as _ {
+            return Err(format!("Max validation failed on field 'provisioned_product_name'. {} is greater than 128", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.provisioned_product_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'provisioned_product_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.provisioning_artifact_id {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.provisioning_artifact_id {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'provisioning_artifact_id'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.provisioning_artifact_name {
+
+        if the_val.len() > 8192 as _ {
+            return Err(format!("Max validation failed on field 'provisioning_artifact_name'. {} is greater than 8192", the_val.len()));
+        }
+
+        }
+        
+        self.provisioning_preferences.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.tags {
+
+        if the_val.len() > 50 as _ {
+            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// Information about a parameter used to provision a product.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -265,6 +399,41 @@ pub struct ProvisioningParameter {
 
 
 
+impl cfn_resources::CfnResource for ProvisioningParameter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        let the_val = &self.key;
+
+        if the_val.len() > 1000 as _ {
+            return Err(format!("Max validation failed on field 'key'. {} is greater than 1000", the_val.len()));
+        }
+
+        
+        let the_val = &self.key;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+        }
+
+        
+        let the_val = &self.value;
+
+        if the_val.len() > 4096 as _ {
+            return Err(format!("Max validation failed on field 'value'. {} is greater than 4096", the_val.len()));
+        }
+
+        
+        Ok(())
+    }
+}
 
 /// The user-defined preferences that will be applied when updating a provisioned     product. Not all preferences are applicable to all provisioned product type
 ///
@@ -445,6 +614,68 @@ impl Default for ProvisioningPreferencesStackSetOperationTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for ProvisioningPreferences {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        if let Some(the_val) = &self.stack_set_failure_tolerance_count {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'stack_set_failure_tolerance_count'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.stack_set_failure_tolerance_percentage {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'stack_set_failure_tolerance_percentage'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.stack_set_failure_tolerance_percentage {
+
+        if *the_val < 0 as _ {
+            return Err(format!("Min validation failed on field 'stack_set_failure_tolerance_percentage'. {} is less than 0", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.stack_set_max_concurrency_count {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'stack_set_max_concurrency_count'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.stack_set_max_concurrency_percentage {
+
+        if *the_val > 100 as _ {
+            return Err(format!("Max validation failed on field 'stack_set_max_concurrency_percentage'. {} is greater than 100", the_val));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.stack_set_max_concurrency_percentage {
+
+        if *the_val < 1 as _ {
+            return Err(format!("Min validation failed on field 'stack_set_max_concurrency_percentage'. {} is less than 1", the_val));
+        }
+
+        }
+        
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -481,3 +712,18 @@ pub struct Tag {
 }
 
 
+
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}

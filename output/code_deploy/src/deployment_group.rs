@@ -268,8 +268,74 @@ impl cfn_resources::CfnResource for CfnDeploymentGroup {
     fn properties(self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
-}
 
+    fn validate(&self) -> Result<(), String> {
+
+        self.alarm_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        let the_val = &self.application_name;
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 100", the_val.len()));
+        }
+
+        
+        let the_val = &self.application_name;
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+        }
+
+        
+        self.auto_rollback_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.blue_green_deployment_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.deployment.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        if let Some(the_val) = &self.deployment_config_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'deployment_config_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.deployment_config_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'deployment_config_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.deployment_group_name {
+
+        if the_val.len() > 100 as _ {
+            return Err(format!("Max validation failed on field 'deployment_group_name'. {} is greater than 100", the_val.len()));
+        }
+
+        }
+        
+        if let Some(the_val) = &self.deployment_group_name {
+
+        if the_val.len() < 1 as _ {
+            return Err(format!("Min validation failed on field 'deployment_group_name'. {} is less than 1", the_val.len()));
+        }
+
+        }
+        
+        self.deployment_style.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.ec2_tag_set.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.load_balancer_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.on_premises_tag_set.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The Alarm property type specifies a CloudWatch alarm to use for an     AWS CodeDeploy deployment group. The Alarm property of the CodeDeploy DeploymentGroup AlarmConfiguration property contains a list of     Alarm property types.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -291,6 +357,20 @@ pub struct Alarm {
 
 
 
+impl cfn_resources::CfnResource for Alarm {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AlarmConfiguration property type configures CloudWatch alarms    for an AWS CodeDeploy deployment group. AlarmConfiguration is a    property of the DeploymentGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -338,6 +418,20 @@ pub struct AlarmConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AlarmConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The AutoRollbackConfiguration property type configures automatic rollback for    an AWS CodeDeploy deployment group when a deployment is not completed successfully.    For more information, see Automatic Rollbacks in the AWS CodeDeploy User    Guide.
 ///
@@ -373,6 +467,20 @@ pub struct AutoRollbackConfiguration {
 
 
 
+impl cfn_resources::CfnResource for AutoRollbackConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about blue/green deployment options for a deployment group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -418,6 +526,26 @@ pub struct BlueGreenDeploymentConfiguration {
 
 
 
+impl cfn_resources::CfnResource for BlueGreenDeploymentConfiguration {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.deployment_ready_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.green_fleet_provisioning_option.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.terminate_blue_instances_on_deployment_success.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// Information about whether instances in the original environment are terminated when a       blue/green deployment is successful. BlueInstanceTerminationOption does not       apply to Lambda deployments.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -478,6 +606,20 @@ impl Default for BlueInstanceTerminationOptionActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for BlueInstanceTerminationOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Deployment is a property of the DeploymentGroup resource that specifies an AWS CodeDeploy application    revision to be deployed to instances in the deployment group. If you specify an application    revision, your target revision is deployed as soon as the provisioning process is complete.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -529,6 +671,22 @@ pub struct Deployment {
 
 
 
+impl cfn_resources::CfnResource for Deployment {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.revision.validate()?;
+
+        Ok(())
+    }
+}
 
 /// Information about how traffic is rerouted to instances in a replacement environment in       a blue/green deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -585,6 +743,20 @@ impl Default for DeploymentReadyOptionActionOnTimeoutEnum {
 }
 
 
+impl cfn_resources::CfnResource for DeploymentReadyOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the type of deployment, either in-place or blue/green, you want to       run and whether to route deployment traffic behind a load balancer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -662,6 +834,20 @@ impl Default for DeploymentStyleDeploymentTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for DeploymentStyle {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about an Amazon EC2 tag filter.
 ///
@@ -736,6 +922,20 @@ impl Default for EC2TagFilterTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for EC2TagFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The EC2TagSet property type specifies information about groups of tags    applied to Amazon EC2 instances. The deployment group includes only Amazon EC2 instances identified by all the tag groups. EC2TagSet cannot be    used in the same template as EC2TagFilter.
 ///
@@ -761,6 +961,20 @@ pub struct EC2TagSet {
 
 
 
+impl cfn_resources::CfnResource for EC2TagSet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The EC2TagSet property type specifies information about groups of tags    applied to Amazon EC2 instances. The deployment group includes only Amazon EC2 instances identified by all the tag groups. Cannot be used in the same template    as EC2TagFilters.
 ///
@@ -786,6 +1000,20 @@ pub struct EC2TagSetListObject {
 
 
 
+impl cfn_resources::CfnResource for EC2TagSetListObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Contains the service and cluster names used to identify an Amazon ECS       deployment's target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -819,6 +1047,20 @@ pub struct ECSService {
 
 
 
+impl cfn_resources::CfnResource for ECSService {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The ELBInfo property type specifies information about the Elastic Load Balancing load balancer used for an CodeDeploy deployment group.
 ///
@@ -846,6 +1088,20 @@ pub struct ELBInfo {
 
 
 
+impl cfn_resources::CfnResource for ELBInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// GitHubLocation is a property of the CodeDeploy DeploymentGroup Revision property that specifies the    location of an application revision that is stored in GitHub.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -881,6 +1137,20 @@ pub struct GitHubLocation {
 
 
 
+impl cfn_resources::CfnResource for GitHubLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about the instances that belong to the replacement environment in a       blue/green deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -925,6 +1195,20 @@ impl Default for GreenFleetProvisioningOptionActionEnum {
 }
 
 
+impl cfn_resources::CfnResource for GreenFleetProvisioningOption {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The LoadBalancerInfo property type specifies information about the load    balancer or target group used for an AWS CodeDeploy deployment group. For more    information, see Integrating      CodeDeploy with Elastic Load Balancing in the AWS CodeDeploy User Guide.
 ///
@@ -977,6 +1261,20 @@ pub struct LoadBalancerInfo {
 
 
 
+impl cfn_resources::CfnResource for LoadBalancerInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The OnPremisesTagSet property type specifies a list containing other lists of    on-premises instance tag groups. In order for an instance to be included in the deployment    group, it must be identified by all the tag groups in the list.
 ///
@@ -1004,6 +1302,20 @@ pub struct OnPremisesTagSet {
 
 
 
+impl cfn_resources::CfnResource for OnPremisesTagSet {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The OnPremisesTagSetListObject property type specifies lists of on-premises    instance tag groups. In order for an instance to be included in the deployment group, it must    be identified by all the tag groups in the list.
 ///
@@ -1027,6 +1339,20 @@ pub struct OnPremisesTagSetListObject {
 
 
 
+impl cfn_resources::CfnResource for OnPremisesTagSetListObject {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// RevisionLocation is a property that defines the location of the CodeDeploy application revision to deploy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1103,6 +1429,24 @@ impl Default for RevisionLocationRevisionTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for RevisionLocation {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.git_hub_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.s3_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// S3Location is a property of the     CodeDeploy DeploymentGroup Revision property that specifies the location    of an application revision that is stored in Amazon Simple Storage Service (Amazon S3).
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1211,6 +1555,20 @@ impl Default for S3LocationBundleTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for S3Location {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -1248,6 +1606,20 @@ pub struct Tag {
 
 
 
+impl cfn_resources::CfnResource for Tag {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// TagFilter is a property type of the AWS::CodeDeploy::DeploymentGroup resource that specifies which on-premises    instances to associate with the deployment group. To register on-premise instances with     AWS CodeDeploy, see Configure Existing On-Premises     Instances by Using AWS CodeDeploy in the AWS CodeDeploy User Guide.
 ///
@@ -1322,6 +1694,20 @@ impl Default for TagFilterTypeEnum {
 }
 
 
+impl cfn_resources::CfnResource for TagFilter {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The TargetGroupInfo property type specifies information about a target group    in Elastic Load Balancing to use in a deployment. Instances are registered as targets in a    target group, and traffic is routed to the target group. For more information, see     TargetGroupInfo in the AWS CodeDeploy API Reference
 ///
@@ -1351,6 +1737,20 @@ pub struct TargetGroupInfo {
 
 
 
+impl cfn_resources::CfnResource for TargetGroupInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// The TargetGroupPairInfo property type specifies Property description not available. for an AWS::CodeDeploy::DeploymentGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1393,6 +1793,24 @@ pub struct TargetGroupPairInfo {
 
 
 
+impl cfn_resources::CfnResource for TargetGroupPairInfo {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        self.prod_traffic_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        self.test_traffic_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+
+        Ok(())
+    }
+}
 
 /// The TrafficRoute property type specifies Property description not available. for an AWS::CodeDeploy::DeploymentGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1413,6 +1831,20 @@ pub struct TrafficRoute {
 
 
 
+impl cfn_resources::CfnResource for TrafficRoute {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
 
 /// Information about notification triggers for the deployment group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
@@ -1457,3 +1889,18 @@ pub struct TriggerConfig {
 }
 
 
+
+impl cfn_resources::CfnResource for TriggerConfig {
+    fn type_string() -> &'static str {
+        "NOT_A_VALID_CFN_RESOURCE"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+
+    fn validate(&self) -> Result<(), String> {
+
+        Ok(())
+    }
+}
