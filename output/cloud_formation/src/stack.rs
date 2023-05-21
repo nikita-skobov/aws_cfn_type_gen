@@ -1,0 +1,126 @@
+
+
+/// The AWS::CloudFormation::Stack resource nests a stack as a resource in a top-level template.
+///
+/// You can add output values from a nested stack within the containing template. You use the GetAtt function with the nested stack's logical name and the name of the output value in the nested stack  in the format Outputs.NestedStackOutputName.
+///
+/// When you apply template changes to update a top-level stack, CloudFormation updates the top-level stack  and initiates an update to its nested stacks. CloudFormation updates the resources of modified nested  stacks, but doesn't update the resources of unmodified nested stacks. For more information, see CloudFormation   stack updates.
+#[derive(Default, serde::Serialize)]
+pub struct CfnStack {
+
+
+    /// 
+    /// Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to the resources  created in the stack. A maximum number of 50 tags can be specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The Amazon Simple Notification Service (Amazon SNS) topic ARNs to publish stack related events. You can find your   Amazon SNS topic ARNs using the Amazon SNS console or your Command Line Interface (CLI).
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationARNs")]
+    pub notification_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that's  located in an Amazon S3 bucket. For more information, see Template anatomy.
+    /// 
+    /// Whether an update causes interruptions depends on the resources that are being updated. An update never causes a  nested stack to be replaced.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateURL")]
+    pub template_url: String,
+
+
+    /// 
+    /// The set value pairs that represent the parameters passed to CloudFormation when this nested stack is  created. Each parameter has a name corresponding to a parameter defined in the embedded template and a value  representing the value that you want to set for the parameter.
+    /// 
+    /// NoteIf you use the Ref function to pass a parameter value to a nested stack, comma-delimited list   parameters must be of type String. In other words, you can't pass values that are of type   CommaDelimitedList to nested stacks.
+    /// 
+    /// Conditional. Required if the nested stack requires input parameters.
+    /// 
+    /// Whether an update causes interruptions depends on the resources that are being updated. An update never causes a  nested stack to be replaced.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The length of time, in minutes, that CloudFormation waits for the nested stack to reach the   CREATE_COMPLETE state. The default is no timeout. When CloudFormation detects that the nested  stack has reached the CREATE_COMPLETE state, it marks the nested stack resource as   CREATE_COMPLETE in the parent stack and resumes creating the parent stack. If the timeout period  expires before the nested stack reaches CREATE_COMPLETE, CloudFormation marks the nested stack  as failed and rolls back both the nested stack and parent stack.
+    /// 
+    /// Updates aren't supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimeoutInMinutes")]
+    pub timeout_in_minutes: Option<i64>,
+
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}

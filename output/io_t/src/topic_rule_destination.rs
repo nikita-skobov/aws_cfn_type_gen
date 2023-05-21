@@ -1,0 +1,117 @@
+
+
+/// A topic rule destination.
+#[derive(Default, serde::Serialize)]
+pub struct CfnTopicRuleDestination {
+
+
+    /// 
+    /// Properties of the HTTP URL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: HttpUrlDestinationSummary
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HttpUrlProperties")]
+    pub http_url_properties: Option<HttpUrlDestinationSummary>,
+
+
+    /// 
+    /// Properties of the virtual private cloud (VPC) connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcDestinationProperties
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcProperties")]
+    pub vpc_properties: Option<VpcDestinationProperties>,
+
+
+    /// 
+    /// IN_PROGRESS               A topic rule destination was created but has not been confirmed. You can set status to IN_PROGRESS by calling UpdateTopicRuleDestination. Calling UpdateTopicRuleDestination causes a new confirmation challenge to be sent to your confirmation endpoint.                   ENABLED               Confirmation was completed, and traffic to this destination is allowed. You can set status to DISABLED by calling UpdateTopicRuleDestination.                    DISABLED                  Confirmation was completed, and traffic to this destination is not allowed. You can set status to ENABLED by calling UpdateTopicRuleDestination.                       ERROR                  Confirmation could not be completed; for example, if the confirmation timed           out. You can call GetTopicRuleDestination for details about the           error. You can set status to IN_PROGRESS by calling             UpdateTopicRuleDestination. Calling             UpdateTopicRuleDestination causes a new confirmation challenge           to be sent to your confirmation endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+}
+
+
+/// The properties of a virtual private cloud (VPC) destination.
+#[derive(Default, serde::Serialize)]
+pub struct VpcDestinationProperties {
+
+
+    /// 
+    /// The security groups of the VPC destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Option<Vec<String>>,
+
+
+    /// 
+    /// The ID of the VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
+
+
+    /// 
+    /// The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+
+    /// 
+    /// The subnet IDs of the VPC destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
+
+}
+
+
+/// HTTP URL destination properties.
+#[derive(Default, serde::Serialize)]
+pub struct HttpUrlDestinationSummary {
+
+
+    /// 
+    /// The URL used to confirm the HTTP topic rule destination URL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConfirmationUrl")]
+    pub confirmation_url: Option<String>,
+
+}

@@ -1,0 +1,175 @@
+
+
+/// Creates a logical container where backups are stored. A CreateBackupVault     request includes a name, optionally one or more resource tags, an encryption key, and a     request ID.
+///
+/// Do not include sensitive data, such as passport numbers, in the name of a backup     vault.
+///
+/// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
+#[derive(Default, serde::Serialize)]
+pub struct CfnBackupVault {
+
+
+    /// 
+    /// Metadata that you can assign to help organize the resources that you create. Each tag is     a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackupVaultTags")]
+    pub backup_vault_tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// A server-side encryption key you can specify to encrypt your backups from services    that support full AWS Backup management; for example,    arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab.    If you specify a key, you must specify its ARN, not its alias. If you do not specify a key,    AWS Backup creates a KMS key for you by default.
+    /// 
+    /// To learn which AWS Backup services support full AWS Backup management     and how AWS Backup handles encryption for backups from services that do not yet support     full AWS Backup, see       Encryption for backups in AWS Backup
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EncryptionKeyArn")]
+    pub encryption_key_arn: Option<String>,
+
+
+    /// 
+    /// Configuration for AWS Backup Vault     Lock.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LockConfigurationType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LockConfiguration")]
+    pub lock_configuration: Option<LockConfigurationType>,
+
+
+    /// 
+    /// The name of a logical container where backups are stored. Backup vaults are identified     by names that are unique to the account used to create them and the AWS     Region where they are created. They consist of lowercase letters, numbers, and     hyphens.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[a-zA-Z0-9\-\_]{2,50}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BackupVaultName")]
+    pub backup_vault_name: String,
+
+
+    /// 
+    /// A resource-based policy that is used to manage access permissions on the target backup     vault.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessPolicy")]
+    pub access_policy: Option<serde_json::Value>,
+
+
+    /// 
+    /// The SNS event notifications for the specified backup vault.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NotificationObjectType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Notifications")]
+    pub notifications: Option<NotificationObjectType>,
+
+}
+
+
+/// Specifies an object containing SNS event notification properties for the target backup     vault.
+#[derive(Default, serde::Serialize)]
+pub struct NotificationObjectType {
+
+
+    /// 
+    /// An array of events that indicate the status of jobs to back up resources to the backup     vault. For valid events, see BackupVaultEvents in the AWS Backup API     Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackupVaultEvents")]
+    pub backup_vault_events: Vec<String>,
+
+
+    /// 
+    /// An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon SNS)     topic; for example, arn:aws:sns:us-west-2:111122223333:MyTopic.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SNSTopicArn")]
+    pub snstopic_arn: String,
+
+}
+
+
+/// The LockConfigurationType property type specifies configuration for AWS Backup Vault Lock.
+#[derive(Default, serde::Serialize)]
+pub struct LockConfigurationType {
+
+
+    /// 
+    /// The AWS Backup Vault Lock configuration that specifies the minimum retention     period that the vault retains its recovery points. This setting can be useful if, for     example, your organization's policies require you to retain certain data for at least seven     years (2555 days).
+    /// 
+    /// If this parameter is not specified, Vault Lock will not enforce a minimum retention     period.
+    /// 
+    /// If this parameter is specified, any backup or copy job to the vault must have a     lifecycle policy with a retention period equal to or longer than the minimum retention     period. If the job's retention period is shorter than that minimum retention period, then     the vault fails that backup or copy job, and you should either modify your lifecycle     settings or use a different vault. Recovery points already saved in the vault prior to     Vault Lock are not affected.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinRetentionDays")]
+    pub min_retention_days: i64,
+
+
+    /// 
+    /// The AWS Backup Vault Lock configuration that specifies the number of days     before the lock date. For example, setting ChangeableForDays to 30 on Jan. 1,     2022 at 8pm UTC will set the lock date to Jan. 31, 2022 at 8pm UTC.
+    /// 
+    /// AWS Backup enforces a 72-hour cooling-off period before Vault Lock takes     effect and becomes immutable. Therefore, you must set ChangeableForDays to 3     or greater.
+    /// 
+    /// Before the lock date, you can delete Vault Lock from the vault using       DeleteBackupVaultLockConfiguration or change the Vault Lock configuration     using PutBackupVaultLockConfiguration. On and after the lock date, the Vault     Lock becomes immutable and cannot be changed or deleted.
+    /// 
+    /// If this parameter is not specified, you can delete Vault Lock from the vault using       DeleteBackupVaultLockConfiguration or change the Vault Lock configuration     using PutBackupVaultLockConfiguration at any time.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChangeableForDays")]
+    pub changeable_for_days: Option<i64>,
+
+
+    /// 
+    /// The AWS Backup Vault Lock configuration that specifies the maximum retention     period that the vault retains its recovery points. This setting can be useful if, for     example, your organization's policies require you to destroy certain data after retaining     it for four years (1460 days).
+    /// 
+    /// If this parameter is not included, Vault Lock does not enforce a maximum retention     period on the recovery points in the vault. If this parameter is included without a value,     Vault Lock will not enforce a maximum retention period.
+    /// 
+    /// If this parameter is specified, any backup or copy job to the vault must have a     lifecycle policy with a retention period equal to or shorter than the maximum retention     period. If the job's retention period is longer than that maximum retention period, then     the vault fails the backup or copy job, and you should either modify your lifecycle     settings or use a different vault. Recovery points already saved in the vault prior to     Vault Lock are not affected.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxRetentionDays")]
+    pub max_retention_days: Option<i64>,
+
+}

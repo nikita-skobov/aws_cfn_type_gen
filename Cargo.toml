@@ -1,8 +1,14 @@
+[profile.release]
+lto = true
+opt-level = 3
+
+
 [workspace]
 members = [
     "downloader",
     "parser",
     "emitter",
+    "html_extractor",
 
 "output/access_analyzer",
 "output/acmpca",
@@ -177,6 +183,7 @@ members = [
 "output/service_catalog_app_registry",
 "output/service_discovery",
 "output/ses",
+"output/shield",
 "output/signer",
 "output/sim_space_weaver",
 "output/sns",
