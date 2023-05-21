@@ -8,6 +8,18 @@ pub struct CfnRoleAlias {
 
 
     /// 
+    /// The number of seconds for which the credential is valid.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CredentialDurationSeconds")]
+    pub credential_duration_seconds: Option<i64>,
+
+
+    /// 
     /// The role alias.
     /// 
     /// Required: No
@@ -43,18 +55,6 @@ pub struct CfnRoleAlias {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The number of seconds for which the credential is valid.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CredentialDurationSeconds")]
-    pub credential_duration_seconds: Option<i64>,
 
 }
 

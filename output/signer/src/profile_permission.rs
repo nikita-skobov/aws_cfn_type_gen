@@ -6,15 +6,15 @@ pub struct CfnProfilePermission {
 
 
     /// 
-    /// The version of the signing profile.
+    /// The AWS Signer action permitted as part of cross-account             permissions.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ProfileVersion")]
-    pub profile_version: Option<String>,
+    #[serde(rename = "Action")]
+    pub action: String,
 
 
     /// 
@@ -30,18 +30,6 @@ pub struct CfnProfilePermission {
 
 
     /// 
-    /// A unique identifier for the cross-account permission statement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StatementId")]
-    pub statement_id: String,
-
-
-    /// 
     /// The human-readable name of the signing profile.
     /// 
     /// Required: Yes
@@ -54,15 +42,27 @@ pub struct CfnProfilePermission {
 
 
     /// 
-    /// The AWS Signer action permitted as part of cross-account             permissions.
+    /// The version of the signing profile.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProfileVersion")]
+    pub profile_version: Option<String>,
+
+
+    /// 
+    /// A unique identifier for the cross-account permission statement.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Action")]
-    pub action: String,
+    #[serde(rename = "StatementId")]
+    pub statement_id: String,
 
 }
 

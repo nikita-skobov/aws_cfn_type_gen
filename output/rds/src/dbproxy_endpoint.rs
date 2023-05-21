@@ -8,18 +8,6 @@ pub struct CfnDBProxyEndpoint {
 
 
     /// 
-    /// An optional set of key-value pairs to associate arbitrary data of your choosing with the proxy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TagFormat
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagFormat>>,
-
-
-    /// 
     /// The name of the DB proxy endpoint to create.
     /// 
     /// Required: Yes
@@ -29,6 +17,30 @@ pub struct CfnDBProxyEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "DBProxyEndpointName")]
     pub dbproxy_endpoint_name: String,
+
+
+    /// 
+    /// The name of the DB proxy associated with the DB proxy endpoint that you create.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBProxyName")]
+    pub dbproxy_name: String,
+
+
+    /// 
+    /// An optional set of key-value pairs to associate arbitrary data of your choosing with the proxy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TagFormat
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagFormat>>,
 
 
     /// 
@@ -43,18 +55,6 @@ pub struct CfnDBProxyEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "TargetRole")]
     pub target_role: Option<DBProxyEndpointTargetRoleEnum>,
-
-
-    /// 
-    /// The name of the DB proxy associated with the DB proxy endpoint that you create.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBProxyName")]
-    pub dbproxy_name: String,
 
 
     /// 
@@ -120,18 +120,6 @@ pub struct TagFormat {
 
 
     /// 
-    /// Metadata assigned to a DB instance consisting of a key-value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-
-    /// 
     /// A value is the optional value of the tag. The string value can be 1-256 Unicode       characters in length and can't be prefixed with aws:. The string can contain only the       set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:       "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     /// 
     /// Required: No
@@ -141,6 +129,18 @@ pub struct TagFormat {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<String>,
+
+
+    /// 
+    /// Metadata assigned to a DB instance consisting of a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 

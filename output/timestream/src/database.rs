@@ -20,18 +20,6 @@ pub struct CfnDatabase {
 
 
     /// 
-    /// The tags to add to the database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The identifier of the AWS KMS key used to encrypt the data stored in the    database.
     /// 
     /// Required: No
@@ -45,6 +33,18 @@ pub struct CfnDatabase {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// The tags to add to the database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

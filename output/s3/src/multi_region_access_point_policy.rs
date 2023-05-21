@@ -8,18 +8,6 @@ pub struct CfnMultiRegionAccessPointPolicy {
 
 
     /// 
-    /// The access policy associated with the Multi-Region Access Point.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: serde_json::Value,
-
-
-    /// 
     /// The name of the Multi-Region Access Point.
     /// 
     /// Required: Yes
@@ -29,6 +17,18 @@ pub struct CfnMultiRegionAccessPointPolicy {
     /// Update requires: Replacement
     #[serde(rename = "MrapName")]
     pub mrap_name: String,
+
+
+    /// 
+    /// The access policy associated with the Multi-Region Access Point.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Policy")]
+    pub policy: serde_json::Value,
 
 }
 

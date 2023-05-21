@@ -25,18 +25,6 @@ pub struct CfnEndpoint {
 
 
     /// 
-    /// The ID of the subnet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
-
-
-    /// 
     /// The ID of the customer-owned IPv4 address pool (CoIP pool) for the endpoint. IP addresses    are allocated from this pool for the endpoint.
     /// 
     /// Required: No
@@ -48,6 +36,18 @@ pub struct CfnEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "CustomerOwnedIpv4Pool")]
     pub customer_owned_ipv4_pool: Option<String>,
+
+
+    /// 
+    /// The ID of the Outpost.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OutpostId")]
+    pub outpost_id: String,
 
 
     /// 
@@ -63,15 +63,15 @@ pub struct CfnEndpoint {
 
 
     /// 
-    /// The ID of the Outpost.
+    /// The ID of the subnet.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "OutpostId")]
-    pub outpost_id: String,
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
 
 }
 

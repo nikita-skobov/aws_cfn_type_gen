@@ -6,18 +6,6 @@ pub struct CfnDeviceDefinitionVersion {
 
 
     /// 
-    /// The devices in this version.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Device
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Devices")]
-    pub devices: Vec<Device>,
-
-
-    /// 
     /// The ID of the device definition associated with this version. This value is a GUID.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnDeviceDefinitionVersion {
     /// Update requires: Replacement
     #[serde(rename = "DeviceDefinitionId")]
     pub device_definition_id: String,
+
+
+    /// 
+    /// The devices in this version.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Device
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Devices")]
+    pub devices: Vec<Device>,
 
 }
 
@@ -75,18 +75,6 @@ pub struct Device {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the device, which is an AWS IoT device (thing).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ThingArn")]
-    pub thing_arn: String,
-
-
-    /// 
     /// Indicates whether the device's local shadow is synced       with the cloud automatically.
     /// 
     /// Required: No
@@ -96,6 +84,18 @@ pub struct Device {
     /// Update requires: Replacement
     #[serde(rename = "SyncShadow")]
     pub sync_shadow: Option<bool>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the device, which is an AWS IoT device (thing).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ThingArn")]
+    pub thing_arn: String,
 
 }
 

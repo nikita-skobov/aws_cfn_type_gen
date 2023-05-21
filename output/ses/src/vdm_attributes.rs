@@ -6,18 +6,6 @@ pub struct CfnVdmAttributes {
 
 
     /// 
-    /// Specifies additional settings for your VDM configuration as applicable to the       Guardian.
-    /// 
-    /// Required: No
-    ///
-    /// Type: GuardianAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GuardianAttributes")]
-    pub guardian_attributes: Option<GuardianAttributes>,
-
-
-    /// 
     /// Specifies additional settings for your VDM configuration as applicable to the       Dashboard.
     /// 
     /// Required: No
@@ -27,6 +15,18 @@ pub struct CfnVdmAttributes {
     /// Update requires: No interruption
     #[serde(rename = "DashboardAttributes")]
     pub dashboard_attributes: Option<DashboardAttributes>,
+
+
+    /// 
+    /// Specifies additional settings for your VDM configuration as applicable to the       Guardian.
+    /// 
+    /// Required: No
+    ///
+    /// Type: GuardianAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GuardianAttributes")]
+    pub guardian_attributes: Option<GuardianAttributes>,
 
 }
 

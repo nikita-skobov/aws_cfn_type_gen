@@ -9,22 +9,22 @@ pub struct CfnServerlessCluster {
     ///
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: ClientAuthentication
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    #[serde(rename = "ClientAuthentication")]
+    pub client_authentication: ClientAuthentication,
 
 
     /// Property description not available.
     ///
     /// Required: Yes
     ///
-    /// Type: List of VpcConfig
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcConfigs")]
-    pub vpc_configs: Vec<VpcConfig>,
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: String,
 
 
     /// Property description not available.
@@ -42,11 +42,11 @@ pub struct CfnServerlessCluster {
     ///
     /// Required: Yes
     ///
-    /// Type: ClientAuthentication
+    /// Type: List of VpcConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ClientAuthentication")]
-    pub client_authentication: ClientAuthentication,
+    #[serde(rename = "VpcConfigs")]
+    pub vpc_configs: Vec<VpcConfig>,
 
 }
 
@@ -78,37 +78,6 @@ pub struct ClientAuthentication {
     /// Update requires: Replacement
     #[serde(rename = "Sasl")]
     pub sasl: Sasl,
-
-}
-
-
-
-
-/// The VpcConfig property type specifies Property description not available. for an AWS::MSK::ServerlessCluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConfig {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroups")]
-    pub security_groups: Option<Vec<String>>,
 
 }
 
@@ -151,6 +120,37 @@ pub struct Sasl {
     /// Update requires: Replacement
     #[serde(rename = "Iam")]
     pub iam: Iam,
+
+}
+
+
+
+
+/// The VpcConfig property type specifies Property description not available. for an AWS::MSK::ServerlessCluster.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConfig {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Option<Vec<String>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 }
 

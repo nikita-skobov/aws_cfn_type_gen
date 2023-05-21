@@ -6,18 +6,6 @@ pub struct CfnSubnetGroup {
 
 
     /// 
-    /// A list of Amazon VPC subnet IDs for the subnet group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
-
-    /// 
     /// A description of the subnet group.
     /// 
     /// Required: No
@@ -27,6 +15,30 @@ pub struct CfnSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The name of the subnet group to be used for the cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetGroupName")]
+    pub subnet_group_name: String,
+
+
+    /// 
+    /// A list of Amazon VPC subnet IDs for the subnet group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 
     /// 
@@ -41,18 +53,6 @@ pub struct CfnSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The name of the subnet group to be used for the cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetGroupName")]
-    pub subnet_group_name: String,
 
 }
 

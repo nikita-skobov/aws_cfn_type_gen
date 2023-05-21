@@ -8,18 +8,6 @@ pub struct CfnVPNGatewayRoutePropagation {
 
 
     /// 
-    /// The ID of the virtual private gateway that is attached to a VPC. The virtual private       gateway must be attached to the same VPC that the routing tables are associated with.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpnGatewayId")]
-    pub vpn_gateway_id: String,
-
-
-    /// 
     /// The ID of the route table. The routing table must be associated with the same VPC that       the virtual private gateway is attached to.
     /// 
     /// Required: Yes
@@ -29,6 +17,18 @@ pub struct CfnVPNGatewayRoutePropagation {
     /// Update requires: No interruption
     #[serde(rename = "RouteTableIds")]
     pub route_table_ids: Vec<String>,
+
+
+    /// 
+    /// The ID of the virtual private gateway that is attached to a VPC. The virtual private       gateway must be attached to the same VPC that the routing tables are associated with.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpnGatewayId")]
+    pub vpn_gateway_id: String,
 
 }
 

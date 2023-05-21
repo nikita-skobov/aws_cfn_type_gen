@@ -6,21 +6,15 @@ pub struct CfnTransitGatewayPeering {
 
 
     /// 
-    /// The ARN of the transit gateway.
+    /// The ID of the core network.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 500
-    ///
-    /// Pattern: [\s\S]*
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayArn")]
-    pub transit_gateway_arn: String,
+    #[serde(rename = "CoreNetworkId")]
+    pub core_network_id: String,
 
 
     /// 
@@ -36,15 +30,21 @@ pub struct CfnTransitGatewayPeering {
 
 
     /// 
-    /// The ID of the core network.
+    /// The ARN of the transit gateway.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 500
+    ///
+    /// Pattern: [\s\S]*
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "CoreNetworkId")]
-    pub core_network_id: String,
+    #[serde(rename = "TransitGatewayArn")]
+    pub transit_gateway_arn: String,
 
 }
 

@@ -8,15 +8,15 @@ pub struct CfnLicense {
 
 
     /// 
-    /// License metadata.
+    /// License beneficiary.
     /// 
     /// Required: No
     ///
-    /// Type: List of Metadata
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LicenseMetadata")]
-    pub license_metadata: Option<Vec<Metadata>>,
+    #[serde(rename = "Beneficiary")]
+    pub beneficiary: Option<String>,
 
 
     /// 
@@ -44,39 +44,15 @@ pub struct CfnLicense {
 
 
     /// 
-    /// License status.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// Product name.
+    /// Home Region of the license.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ProductName")]
-    pub product_name: String,
-
-
-    /// 
-    /// License name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LicenseName")]
-    pub license_name: String,
+    #[serde(rename = "HomeRegion")]
+    pub home_region: String,
 
 
     /// 
@@ -92,39 +68,39 @@ pub struct CfnLicense {
 
 
     /// 
-    /// Home Region of the license.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HomeRegion")]
-    pub home_region: String,
-
-
-    /// 
-    /// Date and time range during which the license is valid, in ISO8601-UTC format.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ValidityDateFormat
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Validity")]
-    pub validity: ValidityDateFormat,
-
-
-    /// 
-    /// License beneficiary.
+    /// License metadata.
     /// 
     /// Required: No
     ///
+    /// Type: List of Metadata
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LicenseMetadata")]
+    pub license_metadata: Option<Vec<Metadata>>,
+
+
+    /// 
+    /// License name.
+    /// 
+    /// Required: Yes
+    ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Beneficiary")]
-    pub beneficiary: Option<String>,
+    #[serde(rename = "LicenseName")]
+    pub license_name: String,
+
+
+    /// 
+    /// Product name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProductName")]
+    pub product_name: String,
 
 
     /// 
@@ -137,6 +113,30 @@ pub struct CfnLicense {
     /// Update requires: No interruption
     #[serde(rename = "ProductSKU")]
     pub product_sku: Option<String>,
+
+
+    /// 
+    /// License status.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
+    /// Date and time range during which the license is valid, in ISO8601-UTC format.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ValidityDateFormat
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Validity")]
+    pub validity: ValidityDateFormat,
 
 }
 
@@ -153,33 +153,78 @@ impl cfn_resources::CfnResource for CfnLicense {
 }
 
 
-/// Describes key/value pairs.
+/// Details about a borrow configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Metadata {
+pub struct BorrowConfiguration {
 
 
     /// 
-    /// The key name.
+    /// Indicates whether early check-ins are allowed.
     /// 
     /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowEarlyCheckIn")]
+    pub allow_early_check_in: bool,
+
+
+    /// 
+    /// Maximum time for the borrow configuration, in minutes.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxTimeToLiveInMinutes")]
+    pub max_time_to_live_in_minutes: i64,
+
+}
+
+
+
+
+/// Details about a consumption configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConsumptionConfiguration {
+
+
+    /// 
+    /// Details about a borrow configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BorrowConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BorrowConfiguration")]
+    pub borrow_configuration: Option<BorrowConfiguration>,
+
+
+    /// 
+    /// Details about a provisional configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ProvisionalConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisionalConfiguration")]
+    pub provisional_configuration: Option<ProvisionalConfiguration>,
+
+
+    /// 
+    /// Renewal frequency.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
+    #[serde(rename = "RenewType")]
+    pub renew_type: Option<String>,
 
 }
 
@@ -201,18 +246,6 @@ pub struct Entitlement {
     /// Update requires: No interruption
     #[serde(rename = "AllowCheckIn")]
     pub allow_check_in: Option<bool>,
-
-
-    /// 
-    /// Indicates whether overages are allowed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Overage")]
-    pub overage: Option<bool>,
 
 
     /// 
@@ -240,15 +273,15 @@ pub struct Entitlement {
 
 
     /// 
-    /// Entitlement resource. Use only if the unit is None.
+    /// Indicates whether overages are allowed.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
+    #[serde(rename = "Overage")]
+    pub overage: Option<bool>,
 
 
     /// 
@@ -262,104 +295,17 @@ pub struct Entitlement {
     #[serde(rename = "Unit")]
     pub unit: String,
 
-}
-
-
-
-
-/// Date and time range during which the license is valid, in ISO8601-UTC format.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ValidityDateFormat {
-
 
     /// 
-    /// End of the time range.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "End")]
-    pub end: String,
-
-
-    /// 
-    /// Start of the time range.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Begin")]
-    pub begin: String,
-
-}
-
-
-
-
-/// Details about a provisional configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ProvisionalConfiguration {
-
-
-    /// 
-    /// Maximum time for the provisional configuration, in minutes.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxTimeToLiveInMinutes")]
-    pub max_time_to_live_in_minutes: i64,
-
-}
-
-
-
-
-/// Details about a consumption configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConsumptionConfiguration {
-
-
-    /// 
-    /// Renewal frequency.
+    /// Entitlement resource. Use only if the unit is None.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RenewType")]
-    pub renew_type: Option<String>,
-
-
-    /// 
-    /// Details about a provisional configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ProvisionalConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisionalConfiguration")]
-    pub provisional_configuration: Option<ProvisionalConfiguration>,
-
-
-    /// 
-    /// Details about a borrow configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BorrowConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BorrowConfiguration")]
-    pub borrow_configuration: Option<BorrowConfiguration>,
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 
@@ -399,13 +345,46 @@ pub struct IssuerData {
 
 
 
-/// Details about a borrow configuration.
+/// Describes key/value pairs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BorrowConfiguration {
+pub struct Metadata {
 
 
     /// 
-    /// Maximum time for the borrow configuration, in minutes.
+    /// The key name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// Details about a provisional configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ProvisionalConfiguration {
+
+
+    /// 
+    /// Maximum time for the provisional configuration, in minutes.
     /// 
     /// Required: Yes
     ///
@@ -415,17 +394,38 @@ pub struct BorrowConfiguration {
     #[serde(rename = "MaxTimeToLiveInMinutes")]
     pub max_time_to_live_in_minutes: i64,
 
+}
+
+
+
+
+/// Date and time range during which the license is valid, in ISO8601-UTC format.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ValidityDateFormat {
+
 
     /// 
-    /// Indicates whether early check-ins are allowed.
+    /// Start of the time range.
     /// 
     /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllowEarlyCheckIn")]
-    pub allow_early_check_in: bool,
+    #[serde(rename = "Begin")]
+    pub begin: String,
+
+
+    /// 
+    /// End of the time range.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "End")]
+    pub end: String,
 
 }
 

@@ -8,18 +8,6 @@ pub struct CfnInstanceProfile {
 
 
     /// 
-    /// The name of the role to associate with the instance profile. Only one role can be     assigned to an EC2 instance at a time, and all applications on the instance share the same     role and permissions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Roles")]
-    pub roles: Vec<String>,
-
-
-    /// 
     /// The name of the instance profile to create.
     /// 
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
@@ -59,6 +47,18 @@ pub struct CfnInstanceProfile {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     pub path: Option<String>,
+
+
+    /// 
+    /// The name of the role to associate with the instance profile. Only one role can be     assigned to an EC2 instance at a time, and all applications on the instance share the same     role and permissions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Roles")]
+    pub roles: Vec<String>,
 
 }
 

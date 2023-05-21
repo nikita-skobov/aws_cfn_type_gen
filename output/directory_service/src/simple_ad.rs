@@ -6,17 +6,17 @@ pub struct CfnSimpleAD {
 
 
     /// 
-    /// The NetBIOS name of the directory, such as CORP.
+    /// If set to true, specifies an alias for a directory and assigns the alias to    the directory. The alias is used to construct the access URL for the directory, such as     http://<alias>.awsapps.com. By default, this property is set to     false.
+    /// 
+    /// ImportantAfter an alias has been created, it cannot be deleted or reused, so this operation     should only be used when absolutely necessary.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Pattern: ^[^\\/:*?"<>|.]+[^\\/:*?"<>|]*$
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ShortName")]
-    pub short_name: Option<String>,
+    #[serde(rename = "CreateAlias")]
+    pub create_alias: Option<bool>,
 
 
     /// 
@@ -50,20 +50,6 @@ pub struct CfnSimpleAD {
 
 
     /// 
-    /// The size of the directory. For valid values, see CreateDirectory in    the AWS Directory Service API Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Large | Small
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Size")]
-    pub size: SimpleADSizeEnum,
-
-
-    /// 
     /// The fully qualified name for the directory, such as corp.example.com.
     /// 
     /// Required: Yes
@@ -94,6 +80,34 @@ pub struct CfnSimpleAD {
 
 
     /// 
+    /// The NetBIOS name of the directory, such as CORP.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[^\\/:*?"<>|.]+[^\\/:*?"<>|]*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ShortName")]
+    pub short_name: Option<String>,
+
+
+    /// 
+    /// The size of the directory. For valid values, see CreateDirectory in    the AWS Directory Service API Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Large | Small
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Size")]
+    pub size: SimpleADSizeEnum,
+
+
+    /// 
     /// A DirectoryVpcSettings object that contains additional information for the    operation.
     /// 
     /// Required: Yes
@@ -103,20 +117,6 @@ pub struct CfnSimpleAD {
     /// Update requires: Replacement
     #[serde(rename = "VpcSettings")]
     pub vpc_settings: VpcSettings,
-
-
-    /// 
-    /// If set to true, specifies an alias for a directory and assigns the alias to    the directory. The alias is used to construct the access URL for the directory, such as     http://<alias>.awsapps.com. By default, this property is set to     false.
-    /// 
-    /// ImportantAfter an alias has been created, it cannot be deleted or reused, so this operation     should only be used when absolutely necessary.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CreateAlias")]
-    pub create_alias: Option<bool>,
 
 }
 

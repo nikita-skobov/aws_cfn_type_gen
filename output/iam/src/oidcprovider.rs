@@ -14,18 +14,6 @@ pub struct CfnOIDCProvider {
 
 
     /// 
-    /// A list of tags that are attached to the specified IAM OIDC provider.     The returned list of tags is sorted by tag key. For more information about tagging, see       Tagging IAM resources in the IAM User       Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A list of client IDs (also known as audiences) that are associated with the specified       IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
     /// 
     /// Required: No
@@ -38,15 +26,15 @@ pub struct CfnOIDCProvider {
 
 
     /// 
-    /// The URL that the IAM OIDC provider resource object is associated with.     For more information, see CreateOpenIDConnectProvider.
+    /// A list of tags that are attached to the specified IAM OIDC provider.     The returned list of tags is sorted by tag key. For more information about tagging, see       Tagging IAM resources in the IAM User       Guide.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Url")]
-    pub url: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -59,6 +47,18 @@ pub struct CfnOIDCProvider {
     /// Update requires: No interruption
     #[serde(rename = "ThumbprintList")]
     pub thumbprint_list: Vec<String>,
+
+
+    /// 
+    /// The URL that the IAM OIDC provider resource object is associated with.     For more information, see CreateOpenIDConnectProvider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Url")]
+    pub url: Option<String>,
 
 }
 

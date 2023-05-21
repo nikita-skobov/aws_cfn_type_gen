@@ -6,6 +6,34 @@ pub struct CfnUser {
 
 
     /// 
+    /// Access permissions string used for this user.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessString")]
+    pub access_string: Option<String>,
+
+
+    /// 
+    /// Denotes whether the user requires a password to authenticate.
+    /// 
+    /// Example:
+    /// 
+    /// mynewdbuser:   Type: AWS::MemoryDB::User   Properties:    AccessString: on ~* &* +@all   AuthenticationMode:      Passwords: '1234567890123456'     Type: password   UserName: mynewdbuser      AuthenticationMode:   {     "Passwords": ["1234567890123456"],     "Type": "Password"   }
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthenticationMode
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationMode")]
+    pub authentication_mode: Option<AuthenticationMode>,
+
+
+    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -29,34 +57,6 @@ pub struct CfnUser {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: String,
-
-
-    /// 
-    /// Denotes whether the user requires a password to authenticate.
-    /// 
-    /// Example:
-    /// 
-    /// mynewdbuser:   Type: AWS::MemoryDB::User   Properties:    AccessString: on ~* &* +@all   AuthenticationMode:      Passwords: '1234567890123456'     Type: password   UserName: mynewdbuser      AuthenticationMode:   {     "Passwords": ["1234567890123456"],     "Type": "Password"   }
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuthenticationMode
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationMode")]
-    pub authentication_mode: Option<AuthenticationMode>,
-
-
-    /// 
-    /// Access permissions string used for this user.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessString")]
-    pub access_string: Option<String>,
 
 }
 
@@ -116,17 +116,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -135,6 +124,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

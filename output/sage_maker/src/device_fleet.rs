@@ -6,6 +6,18 @@ pub struct CfnDeviceFleet {
 
 
     /// 
+    /// A description of the fleet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// Name of the device fleet.
     /// 
     /// Required: Yes
@@ -21,6 +33,18 @@ pub struct CfnDeviceFleet {
     /// Update requires: Replacement
     #[serde(rename = "DeviceFleetName")]
     pub device_fleet_name: String,
+
+
+    /// 
+    /// The output configuration for storing sample data collected by the fleet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: EdgeOutputConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OutputConfig")]
+    pub output_config: EdgeOutputConfig,
 
 
     /// 
@@ -53,30 +77,6 @@ pub struct CfnDeviceFleet {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A description of the fleet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The output configuration for storing sample data collected by the fleet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: EdgeOutputConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OutputConfig")]
-    pub output_config: EdgeOutputConfig,
 
 }
 

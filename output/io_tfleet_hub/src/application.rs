@@ -42,18 +42,6 @@ pub struct CfnApplication {
 
 
     /// 
-    /// A set of key/value pairs that you can use to manage the web application resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The ARN of the role that the web application assumes when it interacts with AWS IoT Core.
     /// 
     /// NoteThe name of the role must be in the form FleetHub_random_string.
@@ -67,6 +55,18 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
+
+
+    /// 
+    /// A set of key/value pairs that you can use to manage the web application resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

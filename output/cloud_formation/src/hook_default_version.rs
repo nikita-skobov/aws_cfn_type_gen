@@ -6,6 +6,24 @@ pub struct CfnHookDefaultVersion {
 
 
     /// 
+    /// The name of the hook.
+    /// 
+    /// You must specify either TypeVersionArn, or TypeName and VersionId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TypeName")]
+    pub type_name: Option<String>,
+
+
+    /// 
     /// The version ID of the type configuration.
     /// 
     /// You must specify either TypeVersionArn, or TypeName and VersionId.
@@ -43,24 +61,6 @@ pub struct CfnHookDefaultVersion {
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
     pub version_id: Option<String>,
-
-
-    /// 
-    /// The name of the hook.
-    /// 
-    /// You must specify either TypeVersionArn, or TypeName and VersionId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TypeName")]
-    pub type_name: Option<String>,
 
 }
 

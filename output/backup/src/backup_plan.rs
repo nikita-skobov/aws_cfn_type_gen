@@ -8,18 +8,6 @@ pub struct CfnBackupPlan {
 
 
     /// 
-    /// To help organize your resources, you can assign your own metadata to the resources that     you create. Each tag is a key-value pair. The specified tags are assigned to all backups     created with this plan.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackupPlanTags")]
-    pub backup_plan_tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
     /// Uniquely identifies the backup plan to be associated with the selection of     resources.
     /// 
     /// Required: Yes
@@ -29,6 +17,18 @@ pub struct CfnBackupPlan {
     /// Update requires: No interruption
     #[serde(rename = "BackupPlan")]
     pub backup_plan: BackupPlanResourceType,
+
+
+    /// 
+    /// To help organize your resources, you can assign your own metadata to the resources that     you create. Each tag is a key-value pair. The specified tags are assigned to all backups     created with this plan.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackupPlanTags")]
+    pub backup_plan_tags: Option<std::collections::HashMap<String, String>>,
 
 }
 
@@ -45,21 +45,97 @@ impl cfn_resources::CfnResource for CfnBackupPlan {
 }
 
 
-/// Specifies an object containing properties used to schedule a task to back up a selection     of resources.
+/// Specifies an object containing resource type and backup options. This is only supported     for Windows VSS backups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BackupRuleResourceType {
+pub struct AdvancedBackupSettingResourceType {
 
 
     /// 
-    /// A CRON expression specifying when AWS Backup initiates a backup job.
+    /// The backup option for the resource. Each option is a key-value pair. This option is only     available for Windows VSS backup jobs.
     /// 
-    /// Required: No
+    /// Valid values:
+    /// 
+    /// Set to "WindowsVSS":"enabled" to enable the WindowsVSS backup     option and create a Windows VSS backup.
+    /// 
+    /// Set to "WindowsVSS":"disabled" to create a regular backup. The       WindowsVSS option is not enabled by default.
+    /// 
+    /// If you specify an invalid option, you get an InvalidParameterValueException     exception.
+    /// 
+    /// For more information about Windows VSS backups, see Creating a VSS-Enabled Windows       Backup.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackupOptions")]
+    pub backup_options: serde_json::Value,
+
+
+    /// 
+    /// The name of a resource type. The only supported resource type is EC2.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ScheduleExpression")]
-    pub schedule_expression: Option<String>,
+    #[serde(rename = "ResourceType")]
+    pub resource_type: String,
+
+}
+
+
+
+
+/// Specifies an object containing properties used to create a backup plan.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BackupPlanResourceType {
+
+
+    /// 
+    /// A list of backup options for each resource type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AdvancedBackupSettingResourceType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdvancedBackupSettings")]
+    pub advanced_backup_settings: Option<Vec<AdvancedBackupSettingResourceType>>,
+
+
+    /// 
+    /// The display name of a backup plan.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackupPlanName")]
+    pub backup_plan_name: String,
+
+
+    /// 
+    /// An array of BackupRule objects, each of which specifies a scheduled task     that is used to back up a selection of resources.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of BackupRuleResourceType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackupPlanRule")]
+    pub backup_plan_rule: Vec<BackupRuleResourceType>,
+
+}
+
+
+
+
+/// Specifies an object containing properties used to schedule a task to back up a selection     of resources.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BackupRuleResourceType {
 
 
     /// 
@@ -75,15 +151,39 @@ pub struct BackupRuleResourceType {
 
 
     /// 
-    /// The name of a logical container where backups are stored. Backup vaults are identified     by names that are unique to the account used to create them and the AWS Region where they are created. They consist of letters, numbers, and     hyphens.
+    /// An array of CopyAction objects, which contains the details of the copy operation.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of CopyActionResourceType
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetBackupVault")]
-    pub target_backup_vault: String,
+    #[serde(rename = "CopyActions")]
+    pub copy_actions: Option<Vec<CopyActionResourceType>>,
+
+
+    /// 
+    /// Enables continuous backup and point-in-time restores (PITR).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableContinuousBackup")]
+    pub enable_continuous_backup: Option<bool>,
+
+
+    /// 
+    /// The lifecycle defines when a protected resource is transitioned to cold storage and when     it expires. AWS Backup transitions and expires backups automatically according to     the lifecycle that you define.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LifecycleResourceType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Lifecycle")]
+    pub lifecycle: Option<LifecycleResourceType>,
 
 
     /// 
@@ -99,15 +199,27 @@ pub struct BackupRuleResourceType {
 
 
     /// 
-    /// An array of CopyAction objects, which contains the details of the copy operation.
+    /// A display name for a backup rule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleName")]
+    pub rule_name: String,
+
+
+    /// 
+    /// A CRON expression specifying when AWS Backup initiates a backup job.
     /// 
     /// Required: No
     ///
-    /// Type: List of CopyActionResourceType
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CopyActions")]
-    pub copy_actions: Option<Vec<CopyActionResourceType>>,
+    #[serde(rename = "ScheduleExpression")]
+    pub schedule_expression: Option<String>,
 
 
     /// 
@@ -125,39 +237,15 @@ pub struct BackupRuleResourceType {
 
 
     /// 
-    /// The lifecycle defines when a protected resource is transitioned to cold storage and when     it expires. AWS Backup transitions and expires backups automatically according to     the lifecycle that you define.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LifecycleResourceType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Lifecycle")]
-    pub lifecycle: Option<LifecycleResourceType>,
-
-
-    /// 
-    /// Enables continuous backup and point-in-time restores (PITR).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableContinuousBackup")]
-    pub enable_continuous_backup: Option<bool>,
-
-
-    /// 
-    /// A display name for a backup rule.
+    /// The name of a logical container where backups are stored. Backup vaults are identified     by names that are unique to the account used to create them and the AWS Region where they are created. They consist of letters, numbers, and     hyphens.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RuleName")]
-    pub rule_name: String,
+    #[serde(rename = "TargetBackupVault")]
+    pub target_backup_vault: String,
 
 }
 
@@ -199,109 +287,9 @@ pub struct CopyActionResourceType {
 
 
 
-/// Specifies an object containing resource type and backup options. This is only supported     for Windows VSS backups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AdvancedBackupSettingResourceType {
-
-
-    /// 
-    /// The name of a resource type. The only supported resource type is EC2.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceType")]
-    pub resource_type: String,
-
-
-    /// 
-    /// The backup option for the resource. Each option is a key-value pair. This option is only     available for Windows VSS backup jobs.
-    /// 
-    /// Valid values:
-    /// 
-    /// Set to "WindowsVSS":"enabled" to enable the WindowsVSS backup     option and create a Windows VSS backup.
-    /// 
-    /// Set to "WindowsVSS":"disabled" to create a regular backup. The       WindowsVSS option is not enabled by default.
-    /// 
-    /// If you specify an invalid option, you get an InvalidParameterValueException     exception.
-    /// 
-    /// For more information about Windows VSS backups, see Creating a VSS-Enabled Windows       Backup.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackupOptions")]
-    pub backup_options: serde_json::Value,
-
-}
-
-
-
-
-/// Specifies an object containing properties used to create a backup plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BackupPlanResourceType {
-
-
-    /// 
-    /// A list of backup options for each resource type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AdvancedBackupSettingResourceType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdvancedBackupSettings")]
-    pub advanced_backup_settings: Option<Vec<AdvancedBackupSettingResourceType>>,
-
-
-    /// 
-    /// An array of BackupRule objects, each of which specifies a scheduled task     that is used to back up a selection of resources.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of BackupRuleResourceType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackupPlanRule")]
-    pub backup_plan_rule: Vec<BackupRuleResourceType>,
-
-
-    /// 
-    /// The display name of a backup plan.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackupPlanName")]
-    pub backup_plan_name: String,
-
-}
-
-
-
-
 /// Specifies an object containing an array of Transition objects that     determine how long in days before a recovery point transitions to cold storage or is     deleted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LifecycleResourceType {
-
-
-    /// 
-    /// Specifies the number of days after creation that a recovery point is moved to cold     storage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MoveToColdStorageAfterDays")]
-    pub move_to_cold_storage_after_days: Option<f64>,
 
 
     /// 
@@ -314,6 +302,18 @@ pub struct LifecycleResourceType {
     /// Update requires: No interruption
     #[serde(rename = "DeleteAfterDays")]
     pub delete_after_days: Option<f64>,
+
+
+    /// 
+    /// Specifies the number of days after creation that a recovery point is moved to cold     storage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MoveToColdStorageAfterDays")]
+    pub move_to_cold_storage_after_days: Option<f64>,
 
 }
 

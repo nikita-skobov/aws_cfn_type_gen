@@ -17,6 +17,18 @@ pub struct CfnInsightRule {
 
 
     /// 
+    /// The name of the rule.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RuleName")]
+    pub rule_name: String,
+
+
+    /// 
     /// The current state of the rule. Valid values are ENABLED and DISABLED.
     /// 
     /// Required: Yes
@@ -43,18 +55,6 @@ pub struct CfnInsightRule {
     #[serde(rename = "Tags")]
     pub tags: Option<Tags>,
 
-
-    /// 
-    /// The name of the rule.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RuleName")]
-    pub rule_name: String,
-
 }
 
 
@@ -70,19 +70,6 @@ impl cfn_resources::CfnResource for CfnInsightRule {
 }
 
 
-/// A list of key-value pairs to associate with the Contributor Insights rule. You can     associate as many as 50 tags with a rule.
-///
-/// Tags can help you organize and categorize your resources. For more information,       see         Tagging Your Amazon CloudWatch Resources.
-///
-/// To be able to associate tags with a rule, you must have the cloudwatch:TagResource permission in addition to the cloudwatch:PutInsightRule permission.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tags {
-
-}
-
-
-
-
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -95,6 +82,17 @@ pub struct Tag {
 
 
     /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -104,16 +102,18 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+}
 
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+
+
+
+/// A list of key-value pairs to associate with the Contributor Insights rule. You can     associate as many as 50 tags with a rule.
+///
+/// Tags can help you organize and categorize your resources. For more information,       see         Tagging Your Amazon CloudWatch Resources.
+///
+/// To be able to associate tags with a rule, you must have the cloudwatch:TagResource permission in addition to the cloudwatch:PutInsightRule permission.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tags {
 
 }
 

@@ -10,6 +10,20 @@ pub struct CfnEnvironment {
 
 
     /// 
+    /// The application ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [a-z0-9]{4,7}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationId")]
+    pub application_id: String,
+
+
+    /// 
     /// A description of the environment.
     /// 
     /// Required: No
@@ -23,20 +37,6 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// The application ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [a-z0-9]{4,7}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApplicationId")]
-    pub application_id: String,
 
 
     /// 
@@ -95,39 +95,6 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 }
 
 
-/// Metadata to assign to the environment. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tags {
-
-
-    /// 
-    /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
-
-
-    /// 
-    /// The tag value can be up to 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-}
-
-
-
-
 /// Amazon CloudWatch alarms to monitor during the deployment process.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Monitors {
@@ -165,6 +132,39 @@ pub struct Monitors {
     /// Update requires: No interruption
     #[serde(rename = "AlarmRoleArn")]
     pub alarm_role_arn: Option<String>,
+
+}
+
+
+
+
+/// Metadata to assign to the environment. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tags {
+
+
+    /// 
+    /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
+
+
+    /// 
+    /// The tag value can be up to 256 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 

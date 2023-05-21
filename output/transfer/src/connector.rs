@@ -6,18 +6,6 @@ pub struct CfnConnector {
 
 
     /// 
-    /// A structure that contains the parameters for a connector object.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: As2Config
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "As2Config")]
-    pub as2_config: As2Config,
-
-
-    /// 
     /// With AS2, you can send files by calling StartFileTransfer and specifying the    file paths in the request parameter, SendFilePaths. We use the file’s parent    directory (for example, for --send-file-paths /bucket/dir/file.txt, parent    directory is /bucket/dir/) to temporarily store a processed AS2 message file,    store the MDN when we receive them from the partner, and write a final JSON file containing    relevant metadata of the transmission. So, the AccessRole needs to provide read    and write access to the parent directory of the file location used in the     StartFileTransfer request. Additionally, you need to provide read and write    access to the parent directory of the files that you intend to send with     StartFileTransfer.
     /// 
     /// Required: Yes
@@ -36,17 +24,15 @@ pub struct CfnConnector {
 
 
     /// 
-    /// Key-value pairs that can be used to group and search for connectors.
+    /// A structure that contains the parameters for a connector object.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
+    /// Type: As2Config
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "As2Config")]
+    pub as2_config: As2Config,
 
 
     /// 
@@ -65,6 +51,20 @@ pub struct CfnConnector {
     /// Update requires: No interruption
     #[serde(rename = "LoggingRole")]
     pub logging_role: Option<String>,
+
+
+    /// 
+    /// Key-value pairs that can be used to group and search for connectors.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -95,80 +95,9 @@ impl cfn_resources::CfnResource for CfnConnector {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
 /// A structure that contains the parameters for a connector object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct As2Config {
-
-
-    /// 
-    /// Used as the Subject HTTP header attribute in AS2 messages that are being sent with the connector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^[\p{Print}\p{Blank}]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MessageSubject")]
-    pub message_subject: Option<String>,
-
-
-    /// 
-    /// The signing algorithm for the MDN response.
-    /// 
-    /// NoteIf set to DEFAULT (or not set at all), the value for SigningAlgorithm is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DEFAULT | NONE | SHA1 | SHA256 | SHA384 | SHA512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MdnSigningAlgorithm")]
-    pub mdn_signing_algorithm: Option<As2ConfigMdnSigningAlgorithmEnum>,
 
 
     /// 
@@ -220,17 +149,53 @@ pub struct As2Config {
 
 
     /// 
-    /// The algorithm that is used to sign the AS2 messages sent with the connector.
+    /// Used for outbound requests (from an AWS Transfer Family server to a partner AS2 server) to determine whether    the partner response for transfers is synchronous or asynchronous. Specify either of the following values:
+    /// 
+    /// SYNC: The system expects a synchronous MDN response, confirming that the file was transferred successfully (or not).                        NONE: Specifies that no MDN response is required.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: NONE | SHA1 | SHA256 | SHA384 | SHA512
+    /// Allowed values: NONE | SYNC
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SigningAlgorithm")]
-    pub signing_algorithm: Option<As2ConfigSigningAlgorithmEnum>,
+    #[serde(rename = "MdnResponse")]
+    pub mdn_response: Option<As2ConfigMdnResponseEnum>,
+
+
+    /// 
+    /// The signing algorithm for the MDN response.
+    /// 
+    /// NoteIf set to DEFAULT (or not set at all), the value for SigningAlgorithm is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DEFAULT | NONE | SHA1 | SHA256 | SHA384 | SHA512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MdnSigningAlgorithm")]
+    pub mdn_signing_algorithm: Option<As2ConfigMdnSigningAlgorithmEnum>,
+
+
+    /// 
+    /// Used as the Subject HTTP header attribute in AS2 messages that are being sent with the connector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^[\p{Print}\p{Blank}]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MessageSubject")]
+    pub message_subject: Option<String>,
 
 
     /// 
@@ -252,19 +217,17 @@ pub struct As2Config {
 
 
     /// 
-    /// Used for outbound requests (from an AWS Transfer Family server to a partner AS2 server) to determine whether    the partner response for transfers is synchronous or asynchronous. Specify either of the following values:
-    /// 
-    /// SYNC: The system expects a synchronous MDN response, confirming that the file was transferred successfully (or not).                        NONE: Specifies that no MDN response is required.
+    /// The algorithm that is used to sign the AS2 messages sent with the connector.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: NONE | SYNC
+    /// Allowed values: NONE | SHA1 | SHA256 | SHA384 | SHA512
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MdnResponse")]
-    pub mdn_response: Option<As2ConfigMdnResponseEnum>,
+    #[serde(rename = "SigningAlgorithm")]
+    pub signing_algorithm: Option<As2ConfigSigningAlgorithmEnum>,
 
 }
 
@@ -297,6 +260,44 @@ pub enum As2ConfigSigningAlgorithmEnum {
 impl Default for As2ConfigSigningAlgorithmEnum {
     fn default() -> Self {
         As2ConfigSigningAlgorithmEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum As2ConfigCompressionEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ZLIB
+    #[serde(rename = "ZLIB")]
+    Zlib,
+
+}
+
+impl Default for As2ConfigCompressionEnum {
+    fn default() -> Self {
+        As2ConfigCompressionEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum As2ConfigMdnResponseEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// SYNC
+    #[serde(rename = "SYNC")]
+    Sync,
+
+}
+
+impl Default for As2ConfigMdnResponseEnum {
+    fn default() -> Self {
+        As2ConfigMdnResponseEnum::None
     }
 }
 
@@ -362,41 +363,40 @@ impl Default for As2ConfigEncryptionAlgorithmEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum As2ConfigMdnResponseEnum {
 
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
 
-    /// SYNC
-    #[serde(rename = "SYNC")]
-    Sync,
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
-impl Default for As2ConfigMdnResponseEnum {
-    fn default() -> Self {
-        As2ConfigMdnResponseEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum As2ConfigCompressionEnum {
-
-    /// DISABLED
-    #[serde(rename = "DISABLED")]
-    Disabled,
-
-    /// ZLIB
-    #[serde(rename = "ZLIB")]
-    Zlib,
-
-}
-
-impl Default for As2ConfigCompressionEnum {
-    fn default() -> Self {
-        As2ConfigCompressionEnum::Disabled
-    }
-}
 

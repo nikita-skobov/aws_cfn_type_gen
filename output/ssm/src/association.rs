@@ -6,6 +6,18 @@ pub struct CfnAssociation {
 
 
     /// 
+    /// By default, when you create a new association, the system runs it immediately after it is      created and then according to the schedule you specified. Specify this option if you don't want      an association to run immediately after you create it. This parameter is not supported for rate expressions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplyOnlyAtCronInterval")]
+    pub apply_only_at_cron_interval: Option<bool>,
+
+
+    /// 
     /// Specify a descriptive name for the association.
     /// 
     /// Required: No
@@ -17,22 +29,6 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "AssociationName")]
     pub association_name: Option<String>,
-
-
-    /// 
-    /// The version of the SSM document to associate with the target.
-    /// 
-    /// ImportantNote the following important information.                      State Manager doesn't support running associations that use a new          version of a document if that document is shared from another          account. State Manager always runs the default version          of a document if shared from another account, even though the Systems Manager          console shows that a new version was processed. If you want to run          an association using a new version of a document shared form another          account, you must set the document version to          default.DocumentVersion is not valid for documents owned by AWS, such as AWS-RunPatchBaseline or AWS-UpdateSSMAgent. If you specify DocumentVersion for an AWS document, the system returns the following error: "Error occurred during operation 'CreateAssociation'." (RequestToken: <token>, HandlerErrorCode: GeneralServiceException).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DocumentVersion")]
-    pub document_version: Option<String>,
 
 
     /// 
@@ -52,26 +48,6 @@ pub struct CfnAssociation {
 
 
     /// 
-    /// The number of errors that are allowed before the system stops sending requests to run the  association on additional targets. You can specify either an absolute number of errors, for  example 10, or a percentage of the target set, for example 10%. If you specify 3, for example,  the system stops sending requests when the fourth error is received. If you specify 0, then the  system stops sending requests after the first error is returned. If you run an association on 50  managed nodes and set MaxError to 10%, then the system stops sending the request  when the sixth error is received.
-    /// 
-    /// Executions that are already running an association when MaxErrors is reached  are allowed to complete, but some of these executions may fail as well. If you need to ensure  that there won't be more than max-errors failed executions, set MaxConcurrency to 1  so that executions proceed one at a time.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 7
-    ///
-    /// Pattern: ^([1-9][0-9]*|[0]|[1-9][0-9]%|[0-9]%|100%)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxErrors")]
-    pub max_errors: Option<String>,
-
-
-    /// 
     /// The names or Amazon Resource Names (ARNs) of the Change Calendar type documents your  associations are gated under. The associations only run when that Change Calendar is open. For  more information, see AWS Systems Manager Change   Calendar.
     /// 
     /// Required: No
@@ -81,6 +57,52 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "CalendarNames")]
     pub calendar_names: Option<Vec<String>>,
+
+
+    /// 
+    /// The severity level that is assigned to the association.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CRITICAL | HIGH | LOW | MEDIUM | UNSPECIFIED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComplianceSeverity")]
+    pub compliance_severity: Option<AssociationComplianceSeverityEnum>,
+
+
+    /// 
+    /// The version of the SSM document to associate with the target.
+    /// 
+    /// ImportantNote the following important information.                      State Manager doesn't support running associations that use a new          version of a document if that document is shared from another          account. State Manager always runs the default version          of a document if shared from another account, even though the Systems Manager          console shows that a new version was processed. If you want to run          an association using a new version of a document shared form another          account, you must set the document version to          default.DocumentVersion is not valid for documents owned by AWS, such as AWS-RunPatchBaseline or AWS-UpdateSSMAgent. If you specify DocumentVersion for an AWS document, the system returns the following error: "Error occurred during operation 'CreateAssociation'." (RequestToken: <token>, HandlerErrorCode: GeneralServiceException).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DocumentVersion")]
+    pub document_version: Option<String>,
+
+
+    /// 
+    /// The ID of the instance that the SSM document is associated with. You must specify the     InstanceId or Targets property.
+    /// 
+    /// NoteInstanceId has been deprecated. To specify an instance ID for an     association, use the Targets parameter. If you use the parameter      InstanceId, you cannot use the parameters AssociationName,      DocumentVersion, MaxErrors, MaxConcurrency,      OutputLocation, or ScheduleExpression. To use these parameters,     you must use the Targets parameter.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Pattern: (^i-(\w{8}|\w{17})$)|(^mi-\w{17}$)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceId")]
+    pub instance_id: Option<String>,
 
 
     /// 
@@ -104,6 +126,26 @@ pub struct CfnAssociation {
 
 
     /// 
+    /// The number of errors that are allowed before the system stops sending requests to run the  association on additional targets. You can specify either an absolute number of errors, for  example 10, or a percentage of the target set, for example 10%. If you specify 3, for example,  the system stops sending requests when the fourth error is received. If you specify 0, then the  system stops sending requests after the first error is returned. If you run an association on 50  managed nodes and set MaxError to 10%, then the system stops sending the request  when the sixth error is received.
+    /// 
+    /// Executions that are already running an association when MaxErrors is reached  are allowed to complete, but some of these executions may fail as well. If you need to ensure  that there won't be more than max-errors failed executions, set MaxConcurrency to 1  so that executions proceed one at a time.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 7
+    ///
+    /// Pattern: ^([1-9][0-9]*|[0]|[1-9][0-9]%|[0-9]%|100%)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxErrors")]
+    pub max_errors: Option<String>,
+
+
+    /// 
     /// The name of the SSM document that contains the configuration information for the instance.    You can specify Command or Automation documents. The documents can    be AWS-predefined documents, documents you created, or a document that is shared with you from    another account. For SSM documents that are shared with you from other AWS accounts, you must    specify the complete SSM document ARN, in the following format:
     /// 
     /// arn:partition:ssm:region:account-id:document/document-name
@@ -124,48 +166,6 @@ pub struct CfnAssociation {
 
 
     /// 
-    /// Number of days to wait after the scheduled day to run an association.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduleOffset")]
-    pub schedule_offset: Option<i64>,
-
-
-    /// 
-    /// The targets for the association. You must specify the InstanceId or    Targets property. You can target all instances in an AWS account by specifying the InstanceIds key with a value of *. To view a JSON and a YAML example that targets all instances, see "Create an association for all managed instances in an AWS account" on the Examples page.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: List of Target
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Option<Vec<Target>>,
-
-
-    /// 
-    /// By default, when you create a new association, the system runs it immediately after it is      created and then according to the schedule you specified. Specify this option if you don't want      an association to run immediately after you create it. This parameter is not supported for rate expressions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplyOnlyAtCronInterval")]
-    pub apply_only_at_cron_interval: Option<bool>,
-
-
-    /// 
     /// An Amazon Simple Storage Service (Amazon S3) bucket where you want to store the output  details of the request.
     /// 
     /// Required: No
@@ -178,17 +178,15 @@ pub struct CfnAssociation {
 
 
     /// 
-    /// The severity level that is assigned to the association.
+    /// The parameters for the runtime configuration of the document.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: CRITICAL | HIGH | LOW | MEDIUM | UNSPECIFIED
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ComplianceSeverity")]
-    pub compliance_severity: Option<AssociationComplianceSeverityEnum>,
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
 
 
     /// 
@@ -208,31 +206,19 @@ pub struct CfnAssociation {
 
 
     /// 
-    /// The ID of the instance that the SSM document is associated with. You must specify the     InstanceId or Targets property.
-    /// 
-    /// NoteInstanceId has been deprecated. To specify an instance ID for an     association, use the Targets parameter. If you use the parameter      InstanceId, you cannot use the parameters AssociationName,      DocumentVersion, MaxErrors, MaxConcurrency,      OutputLocation, or ScheduleExpression. To use these parameters,     you must use the Targets parameter.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Pattern: (^i-(\w{8}|\w{17})$)|(^mi-\w{17}$)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceId")]
-    pub instance_id: Option<String>,
-
-
-    /// 
-    /// The parameters for the runtime configuration of the document.
+    /// Number of days to wait after the scheduled day to run an association.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 6
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
+    #[serde(rename = "ScheduleOffset")]
+    pub schedule_offset: Option<i64>,
 
 
     /// 
@@ -251,6 +237,20 @@ pub struct CfnAssociation {
     /// Update requires: No interruption
     #[serde(rename = "SyncCompliance")]
     pub sync_compliance: Option<AssociationSyncComplianceEnum>,
+
+
+    /// 
+    /// The targets for the association. You must specify the InstanceId or    Targets property. You can target all instances in an AWS account by specifying the InstanceIds key with a value of *. To view a JSON and a YAML example that targets all instances, see "Create an association for all managed instances in an AWS account" on the Examples page.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: List of Target
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Option<Vec<Target>>,
 
 
     /// 
@@ -374,6 +374,20 @@ pub struct S3OutputLocation {
 
 
     /// 
+    /// The S3 bucket subfolder.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 500
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OutputS3KeyPrefix")]
+    pub output_s3_key_prefix: Option<String>,
+
+
+    /// 
     /// The AWS Region of the S3 bucket.
     /// 
     /// Required: No
@@ -388,20 +402,6 @@ pub struct S3OutputLocation {
     #[serde(rename = "OutputS3Region")]
     pub output_s3_region: Option<String>,
 
-
-    /// 
-    /// The S3 bucket subfolder.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 500
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OutputS3KeyPrefix")]
-    pub output_s3_key_prefix: Option<String>,
-
 }
 
 
@@ -410,22 +410,6 @@ pub struct S3OutputLocation {
 /// Target is a property of the AWS::SSM::Association resource that specifies the targets for an SSM document in    Systems Manager. You can target all instances in an AWS account by specifying the InstanceIds key with a value of *. To view a JSON and a YAML example that targets all instances, see "Create an association for all managed instances in an AWS account" on the Examples page.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Target {
-
-
-    /// 
-    /// User-defined criteria that maps to Key. For example, if you specified   tag:ServerRole, you could specify value:WebServer to run a command on  instances that include EC2 tags of ServerRole,WebServer.
-    /// 
-    /// Depending on the type of target, the maximum number of values for a key might be lower than  the global maximum of 50.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<String>,
 
 
     /// 
@@ -444,6 +428,22 @@ pub struct Target {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// User-defined criteria that maps to Key. For example, if you specified   tag:ServerRole, you could specify value:WebServer to run a command on  instances that include EC2 tags of ServerRole,WebServer.
+    /// 
+    /// Depending on the type of target, the maximum number of values for a key might be lower than  the global maximum of 50.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<String>,
 
 }
 

@@ -18,24 +18,6 @@ pub struct CfnConnection {
 
 
     /// 
-    /// The name for the connection to create.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [\.\-_A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// The type of authorization to use for the connection.
     /// 
     /// NoteOAUTH tokens are refreshed when a 401 or 407 response is returned.
@@ -65,6 +47,24 @@ pub struct CfnConnection {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The name for the connection to create.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [\.\-_A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 }
 
@@ -102,114 +102,6 @@ impl cfn_resources::CfnResource for CfnConnection {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// Contains the authorization parameters to use for the connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthParameters {
-
-
-    /// 
-    /// The OAuth parameters to use for authorization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OAuthParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OAuthParameters")]
-    pub oauth_parameters: Option<OAuthParameters>,
-
-
-    /// 
-    /// The authorization parameters for Basic authorization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BasicAuthParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BasicAuthParameters")]
-    pub basic_auth_parameters: Option<BasicAuthParameters>,
-
-
-    /// 
-    /// The API Key parameters to use for authorization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ApiKeyAuthParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApiKeyAuthParameters")]
-    pub api_key_auth_parameters: Option<ApiKeyAuthParameters>,
-
-
-    /// 
-    /// Additional parameters for the connection that are passed through with every invocation to    the HTTP endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConnectionHttpParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InvocationHttpParameters")]
-    pub invocation_http_parameters: Option<ConnectionHttpParameters>,
-
-}
-
-
-
-
-/// Contains additional parameters for the connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConnectionHttpParameters {
-
-
-    /// 
-    /// Contains additional header parameters for the connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Parameter
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HeaderParameters")]
-    pub header_parameters: Option<Vec<Parameter>>,
-
-
-    /// 
-    /// Contains additional query string parameters for the connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Parameter
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryStringParameters")]
-    pub query_string_parameters: Option<Vec<Parameter>>,
-
-
-    /// 
-    /// Contains additional body string parameters for the connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Parameter
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BodyParameters")]
-    pub body_parameters: Option<Vec<Parameter>>,
-
-}
-
-
 
 
 /// Contains the API key authorization parameters for the connection.
@@ -257,53 +149,57 @@ pub struct ApiKeyAuthParameters {
 
 
 
-/// Additional query string parameter for the connection. You can include up to 100 additional    query string parameters per request. Each additional parameter counts towards the event    payload size, which cannot exceed 64 KB.
+/// Contains the authorization parameters to use for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Parameter {
+pub struct AuthParameters {
 
 
     /// 
-    /// Specifies whether the value is secret.
+    /// The API Key parameters to use for authorization.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: ApiKeyAuthParameters
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IsValueSecret")]
-    pub is_value_secret: Option<bool>,
+    #[serde(rename = "ApiKeyAuthParameters")]
+    pub api_key_auth_parameters: Option<ApiKeyAuthParameters>,
 
 
     /// 
-    /// The key for a query string parameter.
+    /// The authorization parameters for Basic authorization.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [^\x00-\x1F\x7F]+
+    /// Type: BasicAuthParameters
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
+    #[serde(rename = "BasicAuthParameters")]
+    pub basic_auth_parameters: Option<BasicAuthParameters>,
 
 
     /// 
-    /// The value associated with the key for the query string parameter.
+    /// Additional parameters for the connection that are passed through with every invocation to    the HTTP endpoint.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [^\x00-\x09\x0B\x0C\x0E-\x1F\x7F]+
+    /// Type: ConnectionHttpParameters
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
+    #[serde(rename = "InvocationHttpParameters")]
+    pub invocation_http_parameters: Option<ConnectionHttpParameters>,
+
+
+    /// 
+    /// The OAuth parameters to use for authorization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OAuthParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OAuthParameters")]
+    pub oauth_parameters: Option<OAuthParameters>,
 
 }
 
@@ -400,35 +296,60 @@ pub struct ClientParameters {
 
 
 
-/// Contains the OAuth authorization parameters to use for the connection.
+/// Contains additional parameters for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OAuthParameters {
+pub struct ConnectionHttpParameters {
 
 
     /// 
-    /// The method to use for the authorization request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GET | POST | PUT
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpMethod")]
-    pub http_method: OAuthParametersHttpMethodEnum,
-
-
-    /// 
-    /// A ConnectionHttpParameters object that contains details about the additional    parameters to use for the connection.
+    /// Contains additional body string parameters for the connection.
     /// 
     /// Required: No
     ///
-    /// Type: ConnectionHttpParameters
+    /// Type: List of Parameter
+    ///
+    /// Maximum: 100
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OAuthHttpParameters")]
-    pub oauth_http_parameters: Option<ConnectionHttpParameters>,
+    #[serde(rename = "BodyParameters")]
+    pub body_parameters: Option<Vec<Parameter>>,
+
+
+    /// 
+    /// Contains additional header parameters for the connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Parameter
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HeaderParameters")]
+    pub header_parameters: Option<Vec<Parameter>>,
+
+
+    /// 
+    /// Contains additional query string parameters for the connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Parameter
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryStringParameters")]
+    pub query_string_parameters: Option<Vec<Parameter>>,
+
+}
+
+
+
+
+/// Contains the OAuth authorization parameters to use for the connection.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OAuthParameters {
 
 
     /// 
@@ -460,6 +381,32 @@ pub struct OAuthParameters {
     #[serde(rename = "ClientParameters")]
     pub client_parameters: ClientParameters,
 
+
+    /// 
+    /// The method to use for the authorization request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GET | POST | PUT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpMethod")]
+    pub http_method: OAuthParametersHttpMethodEnum,
+
+
+    /// 
+    /// A ConnectionHttpParameters object that contains details about the additional    parameters to use for the connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ConnectionHttpParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OAuthHttpParameters")]
+    pub oauth_http_parameters: Option<ConnectionHttpParameters>,
+
 }
 
 
@@ -485,4 +432,57 @@ impl Default for OAuthParametersHttpMethodEnum {
         OAuthParametersHttpMethodEnum::Get
     }
 }
+
+
+
+/// Additional query string parameter for the connection. You can include up to 100 additional    query string parameters per request. Each additional parameter counts towards the event    payload size, which cannot exceed 64 KB.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Parameter {
+
+
+    /// 
+    /// Specifies whether the value is secret.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IsValueSecret")]
+    pub is_value_secret: Option<bool>,
+
+
+    /// 
+    /// The key for a query string parameter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: [^\x00-\x1F\x7F]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value associated with the key for the query string parameter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: [^\x00-\x09\x0B\x0C\x0E-\x1F\x7F]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
 

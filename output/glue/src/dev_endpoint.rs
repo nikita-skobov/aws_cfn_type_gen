@@ -6,15 +6,61 @@ pub struct CfnDevEndpoint {
 
 
     /// 
-    /// The subnet ID for this DevEndpoint.
+    /// A map of arguments used to configure the DevEndpoint.
+    /// 
+    /// Valid arguments are:
+    /// 
+    /// "--enable-glue-datacatalog": """GLUE_PYTHON_VERSION": "3""GLUE_PYTHON_VERSION": "2"
+    /// 
+    /// You can specify a version of Python support for development endpoints by using the Arguments parameter in the CreateDevEndpoint or UpdateDevEndpoint APIs. If no arguments are provided, the version defaults to Python 2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arguments")]
+    pub arguments: Option<serde_json::Value>,
+
+
+    /// 
+    /// The name of the DevEndpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EndpointName")]
+    pub endpoint_name: Option<String>,
+
+
+    /// 
+    /// The path to one or more Java .jar files in an S3 bucket that should be       loaded in your DevEndpoint.
+    /// 
+    /// NoteYou can only use pure Java/Scala libraries with a DevEndpoint.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: Option<String>,
+    #[serde(rename = "ExtraJarsS3Path")]
+    pub extra_jars_s3_path: Option<String>,
+
+
+    /// 
+    /// The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded       in your DevEndpoint. Multiple values must be complete paths separated by a       comma.
+    /// 
+    /// NoteYou can only use pure Python libraries with a DevEndpoint. Libraries         that rely on C extensions, such as the pandas Python data analysis library, are not currently         supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExtraPythonLibsS3Path")]
+    pub extra_python_libs_s3_path: Option<String>,
 
 
     /// 
@@ -36,21 +82,113 @@ pub struct CfnDevEndpoint {
 
 
     /// 
-    /// A map of arguments used to configure the DevEndpoint.
-    /// 
-    /// Valid arguments are:
-    /// 
-    /// "--enable-glue-datacatalog": """GLUE_PYTHON_VERSION": "3""GLUE_PYTHON_VERSION": "2"
-    /// 
-    /// You can specify a version of Python support for development endpoints by using the Arguments parameter in the CreateDevEndpoint or UpdateDevEndpoint APIs. If no arguments are provided, the version defaults to Python 2.
+    /// The number of AWS Glue Data Processing Units (DPUs) allocated to this         DevEndpoint.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Arguments")]
-    pub arguments: Option<serde_json::Value>,
+    #[serde(rename = "NumberOfNodes")]
+    pub number_of_nodes: Option<i64>,
+
+
+    /// 
+    /// The number of workers of a defined workerType that are allocated to the development endpoint.
+    /// 
+    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfWorkers")]
+    pub number_of_workers: Option<i64>,
+
+
+    /// 
+    /// The public key to be used by this DevEndpoint for authentication. This       attribute is provided for backward compatibility because the recommended attribute to       use is public keys.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PublicKey")]
+    pub public_key: Option<String>,
+
+
+    /// 
+    /// A list of public keys to be used by the DevEndpoints for authentication.    Using this attribute is preferred over a single public key because the public keys allow you    to have a different private key per client.
+    /// 
+    /// NoteIf you previously created an endpoint with a public key, you must remove that key to be     able to set a list of public keys. Call the UpdateDevEndpoint API operation     with the public key content in the deletePublicKeys attribute, and the list of     new keys in the addPublicKeys attribute.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PublicKeys")]
+    pub public_keys: Option<Vec<String>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM role used in this       DevEndpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: arn:aws:iam::\d{12}:role/.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
+    /// The name of the SecurityConfiguration structure to be used with this     DevEndpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityConfiguration")]
+    pub security_configuration: Option<String>,
+
+
+    /// 
+    /// A list of security group identifiers used in this DevEndpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The subnet ID for this DevEndpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: Option<String>,
 
 
     /// 
@@ -79,144 +217,6 @@ pub struct CfnDevEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "WorkerType")]
     pub worker_type: Option<String>,
-
-
-    /// 
-    /// The name of the DevEndpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EndpointName")]
-    pub endpoint_name: Option<String>,
-
-
-    /// 
-    /// A list of security group identifiers used in this DevEndpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The number of AWS Glue Data Processing Units (DPUs) allocated to this         DevEndpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfNodes")]
-    pub number_of_nodes: Option<i64>,
-
-
-    /// 
-    /// The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded       in your DevEndpoint. Multiple values must be complete paths separated by a       comma.
-    /// 
-    /// NoteYou can only use pure Python libraries with a DevEndpoint. Libraries         that rely on C extensions, such as the pandas Python data analysis library, are not currently         supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExtraPythonLibsS3Path")]
-    pub extra_python_libs_s3_path: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the IAM role used in this       DevEndpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: arn:aws:iam::\d{12}:role/.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// The public key to be used by this DevEndpoint for authentication. This       attribute is provided for backward compatibility because the recommended attribute to       use is public keys.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PublicKey")]
-    pub public_key: Option<String>,
-
-
-    /// 
-    /// The number of workers of a defined workerType that are allocated to the development endpoint.
-    /// 
-    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfWorkers")]
-    pub number_of_workers: Option<i64>,
-
-
-    /// 
-    /// A list of public keys to be used by the DevEndpoints for authentication.    Using this attribute is preferred over a single public key because the public keys allow you    to have a different private key per client.
-    /// 
-    /// NoteIf you previously created an endpoint with a public key, you must remove that key to be     able to set a list of public keys. Call the UpdateDevEndpoint API operation     with the public key content in the deletePublicKeys attribute, and the list of     new keys in the addPublicKeys attribute.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PublicKeys")]
-    pub public_keys: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of the SecurityConfiguration structure to be used with this     DevEndpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityConfiguration")]
-    pub security_configuration: Option<String>,
-
-
-    /// 
-    /// The path to one or more Java .jar files in an S3 bucket that should be       loaded in your DevEndpoint.
-    /// 
-    /// NoteYou can only use pure Java/Scala libraries with a DevEndpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExtraJarsS3Path")]
-    pub extra_jars_s3_path: Option<String>,
 
 }
 

@@ -6,15 +6,15 @@ pub struct CfnModel {
 
 
     /// 
-    /// The name of the model.
+    /// The API identifier.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
 
 
     /// 
@@ -42,6 +42,18 @@ pub struct CfnModel {
 
 
     /// 
+    /// The name of the model.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// The schema for the model. For application/json models, this should be JSON schema draft 4 model.
     /// 
     /// Required: Yes
@@ -51,18 +63,6 @@ pub struct CfnModel {
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
     pub schema: serde_json::Value,
-
-
-    /// 
-    /// The API identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
 
 }
 

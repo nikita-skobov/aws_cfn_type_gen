@@ -10,58 +10,6 @@ pub struct CfnTrafficMirrorFilterRule {
 
 
     /// 
-    /// The type of traffic.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: egress | ingress
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TrafficDirection")]
-    pub traffic_direction: TrafficMirrorFilterRuleTrafficDirectionEnum,
-
-
-    /// 
-    /// The destination port range.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TrafficMirrorPortRange
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationPortRange")]
-    pub destination_port_range: Option<TrafficMirrorPortRange>,
-
-
-    /// 
-    /// The action to take on the filtered traffic.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: accept | reject
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleAction")]
-    pub rule_action: TrafficMirrorFilterRuleRuleActionEnum,
-
-
-    /// 
-    /// The ID of the filter that this rule is associated with.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TrafficMirrorFilterId")]
-    pub traffic_mirror_filter_id: String,
-
-
-    /// 
     /// The description of the Traffic Mirror rule.
     /// 
     /// Required: No
@@ -86,15 +34,15 @@ pub struct CfnTrafficMirrorFilterRule {
 
 
     /// 
-    /// The source CIDR block to assign to the Traffic Mirror rule.
+    /// The destination port range.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: TrafficMirrorPortRange
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SourceCidrBlock")]
-    pub source_cidr_block: String,
+    #[serde(rename = "DestinationPortRange")]
+    pub destination_port_range: Option<TrafficMirrorPortRange>,
 
 
     /// 
@@ -112,6 +60,20 @@ pub struct CfnTrafficMirrorFilterRule {
 
 
     /// 
+    /// The action to take on the filtered traffic.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: accept | reject
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleAction")]
+    pub rule_action: TrafficMirrorFilterRuleRuleActionEnum,
+
+
+    /// 
     /// The number of the Traffic Mirror rule. This number must be unique for each Traffic Mirror rule in a given     direction. The rules are processed in ascending order by rule number.
     /// 
     /// Required: Yes
@@ -121,6 +83,18 @@ pub struct CfnTrafficMirrorFilterRule {
     /// Update requires: No interruption
     #[serde(rename = "RuleNumber")]
     pub rule_number: i64,
+
+
+    /// 
+    /// The source CIDR block to assign to the Traffic Mirror rule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceCidrBlock")]
+    pub source_cidr_block: String,
 
 
     /// 
@@ -134,27 +108,34 @@ pub struct CfnTrafficMirrorFilterRule {
     #[serde(rename = "SourcePortRange")]
     pub source_port_range: Option<TrafficMirrorPortRange>,
 
+
+    /// 
+    /// The type of traffic.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: egress | ingress
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TrafficDirection")]
+    pub traffic_direction: TrafficMirrorFilterRuleTrafficDirectionEnum,
+
+
+    /// 
+    /// The ID of the filter that this rule is associated with.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TrafficMirrorFilterId")]
+    pub traffic_mirror_filter_id: String,
+
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum TrafficMirrorFilterRuleRuleActionEnum {
-
-    /// accept
-    #[serde(rename = "accept")]
-    Accept,
-
-    /// reject
-    #[serde(rename = "reject")]
-    Reject,
-
-}
-
-impl Default for TrafficMirrorFilterRuleRuleActionEnum {
-    fn default() -> Self {
-        TrafficMirrorFilterRuleRuleActionEnum::Accept
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TrafficMirrorFilterRuleTrafficDirectionEnum {
@@ -172,6 +153,25 @@ pub enum TrafficMirrorFilterRuleTrafficDirectionEnum {
 impl Default for TrafficMirrorFilterRuleTrafficDirectionEnum {
     fn default() -> Self {
         TrafficMirrorFilterRuleTrafficDirectionEnum::Egress
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TrafficMirrorFilterRuleRuleActionEnum {
+
+    /// accept
+    #[serde(rename = "accept")]
+    Accept,
+
+    /// reject
+    #[serde(rename = "reject")]
+    Reject,
+
+}
+
+impl Default for TrafficMirrorFilterRuleRuleActionEnum {
+    fn default() -> Self {
+        TrafficMirrorFilterRuleRuleActionEnum::Accept
     }
 }
 

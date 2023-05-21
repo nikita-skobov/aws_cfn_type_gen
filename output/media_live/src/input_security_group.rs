@@ -8,18 +8,6 @@ pub struct CfnInputSecurityGroup {
 
 
     /// 
-    /// The list of IPv4 CIDR addresses to include in the input security       group as "allowed" addresses.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of InputWhitelistRuleCidr
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WhitelistRules")]
-    pub whitelist_rules: Option<Vec<InputWhitelistRuleCidr>>,
-
-
-    /// 
     /// A collection of tags for this input security group. Each tag is a       key-value pair.
     /// 
     /// Required: No
@@ -29,6 +17,18 @@ pub struct CfnInputSecurityGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<serde_json::Value>,
+
+
+    /// 
+    /// The list of IPv4 CIDR addresses to include in the input security       group as "allowed" addresses.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of InputWhitelistRuleCidr
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WhitelistRules")]
+    pub whitelist_rules: Option<Vec<InputWhitelistRuleCidr>>,
 
 }
 

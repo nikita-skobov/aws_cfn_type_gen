@@ -6,7 +6,7 @@ pub struct CfnDestination {
 
 
     /// 
-    /// The ARN of an IAM role that permits CloudWatch Logs to send data to the specified AWS resource.
+    /// The name of the destination.
     /// 
     /// Required: Yes
     ///
@@ -14,9 +14,13 @@ pub struct CfnDestination {
     ///
     /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    /// Maximum: 512
+    ///
+    /// Pattern: [^:*]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationName")]
+    pub destination_name: String,
 
 
     /// 
@@ -34,6 +38,20 @@ pub struct CfnDestination {
 
 
     /// 
+    /// The ARN of an IAM role that permits CloudWatch Logs to send data to the specified AWS resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the physical target where the log events are    delivered (for example, a Kinesis stream).
     /// 
     /// Required: Yes
@@ -45,24 +63,6 @@ pub struct CfnDestination {
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
     pub target_arn: String,
-
-
-    /// 
-    /// The name of the destination.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [^:*]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationName")]
-    pub destination_name: String,
 
 }
 

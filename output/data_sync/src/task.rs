@@ -6,6 +6,26 @@ pub struct CfnTask {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that is used to    monitor and log events in the task.
+    /// 
+    /// For more information about how to use CloudWatch Logs with DataSync, see Monitoring Your     Task in the         AWS DataSync User Guide.
+    /// 
+    /// For more information about these groups, see Working with Log     Groups and Log Streams in the Amazon CloudWatch Logs User    Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 562
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):logs:[a-z\-0-9]+:[0-9]{12}:log-group:([^:\*]*)(:\*)?$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLogGroupArn")]
+    pub cloud_watch_log_group_arn: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of an AWS storage resource's     location.
     /// 
     /// Required: Yes
@@ -29,52 +49,6 @@ pub struct CfnTask {
     /// Update requires: No interruption
     #[serde(rename = "Excludes")]
     pub excludes: Option<Vec<FilterRule>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that is used to    monitor and log events in the task.
-    /// 
-    /// For more information about how to use CloudWatch Logs with DataSync, see Monitoring Your     Task in the         AWS DataSync User Guide.
-    /// 
-    /// For more information about these groups, see Working with Log     Groups and Log Streams in the Amazon CloudWatch Logs User    Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 562
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):logs:[a-z\-0-9]+:[0-9]{12}:log-group:([^:\*]*)(:\*)?$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLogGroupArn")]
-    pub cloud_watch_log_group_arn: Option<String>,
-
-
-    /// 
-    /// Specifies a schedule used to periodically transfer files from a source to a destination    location. The schedule should be specified in UTC time. For more information, see Scheduling your     task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TaskSchedule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Schedule")]
-    pub schedule: Option<TaskSchedule>,
-
-
-    /// 
-    /// Specifies the configuration options for a task. Some options include preserving file or    object metadata and verifying data integrity.
-    /// 
-    /// You can also override these options before starting an individual run of a task (also    known as a task execution). For more information, see StartTaskExecution.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Options
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Options")]
-    pub options: Option<Options>,
 
 
     /// 
@@ -110,19 +84,29 @@ pub struct CfnTask {
 
 
     /// 
-    /// Specifies the tags that you want to apply to the Amazon Resource Name (ARN)    representing the task.
+    /// Specifies the configuration options for a task. Some options include preserving file or    object metadata and verifying data integrity.
     /// 
-    /// Tags are key-value pairs that help you manage, filter, and search    for your DataSync resources.
+    /// You can also override these options before starting an individual run of a task (also    known as a task execution). For more information, see StartTaskExecution.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
+    /// Type: Options
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Options")]
+    pub options: Option<Options>,
+
+
+    /// 
+    /// Specifies a schedule used to periodically transfer files from a source to a destination    location. The schedule should be specified in UTC time. For more information, see Scheduling your     task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TaskSchedule
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Schedule")]
+    pub schedule: Option<TaskSchedule>,
 
 
     /// 
@@ -140,6 +124,22 @@ pub struct CfnTask {
     #[serde(rename = "SourceLocationArn")]
     pub source_location_arn: String,
 
+
+    /// 
+    /// Specifies the tags that you want to apply to the Amazon Resource Name (ARN)    representing the task.
+    /// 
+    /// Tags are key-value pairs that help you manage, filter, and search    for your DataSync resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
 
 
@@ -155,40 +155,59 @@ impl cfn_resources::CfnResource for CfnTask {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// Specifies which files, folders, and objects to include or exclude when transferring files    from source to destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct FilterRule {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The type of filter rule to apply. AWS DataSync only supports the SIMPLE_PATTERN    rule type.
     /// 
-    /// Required: Yes
-    /// 
+    /// Required: No
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Allowed values: SIMPLE_PATTERN
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FilterType")]
+    pub filter_type: Option<FilterRuleFilterTypeEnum>,
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// A single filter string that consists of the patterns to include or exclude. The patterns    are delimited by "|" (that is, a pipe), for example: /folder1|/folder2
     /// 
-    /// Required: Yes
     /// 
+    /// 
+    /// Required: No
+    ///
     /// Type: String
-    /// 
+    ///
+    /// Maximum: 102400
+    ///
+    /// Pattern: ^[^\x00]+$
+    ///
+    /// Update requires: No interruption
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: Option<String>,
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FilterRuleFilterTypeEnum {
+
+    /// SIMPLE_PATTERN
+    #[serde(rename = "SIMPLE_PATTERN")]
+    Simplepattern,
+
+}
+
+impl Default for FilterRuleFilterTypeEnum {
+    fn default() -> Self {
+        FilterRuleFilterTypeEnum::Simplepattern
+    }
+}
 
 
 
@@ -200,25 +219,75 @@ pub struct Options {
 
 
     /// 
-    /// A value that determines whether a data integrity verification is performed at the     end of a task execution after all data and metadata have been transferred. For more     information, see Configure task settings.
+    /// A file metadata value that shows the last time that a file was accessed (that is,     when the file was read or written to). If you set Atime to       BEST_EFFORT, AWS DataSync attempts to preserve the original       Atime attribute on all source files (that is, the version before the     PREPARING phase). However, Atime's behavior is not fully standard across     platforms, so AWS DataSync can only do this on a best-effort basis.
     /// 
-    /// Default value: POINT_IN_TIME_CONSISTENT
+    /// Default value: BEST_EFFORT
     /// 
-    /// ONLY_FILES_TRANSFERRED (recommended): Perform verification only on     files that were transferred.
+    /// BEST_EFFORT: Attempt to preserve the per-file Atime     value (recommended).
     /// 
-    /// POINT_IN_TIME_CONSISTENT: Scan the entire source and entire     destination at the end of the transfer to verify that the source and destination are fully     synchronized. This option isn't supported when transferring to S3 Glacier or S3 Glacier     Deep Archive storage classes.
+    /// NONE: Ignore Atime.
     /// 
-    /// NONE: No additional verification is done at the end of the transfer,     but all data transmissions are integrity-checked with checksum verification during the     transfer.
+    /// NoteIf Atime is set to BEST_EFFORT, Mtime must       be set to PRESERVE. If Atime is set to NONE, Mtime must also be        NONE.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: NONE | ONLY_FILES_TRANSFERRED | POINT_IN_TIME_CONSISTENT
+    /// Allowed values: BEST_EFFORT | NONE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VerifyMode")]
-    pub verify_mode: Option<OptionsVerifyModeEnum>,
+    #[serde(rename = "Atime")]
+    pub atime: Option<OptionsAtimeEnum>,
+
+
+    /// 
+    /// A value that limits the bandwidth used by AWS DataSync. For example, if you want    AWS DataSync to use a maximum of 1 MB, set this value to 1048576     (=1024*1024).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BytesPerSecond")]
+    pub bytes_per_second: Option<i64>,
+
+
+    /// 
+    /// The group ID (GID) of the file's owners.
+    /// 
+    /// Default value:     INT_VALUE
+    /// 
+    /// INT_VALUE: Preserve the integer value of the user ID (UID) and group ID     (GID) (recommended).
+    /// 
+    /// NAME: Currently not supported.
+    /// 
+    /// NONE: Ignore the UID and GID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BOTH | INT_VALUE | NAME | NONE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Gid")]
+    pub gid: Option<OptionsGidEnum>,
+
+
+    /// 
+    /// Specifies the type of logs that DataSync publishes to a Amazon CloudWatch Logs    log group. To specify the log group, see CloudWatchLogGroupArn.
+    /// 
+    /// If you set LogLevel to OFF, no logs are published.     BASIC publishes logs on errors for individual files transferred.     TRANSFER publishes logs for every file or object that is transferred and    integrity checked.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BASIC | OFF | TRANSFER
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogLevel")]
+    pub log_level: Option<OptionsLogLevelEnum>,
 
 
     /// 
@@ -244,6 +313,38 @@ pub struct Options {
 
 
     /// 
+    /// Specifies whether object tags are preserved when transferring between object storage    systems. If you want your DataSync task to ignore object tags, specify the     NONE value.
+    /// 
+    /// Default Value: PRESERVE
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: NONE | PRESERVE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ObjectTags")]
+    pub object_tags: Option<OptionsObjectTagsEnum>,
+
+
+    /// 
+    /// Specifies whether data at the destination location should be overwritten or preserved. If    set to NEVER, a destination file for example will not be replaced by a source    file (even if the destination file differs from the source file). If you modify files in the    destination and you sync the files, you can use this value to protect against overwriting    those changes.
+    /// 
+    /// Some storage classes have specific behaviors that can affect your Amazon S3    storage cost. For detailed information, see Considerations     when working with Amazon S3 storage classes in DataSync.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALWAYS | NEVER
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OverwriteMode")]
+    pub overwrite_mode: Option<OptionsOverwriteModeEnum>,
+
+
+    /// 
     /// A value that determines which users or groups can access a file for a specific     purpose, such as reading, writing, or execution of the file. This option should be set only     for Network File System (NFS), Amazon EFS, and Amazon S3 locations. For more information     about what metadata is copied by DataSync, see Metadata Copied by       DataSync.
     /// 
     /// Default value: PRESERVE
@@ -263,38 +364,6 @@ pub struct Options {
     /// Update requires: No interruption
     #[serde(rename = "PosixPermissions")]
     pub posix_permissions: Option<OptionsPosixPermissionsEnum>,
-
-
-    /// 
-    /// A value that determines which components of the SMB security descriptor are copied from source    to destination objects.
-    /// 
-    /// This value is only used for transfers    between SMB and Amazon FSx for Windows File Server locations, or between two Amazon FSx for Windows File    Server locations. For more information about how    DataSync handles metadata, see    How DataSync Handles Metadata and Special Files.
-    /// 
-    /// Default value: OWNER_DACL
-    /// 
-    /// OWNER_DACL: For each copied object, DataSync copies the following     metadata:
-    /// 
-    /// Object owner.               NTFS discretionary access control lists (DACLs), which determine whether to     grant access to an object.
-    /// 
-    /// When you use option, DataSync does NOT copy the NTFS system access control lists     (SACLs), which are used by administrators to log attempts to access a secured     object.
-    /// 
-    /// OWNER_DACL_SACL: For each copied object, DataSync copies the following     metadata:
-    /// 
-    /// Object owner.               NTFS discretionary access control lists (DACLs), which determine whether to      grant access to an object.               NTFS system access control lists (SACLs), which are used by administrators      to log attempts to access a secured object.
-    /// 
-    /// Copying SACLs requires granting additional permissions to the Windows user that DataSync    uses to access your SMB location. For information about choosing a user that ensures    sufficient permissions to files, folders, and metadata, see user.
-    /// 
-    /// NONE: None of the SMB security descriptor components are copied.     Destination objects are owned by the user that was provided for accessing the destination     location. DACLs and SACLs are set based on the destination server’s configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | OWNER_DACL | OWNER_DACL_SACL
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityDescriptorCopyFlags")]
-    pub security_descriptor_copy_flags: Option<OptionsSecurityDescriptorCopyFlagsEnum>,
 
 
     /// 
@@ -340,91 +409,51 @@ pub struct Options {
 
 
     /// 
-    /// Specifies the type of logs that DataSync publishes to a Amazon CloudWatch Logs    log group. To specify the log group, see CloudWatchLogGroupArn.
+    /// A value that determines which components of the SMB security descriptor are copied from source    to destination objects.
     /// 
-    /// If you set LogLevel to OFF, no logs are published.     BASIC publishes logs on errors for individual files transferred.     TRANSFER publishes logs for every file or object that is transferred and    integrity checked.
+    /// This value is only used for transfers    between SMB and Amazon FSx for Windows File Server locations, or between two Amazon FSx for Windows File    Server locations. For more information about how    DataSync handles metadata, see    How DataSync Handles Metadata and Special Files.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: BASIC | OFF | TRANSFER
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogLevel")]
-    pub log_level: Option<OptionsLogLevelEnum>,
-
-
+    /// Default value: OWNER_DACL
     /// 
-    /// A value that limits the bandwidth used by AWS DataSync. For example, if you want    AWS DataSync to use a maximum of 1 MB, set this value to 1048576     (=1024*1024).
+    /// OWNER_DACL: For each copied object, DataSync copies the following     metadata:
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BytesPerSecond")]
-    pub bytes_per_second: Option<i64>,
-
-
+    /// Object owner.               NTFS discretionary access control lists (DACLs), which determine whether to     grant access to an object.
     /// 
-    /// A file metadata value that shows the last time that a file was accessed (that is,     when the file was read or written to). If you set Atime to       BEST_EFFORT, AWS DataSync attempts to preserve the original       Atime attribute on all source files (that is, the version before the     PREPARING phase). However, Atime's behavior is not fully standard across     platforms, so AWS DataSync can only do this on a best-effort basis.
+    /// When you use option, DataSync does NOT copy the NTFS system access control lists     (SACLs), which are used by administrators to log attempts to access a secured     object.
     /// 
-    /// Default value: BEST_EFFORT
+    /// OWNER_DACL_SACL: For each copied object, DataSync copies the following     metadata:
     /// 
-    /// BEST_EFFORT: Attempt to preserve the per-file Atime     value (recommended).
+    /// Object owner.               NTFS discretionary access control lists (DACLs), which determine whether to      grant access to an object.               NTFS system access control lists (SACLs), which are used by administrators      to log attempts to access a secured object.
     /// 
-    /// NONE: Ignore Atime.
+    /// Copying SACLs requires granting additional permissions to the Windows user that DataSync    uses to access your SMB location. For information about choosing a user that ensures    sufficient permissions to files, folders, and metadata, see user.
     /// 
-    /// NoteIf Atime is set to BEST_EFFORT, Mtime must       be set to PRESERVE. If Atime is set to NONE, Mtime must also be        NONE.
+    /// NONE: None of the SMB security descriptor components are copied.     Destination objects are owned by the user that was provided for accessing the destination     location. DACLs and SACLs are set based on the destination server’s configuration.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: BEST_EFFORT | NONE
+    /// Allowed values: NONE | OWNER_DACL | OWNER_DACL_SACL
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Atime")]
-    pub atime: Option<OptionsAtimeEnum>,
+    #[serde(rename = "SecurityDescriptorCopyFlags")]
+    pub security_descriptor_copy_flags: Option<OptionsSecurityDescriptorCopyFlagsEnum>,
 
 
     /// 
-    /// The group ID (GID) of the file's owners.
+    /// Specifies whether tasks should be queued before executing the tasks. The default is     ENABLED, which means the tasks will be queued.
     /// 
-    /// Default value:     INT_VALUE
-    /// 
-    /// INT_VALUE: Preserve the integer value of the user ID (UID) and group ID     (GID) (recommended).
-    /// 
-    /// NAME: Currently not supported.
-    /// 
-    /// NONE: Ignore the UID and GID.
+    /// If you use the same agent to run multiple tasks, you can enable the tasks to run in    series. For more information, see Queueing task     executions.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: BOTH | INT_VALUE | NAME | NONE
+    /// Allowed values: DISABLED | ENABLED
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Gid")]
-    pub gid: Option<OptionsGidEnum>,
-
-
-    /// 
-    /// Specifies whether object tags are preserved when transferring between object storage    systems. If you want your DataSync task to ignore object tags, specify the     NONE value.
-    /// 
-    /// Default Value: PRESERVE
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | PRESERVE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ObjectTags")]
-    pub object_tags: Option<OptionsObjectTagsEnum>,
+    #[serde(rename = "TaskQueueing")]
+    pub task_queueing: Option<OptionsTaskQueueingEnum>,
 
 
     /// 
@@ -443,22 +472,6 @@ pub struct Options {
     /// Update requires: No interruption
     #[serde(rename = "TransferMode")]
     pub transfer_mode: Option<OptionsTransferModeEnum>,
-
-
-    /// 
-    /// Specifies whether data at the destination location should be overwritten or preserved. If    set to NEVER, a destination file for example will not be replaced by a source    file (even if the destination file differs from the source file). If you modify files in the    destination and you sync the files, you can use this value to protect against overwriting    those changes.
-    /// 
-    /// Some storage classes have specific behaviors that can affect your Amazon S3    storage cost. For detailed information, see Considerations     when working with Amazon S3 storage classes in DataSync.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALWAYS | NEVER
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OverwriteMode")]
-    pub overwrite_mode: Option<OptionsOverwriteModeEnum>,
 
 
     /// 
@@ -484,39 +497,121 @@ pub struct Options {
 
 
     /// 
-    /// Specifies whether tasks should be queued before executing the tasks. The default is     ENABLED, which means the tasks will be queued.
+    /// A value that determines whether a data integrity verification is performed at the     end of a task execution after all data and metadata have been transferred. For more     information, see Configure task settings.
     /// 
-    /// If you use the same agent to run multiple tasks, you can enable the tasks to run in    series. For more information, see Queueing task     executions.
+    /// Default value: POINT_IN_TIME_CONSISTENT
+    /// 
+    /// ONLY_FILES_TRANSFERRED (recommended): Perform verification only on     files that were transferred.
+    /// 
+    /// POINT_IN_TIME_CONSISTENT: Scan the entire source and entire     destination at the end of the transfer to verify that the source and destination are fully     synchronized. This option isn't supported when transferring to S3 Glacier or S3 Glacier     Deep Archive storage classes.
+    /// 
+    /// NONE: No additional verification is done at the end of the transfer,     but all data transmissions are integrity-checked with checksum verification during the     transfer.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: DISABLED | ENABLED
+    /// Allowed values: NONE | ONLY_FILES_TRANSFERRED | POINT_IN_TIME_CONSISTENT
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TaskQueueing")]
-    pub task_queueing: Option<OptionsTaskQueueingEnum>,
+    #[serde(rename = "VerifyMode")]
+    pub verify_mode: Option<OptionsVerifyModeEnum>,
 
 }
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsTransferModeEnum {
+pub enum OptionsPreserveDevicesEnum {
 
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
 
-    /// CHANGED
-    #[serde(rename = "CHANGED")]
-    Changed,
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
 
 }
 
-impl Default for OptionsTransferModeEnum {
+impl Default for OptionsPreserveDevicesEnum {
     fn default() -> Self {
-        OptionsTransferModeEnum::All
+        OptionsPreserveDevicesEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsPosixPermissionsEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsPosixPermissionsEnum {
+    fn default() -> Self {
+        OptionsPosixPermissionsEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsAtimeEnum {
+
+    /// BEST_EFFORT
+    #[serde(rename = "BEST_EFFORT")]
+    Besteffort,
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+}
+
+impl Default for OptionsAtimeEnum {
+    fn default() -> Self {
+        OptionsAtimeEnum::Besteffort
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsMtimeEnum {
+
+    /// NONE
+    #[serde(rename = "NONE")]
+    None,
+
+    /// PRESERVE
+    #[serde(rename = "PRESERVE")]
+    Preserve,
+
+}
+
+impl Default for OptionsMtimeEnum {
+    fn default() -> Self {
+        OptionsMtimeEnum::None
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OptionsTaskQueueingEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for OptionsTaskQueueingEnum {
+    fn default() -> Self {
+        OptionsTaskQueueingEnum::Disabled
     }
 }
 
@@ -548,40 +643,21 @@ impl Default for OptionsUidEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsTaskQueueingEnum {
+pub enum OptionsTransferModeEnum {
 
-    /// DISABLED
-    #[serde(rename = "DISABLED")]
-    Disabled,
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
 
-    /// ENABLED
-    #[serde(rename = "ENABLED")]
-    Enabled,
+    /// CHANGED
+    #[serde(rename = "CHANGED")]
+    Changed,
 
 }
 
-impl Default for OptionsTaskQueueingEnum {
+impl Default for OptionsTransferModeEnum {
     fn default() -> Self {
-        OptionsTaskQueueingEnum::Disabled
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsMtimeEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// PRESERVE
-    #[serde(rename = "PRESERVE")]
-    Preserve,
-
-}
-
-impl Default for OptionsMtimeEnum {
-    fn default() -> Self {
-        OptionsMtimeEnum::None
+        OptionsTransferModeEnum::All
     }
 }
 
@@ -601,25 +677,6 @@ pub enum OptionsOverwriteModeEnum {
 impl Default for OptionsOverwriteModeEnum {
     fn default() -> Self {
         OptionsOverwriteModeEnum::Always
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsAtimeEnum {
-
-    /// BEST_EFFORT
-    #[serde(rename = "BEST_EFFORT")]
-    Besteffort,
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-}
-
-impl Default for OptionsAtimeEnum {
-    fn default() -> Self {
-        OptionsAtimeEnum::Besteffort
     }
 }
 
@@ -716,44 +773,6 @@ impl Default for OptionsVerifyModeEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsPreserveDeletedFilesEnum {
-
-    /// PRESERVE
-    #[serde(rename = "PRESERVE")]
-    Preserve,
-
-    /// REMOVE
-    #[serde(rename = "REMOVE")]
-    Remove,
-
-}
-
-impl Default for OptionsPreserveDeletedFilesEnum {
-    fn default() -> Self {
-        OptionsPreserveDeletedFilesEnum::Preserve
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsPosixPermissionsEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
-
-    /// PRESERVE
-    #[serde(rename = "PRESERVE")]
-    Preserve,
-
-}
-
-impl Default for OptionsPosixPermissionsEnum {
-    fn default() -> Self {
-        OptionsPosixPermissionsEnum::None
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum OptionsSecurityDescriptorCopyFlagsEnum {
 
     /// NONE
@@ -777,79 +796,60 @@ impl Default for OptionsSecurityDescriptorCopyFlagsEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OptionsPreserveDevicesEnum {
-
-    /// NONE
-    #[serde(rename = "NONE")]
-    None,
+pub enum OptionsPreserveDeletedFilesEnum {
 
     /// PRESERVE
     #[serde(rename = "PRESERVE")]
     Preserve,
 
+    /// REMOVE
+    #[serde(rename = "REMOVE")]
+    Remove,
+
 }
 
-impl Default for OptionsPreserveDevicesEnum {
+impl Default for OptionsPreserveDeletedFilesEnum {
     fn default() -> Self {
-        OptionsPreserveDevicesEnum::None
+        OptionsPreserveDeletedFilesEnum::Preserve
     }
 }
 
 
 
-/// Specifies which files, folders, and objects to include or exclude when transferring files    from source to destination.
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FilterRule {
+pub struct Tag {
 
 
     /// 
-    /// The type of filter rule to apply. AWS DataSync only supports the SIMPLE_PATTERN    rule type.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// Required: No
-    ///
+    /// Required: Yes
+    /// 
     /// Type: String
-    ///
-    /// Allowed values: SIMPLE_PATTERN
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FilterType")]
-    pub filter_type: Option<FilterRuleFilterTypeEnum>,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
-    /// A single filter string that consists of the patterns to include or exclude. The patterns    are delimited by "|" (that is, a pipe), for example: /folder1|/folder2
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
+    /// Required: Yes
     /// 
-    /// 
-    /// Required: No
-    ///
     /// Type: String
-    ///
-    /// Maximum: 102400
-    ///
-    /// Pattern: ^[^\x00]+$
-    ///
-    /// Update requires: No interruption
+    /// 
     #[serde(rename = "Value")]
-    pub value: Option<String>,
+    pub value: String,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum FilterRuleFilterTypeEnum {
-
-    /// SIMPLE_PATTERN
-    #[serde(rename = "SIMPLE_PATTERN")]
-    Simplepattern,
-
-}
-
-impl Default for FilterRuleFilterTypeEnum {
-    fn default() -> Self {
-        FilterRuleFilterTypeEnum::Simplepattern
-    }
-}
 
 
 

@@ -6,6 +6,18 @@ pub struct CfnDedicatedIpPool {
 
 
     /// 
+    /// The name of the dedicated IP pool that the IP address is associated with.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PoolName")]
+    pub pool_name: Option<String>,
+
+
+    /// 
     /// The type of scaling mode.
     /// 
     /// The following options are available:
@@ -21,18 +33,6 @@ pub struct CfnDedicatedIpPool {
     /// Update requires: Replacement
     #[serde(rename = "ScalingMode")]
     pub scaling_mode: Option<String>,
-
-
-    /// 
-    /// The name of the dedicated IP pool that the IP address is associated with.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PoolName")]
-    pub pool_name: Option<String>,
 
 }
 

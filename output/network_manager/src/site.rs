@@ -6,17 +6,23 @@ pub struct CfnSite {
 
 
     /// 
-    /// The site location. This information is used for visualization in the Network Manager console. If you specify the address, the latitude and longitude are automatically calculated.
+    /// A description of your site.
     /// 
-    /// Address: The physical address of the site.                        Latitude: The latitude of the site.                         Longitude: The longitude of the site.
+    /// Constraints: Maximum length of 256 characters.
     /// 
     /// Required: No
     ///
-    /// Type: Location
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Location")]
-    pub location: Option<Location>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -38,6 +44,20 @@ pub struct CfnSite {
 
 
     /// 
+    /// The site location. This information is used for visualization in the Network Manager console. If you specify the address, the latitude and longitude are automatically calculated.
+    /// 
+    /// Address: The physical address of the site.                        Latitude: The latitude of the site.                         Longitude: The longitude of the site.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Location")]
+    pub location: Option<Location>,
+
+
+    /// 
     /// The tags for the site.
     /// 
     /// Required: No
@@ -47,26 +67,6 @@ pub struct CfnSite {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A description of your site.
-    /// 
-    /// Constraints: Maximum length of 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 }
 
@@ -89,24 +89,6 @@ pub struct Location {
 
 
     /// 
-    /// The latitude.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Latitude")]
-    pub latitude: Option<String>,
-
-
-    /// 
     /// The physical address.
     /// 
     /// Required: No
@@ -122,6 +104,24 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     pub address: Option<String>,
+
+
+    /// 
+    /// The latitude.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Latitude")]
+    pub latitude: Option<String>,
 
 
     /// 

@@ -8,6 +8,22 @@ pub struct CfnSignalingChannel {
 
 
     /// 
+    /// The period of time a signaling channel retains undelivered messages before they are       discarded.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 5
+    ///
+    /// Maximum: 120
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MessageTtlSeconds")]
+    pub message_ttl_seconds: Option<i64>,
+
+
+    /// 
     /// A name for the signaling channel that you are creating. It must be unique for each AWS account and AWS Region.
     /// 
     /// Required: No
@@ -26,19 +42,17 @@ pub struct CfnSignalingChannel {
 
 
     /// 
-    /// The period of time a signaling channel retains undelivered messages before they are       discarded.
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 5
-    ///
-    /// Maximum: 120
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MessageTtlSeconds")]
-    pub message_ttl_seconds: Option<i64>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -53,20 +67,6 @@ pub struct CfnSignalingChannel {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: Option<SignalingChannelTypeEnum>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -114,17 +114,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -133,6 +122,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

@@ -6,39 +6,15 @@ pub struct CfnConnector {
 
 
     /// 
-    /// The worker configurations that are in use with the connector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: WorkerConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WorkerConfiguration")]
-    pub worker_configuration: Option<WorkerConfiguration>,
-
-
-    /// 
-    /// The version of Kafka Connect. It has to be compatible with both the Apache Kafka     cluster's version and the plugins.
+    /// The connector's compute capacity settings.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Capacity
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "KafkaConnectVersion")]
-    pub kafka_connect_version: String,
-
-
-    /// 
-    /// The settings for delivering connector logs to Amazon CloudWatch Logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LogDelivery
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogDelivery")]
-    pub log_delivery: Option<LogDelivery>,
+    /// Update requires: No interruption
+    #[serde(rename = "Capacity")]
+    pub capacity: Capacity,
 
 
     /// The configuration of the connector.
@@ -65,30 +41,6 @@ pub struct CfnConnector {
 
 
     /// 
-    /// Details of encryption in transit to the Apache Kafka cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: KafkaClusterEncryptionInTransit
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KafkaClusterEncryptionInTransit")]
-    pub kafka_cluster_encryption_in_transit: KafkaClusterEncryptionInTransit,
-
-
-    /// 
-    /// The type of client authentication used to connect to the Apache Kafka cluster. The value     is NONE when no client authentication is used.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: KafkaClusterClientAuthentication
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KafkaClusterClientAuthentication")]
-    pub kafka_cluster_client_authentication: KafkaClusterClientAuthentication,
-
-
-    /// 
     /// The name of the connector.
     /// 
     /// Required: Yes
@@ -98,30 +50,6 @@ pub struct CfnConnector {
     /// Update requires: Replacement
     #[serde(rename = "ConnectorName")]
     pub connector_name: String,
-
-
-    /// 
-    /// The connector's compute capacity settings.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Capacity
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Capacity")]
-    pub capacity: Capacity,
-
-
-    /// 
-    /// Specifies which plugin to use for the connector. You must specify a single-element list. Amazon MSK Connect does not currently support specifying multiple plugins.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Plugin
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Plugins")]
-    pub plugins: Vec<Plugin>,
 
 
     /// 
@@ -137,6 +65,66 @@ pub struct CfnConnector {
 
 
     /// 
+    /// The type of client authentication used to connect to the Apache Kafka cluster. The value     is NONE when no client authentication is used.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: KafkaClusterClientAuthentication
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KafkaClusterClientAuthentication")]
+    pub kafka_cluster_client_authentication: KafkaClusterClientAuthentication,
+
+
+    /// 
+    /// Details of encryption in transit to the Apache Kafka cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: KafkaClusterEncryptionInTransit
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KafkaClusterEncryptionInTransit")]
+    pub kafka_cluster_encryption_in_transit: KafkaClusterEncryptionInTransit,
+
+
+    /// 
+    /// The version of Kafka Connect. It has to be compatible with both the Apache Kafka     cluster's version and the plugins.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KafkaConnectVersion")]
+    pub kafka_connect_version: String,
+
+
+    /// 
+    /// The settings for delivering connector logs to Amazon CloudWatch Logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LogDelivery
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogDelivery")]
+    pub log_delivery: Option<LogDelivery>,
+
+
+    /// 
+    /// Specifies which plugin to use for the connector. You must specify a single-element list. Amazon MSK Connect does not currently support specifying multiple plugins.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Plugin
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Plugins")]
+    pub plugins: Vec<Plugin>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the IAM role used by the connector to access Amazon     Web Services resources.
     /// 
     /// Required: Yes
@@ -146,6 +134,18 @@ pub struct CfnConnector {
     /// Update requires: Replacement
     #[serde(rename = "ServiceExecutionRoleArn")]
     pub service_execution_role_arn: String,
+
+
+    /// 
+    /// The worker configurations that are in use with the connector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: WorkerConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WorkerConfiguration")]
+    pub worker_configuration: Option<WorkerConfiguration>,
 
 }
 
@@ -162,54 +162,33 @@ impl cfn_resources::CfnResource for CfnConnector {
 }
 
 
-/// The settings for delivering logs to Amazon Kinesis Data Firehose.
+/// The details of the Apache Kafka cluster to which the connector is connected.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FirehoseLogDelivery {
+pub struct ApacheKafkaCluster {
 
 
     /// 
-    /// Specifies whether connector logs get delivered to Amazon Kinesis Data Firehose.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-
-    /// 
-    /// The name of the Kinesis Data Firehose delivery stream that is the destination for log     delivery.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeliveryStream")]
-    pub delivery_stream: Option<String>,
-
-}
-
-
-
-
-/// Details of encryption in transit to the Apache Kafka cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KafkaClusterEncryptionInTransit {
-
-
-    /// 
-    /// The type of encryption in transit to the Apache Kafka cluster.
+    /// The bootstrap servers of the cluster.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EncryptionType")]
-    pub encryption_type: String,
+    #[serde(rename = "BootstrapServers")]
+    pub bootstrap_servers: String,
+
+
+    /// 
+    /// Details of an Amazon VPC which has network connectivity to the Apache Kafka     cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Vpc
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Vpc")]
+    pub vpc: Vpc,
 
 }
 
@@ -219,18 +198,6 @@ pub struct KafkaClusterEncryptionInTransit {
 /// Specifies how the connector scales.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoScaling {
-
-
-    /// 
-    /// The number of microcontroller units (MCUs) allocated to each connector worker. The valid     values are 1,2,4,8.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "McuCount")]
-    pub mcu_count: i64,
 
 
     /// 
@@ -246,15 +213,27 @@ pub struct AutoScaling {
 
 
     /// 
-    /// The sacle-out policy for the connector.
+    /// The number of microcontroller units (MCUs) allocated to each connector worker. The valid     values are 1,2,4,8.
     /// 
     /// Required: Yes
     ///
-    /// Type: ScaleOutPolicy
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ScaleOutPolicy")]
-    pub scale_out_policy: ScaleOutPolicy,
+    #[serde(rename = "McuCount")]
+    pub mcu_count: i64,
+
+
+    /// 
+    /// The minimum number of workers allocated to the connector.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinWorkerCount")]
+    pub min_worker_count: i64,
 
 
     /// 
@@ -270,48 +249,15 @@ pub struct AutoScaling {
 
 
     /// 
-    /// The minimum number of workers allocated to the connector.
+    /// The sacle-out policy for the connector.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: ScaleOutPolicy
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MinWorkerCount")]
-    pub min_worker_count: i64,
-
-}
-
-
-
-
-/// Information about the VPC in which the connector resides.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Vpc {
-
-
-    /// 
-    /// The security groups for the connector.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroups")]
-    pub security_groups: Vec<String>,
-
-
-    /// 
-    /// The subnets for the connector.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subnets")]
-    pub subnets: Vec<String>,
+    #[serde(rename = "ScaleOutPolicy")]
+    pub scale_out_policy: ScaleOutPolicy,
 
 }
 
@@ -321,18 +267,6 @@ pub struct Vpc {
 /// Information about the capacity of the connector, whether it is auto scaled or     provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Capacity {
-
-
-    /// 
-    /// Details about a fixed capacity allocated to a connector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ProvisionedCapacity
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisionedCapacity")]
-    pub provisioned_capacity: Option<ProvisionedCapacity>,
 
 
     /// 
@@ -346,6 +280,18 @@ pub struct Capacity {
     #[serde(rename = "AutoScaling")]
     pub auto_scaling: Option<AutoScaling>,
 
+
+    /// 
+    /// Details about a fixed capacity allocated to a connector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ProvisionedCapacity
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisionedCapacity")]
+    pub provisioned_capacity: Option<ProvisionedCapacity>,
+
 }
 
 
@@ -354,18 +300,6 @@ pub struct Capacity {
 /// The settings for delivering connector logs to Amazon CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchLogsLogDelivery {
-
-
-    /// 
-    /// The name of the CloudWatch log group that is the destination for log delivery.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogGroup")]
-    pub log_group: Option<String>,
 
 
     /// 
@@ -378,6 +312,18 @@ pub struct CloudWatchLogsLogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "Enabled")]
     pub enabled: bool,
+
+
+    /// 
+    /// The name of the CloudWatch log group that is the destination for log delivery.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogGroup")]
+    pub log_group: Option<String>,
 
 }
 
@@ -417,42 +363,33 @@ pub struct CustomPlugin {
 
 
 
-/// A plugin is an AWS resource that contains the code that defines your connector logic.
+/// The settings for delivering logs to Amazon Kinesis Data Firehose.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Plugin {
+pub struct FirehoseLogDelivery {
 
 
     /// 
-    /// Details about a custom plugin.
+    /// The name of the Kinesis Data Firehose delivery stream that is the destination for log     delivery.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeliveryStream")]
+    pub delivery_stream: Option<String>,
+
+
+    /// 
+    /// Specifies whether connector logs get delivered to Amazon Kinesis Data Firehose.
     /// 
     /// Required: Yes
     ///
-    /// Type: CustomPlugin
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CustomPlugin")]
-    pub custom_plugin: CustomPlugin,
-
-}
-
-
-
-
-/// Details about log delivery.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LogDelivery {
-
-
-    /// 
-    /// The workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: WorkerLogDelivery
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WorkerLogDelivery")]
-    pub worker_log_delivery: WorkerLogDelivery,
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
 
 }
 
@@ -480,33 +417,183 @@ pub struct KafkaCluster {
 
 
 
-/// The details of the Apache Kafka cluster to which the connector is connected.
+/// The client authentication information used in order to authenticate with the Apache     Kafka cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ApacheKafkaCluster {
+pub struct KafkaClusterClientAuthentication {
 
 
     /// 
-    /// The bootstrap servers of the cluster.
+    /// The type of client authentication used to connect to the Apache Kafka cluster. Value     NONE means that no client authentication is used.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BootstrapServers")]
-    pub bootstrap_servers: String,
+    #[serde(rename = "AuthenticationType")]
+    pub authentication_type: String,
+
+}
+
+
+
+
+/// Details of encryption in transit to the Apache Kafka cluster.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KafkaClusterEncryptionInTransit {
 
 
     /// 
-    /// Details of an Amazon VPC which has network connectivity to the Apache Kafka     cluster.
+    /// The type of encryption in transit to the Apache Kafka cluster.
     /// 
     /// Required: Yes
     ///
-    /// Type: Vpc
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Vpc")]
-    pub vpc: Vpc,
+    #[serde(rename = "EncryptionType")]
+    pub encryption_type: String,
+
+}
+
+
+
+
+/// Details about log delivery.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LogDelivery {
+
+
+    /// 
+    /// The workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: WorkerLogDelivery
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WorkerLogDelivery")]
+    pub worker_log_delivery: WorkerLogDelivery,
+
+}
+
+
+
+
+/// A plugin is an AWS resource that contains the code that defines your connector logic.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Plugin {
+
+
+    /// 
+    /// Details about a custom plugin.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: CustomPlugin
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomPlugin")]
+    pub custom_plugin: CustomPlugin,
+
+}
+
+
+
+
+/// Details about a connector's provisioned capacity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ProvisionedCapacity {
+
+
+    /// 
+    /// The number of microcontroller units (MCUs) allocated to each connector worker. The valid     values are 1,2,4,8.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "McuCount")]
+    pub mcu_count: Option<i64>,
+
+
+    /// 
+    /// The number of workers that are allocated to the connector.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WorkerCount")]
+    pub worker_count: i64,
+
+}
+
+
+
+
+/// Details about delivering logs to Amazon S3.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3LogDelivery {
+
+
+    /// 
+    /// The name of the S3 bucket that is the destination for log delivery.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Bucket")]
+    pub bucket: Option<String>,
+
+
+    /// 
+    /// Specifies whether connector logs get sent to the specified Amazon S3 destination.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+
+    /// 
+    /// The S3 prefix that is the destination for log delivery.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Prefix")]
+    pub prefix: Option<String>,
+
+}
+
+
+
+
+/// The scale-in policy for the connector.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScaleInPolicy {
+
+
+    /// 
+    /// Specifies the CPU utilization percentage threshold at which you want connector scale in     to be triggered.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CpuUtilizationPercentage")]
+    pub cpu_utilization_percentage: i64,
 
 }
 
@@ -534,21 +621,42 @@ pub struct ScaleOutPolicy {
 
 
 
-/// The configuration of the workers, which are the processes that run the connector     logic.
+/// Information about the VPC in which the connector resides.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct WorkerConfiguration {
+pub struct Vpc {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the worker configuration.
+    /// The security groups for the connector.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "WorkerConfigurationArn")]
-    pub worker_configuration_arn: String,
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Vec<String>,
+
+
+    /// 
+    /// The subnets for the connector.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subnets")]
+    pub subnets: Vec<String>,
+
+}
+
+
+
+
+/// The configuration of the workers, which are the processes that run the connector     logic.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct WorkerConfiguration {
 
 
     /// 
@@ -562,104 +670,17 @@ pub struct WorkerConfiguration {
     #[serde(rename = "Revision")]
     pub revision: i64,
 
-}
-
-
-
-
-/// Details about delivering logs to Amazon S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3LogDelivery {
-
 
     /// 
-    /// The S3 prefix that is the destination for log delivery.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Prefix")]
-    pub prefix: Option<String>,
-
-
-    /// 
-    /// The name of the S3 bucket that is the destination for log delivery.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Bucket")]
-    pub bucket: Option<String>,
-
-
-    /// 
-    /// Specifies whether connector logs get sent to the specified Amazon S3 destination.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-}
-
-
-
-
-/// Details about a connector's provisioned capacity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ProvisionedCapacity {
-
-
-    /// 
-    /// The number of workers that are allocated to the connector.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkerCount")]
-    pub worker_count: i64,
-
-
-    /// 
-    /// The number of microcontroller units (MCUs) allocated to each connector worker. The valid     values are 1,2,4,8.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "McuCount")]
-    pub mcu_count: Option<i64>,
-
-}
-
-
-
-
-/// The client authentication information used in order to authenticate with the Apache     Kafka cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KafkaClusterClientAuthentication {
-
-
-    /// 
-    /// The type of client authentication used to connect to the Apache Kafka cluster. Value     NONE means that no client authentication is used.
+    /// The Amazon Resource Name (ARN) of the worker configuration.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "AuthenticationType")]
-    pub authentication_type: String,
+    #[serde(rename = "WorkerConfigurationArn")]
+    pub worker_configuration_arn: String,
 
 }
 
@@ -669,6 +690,18 @@ pub struct KafkaClusterClientAuthentication {
 /// Workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WorkerLogDelivery {
+
+
+    /// 
+    /// Details about delivering logs to Amazon CloudWatch Logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CloudWatchLogsLogDelivery
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CloudWatchLogs")]
+    pub cloud_watch_logs: Option<CloudWatchLogsLogDelivery>,
 
 
     /// 
@@ -693,39 +726,6 @@ pub struct WorkerLogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "S3")]
     pub s3: Option<S3LogDelivery>,
-
-
-    /// 
-    /// Details about delivering logs to Amazon CloudWatch Logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CloudWatchLogsLogDelivery
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CloudWatchLogs")]
-    pub cloud_watch_logs: Option<CloudWatchLogsLogDelivery>,
-
-}
-
-
-
-
-/// The scale-in policy for the connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ScaleInPolicy {
-
-
-    /// 
-    /// Specifies the CPU utilization percentage threshold at which you want connector scale in     to be triggered.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CpuUtilizationPercentage")]
-    pub cpu_utilization_percentage: i64,
 
 }
 

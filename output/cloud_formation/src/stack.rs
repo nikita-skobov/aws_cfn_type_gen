@@ -10,6 +10,20 @@ pub struct CfnStack {
 
 
     /// 
+    /// The Amazon Simple Notification Service (Amazon SNS) topic ARNs to publish stack related events. You can find your   Amazon SNS topic ARNs using the Amazon SNS console or your Command Line Interface (CLI).
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationARNs")]
+    pub notification_arns: Option<Vec<String>>,
+
+
+    /// 
     /// The set value pairs that represent the parameters passed to CloudFormation when this nested stack is  created. Each parameter has a name corresponding to a parameter defined in the embedded template and a value  representing the value that you want to set for the parameter.
     /// 
     /// NoteIf you use the Ref function to pass a parameter value to a nested stack, comma-delimited list   parameters must be of type String. In other words, you can't pass values that are of type   CommaDelimitedList to nested stacks.
@@ -28,6 +42,20 @@ pub struct CfnStack {
 
 
     /// 
+    /// Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to the resources  created in the stack. A maximum number of 50 tags can be specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that's  located in an Amazon S3 bucket. For more information, see Template anatomy.
     /// 
     /// Whether an update causes interruptions depends on the resources that are being updated. An update never causes a  nested stack to be replaced.
@@ -43,34 +71,6 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "TemplateURL")]
     pub template_url: String,
-
-
-    /// 
-    /// Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to the resources  created in the stack. A maximum number of 50 tags can be specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The Amazon Simple Notification Service (Amazon SNS) topic ARNs to publish stack related events. You can find your   Amazon SNS topic ARNs using the Amazon SNS console or your Command Line Interface (CLI).
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationARNs")]
-    pub notification_arns: Option<Vec<String>>,
 
 
     /// 

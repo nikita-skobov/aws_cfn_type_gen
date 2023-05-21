@@ -14,17 +14,17 @@ pub struct CfnStream {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// How long the stream retains data, in hours.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Integer
+    ///
+    /// Minimum: 0
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "DataRetentionInHours")]
+    pub data_retention_in_hours: Option<i64>,
 
 
     /// 
@@ -46,24 +46,6 @@ pub struct CfnStream {
 
 
     /// 
-    /// The MediaType of the stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\w\-\.\+]+/[\w\-\.\+]+(,[\w\-\.\+]+/[\w\-\.\+]+)*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MediaType")]
-    pub media_type: Option<String>,
-
-
-    /// 
     /// The ID of the AWS Key Management Service (AWS KMS) key that Kinesis Video Streams       uses to encrypt data on the stream.
     /// 
     /// Required: No
@@ -82,17 +64,21 @@ pub struct CfnStream {
 
 
     /// 
-    /// How long the stream retains data, in hours.
+    /// The MediaType of the stream.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\w\-\.\+]+/[\w\-\.\+]+(,[\w\-\.\+]+/[\w\-\.\+]+)*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DataRetentionInHours")]
-    pub data_retention_in_hours: Option<i64>,
+    #[serde(rename = "MediaType")]
+    pub media_type: Option<String>,
 
 
     /// 
@@ -105,6 +91,20 @@ pub struct CfnStream {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -133,17 +133,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -152,6 +141,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

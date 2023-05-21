@@ -10,15 +10,17 @@ pub struct CfnBucket {
 
 
     /// 
-    /// The ID of the Outpost of the specified bucket.
+    /// A name for the S3 on Outposts bucket. If you don't specify a name, AWS CloudFormation generates a    unique ID and uses that ID for the bucket name.    The bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-)    and must follow     Amazon S3 bucket restrictions and limitations.    For more information, see Bucket     naming rules.
+    /// 
+    /// ImportantIf you specify a name, you can't perform updates that require replacement of this     resource. You can perform updates that require no or some interruption. If you need to     replace the resource, specify a new name.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "OutpostId")]
-    pub outpost_id: String,
+    #[serde(rename = "BucketName")]
+    pub bucket_name: String,
 
 
     /// 
@@ -34,17 +36,15 @@ pub struct CfnBucket {
 
 
     /// 
-    /// A name for the S3 on Outposts bucket. If you don't specify a name, AWS CloudFormation generates a    unique ID and uses that ID for the bucket name.    The bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-)    and must follow     Amazon S3 bucket restrictions and limitations.    For more information, see Bucket     naming rules.
-    /// 
-    /// ImportantIf you specify a name, you can't perform updates that require replacement of this     resource. You can perform updates that require no or some interruption. If you need to     replace the resource, specify a new name.
+    /// The ID of the Outpost of the specified bucket.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    #[serde(rename = "OutpostId")]
+    pub outpost_id: String,
 
 
     /// 
@@ -79,87 +79,6 @@ impl cfn_resources::CfnResource for CfnBucket {
 }
 
 
-/// A container for an Amazon S3 on Outposts bucket lifecycle rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Rule {
-
-
-    /// 
-    /// If Enabled, the rule is currently being applied. If Disabled,    the rule is not currently being applied.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: String,
-
-
-    /// 
-    /// The container for the filter of the lifecycle rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Filter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Filter")]
-    pub filter: Option<Filter>,
-
-
-    /// 
-    /// The container for the abort incomplete multipart upload rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AbortIncompleteMultipartUpload
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AbortIncompleteMultipartUpload")]
-    pub abort_incomplete_multipart_upload: Option<AbortIncompleteMultipartUpload>,
-
-
-    /// 
-    /// The unique identifier for the lifecycle rule. The value can't be longer than 255    characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: Option<String>,
-
-
-    /// 
-    /// Specifies the expiration for the lifecycle of the object by specifying an expiry date.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExpirationDate")]
-    pub expiration_date: Option<String>,
-
-
-    /// 
-    /// Specifies the expiration for the lifecycle of the object in the form of days that the object has been in the S3 on Outposts bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExpirationInDays")]
-    pub expiration_in_days: Option<i64>,
-
-}
-
-
-
-
 /// Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 on Outposts waits    before permanently removing all parts of the upload. For more information, see Aborting Incomplete     Multipart Uploads Using a Bucket Lifecycle Policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AbortIncompleteMultipartUpload {
@@ -181,58 +100,42 @@ pub struct AbortIncompleteMultipartUpload {
 
 
 
-/// The container for the lifecycle configuration for the objects stored in an S3 on Outposts bucket.
+/// The Filter property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LifecycleConfiguration {
+pub struct Filter {
 
 
-    /// 
-    /// The container for the lifecycle configuration rules for the objects stored in the S3 on Outposts bucket.
-    /// 
-    /// Required: Yes
+    /// Property description not available.
     ///
-    /// Type: List of Rule
+    /// Required: No
+    ///
+    /// Type: FilterAndOperator
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Rules")]
-    pub rules: Vec<Rule>,
-
-}
+    #[serde(rename = "AndOperator")]
+    pub and_operator: Option<FilterAndOperator>,
 
 
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Prefix")]
+    pub prefix: Option<String>,
 
 
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: FilterTag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tag")]
+    pub tag: Option<FilterTag>,
 
 }
 
@@ -282,8 +185,8 @@ pub struct FilterTag {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// Property description not available.
@@ -293,50 +196,147 @@ pub struct FilterTag {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
 
 
 
-/// The Filter property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
+/// The container for the lifecycle configuration for the objects stored in an S3 on Outposts bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Filter {
+pub struct LifecycleConfiguration {
 
 
-    /// Property description not available.
+    /// 
+    /// The container for the lifecycle configuration rules for the objects stored in the S3 on Outposts bucket.
+    /// 
+    /// Required: Yes
     ///
-    /// Required: No
-    ///
-    /// Type: FilterAndOperator
+    /// Type: List of Rule
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AndOperator")]
-    pub and_operator: Option<FilterAndOperator>,
+    #[serde(rename = "Rules")]
+    pub rules: Vec<Rule>,
+
+}
 
 
-    /// Property description not available.
-    ///
+
+
+/// A container for an Amazon S3 on Outposts bucket lifecycle rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Rule {
+
+
+    /// 
+    /// The container for the abort incomplete multipart upload rule.
+    /// 
     /// Required: No
     ///
-    /// Type: FilterTag
+    /// Type: AbortIncompleteMultipartUpload
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tag")]
-    pub tag: Option<FilterTag>,
+    #[serde(rename = "AbortIncompleteMultipartUpload")]
+    pub abort_incomplete_multipart_upload: Option<AbortIncompleteMultipartUpload>,
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// Specifies the expiration for the lifecycle of the object by specifying an expiry date.
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Prefix")]
-    pub prefix: Option<String>,
+    #[serde(rename = "ExpirationDate")]
+    pub expiration_date: Option<String>,
+
+
+    /// 
+    /// Specifies the expiration for the lifecycle of the object in the form of days that the object has been in the S3 on Outposts bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExpirationInDays")]
+    pub expiration_in_days: Option<i64>,
+
+
+    /// 
+    /// The container for the filter of the lifecycle rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Filter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Filter")]
+    pub filter: Option<Filter>,
+
+
+    /// 
+    /// The unique identifier for the lifecycle rule. The value can't be longer than 255    characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Id")]
+    pub id: Option<String>,
+
+
+    /// 
+    /// If Enabled, the rule is currently being applied. If Disabled,    the rule is not currently being applied.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: String,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

@@ -6,6 +6,22 @@ pub struct CfnLocationFSxOpenZFS {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the FSx for OpenZFS file system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FsxFilesystemArn")]
+    pub fsx_filesystem_arn: Option<String>,
+
+
+    /// 
     /// The type of protocol that AWS DataSync uses to access your file system.
     /// 
     /// Required: Yes
@@ -15,6 +31,24 @@ pub struct CfnLocationFSxOpenZFS {
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
     pub protocol: Protocol,
+
+
+    /// 
+    /// The ARNs of the security groups that are used to configure the FSx for OpenZFS file system.
+    /// 
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
+    /// 
+    /// Length constraints: Maximum length of 128.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupArns")]
+    pub security_group_arns: Vec<String>,
 
 
     /// 
@@ -46,40 +80,6 @@ pub struct CfnLocationFSxOpenZFS {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the FSx for OpenZFS file system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FsxFilesystemArn")]
-    pub fsx_filesystem_arn: Option<String>,
-
-
-    /// 
-    /// The ARNs of the security groups that are used to configure the FSx for OpenZFS file system.
-    /// 
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
-    /// 
-    /// Length constraints: Maximum length of 128.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupArns")]
-    pub security_group_arns: Vec<String>,
-
 }
 
 
@@ -93,27 +93,6 @@ impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// Represents the Network File System (NFS) protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NFS {
-
-
-    /// 
-    /// Represents the mount options that are available for DataSync to access an NFS location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MountOptions
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MountOptions")]
-    pub mount_options: MountOptions,
-
-}
-
-
 
 
 /// Represents the mount options that are available for DataSync to access a Network File System (NFS) location.
@@ -167,6 +146,27 @@ impl Default for MountOptionsVersionEnum {
         MountOptionsVersionEnum::Automatic
     }
 }
+
+
+
+/// Represents the Network File System (NFS) protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NFS {
+
+
+    /// 
+    /// Represents the mount options that are available for DataSync to access an NFS location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MountOptions
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MountOptions")]
+    pub mount_options: MountOptions,
+
+}
+
 
 
 

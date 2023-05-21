@@ -8,6 +8,18 @@ pub struct CfnBillingGroup {
 
 
     /// 
+    /// The name of the billing group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BillingGroupName")]
+    pub billing_group_name: Option<String>,
+
+
+    /// 
     /// The properties of the billing group.
     /// 
     /// Required: No
@@ -29,18 +41,6 @@ pub struct CfnBillingGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The name of the billing group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BillingGroupName")]
-    pub billing_group_name: Option<String>,
 
 }
 

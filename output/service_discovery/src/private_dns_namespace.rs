@@ -6,6 +6,20 @@ pub struct CfnPrivateDnsNamespace {
 
 
     /// 
+    /// A description for the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The name that you want to assign to this namespace. When you create a private DNS namespace,  AWS Cloud Map automatically creates an Amazon Route 53 private hosted zone that has the same name as the  namespace.
     /// 
     /// Required: Yes
@@ -22,17 +36,15 @@ pub struct CfnPrivateDnsNamespace {
 
 
     /// 
-    /// The ID of the Amazon VPC that you want to associate the namespace with.
+    /// Properties for the  private DNS namespace.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Properties
     ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Vpc")]
-    pub vpc: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Properties")]
+    pub properties: Option<Properties>,
 
 
     /// 
@@ -50,29 +62,17 @@ pub struct CfnPrivateDnsNamespace {
 
 
     /// 
-    /// Properties for the  private DNS namespace.
+    /// The ID of the Amazon VPC that you want to associate the namespace with.
     /// 
-    /// Required: No
-    ///
-    /// Type: Properties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Properties")]
-    pub properties: Option<Properties>,
-
-
-    /// 
-    /// A description for the namespace.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 1024
+    /// Maximum: 64
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "Vpc")]
+    pub vpc: String,
 
 }
 
@@ -87,6 +87,48 @@ impl cfn_resources::CfnResource for CfnPrivateDnsNamespace {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// DNS properties for  the private DNS namespace.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PrivateDnsPropertiesMutable {
+
+
+    /// 
+    /// Fields for the Start  of Authority (SOA) record for the hosted zone for the private DNS  namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SOA
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SOA")]
+    pub soa: Option<SOA>,
+
+}
+
+
+
+
+/// Properties for the  private DNS namespace.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Properties {
+
+
+    /// 
+    /// DNS properties for  the private DNS namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PrivateDnsPropertiesMutable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DnsProperties")]
+    pub dns_properties: Option<PrivateDnsPropertiesMutable>,
+
+}
+
+
 
 
 /// Start of Authority  (SOA) properties for a public or private DNS namespace.
@@ -141,48 +183,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Properties for the  private DNS namespace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Properties {
-
-
-    /// 
-    /// DNS properties for  the private DNS namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PrivateDnsPropertiesMutable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsProperties")]
-    pub dns_properties: Option<PrivateDnsPropertiesMutable>,
-
-}
-
-
-
-
-/// DNS properties for  the private DNS namespace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PrivateDnsPropertiesMutable {
-
-
-    /// 
-    /// Fields for the Start  of Authority (SOA) record for the hosted zone for the private DNS  namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SOA
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SOA")]
-    pub soa: Option<SOA>,
 
 }
 

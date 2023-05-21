@@ -8,31 +8,31 @@ pub struct CfnMaintenanceWindow {
 
 
     /// 
-    /// The number of days to wait to run a maintenance window after the scheduled cron expression  date and time.
+    /// Enables a maintenance window task to run on managed instances, even if you have not    registered those instances as targets. If enabled, then you must specify the unregistered    instances (by instance ID) when you register a task with the maintenance window.
     /// 
-    /// Required: No
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowUnassociatedTargets")]
+    pub allow_unassociated_targets: bool,
+
+
+    /// 
+    /// The number of hours before the end of the maintenance window that AWS Systems Manager stops scheduling  new tasks for execution.
+    /// 
+    /// Required: Yes
     ///
     /// Type: Integer
     ///
-    /// Minimum: 1
+    /// Minimum: 0
     ///
-    /// Maximum: 6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduleOffset")]
-    pub schedule_offset: Option<i64>,
-
-
-    /// 
-    /// The time zone that the scheduled maintenance window executions are based on, in Internet  Assigned Numbers Authority (IANA) format.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
+    /// Maximum: 23
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ScheduleTimezone")]
-    pub schedule_timezone: Option<String>,
+    #[serde(rename = "Cutoff")]
+    pub cutoff: i64,
 
 
     /// 
@@ -52,19 +52,31 @@ pub struct CfnMaintenanceWindow {
 
 
     /// 
-    /// The number of hours before the end of the maintenance window that AWS Systems Manager stops scheduling  new tasks for execution.
+    /// The duration of the maintenance window in hours.
     /// 
     /// Required: Yes
     ///
     /// Type: Integer
     ///
-    /// Minimum: 0
+    /// Minimum: 1
     ///
-    /// Maximum: 23
+    /// Maximum: 24
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Cutoff")]
-    pub cutoff: i64,
+    #[serde(rename = "Duration")]
+    pub duration: i64,
+
+
+    /// 
+    /// The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled  to become inactive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndDate")]
+    pub end_date: Option<String>,
 
 
     /// 
@@ -102,15 +114,31 @@ pub struct CfnMaintenanceWindow {
 
 
     /// 
-    /// The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled  to become inactive.
+    /// The number of days to wait to run a maintenance window after the scheduled cron expression  date and time.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScheduleOffset")]
+    pub schedule_offset: Option<i64>,
+
+
+    /// 
+    /// The time zone that the scheduled maintenance window executions are based on, in Internet  Assigned Numbers Authority (IANA) format.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EndDate")]
-    pub end_date: Option<String>,
+    #[serde(rename = "ScheduleTimezone")]
+    pub schedule_timezone: Option<String>,
 
 
     /// 
@@ -123,34 +151,6 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "StartDate")]
     pub start_date: Option<String>,
-
-
-    /// 
-    /// The duration of the maintenance window in hours.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 24
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Duration")]
-    pub duration: i64,
-
-
-    /// 
-    /// Enables a maintenance window task to run on managed instances, even if you have not    registered those instances as targets. If enabled, then you must specify the unregistered    instances (by instance ID) when you register a task with the maintenance window.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowUnassociatedTargets")]
-    pub allow_unassociated_targets: bool,
 
 
     /// 
@@ -193,17 +193,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -212,6 +201,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

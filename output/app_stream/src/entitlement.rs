@@ -6,6 +6,20 @@ pub struct CfnEntitlement {
 
 
     /// 
+    /// Specifies whether to entitle all apps or only selected apps.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALL | ASSOCIATED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppVisibility")]
+    pub app_visibility: EntitlementAppVisibilityEnum,
+
+
+    /// 
     /// The attributes of the entitlement.
     /// 
     /// Required: Yes
@@ -32,20 +46,6 @@ pub struct CfnEntitlement {
 
 
     /// 
-    /// The name of the stack.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StackName")]
-    pub stack_name: String,
-
-
-    /// 
     /// The name of the entitlement.
     /// 
     /// Required: Yes
@@ -60,17 +60,17 @@ pub struct CfnEntitlement {
 
 
     /// 
-    /// Specifies whether to entitle all apps or only selected apps.
+    /// The name of the stack.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: ALL | ASSOCIATED
+    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppVisibility")]
-    pub app_visibility: EntitlementAppVisibilityEnum,
+    /// Update requires: Replacement
+    #[serde(rename = "StackName")]
+    pub stack_name: String,
 
 }
 
@@ -111,17 +111,6 @@ impl cfn_resources::CfnResource for CfnEntitlement {
 pub struct Attribute {
 
 
-    /// A value that is matched to a supported SAML attribute name when a user identity federates to an AppStream 2.0 SAML application.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
     /// A supported AWS IAM SAML PrincipalTag attribute that is matched to a value when a user     identity federates to an AppStream 2.0 SAML application.
     /// 
     /// The following are supported values:
@@ -135,6 +124,17 @@ pub struct Attribute {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// A value that is matched to a supported SAML attribute name when a user identity federates to an AppStream 2.0 SAML application.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

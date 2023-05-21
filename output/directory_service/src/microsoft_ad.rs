@@ -6,31 +6,17 @@ pub struct CfnMicrosoftAD {
 
 
     /// 
-    /// The password for the default administrative user named Admin.
+    /// Specifies an alias for a directory and assigns the alias to the directory. The alias is    used to construct the access URL for the directory, such as    http://<alias>.awsapps.com. By default, AWS CloudFormation does not    create an alias.
     /// 
-    /// If you need to change the password for the administrator account, see the ResetUserPassword API call in the AWS Directory Service API     Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: (?=^.{8,64}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9\s])(?=.*[a-z])|(?=.*[^A-Za-z0-9\s])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9\s]))^.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Password")]
-    pub password: String,
-
-
-    /// 
-    /// Whether to enable single sign-on for a Microsoft Active Directory in AWS. Single sign-on    allows users in your directory to access certain AWS services from a computer joined to the    directory without having to enter their credentials separately. If you don't specify a value,    AWS CloudFormation disables single sign-on by default.
+    /// ImportantAfter an alias has been created, it cannot be deleted or reused, so this operation     should only be used when absolutely necessary.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableSso")]
-    pub enable_sso: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "CreateAlias")]
+    pub create_alias: Option<bool>,
 
 
     /// 
@@ -48,17 +34,15 @@ pub struct CfnMicrosoftAD {
 
 
     /// 
-    /// The NetBIOS name for your domain, such as CORP. If you don't specify a    NetBIOS name, it will default to the first part of your directory DNS. For example,     CORP for the directory DNS corp.example.com.
+    /// Whether to enable single sign-on for a Microsoft Active Directory in AWS. Single sign-on    allows users in your directory to access certain AWS services from a computer joined to the    directory without having to enter their credentials separately. If you don't specify a value,    AWS CloudFormation disables single sign-on by default.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Pattern: ^[^\\/:*?"<>|.]+[^\\/:*?"<>|]*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ShortName")]
-    pub short_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "EnableSso")]
+    pub enable_sso: Option<bool>,
 
 
     /// 
@@ -76,6 +60,36 @@ pub struct CfnMicrosoftAD {
 
 
     /// 
+    /// The password for the default administrative user named Admin.
+    /// 
+    /// If you need to change the password for the administrator account, see the ResetUserPassword API call in the AWS Directory Service API     Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: (?=^.{8,64}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9\s])(?=.*[a-z])|(?=.*[^A-Za-z0-9\s])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9\s]))^.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Password")]
+    pub password: String,
+
+
+    /// 
+    /// The NetBIOS name for your domain, such as CORP. If you don't specify a    NetBIOS name, it will default to the first part of your directory DNS. For example,     CORP for the directory DNS corp.example.com.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[^\\/:*?"<>|.]+[^\\/:*?"<>|]*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ShortName")]
+    pub short_name: Option<String>,
+
+
+    /// 
     /// Specifies the VPC settings of the Microsoft AD directory server in AWS.
     /// 
     /// Required: Yes
@@ -85,20 +99,6 @@ pub struct CfnMicrosoftAD {
     /// Update requires: Replacement
     #[serde(rename = "VpcSettings")]
     pub vpc_settings: VpcSettings,
-
-
-    /// 
-    /// Specifies an alias for a directory and assigns the alias to the directory. The alias is    used to construct the access URL for the directory, such as    http://<alias>.awsapps.com. By default, AWS CloudFormation does not    create an alias.
-    /// 
-    /// ImportantAfter an alias has been created, it cannot be deleted or reused, so this operation     should only be used when absolutely necessary.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CreateAlias")]
-    pub create_alias: Option<bool>,
 
 }
 

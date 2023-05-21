@@ -6,18 +6,6 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// An array of strings that specify the alternate domains (such as example.org)     and subdomains (such as blog.example.com) of the certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "SubjectAlternativeNames")]
-    pub subject_alternative_names: Option<Vec<String>>,
-
-
-    /// 
     /// The name of the certificate.
     /// 
     /// Required: Yes
@@ -39,6 +27,18 @@ pub struct CfnCertificate {
     /// Update requires: Updates are not supported.
     #[serde(rename = "DomainName")]
     pub domain_name: String,
+
+
+    /// 
+    /// An array of strings that specify the alternate domains (such as example.org)     and subdomains (such as blog.example.com) of the certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "SubjectAlternativeNames")]
+    pub subject_alternative_names: Option<Vec<String>>,
 
 
     /// 

@@ -6,31 +6,19 @@ pub struct CfnProject {
 
 
     /// 
-    /// Metadata tags that have been applied to the project.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the role that will be assumed for this       project.
+    /// The dataset that the project is to act upon.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 20
+    /// Minimum: 1
     ///
-    /// Maximum: 2048
+    /// Maximum: 255
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    #[serde(rename = "DatasetName")]
+    pub dataset_name: String,
 
 
     /// 
@@ -50,34 +38,6 @@ pub struct CfnProject {
 
 
     /// 
-    /// The sample size and sampling type to apply to the data. If this parameter isn't       specified, then the sample consists of the first 500 rows from the dataset.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Sample
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Sample")]
-    pub sample: Option<Sample>,
-
-
-    /// 
-    /// The dataset that the project is to act upon.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatasetName")]
-    pub dataset_name: String,
-
-
-    /// 
     /// The name of a recipe that will be developed during a project session.
     /// 
     /// Required: Yes
@@ -91,6 +51,46 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "RecipeName")]
     pub recipe_name: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the role that will be assumed for this       project.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
+    /// The sample size and sampling type to apply to the data. If this parameter isn't       specified, then the sample consists of the first 500 rows from the dataset.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Sample
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Sample")]
+    pub sample: Option<Sample>,
+
+
+    /// 
+    /// Metadata tags that have been applied to the project.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -113,20 +113,6 @@ pub struct Sample {
 
 
     /// 
-    /// The way in which DataBrew obtains rows from a dataset.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: FIRST_N | LAST_N | RANDOM
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: SampleTypeEnum,
-
-
-    /// 
     /// The number of rows in the sample.
     /// 
     /// Required: No
@@ -140,6 +126,20 @@ pub struct Sample {
     /// Update requires: No interruption
     #[serde(rename = "Size")]
     pub size: Option<i64>,
+
+
+    /// 
+    /// The way in which DataBrew obtains rows from a dataset.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: FIRST_N | LAST_N | RANDOM
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: SampleTypeEnum,
 
 }
 

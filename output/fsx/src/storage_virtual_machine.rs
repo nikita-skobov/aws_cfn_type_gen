@@ -6,17 +6,15 @@ pub struct CfnStorageVirtualMachine {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// Describes the Microsoft Active Directory configuration to which the SVM is joined, if applicable.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: ActiveDirectoryConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ActiveDirectoryConfiguration")]
+    pub active_directory_configuration: Option<ActiveDirectoryConfiguration>,
 
 
     /// 
@@ -78,15 +76,17 @@ pub struct CfnStorageVirtualMachine {
 
 
     /// 
-    /// Describes the Microsoft Active Directory configuration to which the SVM is joined, if applicable.
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: ActiveDirectoryConfiguration
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ActiveDirectoryConfiguration")]
-    pub active_directory_configuration: Option<ActiveDirectoryConfiguration>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -165,64 +165,9 @@ pub struct ActiveDirectoryConfiguration {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
 /// The configuration that Amazon FSx uses to join a FSx for Windows File Server file system or an ONTAP storage virtual machine (SVM) to       a self-managed (including on-premises) Microsoft Active Directory (AD)       directory. For more information, see                Using Amazon FSx with your self-managed Microsoft Active Directory or       Managing SVMs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SelfManagedActiveDirectoryConfiguration {
-
-
-    /// 
-    /// The user name for the service account on your self-managed AD domain that Amazon FSx       will use to join to your AD domain. This account must have the permission to join       computers to the domain in the organizational unit provided in         OrganizationalUnitDistinguishedName, or in the default location of your       AD domain.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,256}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserName")]
-    pub user_name: Option<String>,
 
 
     /// 
@@ -240,7 +185,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
 
 
     /// 
-    /// The password for the service account on your self-managed AD domain that Amazon FSx       will use to join to your AD domain.
+    /// The fully qualified domain name of the self-managed AD directory, such as         corp.example.com.
     /// 
     /// Required: No
     ///
@@ -248,13 +193,13 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 256
+    /// Maximum: 255
     ///
-    /// Pattern: ^.{1,256}$
+    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,255}$
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "DomainName")]
+    pub domain_name: Option<String>,
 
 
     /// 
@@ -296,7 +241,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
 
 
     /// 
-    /// The fully qualified domain name of the self-managed AD directory, such as         corp.example.com.
+    /// The password for the service account on your self-managed AD domain that Amazon FSx       will use to join to your AD domain.
     /// 
     /// Required: No
     ///
@@ -304,13 +249,68 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 255
+    /// Maximum: 256
     ///
-    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,255}$
+    /// Pattern: ^.{1,256}$
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainName")]
-    pub domain_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: Option<String>,
+
+
+    /// 
+    /// The user name for the service account on your self-managed AD domain that Amazon FSx       will use to join to your AD domain. This account must have the permission to join       computers to the domain in the organizational unit provided in         OrganizationalUnitDistinguishedName, or in the default location of your       AD domain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,256}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserName")]
+    pub user_name: Option<String>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

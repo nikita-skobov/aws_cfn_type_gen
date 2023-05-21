@@ -16,17 +16,6 @@ pub struct CfnApplicationEntitlementAssociation {
     pub application_identifier: String,
 
 
-    /// The name of the stack.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StackName")]
-    pub stack_name: String,
-
-
     /// The name of the entitlement.
     ///
     /// Required: Yes
@@ -36,6 +25,17 @@ pub struct CfnApplicationEntitlementAssociation {
     /// Update requires: Replacement
     #[serde(rename = "EntitlementName")]
     pub entitlement_name: String,
+
+
+    /// The name of the stack.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StackName")]
+    pub stack_name: String,
 
 }
 

@@ -8,35 +8,45 @@ pub struct CfnDataRepositoryAssociation {
 
 
     /// 
-    /// For files imported from a data repository, this value determines the stripe count and       maximum amount of data per file (in MiB) stored on a single physical disk. The maximum       number of disks that a single file can be striped across is limited by the total number       of disks that make up the file system or cache.
-    /// 
-    /// The default chunk size is 1,024 MiB (1 GiB) and can go as high as 512,000 MiB (500       GiB). Amazon S3 objects have a maximum size of 5 TB.
+    /// A boolean flag indicating whether an import data repository task to import       metadata should run after the data repository association is created. The       task runs if this flag is set to true.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: Boolean
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImportedFileChunkSize")]
-    pub imported_file_chunk_size: Option<i64>,
+    /// Update requires: Replacement
+    #[serde(rename = "BatchImportMetaDataOnCreate")]
+    pub batch_import_meta_data_on_create: Option<bool>,
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
+    /// The path to the Amazon S3 data repository that will be linked to the file       system. The path can be an S3 bucket or prefix in the format       s3://myBucket/myPrefix/. This path specifies where in the S3       data repository files will be imported from or exported to.
     /// 
-    /// For more information, see Tag.
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 4357
+    ///
+    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{3,4357}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataRepositoryPath")]
+    pub data_repository_path: String,
+
+
     /// 
-    /// Required: No
+    /// The ID of the file system on which the data repository association is configured.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "FileSystemId")]
+    pub file_system_id: String,
 
 
     /// 
@@ -62,45 +72,21 @@ pub struct CfnDataRepositoryAssociation {
 
 
     /// 
-    /// The ID of the file system on which the data repository association is configured.
+    /// For files imported from a data repository, this value determines the stripe count and       maximum amount of data per file (in MiB) stored on a single physical disk. The maximum       number of disks that a single file can be striped across is limited by the total number       of disks that make up the file system or cache.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
-
-
-    /// 
-    /// The path to the Amazon S3 data repository that will be linked to the file       system. The path can be an S3 bucket or prefix in the format       s3://myBucket/myPrefix/. This path specifies where in the S3       data repository files will be imported from or exported to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 4357
-    ///
-    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{3,4357}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataRepositoryPath")]
-    pub data_repository_path: String,
-
-
-    /// 
-    /// A boolean flag indicating whether an import data repository task to import       metadata should run after the data repository association is created. The       task runs if this flag is set to true.
+    /// The default chunk size is 1,024 MiB (1 GiB) and can go as high as 512,000 MiB (500       GiB). Amazon S3 objects have a maximum size of 5 TB.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Integer
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "BatchImportMetaDataOnCreate")]
-    pub batch_import_meta_data_on_create: Option<bool>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 512000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImportedFileChunkSize")]
+    pub imported_file_chunk_size: Option<i64>,
 
 
     /// 
@@ -113,6 +99,20 @@ pub struct CfnDataRepositoryAssociation {
     /// Update requires: No interruption
     #[serde(rename = "S3")]
     pub s3: Option<S3>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -127,6 +127,35 @@ impl cfn_resources::CfnResource for CfnDataRepositoryAssociation {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes a data repository association's automatic export policy. The       AutoExportPolicy defines the types of updated objects on the       file system that will be automatically exported to the data repository.       As you create, modify, or delete files, Amazon FSx for Lustre       automatically exports the defined changes asynchronously once your application finishes       modifying the file.
+///
+/// The AutoExportPolicy is only supported on Amazon FSx for Lustre file systems       with a data repository association.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AutoExportPolicy {
+
+
+    /// 
+    /// The AutoExportPolicy can have the following event values:
+    /// 
+    /// NEW - New files and directories are automatically exported         to the data repository as they are added to the file system.                        CHANGED - Changes to files and directories on the         file system are automatically exported to the data repository.                        DELETED - Files and directories are automatically deleted         on the data repository when they are deleted on the file system.
+    /// 
+    /// You can define any combination of event types for your AutoExportPolicy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Events")]
+    pub events: Vec<String>,
+
+}
+
+
 
 
 /// Describes the data repository association's automatic import policy.       The AutoImportPolicy defines how Amazon FSx keeps your file metadata and directory       listings up to date by importing changes to your Amazon FSx for Lustre file system       as you modify objects in a linked S3 bucket.
@@ -207,17 +236,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -227,34 +245,16 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-
-
-/// Describes a data repository association's automatic export policy. The       AutoExportPolicy defines the types of updated objects on the       file system that will be automatically exported to the data repository.       As you create, modify, or delete files, Amazon FSx for Lustre       automatically exports the defined changes asynchronously once your application finishes       modifying the file.
-///
-/// The AutoExportPolicy is only supported on Amazon FSx for Lustre file systems       with a data repository association.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AutoExportPolicy {
-
 
     /// 
-    /// The AutoExportPolicy can have the following event values:
-    /// 
-    /// NEW - New files and directories are automatically exported         to the data repository as they are added to the file system.                        CHANGED - Changes to files and directories on the         file system are automatically exported to the data repository.                        DELETED - Files and directories are automatically deleted         on the data repository when they are deleted on the file system.
-    /// 
-    /// You can define any combination of event types for your AutoExportPolicy.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Events")]
-    pub events: Vec<String>,
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

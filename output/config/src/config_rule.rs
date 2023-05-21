@@ -20,15 +20,21 @@ pub struct CfnConfigRule {
 
 
     /// 
-    /// Provides the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule identifier, 			and the notifications that cause the function to evaluate your AWS 			resources.
+    /// A name for the AWS Config rule. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the rule name.       For more information, see Name Type.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: Source
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Source")]
-    pub source: Source,
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConfigRuleName")]
+    pub config_rule_name: Option<String>,
 
 
     /// 
@@ -48,24 +54,6 @@ pub struct CfnConfigRule {
 
 
     /// 
-    /// A name for the AWS Config rule. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the rule name.       For more information, see Name Type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConfigRuleName")]
-    pub config_rule_name: Option<String>,
-
-
-    /// 
     /// A string, in JSON format, that is passed to the AWS Config rule 			Lambda function.
     /// 
     /// Required: No
@@ -79,20 +67,6 @@ pub struct CfnConfigRule {
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
     pub input_parameters: Option<serde_json::Value>,
-
-
-    /// 
-    /// Defines which resources can trigger an evaluation for the rule. 			The scope can include one or more resource types, a combination of 			one resource type and one resource ID, or a combination of a tag key 			and value. Specify a scope to constrain the resources that can 			trigger an evaluation for the rule. If you do not specify a scope, 			evaluations are triggered when any resource in the recording group 			changes.
-    /// 
-    /// NoteThe scope can be empty.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Scope
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: Option<Scope>,
 
 
     /// 
@@ -111,6 +85,32 @@ pub struct CfnConfigRule {
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
     pub maximum_execution_frequency: Option<ConfigRuleMaximumExecutionFrequencyEnum>,
+
+
+    /// 
+    /// Defines which resources can trigger an evaluation for the rule. 			The scope can include one or more resource types, a combination of 			one resource type and one resource ID, or a combination of a tag key 			and value. Specify a scope to constrain the resources that can 			trigger an evaluation for the rule. If you do not specify a scope, 			evaluations are triggered when any resource in the recording group 			changes.
+    /// 
+    /// NoteThe scope can be empty.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Scope
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scope")]
+    pub scope: Option<Scope>,
+
+
+    /// 
+    /// Provides the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule identifier, 			and the notifications that cause the function to evaluate your AWS 			resources.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Source
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Source")]
+    pub source: Source,
 
 }
 
@@ -158,17 +158,114 @@ impl cfn_resources::CfnResource for CfnConfigRule {
 }
 
 
-/// Provides the CustomPolicyDetails, the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule 			identifier, and the events that cause the evaluation of your AWS 			resources.
+/// Provides the runtime system, policy definition, and whether debug logging enabled. You can 			specify the following CustomPolicyDetails parameter values 			only 			for AWS Config Custom Policy rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Source {
+pub struct CustomPolicyDetails {
 
 
     /// 
-    /// For AWS Config Managed rules, a predefined identifier from a 			list. For example, IAM_PASSWORD_POLICY is a managed 			rule. To reference a managed rule, see List of AWS Config Managed Rules.
+    /// The boolean expression for enabling debug logging for your AWS Config Custom Policy rule. The default value is false.
     /// 
-    /// For AWS Config Custom Lambda rules, the identifier is the Amazon Resource Name 			(ARN) of the rule's AWS Lambda function, such as 			arn:aws:lambda:us-east-2:123456789012:function:custom_rule_name.
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableDebugLogDelivery")]
+    pub enable_debug_log_delivery: Option<bool>,
+
+
     /// 
-    /// For AWS Config Custom Policy rules, this field will be ignored.
+    /// The runtime system for your AWS Config Custom Policy rule. Guard is a policy-as-code language that allows you to write policies that are enforced by AWS Config Custom Policy rules. For more information about Guard, see the Guard GitHub 					Repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: guard\-2\.x\.x
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyRuntime")]
+    pub policy_runtime: Option<String>,
+
+
+    /// 
+    /// The policy definition containing the logic for your AWS Config Custom Policy rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyText")]
+    pub policy_text: Option<String>,
+
+}
+
+
+
+
+/// Defines which resources trigger an evaluation for an AWS Config 			rule. The scope can include one or more resource types, a 			combination of a tag key and value, or a combination of one resource 			type and one resource ID. Specify a scope to constrain which 			resources trigger an evaluation for a rule. Otherwise, evaluations 			for the rule are triggered when any resource in your recording group 			changes in configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Scope {
+
+
+    /// 
+    /// The ID of the only AWS resource that you want to trigger an 			evaluation for the rule. If you specify a resource ID, you must 			specify one resource type for 			ComplianceResourceTypes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 768
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComplianceResourceId")]
+    pub compliance_resource_id: Option<String>,
+
+
+    /// 
+    /// The resource types of only those AWS resources that you want to 			trigger an evaluation for the rule. You can only specify one type if 			you also specify a resource ID for 			ComplianceResourceId.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComplianceResourceTypes")]
+    pub compliance_resource_types: Option<Vec<String>>,
+
+
+    /// 
+    /// The tag key that is applied to only those AWS resources that 			you want to trigger an evaluation for the rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TagKey")]
+    pub tag_key: Option<String>,
+
+
+    /// 
+    /// The tag value applied to only those AWS resources that you want 			to trigger an evaluation for the rule. If you specify a value for 				TagValue, you must also specify a value for 				TagKey.
     /// 
     /// Required: No
     ///
@@ -179,8 +276,17 @@ pub struct Source {
     /// Maximum: 256
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SourceIdentifier")]
-    pub source_identifier: Option<String>,
+    #[serde(rename = "TagValue")]
+    pub tag_value: Option<String>,
+
+}
+
+
+
+
+/// Provides the CustomPolicyDetails, the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule 			identifier, and the events that cause the evaluation of your AWS 			resources.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Source {
 
 
     /// 
@@ -228,6 +334,26 @@ pub struct Source {
     #[serde(rename = "SourceDetails")]
     pub source_details: Option<Vec<SourceDetail>>,
 
+
+    /// 
+    /// For AWS Config Managed rules, a predefined identifier from a 			list. For example, IAM_PASSWORD_POLICY is a managed 			rule. To reference a managed rule, see List of AWS Config Managed Rules.
+    /// 
+    /// For AWS Config Custom Lambda rules, the identifier is the Amazon Resource Name 			(ARN) of the rule's AWS Lambda function, such as 			arn:aws:lambda:us-east-2:123456789012:function:custom_rule_name.
+    /// 
+    /// For AWS Config Custom Policy rules, this field will be ignored.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceIdentifier")]
+    pub source_identifier: Option<String>,
+
 }
 
 
@@ -262,24 +388,6 @@ pub struct SourceDetail {
 
 
     /// 
-    /// The type of notification that triggers AWS Config to run an 			evaluation for a rule. You can specify the following notification 			types:
-    /// 
-    /// ConfigurationItemChangeNotification - Triggers 					an evaluation when AWS Config delivers a configuration item 					as a result of a resource change.                        OversizedConfigurationItemChangeNotification 					- Triggers an evaluation when AWS Config delivers an 					oversized configuration item. AWS Config may generate this 					notification type when a resource changes and the 					notification exceeds the maximum size allowed by Amazon 					SNS.                        ScheduledNotification - Triggers a 					periodic evaluation at the frequency specified for 						MaximumExecutionFrequency.                        ConfigurationSnapshotDeliveryCompleted - 					Triggers a periodic evaluation when AWS Config delivers a 					configuration snapshot.
-    /// 
-    /// If you want your custom rule to be triggered by configuration 			changes, specify two SourceDetail objects, one for 				ConfigurationItemChangeNotification and one for 				OversizedConfigurationItemChangeNotification.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ConfigurationItemChangeNotification | ConfigurationSnapshotDeliveryCompleted | OversizedConfigurationItemChangeNotification | ScheduledNotification
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MessageType")]
-    pub message_type: SourceDetailMessageTypeEnum,
-
-
-    /// 
     /// The source of the event, such as an AWS service, that triggers 			AWS Config to evaluate your AWS resources.
     /// 
     /// Required: Yes
@@ -307,6 +415,24 @@ pub struct SourceDetail {
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
     pub maximum_execution_frequency: Option<SourceDetailMaximumExecutionFrequencyEnum>,
+
+
+    /// 
+    /// The type of notification that triggers AWS Config to run an 			evaluation for a rule. You can specify the following notification 			types:
+    /// 
+    /// ConfigurationItemChangeNotification - Triggers 					an evaluation when AWS Config delivers a configuration item 					as a result of a resource change.                        OversizedConfigurationItemChangeNotification 					- Triggers an evaluation when AWS Config delivers an 					oversized configuration item. AWS Config may generate this 					notification type when a resource changes and the 					notification exceeds the maximum size allowed by Amazon 					SNS.                        ScheduledNotification - Triggers a 					periodic evaluation at the frequency specified for 						MaximumExecutionFrequency.                        ConfigurationSnapshotDeliveryCompleted - 					Triggers a periodic evaluation when AWS Config delivers a 					configuration snapshot.
+    /// 
+    /// If you want your custom rule to be triggered by configuration 			changes, specify two SourceDetail objects, one for 				ConfigurationItemChangeNotification and one for 				OversizedConfigurationItemChangeNotification.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ConfigurationItemChangeNotification | ConfigurationSnapshotDeliveryCompleted | OversizedConfigurationItemChangeNotification | ScheduledNotification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MessageType")]
+    pub message_type: SourceDetailMessageTypeEnum,
 
 }
 
@@ -343,21 +469,6 @@ impl Default for SourceDetailMaximumExecutionFrequencyEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum SourceDetailEventSourceEnum {
-
-    /// aws.config
-    #[serde(rename = "aws.config")]
-    Awsconfig,
-
-}
-
-impl Default for SourceDetailEventSourceEnum {
-    fn default() -> Self {
-        SourceDetailEventSourceEnum::Awsconfig
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum SourceDetailMessageTypeEnum {
 
     /// ConfigurationItemChangeNotification
@@ -384,129 +495,18 @@ impl Default for SourceDetailMessageTypeEnum {
     }
 }
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SourceDetailEventSourceEnum {
 
-
-/// Defines which resources trigger an evaluation for an AWS Config 			rule. The scope can include one or more resource types, a 			combination of a tag key and value, or a combination of one resource 			type and one resource ID. Specify a scope to constrain which 			resources trigger an evaluation for a rule. Otherwise, evaluations 			for the rule are triggered when any resource in your recording group 			changes in configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Scope {
-
-
-    /// 
-    /// The ID of the only AWS resource that you want to trigger an 			evaluation for the rule. If you specify a resource ID, you must 			specify one resource type for 			ComplianceResourceTypes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 768
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComplianceResourceId")]
-    pub compliance_resource_id: Option<String>,
-
-
-    /// 
-    /// The tag value applied to only those AWS resources that you want 			to trigger an evaluation for the rule. If you specify a value for 				TagValue, you must also specify a value for 				TagKey.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagValue")]
-    pub tag_value: Option<String>,
-
-
-    /// 
-    /// The resource types of only those AWS resources that you want to 			trigger an evaluation for the rule. You can only specify one type if 			you also specify a resource ID for 			ComplianceResourceId.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComplianceResourceTypes")]
-    pub compliance_resource_types: Option<Vec<String>>,
-
-
-    /// 
-    /// The tag key that is applied to only those AWS resources that 			you want to trigger an evaluation for the rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagKey")]
-    pub tag_key: Option<String>,
+    /// aws.config
+    #[serde(rename = "aws.config")]
+    Awsconfig,
 
 }
 
-
-
-
-/// Provides the runtime system, policy definition, and whether debug logging enabled. You can 			specify the following CustomPolicyDetails parameter values 			only 			for AWS Config Custom Policy rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CustomPolicyDetails {
-
-
-    /// 
-    /// The runtime system for your AWS Config Custom Policy rule. Guard is a policy-as-code language that allows you to write policies that are enforced by AWS Config Custom Policy rules. For more information about Guard, see the Guard GitHub 					Repository.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: guard\-2\.x\.x
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyRuntime")]
-    pub policy_runtime: Option<String>,
-
-
-    /// 
-    /// The boolean expression for enabling debug logging for your AWS Config Custom Policy rule. The default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableDebugLogDelivery")]
-    pub enable_debug_log_delivery: Option<bool>,
-
-
-    /// 
-    /// The policy definition containing the logic for your AWS Config Custom Policy rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyText")]
-    pub policy_text: Option<String>,
-
+impl Default for SourceDetailEventSourceEnum {
+    fn default() -> Self {
+        SourceDetailEventSourceEnum::Awsconfig
+    }
 }
-
 

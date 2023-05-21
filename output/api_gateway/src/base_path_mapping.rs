@@ -6,6 +6,18 @@ pub struct CfnBasePathMapping {
 
 
     /// 
+    /// The base path name that callers of the API must provide as part of the URL after the domain name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BasePath")]
+    pub base_path: Option<String>,
+
+
+    /// 
     /// The domain name of the BasePathMapping resource to be described.
     /// 
     /// Required: Yes
@@ -15,6 +27,17 @@ pub struct CfnBasePathMapping {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     pub domain_name: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Id")]
+    pub id: Option<String>,
 
 
     /// 
@@ -27,29 +50,6 @@ pub struct CfnBasePathMapping {
     /// Update requires: No interruption
     #[serde(rename = "RestApiId")]
     pub rest_api_id: Option<String>,
-
-
-    /// 
-    /// The base path name that callers of the API must provide as part of the URL after the domain name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BasePath")]
-    pub base_path: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: Option<String>,
 
 
     /// 

@@ -5,17 +5,6 @@
 pub struct CfnGroup {
 
 
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: String,
-
-
     /// 
     /// A string containing the description of the group.
     /// 
@@ -26,6 +15,17 @@ pub struct CfnGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: String,
 
 
     /// Property description not available.

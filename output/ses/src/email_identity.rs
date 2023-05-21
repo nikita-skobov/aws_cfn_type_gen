@@ -12,30 +12,6 @@ pub struct CfnEmailIdentity {
 
 
     /// 
-    /// Used to enable or disable feedback forwarding for an identity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FeedbackAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FeedbackAttributes")]
-    pub feedback_attributes: Option<FeedbackAttributes>,
-
-
-    /// 
-    /// The email address or domain to verify.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EmailIdentity")]
-    pub email_identity: String,
-
-
-    /// 
     /// Used to associate a configuration set with an email identity.
     /// 
     /// Required: No
@@ -48,15 +24,15 @@ pub struct CfnEmailIdentity {
 
 
     /// 
-    /// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
+    /// An object that contains information about the DKIM attributes for the identity.
     /// 
     /// Required: No
     ///
-    /// Type: MailFromAttributes
+    /// Type: DkimAttributes
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MailFromAttributes")]
-    pub mail_from_attributes: Option<MailFromAttributes>,
+    #[serde(rename = "DkimAttributes")]
+    pub dkim_attributes: Option<DkimAttributes>,
 
 
     /// 
@@ -72,15 +48,39 @@ pub struct CfnEmailIdentity {
 
 
     /// 
-    /// An object that contains information about the DKIM attributes for the identity.
+    /// The email address or domain to verify.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EmailIdentity")]
+    pub email_identity: String,
+
+
+    /// 
+    /// Used to enable or disable feedback forwarding for an identity.
     /// 
     /// Required: No
     ///
-    /// Type: DkimAttributes
+    /// Type: FeedbackAttributes
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DkimAttributes")]
-    pub dkim_attributes: Option<DkimAttributes>,
+    #[serde(rename = "FeedbackAttributes")]
+    pub feedback_attributes: Option<FeedbackAttributes>,
+
+
+    /// 
+    /// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MailFromAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MailFromAttributes")]
+    pub mail_from_attributes: Option<MailFromAttributes>,
 
 }
 
@@ -95,6 +95,50 @@ impl cfn_resources::CfnResource for CfnEmailIdentity {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Used to associate a configuration set with an email identity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConfigurationSetAttributes {
+
+
+    /// 
+    /// The configuration set to associate with an email identity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConfigurationSetName")]
+    pub configuration_set_name: Option<String>,
+
+}
+
+
+
+
+/// Used to enable or disable DKIM authentication for an email identity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DkimAttributes {
+
+
+    /// 
+    /// Sets the DKIM signing configuration for the identity.
+    /// 
+    /// When you set this value true, then the messages that are sent from the       identity are signed using DKIM. If you set this value to false, your       messages are sent without DKIM signing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SigningEnabled")]
+    pub signing_enabled: Option<bool>,
+
+}
+
+
 
 
 /// Used to configure or change the DKIM authentication settings for an email domain       identity. You can use this operation to do any of the following:
@@ -167,6 +211,31 @@ impl Default for DkimSigningAttributesNextSigningKeyLengthEnum {
 
 
 
+/// Used to enable or disable feedback forwarding for an identity. This setting determines       what happens when an identity is used to send an email that results in a bounce or       complaint event.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FeedbackAttributes {
+
+
+    /// 
+    /// Sets the feedback forwarding configuration for the identity.
+    /// 
+    /// If the value is true, you receive email notifications when bounce or       complaint events occur. These notifications are sent to the address that you specified       in the Return-Path header of the original email.
+    /// 
+    /// You're required to have a method of tracking bounces and complaints. If you haven't       set up another mechanism for receiving bounce or complaint notifications (for example,       by setting up an event destination), you receive an email notification when these events       occur (even if this setting is disabled).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EmailForwardingEnabled")]
+    pub email_forwarding_enabled: Option<bool>,
+
+}
+
+
+
+
 /// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MailFromAttributes {
@@ -222,73 +291,4 @@ impl Default for MailFromAttributesBehaviorOnMxFailureEnum {
         MailFromAttributesBehaviorOnMxFailureEnum::Usedefaultvalue
     }
 }
-
-
-
-/// Used to associate a configuration set with an email identity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConfigurationSetAttributes {
-
-
-    /// 
-    /// The configuration set to associate with an email identity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigurationSetName")]
-    pub configuration_set_name: Option<String>,
-
-}
-
-
-
-
-/// Used to enable or disable DKIM authentication for an email identity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DkimAttributes {
-
-
-    /// 
-    /// Sets the DKIM signing configuration for the identity.
-    /// 
-    /// When you set this value true, then the messages that are sent from the       identity are signed using DKIM. If you set this value to false, your       messages are sent without DKIM signing.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SigningEnabled")]
-    pub signing_enabled: Option<bool>,
-
-}
-
-
-
-
-/// Used to enable or disable feedback forwarding for an identity. This setting determines       what happens when an identity is used to send an email that results in a bounce or       complaint event.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FeedbackAttributes {
-
-
-    /// 
-    /// Sets the feedback forwarding configuration for the identity.
-    /// 
-    /// If the value is true, you receive email notifications when bounce or       complaint events occur. These notifications are sent to the address that you specified       in the Return-Path header of the original email.
-    /// 
-    /// You're required to have a method of tracking bounces and complaints. If you haven't       set up another mechanism for receiving bounce or complaint notifications (for example,       by setting up an event destination), you receive an email notification when these events       occur (even if this setting is disabled).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EmailForwardingEnabled")]
-    pub email_forwarding_enabled: Option<bool>,
-
-}
-
 

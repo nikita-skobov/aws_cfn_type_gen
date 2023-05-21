@@ -6,32 +6,6 @@ pub struct CfnPublicDnsNamespace {
 
 
     /// 
-    /// The tags for the namespace. Each tag consists of a key and an optional value, both of which you define. Tag keys  can have a maximum character length of 128 characters, and tag values can have a maximum length of 256  characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Properties for the  public DNS namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Properties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Properties")]
-    pub properties: Option<Properties>,
-
-
-    /// 
     /// A description for the namespace.
     /// 
     /// Required: No
@@ -61,6 +35,32 @@ pub struct CfnPublicDnsNamespace {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// Properties for the  public DNS namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Properties
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Properties")]
+    pub properties: Option<Properties>,
+
+
+    /// 
+    /// The tags for the namespace. Each tag consists of a key and an optional value, both of which you define. Tag keys  can have a maximum character length of 128 characters, and tag values can have a maximum length of 256  characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -92,6 +92,27 @@ pub struct Properties {
     /// Update requires: No interruption
     #[serde(rename = "DnsProperties")]
     pub dns_properties: Option<PublicDnsPropertiesMutable>,
+
+}
+
+
+
+
+/// DNS properties for  the public DNS namespace.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PublicDnsPropertiesMutable {
+
+
+    /// 
+    /// Start of Authority  (SOA) record for the hosted zone for the public DNS namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SOA
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SOA")]
+    pub soa: Option<SOA>,
 
 }
 
@@ -150,27 +171,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// DNS properties for  the public DNS namespace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PublicDnsPropertiesMutable {
-
-
-    /// 
-    /// Start of Authority  (SOA) record for the hosted zone for the public DNS namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SOA
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SOA")]
-    pub soa: Option<SOA>,
 
 }
 

@@ -6,6 +6,32 @@ pub struct CfnDisk {
 
 
     /// 
+    /// An array of add-ons for the disk.
+    /// 
+    /// NoteIf the disk has an add-on enabled when performing a delete disk request, the add-on       is automatically disabled before the disk is deleted.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AddOn
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AddOns")]
+    pub add_ons: Option<Vec<AddOn>>,
+
+
+    /// 
+    /// The AWS Region and Availability Zone location for the disk (for     example, us-east-1a).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
+
+
+    /// 
     /// The name of the disk.
     /// 
     /// Required: Yes
@@ -28,20 +54,6 @@ pub struct CfnDisk {
     /// Update requires: No interruption
     #[serde(rename = "Location")]
     pub location: Option<Location>,
-
-
-    /// 
-    /// An array of add-ons for the disk.
-    /// 
-    /// NoteIf the disk has an add-on enabled when performing a delete disk request, the add-on       is automatically disabled before the disk is deleted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AddOn
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AddOns")]
-    pub add_ons: Option<Vec<AddOn>>,
 
 
     /// 
@@ -71,18 +83,6 @@ pub struct CfnDisk {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The AWS Region and Availability Zone location for the disk (for     example, us-east-1a).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
-
 }
 
 
@@ -96,6 +96,74 @@ impl cfn_resources::CfnResource for CfnDisk {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// AddOn is a property of the AWS::Lightsail::Disk resource. It describes the add-ons for a disk.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AddOn {
+
+
+    /// 
+    /// The add-on type (for example, AutoSnapshot).
+    /// 
+    /// NoteAutoSnapshot is the only add-on that can be enabled for a disk.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AddOnType")]
+    pub add_on_type: String,
+
+
+    /// 
+    /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AutoSnapshotAddOn
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoSnapshotAddOnRequest")]
+    pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
+
+
+    /// 
+    /// The status of the add-on.
+    /// 
+    /// Valid Values: Enabled | Disabled
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<AddOnStatusEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AddOnStatusEnum {
+
+    /// Enabled
+    #[serde(rename = "Enabled")]
+    Enabled,
+
+    /// Disabled
+    #[serde(rename = "Disabled")]
+    Disabled,
+
+}
+
+impl Default for AddOnStatusEnum {
+    fn default() -> Self {
+        AddOnStatusEnum::Enabled
+    }
+}
+
 
 
 /// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for a disk.
@@ -125,43 +193,6 @@ pub struct AutoSnapshotAddOn {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
 /// The Location property type specifies Property description not available. for an AWS::Lightsail::Disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Location {
@@ -174,8 +205,8 @@ pub struct Location {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RegionName")]
-    pub region_name: Option<String>,
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
 
 
     /// Property description not available.
@@ -185,77 +216,46 @@ pub struct Location {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
+    #[serde(rename = "RegionName")]
+    pub region_name: Option<String>,
 
 }
 
 
 
 
-/// AddOn is a property of the AWS::Lightsail::Disk resource. It describes the add-ons for a disk.
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AddOn {
+pub struct Tag {
 
 
     /// 
-    /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AutoSnapshotAddOn
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoSnapshotAddOnRequest")]
-    pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
-
-
-    /// 
-    /// The status of the add-on.
-    /// 
-    /// Valid Values: Enabled | Disabled
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<AddOnStatusEnum>,
-
-
-    /// 
-    /// The add-on type (for example, AutoSnapshot).
-    /// 
-    /// NoteAutoSnapshot is the only add-on that can be enabled for a disk.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AddOnType")]
-    pub add_on_type: String,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AddOnStatusEnum {
-
-    /// Enabled
-    #[serde(rename = "Enabled")]
-    Enabled,
-
-    /// Disabled
-    #[serde(rename = "Disabled")]
-    Disabled,
-
-}
-
-impl Default for AddOnStatusEnum {
-    fn default() -> Self {
-        AddOnStatusEnum::Enabled
-    }
-}
 

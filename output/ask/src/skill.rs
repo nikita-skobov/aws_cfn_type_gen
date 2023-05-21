@@ -6,18 +6,6 @@ pub struct CfnSkill {
 
 
     /// 
-    /// The vendor ID associated with the Amazon developer account that will host the       skill. Details for retrieving the vendor ID are in How to get your vendor ID. The provided LWA credentials must be linked to the       developer account associated with this vendor ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VendorId")]
-    pub vendor_id: String,
-
-
-    /// 
     /// Login with Amazon (LWA) configuration used to authenticate with the Alexa service.       Only Login with Amazon clients created through the Amazon Developer Console are supported. The client ID, client secret, and refresh token are       required.
     /// 
     /// Required: Yes
@@ -40,6 +28,18 @@ pub struct CfnSkill {
     #[serde(rename = "SkillPackage")]
     pub skill_package: SkillPackage,
 
+
+    /// 
+    /// The vendor ID associated with the Amazon developer account that will host the       skill. Details for retrieving the vendor ID are in How to get your vendor ID. The provided LWA credentials must be linked to the       developer account associated with this vendor ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VendorId")]
+    pub vendor_id: String,
+
 }
 
 
@@ -55,71 +55,47 @@ impl cfn_resources::CfnResource for CfnSkill {
 }
 
 
-/// The SkillPackage property type contains configuration details for the       skill package that contains the components of the Alexa skill. Skill packages are       retrieved from an Amazon S3 bucket and key and used to create and update the skill. More       details about the skill package format are located in the Skill Package API Reference.
+/// The AuthenticationConfiguration property type specifies the Login with       Amazon (LWA) configuration used to authenticate with the Alexa service. Only Login with       Amazon security profiles created through the Build Skills with the Alexa Skills Kit developer documentation are supported for authentication. A client ID, client secret, and       refresh token are required. You can generate a client ID and client secret by creating a       new security profile on the Amazon Developer Portal or you can retrieve them       from an existing profile. You can then retrieve the refresh token using the Alexa Skills       Kit CLI. For instructions, see util-command       in the ASK CLI Command Reference.
 ///
-/// SkillPackage is a property of the Alexa::ASK::Skill       resource.
+/// AuthenticationConfiguration is a property of the         Alexa::ASK::Skill resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SkillPackage {
+pub struct AuthenticationConfiguration {
 
 
     /// 
-    /// The name of the Amazon S3 bucket where the .zip file that contains the skill       package is stored.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
-
-
-    /// 
-    /// ARN of the IAM role that grants the Alexa service (alexa-appkit.amazon.com) permission to access the bucket and       retrieve the skill package. This property is optional. If you do not provide it, the bucket       must be publicly accessible or configured with a policy that allows this access.       Otherwise, AWS CloudFormation cannot create the skill.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3BucketRole")]
-    pub s3_bucket_role: Option<String>,
-
-
-    /// 
-    /// If you have S3 versioning enabled, the version ID of the skill package.zip       file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3ObjectVersion")]
-    pub s3_object_version: Option<String>,
-
-
-    /// 
-    /// The location and name of the skill package .zip file.
+    /// Client ID from Login with Amazon (LWA).
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3Key")]
-    pub s3_key: String,
+    #[serde(rename = "ClientId")]
+    pub client_id: String,
 
 
     /// 
-    /// Overrides to the skill package to apply when creating or updating the skill. Values       provided here do not modify the contents of the original skill package. Currently, only       overriding values inside of the skill manifest component of the package is       supported.
+    /// Client secret from Login with Amazon (LWA).
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Overrides
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Overrides")]
-    pub overrides: Option<Overrides>,
+    #[serde(rename = "ClientSecret")]
+    pub client_secret: String,
+
+
+    /// 
+    /// Refresh token from Login with Amazon (LWA). This token is secret.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RefreshToken")]
+    pub refresh_token: String,
 
 }
 
@@ -149,47 +125,71 @@ pub struct Overrides {
 
 
 
-/// The AuthenticationConfiguration property type specifies the Login with       Amazon (LWA) configuration used to authenticate with the Alexa service. Only Login with       Amazon security profiles created through the Build Skills with the Alexa Skills Kit developer documentation are supported for authentication. A client ID, client secret, and       refresh token are required. You can generate a client ID and client secret by creating a       new security profile on the Amazon Developer Portal or you can retrieve them       from an existing profile. You can then retrieve the refresh token using the Alexa Skills       Kit CLI. For instructions, see util-command       in the ASK CLI Command Reference.
+/// The SkillPackage property type contains configuration details for the       skill package that contains the components of the Alexa skill. Skill packages are       retrieved from an Amazon S3 bucket and key and used to create and update the skill. More       details about the skill package format are located in the Skill Package API Reference.
 ///
-/// AuthenticationConfiguration is a property of the         Alexa::ASK::Skill resource.
+/// SkillPackage is a property of the Alexa::ASK::Skill       resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthenticationConfiguration {
+pub struct SkillPackage {
 
 
     /// 
-    /// Client ID from Login with Amazon (LWA).
+    /// Overrides to the skill package to apply when creating or updating the skill. Values       provided here do not modify the contents of the original skill package. Currently, only       overriding values inside of the skill manifest component of the package is       supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Overrides
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Overrides")]
+    pub overrides: Option<Overrides>,
+
+
+    /// 
+    /// The name of the Amazon S3 bucket where the .zip file that contains the skill       package is stored.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ClientId")]
-    pub client_id: String,
+    #[serde(rename = "S3Bucket")]
+    pub s3_bucket: String,
 
 
     /// 
-    /// Refresh token from Login with Amazon (LWA). This token is secret.
+    /// ARN of the IAM role that grants the Alexa service (alexa-appkit.amazon.com) permission to access the bucket and       retrieve the skill package. This property is optional. If you do not provide it, the bucket       must be publicly accessible or configured with a policy that allows this access.       Otherwise, AWS CloudFormation cannot create the skill.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3BucketRole")]
+    pub s3_bucket_role: Option<String>,
+
+
+    /// 
+    /// The location and name of the skill package .zip file.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RefreshToken")]
-    pub refresh_token: String,
+    #[serde(rename = "S3Key")]
+    pub s3_key: String,
 
 
     /// 
-    /// Client secret from Login with Amazon (LWA).
+    /// If you have S3 versioning enabled, the version ID of the skill package.zip       file.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ClientSecret")]
-    pub client_secret: String,
+    #[serde(rename = "S3ObjectVersion")]
+    pub s3_object_version: Option<String>,
 
 }
 

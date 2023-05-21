@@ -6,15 +6,15 @@ pub struct CfnFunctionDefinitionVersion {
 
 
     /// 
-    /// The functions in this version.
+    /// The default configuration that applies to all Lambda functions in the group. Individual Lambda functions can override these settings.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of Function
+    /// Type: DefaultConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Functions")]
-    pub functions: Vec<Function>,
+    #[serde(rename = "DefaultConfig")]
+    pub default_config: Option<DefaultConfig>,
 
 
     /// 
@@ -30,15 +30,15 @@ pub struct CfnFunctionDefinitionVersion {
 
 
     /// 
-    /// The default configuration that applies to all Lambda functions in the group. Individual Lambda functions can override these settings.
+    /// The functions in this version.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: DefaultConfig
+    /// Type: List of Function
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DefaultConfig")]
-    pub default_config: Option<DefaultConfig>,
+    #[serde(rename = "Functions")]
+    pub functions: Vec<Function>,
 
 }
 
@@ -78,84 +78,6 @@ pub struct DefaultConfig {
 
 
 
-/// A list of the 		resources in the group 				 that the function can access, with the corresponding read-only or read-write permissions. The maximum is 10 resources.
-///
-/// In an AWS CloudFormation template,      ResourceAccessPolicy is a property of the Environment 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ResourceAccessPolicy {
-
-
-    /// 
-    /// The read-only or read-write access that the Lambda function has to the resource. 				 Valid values are ro or rw.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Permission")]
-    pub permission: Option<String>,
-
-
-    /// 
-    /// The ID of the resource. This ID is assigned to the resource when you create the resource definition.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String,
-
-}
-
-
-
-
-/// Configuration settings for the Lambda execution environment on the AWS IoT Greengrass core.
-///
-/// In an AWS CloudFormation template,      Execution is a property of the DefaultConfig property type for a function definition version and      the 		 Environment property type for a function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Execution {
-
-
-    /// 
-    /// The user and group permissions used to run the Lambda function. Typically, this is the ggc_user and ggc_group. 	For more information, 	see Run as in the AWS IoT Greengrass Version 1 Developer Guide.
-    /// 
-    /// When set on the DefaultConfig property of a function definition version,            this setting is used as the default access identity for all Lambda functions in the function definition version.            When set on the Environment property of a function,            this setting applies to the individual function and overrides the default. You can override the user, group, or both.            Omit this value to run the function with the default permissions.
-    /// 
-    /// ImportantRunning as the root user increases risks to your data and device. Do not run as root (UID/GID=0) unless            your business case requires it. For more information and requirements, see            Running a Lambda Function as Root.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RunAs
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RunAs")]
-    pub run_as: Option<RunAs>,
-
-
-    /// 
-    /// The containerization that the Lambda function runs in.           Valid values are GreengrassContainer or NoContainer. Typically, this is GreengrassContainer. 	For more information, 	see Containerization in the AWS IoT Greengrass Version 1 Developer Guide.
-    /// 
-    /// When set on the DefaultConfig property of a function            definition version,            this setting is used as the default containerization for all Lambda functions in the function definition version.            When set on the Environment property of a function,            this setting applies to the individual function and overrides the default.            Omit this value to run the function with the default containerization.
-    /// 
-    /// NoteWe recommend that you run in a Greengrass container unless your business case requires that you run without containerization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IsolationMode")]
-    pub isolation_mode: Option<String>,
-
-}
-
-
-
-
 /// The environment configuration for a Lambda function on the AWS IoT Greengrass core.
 ///
 /// In an AWS CloudFormation template,      Environment is a property of the FunctionConfiguration 		 property type.
@@ -164,15 +86,29 @@ pub struct Environment {
 
 
     /// 
-    /// Environment variables for the Lambda function.
+    /// Indicates whether the function is allowed to access the /sys directory on the core device, which allows the 				 read device information from /sys.
+    /// 
+    /// NoteThis property applies only to Lambda functions that run in a Greengrass container.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Variables")]
-    pub variables: Option<serde_json::Value>,
+    #[serde(rename = "AccessSysfs")]
+    pub access_sysfs: Option<bool>,
+
+
+    /// 
+    /// Settings for the Lambda execution environment in AWS IoT Greengrass.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Execution
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Execution")]
+    pub execution: Option<Execution>,
 
 
     /// 
@@ -190,64 +126,105 @@ pub struct Environment {
 
 
     /// 
-    /// Settings for the Lambda execution environment in AWS IoT Greengrass.
+    /// Environment variables for the Lambda function.
     /// 
     /// Required: No
     ///
-    /// Type: Execution
+    /// Type: Json
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Execution")]
-    pub execution: Option<Execution>,
-
-
-    /// 
-    /// Indicates whether the function is allowed to access the /sys directory on the core device, which allows the 				 read device information from /sys.
-    /// 
-    /// NoteThis property applies only to Lambda functions that run in a Greengrass container.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccessSysfs")]
-    pub access_sysfs: Option<bool>,
+    #[serde(rename = "Variables")]
+    pub variables: Option<serde_json::Value>,
 
 }
 
 
 
 
-/// The user and group permissions 		used to run the Lambda function. This setting overrides the default access identity that's specified 		for the group (by default, ggc_user and ggc_group). You can override the user, group, or both. 	For more information, 	see Run as in the AWS IoT Greengrass Version 1 Developer Guide.
+/// Configuration settings for the Lambda execution environment on the AWS IoT Greengrass core.
 ///
-/// In an AWS CloudFormation template,      RunAs is a property of the Execution 		 property type.
+/// In an AWS CloudFormation template,      Execution is a property of the DefaultConfig property type for a function definition version and      the 		 Environment property type for a function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RunAs {
+pub struct Execution {
 
 
     /// 
-    /// The group ID whose permissions are used to run the Lambda function. You can use the getent group 				 command on your core device to look up the group ID.
+    /// The containerization that the Lambda function runs in.           Valid values are GreengrassContainer or NoContainer. Typically, this is GreengrassContainer. 	For more information, 	see Containerization in the AWS IoT Greengrass Version 1 Developer Guide.
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Gid")]
-    pub gid: Option<i64>,
-
-
+    /// When set on the DefaultConfig property of a function            definition version,            this setting is used as the default containerization for all Lambda functions in the function definition version.            When set on the Environment property of a function,            this setting applies to the individual function and overrides the default.            Omit this value to run the function with the default containerization.
     /// 
-    /// The user ID whose permissions are used to run the Lambda function. You can use the getent passwd 				 command on your core device to look up the user ID.
+    /// NoteWe recommend that you run in a Greengrass container unless your business case requires that you run without containerization.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Uid")]
-    pub uid: Option<i64>,
+    #[serde(rename = "IsolationMode")]
+    pub isolation_mode: Option<String>,
+
+
+    /// 
+    /// The user and group permissions used to run the Lambda function. Typically, this is the ggc_user and ggc_group. 	For more information, 	see Run as in the AWS IoT Greengrass Version 1 Developer Guide.
+    /// 
+    /// When set on the DefaultConfig property of a function definition version,            this setting is used as the default access identity for all Lambda functions in the function definition version.            When set on the Environment property of a function,            this setting applies to the individual function and overrides the default. You can override the user, group, or both.            Omit this value to run the function with the default permissions.
+    /// 
+    /// ImportantRunning as the root user increases risks to your data and device. Do not run as root (UID/GID=0) unless            your business case requires it. For more information and requirements, see            Running a Lambda Function as Root.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RunAs
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RunAs")]
+    pub run_as: Option<RunAs>,
+
+}
+
+
+
+
+/// A function is a Lambda function 		that's referenced from an AWS IoT Greengrass group. The function is deployed to a Greengrass core where it runs locally. 	For more information, 	see Run Lambda Functions on the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
+///
+/// In an AWS CloudFormation template, the Functions 		 property of the AWS::Greengrass::FunctionDefinitionVersion resource contains a      list of Function property types.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Function {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the alias (recommended) or version of the referenced Lambda function.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FunctionArn")]
+    pub function_arn: String,
+
+
+    /// 
+    /// The group-specific settings of the Lambda function. These settings configure the function's behavior in the Greengrass group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FunctionConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FunctionConfiguration")]
+    pub function_configuration: FunctionConfiguration,
+
+
+    /// 
+    /// A descriptive or arbitrary ID for the function. This value must be unique within       the function definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Id")]
+    pub id: String,
 
 }
 
@@ -274,18 +251,6 @@ pub struct FunctionConfiguration {
 
 
     /// 
-    /// The name of the function executable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Executable")]
-    pub executable: Option<String>,
-
-
-    /// 
     /// The environment configuration of the function.
     /// 
     /// Required: No
@@ -307,6 +272,18 @@ pub struct FunctionConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ExecArgs")]
     pub exec_args: Option<String>,
+
+
+    /// 
+    /// The name of the function executable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Executable")]
+    pub executable: Option<String>,
 
 
     /// 
@@ -351,47 +328,70 @@ pub struct FunctionConfiguration {
 
 
 
-/// A function is a Lambda function 		that's referenced from an AWS IoT Greengrass group. The function is deployed to a Greengrass core where it runs locally. 	For more information, 	see Run Lambda Functions on the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
+/// A list of the 		resources in the group 				 that the function can access, with the corresponding read-only or read-write permissions. The maximum is 10 resources.
 ///
-/// In an AWS CloudFormation template, the Functions 		 property of the AWS::Greengrass::FunctionDefinitionVersion resource contains a      list of Function property types.
+/// In an AWS CloudFormation template,      ResourceAccessPolicy is a property of the Environment 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Function {
+pub struct ResourceAccessPolicy {
 
 
     /// 
-    /// A descriptive or arbitrary ID for the function. This value must be unique within       the function definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// The read-only or read-write access that the Lambda function has to the resource. 				 Valid values are ro or rw.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Permission")]
+    pub permission: Option<String>,
+
+
+    /// 
+    /// The ID of the resource. This ID is assigned to the resource when you create the resource definition.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Id")]
-    pub id: String,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String,
+
+}
+
+
+
+
+/// The user and group permissions 		used to run the Lambda function. This setting overrides the default access identity that's specified 		for the group (by default, ggc_user and ggc_group). You can override the user, group, or both. 	For more information, 	see Run as in the AWS IoT Greengrass Version 1 Developer Guide.
+///
+/// In an AWS CloudFormation template,      RunAs is a property of the Execution 		 property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RunAs {
 
 
     /// 
-    /// The group-specific settings of the Lambda function. These settings configure the function's behavior in the Greengrass group.
+    /// The group ID whose permissions are used to run the Lambda function. You can use the getent group 				 command on your core device to look up the group ID.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: FunctionConfiguration
+    /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FunctionConfiguration")]
-    pub function_configuration: FunctionConfiguration,
+    #[serde(rename = "Gid")]
+    pub gid: Option<i64>,
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the alias (recommended) or version of the referenced Lambda function.
+    /// The user ID whose permissions are used to run the Lambda function. You can use the getent passwd 				 command on your core device to look up the user ID.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FunctionArn")]
-    pub function_arn: String,
+    #[serde(rename = "Uid")]
+    pub uid: Option<i64>,
 
 }
 

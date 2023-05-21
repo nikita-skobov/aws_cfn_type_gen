@@ -6,18 +6,6 @@ pub struct CfnPrimaryTaskSet {
 
 
     /// 
-    /// The short name or full Amazon Resource Name (ARN) of the task set to set as the primary task set in the 			deployment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TaskSetId")]
-    pub task_set_id: String,
-
-
-    /// 
     /// The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service that the task 			set exists in.
     /// 
     /// Required: Yes
@@ -39,6 +27,18 @@ pub struct CfnPrimaryTaskSet {
     /// Update requires: Replacement
     #[serde(rename = "Service")]
     pub service: String,
+
+
+    /// 
+    /// The short name or full Amazon Resource Name (ARN) of the task set to set as the primary task set in the 			deployment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TaskSetId")]
+    pub task_set_id: String,
 
 }
 

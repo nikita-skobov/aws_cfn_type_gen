@@ -8,18 +8,6 @@ pub struct CfnSamplingRule {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The sampling rule to be created or updated.
     /// 
     /// Required: No
@@ -29,6 +17,18 @@ pub struct CfnSamplingRule {
     /// Update requires: No interruption
     #[serde(rename = "SamplingRule")]
     pub sampling_rule: Option<Box<SamplingRule>>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -51,47 +51,47 @@ pub struct SamplingRule {
 
 
     /// 
-    /// The name of the sampling rule. Specify a rule by either name or ARN, but not both.
+    /// Matches attributes derived from the request.
     /// 
-    /// Required: Conditional
+    /// Map Entries: Maximum number of 5 items.
+    /// 
+    /// Key Length Constraints: Minimum length of 1. Maximum length of 32.
+    /// 
+    /// Value Length Constraints: Minimum length of 1. Maximum length of 32.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 32
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RuleName")]
-    pub rule_name: Option<String>,
+    #[serde(rename = "Attributes")]
+    pub attributes: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
-    /// Matches the name that the service uses to identify itself in segments.
+    /// The percentage of matching requests to instrument, after the reservoir is    exhausted.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FixedRate")]
+    pub fixed_rate: f64,
+
+
+    /// 
+    /// Matches the HTTP method of a request.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 64
+    /// Maximum: 10
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ServiceName")]
-    pub service_name: String,
-
-
-    /// 
-    /// Matches the path from a request URL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "URLPath")]
-    pub urlpath: String,
+    #[serde(rename = "HTTPMethod")]
+    pub httpmethod: String,
 
 
     /// 
@@ -125,78 +125,6 @@ pub struct SamplingRule {
 
 
     /// 
-    /// The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
-    /// 
-    /// NoteSpecifying a sampling rule by name is recommended, as specifying by      ARN will be deprecated in future.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleARN")]
-    pub rule_arn: Option<String>,
-
-
-    /// 
-    /// The version of the sampling rule. Version can only be set when creating a new sampling rule.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Version")]
-    pub version: Option<i64>,
-
-
-    /// 
-    /// The percentage of matching requests to instrument, after the reservoir is    exhausted.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FixedRate")]
-    pub fixed_rate: f64,
-
-
-    /// 
-    /// Matches the HTTP method of a request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HTTPMethod")]
-    pub httpmethod: String,
-
-
-    /// 
-    /// Matches attributes derived from the request.
-    /// 
-    /// Map Entries: Maximum number of 5 items.
-    /// 
-    /// Key Length Constraints: Minimum length of 1. Maximum length of 32.
-    /// 
-    /// Value Length Constraints: Minimum length of 1. Maximum length of 32.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
     /// A fixed number of matching requests to instrument per second, prior to applying the    fixed rate. The reservoir is not used directly by services, but applies to all services using the rule collectively.
     /// 
     /// Required: Yes
@@ -225,6 +153,50 @@ pub struct SamplingRule {
 
 
     /// 
+    /// The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
+    /// 
+    /// NoteSpecifying a sampling rule by name is recommended, as specifying by      ARN will be deprecated in future.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleARN")]
+    pub rule_arn: Option<String>,
+
+
+    /// 
+    /// The name of the sampling rule. Specify a rule by either name or ARN, but not both.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleName")]
+    pub rule_name: Option<String>,
+
+
+    /// 
+    /// Matches the name that the service uses to identify itself in segments.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceName")]
+    pub service_name: String,
+
+
+    /// 
     /// Matches the origin that the service uses to identify its type in segments.
     /// 
     /// Required: Yes
@@ -236,6 +208,34 @@ pub struct SamplingRule {
     /// Update requires: No interruption
     #[serde(rename = "ServiceType")]
     pub service_type: String,
+
+
+    /// 
+    /// Matches the path from a request URL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "URLPath")]
+    pub urlpath: String,
+
+
+    /// 
+    /// The version of the sampling rule. Version can only be set when creating a new sampling rule.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Version")]
+    pub version: Option<i64>,
 
 }
 

@@ -6,76 +6,6 @@ pub struct CfnDevice {
 
 
     /// 
-    /// The site ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SiteId")]
-    pub site_id: Option<String>,
-
-
-    /// 
-    /// The vendor of the device.
-    /// 
-    /// Constraints: Maximum length of 128 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Vendor")]
-    pub vendor: Option<String>,
-
-
-    /// 
-    /// The tags for the device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The serial number of the device.
-    /// 
-    /// Constraints: Maximum length of 128 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SerialNumber")]
-    pub serial_number: Option<String>,
-
-
-    /// 
     /// A description of the device.
     /// 
     /// Constraints: Maximum length of 256 characters.
@@ -96,21 +26,33 @@ pub struct CfnDevice {
 
 
     /// 
-    /// The device type.
+    /// The ID of the global network.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 256
+    /// Maximum: 50
     ///
     /// Pattern: [\s\S]*
     ///
+    /// Update requires: Replacement
+    #[serde(rename = "GlobalNetworkId")]
+    pub global_network_id: String,
+
+
+    /// 
+    /// The site location.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Location
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
+    #[serde(rename = "Location")]
+    pub location: Option<Location>,
 
 
     /// 
@@ -134,21 +76,29 @@ pub struct CfnDevice {
 
 
     /// 
-    /// The site location.
+    /// The serial number of the device.
+    /// 
+    /// Constraints: Maximum length of 128 characters.
     /// 
     /// Required: No
     ///
-    /// Type: Location
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Location")]
-    pub location: Option<Location>,
+    #[serde(rename = "SerialNumber")]
+    pub serial_number: Option<String>,
 
 
     /// 
-    /// The ID of the global network.
+    /// The site ID.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
@@ -158,9 +108,59 @@ pub struct CfnDevice {
     ///
     /// Pattern: [\s\S]*
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "GlobalNetworkId")]
-    pub global_network_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "SiteId")]
+    pub site_id: Option<String>,
+
+
+    /// 
+    /// The tags for the device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The device type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
+
+    /// 
+    /// The vendor of the device.
+    /// 
+    /// Constraints: Maximum length of 128 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Vendor")]
+    pub vendor: Option<String>,
 
 }
 
@@ -183,7 +183,7 @@ pub struct Location {
 
 
     /// 
-    /// The longitude.
+    /// The physical address.
     /// 
     /// Required: No
     ///
@@ -196,8 +196,8 @@ pub struct Location {
     /// Pattern: [\s\S]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Longitude")]
-    pub longitude: Option<String>,
+    #[serde(rename = "Address")]
+    pub address: Option<String>,
 
 
     /// 
@@ -219,7 +219,7 @@ pub struct Location {
 
 
     /// 
-    /// The physical address.
+    /// The longitude.
     /// 
     /// Required: No
     ///
@@ -232,8 +232,8 @@ pub struct Location {
     /// Pattern: [\s\S]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Address")]
-    pub address: Option<String>,
+    #[serde(rename = "Longitude")]
+    pub longitude: Option<String>,
 
 }
 
@@ -252,17 +252,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -271,6 +260,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

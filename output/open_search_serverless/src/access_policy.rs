@@ -6,15 +6,15 @@ pub struct CfnAccessPolicy {
 
 
     /// 
-    /// The JSON policy document without any whitespaces.
+    /// The description of the policy.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: String,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -30,15 +30,15 @@ pub struct CfnAccessPolicy {
 
 
     /// 
-    /// The description of the policy.
+    /// The JSON policy document without any whitespaces.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "Policy")]
+    pub policy: String,
 
 
     /// 

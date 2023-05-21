@@ -6,6 +6,24 @@ pub struct CfnResourcePolicy {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the CloudTrail channel attached to the resource-based policy.      The following is the format of a resource ARN:      arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[a-zA-Z0-9._/\-:]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceArn")]
+    pub resource_arn: String,
+
+
+    /// 
     /// A JSON-formatted string for an AWS resource-based policy.
     /// 
     /// The following are requirements for the resource policy:
@@ -23,24 +41,6 @@ pub struct CfnResourcePolicy {
     /// Update requires: No interruption
     #[serde(rename = "ResourcePolicy")]
     pub resource_policy: serde_json::Value,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the CloudTrail channel attached to the resource-based policy.      The following is the format of a resource ARN:      arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[a-zA-Z0-9._/\-:]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
 
 }
 

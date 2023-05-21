@@ -34,15 +34,35 @@ pub struct CfnResourceDataSync {
 
 
     /// 
-    /// Information about the source where the data was synchronized.
+    /// An Amazon S3 prefix for the bucket.
     /// 
     /// Required: No
     ///
-    /// Type: SyncSource
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "SyncSource")]
-    pub sync_source: Option<SyncSource>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BucketPrefix")]
+    pub bucket_prefix: Option<String>,
+
+
+    /// 
+    /// The AWS Region with the S3 bucket targeted by the resource data sync.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BucketRegion")]
+    pub bucket_region: Option<String>,
 
 
     /// 
@@ -61,22 +81,6 @@ pub struct CfnResourceDataSync {
     /// Update requires: Replacement
     #[serde(rename = "KMSKeyArn")]
     pub kmskey_arn: Option<String>,
-
-
-    /// 
-    /// An Amazon S3 prefix for the bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BucketPrefix")]
-    pub bucket_prefix: Option<String>,
 
 
     /// 
@@ -106,22 +110,6 @@ pub struct CfnResourceDataSync {
 
 
     /// 
-    /// The type of resource data sync. If SyncType is SyncToDestination,  then the resource data sync synchronizes data to an S3 bucket. If the SyncType is   SyncFromSource then the resource data sync synchronizes data from AWS Organizations or from  multiple AWS Regions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SyncType")]
-    pub sync_type: Option<String>,
-
-
-    /// 
     /// A name for the resource data sync.
     /// 
     /// Required: Yes
@@ -138,7 +126,19 @@ pub struct CfnResourceDataSync {
 
 
     /// 
-    /// The AWS Region with the S3 bucket targeted by the resource data sync.
+    /// Information about the source where the data was synchronized.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SyncSource
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SyncSource")]
+    pub sync_source: Option<SyncSource>,
+
+
+    /// 
+    /// The type of resource data sync. If SyncType is SyncToDestination,  then the resource data sync synchronizes data to an S3 bucket. If the SyncType is   SyncFromSource then the resource data sync synchronizes data from AWS Organizations or from  multiple AWS Regions.
     /// 
     /// Required: No
     ///
@@ -149,8 +149,8 @@ pub struct CfnResourceDataSync {
     /// Maximum: 64
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BucketRegion")]
-    pub bucket_region: Option<String>,
+    #[serde(rename = "SyncType")]
+    pub sync_type: Option<String>,
 
 }
 
@@ -180,67 +180,6 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// Information about the source of the data included in the resource data sync.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SyncSource {
-
-
-    /// 
-    /// Whether to automatically synchronize and aggregate data from new AWS Regions when those  Regions come online.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeFutureRegions")]
-    pub include_future_regions: Option<bool>,
-
-
-    /// 
-    /// The type of data source for the resource data sync. SourceType is either   AwsOrganizations (if an organization is present in AWS Organizations) or   SingleAccountMultiRegions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceType")]
-    pub source_type: String,
-
-
-    /// 
-    /// Information about the AwsOrganizationsSource resource data sync source. A sync source of    this type can synchronize data from AWS Organizations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AwsOrganizationsSource
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsOrganizationsSource")]
-    pub aws_organizations_source: Option<AwsOrganizationsSource>,
-
-
-    /// 
-    /// The SyncSource       AWS Regions included in the resource data sync.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceRegions")]
-    pub source_regions: Vec<String>,
-
-}
-
-
 
 
 /// Information about the AwsOrganizationsSource resource data sync source. A sync  source of this type can synchronize data from AWS Organizations or, if an AWS organization isn't  present, from multiple AWS Regions.
@@ -288,25 +227,7 @@ pub struct S3Destination {
 
 
     /// 
-    /// The ARN of an encryption key for a destination in Amazon S3. Must belong to the same  Region as the destination S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: arn:.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KMSKeyArn")]
-    pub kmskey_arn: Option<String>,
-
-
-    /// 
-    /// The AWS Region with the S3 bucket targeted by the resource data sync.
+    /// The name of the S3 bucket where the aggregated data is stored.
     /// 
     /// Required: Yes
     ///
@@ -314,11 +235,11 @@ pub struct S3Destination {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 64
+    /// Maximum: 2048
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BucketRegion")]
-    pub bucket_region: String,
+    #[serde(rename = "BucketName")]
+    pub bucket_name: String,
 
 
     /// 
@@ -338,6 +259,40 @@ pub struct S3Destination {
 
 
     /// 
+    /// The AWS Region with the S3 bucket targeted by the resource data sync.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BucketRegion")]
+    pub bucket_region: String,
+
+
+    /// 
+    /// The ARN of an encryption key for a destination in Amazon S3. Must belong to the same  Region as the destination S3 bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KMSKeyArn")]
+    pub kmskey_arn: Option<String>,
+
+
+    /// 
     /// A supported sync format. The following format is currently supported: JsonSerDe
     /// 
     /// Required: Yes
@@ -349,22 +304,6 @@ pub struct S3Destination {
     /// Update requires: Replacement
     #[serde(rename = "SyncFormat")]
     pub sync_format: S3DestinationSyncFormatEnum,
-
-
-    /// 
-    /// The name of the S3 bucket where the aggregated data is stored.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BucketName")]
-    pub bucket_name: String,
 
 }
 
@@ -383,4 +322,65 @@ impl Default for S3DestinationSyncFormatEnum {
         S3DestinationSyncFormatEnum::Jsonserde
     }
 }
+
+
+
+/// Information about the source of the data included in the resource data sync.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SyncSource {
+
+
+    /// 
+    /// Information about the AwsOrganizationsSource resource data sync source. A sync source of    this type can synchronize data from AWS Organizations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AwsOrganizationsSource
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsOrganizationsSource")]
+    pub aws_organizations_source: Option<AwsOrganizationsSource>,
+
+
+    /// 
+    /// Whether to automatically synchronize and aggregate data from new AWS Regions when those  Regions come online.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeFutureRegions")]
+    pub include_future_regions: Option<bool>,
+
+
+    /// 
+    /// The SyncSource       AWS Regions included in the resource data sync.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceRegions")]
+    pub source_regions: Vec<String>,
+
+
+    /// 
+    /// The type of data source for the resource data sync. SourceType is either   AwsOrganizations (if an organization is present in AWS Organizations) or   SingleAccountMultiRegions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceType")]
+    pub source_type: String,
+
+}
+
 

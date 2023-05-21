@@ -6,18 +6,6 @@ pub struct CfnXssMatchSet {
 
 
     /// 
-    /// Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of XssMatchTuple
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "XssMatchTuples")]
-    pub xss_match_tuples: Vec<XssMatchTuple>,
-
-
-    /// 
     /// The name, if any, of the XssMatchSet.
     /// 
     /// Required: Yes
@@ -33,6 +21,18 @@ pub struct CfnXssMatchSet {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of XssMatchTuple
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "XssMatchTuples")]
+    pub xss_match_tuples: Vec<XssMatchTuple>,
 
 }
 
@@ -55,22 +55,6 @@ pub struct FieldToMatch {
 
 
     /// 
-    /// The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:
-    /// 
-    /// HEADER: A specified request header, for example, the value of the User-Agent or Referer header. 				If you choose HEADER for the type, specify the name of the header in Data.                        METHOD: The HTTP method, which indicated the type of operation that the request is asking the origin to perform.          Amazon CloudFront supports the following methods: DELETE, GET, HEAD, OPTIONS, PATCH, 				POST, and PUT.                        QUERY_STRING: A query string, which is the part of a URL that appears after a ? character, if any.                        URI: The part of a web request that identifies a resource, for example, /images/daily-ad.jpg.                        BODY: The part of a request that contains any additional data that you want to send to your web server 				as the HTTP request body, such as data from a form. The request body immediately follows the request headers. 				Note that only the first 8192 bytes of the request body are forwarded to AWS WAF for inspection. 				To allow or block requests based on the length of the body, you can create a size constraint set.        		       		        SINGLE_QUERY_ARG: The parameter in the query string that you will inspect, such as UserName or SalesRegion. The maximum length for SINGLE_QUERY_ARG is 30 characters. 		      		       		        ALL_QUERY_ARGS: Similar to SINGLE_QUERY_ARG, but rather than inspecting a single parameter, AWS WAF will inspect all parameters within the query for the value or regex pattern that you specify in 		       TargetString.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALL_QUERY_ARGS | BODY | HEADER | METHOD | QUERY_STRING | SINGLE_QUERY_ARG | URI
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: FieldToMatchTypeEnum,
-
-
-    /// 
     /// When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, 			for example, User-Agent or Referer. The name of the header is not case sensitive.
     /// 
     /// When the value of Type is SINGLE_QUERY_ARG, enter the name of the parameter that you want AWS WAF to search, 	    for example, UserName or SalesRegion. The parameter name is not case sensitive.
@@ -90,6 +74,22 @@ pub struct FieldToMatch {
     /// Update requires: No interruption
     #[serde(rename = "Data")]
     pub data: Option<String>,
+
+
+    /// 
+    /// The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:
+    /// 
+    /// HEADER: A specified request header, for example, the value of the User-Agent or Referer header. 				If you choose HEADER for the type, specify the name of the header in Data.                        METHOD: The HTTP method, which indicated the type of operation that the request is asking the origin to perform.          Amazon CloudFront supports the following methods: DELETE, GET, HEAD, OPTIONS, PATCH, 				POST, and PUT.                        QUERY_STRING: A query string, which is the part of a URL that appears after a ? character, if any.                        URI: The part of a web request that identifies a resource, for example, /images/daily-ad.jpg.                        BODY: The part of a request that contains any additional data that you want to send to your web server 				as the HTTP request body, such as data from a form. The request body immediately follows the request headers. 				Note that only the first 8192 bytes of the request body are forwarded to AWS WAF for inspection. 				To allow or block requests based on the length of the body, you can create a size constraint set.        		       		        SINGLE_QUERY_ARG: The parameter in the query string that you will inspect, such as UserName or SalesRegion. The maximum length for SINGLE_QUERY_ARG is 30 characters. 		      		       		        ALL_QUERY_ARGS: Similar to SINGLE_QUERY_ARG, but rather than inspecting a single parameter, AWS WAF will inspect all parameters within the query for the value or regex pattern that you specify in 		       TargetString.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALL_QUERY_ARGS | BODY | HEADER | METHOD | QUERY_STRING | SINGLE_QUERY_ARG | URI
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: FieldToMatchTypeEnum,
 
 }
 
@@ -141,6 +141,18 @@ pub struct XssMatchTuple {
 
 
     /// 
+    /// The part of a web request that you want to inspect, such as a specified header or a query string.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FieldToMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
+
+
+    /// 
     /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.          If you specify a transformation, AWS WAF performs the transformation on FieldToMatch before inspecting it for a match.
     /// 
     /// You can only specify a single type of TextTransformation.
@@ -186,18 +198,6 @@ pub struct XssMatchTuple {
     /// Update requires: No interruption
     #[serde(rename = "TextTransformation")]
     pub text_transformation: XssMatchTupleTextTransformationEnum,
-
-
-    /// 
-    /// The part of a web request that you want to inspect, such as a specified header or a query string.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
 
 }
 

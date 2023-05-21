@@ -6,18 +6,6 @@ pub struct CfnPrefixList {
 
 
     /// 
-    /// The maximum number of entries for the prefix list.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxEntries")]
-    pub max_entries: i64,
-
-
-    /// 
     /// The IP address type.
     /// 
     /// Valid Values: IPv4 | IPv6
@@ -46,15 +34,15 @@ pub struct CfnPrefixList {
 
 
     /// 
-    /// The tags for the prefix list.
+    /// The maximum number of entries for the prefix list.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "MaxEntries")]
+    pub max_entries: i64,
 
 
     /// 
@@ -69,6 +57,18 @@ pub struct CfnPrefixList {
     /// Update requires: No interruption
     #[serde(rename = "PrefixListName")]
     pub prefix_list_name: String,
+
+
+    /// 
+    /// The tags for the prefix list.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -104,6 +104,41 @@ impl cfn_resources::CfnResource for CfnPrefixList {
 }
 
 
+/// An entry for a prefix list.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Entry {
+
+
+    /// 
+    /// The CIDR block.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Cidr")]
+    pub cidr: String,
+
+
+    /// 
+    /// A description for the entry.
+    /// 
+    /// Constraints: Up to 255 characters in length.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+}
+
+
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -135,41 +170,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// An entry for a prefix list.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Entry {
-
-
-    /// 
-    /// A description for the entry.
-    /// 
-    /// Constraints: Up to 255 characters in length.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The CIDR block.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Cidr")]
-    pub cidr: String,
 
 }
 

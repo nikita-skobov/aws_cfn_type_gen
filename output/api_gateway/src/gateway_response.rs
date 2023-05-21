@@ -6,6 +6,18 @@ pub struct CfnGatewayResponse {
 
 
     /// 
+    /// Response parameters (paths, query strings and headers) of the GatewayResponse as a    string-to-string map of key-value pairs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResponseParameters")]
+    pub response_parameters: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
     /// Response templates of the GatewayResponse as a string-to-string map of key-value pairs.
     /// 
     /// Required: No
@@ -15,18 +27,6 @@ pub struct CfnGatewayResponse {
     /// Update requires: No interruption
     #[serde(rename = "ResponseTemplates")]
     pub response_templates: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The HTTP status code for this GatewayResponse.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StatusCode")]
-    pub status_code: Option<String>,
 
 
     /// 
@@ -56,15 +56,15 @@ pub struct CfnGatewayResponse {
 
 
     /// 
-    /// Response parameters (paths, query strings and headers) of the GatewayResponse as a    string-to-string map of key-value pairs.
+    /// The HTTP status code for this GatewayResponse.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResponseParameters")]
-    pub response_parameters: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "StatusCode")]
+    pub status_code: Option<String>,
 
 }
 

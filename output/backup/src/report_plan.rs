@@ -10,6 +10,54 @@ pub struct CfnReportPlan {
 
 
     /// 
+    /// Contains information about where and how to deliver your reports, specifically your       Amazon S3 bucket name, S3 key prefix, and the formats of your reports.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ReportDeliveryChannel
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReportDeliveryChannel")]
+    pub report_delivery_channel: ReportDeliveryChannel,
+
+
+    /// 
+    /// An optional description of the report plan with a maximum 1,024 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReportPlanDescription")]
+    pub report_plan_description: Option<String>,
+
+
+    /// 
+    /// The unique name of the report plan. This name is between 1 and 256 characters starting     with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores     (_).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [a-zA-Z][_a-zA-Z0-9]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ReportPlanName")]
+    pub report_plan_name: Option<String>,
+
+
+    /// 
     /// A list of tags to tag your report plan.
     /// 
     /// Required: No
@@ -36,54 +84,6 @@ pub struct CfnReportPlan {
     #[serde(rename = "ReportSetting")]
     pub report_setting: ReportSetting,
 
-
-    /// 
-    /// Contains information about where and how to deliver your reports, specifically your       Amazon S3 bucket name, S3 key prefix, and the formats of your reports.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ReportDeliveryChannel
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReportDeliveryChannel")]
-    pub report_delivery_channel: ReportDeliveryChannel,
-
-
-    /// 
-    /// The unique name of the report plan. This name is between 1 and 256 characters starting     with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores     (_).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [a-zA-Z][_a-zA-Z0-9]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ReportPlanName")]
-    pub report_plan_name: Option<String>,
-
-
-    /// 
-    /// An optional description of the report plan with a maximum 1,024 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReportPlanDescription")]
-    pub report_plan_description: Option<String>,
-
 }
 
 
@@ -99,35 +99,54 @@ impl cfn_resources::CfnResource for CfnReportPlan {
 }
 
 
-/// Contains detailed information about a report setting.
+/// Contains information from your report plan about where to deliver your reports,     specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your     reports.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ReportSetting {
+pub struct ReportDeliveryChannel {
 
 
     /// 
-    /// The Amazon Resource Names (ARNs) of the frameworks a report covers.
+    /// A list of the format of your reports: CSV, JSON, or both. If     not specified, the default format is CSV.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FrameworkArns")]
-    pub framework_arns: Option<Vec<String>>,
+    #[serde(rename = "Formats")]
+    pub formats: Option<Vec<String>>,
 
 
     /// 
-    /// Identifies the report template for the report. Reports are built using a report     template. The report templates are:
-    /// 
-    /// RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT |       COPY_JOB_REPORT | RESTORE_JOB_REPORT
+    /// The unique name of the S3 bucket that receives your reports.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ReportTemplate")]
-    pub report_template: String,
+    #[serde(rename = "S3BucketName")]
+    pub s3_bucket_name: String,
+
+
+    /// 
+    /// The prefix for where AWS Backup Audit Manager delivers your reports to Amazon S3. The prefix is this part of the following path:       s3://your-bucket-name/prefix/Backup/us-west-2/year/month/day/report-name.     If not specified, there is no prefix.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3KeyPrefix")]
+    pub s3_key_prefix: Option<String>,
+
+}
+
+
+
+
+/// Contains detailed information about a report setting.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ReportSetting {
 
 
     /// 
@@ -143,15 +162,15 @@ pub struct ReportSetting {
 
 
     /// 
-    /// These are the Regions to be included in the report.
+    /// The Amazon Resource Names (ARNs) of the frameworks a report covers.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Regions")]
-    pub regions: Option<Vec<String>>,
+    #[serde(rename = "FrameworkArns")]
+    pub framework_arns: Option<Vec<String>>,
 
 
     /// 
@@ -164,6 +183,32 @@ pub struct ReportSetting {
     /// Update requires: No interruption
     #[serde(rename = "OrganizationUnits")]
     pub organization_units: Option<Vec<String>>,
+
+
+    /// 
+    /// These are the Regions to be included in the report.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Regions")]
+    pub regions: Option<Vec<String>>,
+
+
+    /// 
+    /// Identifies the report template for the report. Reports are built using a report     template. The report templates are:
+    /// 
+    /// RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT |       COPY_JOB_REPORT | RESTORE_JOB_REPORT
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReportTemplate")]
+    pub report_template: String,
 
 }
 
@@ -201,51 +246,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Contains information from your report plan about where to deliver your reports,     specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your     reports.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ReportDeliveryChannel {
-
-
-    /// 
-    /// The unique name of the S3 bucket that receives your reports.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3BucketName")]
-    pub s3_bucket_name: String,
-
-
-    /// 
-    /// The prefix for where AWS Backup Audit Manager delivers your reports to Amazon S3. The prefix is this part of the following path:       s3://your-bucket-name/prefix/Backup/us-west-2/year/month/day/report-name.     If not specified, there is no prefix.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3KeyPrefix")]
-    pub s3_key_prefix: Option<String>,
-
-
-    /// 
-    /// A list of the format of your reports: CSV, JSON, or both. If     not specified, the default format is CSV.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Formats")]
-    pub formats: Option<Vec<String>>,
 
 }
 

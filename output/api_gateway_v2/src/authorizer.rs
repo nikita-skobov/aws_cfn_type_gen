@@ -6,27 +6,63 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// The name of the authorizer.
+    /// The API identifier.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
 
 
     /// 
-    /// This parameter is not used.
+    /// Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. To specify an IAM role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null. Supported only for REQUEST authorizers.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerCredentialsArn")]
+    pub authorizer_credentials_arn: Option<String>,
+
+
+    /// 
+    /// Specifies the format of the payload sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers. Supported values are 1.0 and 2.0. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IdentityValidationExpression")]
-    pub identity_validation_expression: Option<String>,
+    #[serde(rename = "AuthorizerPayloadFormatVersion")]
+    pub authorizer_payload_format_version: Option<String>,
+
+
+    /// 
+    /// The time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization         caching is disabled. If it is greater than 0, API Gateway caches authorizer         responses. The maximum value is 3600, or 1 hour. Supported only for HTTP API Lambda authorizers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerResultTtlInSeconds")]
+    pub authorizer_result_ttl_in_seconds: Option<i64>,
+
+
+    /// 
+    /// The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerType")]
+    pub authorizer_type: String,
 
 
     /// 
@@ -39,6 +75,18 @@ pub struct CfnAuthorizer {
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerUri")]
     pub authorizer_uri: Option<String>,
+
+
+    /// 
+    /// Specifies whether a Lambda authorizer returns a response in a simple format. By default, a Lambda authorizer must return an IAM policy. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableSimpleResponses")]
+    pub enable_simple_responses: Option<bool>,
 
 
     /// 
@@ -58,6 +106,18 @@ pub struct CfnAuthorizer {
 
 
     /// 
+    /// This parameter is not used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdentityValidationExpression")]
+    pub identity_validation_expression: Option<String>,
+
+
+    /// 
     /// The JWTConfiguration property specifies the configuration of a JWT          authorizer. Required for the JWT authorizer type. Supported only for          HTTP APIs.
     /// 
     /// Required: No
@@ -70,75 +130,15 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// Specifies the format of the payload sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers. Supported values are 1.0 and 2.0. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizerPayloadFormatVersion")]
-    pub authorizer_payload_format_version: Option<String>,
-
-
-    /// 
-    /// Specifies whether a Lambda authorizer returns a response in a simple format. By default, a Lambda authorizer must return an IAM policy. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableSimpleResponses")]
-    pub enable_simple_responses: Option<bool>,
-
-
-    /// 
-    /// Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. To specify an IAM role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null. Supported only for REQUEST authorizers.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizerCredentialsArn")]
-    pub authorizer_credentials_arn: Option<String>,
-
-
-    /// 
-    /// The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs).
+    /// The name of the authorizer.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizerType")]
-    pub authorizer_type: String,
-
-
-    /// 
-    /// The API identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
-
-
-    /// 
-    /// The time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization         caching is disabled. If it is greater than 0, API Gateway caches authorizer         responses. The maximum value is 3600, or 1 hour. Supported only for HTTP API Lambda authorizers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizerResultTtlInSeconds")]
-    pub authorizer_result_ttl_in_seconds: Option<i64>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
 

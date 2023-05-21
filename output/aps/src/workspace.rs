@@ -6,15 +6,15 @@ pub struct CfnWorkspace {
 
 
     /// 
-    /// The LoggingConfiguration attribute is used to set the logging configuration for the workspace.
+    /// The alert manager definition for the workspace, as a string. For more information, see         Alert manager and templating.
     /// 
     /// Required: No
     ///
-    /// Type: LoggingConfiguration
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LoggingConfiguration")]
-    pub logging_configuration: Option<LoggingConfiguration>,
+    #[serde(rename = "AlertManagerDefinition")]
+    pub alert_manager_definition: Option<String>,
 
 
     /// 
@@ -32,6 +32,18 @@ pub struct CfnWorkspace {
 
 
     /// 
+    /// The LoggingConfiguration attribute is used to set the logging configuration for the workspace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LoggingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingConfiguration")]
+    pub logging_configuration: Option<LoggingConfiguration>,
+
+
+    /// 
     /// A list of tag keys and values to associate with the workspace.
     /// 
     /// Required: No
@@ -41,18 +53,6 @@ pub struct CfnWorkspace {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The alert manager definition for the workspace, as a string. For more information, see         Alert manager and templating.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlertManagerDefinition")]
-    pub alert_manager_definition: Option<String>,
 
 }
 

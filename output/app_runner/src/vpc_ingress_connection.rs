@@ -38,6 +38,18 @@ pub struct CfnVpcIngressConnection {
 
 
     /// 
+    /// An optional list of metadata items that you can associate with the VPC Ingress Connection resource. A tag is a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The customer-provided VPC Ingress Connection name.
     /// 
     /// Required: No
@@ -53,18 +65,6 @@ pub struct CfnVpcIngressConnection {
     /// Update requires: Replacement
     #[serde(rename = "VpcIngressConnectionName")]
     pub vpc_ingress_connection_name: Option<String>,
-
-
-    /// 
-    /// An optional list of metadata items that you can associate with the VPC Ingress Connection resource. A tag is a key-value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 }
 

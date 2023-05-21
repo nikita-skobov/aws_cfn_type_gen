@@ -6,15 +6,15 @@ pub struct CfnWorkgroup {
 
 
     /// 
-    /// The value that specifies whether to enable enhanced virtual   private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC.
+    /// The base compute capacity of the workgroup in Redshift Processing Units (RPUs).
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnhancedVpcRouting")]
-    pub enhanced_vpc_routing: Option<bool>,
+    #[serde(rename = "BaseCapacity")]
+    pub base_capacity: Option<i64>,
 
 
     /// 
@@ -30,51 +30,27 @@ pub struct CfnWorkgroup {
 
 
     /// 
-    /// The name of the workgroup.
+    /// The value that specifies whether to enable enhanced virtual   private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnhancedVpcRouting")]
+    pub enhanced_vpc_routing: Option<bool>,
+
+
+    /// 
+    /// The namespace the workgroup is associated with.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "WorkgroupName")]
-    pub workgroup_name: String,
-
-
-    /// 
-    /// The map of the key-value pairs used to tag the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A list of security group IDs to associate with the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// A list of subnet IDs the workgroup is associated with.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
+    #[serde(rename = "NamespaceName")]
+    pub namespace_name: Option<String>,
 
 
     /// 
@@ -102,27 +78,51 @@ pub struct CfnWorkgroup {
 
 
     /// 
-    /// The base compute capacity of the workgroup in Redshift Processing Units (RPUs).
+    /// A list of security group IDs to associate with the workgroup.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BaseCapacity")]
-    pub base_capacity: Option<i64>,
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
 
 
     /// 
-    /// The namespace the workgroup is associated with.
+    /// A list of subnet IDs the workgroup is associated with.
     /// 
     /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The map of the key-value pairs used to tag the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of the workgroup.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "NamespaceName")]
-    pub namespace_name: Option<String>,
+    #[serde(rename = "WorkgroupName")]
+    pub workgroup_name: String,
 
 }
 
@@ -139,9 +139,54 @@ impl cfn_resources::CfnResource for CfnWorkgroup {
 }
 
 
+/// A array of parameters to set for more control over a serverless database.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConfigParameter {
+
+
+    /// 
+    /// The key of the parameter. The   options are datestyle, enable_user_activity_logging,   query_group, search_path, and max_query_execution_time.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterKey")]
+    pub parameter_key: Option<String>,
+
+
+    /// 
+    /// The value of the parameter to set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterValue")]
+    pub parameter_value: Option<String>,
+
+}
+
+
+
+
 /// The VPC endpoint object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Endpoint {
+
+
+    /// 
+    /// The DNS address of the VPC endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Address")]
+    pub address: Option<String>,
 
 
     /// 
@@ -167,216 +212,6 @@ pub struct Endpoint {
     #[serde(rename = "VpcEndpoints")]
     pub vpc_endpoints: Option<Vec<VpcEndpoint>>,
 
-
-    /// 
-    /// The DNS address of the VPC endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Address")]
-    pub address: Option<String>,
-
-}
-
-
-
-
-/// A array of parameters to set for more control over a serverless database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConfigParameter {
-
-
-    /// 
-    /// The value of the parameter to set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterValue")]
-    pub parameter_value: Option<String>,
-
-
-    /// 
-    /// The key of the parameter. The   options are datestyle, enable_user_activity_logging,   query_group, search_path, and max_query_execution_time.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterKey")]
-    pub parameter_key: Option<String>,
-
-}
-
-
-
-
-/// The collection of computing resources from which an endpoint is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Workgroup {
-
-
-    /// 
-    /// The creation date of the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreationDate")]
-    pub creation_date: Option<String>,
-
-
-    /// 
-    /// An array of parameters to set for advanced control over a database. The     options are auto_mv, datestyle, enable_case_sensitivity_identifier, enable_user_activity_logging,     query_group, , search_path, and query monitoring metrics that let you define performance boundaries.     For more information about query monitoring rules and available metrics, see Query monitoring metrics for Amazon Redshift Serverless.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ConfigParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigParameters")]
-    pub config_parameters: Option<Vec<ConfigParameter>>,
-
-
-    /// 
-    /// The value that specifies whether to enable enhanced virtual    private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnhancedVpcRouting")]
-    pub enhanced_vpc_routing: Option<bool>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) that links to the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkgroupArn")]
-    pub workgroup_arn: Option<String>,
-
-
-    /// 
-    /// An array of security group IDs to associate with the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// An array of subnet IDs the workgroup is associated with.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The unique identifier of the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkgroupId")]
-    pub workgroup_id: Option<String>,
-
-
-    /// 
-    /// The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BaseCapacity")]
-    pub base_capacity: Option<i64>,
-
-
-    /// 
-    /// The namespace the workgroup is associated with.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NamespaceName")]
-    pub namespace_name: Option<String>,
-
-
-    /// 
-    /// The name of the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkgroupName")]
-    pub workgroup_name: Option<String>,
-
-
-    /// 
-    /// The status of the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// A value that specifies whether the workgroup    can be accessible from a public network
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PubliclyAccessible")]
-    pub publicly_accessible: Option<bool>,
-
-
-    /// 
-    /// The endpoint that is created from the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Endpoint
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Endpoint")]
-    pub endpoint: Option<Endpoint>,
-
 }
 
 
@@ -385,30 +220,6 @@ pub struct Workgroup {
 /// Contains information about a network interface      in an Amazon Redshift Serverless managed VPC endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkInterface {
-
-
-    /// 
-    /// The unique identifier of the network interface.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: Option<String>,
-
-
-    /// 
-    /// The unique identifier of the subnet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: Option<String>,
 
 
     /// 
@@ -424,6 +235,18 @@ pub struct NetworkInterface {
 
 
     /// 
+    /// The unique identifier of the network interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkInterfaceId")]
+    pub network_interface_id: Option<String>,
+
+
+    /// 
     /// The IPv4 address of the network interface within the subnet.
     /// 
     /// Required: No
@@ -433,6 +256,18 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: Option<String>,
+
+
+    /// 
+    /// The unique identifier of the subnet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: Option<String>,
 
 }
 
@@ -451,17 +286,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -471,6 +295,17 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
@@ -479,6 +314,18 @@ pub struct Tag {
 /// The connection endpoint for connecting to Amazon Redshift Serverless through the proxy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcEndpoint {
+
+
+    /// 
+    /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of NetworkInterface
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkInterfaces")]
+    pub network_interfaces: Option<Vec<NetworkInterface>>,
 
 
     /// 
@@ -504,17 +351,170 @@ pub struct VpcEndpoint {
     #[serde(rename = "VpcId")]
     pub vpc_id: Option<String>,
 
+}
+
+
+
+
+/// The collection of computing resources from which an endpoint is created.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Workgroup {
+
 
     /// 
-    /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
+    /// The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).
     /// 
     /// Required: No
     ///
-    /// Type: List of NetworkInterface
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NetworkInterfaces")]
-    pub network_interfaces: Option<Vec<NetworkInterface>>,
+    #[serde(rename = "BaseCapacity")]
+    pub base_capacity: Option<i64>,
+
+
+    /// 
+    /// An array of parameters to set for advanced control over a database. The     options are auto_mv, datestyle, enable_case_sensitivity_identifier, enable_user_activity_logging,     query_group, , search_path, and query monitoring metrics that let you define performance boundaries.     For more information about query monitoring rules and available metrics, see Query monitoring metrics for Amazon Redshift Serverless.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ConfigParameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConfigParameters")]
+    pub config_parameters: Option<Vec<ConfigParameter>>,
+
+
+    /// 
+    /// The creation date of the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreationDate")]
+    pub creation_date: Option<String>,
+
+
+    /// 
+    /// The endpoint that is created from the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Endpoint
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Endpoint")]
+    pub endpoint: Option<Endpoint>,
+
+
+    /// 
+    /// The value that specifies whether to enable enhanced virtual    private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnhancedVpcRouting")]
+    pub enhanced_vpc_routing: Option<bool>,
+
+
+    /// 
+    /// The namespace the workgroup is associated with.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NamespaceName")]
+    pub namespace_name: Option<String>,
+
+
+    /// 
+    /// A value that specifies whether the workgroup    can be accessible from a public network
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PubliclyAccessible")]
+    pub publicly_accessible: Option<bool>,
+
+
+    /// 
+    /// An array of security group IDs to associate with the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The status of the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
+    /// An array of subnet IDs the workgroup is associated with.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) that links to the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WorkgroupArn")]
+    pub workgroup_arn: Option<String>,
+
+
+    /// 
+    /// The unique identifier of the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WorkgroupId")]
+    pub workgroup_id: Option<String>,
+
+
+    /// 
+    /// The name of the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WorkgroupName")]
+    pub workgroup_name: Option<String>,
 
 }
 

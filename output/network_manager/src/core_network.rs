@@ -6,6 +6,24 @@ pub struct CfnCoreNetwork {
 
 
     /// 
+    /// The description of a core network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The ID of the global network that your core network is a part of.
     /// 
     /// Required: Yes
@@ -48,24 +66,6 @@ pub struct CfnCoreNetwork {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The description of a core network.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
 }
 
 
@@ -79,6 +79,108 @@ impl cfn_resources::CfnResource for CfnCoreNetwork {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes a core network edge.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CoreNetworkEdge {
+
+
+    /// 
+    /// The ASN of a core network edge.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Asn")]
+    pub asn: Option<f64>,
+
+
+    /// 
+    /// The Region where a core network edge is located.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EdgeLocation")]
+    pub edge_location: Option<String>,
+
+
+    /// 
+    /// The inside IP addresses used for core network edges.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InsideCidrBlocks")]
+    pub inside_cidr_blocks: Option<Vec<String>>,
+
+}
+
+
+
+
+/// Describes a core network segment, which are dedicated routes. Only attachments within this segment can communicate with each other.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CoreNetworkSegment {
+
+
+    /// 
+    /// The Regions where the edges are located.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EdgeLocations")]
+    pub edge_locations: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of a core network segment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The shared segments of a core network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SharedSegments")]
+    pub shared_segments: Option<Vec<String>>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -112,108 +214,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Describes a core network segment, which are dedicated routes. Only attachments within this segment can communicate with each other.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CoreNetworkSegment {
-
-
-    /// 
-    /// The Regions where the edges are located.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EdgeLocations")]
-    pub edge_locations: Option<Vec<String>>,
-
-
-    /// 
-    /// The shared segments of a core network.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SharedSegments")]
-    pub shared_segments: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of a core network segment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-
-
-/// Describes a core network edge.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CoreNetworkEdge {
-
-
-    /// 
-    /// The inside IP addresses used for core network edges.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InsideCidrBlocks")]
-    pub inside_cidr_blocks: Option<Vec<String>>,
-
-
-    /// 
-    /// The Region where a core network edge is located.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EdgeLocation")]
-    pub edge_location: Option<String>,
-
-
-    /// 
-    /// The ASN of a core network edge.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Asn")]
-    pub asn: Option<f64>,
 
 }
 

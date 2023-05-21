@@ -6,6 +6,18 @@ pub struct CfnAnalyzer {
 
 
     /// 
+    /// The name of the analyzer.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AnalyzerName")]
+    pub analyzer_name: Option<String>,
+
+
+    /// 
     /// Specifies the archive rules to add for the analyzer.
     ///
     /// Required: No
@@ -41,18 +53,6 @@ pub struct CfnAnalyzer {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: AnalyzerTypeEnum,
-
-
-    /// 
-    /// The name of the analyzer.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AnalyzerName")]
-    pub analyzer_name: Option<String>,
 
 }
 
@@ -93,17 +93,6 @@ impl cfn_resources::CfnResource for CfnAnalyzer {
 pub struct ArchiveRule {
 
 
-    /// The name of the archive rule.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleName")]
-    pub rule_name: String,
-
-
     /// The criteria for the rule.
     /// 
     /// Required: Yes
@@ -113,6 +102,17 @@ pub struct ArchiveRule {
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
     pub filter: Vec<Filter>,
+
+
+    /// The name of the archive rule.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleName")]
+    pub rule_name: String,
 
 }
 
@@ -124,6 +124,17 @@ pub struct ArchiveRule {
 /// To learn about filter keys that you can use to create an archive rule, see AWS Identity and Access Management Access Analyzer filter keys in the     AWS Identity and Access Management User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Filter {
+
+
+    /// A "contains" condition to match for the rule.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Contains")]
+    pub contains: Option<Vec<String>>,
 
 
     /// An "equals" condition to match for the rule.
@@ -148,15 +159,15 @@ pub struct Filter {
     pub exists: Option<bool>,
 
 
-    /// A "contains" condition to match for the rule.
+    /// A "not equal" condition to match for the rule.
     ///
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Contains")]
-    pub contains: Option<Vec<String>>,
+    #[serde(rename = "Neq")]
+    pub neq: Option<Vec<String>>,
 
 
     /// The property used to define the criteria in the filter for the rule.
@@ -168,17 +179,6 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "Property")]
     pub property: String,
-
-
-    /// A "not equal" condition to match for the rule.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Neq")]
-    pub neq: Option<Vec<String>>,
 
 }
 

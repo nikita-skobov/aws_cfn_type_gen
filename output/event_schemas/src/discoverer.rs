@@ -30,18 +30,6 @@ pub struct CfnDiscoverer {
 
 
     /// 
-    /// Tags associated with the resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TagsEntry
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagsEntry>>,
-
-
-    /// 
     /// The ARN of the event bus.
     /// 
     /// Required: Yes
@@ -51,6 +39,18 @@ pub struct CfnDiscoverer {
     /// Update requires: Replacement
     #[serde(rename = "SourceArn")]
     pub source_arn: String,
+
+
+    /// 
+    /// Tags associated with the resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TagsEntry
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagsEntry>>,
 
 }
 

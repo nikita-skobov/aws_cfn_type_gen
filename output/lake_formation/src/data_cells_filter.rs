@@ -46,15 +46,27 @@ pub struct CfnDataCellsFilter {
     /// 
     /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
     /// 
-    /// A table in the database.
+    /// The name given by the user to the data filter cell.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TableName")]
-    pub table_name: String,
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// A PartiQL predicate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RowFilter
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RowFilter")]
+    pub row_filter: Option<RowFilter>,
 
 
     /// 
@@ -72,29 +84,17 @@ pub struct CfnDataCellsFilter {
 
 
     /// 
-    /// A PartiQL predicate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RowFilter
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RowFilter")]
-    pub row_filter: Option<RowFilter>,
-
-
-    /// 
     /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
     /// 
-    /// The name given by the user to the data filter cell.
+    /// A table in the database.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "TableName")]
+    pub table_name: String,
 
 }
 
@@ -109,6 +109,27 @@ impl cfn_resources::CfnResource for CfnDataCellsFilter {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A wildcard object, consisting of an optional list of excluded column names or indexes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ColumnWildcard {
+
+
+    /// 
+    /// Excludes column names. Any column with this name will be excluded.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ExcludedColumnNames")]
+    pub excluded_column_names: Option<Vec<String>>,
+
+}
+
+
 
 
 /// A PartiQL predicate.
@@ -138,27 +159,6 @@ pub struct RowFilter {
     /// Update requires: Replacement
     #[serde(rename = "FilterExpression")]
     pub filter_expression: Option<String>,
-
-}
-
-
-
-
-/// A wildcard object, consisting of an optional list of excluded column names or indexes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ColumnWildcard {
-
-
-    /// 
-    /// Excludes column names. Any column with this name will be excluded.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ExcludedColumnNames")]
-    pub excluded_column_names: Option<Vec<String>>,
 
 }
 

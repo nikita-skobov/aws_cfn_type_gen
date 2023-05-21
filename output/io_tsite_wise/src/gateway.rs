@@ -18,18 +18,6 @@ pub struct CfnGateway {
 
 
     /// 
-    /// A list of key-value pairs that contain metadata for the gateway. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A unique, friendly name for the gateway.
     /// 
     /// The maximum length is 256 characters with the pattern [^\u0000-\u001F\u007F]+.
@@ -54,6 +42,18 @@ pub struct CfnGateway {
     #[serde(rename = "GatewayPlatform")]
     pub gateway_platform: GatewayPlatform,
 
+
+    /// 
+    /// A list of key-value pairs that contain metadata for the gateway. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
 
 
@@ -69,42 +69,35 @@ impl cfn_resources::CfnResource for CfnGateway {
 }
 
 
-/// Contains details for a gateway that runs on AWS IoT Greengrass V2. To create a gateway that runs on AWS IoT Greengrass    V2, you must deploy the IoT SiteWise Edge component to your gateway device. Your Greengrass     device role must use the AWSIoTSiteWiseEdgeAccess policy. For more    information, see Using AWS IoT SiteWise at the edge in the             AWS IoT SiteWise User Guide.
+/// Contains a summary of a gateway capability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GreengrassV2 {
+pub struct GatewayCapabilitySummary {
 
 
     /// 
-    /// The name of the AWS IoT thing for your AWS IoT Greengrass V2 core device.
+    /// The JSON document that defines the configuration for the gateway capability. For more       information, see Configuring data sources (CLI) in the AWS IoT SiteWise User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CapabilityConfiguration")]
+    pub capability_configuration: Option<String>,
+
+
+    /// 
+    /// The namespace of the capability configuration.    For example, if you configure OPC-UA    sources from the AWS IoT SiteWise console, your OPC-UA capability configuration has the namespace     iotsitewise:opcuacollector:version, where version is a number such as     1.
+    /// 
+    /// The maximum length is 512 characters with the pattern ^[a-zA-Z]+:[a-zA-Z]+:[0-9]+$.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "CoreDeviceThingName")]
-    pub core_device_thing_name: String,
-
-}
-
-
-
-
-/// Contains details for a gateway that runs on AWS IoT Greengrass. To create a gateway that runs on AWS IoT Greengrass,    you must add the IoT SiteWise connector to a Greengrass group and deploy it. Your Greengrass    group must also have permissions to upload data to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the      AWS IoT SiteWise User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Greengrass {
-
-
-    /// 
-    /// The ARN of the Greengrass group. For more information about how to find a group's    ARN, see ListGroups and GetGroup in       the AWS IoT Greengrass API Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupArn")]
-    pub group_arn: String,
+    /// Update requires: No interruption
+    #[serde(rename = "CapabilityNamespace")]
+    pub capability_namespace: String,
 
 }
 
@@ -144,6 +137,48 @@ pub struct GatewayPlatform {
 
 
 
+/// Contains details for a gateway that runs on AWS IoT Greengrass. To create a gateway that runs on AWS IoT Greengrass,    you must add the IoT SiteWise connector to a Greengrass group and deploy it. Your Greengrass    group must also have permissions to upload data to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the      AWS IoT SiteWise User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Greengrass {
+
+
+    /// 
+    /// The ARN of the Greengrass group. For more information about how to find a group's    ARN, see ListGroups and GetGroup in       the AWS IoT Greengrass API Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GroupArn")]
+    pub group_arn: String,
+
+}
+
+
+
+
+/// Contains details for a gateway that runs on AWS IoT Greengrass V2. To create a gateway that runs on AWS IoT Greengrass    V2, you must deploy the IoT SiteWise Edge component to your gateway device. Your Greengrass     device role must use the AWSIoTSiteWiseEdgeAccess policy. For more    information, see Using AWS IoT SiteWise at the edge in the             AWS IoT SiteWise User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GreengrassV2 {
+
+
+    /// 
+    /// The name of the AWS IoT thing for your AWS IoT Greengrass V2 core device.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CoreDeviceThingName")]
+    pub core_device_thing_name: String,
+
+}
+
+
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -175,41 +210,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Contains a summary of a gateway capability configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GatewayCapabilitySummary {
-
-
-    /// 
-    /// The namespace of the capability configuration.    For example, if you configure OPC-UA    sources from the AWS IoT SiteWise console, your OPC-UA capability configuration has the namespace     iotsitewise:opcuacollector:version, where version is a number such as     1.
-    /// 
-    /// The maximum length is 512 characters with the pattern ^[a-zA-Z]+:[a-zA-Z]+:[0-9]+$.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CapabilityNamespace")]
-    pub capability_namespace: String,
-
-
-    /// 
-    /// The JSON document that defines the configuration for the gateway capability. For more       information, see Configuring data sources (CLI) in the AWS IoT SiteWise User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CapabilityConfiguration")]
-    pub capability_configuration: Option<String>,
 
 }
 

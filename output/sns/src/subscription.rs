@@ -6,27 +6,15 @@ pub struct CfnSubscription {
 
 
     /// 
-    /// When set to true, enables raw message delivery. Raw messages don't contain     any JSON formatting and can be sent to Amazon SQS and HTTP/S endpoints. For more     information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference.
+    /// The delivery policy JSON assigned to the subscription. Enables the subscriber to define     the message delivery retry strategy in the case of an HTTP/S endpoint subscribed to the     topic. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       delivery retries in the Amazon SNS Developer     Guide.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RawMessageDelivery")]
-    pub raw_message_delivery: Option<bool>,
-
-
-    /// 
-    /// The ARN of the topic to subscribe to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TopicArn")]
-    pub topic_arn: String,
+    #[serde(rename = "DeliveryPolicy")]
+    pub delivery_policy: Option<serde_json::Value>,
 
 
     /// 
@@ -42,15 +30,15 @@ pub struct CfnSubscription {
 
 
     /// 
-    /// The delivery policy JSON assigned to the subscription. Enables the subscriber to define     the message delivery retry strategy in the case of an HTTP/S endpoint subscribed to the     topic. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       delivery retries in the Amazon SNS Developer     Guide.
+    /// The filter policy JSON assigned to the subscription. Enables the subscriber to filter     out unwanted messages. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       filtering in the Amazon SNS Developer Guide.
     /// 
     /// Required: No
     ///
     /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeliveryPolicy")]
-    pub delivery_policy: Option<serde_json::Value>,
+    #[serde(rename = "FilterPolicy")]
+    pub filter_policy: Option<serde_json::Value>,
 
 
     /// 
@@ -80,19 +68,29 @@ pub struct CfnSubscription {
 
 
     /// 
-    /// This property applies only to Amazon Kinesis Data Firehose delivery stream subscriptions.     Specify the ARN of the IAM role that has the following:
-    /// 
-    /// Permission to write to the Amazon Kinesis Data Firehose delivery stream            Amazon SNS listed as a trusted entity
-    /// 
-    /// Specifying a valid ARN for this attribute is required for Kinesis Data Firehose delivery     stream subscriptions. For more information, see Fanout to Amazon Kinesis Data Firehose       delivery streams in the Amazon SNS Developer     Guide.
+    /// When set to true, enables raw message delivery. Raw messages don't contain     any JSON formatting and can be sent to Amazon SQS and HTTP/S endpoints. For more     information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SubscriptionRoleArn")]
-    pub subscription_role_arn: Option<String>,
+    #[serde(rename = "RawMessageDelivery")]
+    pub raw_message_delivery: Option<bool>,
+
+
+    /// 
+    /// When specified, sends undeliverable messages to the specified Amazon SQS     dead-letter queue. Messages that can't be delivered due to client errors (for example, when     the subscribed endpoint is unreachable) or server errors (for example, when the service     that powers the subscribed endpoint becomes unavailable) are held in the dead-letter queue     for further analysis or reprocessing.
+    /// 
+    /// For more information about the redrive policy and dead-letter queues, see Amazon       SQS dead-letter queues in the Amazon SQS Developer       Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RedrivePolicy")]
+    pub redrive_policy: Option<serde_json::Value>,
 
 
     /// 
@@ -114,29 +112,31 @@ pub struct CfnSubscription {
 
 
     /// 
-    /// The filter policy JSON assigned to the subscription. Enables the subscriber to filter     out unwanted messages. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       filtering in the Amazon SNS Developer Guide.
+    /// This property applies only to Amazon Kinesis Data Firehose delivery stream subscriptions.     Specify the ARN of the IAM role that has the following:
+    /// 
+    /// Permission to write to the Amazon Kinesis Data Firehose delivery stream            Amazon SNS listed as a trusted entity
+    /// 
+    /// Specifying a valid ARN for this attribute is required for Kinesis Data Firehose delivery     stream subscriptions. For more information, see Fanout to Amazon Kinesis Data Firehose       delivery streams in the Amazon SNS Developer     Guide.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FilterPolicy")]
-    pub filter_policy: Option<serde_json::Value>,
+    #[serde(rename = "SubscriptionRoleArn")]
+    pub subscription_role_arn: Option<String>,
 
 
     /// 
-    /// When specified, sends undeliverable messages to the specified Amazon SQS     dead-letter queue. Messages that can't be delivered due to client errors (for example, when     the subscribed endpoint is unreachable) or server errors (for example, when the service     that powers the subscribed endpoint becomes unavailable) are held in the dead-letter queue     for further analysis or reprocessing.
+    /// The ARN of the topic to subscribe to.
     /// 
-    /// For more information about the redrive policy and dead-letter queues, see Amazon       SQS dead-letter queues in the Amazon SQS Developer       Guide.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Json
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RedrivePolicy")]
-    pub redrive_policy: Option<serde_json::Value>,
+    /// Update requires: Replacement
+    #[serde(rename = "TopicArn")]
+    pub topic_arn: String,
 
 }
 

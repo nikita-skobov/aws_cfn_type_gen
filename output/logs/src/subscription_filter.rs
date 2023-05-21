@@ -8,20 +8,6 @@ pub struct CfnSubscriptionFilter {
 
 
     /// 
-    /// The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination      stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the destination.
     /// 
     /// Required: Yes
@@ -33,18 +19,6 @@ pub struct CfnSubscriptionFilter {
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
     pub destination_arn: String,
-
-
-    /// 
-    /// The filtering expressions that restrict what gets delivered to the destination AWS resource.      For more information about the filter pattern syntax, see      Filter and Pattern Syntax.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FilterPattern")]
-    pub filter_pattern: String,
 
 
     /// 
@@ -78,6 +52,18 @@ pub struct CfnSubscriptionFilter {
 
 
     /// 
+    /// The filtering expressions that restrict what gets delivered to the destination AWS resource.      For more information about the filter pattern syntax, see      Filter and Pattern Syntax.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FilterPattern")]
+    pub filter_pattern: String,
+
+
+    /// 
     /// The log group to associate with the subscription filter. All log events that are     uploaded to this log group are filtered and delivered to the specified AWS resource if the filter pattern matches the log events.
     /// 
     /// Required: Yes
@@ -93,6 +79,20 @@ pub struct CfnSubscriptionFilter {
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
     pub log_group_name: String,
+
+
+    /// 
+    /// The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination      stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 }
 

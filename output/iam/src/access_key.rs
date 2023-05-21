@@ -8,23 +8,15 @@ pub struct CfnAccessKey {
 
 
     /// 
-    /// The name of the IAM user that the new key will belong to.
+    /// This value is specific to CloudFormation and can only be       incremented. Incrementing this value notifies CloudFormation that you want to rotate your access key. When you update your stack,       CloudFormation will replace the existing access key with a new key.
     /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\w+=,.@-]+
+    /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "UserName")]
-    pub user_name: String,
+    #[serde(rename = "Serial")]
+    pub serial: Option<i64>,
 
 
     /// 
@@ -42,15 +34,23 @@ pub struct CfnAccessKey {
 
 
     /// 
-    /// This value is specific to CloudFormation and can only be       incremented. Incrementing this value notifies CloudFormation that you want to rotate your access key. When you update your stack,       CloudFormation will replace the existing access key with a new key.
+    /// The name of the IAM user that the new key will belong to.
     /// 
-    /// Required: No
+    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// 
+    /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\w+=,.@-]+
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Serial")]
-    pub serial: Option<i64>,
+    #[serde(rename = "UserName")]
+    pub user_name: String,
 
 }
 

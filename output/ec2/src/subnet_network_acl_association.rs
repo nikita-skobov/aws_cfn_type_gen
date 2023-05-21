@@ -8,18 +8,6 @@ pub struct CfnSubnetNetworkAclAssociation {
 
 
     /// 
-    /// The ID of the subnet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
-
-
-    /// 
     /// The ID of the network ACL.
     /// 
     /// Required: Yes
@@ -29,6 +17,18 @@ pub struct CfnSubnetNetworkAclAssociation {
     /// Update requires: Replacement
     #[serde(rename = "NetworkAclId")]
     pub network_acl_id: String,
+
+
+    /// 
+    /// The ID of the subnet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
 
 }
 

@@ -22,6 +22,24 @@ pub struct CfnEventInvokeConfig {
 
 
     /// 
+    /// The name of the Lambda function.
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 64
+    /// 
+    /// Pattern: ([a-zA-Z0-9-_]+)
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FunctionName")]
+    pub function_name: String,
+
+
+    /// 
     /// The maximum age of a request that Lambda sends to a function for processing.
     /// 
     /// Required: No
@@ -51,24 +69,6 @@ pub struct CfnEventInvokeConfig {
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
     pub maximum_retry_attempts: Option<i64>,
-
-
-    /// 
-    /// The name of the Lambda function.
-    /// 
-    /// Minimum: 1
-    /// 
-    /// Maximum: 64
-    /// 
-    /// Pattern: ([a-zA-Z0-9-_]+)
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FunctionName")]
-    pub function_name: String,
 
 
     /// 
@@ -105,27 +105,33 @@ impl cfn_resources::CfnResource for CfnEventInvokeConfig {
 }
 
 
-/// A destination for events that were processed successfully.
+/// A configuration object that specifies the destination of an event after Lambda processes it.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OnSuccess {
+pub struct DestinationConfig {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the destination resource.
+    /// The destination configuration for failed invocations.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 350
-    ///
-    /// Pattern: ^$|arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-])+:([a-z]{2}(-gov)?-[a-z]+-\d{1})?:(\d{12})?:(.*)
+    /// Type: OnFailure
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Destination")]
-    pub destination: String,
+    #[serde(rename = "OnFailure")]
+    pub on_failure: Option<OnFailure>,
+
+
+    /// 
+    /// The destination configuration for successful invocations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OnSuccess
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OnSuccess")]
+    pub on_success: Option<OnSuccess>,
 
 }
 
@@ -159,33 +165,27 @@ pub struct OnFailure {
 
 
 
-/// A configuration object that specifies the destination of an event after Lambda processes it.
+/// A destination for events that were processed successfully.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DestinationConfig {
+pub struct OnSuccess {
 
 
     /// 
-    /// The destination configuration for successful invocations.
+    /// The Amazon Resource Name (ARN) of the destination resource.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: OnSuccess
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnSuccess")]
-    pub on_success: Option<OnSuccess>,
-
-
-    /// 
-    /// The destination configuration for failed invocations.
-    /// 
-    /// Required: No
+    /// Minimum: 0
     ///
-    /// Type: OnFailure
+    /// Maximum: 350
+    ///
+    /// Pattern: ^$|arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-])+:([a-z]{2}(-gov)?-[a-z]+-\d{1})?:(\d{12})?:(.*)
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OnFailure")]
-    pub on_failure: Option<OnFailure>,
+    #[serde(rename = "Destination")]
+    pub destination: String,
 
 }
 

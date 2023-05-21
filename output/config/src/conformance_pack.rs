@@ -18,31 +18,6 @@ pub struct CfnConformancePack {
 
 
     /// 
-    /// Location of file containing the template body (s3://bucketname/prefix). The uri must point to the conformance pack template (max size: 300 KB)       that is located in an Amazon S3 bucket.
-    /// 
-    /// NoteYou must have access to read Amazon S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateS3Uri")]
-    pub template_s3_uri: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: TemplateSSMDocumentDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateSSMDocumentDetails")]
-    pub template_ssmdocument_details: Option<TemplateSSMDocumentDetails>,
-
-
-    /// 
     /// Name of the conformance pack you want to create.
     ///
     /// Required: Yes
@@ -91,6 +66,31 @@ pub struct CfnConformancePack {
     #[serde(rename = "TemplateBody")]
     pub template_body: Option<String>,
 
+
+    /// 
+    /// Location of file containing the template body (s3://bucketname/prefix). The uri must point to the conformance pack template (max size: 300 KB)       that is located in an Amazon S3 bucket.
+    /// 
+    /// NoteYou must have access to read Amazon S3 bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateS3Uri")]
+    pub template_s3_uri: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: TemplateSSMDocumentDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateSSMDocumentDetails")]
+    pub template_ssmdocument_details: Option<TemplateSSMDocumentDetails>,
+
 }
 
 
@@ -104,6 +104,47 @@ impl cfn_resources::CfnResource for CfnConformancePack {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConformancePackInputParameter {
+
+
+    /// 
+    /// One part of a key-value pair.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterName")]
+    pub parameter_name: String,
+
+
+    /// 
+    /// Another part of the key-value pair.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 4096
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterValue")]
+    pub parameter_value: String,
+
+}
+
+
 
 
 /// This API allows you to create a conformance pack template with an AWS Systems Manager document (SSM document). 			To deploy a conformance pack using an SSM document, first create an SSM document with conformance pack content, and then provide the DocumentName in the PutConformancePack API. You can also provide the DocumentVersion.
@@ -141,47 +182,6 @@ pub struct TemplateSSMDocumentDetails {
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
     pub document_version: Option<String>,
-
-}
-
-
-
-
-/// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConformancePackInputParameter {
-
-
-    /// 
-    /// Another part of the key-value pair.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 4096
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
-
-
-    /// 
-    /// One part of a key-value pair.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterName")]
-    pub parameter_name: String,
 
 }
 

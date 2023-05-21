@@ -6,6 +6,18 @@ pub struct CfnApiKey {
 
 
     /// 
+    /// Unique AWS AppSync GraphQL API ID for this API key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
+
+
+    /// 
     /// The API key ID.
     /// 
     /// Required: No
@@ -39,18 +51,6 @@ pub struct CfnApiKey {
     /// Update requires: No interruption
     #[serde(rename = "Expires")]
     pub expires: Option<f64>,
-
-
-    /// 
-    /// Unique AWS AppSync GraphQL API ID for this API key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
 
 }
 

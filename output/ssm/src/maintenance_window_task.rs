@@ -6,6 +6,20 @@ pub struct CfnMaintenanceWindowTask {
 
 
     /// 
+    /// The specification for whether tasks should continue to run after the cutoff time specified  in the maintenance windows is reached.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CANCEL_TASK | CONTINUE_TASK
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CutoffBehavior")]
+    pub cutoff_behavior: Option<MaintenanceWindowTaskCutoffBehaviorEnum>,
+
+
+    /// 
     /// A description of the task.
     /// 
     /// Required: No
@@ -19,6 +33,120 @@ pub struct CfnMaintenanceWindowTask {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// Information about an Amazon S3 bucket to write Run Command task-level logs to.
+    /// 
+    /// Note       LoggingInfo has been deprecated. To specify an Amazon S3 bucket to contain logs for Run Command tasks,       instead use the OutputS3BucketName and OutputS3KeyPrefix       options in the TaskInvocationParameters structure. For information about       how Systems Manager handles these options for the supported maintenance window task       types, see AWS::SSM::MaintenanceWindowTask MaintenanceWindowRunCommandParameters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LoggingInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingInfo")]
+    pub logging_info: Option<LoggingInfo>,
+
+
+    /// 
+    /// The maximum number of targets this task can be run for, in parallel.
+    /// 
+    /// NoteAlthough this element is listed as "Required: No", a value can be omitted only when you are   registering or updating a targetless   task You must provide a value in all other cases.For maintenance window tasks without a target specified, you can't supply a value for this   option. Instead, the system inserts a placeholder value of 1. This value doesn't   affect the running of your task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 7
+    ///
+    /// Pattern: ^([1-9][0-9]*|[1-9][0-9]%|[1-9]%|100%)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxConcurrency")]
+    pub max_concurrency: Option<String>,
+
+
+    /// 
+    /// The maximum number of errors allowed before this task stops being scheduled.
+    /// 
+    /// NoteAlthough this element is listed as "Required: No", a value can be omitted only when you are   registering or updating a targetless   task You must provide a value in all other cases.For maintenance window tasks without a target specified, you can't supply a value for this   option. Instead, the system inserts a placeholder value of 1. This value doesn't   affect the running of your task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 7
+    ///
+    /// Pattern: ^([1-9][0-9]*|[0]|[1-9][0-9]%|[0-9]%|100%)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxErrors")]
+    pub max_errors: Option<String>,
+
+
+    /// 
+    /// The task name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The priority of the task in the maintenance window. The lower the number, the higher the  priority. Tasks that have the same priority are scheduled in parallel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Priority")]
+    pub priority: i64,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceRoleArn")]
+    pub service_role_arn: Option<String>,
+
+
+    /// 
+    /// The targets, either instances or window target IDs.
+    /// 
+    /// Specify instances using Key=InstanceIds,Values=instanceid1,instanceid2      .        Specify window target IDs using Key=WindowTargetIds,Values=window-target-id-1,window-target-id-2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Target
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Option<Vec<Target>>,
 
 
     /// 
@@ -44,21 +172,17 @@ pub struct CfnMaintenanceWindowTask {
 
 
     /// 
-    /// The ID of the maintenance window where the task is registered.
+    /// The parameters to pass to the task when it runs. Populate only the fields that match the    task type. All other fields should be empty.
     /// 
-    /// Required: Yes
+    /// ImportantWhen you update a maintenance window task that has options specified in      TaskInvocationParameters, you must provide again all the      TaskInvocationParameters values that you want to retain. The values you do     not specify again are removed. For example, suppose that when you registered a Run Command     task, you specified TaskInvocationParameters values for Comment,      NotificationConfig, and OutputS3BucketName. If you update the     maintenance window task and specify only a different OutputS3BucketName value,     the values for Comment and NotificationConfig are removed.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: TaskInvocationParameters
     ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 20
-    ///
-    /// Pattern: ^mw-[0-9a-f]{17}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WindowId")]
-    pub window_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "TaskInvocationParameters")]
+    pub task_invocation_parameters: Option<TaskInvocationParameters>,
 
 
     /// 
@@ -90,167 +214,24 @@ pub struct CfnMaintenanceWindowTask {
 
 
     /// 
-    /// The targets, either instances or window target IDs.
-    /// 
-    /// Specify instances using Key=InstanceIds,Values=instanceid1,instanceid2      .        Specify window target IDs using Key=WindowTargetIds,Values=window-target-id-1,window-target-id-2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Target
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Option<Vec<Target>>,
-
-
-    /// 
-    /// The maximum number of errors allowed before this task stops being scheduled.
-    /// 
-    /// NoteAlthough this element is listed as "Required: No", a value can be omitted only when you are   registering or updating a targetless   task You must provide a value in all other cases.For maintenance window tasks without a target specified, you can't supply a value for this   option. Instead, the system inserts a placeholder value of 1. This value doesn't   affect the running of your task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 7
-    ///
-    /// Pattern: ^([1-9][0-9]*|[0]|[1-9][0-9]%|[0-9]%|100%)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxErrors")]
-    pub max_errors: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceRoleArn")]
-    pub service_role_arn: Option<String>,
-
-
-    /// 
-    /// The task name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The maximum number of targets this task can be run for, in parallel.
-    /// 
-    /// NoteAlthough this element is listed as "Required: No", a value can be omitted only when you are   registering or updating a targetless   task You must provide a value in all other cases.For maintenance window tasks without a target specified, you can't supply a value for this   option. Instead, the system inserts a placeholder value of 1. This value doesn't   affect the running of your task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 7
-    ///
-    /// Pattern: ^([1-9][0-9]*|[1-9][0-9]%|[1-9]%|100%)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxConcurrency")]
-    pub max_concurrency: Option<String>,
-
-
-    /// 
-    /// The priority of the task in the maintenance window. The lower the number, the higher the  priority. Tasks that have the same priority are scheduled in parallel.
+    /// The ID of the maintenance window where the task is registered.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: i64,
-
-
-    /// 
-    /// The specification for whether tasks should continue to run after the cutoff time specified  in the maintenance windows is reached.
-    /// 
-    /// Required: No
-    ///
     /// Type: String
     ///
-    /// Allowed values: CANCEL_TASK | CONTINUE_TASK
+    /// Minimum: 20
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "CutoffBehavior")]
-    pub cutoff_behavior: Option<MaintenanceWindowTaskCutoffBehaviorEnum>,
-
-
-    /// 
-    /// The parameters to pass to the task when it runs. Populate only the fields that match the    task type. All other fields should be empty.
-    /// 
-    /// ImportantWhen you update a maintenance window task that has options specified in      TaskInvocationParameters, you must provide again all the      TaskInvocationParameters values that you want to retain. The values you do     not specify again are removed. For example, suppose that when you registered a Run Command     task, you specified TaskInvocationParameters values for Comment,      NotificationConfig, and OutputS3BucketName. If you update the     maintenance window task and specify only a different OutputS3BucketName value,     the values for Comment and NotificationConfig are removed.
-    /// 
-    /// Required: No
+    /// Maximum: 20
     ///
-    /// Type: TaskInvocationParameters
+    /// Pattern: ^mw-[0-9a-f]{17}$
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "TaskInvocationParameters")]
-    pub task_invocation_parameters: Option<TaskInvocationParameters>,
-
-
-    /// 
-    /// Information about an Amazon S3 bucket to write Run Command task-level logs to.
-    /// 
-    /// Note       LoggingInfo has been deprecated. To specify an Amazon S3 bucket to contain logs for Run Command tasks,       instead use the OutputS3BucketName and OutputS3KeyPrefix       options in the TaskInvocationParameters structure. For information about       how Systems Manager handles these options for the supported maintenance window task       types, see AWS::SSM::MaintenanceWindowTask MaintenanceWindowRunCommandParameters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LoggingInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingInfo")]
-    pub logging_info: Option<LoggingInfo>,
+    /// Update requires: Replacement
+    #[serde(rename = "WindowId")]
+    pub window_id: String,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum MaintenanceWindowTaskCutoffBehaviorEnum {
-
-    /// CANCEL_TASK
-    #[serde(rename = "CANCEL_TASK")]
-    Canceltask,
-
-    /// CONTINUE_TASK
-    #[serde(rename = "CONTINUE_TASK")]
-    Continuetask,
-
-}
-
-impl Default for MaintenanceWindowTaskCutoffBehaviorEnum {
-    fn default() -> Self {
-        MaintenanceWindowTaskCutoffBehaviorEnum::Canceltask
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum MaintenanceWindowTaskTaskTypeEnum {
@@ -279,6 +260,25 @@ impl Default for MaintenanceWindowTaskTaskTypeEnum {
     }
 }
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MaintenanceWindowTaskCutoffBehaviorEnum {
+
+    /// CANCEL_TASK
+    #[serde(rename = "CANCEL_TASK")]
+    Canceltask,
+
+    /// CONTINUE_TASK
+    #[serde(rename = "CONTINUE_TASK")]
+    Continuetask,
+
+}
+
+impl Default for MaintenanceWindowTaskCutoffBehaviorEnum {
+    fn default() -> Self {
+        MaintenanceWindowTaskCutoffBehaviorEnum::Canceltask
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnMaintenanceWindowTask {
     fn type_string() -> &'static str {
@@ -291,64 +291,9 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTask {
 }
 
 
-/// The Target property type specifies targets (either instances or window    target IDs). You specify instances by using Key=InstanceIds,Values=<instanceid1>,<instanceid2>. You specify window target IDs using    Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2> for a maintenance window task in AWS Systems Manager.
-///
-/// Target is a property of the AWS::SSM::MaintenanceWindowTask property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Target {
-
-
-    /// 
-    /// User-defined criteria that maps to Key. For example, if you specify     InstanceIds, you can specify     i-1234567890abcdef0,i-9876543210abcdef0 to run a command on two EC2 instances.    For more information about how to target instances within a maintenance window task, see     About      'register-task-with-maintenance-window' Options and Values in the AWS Systems Manager User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<String>,
-
-
-    /// 
-    /// User-defined criteria for sending commands that target instances that meet the criteria.     Key can be InstanceIds or WindowTargetIds. For more    information about how to target instances within a maintenance window task, see About 'register-task-with-maintenance-window' Options and Values in the     AWS Systems Manager User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 163
-    ///
-    /// Pattern: ^[\p{L}\p{Z}\p{N}_.:/=\-@]*$|resource-groups:ResourceTypeFilters|resource-groups:Name
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
 /// Configuration options for sending command output to Amazon CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchOutputConfig {
-
-
-    /// 
-    /// Enables Systems Manager to send command output to CloudWatch Logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchOutputEnabled")]
-    pub cloud_watch_output_enabled: Option<bool>,
 
 
     /// 
@@ -368,334 +313,17 @@ pub struct CloudWatchOutputConfig {
     #[serde(rename = "CloudWatchLogGroupName")]
     pub cloud_watch_log_group_name: Option<String>,
 
-}
-
-
-
-
-/// The MaintenanceWindowRunCommandParameters property type specifies the    parameters for a RUN_COMMAND task type for a maintenance window task in AWS Systems Manager. This means that these parameters are the same as those for the     SendCommand API call. For more information about SendCommand    parameters, see SendCommand in the     AWS Systems Manager API Reference.
-///
-/// For information about available parameters in SSM Command documents, you can view the    content of the document itself in the Systems Manager console. For information, see Viewing SSM command     document content in the AWS Systems Manager User Guide.
-///
-/// MaintenanceWindowRunCommandParameters is a property of the TaskInvocationParameters property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MaintenanceWindowRunCommandParameters {
-
 
     /// 
-    /// The S3 bucket subfolder.
+    /// Enables Systems Manager to send command output to CloudWatch Logs.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 500
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OutputS3KeyPrefix")]
-    pub output_s3_key_prefix: Option<String>,
-
-
-    /// 
-    /// Information about the command or commands to run.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Comment")]
-    pub comment: Option<String>,
-
-
-    /// 
-    /// The SHA-256 or SHA-1 hash created by the system when the document was created. SHA-1 hashes  have been deprecated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DocumentHash")]
-    pub document_hash: Option<String>,
-
-
-    /// 
-    /// If this time is reached and the command hasn't already started running, it doesn't  run.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 30
-    ///
-    /// Maximum: 2592000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimeoutSeconds")]
-    pub timeout_seconds: Option<i64>,
-
-
-    /// 
-    /// The SHA-256 or SHA-1 hash type. SHA-1 hashes are deprecated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Sha1 | Sha256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DocumentHashType")]
-    pub document_hash_type: Option<MaintenanceWindowRunCommandParametersDocumentHashTypeEnum>,
-
-
-    /// 
-    /// Configurations for sending notifications about command status changes on a per-managed node  basis.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NotificationConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationConfig")]
-    pub notification_config: Option<NotificationConfig>,
-
-
-    /// 
-    /// The AWS Systems Manager document (SSM document) version to use in the request. You can specify   $DEFAULT, $LATEST, or a specific version number. If you run commands  by using the AWS CLI, then you must escape the first two options by using a backslash. If you  specify a version number, then you don't need to use the backslash. For example:
-    /// 
-    /// --document-version "\$DEFAULT"
-    /// 
-    /// --document-version "\$LATEST"
-    /// 
-    /// --document-version "3"
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DocumentVersion")]
-    pub document_version: Option<String>,
-
-
-    /// 
-    /// The parameters for the RUN_COMMAND task execution.
-    /// 
-    /// The supported parameters are the same as those for the SendCommand API call.    For more information, see SendCommand in the     AWS Systems Manager API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
-
-
-    /// 
-    /// Configuration options for sending command output to Amazon CloudWatch Logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CloudWatchOutputConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchOutputConfig")]
-    pub cloud_watch_output_config: Option<CloudWatchOutputConfig>,
-
-
-    /// 
-    /// The name of the Amazon Simple Storage Service (Amazon S3) bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 63
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OutputS3BucketName")]
-    pub output_s3_bucket_name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceRoleArn")]
-    pub service_role_arn: Option<String>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum MaintenanceWindowRunCommandParametersDocumentHashTypeEnum {
-
-    /// Sha1
-    #[serde(rename = "Sha1")]
-    Sha1,
-
-    /// Sha256
-    #[serde(rename = "Sha256")]
-    Sha256,
-
-}
-
-impl Default for MaintenanceWindowRunCommandParametersDocumentHashTypeEnum {
-    fn default() -> Self {
-        MaintenanceWindowRunCommandParametersDocumentHashTypeEnum::Sha1
-    }
-}
-
-
-
-/// The MaintenanceWindowLambdaParameters property type specifies the parameters    for a LAMBDA task type for a maintenance window task in AWS Systems Manager.
-///
-/// MaintenanceWindowLambdaParameters is a property of the TaskInvocationParameters property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MaintenanceWindowLambdaParameters {
-
-
-    /// 
-    /// Client-specific information to pass to the AWS Lambda function that you're invoking. You can    then use the context variable to process the client information in your AWS Lambda    function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 8000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientContext")]
-    pub client_context: Option<String>,
-
-
-    /// 
-    /// An AWS Lambda function version or alias name. If you specify a function version, the action    uses the qualified function Amazon Resource Name (ARN) to invoke a specific Lambda function.    If you specify an alias name, the action uses the alias ARN to invoke the Lambda function    version that the alias points to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Qualifier")]
-    pub qualifier: Option<String>,
-
-
-    /// 
-    /// JSON to provide to your AWS Lambda function as input.
-    /// 
-    /// ImportantAlthough Type is listed as "String" for this property, the payload content     must be formatted as a Base64-encoded binary data object.
-    /// 
-    /// Length Constraint: 4096
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Payload")]
-    pub payload: Option<String>,
-
-}
-
-
-
-
-/// The MaintenanceWindowStepFunctionsParameters property type specifies the    parameters for the execution of a STEP_FUNCTIONS task in a Systems Manager    maintenance window.
-///
-/// MaintenanceWindowStepFunctionsParameters is a property of the TaskInvocationParameters property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MaintenanceWindowStepFunctionsParameters {
-
-
-    /// 
-    /// The inputs for the STEP_FUNCTIONS task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 4096
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Input")]
-    pub input: Option<String>,
-
-
-    /// 
-    /// The name of the STEP_FUNCTIONS task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 80
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-
-
-/// The MaintenanceWindowAutomationParameters property type specifies the    parameters for an AUTOMATION task type for a maintenance window task in AWS Systems Manager.
-///
-/// MaintenanceWindowAutomationParameters is a property of the TaskInvocationParameters property type.
-///
-/// For information about available parameters in Automation runbooks, you can view the    content of the runbook itself in the Systems Manager console. For information, see View runbook content in the AWS Systems Manager User    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MaintenanceWindowAutomationParameters {
-
-
-    /// 
-    /// The version of an Automation runbook to use during task execution.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DocumentVersion")]
-    pub document_version: Option<String>,
-
-
-    /// 
-    /// The parameters for the AUTOMATION task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
+    #[serde(rename = "CloudWatchOutputEnabled")]
+    pub cloud_watch_output_enabled: Option<bool>,
 
 }
 
@@ -759,59 +387,329 @@ pub struct LoggingInfo {
 
 
 
-/// The TaskInvocationParameters property type specifies the task execution    parameters for a maintenance window task in AWS Systems Manager.
+/// The MaintenanceWindowAutomationParameters property type specifies the    parameters for an AUTOMATION task type for a maintenance window task in AWS Systems Manager.
 ///
-/// TaskInvocationParameters is a property of the AWS::SSM::MaintenanceWindowTask property type.
+/// MaintenanceWindowAutomationParameters is a property of the TaskInvocationParameters property type.
+///
+/// For information about available parameters in Automation runbooks, you can view the    content of the runbook itself in the Systems Manager console. For information, see View runbook content in the AWS Systems Manager User    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TaskInvocationParameters {
+pub struct MaintenanceWindowAutomationParameters {
 
 
     /// 
-    /// The parameters for a RUN_COMMAND task type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MaintenanceWindowRunCommandParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaintenanceWindowRunCommandParameters")]
-    pub maintenance_window_run_command_parameters: Option<MaintenanceWindowRunCommandParameters>,
-
-
-    /// 
-    /// The parameters for a LAMBDA task type.
+    /// The version of an Automation runbook to use during task execution.
     /// 
     /// Required: No
     ///
-    /// Type: MaintenanceWindowLambdaParameters
+    /// Type: String
+    ///
+    /// Pattern: ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaintenanceWindowLambdaParameters")]
-    pub maintenance_window_lambda_parameters: Option<MaintenanceWindowLambdaParameters>,
+    #[serde(rename = "DocumentVersion")]
+    pub document_version: Option<String>,
 
 
     /// 
-    /// The parameters for a STEP_FUNCTIONS task type.
+    /// The parameters for the AUTOMATION task.
     /// 
     /// Required: No
     ///
-    /// Type: MaintenanceWindowStepFunctionsParameters
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaintenanceWindowStepFunctionsParameters")]
-    pub maintenance_window_step_functions_parameters: Option<MaintenanceWindowStepFunctionsParameters>,
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
+
+}
+
+
+
+
+/// The MaintenanceWindowLambdaParameters property type specifies the parameters    for a LAMBDA task type for a maintenance window task in AWS Systems Manager.
+///
+/// MaintenanceWindowLambdaParameters is a property of the TaskInvocationParameters property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MaintenanceWindowLambdaParameters {
 
 
     /// 
-    /// The parameters for an AUTOMATION task type.
+    /// Client-specific information to pass to the AWS Lambda function that you're invoking. You can    then use the context variable to process the client information in your AWS Lambda    function.
     /// 
     /// Required: No
     ///
-    /// Type: MaintenanceWindowAutomationParameters
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 8000
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaintenanceWindowAutomationParameters")]
-    pub maintenance_window_automation_parameters: Option<MaintenanceWindowAutomationParameters>,
+    #[serde(rename = "ClientContext")]
+    pub client_context: Option<String>,
+
+
+    /// 
+    /// JSON to provide to your AWS Lambda function as input.
+    /// 
+    /// ImportantAlthough Type is listed as "String" for this property, the payload content     must be formatted as a Base64-encoded binary data object.
+    /// 
+    /// Length Constraint: 4096
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Payload")]
+    pub payload: Option<String>,
+
+
+    /// 
+    /// An AWS Lambda function version or alias name. If you specify a function version, the action    uses the qualified function Amazon Resource Name (ARN) to invoke a specific Lambda function.    If you specify an alias name, the action uses the alias ARN to invoke the Lambda function    version that the alias points to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Qualifier")]
+    pub qualifier: Option<String>,
+
+}
+
+
+
+
+/// The MaintenanceWindowRunCommandParameters property type specifies the    parameters for a RUN_COMMAND task type for a maintenance window task in AWS Systems Manager. This means that these parameters are the same as those for the     SendCommand API call. For more information about SendCommand    parameters, see SendCommand in the     AWS Systems Manager API Reference.
+///
+/// For information about available parameters in SSM Command documents, you can view the    content of the document itself in the Systems Manager console. For information, see Viewing SSM command     document content in the AWS Systems Manager User Guide.
+///
+/// MaintenanceWindowRunCommandParameters is a property of the TaskInvocationParameters property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MaintenanceWindowRunCommandParameters {
+
+
+    /// 
+    /// Configuration options for sending command output to Amazon CloudWatch Logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CloudWatchOutputConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchOutputConfig")]
+    pub cloud_watch_output_config: Option<CloudWatchOutputConfig>,
+
+
+    /// 
+    /// Information about the command or commands to run.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Comment")]
+    pub comment: Option<String>,
+
+
+    /// 
+    /// The SHA-256 or SHA-1 hash created by the system when the document was created. SHA-1 hashes  have been deprecated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DocumentHash")]
+    pub document_hash: Option<String>,
+
+
+    /// 
+    /// The SHA-256 or SHA-1 hash type. SHA-1 hashes are deprecated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Sha1 | Sha256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DocumentHashType")]
+    pub document_hash_type: Option<MaintenanceWindowRunCommandParametersDocumentHashTypeEnum>,
+
+
+    /// 
+    /// The AWS Systems Manager document (SSM document) version to use in the request. You can specify   $DEFAULT, $LATEST, or a specific version number. If you run commands  by using the AWS CLI, then you must escape the first two options by using a backslash. If you  specify a version number, then you don't need to use the backslash. For example:
+    /// 
+    /// --document-version "\$DEFAULT"
+    /// 
+    /// --document-version "\$LATEST"
+    /// 
+    /// --document-version "3"
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DocumentVersion")]
+    pub document_version: Option<String>,
+
+
+    /// 
+    /// Configurations for sending notifications about command status changes on a per-managed node  basis.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NotificationConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationConfig")]
+    pub notification_config: Option<NotificationConfig>,
+
+
+    /// 
+    /// The name of the Amazon Simple Storage Service (Amazon S3) bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 63
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OutputS3BucketName")]
+    pub output_s3_bucket_name: Option<String>,
+
+
+    /// 
+    /// The S3 bucket subfolder.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 500
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OutputS3KeyPrefix")]
+    pub output_s3_key_prefix: Option<String>,
+
+
+    /// 
+    /// The parameters for the RUN_COMMAND task execution.
+    /// 
+    /// The supported parameters are the same as those for the SendCommand API call.    For more information, see SendCommand in the     AWS Systems Manager API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceRoleArn")]
+    pub service_role_arn: Option<String>,
+
+
+    /// 
+    /// If this time is reached and the command hasn't already started running, it doesn't  run.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 30
+    ///
+    /// Maximum: 2592000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimeoutSeconds")]
+    pub timeout_seconds: Option<i64>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum MaintenanceWindowRunCommandParametersDocumentHashTypeEnum {
+
+    /// Sha1
+    #[serde(rename = "Sha1")]
+    Sha1,
+
+    /// Sha256
+    #[serde(rename = "Sha256")]
+    Sha256,
+
+}
+
+impl Default for MaintenanceWindowRunCommandParametersDocumentHashTypeEnum {
+    fn default() -> Self {
+        MaintenanceWindowRunCommandParametersDocumentHashTypeEnum::Sha1
+    }
+}
+
+
+
+/// The MaintenanceWindowStepFunctionsParameters property type specifies the    parameters for the execution of a STEP_FUNCTIONS task in a Systems Manager    maintenance window.
+///
+/// MaintenanceWindowStepFunctionsParameters is a property of the TaskInvocationParameters property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MaintenanceWindowStepFunctionsParameters {
+
+
+    /// 
+    /// The inputs for the STEP_FUNCTIONS task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 4096
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Input")]
+    pub input: Option<String>,
+
+
+    /// 
+    /// The name of the STEP_FUNCTIONS task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 80
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 }
 
@@ -823,22 +721,6 @@ pub struct TaskInvocationParameters {
 /// NotificationConfig is a property of the MaintenanceWindowRunCommandParameters property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NotificationConfig {
-
-
-    /// 
-    /// The notification type.
-    /// 
-    /// Command: Receive notification when the status of a command changes.              Invocation: For commands sent to multiple instances, receive notification on      a per-instance basis when the status of a command changes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Command | Invocation
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationType")]
-    pub notification_type: Option<NotificationConfigNotificationTypeEnum>,
 
 
     /// 
@@ -864,6 +746,22 @@ pub struct NotificationConfig {
     #[serde(rename = "NotificationEvents")]
     pub notification_events: Option<Vec<String>>,
 
+
+    /// 
+    /// The notification type.
+    /// 
+    /// Command: Receive notification when the status of a command changes.              Invocation: For commands sent to multiple instances, receive notification on      a per-instance basis when the status of a command changes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Command | Invocation
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationType")]
+    pub notification_type: Option<NotificationConfigNotificationTypeEnum>,
+
 }
 
 
@@ -885,4 +783,106 @@ impl Default for NotificationConfigNotificationTypeEnum {
         NotificationConfigNotificationTypeEnum::Command
     }
 }
+
+
+
+/// The Target property type specifies targets (either instances or window    target IDs). You specify instances by using Key=InstanceIds,Values=<instanceid1>,<instanceid2>. You specify window target IDs using    Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2> for a maintenance window task in AWS Systems Manager.
+///
+/// Target is a property of the AWS::SSM::MaintenanceWindowTask property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Target {
+
+
+    /// 
+    /// User-defined criteria for sending commands that target instances that meet the criteria.     Key can be InstanceIds or WindowTargetIds. For more    information about how to target instances within a maintenance window task, see About 'register-task-with-maintenance-window' Options and Values in the     AWS Systems Manager User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 163
+    ///
+    /// Pattern: ^[\p{L}\p{Z}\p{N}_.:/=\-@]*$|resource-groups:ResourceTypeFilters|resource-groups:Name
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// User-defined criteria that maps to Key. For example, if you specify     InstanceIds, you can specify     i-1234567890abcdef0,i-9876543210abcdef0 to run a command on two EC2 instances.    For more information about how to target instances within a maintenance window task, see     About      'register-task-with-maintenance-window' Options and Values in the AWS Systems Manager User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<String>,
+
+}
+
+
+
+
+/// The TaskInvocationParameters property type specifies the task execution    parameters for a maintenance window task in AWS Systems Manager.
+///
+/// TaskInvocationParameters is a property of the AWS::SSM::MaintenanceWindowTask property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TaskInvocationParameters {
+
+
+    /// 
+    /// The parameters for an AUTOMATION task type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MaintenanceWindowAutomationParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaintenanceWindowAutomationParameters")]
+    pub maintenance_window_automation_parameters: Option<MaintenanceWindowAutomationParameters>,
+
+
+    /// 
+    /// The parameters for a LAMBDA task type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MaintenanceWindowLambdaParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaintenanceWindowLambdaParameters")]
+    pub maintenance_window_lambda_parameters: Option<MaintenanceWindowLambdaParameters>,
+
+
+    /// 
+    /// The parameters for a RUN_COMMAND task type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MaintenanceWindowRunCommandParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaintenanceWindowRunCommandParameters")]
+    pub maintenance_window_run_command_parameters: Option<MaintenanceWindowRunCommandParameters>,
+
+
+    /// 
+    /// The parameters for a STEP_FUNCTIONS task type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MaintenanceWindowStepFunctionsParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaintenanceWindowStepFunctionsParameters")]
+    pub maintenance_window_step_functions_parameters: Option<MaintenanceWindowStepFunctionsParameters>,
+
+}
+
 

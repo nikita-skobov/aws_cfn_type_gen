@@ -6,6 +6,20 @@ pub struct CfnRobot {
 
 
     /// 
+    /// The architecture of the robot.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ARM64 | ARMHF | X86_64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Architecture")]
+    pub architecture: RobotArchitectureEnum,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the fleet to which the robot will be     registered.
     /// 
     /// Required: No
@@ -15,36 +29,6 @@ pub struct CfnRobot {
     /// Update requires: Replacement
     #[serde(rename = "Fleet")]
     pub fleet: Option<String>,
-
-
-    /// 
-    /// A map that contains tag keys and tag values that are attached to the robot.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The name of the robot.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [a-zA-Z0-9_\-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
 
 
     /// 
@@ -66,17 +50,33 @@ pub struct CfnRobot {
 
 
     /// 
-    /// The architecture of the robot.
+    /// The name of the robot.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: ARM64 | ARMHF | X86_64
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [a-zA-Z0-9_\-]*
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Architecture")]
-    pub architecture: RobotArchitectureEnum,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// A map that contains tag keys and tag values that are attached to the robot.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
 

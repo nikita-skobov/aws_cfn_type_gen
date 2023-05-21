@@ -6,30 +6,6 @@ pub struct CfnClientVpnAuthorizationRule {
 
 
     /// 
-    /// Indicates whether to grant access to all clients. Specify true to grant all       clients who successfully establish a VPN connection access to the network. Must be set       to true if AccessGroupId is not specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AuthorizeAllGroups")]
-    pub authorize_all_groups: Option<bool>,
-
-
-    /// 
-    /// The IPv4 address range, in CIDR notation, of the network for which access is being authorized.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetNetworkCidr")]
-    pub target_network_cidr: String,
-
-
-    /// 
     /// The ID of the group to grant access to, for example, the Active Directory group or identity provider (IdP) group. Required if AuthorizeAllGroups is false or not specified.
     /// 
     /// Required: No
@@ -39,6 +15,18 @@ pub struct CfnClientVpnAuthorizationRule {
     /// Update requires: Replacement
     #[serde(rename = "AccessGroupId")]
     pub access_group_id: Option<String>,
+
+
+    /// 
+    /// Indicates whether to grant access to all clients. Specify true to grant all       clients who successfully establish a VPN connection access to the network. Must be set       to true if AccessGroupId is not specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthorizeAllGroups")]
+    pub authorize_all_groups: Option<bool>,
 
 
     /// 
@@ -63,6 +51,18 @@ pub struct CfnClientVpnAuthorizationRule {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The IPv4 address range, in CIDR notation, of the network for which access is being authorized.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetNetworkCidr")]
+    pub target_network_cidr: String,
 
 }
 

@@ -6,17 +6,15 @@ pub struct CfnIPSet {
 
 
     /// 
-    /// The format of the file that contains the IPSet.
+    /// Indicates whether or not uses the             IPSet.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Allowed values: ALIEN_VAULT | FIRE_EYE | OTX_CSV | PROOF_POINT | STIX | TXT
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Format")]
-    pub format: IPSetFormatEnum,
+    /// Update requires: No interruption
+    #[serde(rename = "Activate")]
+    pub activate: bool,
 
 
     /// 
@@ -36,17 +34,33 @@ pub struct CfnIPSet {
 
 
     /// 
-    /// The tags to be added to a new IP set resource. Each tag consists of a key and an          optional value, both of which you define.
+    /// The format of the file that contains the IPSet.
     /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Allowed values: ALIEN_VAULT | FIRE_EYE | OTX_CSV | PROOF_POINT | STIX | TXT
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Format")]
+    pub format: IPSetFormatEnum,
+
+
+    /// 
+    /// The URI of the file that contains the IPSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 300
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Location")]
+    pub location: String,
 
 
     /// 
@@ -68,31 +82,17 @@ pub struct CfnIPSet {
 
 
     /// 
-    /// The URI of the file that contains the IPSet.
+    /// The tags to be added to a new IP set resource. Each tag consists of a key and an          optional value, both of which you define.
     /// 
-    /// Required: Yes
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 300
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Location")]
-    pub location: String,
-
-
-    /// 
-    /// Indicates whether or not uses the             IPSet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Activate")]
-    pub activate: bool,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

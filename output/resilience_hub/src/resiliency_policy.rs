@@ -6,27 +6,15 @@ pub struct CfnResiliencyPolicy {
 
 
     /// 
-    /// The tags assigned to the resource. A tag is a label that you assign to an AWS resource. Each tag consists of a key/value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The description for the policy.
+    /// Specifies a high-level geographical location constraint for where your resilience policy    data can be stored.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PolicyDescription")]
-    pub policy_description: Option<String>,
+    #[serde(rename = "DataLocationConstraint")]
+    pub data_location_constraint: Option<String>,
 
 
     /// 
@@ -42,6 +30,18 @@ pub struct CfnResiliencyPolicy {
 
 
     /// 
+    /// The description for the policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyDescription")]
+    pub policy_description: Option<String>,
+
+
+    /// 
     /// The name of the policy
     /// 
     /// Required: Yes
@@ -54,15 +54,15 @@ pub struct CfnResiliencyPolicy {
 
 
     /// 
-    /// Specifies a high-level geographical location constraint for where your resilience policy    data can be stored.
+    /// The tags assigned to the resource. A tag is a label that you assign to an AWS resource. Each tag consists of a key/value pair.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DataLocationConstraint")]
-    pub data_location_constraint: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 

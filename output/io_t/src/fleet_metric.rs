@@ -6,6 +6,90 @@ pub struct CfnFleetMetric {
 
 
     /// 
+    /// The field to aggregate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AggregationField")]
+    pub aggregation_field: Option<String>,
+
+
+    /// 
+    /// The type of the aggregation query.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AggregationType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AggregationType")]
+    pub aggregation_type: Option<AggregationType>,
+
+
+    /// 
+    /// The fleet metric description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The name of the index to search.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IndexName")]
+    pub index_name: Option<String>,
+
+
+    /// 
+    /// The name of the fleet metric to create.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
+
+
+    /// 
+    /// The time in seconds between fleet metric emissions. Range [60(1 min), 86400(1 day)] and must be multiple of 60.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Period")]
+    pub period: Option<i64>,
+
+
+    /// 
+    /// The search query string.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryString")]
+    pub query_string: Option<String>,
+
+
+    /// 
     /// The query version.
     /// 
     /// Required: No
@@ -30,42 +114,6 @@ pub struct CfnFleetMetric {
 
 
     /// 
-    /// The fleet metric description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The field to aggregate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AggregationField")]
-    pub aggregation_field: Option<String>,
-
-
-    /// 
-    /// The time in seconds between fleet metric emissions. Range [60(1 min), 86400(1 day)] and must be multiple of 60.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Period")]
-    pub period: Option<i64>,
-
-
-    /// 
     /// Used to support unit transformation such as milliseconds to seconds. Must be a unit supported by CW metric. Default to null.
     /// 
     /// Required: No
@@ -75,54 +123,6 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     pub unit: Option<String>,
-
-
-    /// 
-    /// The search query string.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryString")]
-    pub query_string: Option<String>,
-
-
-    /// 
-    /// The name of the index to search.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IndexName")]
-    pub index_name: Option<String>,
-
-
-    /// 
-    /// The type of the aggregation query.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AggregationType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AggregationType")]
-    pub aggregation_type: Option<AggregationType>,
-
-
-    /// 
-    /// The name of the fleet metric to create.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
 
 }
 
@@ -145,18 +145,6 @@ pub struct AggregationType {
 
 
     /// 
-    /// A list of the values of aggregation types.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<String>,
-
-
-    /// 
     /// The name of the aggregation type.
     /// 
     /// Required: Yes
@@ -166,6 +154,18 @@ pub struct AggregationType {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// A list of the values of aggregation types.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<String>,
 
 }
 
@@ -184,17 +184,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -203,6 +192,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

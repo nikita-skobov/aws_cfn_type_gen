@@ -24,18 +24,6 @@ pub struct CfnEventBus {
 
 
     /// 
-    /// Tags to associate with the event bus.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TagEntry
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagEntry>>,
-
-
-    /// 
     /// The name of the new event bus.
     /// 
     /// Custom event bus names can't contain the / character, but you can use the / character in partner event bus names. In addition, for partner event buses, the name must exactly match the name of the partner event    source that this event bus is matched to.
@@ -55,6 +43,18 @@ pub struct CfnEventBus {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// Tags to associate with the event bus.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TagEntry
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagEntry>>,
 
 }
 

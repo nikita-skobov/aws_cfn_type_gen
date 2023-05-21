@@ -6,17 +6,27 @@ pub struct CfnParameterGroup {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// A description of the parameter group.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The name of the parameter group family that this parameter group is compatible with.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Family")]
+    pub family: String,
 
 
     /// 
@@ -44,27 +54,17 @@ pub struct CfnParameterGroup {
 
 
     /// 
-    /// The name of the parameter group family that this parameter group is compatible with.
+    /// An array of key-value pairs to apply to this resource.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Family")]
-    pub family: String,
-
-
-    /// 
-    /// A description of the parameter group.
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

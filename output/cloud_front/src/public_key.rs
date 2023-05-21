@@ -37,30 +37,6 @@ pub struct PublicKeyConfig {
 
 
     /// 
-    /// A name to help identify the public key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The public key that you can use with signed URLs and signed cookies, or with field-level encryption.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncodedKey")]
-    pub encoded_key: String,
-
-
-    /// 
     /// A string included in the request to help make sure that the request can't be 			replayed.
     /// 
     /// Required: Yes
@@ -82,6 +58,30 @@ pub struct PublicKeyConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     pub comment: Option<String>,
+
+
+    /// 
+    /// The public key that you can use with signed URLs and signed cookies, or with field-level encryption.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncodedKey")]
+    pub encoded_key: String,
+
+
+    /// 
+    /// A name to help identify the public key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
 

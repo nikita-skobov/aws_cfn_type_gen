@@ -20,18 +20,6 @@ pub struct CfnNode {
 
 
     /// 
-    /// Configuration properties of a peer node.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: NodeConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NodeConfiguration")]
-    pub node_configuration: NodeConfiguration,
-
-
-    /// 
     /// The unique identifier of the network for the node.
     /// 
     /// Ethereum public networks have the following NetworkIds:
@@ -49,6 +37,18 @@ pub struct CfnNode {
     /// Update requires: No interruption
     #[serde(rename = "NetworkId")]
     pub network_id: String,
+
+
+    /// 
+    /// Configuration properties of a peer node.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: NodeConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NodeConfiguration")]
+    pub node_configuration: NodeConfiguration,
 
 }
 

@@ -6,15 +6,15 @@ pub struct CfnRegistry {
 
 
     /// 
-    /// Tags to associate with the registry.
+    /// A description of the registry to be created.
     /// 
     /// Required: No
     ///
-    /// Type: List of TagsEntry
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagsEntry>>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -30,15 +30,15 @@ pub struct CfnRegistry {
 
 
     /// 
-    /// A description of the registry to be created.
+    /// Tags to associate with the registry.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of TagsEntry
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagsEntry>>,
 
 }
 
@@ -61,18 +61,6 @@ pub struct TagsEntry {
 
 
     /// 
-    /// They value of a key-value pair.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// They key of a key-value pair.
     /// 
     /// Required: Yes
@@ -82,6 +70,18 @@ pub struct TagsEntry {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// They value of a key-value pair.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

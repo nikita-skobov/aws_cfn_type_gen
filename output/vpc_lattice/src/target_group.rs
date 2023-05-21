@@ -20,18 +20,6 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The type of target group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
     /// The name of the target group. The name must be unique within the account. The valid    characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last    character, or immediately after another hyphen.
     /// 
     /// If you don't specify a name, CloudFormation generates one. However, if    you specify a name, and later want to replace the resource, you must specify a new    name.
@@ -68,6 +56,18 @@ pub struct CfnTargetGroup {
     #[serde(rename = "Targets")]
     pub targets: Option<Vec<Target>>,
 
+
+    /// 
+    /// The type of target group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
 }
 
 
@@ -83,25 +83,85 @@ impl cfn_resources::CfnResource for CfnTargetGroup {
 }
 
 
-/// Describes a target.
+/// The health check configuration of a target group. Health check configurations aren't used  for LAMBDA and ALB target groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Target {
+pub struct HealthCheckConfig {
 
 
     /// 
-    /// The ID of the target. If the target type of the target group is INSTANCE, this  is an instance ID. If the target type is IP , this is an IP address. If the target  type is LAMBDA, this is the ARN of the Lambda function. If the target type is   ALB, this is the ARN of the Application Load Balancer.
+    /// Indicates whether health checking is enabled.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// The approximate amount of time, in seconds, between health checks of an individual target.  The range is 5–300 seconds. The default is 30 seconds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckIntervalSeconds")]
+    pub health_check_interval_seconds: Option<i64>,
+
+
+    /// 
+    /// The amount of time, in seconds, to wait before reporting a target as unhealthy. The range is  1–120 seconds. The default is 5 seconds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckTimeoutSeconds")]
+    pub health_check_timeout_seconds: Option<i64>,
+
+
+    /// 
+    /// The number of consecutive successful health checks required before considering an unhealthy  target healthy. The range is 2–10. The default is 5.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthyThresholdCount")]
+    pub healthy_threshold_count: Option<i64>,
+
+
+    /// 
+    /// The codes to use when checking for a successful response from a target. These are called   Success codes in the console.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Matcher
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Matcher")]
+    pub matcher: Option<Matcher>,
+
+
+    /// 
+    /// The destination for health checks on the targets. If the protocol version is   HTTP/1.1 or HTTP/2, specify a valid URI (for example,   /path?query). The default path is /. Health checks are not supported  if the protocol version is gRPC, however, you can choose HTTP/1.1 or   HTTP/2 and specify a valid URI.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
 
 
     /// 
-    /// The port on which the target is listening. For HTTP, the default is 80. For  HTTPS, the default is 443.
+    /// The port used when performing health checks on targets. The default setting is the port that  a target receives traffic on.
     /// 
     /// Required: No
     ///
@@ -110,6 +170,63 @@ pub struct Target {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     pub port: Option<i64>,
+
+
+    /// 
+    /// The protocol used when performing health checks on targets. The possible protocols are   HTTP and HTTPS. The default is HTTP.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<String>,
+
+
+    /// 
+    /// The protocol version used when performing health checks on targets. The possible protocol  versions are HTTP1 and HTTP2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProtocolVersion")]
+    pub protocol_version: Option<String>,
+
+
+    /// 
+    /// The number of consecutive failed health checks required before considering a target  unhealthy. The range is 2–10. The default is 2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UnhealthyThresholdCount")]
+    pub unhealthy_threshold_count: Option<i64>,
+
+}
+
+
+
+
+/// The codes to use when checking for a successful response from a target for health  checks.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Matcher {
+
+
+    /// 
+    /// The HTTP code to use when checking for a successful response from a target.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpCode")]
+    pub http_code: String,
 
 }
 
@@ -153,85 +270,25 @@ pub struct Tag {
 
 
 
-/// The health check configuration of a target group. Health check configurations aren't used  for LAMBDA and ALB target groups.
+/// Describes a target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HealthCheckConfig {
+pub struct Target {
 
 
     /// 
-    /// The codes to use when checking for a successful response from a target. These are called   Success codes in the console.
+    /// The ID of the target. If the target type of the target group is INSTANCE, this  is an instance ID. If the target type is IP , this is an IP address. If the target  type is LAMBDA, this is the ARN of the Lambda function. If the target type is   ALB, this is the ARN of the Application Load Balancer.
     /// 
-    /// Required: No
-    ///
-    /// Type: Matcher
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Matcher")]
-    pub matcher: Option<Matcher>,
-
-
-    /// 
-    /// The protocol used when performing health checks on targets. The possible protocols are   HTTP and HTTPS. The default is HTTP.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
+    #[serde(rename = "Id")]
+    pub id: String,
 
 
     /// 
-    /// The approximate amount of time, in seconds, between health checks of an individual target.  The range is 5–300 seconds. The default is 30 seconds.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckIntervalSeconds")]
-    pub health_check_interval_seconds: Option<i64>,
-
-
-    /// 
-    /// The number of consecutive failed health checks required before considering a target  unhealthy. The range is 2–10. The default is 2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UnhealthyThresholdCount")]
-    pub unhealthy_threshold_count: Option<i64>,
-
-
-    /// 
-    /// The amount of time, in seconds, to wait before reporting a target as unhealthy. The range is  1–120 seconds. The default is 5 seconds.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckTimeoutSeconds")]
-    pub health_check_timeout_seconds: Option<i64>,
-
-
-    /// 
-    /// Indicates whether health checking is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// The port used when performing health checks on targets. The default setting is the port that  a target receives traffic on.
+    /// The port on which the target is listening. For HTTP, the default is 80. For  HTTPS, the default is 443.
     /// 
     /// Required: No
     ///
@@ -241,63 +298,6 @@ pub struct HealthCheckConfig {
     #[serde(rename = "Port")]
     pub port: Option<i64>,
 
-
-    /// 
-    /// The number of consecutive successful health checks required before considering an unhealthy  target healthy. The range is 2–10. The default is 5.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthyThresholdCount")]
-    pub healthy_threshold_count: Option<i64>,
-
-
-    /// 
-    /// The protocol version used when performing health checks on targets. The possible protocol  versions are HTTP1 and HTTP2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProtocolVersion")]
-    pub protocol_version: Option<String>,
-
-
-    /// 
-    /// The destination for health checks on the targets. If the protocol version is   HTTP/1.1 or HTTP/2, specify a valid URI (for example,   /path?query). The default path is /. Health checks are not supported  if the protocol version is gRPC, however, you can choose HTTP/1.1 or   HTTP/2 and specify a valid URI.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
-
-}
-
-
-
-
-/// The codes to use when checking for a successful response from a target for health  checks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Matcher {
-
-
-    /// 
-    /// The HTTP code to use when checking for a successful response from a target.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpCode")]
-    pub http_code: String,
-
 }
 
 
@@ -306,18 +306,6 @@ pub struct Matcher {
 /// Describes the configuration of a target group. Lambda functions don't support target group  configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetGroupConfig {
-
-
-    /// 
-    /// The type of IP address used for the target group. The possible values are ipv4  and ipv6. This is an optional parameter. If not specified, the IP address type  defaults to ipv4.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpAddressType")]
-    pub ip_address_type: Option<String>,
 
 
     /// 
@@ -333,15 +321,27 @@ pub struct TargetGroupConfig {
 
 
     /// 
-    /// The ID of the VPC.
+    /// The type of IP address used for the target group. The possible values are ipv4  and ipv6. This is an optional parameter. If not specified, the IP address type  defaults to ipv4.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcIdentifier")]
-    pub vpc_identifier: String,
+    #[serde(rename = "IpAddressType")]
+    pub ip_address_type: Option<String>,
+
+
+    /// 
+    /// The port on which the targets are listening. For HTTP, the default is 80. For  HTTPS, the default is 443
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Port")]
+    pub port: i64,
 
 
     /// 
@@ -369,15 +369,15 @@ pub struct TargetGroupConfig {
 
 
     /// 
-    /// The port on which the targets are listening. For HTTP, the default is 80. For  HTTPS, the default is 443
+    /// The ID of the VPC.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Port")]
-    pub port: i64,
+    #[serde(rename = "VpcIdentifier")]
+    pub vpc_identifier: String,
 
 }
 

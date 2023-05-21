@@ -8,45 +8,15 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
 
 
     /// 
-    /// The user pool ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 55
-    ///
-    /// Pattern: [\w-]+_[0-9a-zA-Z]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
-
-
-    /// 
-    /// The configuration to override the risk decision.
+    /// The account takeover risk configuration object, including the         NotifyConfiguration object and Actions to take if there is       an account takeover.
     /// 
     /// Required: No
     ///
-    /// Type: RiskExceptionConfigurationType
+    /// Type: AccountTakeoverRiskConfigurationType
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RiskExceptionConfiguration")]
-    pub risk_exception_configuration: Option<RiskExceptionConfigurationType>,
-
-
-    /// 
-    /// The compromised credentials risk configuration object, including the         EventFilter and the EventAction.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CompromisedCredentialsRiskConfigurationType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CompromisedCredentialsRiskConfiguration")]
-    pub compromised_credentials_risk_configuration: Option<CompromisedCredentialsRiskConfigurationType>,
+    #[serde(rename = "AccountTakeoverRiskConfiguration")]
+    pub account_takeover_risk_configuration: Option<AccountTakeoverRiskConfigurationType>,
 
 
     /// 
@@ -68,15 +38,45 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
 
 
     /// 
-    /// The account takeover risk configuration object, including the         NotifyConfiguration object and Actions to take if there is       an account takeover.
+    /// The compromised credentials risk configuration object, including the         EventFilter and the EventAction.
     /// 
     /// Required: No
     ///
-    /// Type: AccountTakeoverRiskConfigurationType
+    /// Type: CompromisedCredentialsRiskConfigurationType
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AccountTakeoverRiskConfiguration")]
-    pub account_takeover_risk_configuration: Option<AccountTakeoverRiskConfigurationType>,
+    #[serde(rename = "CompromisedCredentialsRiskConfiguration")]
+    pub compromised_credentials_risk_configuration: Option<CompromisedCredentialsRiskConfigurationType>,
+
+
+    /// 
+    /// The configuration to override the risk decision.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RiskExceptionConfigurationType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RiskExceptionConfiguration")]
+    pub risk_exception_configuration: Option<RiskExceptionConfigurationType>,
+
+
+    /// 
+    /// The user pool ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 55
+    ///
+    /// Pattern: [\w-]+_[0-9a-zA-Z]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserPoolId")]
+    pub user_pool_id: String,
 
 }
 
@@ -157,196 +157,6 @@ impl Default for AccountTakeoverActionTypeEventActionEnum {
 
 
 
-/// The type of the configuration to override the risk decision.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RiskExceptionConfigurationType {
-
-
-    /// 
-    /// Risk detection isn't performed on the IP addresses in this range list. The IP range is       in CIDR notation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SkippedIPRangeList")]
-    pub skipped_iprange_list: Option<Vec<String>>,
-
-
-    /// 
-    /// Overrides the risk decision to always block the pre-authentication requests. The IP       range is in CIDR notation, a compact representation of an IP address and its routing       prefix.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockedIPRangeList")]
-    pub blocked_iprange_list: Option<Vec<String>>,
-
-}
-
-
-
-
-/// Configuration for mitigation actions and notification for different levels of risk       detected for a potential account takeover.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AccountTakeoverRiskConfigurationType {
-
-
-    /// 
-    /// The notify configuration used to construct email notifications.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NotifyConfigurationType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotifyConfiguration")]
-    pub notify_configuration: Option<NotifyConfigurationType>,
-
-
-    /// 
-    /// Account takeover risk configuration actions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: AccountTakeoverActionsType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Actions")]
-    pub actions: AccountTakeoverActionsType,
-
-}
-
-
-
-
-/// The notify configuration type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NotifyConfigurationType {
-
-
-    /// 
-    /// The email address that is sending the email. The address must be either individually       verified with Amazon Simple Email Service, or from a domain that has been verified with Amazon SES.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "From")]
-    pub from: Option<String>,
-
-
-    /// 
-    /// The multi-factor authentication (MFA) email template used when MFA is challenged as       part of a detected risk.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NotifyEmailType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MfaEmail")]
-    pub mfa_email: Option<NotifyEmailType>,
-
-
-    /// 
-    /// The email template used when a detected risk event is allowed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NotifyEmailType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NoActionEmail")]
-    pub no_action_email: Option<NotifyEmailType>,
-
-
-    /// 
-    /// Email template used when a detected risk event is blocked.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NotifyEmailType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockEmail")]
-    pub block_email: Option<NotifyEmailType>,
-
-
-    /// 
-    /// The destination to which the receiver of an email should reply to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplyTo")]
-    pub reply_to: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the identity that is associated with the sending       authorization policy. This identity permits Amazon Cognito to send for the email address       specified in the From parameter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:[\w+=/,.@-]+:[\w+=/,.@-]+:([\w+=/,.@-]*)?:[0-9]+:[\w+=/,.@-]+(:[\w+=/,.@-]+)?(:[\w+=/,.@-]+)?
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceArn")]
-    pub source_arn: String,
-
-}
-
-
-
-
-/// The compromised credentials risk configuration type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CompromisedCredentialsRiskConfigurationType {
-
-
-    /// 
-    /// Perform the action for these events. The default is to perform all events if no event       filter is specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventFilter")]
-    pub event_filter: Option<Vec<String>>,
-
-
-    /// 
-    /// The compromised credentials risk configuration actions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: CompromisedCredentialsActionsType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Actions")]
-    pub actions: CompromisedCredentialsActionsType,
-
-}
-
-
-
-
 /// Account takeover actions type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccountTakeoverActionsType {
@@ -365,6 +175,18 @@ pub struct AccountTakeoverActionsType {
 
 
     /// 
+    /// Action to take for a low risk.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AccountTakeoverActionType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LowAction")]
+    pub low_action: Option<AccountTakeoverActionType>,
+
+
+    /// 
     /// Action to take for a medium risk.
     /// 
     /// Required: No
@@ -375,17 +197,38 @@ pub struct AccountTakeoverActionsType {
     #[serde(rename = "MediumAction")]
     pub medium_action: Option<AccountTakeoverActionType>,
 
+}
+
+
+
+
+/// Configuration for mitigation actions and notification for different levels of risk       detected for a potential account takeover.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AccountTakeoverRiskConfigurationType {
+
 
     /// 
-    /// Action to take for a low risk.
+    /// Account takeover risk configuration actions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: AccountTakeoverActionsType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Actions")]
+    pub actions: AccountTakeoverActionsType,
+
+
+    /// 
+    /// The notify configuration used to construct email notifications.
     /// 
     /// Required: No
     ///
-    /// Type: AccountTakeoverActionType
+    /// Type: NotifyConfigurationType
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LowAction")]
-    pub low_action: Option<AccountTakeoverActionType>,
+    #[serde(rename = "NotifyConfiguration")]
+    pub notify_configuration: Option<NotifyConfigurationType>,
 
 }
 
@@ -434,27 +277,129 @@ impl Default for CompromisedCredentialsActionsTypeEventActionEnum {
 
 
 
-/// The notify email type.
+/// The compromised credentials risk configuration type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NotifyEmailType {
+pub struct CompromisedCredentialsRiskConfigurationType {
 
 
     /// 
-    /// The email text body.
+    /// The compromised credentials risk configuration actions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: CompromisedCredentialsActionsType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Actions")]
+    pub actions: CompromisedCredentialsActionsType,
+
+
+    /// 
+    /// Perform the action for these events. The default is to perform all events if no event       filter is specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventFilter")]
+    pub event_filter: Option<Vec<String>>,
+
+}
+
+
+
+
+/// The notify configuration type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NotifyConfigurationType {
+
+
+    /// 
+    /// Email template used when a detected risk event is blocked.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NotifyEmailType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BlockEmail")]
+    pub block_email: Option<NotifyEmailType>,
+
+
+    /// 
+    /// The email address that is sending the email. The address must be either individually       verified with Amazon Simple Email Service, or from a domain that has been verified with Amazon SES.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 6
+    /// Update requires: No interruption
+    #[serde(rename = "From")]
+    pub from: Option<String>,
+
+
+    /// 
+    /// The multi-factor authentication (MFA) email template used when MFA is challenged as       part of a detected risk.
+    /// 
+    /// Required: No
     ///
-    /// Maximum: 20000
-    ///
-    /// Pattern: [\p{L}\p{M}\p{S}\p{N}\p{P}\s*]+
+    /// Type: NotifyEmailType
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TextBody")]
-    pub text_body: Option<String>,
+    #[serde(rename = "MfaEmail")]
+    pub mfa_email: Option<NotifyEmailType>,
+
+
+    /// 
+    /// The email template used when a detected risk event is allowed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NotifyEmailType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NoActionEmail")]
+    pub no_action_email: Option<NotifyEmailType>,
+
+
+    /// 
+    /// The destination to which the receiver of an email should reply to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplyTo")]
+    pub reply_to: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the identity that is associated with the sending       authorization policy. This identity permits Amazon Cognito to send for the email address       specified in the From parameter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:[\w+=/,.@-]+:[\w+=/,.@-]+:([\w+=/,.@-]*)?:[0-9]+:[\w+=/,.@-]+(:[\w+=/,.@-]+)?(:[\w+=/,.@-]+)?
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceArn")]
+    pub source_arn: String,
+
+}
+
+
+
+
+/// The notify email type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NotifyEmailType {
 
 
     /// 
@@ -491,6 +436,61 @@ pub struct NotifyEmailType {
     /// Update requires: No interruption
     #[serde(rename = "Subject")]
     pub subject: String,
+
+
+    /// 
+    /// The email text body.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 6
+    ///
+    /// Maximum: 20000
+    ///
+    /// Pattern: [\p{L}\p{M}\p{S}\p{N}\p{P}\s*]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TextBody")]
+    pub text_body: Option<String>,
+
+}
+
+
+
+
+/// The type of the configuration to override the risk decision.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RiskExceptionConfigurationType {
+
+
+    /// 
+    /// Overrides the risk decision to always block the pre-authentication requests. The IP       range is in CIDR notation, a compact representation of an IP address and its routing       prefix.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BlockedIPRangeList")]
+    pub blocked_iprange_list: Option<Vec<String>>,
+
+
+    /// 
+    /// Risk detection isn't performed on the IP addresses in this range list. The IP range is       in CIDR notation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SkippedIPRangeList")]
+    pub skipped_iprange_list: Option<Vec<String>>,
 
 }
 

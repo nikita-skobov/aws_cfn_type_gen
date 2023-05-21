@@ -12,60 +12,6 @@ pub struct CfnPolicy {
 
 
     /// 
-    /// Name of the policy.
-    /// 
-    /// The regex pattern that is used to       validate this parameter is a string of any of the characters in the ASCII character       range.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// List of unique identifiers (IDs) of the root, OU, or account that you want to attach       the policy to. You can get the ID by calling the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts       operations. If you don't specify this parameter, the policy is created but not attached       to any organization resource.
-    /// 
-    /// The regex pattern for a target ID       string requires one of the following:
-    /// 
-    /// Root - A string that begins with "r-" followed           by from 4 to 32 lowercase letters or digits.                          Account - A string that consists of exactly 12           digits.                          Organizational unit (OU) - A string that begins           with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the           root that the OU is in). This string is followed by a second "-" dash and from 8           to 32 additional lowercase letters or digits.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^(r-[0-9a-z]{4,32})|(\d{12})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetIds")]
-    pub target_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// A list of tags that you want to attach to the newly created policy. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
-    /// 
-    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for a policy, then the entire request fails and the policy is not created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The policy text content. You can specify the policy content as a JSON object or a JSON       string.
     /// 
     /// ImportantWhen you specify the policy content as a JSON string, you can't perform drift         detection on the CloudFormation stack. For this reason, we recommend         specifying the policy content as a JSON object instead.
@@ -105,6 +51,60 @@ pub struct CfnPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// Name of the policy.
+    /// 
+    /// The regex pattern that is used to       validate this parameter is a string of any of the characters in the ASCII character       range.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// A list of tags that you want to attach to the newly created policy. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
+    /// 
+    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for a policy, then the entire request fails and the policy is not created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// List of unique identifiers (IDs) of the root, OU, or account that you want to attach       the policy to. You can get the ID by calling the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts       operations. If you don't specify this parameter, the policy is created but not attached       to any organization resource.
+    /// 
+    /// The regex pattern for a target ID       string requires one of the following:
+    /// 
+    /// Root - A string that begins with "r-" followed           by from 4 to 32 lowercase letters or digits.                          Account - A string that consists of exactly 12           digits.                          Organizational unit (OU) - A string that begins           with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the           root that the OU is in). This string is followed by a second "-" dash and from 8           to 32 additional lowercase letters or digits.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^(r-[0-9a-z]{4,32})|(\d{12})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetIds")]
+    pub target_ids: Option<Vec<String>>,
 
 
     /// 
@@ -174,17 +174,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -193,6 +182,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

@@ -61,20 +61,6 @@ pub struct PublicAccessBlockConfiguration {
 
 
     /// 
-    /// Specifies whether Amazon S3 should restrict public bucket policies for this bucket. Setting     this element to TRUE restricts access to this bucket to only AWS service principals and authorized users within this account if the bucket has     a public policy.
-    /// 
-    /// Enabling this setting doesn't affect previously stored bucket policies, except that     public and cross-account access within any public bucket policy, including non-public     delegation to specific accounts, is blocked.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RestrictPublicBuckets")]
-    pub restrict_public_buckets: Option<bool>,
-
-
-    /// 
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
     /// 
     /// PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL is        public.               PUT Object calls fail if the request includes a public ACL.               PUT Bucket calls fail if the request includes a public ACL.
@@ -88,6 +74,20 @@ pub struct PublicAccessBlockConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "BlockPublicAcls")]
     pub block_public_acls: Option<bool>,
+
+
+    /// 
+    /// Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this     element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the     specified bucket policy allows public access.
+    /// 
+    /// Enabling this setting doesn't affect existing bucket policies.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BlockPublicPolicy")]
+    pub block_public_policy: Option<bool>,
 
 
     /// 
@@ -105,17 +105,17 @@ pub struct PublicAccessBlockConfiguration {
 
 
     /// 
-    /// Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this     element to TRUE causes Amazon S3 to reject calls to PUT Bucket policy if the     specified bucket policy allows public access.
+    /// Specifies whether Amazon S3 should restrict public bucket policies for this bucket. Setting     this element to TRUE restricts access to this bucket to only AWS service principals and authorized users within this account if the bucket has     a public policy.
     /// 
-    /// Enabling this setting doesn't affect existing bucket policies.
+    /// Enabling this setting doesn't affect previously stored bucket policies, except that     public and cross-account access within any public bucket policy, including non-public     delegation to specific accounts, is blocked.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BlockPublicPolicy")]
-    pub block_public_policy: Option<bool>,
+    #[serde(rename = "RestrictPublicBuckets")]
+    pub restrict_public_buckets: Option<bool>,
 
 }
 

@@ -6,18 +6,6 @@ pub struct CfnGameSessionQueue {
 
 
     /// 
-    /// A set of policies that act as a sliding cap on player latency. FleetIQ works to       deliver low latency for most players in a game session. These policies ensure that no       individual player can be placed into a game with unreasonably high latency. Use multiple       policies to gradually relax latency requirements a step at a time. Multiple policies are applied based on their       maximum allowed latency, starting with the lowest value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PlayerLatencyPolicy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PlayerLatencyPolicies")]
-    pub player_latency_policies: Option<Vec<PlayerLatencyPolicy>>,
-
-
-    /// 
     /// Information to be added to all events that are related to this game session       queue.
     /// 
     /// Required: No
@@ -36,29 +24,15 @@ pub struct CfnGameSessionQueue {
 
 
     /// 
-    /// A list of labels to assign to the new game session queue resource. Tags are developer-defined    key-value pairs. Tagging    AWS resources are useful for resource management, access management and cost allocation.    For more information, see Tagging AWS Resources in the        AWS General Reference. Once the resource is created, you can    use TagResource, UntagResource, and    ListTagsForResource to add, remove, and view tags. The    maximum tag limit may be lower than stated. See the AWS General Reference for actual    tagging limits.
+    /// A list of fleets and/or fleet aliases that can be used to fulfill game session placement requests in the queue.   Destinations are identified by either a fleet ARN or a fleet alias ARN, and are listed in order of placement preference.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
+    /// Type: List of Destination
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Custom settings to use when prioritizing destinations and locations for game session placements. This       configuration replaces the FleetIQ default prioritization process. Priority types that are not explicitly       named will be automatically applied at the end of the prioritization process.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PriorityConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PriorityConfiguration")]
-    pub priority_configuration: Option<PriorityConfiguration>,
+    #[serde(rename = "Destinations")]
+    pub destinations: Option<Vec<Destination>>,
 
 
     /// 
@@ -92,32 +66,6 @@ pub struct CfnGameSessionQueue {
 
 
     /// 
-    /// The maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status. By default, this property is set to 600.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimeoutInSeconds")]
-    pub timeout_in_seconds: Option<i64>,
-
-
-    /// 
-    /// A list of fleets and/or fleet aliases that can be used to fulfill game session placement requests in the queue.   Destinations are identified by either a fleet ARN or a fleet alias ARN, and are listed in order of placement preference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Destination
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Destinations")]
-    pub destinations: Option<Vec<Destination>>,
-
-
-    /// 
     /// An SNS topic ARN that is set up to receive game session placement notifications. See         Setting up         notifications for game session placement.
     /// 
     /// Required: No
@@ -134,6 +82,58 @@ pub struct CfnGameSessionQueue {
     #[serde(rename = "NotificationTarget")]
     pub notification_target: Option<String>,
 
+
+    /// 
+    /// A set of policies that act as a sliding cap on player latency. FleetIQ works to       deliver low latency for most players in a game session. These policies ensure that no       individual player can be placed into a game with unreasonably high latency. Use multiple       policies to gradually relax latency requirements a step at a time. Multiple policies are applied based on their       maximum allowed latency, starting with the lowest value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PlayerLatencyPolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PlayerLatencyPolicies")]
+    pub player_latency_policies: Option<Vec<PlayerLatencyPolicy>>,
+
+
+    /// 
+    /// Custom settings to use when prioritizing destinations and locations for game session placements. This       configuration replaces the FleetIQ default prioritization process. Priority types that are not explicitly       named will be automatically applied at the end of the prioritization process.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PriorityConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PriorityConfiguration")]
+    pub priority_configuration: Option<PriorityConfiguration>,
+
+
+    /// 
+    /// A list of labels to assign to the new game session queue resource. Tags are developer-defined    key-value pairs. Tagging    AWS resources are useful for resource management, access management and cost allocation.    For more information, see Tagging AWS Resources in the        AWS General Reference. Once the resource is created, you can    use TagResource, UntagResource, and    ListTagsForResource to add, remove, and view tags. The    maximum tag limit may be lower than stated. See the AWS General Reference for actual    tagging limits.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status. By default, this property is set to 600.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimeoutInSeconds")]
+    pub timeout_in_seconds: Option<i64>,
+
 }
 
 
@@ -147,6 +147,33 @@ impl cfn_resources::CfnResource for CfnGameSessionQueue {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A fleet or alias designated in a game session queue. Queues fulfill requests for new       game sessions by placing a new game session on any of the queue's destinations.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Destination {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which       include a fleet ID or alias ID and a Region name, provide a unique identifier across all       Regions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [a-zA-Z0-9:/-]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationArn")]
+    pub destination_arn: Option<String>,
+
+}
+
+
 
 
 /// A list of fleet locations where a game session queue can place new game sessions. You    can use a filter to temporarily turn off placements for specific locations. For queues    that have multi-location fleets, you can use a filter configuration allow placement with    some, but not all of these locations.
@@ -178,20 +205,6 @@ pub struct PlayerLatencyPolicy {
 
 
     /// 
-    /// The length of time, in seconds, that the policy is enforced while placing a new game       session. A null value for this property means that the policy is enforced until the       queue times out.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyDurationSeconds")]
-    pub policy_duration_seconds: Option<i64>,
-
-
-    /// 
     /// The maximum latency value that is allowed for any player, in milliseconds. All       policies must have a value set for this property.
     /// 
     /// Required: No
@@ -204,32 +217,19 @@ pub struct PlayerLatencyPolicy {
     #[serde(rename = "MaximumIndividualPlayerLatencyMilliseconds")]
     pub maximum_individual_player_latency_milliseconds: Option<i64>,
 
-}
-
-
-
-
-/// A fleet or alias designated in a game session queue. Queues fulfill requests for new       game sessions by placing a new game session on any of the queue's destinations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Destination {
-
 
     /// 
-    /// The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which       include a fleet ID or alias ID and a Region name, provide a unique identifier across all       Regions.
+    /// The length of time, in seconds, that the policy is enforced while placing a new game       session. A null value for this property means that the policy is enforced until the       queue times out.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [a-zA-Z0-9:/-]+
+    /// Minimum: 0
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DestinationArn")]
-    pub destination_arn: Option<String>,
+    #[serde(rename = "PolicyDurationSeconds")]
+    pub policy_duration_seconds: Option<i64>,
 
 }
 
@@ -241,6 +241,20 @@ pub struct Destination {
 /// Changing the priority order will affect how game sessions are placed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PriorityConfiguration {
+
+
+    /// 
+    /// The prioritization order to use for fleet locations, when the         PriorityOrder property includes LOCATION. Locations are       identified by AWS Region codes such as us-west-2. Each location can only       be listed once.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LocationOrder")]
+    pub location_order: Option<Vec<String>>,
 
 
     /// 
@@ -257,20 +271,6 @@ pub struct PriorityConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PriorityOrder")]
     pub priority_order: Option<Vec<String>>,
-
-
-    /// 
-    /// The prioritization order to use for fleet locations, when the         PriorityOrder property includes LOCATION. Locations are       identified by AWS Region codes such as us-west-2. Each location can only       be listed once.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LocationOrder")]
-    pub location_order: Option<Vec<String>>,
 
 }
 

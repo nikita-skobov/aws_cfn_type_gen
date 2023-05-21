@@ -6,18 +6,6 @@ pub struct CfnDistributionConfiguration {
 
 
     /// 
-    /// The tags of this distribution configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
     /// The description of this distribution configuration.
     /// 
     /// Required: No
@@ -31,6 +19,18 @@ pub struct CfnDistributionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The distributions of this distribution configuration formatted as an array of 			Distribution objects.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Distribution
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Distributions")]
+    pub distributions: Vec<Distribution>,
 
 
     /// 
@@ -48,15 +48,15 @@ pub struct CfnDistributionConfiguration {
 
 
     /// 
-    /// The distributions of this distribution configuration formatted as an array of 			Distribution objects.
+    /// The tags of this distribution configuration.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of Distribution
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Distributions")]
-    pub distributions: Vec<Distribution>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
 
@@ -73,27 +73,25 @@ impl cfn_resources::CfnResource for CfnDistributionConfiguration {
 }
 
 
-/// The container repository where the output container image is stored.
+/// Define and configure the output AMIs of the pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TargetContainerRepository {
+pub struct AmiDistributionConfiguration {
 
 
     /// 
-    /// Specifies the service in which this image was registered.
+    /// The tags to apply to AMIs distributed to this Region.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: ECR
+    /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Service")]
-    pub service: Option<TargetContainerRepositoryServiceEnum>,
+    #[serde(rename = "AmiTags")]
+    pub ami_tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
-    /// The name of the container repository where the output container image is stored. This 			name is prefixed by the repository location.
+    /// The description of the AMI distribution configuration. Minimum and maximum length are 			in characters.
     /// 
     /// Required: No
     ///
@@ -104,81 +102,8 @@ pub struct TargetContainerRepository {
     /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RepositoryName")]
-    pub repository_name: Option<String>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum TargetContainerRepositoryServiceEnum {
-
-    /// ECR
-    #[serde(rename = "ECR")]
-    Ecr,
-
-}
-
-impl Default for TargetContainerRepositoryServiceEnum {
-    fn default() -> Self {
-        TargetContainerRepositoryServiceEnum::Ecr
-    }
-}
-
-
-
-/// Identifies an Amazon EC2 launch template to use for a specific account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LaunchTemplateConfiguration {
-
-
-    /// 
-    /// Set the specified Amazon EC2 launch template as the default launch template for the 			specified account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SetDefaultVersion")]
-    pub set_default_version: Option<bool>,
-
-
-    /// 
-    /// The account ID that this configuration applies to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[0-9]{12}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccountId")]
-    pub account_id: Option<String>,
-
-
-    /// 
-    /// Identifies the Amazon EC2 launch template to use.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^lt-[a-z0-9-_]{17}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchTemplateId")]
-    pub launch_template_id: Option<String>,
-
-}
-
-
-
-
-/// Define and configure the output AMIs of the pipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AmiDistributionConfiguration {
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -198,45 +123,15 @@ pub struct AmiDistributionConfiguration {
 
 
     /// 
-    /// The tags to apply to AMIs distributed to this Region.
+    /// Launch permissions can be used to configure which AWS accounts can use the AMI to 			launch instances.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: LaunchPermissionConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AmiTags")]
-    pub ami_tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The ID of an account to which you want to distribute an image.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1536
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetAccountIds")]
-    pub target_account_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The description of the AMI distribution configuration. Minimum and maximum length are 			in characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "LaunchPermissionConfiguration")]
+    pub launch_permission_configuration: Option<LaunchPermissionConfiguration>,
 
 
     /// 
@@ -258,15 +153,17 @@ pub struct AmiDistributionConfiguration {
 
 
     /// 
-    /// Launch permissions can be used to configure which AWS accounts can use the AMI to 			launch instances.
+    /// The ID of an account to which you want to distribute an image.
     /// 
     /// Required: No
     ///
-    /// Type: LaunchPermissionConfiguration
+    /// Type: List of String
+    ///
+    /// Maximum: 1536
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LaunchPermissionConfiguration")]
-    pub launch_permission_configuration: Option<LaunchPermissionConfiguration>,
+    #[serde(rename = "TargetAccountIds")]
+    pub target_account_ids: Option<Vec<String>>,
 
 }
 
@@ -276,18 +173,6 @@ pub struct AmiDistributionConfiguration {
 /// Container distribution settings for encryption, licensing, and sharing in a specific 			Region.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ContainerDistributionConfiguration {
-
-
-    /// 
-    /// The destination repository for the container distribution configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TargetContainerRepository
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetRepository")]
-    pub target_repository: Option<TargetContainerRepository>,
 
 
     /// 
@@ -317,194 +202,17 @@ pub struct ContainerDistributionConfiguration {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-}
-
-
-
-
-/// The FastLaunchSnapshotConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FastLaunchSnapshotConfiguration {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetResourceCount")]
-    pub target_resource_count: Option<i64>,
-
-}
-
-
-
-
-/// The FastLaunchLaunchTemplateSpecification property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FastLaunchLaunchTemplateSpecification {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchTemplateId")]
-    pub launch_template_id: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchTemplateVersion")]
-    pub launch_template_version: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchTemplateName")]
-    pub launch_template_name: Option<String>,
-
-}
-
-
-
-
-/// Describes the configuration for a launch permission. The launch permission 			modification request is sent to the Amazon EC2 				ModifyImageAttribute API on behalf of the user for each Region they have 			selected to distribute the AMI. To make an AMI public, set the launch permission 			authorized accounts to all. See the examples for making an AMI public at 				Amazon EC2 				ModifyImageAttribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LaunchPermissionConfiguration {
-
 
     /// 
-    /// The AWS account ID.
+    /// The destination repository for the container distribution configuration.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1536
+    /// Type: TargetContainerRepository
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UserIds")]
-    pub user_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The ARN for an AWS Organizations organizational unit (OU) that you want to share your AMI with. 			For more information about key concepts for AWS Organizations, see AWS Organizations 				terminology and concepts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 25
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationalUnitArns")]
-    pub organizational_unit_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The ARN for an AWS Organization that you want to share your AMI with. For more 			information, see What is 				AWS Organizations?.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 25
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationArns")]
-    pub organization_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of the group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserGroups")]
-    pub user_groups: Option<Vec<String>>,
-
-}
-
-
-
-
-/// The FastLaunchConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FastLaunchConfiguration {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: FastLaunchSnapshotConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshotConfiguration")]
-    pub snapshot_configuration: Option<FastLaunchSnapshotConfiguration>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxParallelLaunches")]
-    pub max_parallel_launches: Option<i64>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccountId")]
-    pub account_id: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: FastLaunchLaunchTemplateSpecification
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchTemplate")]
-    pub launch_template: Option<FastLaunchLaunchTemplateSpecification>,
+    #[serde(rename = "TargetRepository")]
+    pub target_repository: Option<TargetContainerRepository>,
 
 }
 
@@ -526,6 +234,29 @@ pub struct Distribution {
     /// Update requires: No interruption
     #[serde(rename = "AmiDistributionConfiguration")]
     pub ami_distribution_configuration: Option<AmiDistributionConfiguration>,
+
+
+    /// 
+    /// Container distribution settings for encryption, licensing, and sharing 			in a specific Region. For details, see example schema below.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ContainerDistributionConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContainerDistributionConfiguration")]
+    pub container_distribution_configuration: Option<ContainerDistributionConfiguration>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of FastLaunchConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FastLaunchConfigurations")]
+    pub fast_launch_configurations: Option<Vec<FastLaunchConfiguration>>,
 
 
     /// 
@@ -571,29 +302,298 @@ pub struct Distribution {
     #[serde(rename = "Region")]
     pub region: String,
 
+}
 
-    /// 
-    /// Container distribution settings for encryption, licensing, and sharing 			in a specific Region. For details, see example schema below.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ContainerDistributionConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContainerDistributionConfiguration")]
-    pub container_distribution_configuration: Option<ContainerDistributionConfiguration>,
+
+
+
+/// The FastLaunchConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FastLaunchConfiguration {
 
 
     /// Property description not available.
     ///
     /// Required: No
     ///
-    /// Type: List of FastLaunchConfiguration
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FastLaunchConfigurations")]
-    pub fast_launch_configurations: Option<Vec<FastLaunchConfiguration>>,
+    #[serde(rename = "AccountId")]
+    pub account_id: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: FastLaunchLaunchTemplateSpecification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchTemplate")]
+    pub launch_template: Option<FastLaunchLaunchTemplateSpecification>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxParallelLaunches")]
+    pub max_parallel_launches: Option<i64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: FastLaunchSnapshotConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnapshotConfiguration")]
+    pub snapshot_configuration: Option<FastLaunchSnapshotConfiguration>,
 
 }
 
+
+
+
+/// The FastLaunchLaunchTemplateSpecification property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FastLaunchLaunchTemplateSpecification {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchTemplateId")]
+    pub launch_template_id: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchTemplateName")]
+    pub launch_template_name: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchTemplateVersion")]
+    pub launch_template_version: Option<String>,
+
+}
+
+
+
+
+/// The FastLaunchSnapshotConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FastLaunchSnapshotConfiguration {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetResourceCount")]
+    pub target_resource_count: Option<i64>,
+
+}
+
+
+
+
+/// Describes the configuration for a launch permission. The launch permission 			modification request is sent to the Amazon EC2 				ModifyImageAttribute API on behalf of the user for each Region they have 			selected to distribute the AMI. To make an AMI public, set the launch permission 			authorized accounts to all. See the examples for making an AMI public at 				Amazon EC2 				ModifyImageAttribute.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LaunchPermissionConfiguration {
+
+
+    /// 
+    /// The ARN for an AWS Organization that you want to share your AMI with. For more 			information, see What is 				AWS Organizations?.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 25
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationArns")]
+    pub organization_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// The ARN for an AWS Organizations organizational unit (OU) that you want to share your AMI with. 			For more information about key concepts for AWS Organizations, see AWS Organizations 				terminology and concepts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 25
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationalUnitArns")]
+    pub organizational_unit_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserGroups")]
+    pub user_groups: Option<Vec<String>>,
+
+
+    /// 
+    /// The AWS account ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1536
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserIds")]
+    pub user_ids: Option<Vec<String>>,
+
+}
+
+
+
+
+/// Identifies an Amazon EC2 launch template to use for a specific account.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LaunchTemplateConfiguration {
+
+
+    /// 
+    /// The account ID that this configuration applies to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[0-9]{12}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccountId")]
+    pub account_id: Option<String>,
+
+
+    /// 
+    /// Identifies the Amazon EC2 launch template to use.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^lt-[a-z0-9-_]{17}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchTemplateId")]
+    pub launch_template_id: Option<String>,
+
+
+    /// 
+    /// Set the specified Amazon EC2 launch template as the default launch template for the 			specified account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SetDefaultVersion")]
+    pub set_default_version: Option<bool>,
+
+}
+
+
+
+
+/// The container repository where the output container image is stored.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetContainerRepository {
+
+
+    /// 
+    /// The name of the container repository where the output container image is stored. This 			name is prefixed by the repository location.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RepositoryName")]
+    pub repository_name: Option<String>,
+
+
+    /// 
+    /// Specifies the service in which this image was registered.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ECR
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Service")]
+    pub service: Option<TargetContainerRepositoryServiceEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TargetContainerRepositoryServiceEnum {
+
+    /// ECR
+    #[serde(rename = "ECR")]
+    Ecr,
+
+}
+
+impl Default for TargetContainerRepositoryServiceEnum {
+    fn default() -> Self {
+        TargetContainerRepositoryServiceEnum::Ecr
+    }
+}
 

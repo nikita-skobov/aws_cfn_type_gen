@@ -29,6 +29,17 @@ pub struct CfnVpcLink {
     pub name: String,
 
 
+    /// An array of arbitrary tags (key-value pairs) to associate with the VPC link.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
     /// 
     /// The ARN of the network load balancer of the VPC targeted by the VPC link. The network load balancer must be owned by the same AWS account of the API owner.
     /// 
@@ -39,17 +50,6 @@ pub struct CfnVpcLink {
     /// Update requires: Replacement
     #[serde(rename = "TargetArns")]
     pub target_arns: Vec<String>,
-
-
-    /// An array of arbitrary tags (key-value pairs) to associate with the VPC link.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 }
 

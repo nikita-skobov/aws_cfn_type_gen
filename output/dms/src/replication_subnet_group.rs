@@ -30,18 +30,6 @@ pub struct CfnReplicationSubnetGroup {
 
 
     /// 
-    /// One or more tags to be assigned to the subnet group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// One or more subnet IDs to be assigned to the subnet group.
     /// 
     /// Required: Yes
@@ -51,6 +39,18 @@ pub struct CfnReplicationSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
+
+
+    /// 
+    /// One or more tags to be assigned to the subnet group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

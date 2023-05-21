@@ -8,18 +8,6 @@ pub struct CfnRule {
 
 
     /// 
-    /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Predicate
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Predicates")]
-    pub predicates: Option<Vec<Predicate>>,
-
-
-    /// 
     /// A name for the metrics for this Rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain     whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the Rule.
     /// 
     /// Required: Yes
@@ -54,6 +42,18 @@ pub struct CfnRule {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Predicate
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Predicates")]
+    pub predicates: Option<Vec<Predicate>>,
+
 }
 
 
@@ -75,20 +75,6 @@ pub struct Predicate {
 
 
     /// 
-    /// Set Negated to False if you want AWS WAF to allow, block, or count requests based on the settings in the      specified ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet.       For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow or block requests based on that IP address.
-    /// 
-    /// Set Negated to True if you want AWS WAF to allow or block a request based on the negation      of the settings in the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet.     For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow, block, or count requests based on      all IP addresses except      192.0.2.44.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Negated")]
-    pub negated: bool,
-
-
-    /// 
     /// A unique identifier for a predicate in a Rule, such as ByteMatchSetId or IPSetId. 			The ID is returned by the corresponding Create or List command.
     /// 
     /// Required: Yes
@@ -104,6 +90,20 @@ pub struct Predicate {
     /// Update requires: No interruption
     #[serde(rename = "DataId")]
     pub data_id: String,
+
+
+    /// 
+    /// Set Negated to False if you want AWS WAF to allow, block, or count requests based on the settings in the      specified ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet.       For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow or block requests based on that IP address.
+    /// 
+    /// Set Negated to True if you want AWS WAF to allow or block a request based on the negation      of the settings in the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet.     For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow, block, or count requests based on      all IP addresses except      192.0.2.44.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Negated")]
+    pub negated: bool,
 
 
     /// 

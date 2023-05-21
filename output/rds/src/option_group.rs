@@ -6,6 +6,46 @@ pub struct CfnOptionGroup {
 
 
     /// 
+    /// Specifies the name of the engine that this option group should be associated with.
+    /// 
+    /// Valid Values:
+    /// 
+    /// mariadbmysqloracle-eeoracle-ee-cdboracle-se2oracle-se2-cdbpostgressqlserver-eesqlserver-sesqlserver-exsqlserver-web
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EngineName")]
+    pub engine_name: String,
+
+
+    /// 
+    /// Specifies the major version of the engine that this option group should be associated with.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MajorEngineVersion")]
+    pub major_engine_version: String,
+
+
+    /// 
+    /// A list of options and the settings for each option.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: List of OptionConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptionConfigurations")]
+    pub option_configurations: Option<Vec<OptionConfiguration>>,
+
+
+    /// 
     /// The description of the option group.
     /// 
     /// Required: Yes
@@ -15,18 +55,6 @@ pub struct CfnOptionGroup {
     /// Update requires: Replacement
     #[serde(rename = "OptionGroupDescription")]
     pub option_group_description: String,
-
-
-    /// 
-    /// An optional array of key-value pairs to apply to this option group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -52,43 +80,15 @@ pub struct CfnOptionGroup {
 
 
     /// 
-    /// Specifies the major version of the engine that this option group should be associated with.
+    /// An optional array of key-value pairs to apply to this option group.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MajorEngineVersion")]
-    pub major_engine_version: String,
-
-
-    /// 
-    /// Specifies the name of the engine that this option group should be associated with.
-    /// 
-    /// Valid Values:
-    /// 
-    /// mariadbmysqloracle-eeoracle-ee-cdboracle-se2oracle-se2-cdbpostgressqlserver-eesqlserver-sesqlserver-exsqlserver-web
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EngineName")]
-    pub engine_name: String,
-
-
-    /// 
-    /// A list of options and the settings for each option.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: List of OptionConfiguration
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OptionConfigurations")]
-    pub option_configurations: Option<Vec<OptionConfiguration>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -105,42 +105,33 @@ impl cfn_resources::CfnResource for CfnOptionGroup {
 }
 
 
-/// The OptionSetting property type specifies the value for an option within       an OptionSetting property.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OptionSetting {
-
-
-    /// 
-    /// The current value of the option setting.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-
-    /// 
-    /// The name of the option that has settings that you can set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-
-
 /// The OptionConfiguration property type specifies an individual option, and       its settings, within an AWS::RDS::OptionGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OptionConfiguration {
+
+
+    /// 
+    /// A list of DBSecurityGroupMembership name strings used for this option.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBSecurityGroupMemberships")]
+    pub dbsecurity_group_memberships: Option<Vec<String>>,
+
+
+    /// 
+    /// The configuration of options to include in a group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptionName")]
+    pub option_name: String,
 
 
     /// 
@@ -153,6 +144,18 @@ pub struct OptionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OptionSettings")]
     pub option_settings: Option<Vec<OptionSetting>>,
+
+
+    /// 
+    /// The version for the option.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptionVersion")]
+    pub option_version: Option<String>,
 
 
     /// 
@@ -178,41 +181,38 @@ pub struct OptionConfiguration {
     #[serde(rename = "VpcSecurityGroupMemberships")]
     pub vpc_security_group_memberships: Option<Vec<String>>,
 
+}
 
-    /// 
-    /// The configuration of options to include in a group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OptionName")]
-    pub option_name: String,
+
+
+
+/// The OptionSetting property type specifies the value for an option within       an OptionSetting property.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OptionSetting {
 
 
     /// 
-    /// The version for the option.
+    /// The name of the option that has settings that you can set.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OptionVersion")]
-    pub option_version: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
-    /// A list of DBSecurityGroupMembership name strings used for this option.
+    /// The current value of the option setting.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DBSecurityGroupMemberships")]
-    pub dbsecurity_group_memberships: Option<Vec<String>>,
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 

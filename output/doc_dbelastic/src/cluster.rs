@@ -6,6 +6,22 @@ pub struct CfnCluster {
 
 
     /// 
+    /// The name of the Amazon DocumentDB elastic clusters administrator.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be from 1 to 63 letters or numbers.The first character must be a letter.Cannot be a reserved word.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AdminUserName")]
+    pub admin_user_name: String,
+
+
+    /// 
     /// The password for the Elastic DocumentDB cluster administrator and can    contain any printable ASCII characters.
     /// 
     /// Constraints:
@@ -34,18 +50,6 @@ pub struct CfnCluster {
 
 
     /// 
-    /// A list of EC2 VPC security groups to associate with the new    elastic cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSecurityGroupIds")]
-    pub vpc_security_group_ids: Option<Vec<String>>,
-
-
-    /// 
     /// The name of the new elastic cluster. This parameter is stored as    a lowercase string.
     /// 
     /// Constraints:
@@ -64,58 +68,6 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The number of vCPUs assigned to each elastic cluster shard. Maximum is 64. Allowed values are 2, 4, 8, 16, 32, 64.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ShardCapacity")]
-    pub shard_capacity: i64,
-
-
-    /// 
-    /// The tags to be assigned to the new elastic cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The Amazon EC2 subnet IDs for the new elastic cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of the Amazon DocumentDB elastic clusters administrator.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be from 1 to 63 letters or numbers.The first character must be a letter.Cannot be a reserved word.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AdminUserName")]
-    pub admin_user_name: String,
-
-
-    /// 
     /// The KMS key identifier to use to encrypt the new elastic cluster.
     /// 
     /// The KMS key identifier is the Amazon Resource Name (ARN) for the KMS     encryption key. If you are creating a cluster using the same Amazon account     that owns this KMS encryption key, you can use the KMS key alias instead     of the ARN as the KMS encryption key.
@@ -129,18 +81,6 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// The number of shards assigned to the elastic cluster. Maximum is 32.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ShardCount")]
-    pub shard_count: i64,
 
 
     /// 
@@ -161,6 +101,66 @@ pub struct CfnCluster {
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
     pub preferred_maintenance_window: Option<String>,
+
+
+    /// 
+    /// The number of vCPUs assigned to each elastic cluster shard. Maximum is 64. Allowed values are 2, 4, 8, 16, 32, 64.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ShardCapacity")]
+    pub shard_capacity: i64,
+
+
+    /// 
+    /// The number of shards assigned to the elastic cluster. Maximum is 32.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ShardCount")]
+    pub shard_count: i64,
+
+
+    /// 
+    /// The Amazon EC2 subnet IDs for the new elastic cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The tags to be assigned to the new elastic cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A list of EC2 VPC security groups to associate with the new    elastic cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcSecurityGroupIds")]
+    pub vpc_security_group_ids: Option<Vec<String>>,
 
 }
 

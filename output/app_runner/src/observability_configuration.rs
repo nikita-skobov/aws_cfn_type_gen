@@ -12,30 +12,6 @@ pub struct CfnObservabilityConfiguration {
 
 
     /// 
-    /// The configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TraceConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TraceConfiguration")]
-    pub trace_configuration: Option<TraceConfiguration>,
-
-
-    /// 
-    /// A list of metadata items that you can associate with your observability configuration resource. A tag is a key-value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A name for the observability configuration. When you use it for the first time in an AWS Region, App Runner creates revision number     1 of this name. When you use the same name in subsequent calls, App Runner creates incremental revisions of the configuration.
     /// 
     /// NoteThe name DefaultConfiguration is reserved. You can't use it to create a new observability configuration, and you can't create a     revision of it.When you want to use your own observability configuration for your App Runner service, create a configuration with a different name,     and then provide it when you create or update your service.
@@ -55,6 +31,30 @@ pub struct CfnObservabilityConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ObservabilityConfigurationName")]
     pub observability_configuration_name: Option<String>,
+
+
+    /// 
+    /// A list of metadata items that you can associate with your observability configuration resource. A tag is a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TraceConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TraceConfiguration")]
+    pub trace_configuration: Option<TraceConfiguration>,
 
 }
 

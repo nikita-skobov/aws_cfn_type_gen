@@ -22,17 +22,15 @@ pub struct CfnWarmPool {
 
 
     /// 
-    /// Sets the instance state to transition to after the lifecycle actions are complete.       Default is Stopped.
+    /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on       scale in. The default is to terminate instances in the Auto Scaling group when the group scales       in.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: Hibernated | Running | Stopped
+    /// Type: InstanceReusePolicy
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PoolState")]
-    pub pool_state: Option<WarmPoolPoolStateEnum>,
+    #[serde(rename = "InstanceReusePolicy")]
+    pub instance_reuse_policy: Option<InstanceReusePolicy>,
 
 
     /// 
@@ -68,15 +66,17 @@ pub struct CfnWarmPool {
 
 
     /// 
-    /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on       scale in. The default is to terminate instances in the Auto Scaling group when the group scales       in.
+    /// Sets the instance state to transition to after the lifecycle actions are complete.       Default is Stopped.
     /// 
     /// Required: No
     ///
-    /// Type: InstanceReusePolicy
+    /// Type: String
+    ///
+    /// Allowed values: Hibernated | Running | Stopped
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceReusePolicy")]
-    pub instance_reuse_policy: Option<InstanceReusePolicy>,
+    #[serde(rename = "PoolState")]
+    pub pool_state: Option<WarmPoolPoolStateEnum>,
 
 }
 

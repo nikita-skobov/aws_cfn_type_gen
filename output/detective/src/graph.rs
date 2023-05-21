@@ -5,6 +5,17 @@
 pub struct CfnGraph {
 
 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoEnableMembers")]
+    pub auto_enable_members: Option<bool>,
+
+
     /// 
     /// The tag values to assign to the new behavior graph.
     /// 
@@ -15,17 +26,6 @@ pub struct CfnGraph {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoEnableMembers")]
-    pub auto_enable_members: Option<bool>,
 
 }
 

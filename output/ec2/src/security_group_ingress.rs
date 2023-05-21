@@ -16,41 +16,35 @@ pub struct CfnSecurityGroupIngress {
 
 
     /// 
-    /// The ID of the security group.
+    /// The IPv4 address range, in CIDR format.
+    /// 
+    /// You must specify a source security group (SourcePrefixListId or     SourceSecurityGroupId) or a CIDR range (CidrIp or     CidrIpv6).
+    /// 
+    /// For examples of rules that you can add to security groups for specific access scenarios,     see Security group rules       for different use cases in the Amazon EC2 User        Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "GroupId")]
-    pub group_id: Option<String>,
+    #[serde(rename = "CidrIp")]
+    pub cidr_ip: Option<String>,
 
 
     /// 
-    /// [Default VPC] The name of the source security group. You must specify either the security group ID      or the security group name. You can't specify the group name in combination with an IP address range.      Creates rules that grant full ICMP, UDP, and TCP access.
+    /// The IPv6 address range, in CIDR format.
     /// 
-    /// For security groups in a nondefault VPC, you must specify the group ID.
+    /// You must specify a source security group (SourcePrefixListId or     SourceSecurityGroupId) or a CIDR range (CidrIp or     CidrIpv6).
+    /// 
+    /// For examples of rules that you can add to security groups for specific access scenarios,     see Security group rules       for different use cases in the Amazon EC2 User        Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SourceSecurityGroupName")]
-    pub source_security_group_name: Option<String>,
-
-
-    /// 
-    /// The ID of a prefix list.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourcePrefixListId")]
-    pub source_prefix_list_id: Option<String>,
+    #[serde(rename = "CidrIpv6")]
+    pub cidr_ipv6: Option<String>,
 
 
     /// 
@@ -68,23 +62,7 @@ pub struct CfnSecurityGroupIngress {
 
 
     /// 
-    /// The IPv4 address range, in CIDR format.
-    /// 
-    /// You must specify a source security group (SourcePrefixListId or     SourceSecurityGroupId) or a CIDR range (CidrIp or     CidrIpv6).
-    /// 
-    /// For examples of rules that you can add to security groups for specific access scenarios,     see Security group rules       for different use cases in the Amazon EC2 User        Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CidrIp")]
-    pub cidr_ip: Option<String>,
-
-
-    /// 
-    /// The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of     -1 indicates all ICMP/ICMPv6 codes for the specified ICMP type. If you     specify all ICMP/ICMPv6 types, you must specify all codes.
+    /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A     value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6     types, you must specify all codes.
     /// 
     /// Use this for ICMP and any protocol that uses ports.
     /// 
@@ -93,8 +71,20 @@ pub struct CfnSecurityGroupIngress {
     /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ToPort")]
-    pub to_port: Option<i64>,
+    #[serde(rename = "FromPort")]
+    pub from_port: Option<i64>,
+
+
+    /// 
+    /// The ID of the security group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GroupId")]
+    pub group_id: Option<String>,
 
 
     /// 
@@ -114,17 +104,29 @@ pub struct CfnSecurityGroupIngress {
 
 
     /// 
-    /// [nondefault VPC] The AWS account ID for the source security group, if     the source security group is in a different account. You can't specify this property with     an IP address range. Creates rules that grant full ICMP, UDP, and TCP access.
+    /// The IP protocol name (tcp, udp, icmp, icmpv6)     or number (see Protocol Numbers).
     /// 
-    /// If you specify SourceSecurityGroupName or       SourceSecurityGroupId and that security group is owned by a different     account than the account creating the stack, you must specify       SourceSecurityGroupOwnerId; otherwise, this property is optional.
+    /// Use -1 to specify all protocols. When authorizing     security group rules, specifying -1 or a protocol number other than     tcp, udp, icmp, or icmpv6 allows     traffic on all ports, regardless of any port range you specify. For tcp,     udp, and icmp, you must specify a port range. For icmpv6,     the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
     /// 
-    /// Required: Conditional
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SourceSecurityGroupOwnerId")]
-    pub source_security_group_owner_id: Option<String>,
+    #[serde(rename = "IpProtocol")]
+    pub ip_protocol: String,
+
+
+    /// 
+    /// The ID of a prefix list.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourcePrefixListId")]
+    pub source_prefix_list_id: Option<String>,
 
 
     /// 
@@ -140,7 +142,35 @@ pub struct CfnSecurityGroupIngress {
 
 
     /// 
-    /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A     value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6     types, you must specify all codes.
+    /// [Default VPC] The name of the source security group. You must specify either the security group ID      or the security group name. You can't specify the group name in combination with an IP address range.      Creates rules that grant full ICMP, UDP, and TCP access.
+    /// 
+    /// For security groups in a nondefault VPC, you must specify the group ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceSecurityGroupName")]
+    pub source_security_group_name: Option<String>,
+
+
+    /// 
+    /// [nondefault VPC] The AWS account ID for the source security group, if     the source security group is in a different account. You can't specify this property with     an IP address range. Creates rules that grant full ICMP, UDP, and TCP access.
+    /// 
+    /// If you specify SourceSecurityGroupName or       SourceSecurityGroupId and that security group is owned by a different     account than the account creating the stack, you must specify       SourceSecurityGroupOwnerId; otherwise, this property is optional.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceSecurityGroupOwnerId")]
+    pub source_security_group_owner_id: Option<String>,
+
+
+    /// 
+    /// The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of     -1 indicates all ICMP/ICMPv6 codes for the specified ICMP type. If you     specify all ICMP/ICMPv6 types, you must specify all codes.
     /// 
     /// Use this for ICMP and any protocol that uses ports.
     /// 
@@ -149,38 +179,8 @@ pub struct CfnSecurityGroupIngress {
     /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FromPort")]
-    pub from_port: Option<i64>,
-
-
-    /// 
-    /// The IP protocol name (tcp, udp, icmp, icmpv6)     or number (see Protocol Numbers).
-    /// 
-    /// Use -1 to specify all protocols. When authorizing     security group rules, specifying -1 or a protocol number other than     tcp, udp, icmp, or icmpv6 allows     traffic on all ports, regardless of any port range you specify. For tcp,     udp, and icmp, you must specify a port range. For icmpv6,     the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpProtocol")]
-    pub ip_protocol: String,
-
-
-    /// 
-    /// The IPv6 address range, in CIDR format.
-    /// 
-    /// You must specify a source security group (SourcePrefixListId or     SourceSecurityGroupId) or a CIDR range (CidrIp or     CidrIpv6).
-    /// 
-    /// For examples of rules that you can add to security groups for specific access scenarios,     see Security group rules       for different use cases in the Amazon EC2 User        Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CidrIpv6")]
-    pub cidr_ipv6: Option<String>,
+    #[serde(rename = "ToPort")]
+    pub to_port: Option<i64>,
 
 }
 

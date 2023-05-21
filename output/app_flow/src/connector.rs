@@ -22,22 +22,6 @@ pub struct CfnConnector {
 
 
     /// 
-    /// A description about the connector runtime setting.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: [\s\w/!@#+=.-]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The configuration required for registering the connector.
     /// 
     /// Required: Yes
@@ -61,6 +45,22 @@ pub struct CfnConnector {
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProvisioningType")]
     pub connector_provisioning_type: ConnectorConnectorProvisioningTypeEnum,
+
+
+    /// 
+    /// A description about the connector runtime setting.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: [\s\w/!@#+=.-]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
 

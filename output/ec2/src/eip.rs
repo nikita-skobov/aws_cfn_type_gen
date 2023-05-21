@@ -10,22 +10,6 @@ pub struct CfnEIP {
 
 
     /// 
-    /// A unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS    advertises IP addresses. Use this parameter to limit the IP address to this location. IP    addresses cannot move between network border groups.
-    /// 
-    /// Use DescribeAvailabilityZones to view the network border groups.
-    /// 
-    /// You cannot use a network border group with EC2 Classic. If you attempt this operation on EC2 Classic,    you receive an InvalidParameterCombination error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkBorderGroup")]
-    pub network_border_group: Option<String>,
-
-
-    /// 
     /// The network (vpc).
     /// 
     /// If you define an Elastic IP address and associate it with a VPC that is defined in the       same template, you must declare a dependency on the VPC-gateway attachment by using the       DependsOn         Attribute on this resource.
@@ -53,6 +37,22 @@ pub struct CfnEIP {
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
     pub instance_id: Option<String>,
+
+
+    /// 
+    /// A unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS    advertises IP addresses. Use this parameter to limit the IP address to this location. IP    addresses cannot move between network border groups.
+    /// 
+    /// Use DescribeAvailabilityZones to view the network border groups.
+    /// 
+    /// You cannot use a network border group with EC2 Classic. If you attempt this operation on EC2 Classic,    you receive an InvalidParameterCombination error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkBorderGroup")]
+    pub network_border_group: Option<String>,
 
 
     /// 
@@ -140,17 +140,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -159,6 +148,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

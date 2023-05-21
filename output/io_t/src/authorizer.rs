@@ -6,31 +6,15 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// The status of the authorizer.
+    /// The authorizer's Lambda function ARN.
     /// 
-    /// Valid values: ACTIVE | INACTIVE
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// Metadata which can be used to manage the custom authorizer.
-    /// 
-    /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "AuthorizerFunctionArn")]
+    pub authorizer_function_arn: String,
 
 
     /// 
@@ -69,6 +53,34 @@ pub struct CfnAuthorizer {
 
 
     /// 
+    /// The status of the authorizer.
+    /// 
+    /// Valid values: ACTIVE | INACTIVE
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
+    /// Metadata which can be used to manage the custom authorizer.
+    /// 
+    /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The key used to extract the token from the HTTP headers.
     /// 
     /// Required: No
@@ -90,18 +102,6 @@ pub struct CfnAuthorizer {
     /// Update requires: No interruption
     #[serde(rename = "TokenSigningPublicKeys")]
     pub token_signing_public_keys: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The authorizer's Lambda function ARN.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizerFunctionArn")]
-    pub authorizer_function_arn: String,
 
 }
 
@@ -130,17 +130,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -149,6 +138,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

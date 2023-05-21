@@ -34,19 +34,15 @@ pub struct CfnLayerVersion {
 
 
     /// 
-    /// The layer's software license. It can be any of the following:
+    /// The function layer archive.
     /// 
-    /// An SPDX license identifier. For example,      MIT.               The URL of a license hosted on the internet. For example,      https://opensource.org/licenses/MIT.               The full text of the license.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Maximum: 512
+    /// Type: Content
     ///
     /// Update requires: Replacement
-    #[serde(rename = "LicenseInfo")]
-    pub license_info: Option<String>,
+    #[serde(rename = "Content")]
+    pub content: Content,
 
 
     /// 
@@ -84,15 +80,19 @@ pub struct CfnLayerVersion {
 
 
     /// 
-    /// The function layer archive.
+    /// The layer's software license. It can be any of the following:
     /// 
-    /// Required: Yes
+    /// An SPDX license identifier. For example,      MIT.               The URL of a license hosted on the internet. For example,      https://opensource.org/licenses/MIT.               The full text of the license.
+    /// 
+    /// Required: No
     ///
-    /// Type: Content
+    /// Type: String
+    ///
+    /// Maximum: 512
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Content")]
-    pub content: Content,
+    #[serde(rename = "LicenseInfo")]
+    pub license_info: Option<String>,
 
 }
 
@@ -115,22 +115,6 @@ pub struct Content {
 
 
     /// 
-    /// The Amazon S3 key of the layer archive.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Key")]
-    pub s3_key: String,
-
-
-    /// 
     /// The Amazon S3 bucket of the layer archive.
     /// 
     /// Required: Yes
@@ -146,6 +130,22 @@ pub struct Content {
     /// Update requires: Replacement
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
+
+
+    /// 
+    /// The Amazon S3 key of the layer archive.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Key")]
+    pub s3_key: String,
 
 
     /// 

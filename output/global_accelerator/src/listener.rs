@@ -40,20 +40,6 @@ pub struct CfnListener {
 
 
     /// 
-    /// The protocol for the connections from clients to the accelerator.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: TCP | UDP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: ListenerProtocolEnum,
-
-
-    /// 
     /// The list of port ranges for the connections from clients to the accelerator.
     /// 
     /// Required: Yes
@@ -65,6 +51,20 @@ pub struct CfnListener {
     /// Update requires: No interruption
     #[serde(rename = "PortRanges")]
     pub port_ranges: Vec<PortRange>,
+
+
+    /// 
+    /// The protocol for the connections from clients to the accelerator.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: TCP | UDP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: ListenerProtocolEnum,
 
 }
 

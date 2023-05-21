@@ -8,54 +8,6 @@ pub struct CfnAgent {
 
 
     /// 
-    /// The Amazon Resource Names (ARNs) of the security groups used to protect your data     transfer task subnets. See SecurityGroupArns.
-    /// 
-    /// Pattern:       ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupArns")]
-    pub security_group_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The ID of the virtual private cloud (VPC) endpoint that the agent has access to. This is     the client-side VPC endpoint, powered by AWS PrivateLink. If you don't have an     AWS PrivateLink VPC endpoint, see AWS PrivateLink and VPC endpoints in the Amazon VPC User     Guide.
-    /// 
-    /// For more information about activating your agent in a private network based on a VPC,     see Using        AWS DataSync in a Virtual Private Cloud in the AWS DataSync User Guide.
-    /// 
-    /// A VPC endpoint ID looks like this: vpce-01234d5aff67890e1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^vpce-[0-9a-f]{17}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcEndpointId")]
-    pub vpc_endpoint_id: Option<String>,
-
-
-    /// 
-    /// Specifies the ARN of the subnet where you want to run your DataSync task when    using a VPC endpoint. This is the subnet where DataSync creates and manages the     network     interfaces for your transfer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetArns")]
-    pub subnet_arns: Option<Vec<String>>,
-
-
-    /// 
     /// Specifies your DataSync agent's activation key. If you don't have an    activation key, see Activate your agent.
     /// 
     /// Required: No
@@ -90,6 +42,36 @@ pub struct CfnAgent {
 
 
     /// 
+    /// The Amazon Resource Names (ARNs) of the security groups used to protect your data     transfer task subnets. See SecurityGroupArns.
+    /// 
+    /// Pattern:       ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupArns")]
+    pub security_group_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// Specifies the ARN of the subnet where you want to run your DataSync task when    using a VPC endpoint. This is the subnet where DataSync creates and manages the     network     interfaces for your transfer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetArns")]
+    pub subnet_arns: Option<Vec<String>>,
+
+
+    /// 
     /// Specifies labels that help you categorize, filter, and search for your AWS resources.    We recommend creating at least one tag for your agent.
     /// 
     /// Required: No
@@ -101,6 +83,24 @@ pub struct CfnAgent {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the virtual private cloud (VPC) endpoint that the agent has access to. This is     the client-side VPC endpoint, powered by AWS PrivateLink. If you don't have an     AWS PrivateLink VPC endpoint, see AWS PrivateLink and VPC endpoints in the Amazon VPC User     Guide.
+    /// 
+    /// For more information about activating your agent in a private network based on a VPC,     see Using        AWS DataSync in a Virtual Private Cloud in the AWS DataSync User Guide.
+    /// 
+    /// A VPC endpoint ID looks like this: vpce-01234d5aff67890e1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^vpce-[0-9a-f]{17}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcEndpointId")]
+    pub vpc_endpoint_id: Option<String>,
 
 }
 
@@ -129,17 +129,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -148,6 +137,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

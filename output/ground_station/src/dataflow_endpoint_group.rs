@@ -20,18 +20,6 @@ pub struct CfnDataflowEndpointGroup {
     pub contact_post_pass_duration_seconds: Option<i64>,
 
 
-    /// 
-    /// Tags assigned to a resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -54,6 +42,18 @@ pub struct CfnDataflowEndpointGroup {
     #[serde(rename = "EndpointDetails")]
     pub endpoint_details: Vec<EndpointDetails>,
 
+
+    /// 
+    /// Tags assigned to a resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
 
 
@@ -69,87 +69,31 @@ impl cfn_resources::CfnResource for CfnDataflowEndpointGroup {
 }
 
 
-/// The RangedConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
+/// The AwsGroundStationAgentEndpoint property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RangedConnectionDetails {
+pub struct AwsGroundStationAgentEndpoint {
 
 
     /// Property description not available.
     ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Mtu")]
-    pub mtu: Option<i64>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: RangedSocketAddress
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SocketAddress")]
-    pub socket_address: Option<RangedSocketAddress>,
-
-}
-
-
-
-
-/// Contains information such as socket address and name that defines an endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataflowEndpoint {
-
-
-    /// 
-    /// Maximum transmission unit (MTU) size in bytes of a dataflow endpoint.      Valid values are between 1400 and 1500. A default value of 1500 is used if not set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Mtu")]
-    pub mtu: Option<i64>,
-
-
-    /// 
-    /// The address and port of an endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SocketAddress
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Address")]
-    pub address: Option<SocketAddress>,
-
-
-    /// 
-    /// The endpoint name.
-    /// 
-    /// When listing available contacts for a satellite, Ground Station searches for a dataflow endpoint whose name matches the value specified by the dataflow endpoint config of the selected mission profile. If no matching dataflow endpoints are found then Ground Station will not display any available contacts for the satellite.
-    /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
+    #[serde(rename = "AgentStatus")]
+    pub agent_status: Option<String>,
 
 
-
-
-/// The AwsGroundStationAgentEndpoint property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AwsGroundStationAgentEndpoint {
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuditResults")]
+    pub audit_results: Option<String>,
 
 
     /// Property description not available.
@@ -181,12 +125,79 @@ pub struct AwsGroundStationAgentEndpoint {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuditResults")]
-    pub audit_results: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+
+
+/// The ConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConnectionDetails {
 
 
     /// Property description not available.
     ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Mtu")]
+    pub mtu: Option<i64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: SocketAddress
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SocketAddress")]
+    pub socket_address: Option<SocketAddress>,
+
+}
+
+
+
+
+/// Contains information such as socket address and name that defines an endpoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataflowEndpoint {
+
+
+    /// 
+    /// The address and port of an endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SocketAddress
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Address")]
+    pub address: Option<SocketAddress>,
+
+
+    /// 
+    /// Maximum transmission unit (MTU) size in bytes of a dataflow endpoint.      Valid values are between 1400 and 1500. A default value of 1500 is used if not set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Mtu")]
+    pub mtu: Option<i64>,
+
+
+    /// 
+    /// The endpoint name.
+    /// 
+    /// When listing available contacts for a satellite, Ground Station searches for a dataflow endpoint whose name matches the value specified by the dataflow endpoint config of the selected mission profile. If no matching dataflow endpoints are found then Ground Station will not display any available contacts for the satellite.
+    /// 
     /// Required: No
     ///
     /// Type: String
@@ -194,17 +205,6 @@ pub struct AwsGroundStationAgentEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentStatus")]
-    pub agent_status: Option<String>,
 
 }
 
@@ -228,18 +228,6 @@ pub struct EndpointDetails {
 
 
     /// 
-    /// The role ARN, and IDs for security groups and subnets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SecurityDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityDetails")]
-    pub security_details: Option<SecurityDetails>,
-
-
-    /// 
     /// Information about the endpoint such as name and the endpoint address.
     /// 
     /// Required: No
@@ -250,52 +238,17 @@ pub struct EndpointDetails {
     #[serde(rename = "Endpoint")]
     pub endpoint: Option<DataflowEndpoint>,
 
-}
-
-
-
-
-/// Information about IAM roles, subnets, and security groups needed for this DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SecurityDetails {
-
 
     /// 
-    /// The security group Ids of the security role, such as       sg-1234567890abcdef0.
+    /// The role ARN, and IDs for security groups and subnets.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: SecurityDetails
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The ARN of a role which Ground Station has permission to assume, such as       arn:aws:iam::1234567890:role/DataDeliveryServiceRole.
-    /// 
-    /// Ground Station will assume this role and create an ENI in your VPC on the specified subnet upon creation of a dataflow endpoint group. This ENI is used as the ingress/egress point for data streamed during a satellite contact.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
-
-    /// 
-    /// The subnet Ids of the security details, such as       subnet-12345678.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
+    #[serde(rename = "SecurityDetails")]
+    pub security_details: Option<SecurityDetails>,
 
 }
 
@@ -333,9 +286,51 @@ pub struct IntegerRange {
 
 
 
+/// The RangedConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RangedConnectionDetails {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Mtu")]
+    pub mtu: Option<i64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: RangedSocketAddress
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SocketAddress")]
+    pub socket_address: Option<RangedSocketAddress>,
+
+}
+
+
+
+
 /// The RangedSocketAddress property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RangedSocketAddress {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// Property description not available.
@@ -348,16 +343,52 @@ pub struct RangedSocketAddress {
     #[serde(rename = "PortRange")]
     pub port_range: Option<IntegerRange>,
 
+}
 
-    /// Property description not available.
-    ///
+
+
+
+/// Information about IAM roles, subnets, and security groups needed for this DataflowEndpointGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SecurityDetails {
+
+
+    /// 
+    /// The ARN of a role which Ground Station has permission to assume, such as       arn:aws:iam::1234567890:role/DataDeliveryServiceRole.
+    /// 
+    /// Ground Station will assume this role and create an ENI in your VPC on the specified subnet upon creation of a dataflow endpoint group. This ENI is used as the ingress/egress point for data streamed during a satellite contact.
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+
+    /// 
+    /// The security group Ids of the security role, such as       sg-1234567890abcdef0.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The subnet Ids of the security details, such as       subnet-12345678.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
 
 }
 
@@ -370,18 +401,6 @@ pub struct SocketAddress {
 
 
     /// 
-    /// The port of the endpoint, such as       55888.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
     /// The name of the endpoint, such as       Endpoint 1.
     /// 
     /// Required: No
@@ -391,6 +410,18 @@ pub struct SocketAddress {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// The port of the endpoint, such as       55888.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
 
 }
 
@@ -428,37 +459,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// The ConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConnectionDetails {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: SocketAddress
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SocketAddress")]
-    pub socket_address: Option<SocketAddress>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Mtu")]
-    pub mtu: Option<i64>,
 
 }
 

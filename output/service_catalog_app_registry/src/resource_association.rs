@@ -18,18 +18,6 @@ pub struct CfnResourceAssociation {
 
 
     /// 
-    /// The type      of resource     of which the application will be associated.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceType")]
-    pub resource_type: String,
-
-
-    /// 
     /// The name or ID      of the resource      of which the application      will be associated.
     /// 
     /// Required: Yes
@@ -39,6 +27,18 @@ pub struct CfnResourceAssociation {
     /// Update requires: Replacement
     #[serde(rename = "Resource")]
     pub resource: String,
+
+
+    /// 
+    /// The type      of resource     of which the application will be associated.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceType")]
+    pub resource_type: String,
 
 }
 

@@ -6,6 +6,52 @@ pub struct CfnInfrastructureConfiguration {
 
 
     /// 
+    /// The description of the infrastructure configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The instance metadata option settings for the infrastructure configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceMetadataOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceMetadataOptions")]
+    pub instance_metadata_options: Option<InstanceMetadataOptions>,
+
+
+    /// 
+    /// The instance profile of the infrastructure configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[\w+=,.@-]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceProfileName")]
+    pub instance_profile_name: String,
+
+
+    /// 
     /// The instance types of the infrastructure configuration.
     /// 
     /// Required: No
@@ -18,6 +64,60 @@ pub struct CfnInfrastructureConfiguration {
 
 
     /// 
+    /// The Amazon EC2 key pair of the infrastructure configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KeyPair")]
+    pub key_pair: Option<String>,
+
+
+    /// 
+    /// The logging configuration defines where Image Builder uploads your logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Logging
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Logging")]
+    pub logging: Option<Logging>,
+
+
+    /// 
+    /// The name of the infrastructure configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[-_A-Za-z-0-9][-_A-Za-z0-9 ]{1,126}[-_A-Za-z-0-9]$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The tags attached to the resource created by Image Builder.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceTags")]
+    pub resource_tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
     /// The security group IDs of the infrastructure configuration.
     /// 
     /// Required: No
@@ -27,18 +127,6 @@ pub struct CfnInfrastructureConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The tags of the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -74,87 +162,15 @@ pub struct CfnInfrastructureConfiguration {
 
 
     /// 
-    /// The logging configuration defines where Image Builder uploads your logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Logging
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Logging")]
-    pub logging: Option<Logging>,
-
-
-    /// 
-    /// The instance metadata option settings for the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceMetadataOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceMetadataOptions")]
-    pub instance_metadata_options: Option<InstanceMetadataOptions>,
-
-
-    /// 
-    /// The instance profile of the infrastructure configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[\w+=,.@-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceProfileName")]
-    pub instance_profile_name: String,
-
-
-    /// 
-    /// The description of the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The name of the infrastructure configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[-_A-Za-z-0-9][-_A-Za-z0-9 ]{1,126}[-_A-Za-z-0-9]$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The tags attached to the resource created by Image Builder.
+    /// The tags of the infrastructure configuration.
     /// 
     /// Required: No
     ///
     /// Type: Map of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourceTags")]
-    pub resource_tags: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -167,22 +183,6 @@ pub struct CfnInfrastructureConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TerminateInstanceOnFailure")]
     pub terminate_instance_on_failure: Option<bool>,
-
-
-    /// 
-    /// The Amazon EC2 key pair of the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KeyPair")]
-    pub key_pair: Option<String>,
 
 }
 

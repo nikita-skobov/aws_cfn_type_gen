@@ -6,22 +6,6 @@ pub struct CfnDomain {
 
 
     /// 
-    /// The required AWS Identity and Access Management (IAM) service role for the Amazon Resource Name    (ARN) for automatically creating subdomains.
-    /// 
-    /// Length Constraints: Maximum length of 1000.
-    /// 
-    /// Pattern: ^$|^arn:aws:iam::\d{12}:role.+
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoSubDomainIAMRole")]
-    pub auto_sub_domain_iamrole: Option<String>,
-
-
-    /// 
     /// The unique ID for an Amplify app.
     /// 
     /// Length Constraints: Minimum length of 1. Maximum length of 20.
@@ -35,6 +19,34 @@ pub struct CfnDomain {
     /// Update requires: Replacement
     #[serde(rename = "AppId")]
     pub app_id: String,
+
+
+    /// 
+    /// Sets the branch patterns for automatic subdomain creation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoSubDomainCreationPatterns")]
+    pub auto_sub_domain_creation_patterns: Option<Vec<String>>,
+
+
+    /// 
+    /// The required AWS Identity and Access Management (IAM) service role for the Amazon Resource Name    (ARN) for automatically creating subdomains.
+    /// 
+    /// Length Constraints: Maximum length of 1000.
+    /// 
+    /// Pattern: ^$|^arn:aws:iam::\d{12}:role.+
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoSubDomainIAMRole")]
+    pub auto_sub_domain_iamrole: Option<String>,
 
 
     /// 
@@ -76,18 +88,6 @@ pub struct CfnDomain {
     #[serde(rename = "SubDomainSettings")]
     pub sub_domain_settings: Vec<SubDomainSetting>,
 
-
-    /// 
-    /// Sets the branch patterns for automatic subdomain creation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoSubDomainCreationPatterns")]
-    pub auto_sub_domain_creation_patterns: Option<Vec<String>>,
-
 }
 
 
@@ -109,22 +109,6 @@ pub struct SubDomainSetting {
 
 
     /// 
-    /// The prefix setting for the subdomain.
-    /// 
-    /// Length Constraints: Maximum length of 255.
-    /// 
-    /// Pattern: (?s).*
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Prefix")]
-    pub prefix: String,
-
-
-    /// 
     /// The branch name setting for the subdomain.
     /// 
     /// Length Constraints: Minimum length of 1. Maximum length of    255.
@@ -138,6 +122,22 @@ pub struct SubDomainSetting {
     /// Update requires: No interruption
     #[serde(rename = "BranchName")]
     pub branch_name: String,
+
+
+    /// 
+    /// The prefix setting for the subdomain.
+    /// 
+    /// Length Constraints: Maximum length of 255.
+    /// 
+    /// Pattern: (?s).*
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Prefix")]
+    pub prefix: String,
 
 }
 

@@ -8,20 +8,6 @@ pub struct CfnActivity {
 
 
     /// 
-    /// The list of tags to add to a resource.
-    /// 
-    /// Tags may only contain Unicode letters, digits, white space, or these symbols: _ . : / = + - @.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TagsEntry
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagsEntry>>,
-
-
-    /// 
     /// The name of the activity.
     /// 
     /// A name must not contain:
@@ -37,6 +23,20 @@ pub struct CfnActivity {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// The list of tags to add to a resource.
+    /// 
+    /// Tags may only contain Unicode letters, digits, white space, or these symbols: _ . : / = + - @.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TagsEntry
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagsEntry>>,
 
 }
 
@@ -59,18 +59,6 @@ pub struct TagsEntry {
 
 
     /// 
-    /// The value for a key-value pair in a tag entry.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key for a key-value pair in a tag entry.
     /// 
     /// Required: Yes
@@ -80,6 +68,18 @@ pub struct TagsEntry {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for a key-value pair in a tag entry.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

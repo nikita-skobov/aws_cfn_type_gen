@@ -14,6 +14,30 @@ pub struct CfnFunction {
 
 
     /// 
+    /// A flag that determines whether to automatically publish the function to the 			LIVE stage when it’s created. To automatically publish to the 			LIVE stage, set this property to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoPublish")]
+    pub auto_publish: Option<bool>,
+
+
+    /// 
+    /// The function code. For more information about writing a CloudFront function, see Writing 				function code for CloudFront Functions in the 			Amazon CloudFront Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionCode")]
+    pub function_code: String,
+
+
+    /// 
     /// Contains configuration information about a CloudFront function.
     /// 
     /// Required: Yes
@@ -38,18 +62,6 @@ pub struct CfnFunction {
 
 
     /// 
-    /// The function code. For more information about writing a CloudFront function, see Writing 				function code for CloudFront Functions in the 			Amazon CloudFront Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionCode")]
-    pub function_code: String,
-
-
-    /// 
     /// A name to identify the function.
     /// 
     /// Required: Yes
@@ -66,18 +78,6 @@ pub struct CfnFunction {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// A flag that determines whether to automatically publish the function to the 			LIVE stage when it’s created. To automatically publish to the 			LIVE stage, set this property to true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoPublish")]
-    pub auto_publish: Option<bool>,
-
 }
 
 
@@ -91,27 +91,6 @@ impl cfn_resources::CfnResource for CfnFunction {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// Contains metadata about a CloudFront function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FunctionMetadata {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the function. The ARN uniquely identifies the 			function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionARN")]
-    pub function_arn: Option<String>,
-
-}
-
-
 
 
 /// Contains configuration information about a CloudFront function.
@@ -161,4 +140,25 @@ impl Default for FunctionConfigRuntimeEnum {
         FunctionConfigRuntimeEnum::Cloudfrontjs10
     }
 }
+
+
+
+/// Contains metadata about a CloudFront function.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FunctionMetadata {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the function. The ARN uniquely identifies the 			function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionARN")]
+    pub function_arn: Option<String>,
+
+}
+
 

@@ -6,50 +6,6 @@ pub struct CfnArchive {
 
 
     /// 
-    /// An event pattern to use to filter events sent to the archive.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Maximum: 4096
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventPattern")]
-    pub event_pattern: Option<serde_json::Value>,
-
-
-    /// 
-    /// The ARN of the event bus that sends events to the archive.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1600
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceArn")]
-    pub source_arn: String,
-
-
-    /// 
-    /// The number of days to retain events for. Default value is 0. If set to 0, events are    retained indefinitely
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetentionDays")]
-    pub retention_days: Option<i64>,
-
-
-    /// 
     /// The name for the archive to create.
     /// 
     /// Required: No
@@ -81,6 +37,50 @@ pub struct CfnArchive {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// An event pattern to use to filter events sent to the archive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Maximum: 4096
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventPattern")]
+    pub event_pattern: Option<serde_json::Value>,
+
+
+    /// 
+    /// The number of days to retain events for. Default value is 0. If set to 0, events are    retained indefinitely
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetentionDays")]
+    pub retention_days: Option<i64>,
+
+
+    /// 
+    /// The ARN of the event bus that sends events to the archive.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1600
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceArn")]
+    pub source_arn: String,
 
 }
 

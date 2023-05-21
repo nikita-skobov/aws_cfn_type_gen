@@ -6,6 +6,18 @@ pub struct CfnFlowEntitlement {
 
 
     /// 
+    /// The percentage of the entitlement data transfer fee that you want the subscriber        to be responsible for.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataTransferSubscriberFeePercent")]
+    pub data_transfer_subscriber_fee_percent: Option<i64>,
+
+
+    /// 
     /// A description of the entitlement. This description appears only on the        MediaConnect console and is not visible outside of the current AWS account.
     /// 
     /// Required: Yes
@@ -30,18 +42,6 @@ pub struct CfnFlowEntitlement {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the flow.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FlowArn")]
-    pub flow_arn: String,
-
-
-    /// 
     /// An indication of whether the new entitlement should be enabled or disabled as soon        as it is created. If you don’t specify the entitlementStatus field in your request,        MediaConnect sets it to ENABLED.
     /// 
     /// Required: No
@@ -54,27 +54,15 @@ pub struct CfnFlowEntitlement {
 
 
     /// 
-    /// The percentage of the entitlement data transfer fee that you want the subscriber        to be responsible for.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataTransferSubscriberFeePercent")]
-    pub data_transfer_subscriber_fee_percent: Option<i64>,
-
-
-    /// 
-    /// The AWS account IDs that you want to share your content with. The receiving        accounts (subscribers) will be allowed to create their own flows using your content        as the source.
+    /// The Amazon Resource Name (ARN) of the flow.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Subscribers")]
-    pub subscribers: Vec<String>,
+    #[serde(rename = "FlowArn")]
+    pub flow_arn: String,
 
 
     /// 
@@ -87,6 +75,18 @@ pub struct CfnFlowEntitlement {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// The AWS account IDs that you want to share your content with. The receiving        accounts (subscribers) will be allowed to create their own flows using your content        as the source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Subscribers")]
+    pub subscribers: Vec<String>,
 
 }
 
@@ -109,39 +109,15 @@ pub struct Encryption {
 
 
     /// 
-    /// The AWS Region that the API Gateway proxy endpoint was created in. This parameter        is required for SPEKE encryption and is not valid for static key encryption.
+    /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Region")]
-    pub region: Option<String>,
-
-
-    /// 
-    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArn")]
-    pub secret_arn: Option<String>,
-
-
-    /// 
-    /// The type of key that is used for the encryption. If you don't specify a       keyType value, the service uses the default setting       (static-key). Valid key types are: static-key, speke, and srt-password.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KeyType")]
-    pub key_type: Option<String>,
+    #[serde(rename = "Algorithm")]
+    pub algorithm: String,
 
 
     /// 
@@ -157,15 +133,39 @@ pub struct Encryption {
 
 
     /// 
-    /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
+    /// The value of one of the devices that you configured with your digital rights        management (DRM) platform key provider. This parameter is required for SPEKE        encryption and is not valid for static key encryption.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Algorithm")]
-    pub algorithm: String,
+    #[serde(rename = "DeviceId")]
+    pub device_id: Option<String>,
+
+
+    /// 
+    /// The type of key that is used for the encryption. If you don't specify a       keyType value, the service uses the default setting       (static-key). Valid key types are: static-key, speke, and srt-password.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KeyType")]
+    pub key_type: Option<String>,
+
+
+    /// 
+    /// The AWS Region that the API Gateway proxy endpoint was created in. This parameter        is required for SPEKE encryption and is not valid for static key encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Region")]
+    pub region: Option<String>,
 
 
     /// 
@@ -193,15 +193,15 @@ pub struct Encryption {
 
 
     /// 
-    /// The value of one of the devices that you configured with your digital rights        management (DRM) platform key provider. This parameter is required for SPEKE        encryption and is not valid for static key encryption.
+    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeviceId")]
-    pub device_id: Option<String>,
+    #[serde(rename = "SecretArn")]
+    pub secret_arn: Option<String>,
 
 
     /// 

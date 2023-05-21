@@ -8,6 +8,42 @@ pub struct CfnSimulation {
 
 
     /// 
+    /// The maximum running time of the simulation,    specified as a number of minutes (m or M), hours (h or H), or days (d or D). The simulation    stops when it reaches this limit. The maximum value is 14D, or its equivalent in the    other units. The default value is 14D. A value equivalent to 0 makes the    simulation immediately transition to STOPPING as soon as it reaches STARTED.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MaximumDuration")]
+    pub maximum_duration: Option<String>,
+
+
+    /// 
+    /// The name of the simulation.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role     that the simulation assumes to perform actions.      For more information about ARNs, see Amazon Resource Names (ARNs)     in the AWS General Reference.     For more information about IAM roles,     see IAM       roles in the AWS Identity and Access Management User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
     /// The location of the simulation schema in Amazon Simple Storage Service (Amazon S3).     For more information about Amazon S3, see the     Amazon Simple Storage Service User Guide.
     /// 
     /// Provide a SchemaS3Location to start your simulation from a schema.
@@ -24,30 +60,6 @@ pub struct CfnSimulation {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role     that the simulation assumes to perform actions.      For more information about ARNs, see Amazon Resource Names (ARNs)     in the AWS General Reference.     For more information about IAM roles,     see IAM       roles in the AWS Identity and Access Management User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// The name of the simulation.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The location of the snapshot in Amazon Simple Storage Service (Amazon S3).    For more information about Amazon S3, see the    Amazon Simple Storage Service User Guide.
     /// 
     /// Provide a SnapshotS3Location to start your simulation from a snapshot.
@@ -61,18 +73,6 @@ pub struct CfnSimulation {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotS3Location")]
     pub snapshot_s3_location: Option<S3Location>,
-
-
-    /// 
-    /// The maximum running time of the simulation,    specified as a number of minutes (m or M), hours (h or H), or days (d or D). The simulation    stops when it reaches this limit. The maximum value is 14D, or its equivalent in the    other units. The default value is 14D. A value equivalent to 0 makes the    simulation immediately transition to STOPPING as soon as it reaches STARTED.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MaximumDuration")]
-    pub maximum_duration: Option<String>,
 
 }
 
@@ -95,18 +95,6 @@ pub struct S3Location {
 
 
     /// 
-    /// The key name of an object in Amazon S3. For more information about Amazon S3 objects and object     keys, see Uploading,       downloading, and working with objects in Amazon S3 in the Amazon Simple Storage Service User       Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ObjectKey")]
-    pub object_key: String,
-
-
-    /// 
     /// The name of an Amazon S3 bucket. For more information about buckets, see Creating,       configuring, and working with Amazon S3 buckets in the Amazon Simple Storage Service User       Guide.
     /// 
     /// Required: Yes
@@ -116,6 +104,18 @@ pub struct S3Location {
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
     pub bucket_name: String,
+
+
+    /// 
+    /// The key name of an object in Amazon S3. For more information about Amazon S3 objects and object     keys, see Uploading,       downloading, and working with objects in Amazon S3 in the Amazon Simple Storage Service User       Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ObjectKey")]
+    pub object_key: String,
 
 }
 

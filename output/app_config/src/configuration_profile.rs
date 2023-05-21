@@ -10,29 +10,51 @@ pub struct CfnConfigurationProfile {
 
 
     /// 
-    /// A list of methods for validating the configuration.
+    /// The application ID.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Validators
+    /// Type: String
     ///
-    /// Maximum: 2
+    /// Pattern: [a-z0-9]{4,7}
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Validators")]
-    pub validators: Option<Vec<Validators>>,
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationId")]
+    pub application_id: String,
 
 
     /// 
-    /// Metadata to assign to the configuration profile. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
+    /// A description of the configuration profile.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tags
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tags>>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// A URI to locate the configuration. You can specify the following:
+    /// 
+    /// For the AWS AppConfig hosted configuration store and for feature flags,        specify hosted.               For an AWS Systems Manager Parameter Store parameter, specify either the parameter name in        the format ssm-parameter://<parameter name> or the ARN.               For an AWS CodePipeline pipeline, specify the URI in the following format:        codepipeline://<pipeline name>.               For an AWS Secrets Manager secret, specify the URI in the following format:          secretsmanager://<secret name>.               For an Amazon S3 object, specify the URI in the following format:          s3://<bucket>/<objectKey> . Here is an example:          s3://my-bucket/my-app/us-east-1/my-config.json                       For an SSM document, specify either the document name in the format          ssm-document://<document name> or the Amazon Resource Name        (ARN).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LocationUri")]
+    pub location_uri: String,
 
 
     /// 
@@ -72,21 +94,15 @@ pub struct CfnConfigurationProfile {
 
 
     /// 
-    /// A URI to locate the configuration. You can specify the following:
+    /// Metadata to assign to the configuration profile. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
     /// 
-    /// For the AWS AppConfig hosted configuration store and for feature flags,        specify hosted.               For an AWS Systems Manager Parameter Store parameter, specify either the parameter name in        the format ssm-parameter://<parameter name> or the ARN.               For an AWS CodePipeline pipeline, specify the URI in the following format:        codepipeline://<pipeline name>.               For an AWS Secrets Manager secret, specify the URI in the following format:          secretsmanager://<secret name>.               For an Amazon S3 object, specify the URI in the following format:          s3://<bucket>/<objectKey> . Here is an example:          s3://my-bucket/my-app/us-east-1/my-config.json                       For an SSM document, specify either the document name in the format          ssm-document://<document name> or the Amazon Resource Name        (ARN).
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tags
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LocationUri")]
-    pub location_uri: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tags>>,
 
 
     /// 
@@ -108,33 +124,17 @@ pub struct CfnConfigurationProfile {
 
 
     /// 
-    /// A description of the configuration profile.
+    /// A list of methods for validating the configuration.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Validators
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
+    /// Maximum: 2
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The application ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [a-z0-9]{4,7}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApplicationId")]
-    pub application_id: String,
+    #[serde(rename = "Validators")]
+    pub validators: Option<Vec<Validators>>,
 
 }
 
@@ -157,18 +157,6 @@ pub struct Tags {
 
 
     /// 
-    /// The tag value can be up to 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-
-    /// 
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
     /// 
     /// Required: No
@@ -178,6 +166,18 @@ pub struct Tags {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<String>,
+
+
+    /// 
+    /// The tag value can be up to 256 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 

@@ -6,18 +6,6 @@ pub struct CfnSecurityConfiguration {
 
 
     /// 
-    /// The security configuration details in JSON format.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityConfiguration")]
-    pub security_configuration: serde_json::Value,
-
-
-    /// 
     /// The name of the security configuration.
     /// 
     /// Required: No
@@ -33,6 +21,18 @@ pub struct CfnSecurityConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// The security configuration details in JSON format.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityConfiguration")]
+    pub security_configuration: serde_json::Value,
 
 }
 

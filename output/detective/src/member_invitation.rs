@@ -6,18 +6,6 @@ pub struct CfnMemberInvitation {
 
 
     /// 
-    /// The AWS account identifier of the invited account
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MemberId")]
-    pub member_id: String,
-
-
-    /// 
     /// Whether to send an invitation email to the member account. If set to true, the member account does not receive an invitation email.
     /// 
     /// Required: No
@@ -27,18 +15,6 @@ pub struct CfnMemberInvitation {
     /// Update requires: No interruption
     #[serde(rename = "DisableEmailNotification")]
     pub disable_email_notification: Option<bool>,
-
-
-    /// 
-    /// Customized text to include in the invitation email message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Message")]
-    pub message: Option<String>,
 
 
     /// 
@@ -63,6 +39,30 @@ pub struct CfnMemberInvitation {
     /// Update requires: No interruption
     #[serde(rename = "MemberEmailAddress")]
     pub member_email_address: String,
+
+
+    /// 
+    /// The AWS account identifier of the invited account
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MemberId")]
+    pub member_id: String,
+
+
+    /// 
+    /// Customized text to include in the invitation email message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Message")]
+    pub message: Option<String>,
 
 }
 

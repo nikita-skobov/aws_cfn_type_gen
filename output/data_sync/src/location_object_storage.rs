@@ -6,6 +6,74 @@ pub struct CfnLocationObjectStorage {
 
 
     /// 
+    /// Specifies the access key (for example, a user name) if credentials are required to    authenticate with the object storage server.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 200
+    ///
+    /// Pattern: ^.+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessKey")]
+    pub access_key: Option<String>,
+
+
+    /// 
+    /// Specifies the Amazon Resource Names (ARNs) of the DataSync agents that can    securely connect with your location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
+
+
+    /// 
+    /// Specifies the name of the object storage bucket involved in the transfer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BucketName")]
+    pub bucket_name: Option<String>,
+
+
+    /// 
+    /// Specifies the secret key (for example, a password) if credentials are required to    authenticate with the object storage server.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 200
+    ///
+    /// Pattern: ^.+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretKey")]
+    pub secret_key: Option<String>,
+
+
+    /// 
     /// Specifies a file with the certificates that are used to sign the object storage server's    certificate (for example, file:///home/user/.ssh/storage_sys_certificate.pem).    The file you specify must include the following:
     /// 
     /// The certificate of the signing certificate authority (CA)               Any intermediate certificates               base64 encoding               A .pem extension
@@ -21,6 +89,52 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificate")]
     pub server_certificate: Option<String>,
+
+
+    /// 
+    /// Specifies the domain name or IP address of the object storage server. A DataSync    agent uses this hostname to mount the object storage server in a network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServerHostname")]
+    pub server_hostname: Option<String>,
+
+
+    /// 
+    /// Specifies the port that your object storage server accepts inbound network traffic on (for    example, port 443).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65536
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerPort")]
+    pub server_port: Option<i64>,
+
+
+    /// 
+    /// Specifies the protocol that your object storage server uses to communicate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: HTTP | HTTPS
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerProtocol")]
+    pub server_protocol: Option<LocationObjectStorageServerProtocolEnum>,
 
 
     /// 
@@ -51,120 +165,6 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Specifies the protocol that your object storage server uses to communicate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: HTTP | HTTPS
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerProtocol")]
-    pub server_protocol: Option<LocationObjectStorageServerProtocolEnum>,
-
-
-    /// 
-    /// Specifies the domain name or IP address of the object storage server. A DataSync    agent uses this hostname to mount the object storage server in a network.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServerHostname")]
-    pub server_hostname: Option<String>,
-
-
-    /// 
-    /// Specifies the access key (for example, a user name) if credentials are required to    authenticate with the object storage server.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 200
-    ///
-    /// Pattern: ^.+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessKey")]
-    pub access_key: Option<String>,
-
-
-    /// 
-    /// Specifies the port that your object storage server accepts inbound network traffic on (for    example, port 443).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65536
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerPort")]
-    pub server_port: Option<i64>,
-
-
-    /// 
-    /// Specifies the secret key (for example, a password) if credentials are required to    authenticate with the object storage server.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 200
-    ///
-    /// Pattern: ^.+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretKey")]
-    pub secret_key: Option<String>,
-
-
-    /// 
-    /// Specifies the name of the object storage bucket involved in the transfer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BucketName")]
-    pub bucket_name: Option<String>,
-
-
-    /// 
-    /// Specifies the Amazon Resource Names (ARNs) of the DataSync agents that can    securely connect with your location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
 
 }
 
@@ -212,17 +212,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -231,6 +220,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

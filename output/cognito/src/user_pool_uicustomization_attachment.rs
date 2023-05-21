@@ -10,6 +10,18 @@ pub struct CfnUserPoolUICustomizationAttachment {
 
 
     /// 
+    /// The CSS values in the UI customization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CSS")]
+    pub css: Option<String>,
+
+
+    /// 
     /// The client ID for the client app. You can specify the UI customization settings for a    single client (with a specific clientId) or for all clients (by setting the clientId to     ALL).
     /// 
     /// Required: Yes
@@ -43,18 +55,6 @@ pub struct CfnUserPoolUICustomizationAttachment {
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: String,
-
-
-    /// 
-    /// The CSS values in the UI customization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CSS")]
-    pub css: Option<String>,
 
 }
 

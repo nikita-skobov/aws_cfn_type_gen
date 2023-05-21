@@ -6,17 +6,39 @@ pub struct CfnAsset {
 
 
     /// 
-    /// The list of asset properties for the asset.
-    /// 
-    /// This object doesn't include properties that you define in composite models. You can find    composite model properties in the assetCompositeModels object.
+    /// A description for the asset.
     /// 
     /// Required: No
     ///
-    /// Type: List of AssetProperty
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AssetProperties")]
-    pub asset_properties: Option<Vec<AssetProperty>>,
+    #[serde(rename = "AssetDescription")]
+    pub asset_description: Option<String>,
+
+
+    /// 
+    /// A list of asset hierarchies that each contain a hierarchyLogicalId. A hierarchy specifies allowed parent/child asset relationships.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AssetHierarchy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssetHierarchies")]
+    pub asset_hierarchies: Option<Vec<AssetHierarchy>>,
+
+
+    /// 
+    /// The ID of the asset model from which to create the asset.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssetModelId")]
+    pub asset_model_id: String,
 
 
     /// 
@@ -34,6 +56,20 @@ pub struct CfnAsset {
 
 
     /// 
+    /// The list of asset properties for the asset.
+    /// 
+    /// This object doesn't include properties that you define in composite models. You can find    composite model properties in the assetCompositeModels object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AssetProperty
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssetProperties")]
+    pub asset_properties: Option<Vec<AssetProperty>>,
+
+
+    /// 
     /// A list of key-value pairs that contain metadata for the asset. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
     /// 
     /// Required: No
@@ -43,42 +79,6 @@ pub struct CfnAsset {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The ID of the asset model from which to create the asset.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssetModelId")]
-    pub asset_model_id: String,
-
-
-    /// 
-    /// A list of asset hierarchies that each contain a hierarchyLogicalId. A hierarchy specifies allowed parent/child asset relationships.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AssetHierarchy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssetHierarchies")]
-    pub asset_hierarchies: Option<Vec<AssetHierarchy>>,
-
-
-    /// 
-    /// A description for the asset.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssetDescription")]
-    pub asset_description: Option<String>,
 
 }
 
@@ -136,34 +136,6 @@ pub struct AssetProperty {
 
 
     /// 
-    /// The MQTT notification state (ENABLED or DISABLED) for this asset property.       When the notification state is ENABLED, AWS IoT SiteWise publishes property value       updates to a unique MQTT topic. For more information, see Interacting with other services in the AWS IoT SiteWise User Guide.
-    /// 
-    /// If you omit this parameter, the notification state is set to DISABLED.
-    /// 
-    /// NoteYou must use all caps for the NotificationState parameter. If you use lower case letters, you         will receive a schema validation error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationState")]
-    pub notification_state: Option<String>,
-
-
-    /// 
-    /// The unit (such as Newtons or RPM) of the asset property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unit")]
-    pub unit: Option<String>,
-
-
-    /// 
     /// The property alias that identifies the property, such as an OPC-UA server data stream path     (for example, /company/windfarm/3/turbine/7/temperature). For more information, see     Mapping industrial data streams to asset properties in the       AWS IoT SiteWise User Guide.
     /// 
     /// The property alias must have 1-1000 characters.
@@ -189,6 +161,34 @@ pub struct AssetProperty {
     /// Update requires: No interruption
     #[serde(rename = "LogicalId")]
     pub logical_id: String,
+
+
+    /// 
+    /// The MQTT notification state (ENABLED or DISABLED) for this asset property.       When the notification state is ENABLED, AWS IoT SiteWise publishes property value       updates to a unique MQTT topic. For more information, see Interacting with other services in the AWS IoT SiteWise User Guide.
+    /// 
+    /// If you omit this parameter, the notification state is set to DISABLED.
+    /// 
+    /// NoteYou must use all caps for the NotificationState parameter. If you use lower case letters, you         will receive a schema validation error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationState")]
+    pub notification_state: Option<String>,
+
+
+    /// 
+    /// The unit (such as Newtons or RPM) of the asset property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Unit")]
+    pub unit: Option<String>,
 
 }
 

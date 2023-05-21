@@ -6,6 +6,26 @@ pub struct CfnPlaceIndex {
 
 
     /// 
+    /// Specifies the geospatial data provider for the new place index.
+    /// 
+    /// NoteThis field is case-sensitive. Enter the valid values as shown. For example,         entering HERE returns an error.
+    /// 
+    /// Valid values include:
+    /// 
+    /// Esri – For additional information about Esri's coverage in your region of interest, see Esri details on geocoding coverage.               Grab – Grab provides place index functionality for Southeast           Asia. For additional information about GrabMaps' coverage, see GrabMaps countries and areas covered.               Here – For additional information about HERE             Technologies' coverage in your region of interest, see HERE details on goecoding coverage.         ImportantIf you specify HERE Technologies (Here) as the data provider,             you may not store results for locations in Japan. For more information, see             the AWS Service               Terms for Amazon Location Service.
+    /// 
+    /// For additional information , see Data         providers on the Amazon Location Service Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataSource")]
+    pub data_source: String,
+
+
+    /// 
     /// Specifies the data storage option requesting Places.
     /// 
     /// Required: No
@@ -34,20 +54,6 @@ pub struct CfnPlaceIndex {
 
 
     /// 
-    /// No longer used. If included, the only allowed value is       RequestBasedUsage.
-    /// 
-    /// Allowed Values: RequestBasedUsage
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PricingPlan")]
-    pub pricing_plan: Option<PlaceIndexPricingPlanEnum>,
-
-
-    /// 
     /// The name of the place index resource.
     /// 
     /// Requirements:
@@ -70,23 +76,17 @@ pub struct CfnPlaceIndex {
 
 
     /// 
-    /// Specifies the geospatial data provider for the new place index.
+    /// No longer used. If included, the only allowed value is       RequestBasedUsage.
     /// 
-    /// NoteThis field is case-sensitive. Enter the valid values as shown. For example,         entering HERE returns an error.
+    /// Allowed Values: RequestBasedUsage
     /// 
-    /// Valid values include:
-    /// 
-    /// Esri – For additional information about Esri's coverage in your region of interest, see Esri details on geocoding coverage.               Grab – Grab provides place index functionality for Southeast           Asia. For additional information about GrabMaps' coverage, see GrabMaps countries and areas covered.               Here – For additional information about HERE             Technologies' coverage in your region of interest, see HERE details on goecoding coverage.         ImportantIf you specify HERE Technologies (Here) as the data provider,             you may not store results for locations in Japan. For more information, see             the AWS Service               Terms for Amazon Location Service.
-    /// 
-    /// For additional information , see Data         providers on the Amazon Location Service Developer Guide.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DataSource")]
-    pub data_source: String,
+    #[serde(rename = "PricingPlan")]
+    pub pricing_plan: Option<PlaceIndexPricingPlanEnum>,
 
 }
 

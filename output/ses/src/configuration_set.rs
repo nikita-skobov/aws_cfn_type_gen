@@ -6,15 +6,15 @@ pub struct CfnConfigurationSet {
 
 
     /// 
-    /// The Virtual Deliverability Manager (VDM) options that apply to the configuration       set.
+    /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
     /// 
     /// Required: No
     ///
-    /// Type: VdmOptions
+    /// Type: DeliveryOptions
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VdmOptions")]
-    pub vdm_options: Option<VdmOptions>,
+    #[serde(rename = "DeliveryOptions")]
+    pub delivery_options: Option<DeliveryOptions>,
 
 
     /// 
@@ -29,6 +29,30 @@ pub struct CfnConfigurationSet {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// An object that represents the reputation settings for the configuration set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ReputationOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReputationOptions")]
+    pub reputation_options: Option<ReputationOptions>,
+
+
+    /// 
+    /// An object that defines whether or not Amazon SES can send email that you send using       the configuration set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SendingOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SendingOptions")]
+    pub sending_options: Option<SendingOptions>,
 
 
     /// 
@@ -56,39 +80,15 @@ pub struct CfnConfigurationSet {
 
 
     /// 
-    /// An object that defines whether or not Amazon SES can send email that you send using       the configuration set.
+    /// The Virtual Deliverability Manager (VDM) options that apply to the configuration       set.
     /// 
     /// Required: No
     ///
-    /// Type: SendingOptions
+    /// Type: VdmOptions
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SendingOptions")]
-    pub sending_options: Option<SendingOptions>,
-
-
-    /// 
-    /// An object that represents the reputation settings for the configuration set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ReputationOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReputationOptions")]
-    pub reputation_options: Option<ReputationOptions>,
-
-
-    /// 
-    /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeliveryOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryOptions")]
-    pub delivery_options: Option<DeliveryOptions>,
+    #[serde(rename = "VdmOptions")]
+    pub vdm_options: Option<VdmOptions>,
 
 }
 
@@ -103,6 +103,129 @@ impl cfn_resources::CfnResource for CfnConfigurationSet {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Settings for your VDM configuration as applicable to the Dashboard.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DashboardOptions {
+
+
+    /// 
+    /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
+    /// 
+    /// ENABLED – Amazon SES enables engagement metrics for the           configuration set.               DISABLED – Amazon SES disables engagement metrics for           the configuration set.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngagementMetrics")]
+    pub engagement_metrics: String,
+
+}
+
+
+
+
+/// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeliveryOptions {
+
+
+    /// 
+    /// The name of the dedicated IP pool to associate with the configuration set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SendingPoolName")]
+    pub sending_pool_name: Option<String>,
+
+
+    /// 
+    /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS). If the value is REQUIRE, messages are only       delivered if a TLS connection can be established. If the value is OPTIONAL,       messages can be delivered in plain text if a TLS connection can't be established.
+    /// 
+    /// Valid Values: REQUIRE | OPTIONAL
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TlsPolicy")]
+    pub tls_policy: Option<DeliveryOptionsTlsPolicyEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DeliveryOptionsTlsPolicyEnum {
+
+    /// REQUIRE
+    #[serde(rename = "REQUIRE")]
+    Require,
+
+    /// OPTIONAL
+    #[serde(rename = "OPTIONAL")]
+    Optional,
+
+}
+
+impl Default for DeliveryOptionsTlsPolicyEnum {
+    fn default() -> Self {
+        DeliveryOptionsTlsPolicyEnum::Require
+    }
+}
+
+
+
+/// Settings for your VDM configuration as applicable to the Guardian.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GuardianOptions {
+
+
+    /// 
+    /// Specifies the status of your VDM optimized shared delivery. Can be one of the       following:
+    /// 
+    /// ENABLED – Amazon SES enables optimized shared delivery           for the configuration set.               DISABLED – Amazon SES disables optimized shared           delivery for the configuration set.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptimizedSharedDelivery")]
+    pub optimized_shared_delivery: String,
+
+}
+
+
+
+
+/// Contains information about the reputation settings for a configuration set.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ReputationOptions {
+
+
+    /// 
+    /// Describes whether or not Amazon SES publishes reputation metrics for the configuration set,       such as bounce and complaint rates, to Amazon CloudWatch.
+    /// 
+    /// If the value is true, reputation metrics are published. If the value is         false, reputation metrics are not published. The default value is         false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReputationMetricsEnabled")]
+    pub reputation_metrics_enabled: Option<bool>,
+
+}
+
+
 
 
 /// Used to enable or disable email sending for messages that use this configuration set       in the current AWS Region.
@@ -149,162 +272,6 @@ pub struct SuppressionOptions {
 
 
 
-/// Settings for your VDM configuration as applicable to the Dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DashboardOptions {
-
-
-    /// 
-    /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
-    /// 
-    /// ENABLED – Amazon SES enables engagement metrics for the           configuration set.               DISABLED – Amazon SES disables engagement metrics for           the configuration set.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngagementMetrics")]
-    pub engagement_metrics: String,
-
-}
-
-
-
-
-/// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeliveryOptions {
-
-
-    /// 
-    /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS). If the value is REQUIRE, messages are only       delivered if a TLS connection can be established. If the value is OPTIONAL,       messages can be delivered in plain text if a TLS connection can't be established.
-    /// 
-    /// Valid Values: REQUIRE | OPTIONAL
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TlsPolicy")]
-    pub tls_policy: Option<DeliveryOptionsTlsPolicyEnum>,
-
-
-    /// 
-    /// The name of the dedicated IP pool to associate with the configuration set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SendingPoolName")]
-    pub sending_pool_name: Option<String>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum DeliveryOptionsTlsPolicyEnum {
-
-    /// REQUIRE
-    #[serde(rename = "REQUIRE")]
-    Require,
-
-    /// OPTIONAL
-    #[serde(rename = "OPTIONAL")]
-    Optional,
-
-}
-
-impl Default for DeliveryOptionsTlsPolicyEnum {
-    fn default() -> Self {
-        DeliveryOptionsTlsPolicyEnum::Require
-    }
-}
-
-
-
-/// Contains information about the reputation settings for a configuration set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ReputationOptions {
-
-
-    /// 
-    /// Describes whether or not Amazon SES publishes reputation metrics for the configuration set,       such as bounce and complaint rates, to Amazon CloudWatch.
-    /// 
-    /// If the value is true, reputation metrics are published. If the value is         false, reputation metrics are not published. The default value is         false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReputationMetricsEnabled")]
-    pub reputation_metrics_enabled: Option<bool>,
-
-}
-
-
-
-
-/// Settings for your VDM configuration as applicable to the Guardian.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GuardianOptions {
-
-
-    /// 
-    /// Specifies the status of your VDM optimized shared delivery. Can be one of the       following:
-    /// 
-    /// ENABLED – Amazon SES enables optimized shared delivery           for the configuration set.               DISABLED – Amazon SES disables optimized shared           delivery for the configuration set.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OptimizedSharedDelivery")]
-    pub optimized_shared_delivery: String,
-
-}
-
-
-
-
-/// The Virtual Deliverability Manager (VDM) options that apply to a configuration       set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VdmOptions {
-
-
-    /// 
-    /// Settings for your VDM configuration as applicable to the Guardian.
-    /// 
-    /// Required: No
-    ///
-    /// Type: GuardianOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GuardianOptions")]
-    pub guardian_options: Option<GuardianOptions>,
-
-
-    /// 
-    /// Settings for your VDM configuration as applicable to the Dashboard.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DashboardOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DashboardOptions")]
-    pub dashboard_options: Option<DashboardOptions>,
-
-}
-
-
-
-
 /// A domain that is used to redirect email recipients to an Amazon SES-operated domain. This       domain captures open and click events generated by Amazon SES emails.
 ///
 /// For more information, see Configuring Custom         Domains to Handle Open and Click Tracking in the Amazon SES Developer         Guide.
@@ -322,6 +289,39 @@ pub struct TrackingOptions {
     /// Update requires: No interruption
     #[serde(rename = "CustomRedirectDomain")]
     pub custom_redirect_domain: Option<String>,
+
+}
+
+
+
+
+/// The Virtual Deliverability Manager (VDM) options that apply to a configuration       set.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VdmOptions {
+
+
+    /// 
+    /// Settings for your VDM configuration as applicable to the Dashboard.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DashboardOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DashboardOptions")]
+    pub dashboard_options: Option<DashboardOptions>,
+
+
+    /// 
+    /// Settings for your VDM configuration as applicable to the Guardian.
+    /// 
+    /// Required: No
+    ///
+    /// Type: GuardianOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GuardianOptions")]
+    pub guardian_options: Option<GuardianOptions>,
 
 }
 

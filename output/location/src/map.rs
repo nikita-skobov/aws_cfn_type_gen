@@ -6,6 +6,18 @@ pub struct CfnMap {
 
 
     /// 
+    /// Specifies the MapConfiguration, including the map style, for the       map resource that you create. The map style defines the look of maps and the data       provider for your map resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MapConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Configuration")]
+    pub configuration: MapConfiguration,
+
+
+    /// 
     /// An optional description for the map resource.
     /// 
     /// Required: No
@@ -41,18 +53,6 @@ pub struct CfnMap {
     /// Update requires: Replacement
     #[serde(rename = "MapName")]
     pub map_name: String,
-
-
-    /// 
-    /// Specifies the MapConfiguration, including the map style, for the       map resource that you create. The map style defines the look of maps and the data       provider for your map resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MapConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Configuration")]
-    pub configuration: MapConfiguration,
 
 
     /// 

@@ -6,34 +6,6 @@ pub struct CfnCapacityReservationFleet {
 
 
     /// 
-    /// Indicates the tenancy of the Capacity Reservation Fleet. All Capacity Reservations 			in the Fleet inherit this tenancy. The Capacity Reservation Fleet can have one of 			the following tenancy settings:
-    /// 
-    /// default - The Capacity Reservation Fleet is created on hardware 					that is shared with other AWS accounts.                        dedicated - The Capacity Reservations are created on single-tenant 					hardware that is dedicated to a single AWS account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: default
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tenancy")]
-    pub tenancy: Option<CapacityReservationFleetTenancyEnum>,
-
-
-    /// 
-    /// Used to remove an end date from a Capacity Reservation Fleet that is configured      to end automatically at a specific date and time. To remove the end date from a      Capacity Reservation Fleet, specify true for this paramater and omit      the EndDate parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RemoveEndDate")]
-    pub remove_end_date: Option<bool>,
-
-
-    /// 
     /// The strategy used by the Capacity Reservation Fleet to determine which of the 			specified instance types to use. Currently, only the prioritized 			allocation strategy is supported. For more information, see 				Allocation strategy in the Amazon EC2 User Guide.
     /// 
     /// Valid values: prioritized
@@ -48,39 +20,17 @@ pub struct CfnCapacityReservationFleet {
 
 
     /// 
-    /// The total number of capacity units to be reserved by the Capacity Reservation Fleet. This 			value, together with the instance type weights that you assign to each instance type used by 			the Fleet determine the number of instances for which the Fleet reserves capacity. Both values 			are based on units that make sense for your workload. For more information, see 				Total target capacity in the Amazon EC2 User Guide.
+    /// The date and time at which the Capacity Reservation Fleet expires. When the Capacity 			Reservation Fleet expires, its state changes to expired and all of the Capacity 			Reservations in the Fleet expire.
+    /// 
+    /// The Capacity Reservation Fleet expires within an hour after the specified time. For example, 			if you specify 5/31/2019, 13:30:55, the Capacity Reservation Fleet 			is guaranteed to expire between 13:30:55 and 14:30:55 on 			5/31/2019.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TotalTargetCapacity")]
-    pub total_target_capacity: Option<i64>,
-
-
-    /// 
-    /// Used to add an end date to a Capacity Reservation Fleet that has no end date and      time. To add an end date to a Capacity Reservation Fleet, specify true      for this paramater and specify the end date and time (in UTC time format) for the      EndDate parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NoRemoveEndDate")]
-    pub no_remove_end_date: Option<bool>,
-
-
-    /// 
-    /// The tags to assign to the Capacity Reservation Fleet. The tags are automatically assigned 			to the Capacity Reservations in the Fleet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TagSpecification
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TagSpecifications")]
-    pub tag_specifications: Option<Vec<TagSpecification>>,
+    #[serde(rename = "EndDate")]
+    pub end_date: Option<String>,
 
 
     /// 
@@ -100,20 +50,6 @@ pub struct CfnCapacityReservationFleet {
 
 
     /// 
-    /// The date and time at which the Capacity Reservation Fleet expires. When the Capacity 			Reservation Fleet expires, its state changes to expired and all of the Capacity 			Reservations in the Fleet expire.
-    /// 
-    /// The Capacity Reservation Fleet expires within an hour after the specified time. For example, 			if you specify 5/31/2019, 13:30:55, the Capacity Reservation Fleet 			is guaranteed to expire between 13:30:55 and 14:30:55 on 			5/31/2019.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EndDate")]
-    pub end_date: Option<String>,
-
-
-    /// 
     /// Information about the instance types for which to reserve the capacity.
     /// 
     /// Required: No
@@ -123,6 +59,70 @@ pub struct CfnCapacityReservationFleet {
     /// Update requires: Replacement
     #[serde(rename = "InstanceTypeSpecifications")]
     pub instance_type_specifications: Option<Vec<InstanceTypeSpecification>>,
+
+
+    /// 
+    /// Used to add an end date to a Capacity Reservation Fleet that has no end date and      time. To add an end date to a Capacity Reservation Fleet, specify true      for this paramater and specify the end date and time (in UTC time format) for the      EndDate parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NoRemoveEndDate")]
+    pub no_remove_end_date: Option<bool>,
+
+
+    /// 
+    /// Used to remove an end date from a Capacity Reservation Fleet that is configured      to end automatically at a specific date and time. To remove the end date from a      Capacity Reservation Fleet, specify true for this paramater and omit      the EndDate parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RemoveEndDate")]
+    pub remove_end_date: Option<bool>,
+
+
+    /// 
+    /// The tags to assign to the Capacity Reservation Fleet. The tags are automatically assigned 			to the Capacity Reservations in the Fleet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TagSpecification
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TagSpecifications")]
+    pub tag_specifications: Option<Vec<TagSpecification>>,
+
+
+    /// 
+    /// Indicates the tenancy of the Capacity Reservation Fleet. All Capacity Reservations 			in the Fleet inherit this tenancy. The Capacity Reservation Fleet can have one of 			the following tenancy settings:
+    /// 
+    /// default - The Capacity Reservation Fleet is created on hardware 					that is shared with other AWS accounts.                        dedicated - The Capacity Reservations are created on single-tenant 					hardware that is dedicated to a single AWS account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: default
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tenancy")]
+    pub tenancy: Option<CapacityReservationFleetTenancyEnum>,
+
+
+    /// 
+    /// The total number of capacity units to be reserved by the Capacity Reservation Fleet. This 			value, together with the instance type weights that you assign to each instance type used by 			the Fleet determine the number of instances for which the Fleet reserves capacity. Both values 			are based on units that make sense for your workload. For more information, see 				Total target capacity in the Amazon EC2 User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TotalTargetCapacity")]
+    pub total_target_capacity: Option<i64>,
 
 }
 
@@ -177,15 +177,15 @@ pub struct InstanceTypeSpecification {
 
 
     /// 
-    /// Indicates whether the Capacity Reservation Fleet supports EBS-optimized instances types. This 			optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack 			to provide optimal I/O performance. This optimization isn't available with all instance types. Additional 			usage charges apply when using EBS-optimized instance types.
+    /// The Availability Zone in which the Capacity Reservation Fleet reserves the capacity. A Capacity 			Reservation Fleet can't span Availability Zones. All instance type specifications that you specify 			for the Fleet must use the same Availability Zone.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EbsOptimized")]
-    pub ebs_optimized: Option<bool>,
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
 
 
     /// 
@@ -201,15 +201,29 @@ pub struct InstanceTypeSpecification {
 
 
     /// 
-    /// The Availability Zone in which the Capacity Reservation Fleet reserves the capacity. A Capacity 			Reservation Fleet can't span Availability Zones. All instance type specifications that you specify 			for the Fleet must use the same Availability Zone.
+    /// Indicates whether the Capacity Reservation Fleet supports EBS-optimized instances types. This 			optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack 			to provide optimal I/O performance. This optimization isn't available with all instance types. Additional 			usage charges apply when using EBS-optimized instance types.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EbsOptimized")]
+    pub ebs_optimized: Option<bool>,
+
+
+    /// 
+    /// The type of operating system for which the Capacity Reservation Fleet reserves capacity.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Allowed values: Linux with SQL Server Enterprise | Linux with SQL Server Standard | Linux with SQL Server Web | Linux/UNIX | Red Hat Enterprise Linux | RHEL with HA | RHEL with HA and SQL Server Enterprise | RHEL with HA and SQL Server Standard | RHEL with SQL Server Enterprise | RHEL with SQL Server Standard | RHEL with SQL Server Web | SUSE Linux | Windows | Windows with SQL Server | Windows with SQL Server Enterprise | Windows with SQL Server Standard | Windows with SQL Server Web
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
+    #[serde(rename = "InstancePlatform")]
+    pub instance_platform: Option<InstanceTypeSpecificationInstancePlatformEnum>,
 
 
     /// 
@@ -252,20 +266,6 @@ pub struct InstanceTypeSpecification {
     /// Update requires: Replacement
     #[serde(rename = "Weight")]
     pub weight: Option<f64>,
-
-
-    /// 
-    /// The type of operating system for which the Capacity Reservation Fleet reserves capacity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Linux with SQL Server Enterprise | Linux with SQL Server Standard | Linux with SQL Server Web | Linux/UNIX | Red Hat Enterprise Linux | RHEL with HA | RHEL with HA and SQL Server Enterprise | RHEL with HA and SQL Server Standard | RHEL with SQL Server Enterprise | RHEL with SQL Server Standard | RHEL with SQL Server Web | SUSE Linux | Windows | Windows with SQL Server | Windows with SQL Server Enterprise | Windows with SQL Server Standard | Windows with SQL Server Web
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstancePlatform")]
-    pub instance_platform: Option<InstanceTypeSpecificationInstancePlatformEnum>,
 
 }
 
@@ -2902,21 +2902,46 @@ impl Default for InstanceTypeSpecificationInstanceTypeEnum {
 
 
 
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
 /// The tags to apply to a resource when the resource is being created. When you specify a tag, you must     specify the resource type to tag, otherwise the request will fail.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagSpecification {
-
-
-    /// 
-    /// The tags to apply to the resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -2932,42 +2957,17 @@ pub struct TagSpecification {
     #[serde(rename = "ResourceType")]
     pub resource_type: Option<String>,
 
-}
-
-
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The tags to apply to the resource.
     /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

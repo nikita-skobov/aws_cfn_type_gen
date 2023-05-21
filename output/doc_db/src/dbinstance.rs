@@ -6,21 +6,17 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// The instance identifier. This parameter is stored as a lowercase string.
+    /// This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set.
     /// 
-    /// Constraints:
-    /// 
-    /// Must contain from 1 to 63 letters, numbers, or hyphens.               The first character must be a letter.               Cannot end with a hyphen or contain two consecutive hyphens.
-    /// 
-    /// Example: mydbinstance
+    /// Default: false
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBInstanceIdentifier")]
-    pub dbinstance_identifier: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "AutoMinorVersionUpgrade")]
+    pub auto_minor_version_upgrade: Option<bool>,
 
 
     /// 
@@ -40,18 +36,6 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// The tags to be assigned to the instance. You can assign up to      10 tags to an instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The identifier of the cluster that the instance will belong to.
     /// 
     /// Required: Yes
@@ -61,6 +45,47 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
     pub dbcluster_identifier: String,
+
+
+    /// 
+    /// The compute and memory capacity of the instance; for example,       db.m4.large. If you change the class of an instance there       can be some interruption in the cluster's service.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBInstanceClass")]
+    pub dbinstance_class: String,
+
+
+    /// 
+    /// The instance identifier. This parameter is stored as a lowercase string.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must contain from 1 to 63 letters, numbers, or hyphens.               The first character must be a letter.               Cannot end with a hyphen or contain two consecutive hyphens.
+    /// 
+    /// Example: mydbinstance
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBInstanceIdentifier")]
+    pub dbinstance_identifier: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnablePerformanceInsights")]
+    pub enable_performance_insights: Option<bool>,
 
 
     /// 
@@ -84,40 +109,15 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// The compute and memory capacity of the instance; for example,       db.m4.large. If you change the class of an instance there       can be some interruption in the cluster's service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBInstanceClass")]
-    pub dbinstance_class: String,
-
-
-    /// 
-    /// This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set.
-    /// 
-    /// Default: false
+    /// The tags to be assigned to the instance. You can assign up to      10 tags to an instance.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AutoMinorVersionUpgrade")]
-    pub auto_minor_version_upgrade: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnablePerformanceInsights")]
-    pub enable_performance_insights: Option<bool>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

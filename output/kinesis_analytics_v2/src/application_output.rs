@@ -57,35 +57,6 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
 }
 
 
-/// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies an Amazon Lambda function as the destination. You provide the function Amazon Resource    Name (ARN) of the Lambda function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LambdaOutput {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the destination Lambda function to write to.
-    /// 
-    /// NoteTo specify an earlier version of the Lambda function than the latest, include the Lambda function version in the Lambda function ARN. For more information about Lambda ARNs, see Example ARNs: Amazon Lambda
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
-
-}
-
-
-
-
 /// Describes the data format when records are written to the destination in a SQL-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DestinationSchema {
@@ -125,82 +96,6 @@ impl Default for DestinationSchemaRecordFormatTypeEnum {
         DestinationSchemaRecordFormatTypeEnum::Csv
     }
 }
-
-
-
-/// Describes a SQL-based Kinesis Data Analytics application's output configuration,    in which you identify an in-application stream and a destination where you want the    in-application stream data to be written. The destination can be a Kinesis data stream or a    Kinesis Data Firehose delivery stream.
-/// 
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Output {
-
-
-    /// 
-    /// Identifies an Amazon Lambda function as the destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LambdaOutput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LambdaOutput")]
-    pub lambda_output: Option<LambdaOutput>,
-
-
-    /// 
-    /// Identifies a Kinesis Data Firehose delivery stream as the destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KinesisFirehoseOutput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisFirehoseOutput")]
-    pub kinesis_firehose_output: Option<KinesisFirehoseOutput>,
-
-
-    /// 
-    /// Identifies a Kinesis data stream    as the destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KinesisStreamsOutput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisStreamsOutput")]
-    pub kinesis_streams_output: Option<KinesisStreamsOutput>,
-
-
-    /// 
-    /// Describes the data format when records are written to the destination.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: DestinationSchema
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationSchema")]
-    pub destination_schema: DestinationSchema,
-
-
-    /// 
-    /// The name of the in-application stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 32
-    ///
-    /// Pattern: [^-\s<>&]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
 
 
 
@@ -252,6 +147,111 @@ pub struct KinesisStreamsOutput {
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
     pub resource_arn: String,
+
+}
+
+
+
+
+/// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies an Amazon Lambda function as the destination. You provide the function Amazon Resource    Name (ARN) of the Lambda function.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LambdaOutput {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the destination Lambda function to write to.
+    /// 
+    /// NoteTo specify an earlier version of the Lambda function than the latest, include the Lambda function version in the Lambda function ARN. For more information about Lambda ARNs, see Example ARNs: Amazon Lambda
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceARN")]
+    pub resource_arn: String,
+
+}
+
+
+
+
+/// Describes a SQL-based Kinesis Data Analytics application's output configuration,    in which you identify an in-application stream and a destination where you want the    in-application stream data to be written. The destination can be a Kinesis data stream or a    Kinesis Data Firehose delivery stream.
+/// 
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Output {
+
+
+    /// 
+    /// Describes the data format when records are written to the destination.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: DestinationSchema
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationSchema")]
+    pub destination_schema: DestinationSchema,
+
+
+    /// 
+    /// Identifies a Kinesis Data Firehose delivery stream as the destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: KinesisFirehoseOutput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisFirehoseOutput")]
+    pub kinesis_firehose_output: Option<KinesisFirehoseOutput>,
+
+
+    /// 
+    /// Identifies a Kinesis data stream    as the destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: KinesisStreamsOutput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisStreamsOutput")]
+    pub kinesis_streams_output: Option<KinesisStreamsOutput>,
+
+
+    /// 
+    /// Identifies an Amazon Lambda function as the destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LambdaOutput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LambdaOutput")]
+    pub lambda_output: Option<LambdaOutput>,
+
+
+    /// 
+    /// The name of the in-application stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 32
+    ///
+    /// Pattern: [^-\s<>&]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 }
 

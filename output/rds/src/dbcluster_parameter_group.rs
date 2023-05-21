@@ -8,40 +8,6 @@ pub struct CfnDBClusterParameterGroup {
 
 
     /// 
-    /// An optional array of key-value pairs to apply to this DB cluster parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The DB cluster parameter group family name. A DB cluster parameter group can be       associated with one and only one DB cluster parameter group family, and can be applied       only to a DB cluster running a DB engine and engine version compatible with that DB       cluster parameter group family.
-    /// 
-    /// NoteThe DB cluster parameter group family can't be changed when updating a DB cluster         parameter group.
-    /// 
-    /// To list all of the available parameter group families, use the following       command:
-    /// 
-    /// aws rds describe-db-engine-versions --query         "DBEngineVersions[].DBParameterGroupFamily"
-    /// 
-    /// The output contains duplicates.
-    /// 
-    /// For more information, see CreateDBClusterParameterGroup.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Family")]
-    pub family: String,
-
-
-    /// 
     /// The name of the DB cluster parameter group.
     /// 
     /// Constraints:
@@ -74,6 +40,28 @@ pub struct CfnDBClusterParameterGroup {
 
 
     /// 
+    /// The DB cluster parameter group family name. A DB cluster parameter group can be       associated with one and only one DB cluster parameter group family, and can be applied       only to a DB cluster running a DB engine and engine version compatible with that DB       cluster parameter group family.
+    /// 
+    /// NoteThe DB cluster parameter group family can't be changed when updating a DB cluster         parameter group.
+    /// 
+    /// To list all of the available parameter group families, use the following       command:
+    /// 
+    /// aws rds describe-db-engine-versions --query         "DBEngineVersions[].DBParameterGroupFamily"
+    /// 
+    /// The output contains duplicates.
+    /// 
+    /// For more information, see CreateDBClusterParameterGroup.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Family")]
+    pub family: String,
+
+
+    /// 
     /// Provides a list of parameters for the DB cluster parameter group.
     /// 
     /// Required: Yes
@@ -83,6 +71,18 @@ pub struct CfnDBClusterParameterGroup {
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
     pub parameters: serde_json::Value,
+
+
+    /// 
+    /// An optional array of key-value pairs to apply to this DB cluster parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -111,17 +111,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -130,6 +119,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

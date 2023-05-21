@@ -8,19 +8,19 @@ pub struct CfnLocationS3 {
 
 
     /// 
-    /// The Amazon S3 storage class that you want to store your files in when this location is     used as a task destination. For buckets in AWS Regions, the storage class     defaults to S3 Standard.
-    /// 
-    /// For more information about S3 storage classes, see Amazon S3 Storage Classes. Some storage classes have     behaviors that can affect your S3 storage costs. For detailed information, see Considerations When Working with Amazon S3 Storage Classes in DataSync.
+    /// The ARN of the Amazon S3 bucket.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: DEEP_ARCHIVE | GLACIER | GLACIER_INSTANT_RETRIEVAL | INTELLIGENT_TIERING | ONEZONE_IA | OUTPOSTS | STANDARD | STANDARD_IA
+    /// Maximum: 156
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(s3|s3-outposts):[a-z\-0-9]*:[0-9]*:.*$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "S3StorageClass")]
-    pub s3_storage_class: Option<LocationS3S3StorageClassEnum>,
+    #[serde(rename = "S3BucketArn")]
+    pub s3_bucket_arn: Option<String>,
 
 
     /// 
@@ -38,33 +38,19 @@ pub struct CfnLocationS3 {
 
 
     /// 
-    /// The key-value pair that represents the tag that you want to add to the location. The    value can be an empty string. We recommend using tags to name your resources.
+    /// The Amazon S3 storage class that you want to store your files in when this location is     used as a task destination. For buckets in AWS Regions, the storage class     defaults to S3 Standard.
     /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The ARN of the Amazon S3 bucket.
+    /// For more information about S3 storage classes, see Amazon S3 Storage Classes. Some storage classes have     behaviors that can affect your S3 storage costs. For detailed information, see Considerations When Working with Amazon S3 Storage Classes in DataSync.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 156
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(s3|s3-outposts):[a-z\-0-9]*:[0-9]*:.*$
+    /// Allowed values: DEEP_ARCHIVE | GLACIER | GLACIER_INSTANT_RETRIEVAL | INTELLIGENT_TIERING | ONEZONE_IA | OUTPOSTS | STANDARD | STANDARD_IA
     ///
     /// Update requires: Replacement
-    #[serde(rename = "S3BucketArn")]
-    pub s3_bucket_arn: Option<String>,
+    #[serde(rename = "S3StorageClass")]
+    pub s3_storage_class: Option<LocationS3S3StorageClassEnum>,
 
 
     /// 
@@ -81,6 +67,20 @@ pub struct CfnLocationS3 {
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
     pub subdirectory: Option<String>,
+
+
+    /// 
+    /// The key-value pair that represents the tag that you want to add to the location. The    value can be an empty string. We recommend using tags to name your resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

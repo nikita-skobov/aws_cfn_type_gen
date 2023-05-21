@@ -6,18 +6,6 @@ pub struct CfnDomainName {
 
 
     /// 
-    /// The decription for your domain name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the certificate. This will be an AWS Certificate Manager     certificate.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnDomainName {
     /// Update requires: Replacement
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: String,
+
+
+    /// 
+    /// The decription for your domain name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 

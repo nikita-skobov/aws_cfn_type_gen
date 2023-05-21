@@ -20,6 +20,18 @@ pub struct CfnProfile {
 
 
     /// 
+    /// Indicates whether the profile is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
     /// A list of managed policy ARNs that apply to the vended session credentials.
     /// 
     /// Required: No
@@ -31,46 +43,6 @@ pub struct CfnProfile {
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArns")]
     pub managed_policy_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// Specifies whether instance properties are required in temporary credential requests with this profile.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RequireInstanceProperties")]
-    pub require_instance_properties: Option<bool>,
-
-
-    /// 
-    /// The tags to attach to the profile.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A list of IAM role ARNs. During CreateSession, if a matching role ARN is provided, the properties in this profile will be applied to the intersection session policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArns")]
-    pub role_arns: Vec<String>,
 
 
     /// 
@@ -92,15 +64,29 @@ pub struct CfnProfile {
 
 
     /// 
-    /// Indicates whether the profile is enabled.
+    /// Specifies whether instance properties are required in temporary credential requests with this profile.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
+    #[serde(rename = "RequireInstanceProperties")]
+    pub require_instance_properties: Option<bool>,
+
+
+    /// 
+    /// A list of IAM role ARNs. During CreateSession, if a matching role ARN is provided, the properties in this profile will be applied to the intersection session policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArns")]
+    pub role_arns: Vec<String>,
 
 
     /// 
@@ -113,6 +99,20 @@ pub struct CfnProfile {
     /// Update requires: No interruption
     #[serde(rename = "SessionPolicy")]
     pub session_policy: Option<String>,
+
+
+    /// 
+    /// The tags to attach to the profile.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

@@ -6,70 +6,17 @@ pub struct CfnJob {
 
 
     /// 
-    /// The number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. A DPU is a relative measure    of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
+    /// This parameter is no longer supported. Use MaxCapacity instead.
     /// 
-    /// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
-    /// 
-    /// The value that can be allocated for MaxCapacity depends on whether you are    running a Python shell job or an Apache Spark ETL job:
-    /// 
-    /// When you specify a Python shell job (JobCommand.Name="pythonshell"), you can      allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"), you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job type cannot have a fractional DPU allocation.
+    /// The number of capacity units that are allocated to this job.
     /// 
     /// Required: No
     ///
     /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxCapacity")]
-    pub max_capacity: Option<f64>,
-
-
-    /// 
-    /// The number of workers of a defined workerType that are allocated when a job runs.
-    /// 
-    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfWorkers")]
-    pub number_of_workers: Option<i64>,
-
-
-    /// 
-    /// The tags to use with this job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
-
-    /// Specifies configuration properties of a notification.
-    ///
-    /// Required: No
-    ///
-    /// Type: NotificationProperty
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationProperty")]
-    pub notification_property: Option<NotificationProperty>,
-
-
-    /// 
-    /// The maximum number of times to retry this job after a JobRun fails.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxRetries")]
-    pub max_retries: Option<f64>,
+    #[serde(rename = "AllocatedCapacity")]
+    pub allocated_capacity: Option<f64>,
 
 
     /// 
@@ -85,27 +32,15 @@ pub struct CfnJob {
 
 
     /// 
-    /// Non-overridable arguments for this job, specified as name-value pairs.
-    ///
+    /// The connections used for this job.
+    /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: ConnectionsList
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NonOverridableArguments")]
-    pub non_overridable_arguments: Option<serde_json::Value>,
-
-
-    /// 
-    /// The name or Amazon Resource Name (ARN) of the IAM role associated with this       job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Role")]
-    pub role: String,
+    #[serde(rename = "Connections")]
+    pub connections: Option<ConnectionsList>,
 
 
     /// 
@@ -127,24 +62,6 @@ pub struct CfnJob {
 
 
     /// 
-    /// The name you assign to this job definition.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// A description of the job.
     /// 
     /// Required: No
@@ -160,18 +77,6 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// The connections used for this job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConnectionsList
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Connections")]
-    pub connections: Option<ConnectionsList>,
 
 
     /// 
@@ -191,32 +96,15 @@ pub struct CfnJob {
 
 
     /// 
-    /// The name of the SecurityConfiguration structure to be used with this       job.
+    /// The maximum number of concurrent runs that are allowed for this job.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    /// Type: ExecutionProperty
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecurityConfiguration")]
-    pub security_configuration: Option<String>,
-
-
-    /// The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Timeout")]
-    pub timeout: Option<i64>,
+    #[serde(rename = "ExecutionProperty")]
+    pub execution_property: Option<ExecutionProperty>,
 
 
     /// 
@@ -242,15 +130,153 @@ pub struct CfnJob {
 
 
     /// 
-    /// The maximum number of concurrent runs that are allowed for this job.
+    /// This field is reserved for future use.
     /// 
     /// Required: No
     ///
-    /// Type: ExecutionProperty
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ExecutionProperty")]
-    pub execution_property: Option<ExecutionProperty>,
+    #[serde(rename = "LogUri")]
+    pub log_uri: Option<String>,
+
+
+    /// 
+    /// The number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. A DPU is a relative measure    of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
+    /// 
+    /// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
+    /// 
+    /// The value that can be allocated for MaxCapacity depends on whether you are    running a Python shell job or an Apache Spark ETL job:
+    /// 
+    /// When you specify a Python shell job (JobCommand.Name="pythonshell"), you can      allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"), you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job type cannot have a fractional DPU allocation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxCapacity")]
+    pub max_capacity: Option<f64>,
+
+
+    /// 
+    /// The maximum number of times to retry this job after a JobRun fails.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxRetries")]
+    pub max_retries: Option<f64>,
+
+
+    /// 
+    /// The name you assign to this job definition.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Non-overridable arguments for this job, specified as name-value pairs.
+    ///
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NonOverridableArguments")]
+    pub non_overridable_arguments: Option<serde_json::Value>,
+
+
+    /// Specifies configuration properties of a notification.
+    ///
+    /// Required: No
+    ///
+    /// Type: NotificationProperty
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationProperty")]
+    pub notification_property: Option<NotificationProperty>,
+
+
+    /// 
+    /// The number of workers of a defined workerType that are allocated when a job runs.
+    /// 
+    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfWorkers")]
+    pub number_of_workers: Option<i64>,
+
+
+    /// 
+    /// The name or Amazon Resource Name (ARN) of the IAM role associated with this       job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Role")]
+    pub role: String,
+
+
+    /// 
+    /// The name of the SecurityConfiguration structure to be used with this       job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityConfiguration")]
+    pub security_configuration: Option<String>,
+
+
+    /// 
+    /// The tags to use with this job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+
+    /// The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Timeout")]
+    pub timeout: Option<i64>,
 
 
     /// 
@@ -267,32 +293,6 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "WorkerType")]
     pub worker_type: Option<JobWorkerTypeEnum>,
-
-
-    /// 
-    /// This parameter is no longer supported. Use MaxCapacity instead.
-    /// 
-    /// The number of capacity units that are allocated to this job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllocatedCapacity")]
-    pub allocated_capacity: Option<f64>,
-
-
-    /// 
-    /// This field is reserved for future use.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogUri")]
-    pub log_uri: Option<String>,
 
 }
 
@@ -336,75 +336,6 @@ impl cfn_resources::CfnResource for CfnJob {
 }
 
 
-/// Specifies configuration properties of a notification.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NotificationProperty {
-
-
-    /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotifyDelayAfter")]
-    pub notify_delay_after: Option<i64>,
-
-}
-
-
-
-
-/// Specifies code executed when a job is run.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct JobCommand {
-
-
-    /// 
-    /// The Python version being used to execute a Python shell job. Allowed values are 3 or 3.9. Version 2 is deprecated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^([2-3]|3[.]9)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PythonVersion")]
-    pub python_version: Option<String>,
-
-
-    /// 
-    /// The name of the job command. For an Apache Spark ETL job, this must be    glueetl. For a Python shell job, it must be pythonshell.    For an Apache Spark streaming ETL job, this must be gluestreaming.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes       a job (required).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 400000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScriptLocation")]
-    pub script_location: Option<String>,
-
-}
-
-
-
-
 /// Specifies the connections used by a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectionsList {
@@ -441,6 +372,75 @@ pub struct ExecutionProperty {
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentRuns")]
     pub max_concurrent_runs: Option<f64>,
+
+}
+
+
+
+
+/// Specifies code executed when a job is run.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct JobCommand {
+
+
+    /// 
+    /// The name of the job command. For an Apache Spark ETL job, this must be    glueetl. For a Python shell job, it must be pythonshell.    For an Apache Spark streaming ETL job, this must be gluestreaming.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The Python version being used to execute a Python shell job. Allowed values are 3 or 3.9. Version 2 is deprecated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^([2-3]|3[.]9)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PythonVersion")]
+    pub python_version: Option<String>,
+
+
+    /// 
+    /// Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes       a job (required).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 400000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScriptLocation")]
+    pub script_location: Option<String>,
+
+}
+
+
+
+
+/// Specifies configuration properties of a notification.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NotificationProperty {
+
+
+    /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotifyDelayAfter")]
+    pub notify_delay_after: Option<i64>,
 
 }
 

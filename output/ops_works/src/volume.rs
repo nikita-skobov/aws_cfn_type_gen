@@ -6,15 +6,15 @@ pub struct CfnVolume {
 
 
     /// 
-    /// The stack ID.
+    /// The Amazon EC2 volume ID.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "StackId")]
-    pub stack_id: String,
+    #[serde(rename = "Ec2VolumeId")]
+    pub ec2_volume_id: String,
 
 
     /// 
@@ -30,18 +30,6 @@ pub struct CfnVolume {
 
 
     /// 
-    /// The Amazon EC2 volume ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ec2VolumeId")]
-    pub ec2_volume_id: String,
-
-
-    /// 
     /// The volume name. Volume names are a maximum of 128 characters.
     /// 
     /// Required: No
@@ -51,6 +39,18 @@ pub struct CfnVolume {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// The stack ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StackId")]
+    pub stack_id: String,
 
 }
 

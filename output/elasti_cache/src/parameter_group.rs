@@ -5,15 +5,30 @@
 pub struct CfnParameterGroup {
 
 
-    /// A tag that can be added to an ElastiCache parameter group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your parameter groups. A tag with a null Value is permitted.
+    /// 
+    /// The name of the cache parameter group family that this cache parameter group is compatible with.
+    /// 
+    /// Valid values are:   memcached1.4 |    memcached1.5 |       memcached1.6 |   redis2.6 |   redis2.8 |   redis3.2 |   redis4.0 |   redis5.0 |       redis6.x |      redis7
+    /// 
+    /// Required: Yes
     ///
-    /// Required: No
+    /// Type: String
     ///
-    /// Type: List of Tag
+    /// Update requires: Replacement
+    #[serde(rename = "CacheParameterGroupFamily")]
+    pub cache_parameter_group_family: String,
+
+
+    /// 
+    /// The description for this cache parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Description")]
+    pub description: String,
 
 
     /// 
@@ -32,30 +47,15 @@ pub struct CfnParameterGroup {
     pub properties: Option<std::collections::HashMap<String, String>>,
 
 
-    /// 
-    /// The description for this cache parameter group.
-    /// 
-    /// Required: Yes
+    /// A tag that can be added to an ElastiCache parameter group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your parameter groups. A tag with a null Value is permitted.
     ///
-    /// Type: String
+    /// Required: No
+    ///
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: String,
-
-
-    /// 
-    /// The name of the cache parameter group family that this cache parameter group is compatible with.
-    /// 
-    /// Valid values are:   memcached1.4 |    memcached1.5 |       memcached1.6 |   redis2.6 |   redis2.8 |   redis3.2 |   redis4.0 |   redis5.0 |       redis6.x |      redis7
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CacheParameterGroupFamily")]
-    pub cache_parameter_group_family: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

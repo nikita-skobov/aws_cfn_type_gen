@@ -8,6 +8,22 @@ pub struct CfnWebhook {
 
 
     /// 
+    /// Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
+    /// 
+    /// For information about the authentication scheme implemented by GITHUB_HMAC,           see Securing your             webhooks on the GitHub Developer website.               IP rejects webhooks trigger requests unless they originate from an IP           address in the IP range whitelisted in the authentication           configuration.               UNAUTHENTICATED accepts all webhook trigger requests regardless of           origin.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GITHUB_HMAC | IP | UNAUTHENTICATED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Authentication")]
+    pub authentication: WebhookAuthenticationEnum,
+
+
+    /// 
     /// Properties that configure the authentication applied to incoming webhook trigger       requests. The required properties depend on the authentication type. For GITHUB_HMAC,       only the SecretToken property must be set. For IP, only the         AllowedIPRange property must be set to a valid CIDR range. For       UNAUTHENTICATED, no properties can be set.
     /// 
     /// Required: Yes
@@ -34,6 +50,24 @@ pub struct CfnWebhook {
 
 
     /// 
+    /// The name of the webhook.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: [A-Za-z0-9.@\-_]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// Configures a connection between the webhook that was created and the external tool       with events to be detected.
     /// 
     /// Required: No
@@ -43,6 +77,24 @@ pub struct CfnWebhook {
     /// Update requires: No interruption
     #[serde(rename = "RegisterWithThirdParty")]
     pub register_with_third_party: Option<bool>,
+
+
+    /// 
+    /// The name of the action in a pipeline you want to connect to the webhook. The action       must be from the source (first) stage of the pipeline.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: [A-Za-z0-9.@\-_]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetAction")]
+    pub target_action: String,
 
 
     /// 
@@ -79,58 +131,6 @@ pub struct CfnWebhook {
     /// Update requires: No interruption
     #[serde(rename = "TargetPipelineVersion")]
     pub target_pipeline_version: i64,
-
-
-    /// 
-    /// The name of the webhook.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: [A-Za-z0-9.@\-_]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The name of the action in a pipeline you want to connect to the webhook. The action       must be from the source (first) stage of the pipeline.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: [A-Za-z0-9.@\-_]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetAction")]
-    pub target_action: String,
-
-
-    /// 
-    /// Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
-    /// 
-    /// For information about the authentication scheme implemented by GITHUB_HMAC,           see Securing your             webhooks on the GitHub Developer website.               IP rejects webhooks trigger requests unless they originate from an IP           address in the IP range whitelisted in the authentication           configuration.               UNAUTHENTICATED accepts all webhook trigger requests regardless of           origin.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GITHUB_HMAC | IP | UNAUTHENTICATED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Authentication")]
-    pub authentication: WebhookAuthenticationEnum,
 
 }
 

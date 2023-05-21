@@ -6,6 +6,18 @@ pub struct CfnDocumentationVersion {
 
 
     /// 
+    /// A description about the new documentation snapshot.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The version identifier of the to-be-updated documentation version.
     /// 
     /// Required: Yes
@@ -27,18 +39,6 @@ pub struct CfnDocumentationVersion {
     /// Update requires: Replacement
     #[serde(rename = "RestApiId")]
     pub rest_api_id: String,
-
-
-    /// 
-    /// A description about the new documentation snapshot.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 }
 

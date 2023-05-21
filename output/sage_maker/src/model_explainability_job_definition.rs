@@ -5,18 +5,6 @@
 pub struct CfnModelExplainabilityJobDefinition {
 
 
-    /// 
-    /// Configures the model explainability job to run a specified Docker container       image.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ModelExplainabilityAppSpecification
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModelExplainabilityAppSpecification")]
-    pub model_explainability_app_specification: ModelExplainabilityAppSpecification,
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -29,18 +17,6 @@ pub struct CfnModelExplainabilityJobDefinition {
 
 
     /// 
-    /// Networking options for a model explainability job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NetworkConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkConfig")]
-    pub network_config: Option<NetworkConfig>,
-
-
-    /// 
     /// The name of the model explainability job definition. The name must be unique within an         AWS Region in the AWS account.
     /// 
     /// Required: No
@@ -50,6 +26,78 @@ pub struct CfnModelExplainabilityJobDefinition {
     /// Update requires: Replacement
     #[serde(rename = "JobDefinitionName")]
     pub job_definition_name: Option<String>,
+
+
+    /// 
+    /// Identifies the resources to deploy for a monitoring job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MonitoringResources
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "JobResources")]
+    pub job_resources: MonitoringResources,
+
+
+    /// 
+    /// Configures the model explainability job to run a specified Docker container       image.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ModelExplainabilityAppSpecification
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModelExplainabilityAppSpecification")]
+    pub model_explainability_app_specification: ModelExplainabilityAppSpecification,
+
+
+    /// 
+    /// The baseline configuration for a model explainability job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ModelExplainabilityBaselineConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModelExplainabilityBaselineConfig")]
+    pub model_explainability_baseline_config: Option<ModelExplainabilityBaselineConfig>,
+
+
+    /// 
+    /// Inputs for the model explainability job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ModelExplainabilityJobInput
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModelExplainabilityJobInput")]
+    pub model_explainability_job_input: ModelExplainabilityJobInput,
+
+
+    /// 
+    /// The output configuration for monitoring jobs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MonitoringOutputConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModelExplainabilityJobOutputConfig")]
+    pub model_explainability_job_output_config: MonitoringOutputConfig,
+
+
+    /// 
+    /// Networking options for a model explainability job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NetworkConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkConfig")]
+    pub network_config: Option<NetworkConfig>,
 
 
     /// 
@@ -77,42 +125,6 @@ pub struct CfnModelExplainabilityJobDefinition {
 
 
     /// 
-    /// The baseline configuration for a model explainability job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ModelExplainabilityBaselineConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModelExplainabilityBaselineConfig")]
-    pub model_explainability_baseline_config: Option<ModelExplainabilityBaselineConfig>,
-
-
-    /// 
-    /// The output configuration for monitoring jobs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MonitoringOutputConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModelExplainabilityJobOutputConfig")]
-    pub model_explainability_job_output_config: MonitoringOutputConfig,
-
-
-    /// 
-    /// Inputs for the model explainability job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ModelExplainabilityJobInput
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModelExplainabilityJobInput")]
-    pub model_explainability_job_input: ModelExplainabilityJobInput,
-
-
-    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -124,18 +136,6 @@ pub struct CfnModelExplainabilityJobDefinition {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Identifies the resources to deploy for a monitoring job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MonitoringResources
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "JobResources")]
-    pub job_resources: MonitoringResources,
 
 }
 
@@ -152,245 +152,6 @@ impl cfn_resources::CfnResource for CfnModelExplainabilityJobDefinition {
 }
 
 
-/// The configuration for the cluster resources used to run the processing job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ClusterConfig {
-
-
-    /// 
-    /// The ML compute instance type for the processing job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
-
-
-    /// 
-    /// The number of ML compute instances to use in the model monitoring job. For distributed       processing jobs, specify a value greater than 1. The default value is 1.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceCount")]
-    pub instance_count: i64,
-
-
-    /// 
-    /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute       instance(s) that run the model monitoring job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VolumeKmsKeyId")]
-    pub volume_kms_key_id: Option<String>,
-
-
-    /// 
-    /// The size of the ML storage volume, in gigabytes, that you want to provision. You must       specify sufficient ML storage for your scenario.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VolumeSizeInGB")]
-    pub volume_size_in_gb: i64,
-
-}
-
-
-
-
-/// The Json property type specifies Property description not available. for an AWS::SageMaker::ModelExplainabilityJobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Json {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Line")]
-    pub line: Option<bool>,
-
-}
-
-
-
-
-/// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConfig {
-
-
-    /// 
-    /// The ID of the subnets in the VPC to which you want to connect your training job or       model. For information about the availability of specific instance types, see Supported         Instance Types and Availability Zones.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 16
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subnets")]
-    pub subnets: Vec<String>,
-
-
-    /// 
-    /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
-
-}
-
-
-
-
-/// The Csv property type specifies Property description not available. for an AWS::SageMaker::ModelExplainabilityJobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Csv {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Header")]
-    pub header: Option<bool>,
-
-}
-
-
-
-
-/// Identifies the resources to deploy for a monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MonitoringResources {
-
-
-    /// 
-    /// The configuration for the cluster resources used to run the processing job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ClusterConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClusterConfig")]
-    pub cluster_config: ClusterConfig,
-
-}
-
-
-
-
-/// The output configuration for monitoring jobs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MonitoringOutputConfig {
-
-
-    /// 
-    /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model     artifacts at rest using Amazon S3 server-side encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// Monitoring outputs for monitoring jobs. This is where the output of the periodic     monitoring jobs is uploaded.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of MonitoringOutput
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MonitoringOutputs")]
-    pub monitoring_outputs: Vec<MonitoringOutput>,
-
-}
-
-
-
-
-/// The Amazon S3 storage location where the results of a monitoring job are saved.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Output {
-
-
-    /// 
-    /// A URI that identifies the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
-
-
-    /// 
-    /// The local path to the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job. LocalPath is an absolute path for the output data.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LocalPath")]
-    pub local_path: String,
-
-
-    /// 
-    /// Whether to upload the results of the monitoring job continuously or after the job       completes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3UploadMode")]
-    pub s3_upload_mode: Option<String>,
-
-}
-
-
-
-
 /// The BatchTransformInput property type specifies Property description not available. for an AWS::SageMaker::ModelExplainabilityJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BatchTransformInput {
@@ -398,13 +159,13 @@ pub struct BatchTransformInput {
 
     /// Property description not available.
     ///
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "InferenceAttribute")]
-    pub inference_attribute: Option<String>,
+    #[serde(rename = "DataCapturedDestinationS3Uri")]
+    pub data_captured_destination_s3_uri: String,
 
 
     /// Property description not available.
@@ -436,30 +197,8 @@ pub struct BatchTransformInput {
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "S3InputMode")]
-    pub s3_input_mode: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataCapturedDestinationS3Uri")]
-    pub data_captured_destination_s3_uri: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProbabilityAttribute")]
-    pub probability_attribute: Option<String>,
+    #[serde(rename = "InferenceAttribute")]
+    pub inference_attribute: Option<String>,
 
 
     /// Property description not available.
@@ -480,8 +219,87 @@ pub struct BatchTransformInput {
     /// Type: String
     ///
     /// Update requires: Replacement
+    #[serde(rename = "ProbabilityAttribute")]
+    pub probability_attribute: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
     #[serde(rename = "S3DataDistributionType")]
     pub s3_data_distribution_type: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3InputMode")]
+    pub s3_input_mode: Option<String>,
+
+}
+
+
+
+
+/// The configuration for the cluster resources used to run the processing job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ClusterConfig {
+
+
+    /// 
+    /// The number of ML compute instances to use in the model monitoring job. For distributed       processing jobs, specify a value greater than 1. The default value is 1.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceCount")]
+    pub instance_count: i64,
+
+
+    /// 
+    /// The ML compute instance type for the processing job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
+
+
+    /// 
+    /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute       instance(s) that run the model monitoring job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VolumeKmsKeyId")]
+    pub volume_kms_key_id: Option<String>,
+
+
+    /// 
+    /// The size of the ML storage volume, in gigabytes, that you want to provision. You must       specify sufficient ML storage for your scenario.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VolumeSizeInGB")]
+    pub volume_size_in_gb: i64,
 
 }
 
@@ -509,9 +327,9 @@ pub struct ConstraintsResource {
 
 
 
-/// The DatasetFormat property type specifies Property description not available. for an AWS::SageMaker::ModelExplainabilityJobDefinition.
+/// The Csv property type specifies Property description not available. for an AWS::SageMaker::ModelExplainabilityJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DatasetFormat {
+pub struct Csv {
 
 
     /// Property description not available.
@@ -521,8 +339,28 @@ pub struct DatasetFormat {
     /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Parquet")]
-    pub parquet: Option<bool>,
+    #[serde(rename = "Header")]
+    pub header: Option<bool>,
+
+}
+
+
+
+
+/// The DatasetFormat property type specifies Property description not available. for an AWS::SageMaker::ModelExplainabilityJobDefinition.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DatasetFormat {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Csv
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Csv")]
+    pub csv: Option<Csv>,
 
 
     /// Property description not available.
@@ -540,11 +378,11 @@ pub struct DatasetFormat {
     ///
     /// Required: No
     ///
-    /// Type: Csv
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Csv")]
-    pub csv: Option<Csv>,
+    #[serde(rename = "Parquet")]
+    pub parquet: Option<bool>,
 
 }
 
@@ -554,46 +392,6 @@ pub struct DatasetFormat {
 /// Input object for the endpoint
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EndpointInput {
-
-
-    /// 
-    /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key.     Defaults to FullyReplicated
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: FullyReplicated | ShardedByS3Key
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3DataDistributionType")]
-    pub s3_data_distribution_type: Option<EndpointInputS3DataDistributionTypeEnum>,
-
-
-    /// 
-    /// The attributes of the input data that are the input features.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FeaturesAttribute")]
-    pub features_attribute: Option<String>,
-
-
-    /// 
-    /// Whether the Pipe or File is used as the input mode for     transferring data for the monitoring job. Pipe mode is recommended for large     datasets. File mode is useful for small files that fit in memory. Defaults to       File.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: File | Pipe
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3InputMode")]
-    pub s3_input_mode: Option<EndpointInputS3InputModeEnum>,
 
 
     /// 
@@ -613,15 +411,15 @@ pub struct EndpointInput {
 
 
     /// 
-    /// In a classification problem, the attribute that represents the class probability.
+    /// The attributes of the input data that are the input features.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ProbabilityAttribute")]
-    pub probability_attribute: Option<String>,
+    #[serde(rename = "FeaturesAttribute")]
+    pub features_attribute: Option<String>,
 
 
     /// 
@@ -651,8 +449,67 @@ pub struct EndpointInput {
     #[serde(rename = "LocalPath")]
     pub local_path: String,
 
+
+    /// 
+    /// In a classification problem, the attribute that represents the class probability.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProbabilityAttribute")]
+    pub probability_attribute: Option<String>,
+
+
+    /// 
+    /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key.     Defaults to FullyReplicated
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: FullyReplicated | ShardedByS3Key
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3DataDistributionType")]
+    pub s3_data_distribution_type: Option<EndpointInputS3DataDistributionTypeEnum>,
+
+
+    /// 
+    /// Whether the Pipe or File is used as the input mode for     transferring data for the monitoring job. Pipe mode is recommended for large     datasets. File mode is useful for small files that fit in memory. Defaults to       File.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: File | Pipe
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3InputMode")]
+    pub s3_input_mode: Option<EndpointInputS3InputModeEnum>,
+
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EndpointInputS3InputModeEnum {
+
+    /// File
+    #[serde(rename = "File")]
+    File,
+
+    /// Pipe
+    #[serde(rename = "Pipe")]
+    Pipe,
+
+}
+
+impl Default for EndpointInputS3InputModeEnum {
+    fn default() -> Self {
+        EndpointInputS3InputModeEnum::File
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EndpointInputS3DataDistributionTypeEnum {
@@ -673,24 +530,117 @@ impl Default for EndpointInputS3DataDistributionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum EndpointInputS3InputModeEnum {
 
-    /// File
-    #[serde(rename = "File")]
-    File,
 
-    /// Pipe
-    #[serde(rename = "Pipe")]
-    Pipe,
+/// The Json property type specifies Property description not available. for an AWS::SageMaker::ModelExplainabilityJobDefinition.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Json {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Line")]
+    pub line: Option<bool>,
 
 }
 
-impl Default for EndpointInputS3InputModeEnum {
-    fn default() -> Self {
-        EndpointInputS3InputModeEnum::File
-    }
+
+
+
+/// Docker container image configuration object for the model explainability job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ModelExplainabilityAppSpecification {
+
+
+    /// 
+    /// JSON formatted S3 file that defines explainability parameters. For more information on     this JSON configuration file, see Configure model       explainability parameters.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConfigUri")]
+    pub config_uri: String,
+
+
+    /// 
+    /// Sets the environment variables in the Docker container.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Environment")]
+    pub environment: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The container image to be run by the model explainability job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ImageUri")]
+    pub image_uri: String,
+
 }
+
+
+
+
+/// The configuration for a baseline model explainability job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ModelExplainabilityBaselineConfig {
+
+
+    /// 
+    /// The name of the baseline model explainability job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BaseliningJobName")]
+    pub baselining_job_name: Option<String>,
+
+
+    /// 
+    /// The constraints resource for a model explainability job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ConstraintsResource
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConstraintsResource")]
+    pub constraints_resource: Option<ConstraintsResource>,
+
+}
+
 
 
 
@@ -746,53 +696,150 @@ pub struct MonitoringOutput {
 
 
 
-/// Docker container image configuration object for the model explainability job.
+/// The output configuration for monitoring jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ModelExplainabilityAppSpecification {
+pub struct MonitoringOutputConfig {
 
 
     /// 
-    /// The container image to be run by the model explainability job.
+    /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model     artifacts at rest using Amazon S3 server-side encryption.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 255
+    /// Maximum: 2048
     ///
     /// Pattern: .*
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ImageUri")]
-    pub image_uri: String,
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
-    /// Sets the environment variables in the Docker container.
+    /// Monitoring outputs for monitoring jobs. This is where the output of the periodic     monitoring jobs is uploaded.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of MonitoringOutput
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MonitoringOutputs")]
+    pub monitoring_outputs: Vec<MonitoringOutput>,
+
+}
+
+
+
+
+/// Identifies the resources to deploy for a monitoring job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MonitoringResources {
+
+
+    /// 
+    /// The configuration for the cluster resources used to run the processing job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ClusterConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterConfig")]
+    pub cluster_config: ClusterConfig,
+
+}
+
+
+
+
+/// Networking options for a job, such as network traffic encryption between containers,     whether to allow inbound and outbound network calls to and from containers, and the VPC     subnets and security groups to use for VPC-enabled jobs.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NetworkConfig {
+
+
+    /// 
+    /// Whether to encrypt all communications between distributed processing jobs. Choose       True to encrypt communications. Encryption provides greater security for distributed       processing jobs, but the processing might take longer.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Environment")]
-    pub environment: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "EnableInterContainerTrafficEncryption")]
+    pub enable_inter_container_traffic_encryption: Option<bool>,
 
 
     /// 
-    /// JSON formatted S3 file that defines explainability parameters. For more information on     this JSON configuration file, see Configure model       explainability parameters.
+    /// Whether to allow inbound and outbound network calls to and from the containers used for     the processing job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EnableNetworkIsolation")]
+    pub enable_network_isolation: Option<bool>,
+
+
+    /// 
+    /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcConfig")]
+    pub vpc_config: Option<VpcConfig>,
+
+}
+
+
+
+
+/// The Amazon S3 storage location where the results of a monitoring job are saved.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Output {
+
+
+    /// 
+    /// The local path to the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job. LocalPath is an absolute path for the output data.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 1024
+    /// Update requires: Replacement
+    #[serde(rename = "LocalPath")]
+    pub local_path: String,
+
+
+    /// 
+    /// Whether to upload the results of the monitoring job continuously or after the job       completes.
+    /// 
+    /// Required: No
     ///
-    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ConfigUri")]
-    pub config_uri: String,
+    #[serde(rename = "S3UploadMode")]
+    pub s3_upload_mode: Option<String>,
+
+
+    /// 
+    /// A URI that identifies the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Uri")]
+    pub s3_uri: String,
 
 }
 
@@ -832,45 +879,6 @@ pub struct StoppingCondition {
 
 
 
-/// The configuration for a baseline model explainability job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ModelExplainabilityBaselineConfig {
-
-
-    /// 
-    /// The name of the baseline model explainability job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BaseliningJobName")]
-    pub baselining_job_name: Option<String>,
-
-
-    /// 
-    /// The constraints resource for a model explainability job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConstraintsResource
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConstraintsResource")]
-    pub constraints_resource: Option<ConstraintsResource>,
-
-}
-
-
-
-
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -883,17 +891,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -903,50 +900,53 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
 
 
-/// Networking options for a job, such as network traffic encryption between containers,     whether to allow inbound and outbound network calls to and from containers, and the VPC     subnets and security groups to use for VPC-enabled jobs.
+/// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NetworkConfig {
+pub struct VpcConfig {
 
 
     /// 
-    /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC.
+    /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: VpcConfig
+    /// Type: List of String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcConfig")]
-    pub vpc_config: Option<VpcConfig>,
-
-
-    /// 
-    /// Whether to allow inbound and outbound network calls to and from the containers used for     the processing job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
+    /// Maximum: 5
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EnableNetworkIsolation")]
-    pub enable_network_isolation: Option<bool>,
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Vec<String>,
 
 
     /// 
-    /// Whether to encrypt all communications between distributed processing jobs. Choose       True to encrypt communications. Encryption provides greater security for distributed       processing jobs, but the processing might take longer.
+    /// The ID of the subnets in the VPC to which you want to connect your training job or       model. For information about the availability of specific instance types, see Supported         Instance Types and Availability Zones.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: List of String
+    ///
+    /// Maximum: 16
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EnableInterContainerTrafficEncryption")]
-    pub enable_inter_container_traffic_encryption: Option<bool>,
+    #[serde(rename = "Subnets")]
+    pub subnets: Vec<String>,
 
 }
 

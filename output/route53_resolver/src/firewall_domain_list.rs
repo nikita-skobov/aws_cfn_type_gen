@@ -8,22 +8,6 @@ pub struct CfnFirewallDomainList {
 
 
     /// 
-    /// The name of the domain list.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// The fully qualified URL or URI of the file stored in Amazon Simple Storage Service 			(Amazon S3) that contains the list of domains to import.
     /// 
     /// The file must be in an S3 bucket that's in the same Region    as your DNS Firewall. The file must be a text file and must contain a single domain per line.
@@ -51,6 +35,22 @@ pub struct CfnFirewallDomainList {
     /// Update requires: No interruption
     #[serde(rename = "Domains")]
     pub domains: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the domain list.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 

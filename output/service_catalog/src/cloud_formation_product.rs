@@ -6,7 +6,23 @@ pub struct CfnCloudFormationProduct {
 
 
     /// 
-    /// The support information about the product.
+    /// The language code.
+    /// 
+    /// jp - Japanese                        zh - Chinese
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AcceptLanguage")]
+    pub accept_language: Option<String>,
+
+
+    /// 
+    /// The description of the product.
     /// 
     /// Required: No
     ///
@@ -15,20 +31,8 @@ pub struct CfnCloudFormationProduct {
     /// Maximum: 8191
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SupportDescription")]
-    pub support_description: Option<String>,
-
-
-    /// 
-    /// The configuration of the provisioning artifact (also known as a version).
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ProvisioningArtifactProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisioningArtifactParameters")]
-    pub provisioning_artifact_parameters: Option<Vec<ProvisioningArtifactProperties>>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -46,17 +50,57 @@ pub struct CfnCloudFormationProduct {
 
 
     /// 
-    /// The description of the product.
+    /// The name of the product.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Maximum: 8191
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The owner of the product.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 8191
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Owner")]
+    pub owner: String,
+
+
+    /// 
+    /// The type of product.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CLOUD_FORMATION_TEMPLATE | MARKETPLACE | TERRAFORM_OPEN_SOURCE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProductType")]
+    pub product_type: Option<CloudFormationProductProductTypeEnum>,
+
+
+    /// 
+    /// The configuration of the provisioning artifact (also known as a version).
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ProvisioningArtifactProperties
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisioningArtifactParameters")]
+    pub provisioning_artifact_parameters: Option<Vec<ProvisioningArtifactProperties>>,
 
 
     /// 
@@ -86,75 +130,31 @@ pub struct CfnCloudFormationProduct {
 
 
     /// 
-    /// One or more tags.
+    /// The support information about the product.
     /// 
     /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The owner of the product.
-    /// 
-    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Maximum: 8191
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Owner")]
-    pub owner: String,
+    #[serde(rename = "SupportDescription")]
+    pub support_description: Option<String>,
 
 
     /// 
-    /// The name of the product.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 8191
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The type of product.
+    /// The contact email for product support.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: CLOUD_FORMATION_TEMPLATE | MARKETPLACE | TERRAFORM_OPEN_SOURCE
+    /// Maximum: 254
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ProductType")]
-    pub product_type: Option<CloudFormationProductProductTypeEnum>,
-
-
-    /// 
-    /// The language code.
-    /// 
-    /// jp - Japanese                        zh - Chinese
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AcceptLanguage")]
-    pub accept_language: Option<String>,
+    #[serde(rename = "SupportEmail")]
+    pub support_email: Option<String>,
 
 
     /// 
@@ -174,17 +174,17 @@ pub struct CfnCloudFormationProduct {
 
 
     /// 
-    /// The contact email for product support.
+    /// One or more tags.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Maximum: 254
+    /// Maximum: 20
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SupportEmail")]
-    pub support_email: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -227,22 +227,6 @@ impl cfn_resources::CfnResource for CfnCloudFormationProduct {
 /// The subtype containing details about the Codestar connection Type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CodeStarParameters {
-
-
-    /// 
-    /// The specific repository where the product’s artifact-to-be-synced resides, formatted as      "Account/Repo."
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Repository")]
-    pub repository: String,
 
 
     /// 
@@ -294,38 +278,21 @@ pub struct CodeStarParameters {
     #[serde(rename = "ConnectionArn")]
     pub connection_arn: String,
 
-}
-
-
-
-
-/// A top level ProductViewDetail response containing details about the product’s connection.     AWS Service Catalog returns this field for the CreateProduct, UpdateProduct,      DescribeProductAsAdmin, and SearchProductAsAdmin APIs.      This response contains the same fields as the ConnectionParameters request, with the      addition of the LastSync response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SourceConnection {
-
 
     /// 
-    /// The connection details based on the connection Type.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ConnectionParameters
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectionParameters")]
-    pub connection_parameters: ConnectionParameters,
-
-
-    /// 
-    /// The only supported SourceConnection type is Codestar.
+    /// The specific repository where the product’s artifact-to-be-synced resides, formatted as      "Account/Repo."
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    #[serde(rename = "Repository")]
+    pub repository: String,
 
 }
 
@@ -373,36 +340,6 @@ pub struct ProvisioningArtifactProperties {
 
 
     /// 
-    /// The type of provisioning artifact.
-    /// 
-    /// CLOUD_FORMATION_TEMPLATE - AWS CloudFormation template                        MARKETPLACE_AMI - AWS Marketplace AMI                        MARKETPLACE_CAR - AWS Marketplace Clusters and AWS Resources                        TERRAFORM_OPEN_SOURCE - Terraform open source configuration file
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CLOUD_FORMATION_TEMPLATE | MARKETPLACE_AMI | MARKETPLACE_CAR | TERRAFORM_OPEN_SOURCE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<ProvisioningArtifactPropertiesTypeEnum>,
-
-
-    /// 
-    /// The name of the provisioning artifact (for example, v1 v2beta). No spaces are allowed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 8192
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// If set to true, AWS Service Catalog stops validating the specified provisioning artifact even if it is invalid.
     /// 
     /// Required: No
@@ -430,6 +367,36 @@ pub struct ProvisioningArtifactProperties {
     /// Update requires: No interruption
     #[serde(rename = "Info")]
     pub info: serde_json::Value,
+
+
+    /// 
+    /// The name of the provisioning artifact (for example, v1 v2beta). No spaces are allowed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 8192
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The type of provisioning artifact.
+    /// 
+    /// CLOUD_FORMATION_TEMPLATE - AWS CloudFormation template                        MARKETPLACE_AMI - AWS Marketplace AMI                        MARKETPLACE_CAR - AWS Marketplace Clusters and AWS Resources                        TERRAFORM_OPEN_SOURCE - Terraform open source configuration file
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CLOUD_FORMATION_TEMPLATE | MARKETPLACE_AMI | MARKETPLACE_CAR | TERRAFORM_OPEN_SOURCE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<ProvisioningArtifactPropertiesTypeEnum>,
 
 }
 
@@ -460,6 +427,39 @@ impl Default for ProvisioningArtifactPropertiesTypeEnum {
         ProvisioningArtifactPropertiesTypeEnum::Cloudformationtemplate
     }
 }
+
+
+
+/// A top level ProductViewDetail response containing details about the product’s connection.     AWS Service Catalog returns this field for the CreateProduct, UpdateProduct,      DescribeProductAsAdmin, and SearchProductAsAdmin APIs.      This response contains the same fields as the ConnectionParameters request, with the      addition of the LastSync response.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SourceConnection {
+
+
+    /// 
+    /// The connection details based on the connection Type.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ConnectionParameters
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionParameters")]
+    pub connection_parameters: ConnectionParameters,
+
+
+    /// 
+    /// The only supported SourceConnection type is Codestar.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+}
+
 
 
 

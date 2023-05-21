@@ -100,39 +100,13 @@ pub struct ColumnWildcard {
 
 
 
-/// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
+/// A structure that describes certain columns on certain rows.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TableResource {
+pub struct DataCellsFilterResource {
 
 
     /// 
-    /// A wildcard object representing every table under a database.
-    /// 
-    /// At least one of TableResource$Name or TableResource$TableWildcard is required.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TableWildcard")]
-    pub table_wildcard: Option<serde_json::Value>,
-
-
-    /// 
-    /// The name of the table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
+    /// A database in the Data Catalog.
     /// 
     /// Required: Yes
     ///
@@ -143,8 +117,75 @@ pub struct TableResource {
     pub database_name: String,
 
 
-    /// Property description not available.
+    /// 
+    /// The name given by the user to the data filter cell.
+    /// 
+    /// Required: Yes
     ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The ID of the catalog to which the table belongs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TableCatalogId")]
+    pub table_catalog_id: String,
+
+
+    /// 
+    /// The name of the table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TableName")]
+    pub table_name: String,
+
+}
+
+
+
+
+/// The AWS Lake Formation principal.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataLakePrincipal {
+
+
+    /// 
+    /// An identifier for the AWS Lake Formation principal.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataLakePrincipalIdentifier")]
+    pub data_lake_principal_identifier: Option<String>,
+
+}
+
+
+
+
+/// A structure for a data location object where permissions are granted or revoked.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataLocationResource {
+
+
+    /// 
+    /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
+    /// 
     /// Required: Yes
     ///
     /// Type: String
@@ -152,6 +193,84 @@ pub struct TableResource {
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) that uniquely identifies the data location resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceArn")]
+    pub resource_arn: String,
+
+}
+
+
+
+
+/// A structure for the database object.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DatabaseResource {
+
+
+    /// 
+    /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CatalogId")]
+    pub catalog_id: String,
+
+
+    /// 
+    /// The name of the database resource. Unique to the Data Catalog.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+
+
+/// The LF-tag key and values attached to a resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LFTag {
+
+
+    /// 
+    /// The key-name for the LF-tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TagKey")]
+    pub tag_key: Option<String>,
+
+
+    /// 
+    /// A list of possible values of the corresponding TagKey of an LF-tag key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TagValues")]
+    pub tag_values: Option<Vec<String>>,
 
 }
 
@@ -161,6 +280,18 @@ pub struct TableResource {
 /// A structure containing an LF-tag key and values for a resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LFTagKeyResource {
+
+
+    /// 
+    /// The identifier for the Data Catalog where the location is registered with Data Catalog.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CatalogId")]
+    pub catalog_id: String,
 
 
     /// 
@@ -186,9 +317,20 @@ pub struct LFTagKeyResource {
     #[serde(rename = "TagValues")]
     pub tag_values: Vec<String>,
 
+}
+
+
+
+
+/// A list of LF-tag conditions that define a resource's LF-tag policy.
+///
+/// A structure that allows an admin to grant user permissions on certain conditions. For example, granting a role access to all columns that do not have the LF-tag 'PII' in tables that have the LF-tag 'Prod'.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LFTagPolicyResource {
+
 
     /// 
-    /// The identifier for the Data Catalog where the location is registered with Data Catalog.
+    /// The identifier for the Data Catalog. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
     /// 
     /// Required: Yes
     ///
@@ -197,6 +339,30 @@ pub struct LFTagKeyResource {
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
+
+
+    /// 
+    /// A list of LF-tag conditions that apply to the resource's LF-tag policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of LFTag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Expression")]
+    pub expression: Vec<LFTag>,
+
+
+    /// 
+    /// The resource type for which the LF-tag policy applies.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceType")]
+    pub resource_type: String,
 
 }
 
@@ -245,15 +411,15 @@ pub struct Resource {
 
 
     /// 
-    /// The table for the resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
+    /// The database for the resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database permissions to a principal.
     /// 
     /// Required: No
     ///
-    /// Type: TableResource
+    /// Type: DatabaseResource
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Table")]
-    pub table: Option<TableResource>,
+    #[serde(rename = "Database")]
+    pub database: Option<DatabaseResource>,
 
 
     /// 
@@ -269,6 +435,30 @@ pub struct Resource {
 
 
     /// 
+    /// A list of LF-tag conditions that define a resource's LF-tag policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LFTagPolicyResource
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LFTagPolicy")]
+    pub lftag_policy: Option<LFTagPolicyResource>,
+
+
+    /// 
+    /// The table for the resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TableResource
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Table")]
+    pub table: Option<TableResource>,
+
+
+    /// 
     /// The table with columns for the resource. A principal with permissions to this resource can select metadata from the columns of a table in the Data Catalog and the underlying data in Amazon S3.
     /// 
     /// Required: No
@@ -279,29 +469,63 @@ pub struct Resource {
     #[serde(rename = "TableWithColumns")]
     pub table_with_columns: Option<TableWithColumnsResource>,
 
+}
+
+
+
+
+/// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TableResource {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CatalogId")]
+    pub catalog_id: String,
+
 
     /// 
-    /// The database for the resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database permissions to a principal.
+    /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatabaseName")]
+    pub database_name: String,
+
+
+    /// 
+    /// The name of the table.
     /// 
     /// Required: No
     ///
-    /// Type: DatabaseResource
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Database")]
-    pub database: Option<DatabaseResource>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
-    /// A list of LF-tag conditions that define a resource's LF-tag policy.
+    /// A wildcard object representing every table under a database.
+    /// 
+    /// At least one of TableResource$Name or TableResource$TableWildcard is required.
     /// 
     /// Required: No
     ///
-    /// Type: LFTagPolicyResource
+    /// Type: Json
     ///
     /// Update requires: Replacement
-    #[serde(rename = "LFTagPolicy")]
-    pub lftag_policy: Option<LFTagPolicyResource>,
+    #[serde(rename = "TableWildcard")]
+    pub table_wildcard: Option<serde_json::Value>,
 
 }
 
@@ -313,6 +537,18 @@ pub struct Resource {
 /// This object must take a value for at least one of ColumnsNames, ColumnsIndexes, or ColumnsWildcard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TableWithColumnsResource {
+
+
+    /// 
+    /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CatalogId")]
+    pub catalog_id: String,
 
 
     /// 
@@ -328,15 +564,15 @@ pub struct TableWithColumnsResource {
 
 
     /// 
-    /// The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
+    /// A wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: ColumnWildcard
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "ColumnWildcard")]
+    pub column_wildcard: Option<ColumnWildcard>,
 
 
     /// 
@@ -352,40 +588,7 @@ pub struct TableWithColumnsResource {
 
 
     /// 
-    /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
-
-
-    /// 
-    /// A wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ColumnWildcard
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ColumnWildcard")]
-    pub column_wildcard: Option<ColumnWildcard>,
-
-}
-
-
-
-
-/// A structure for the database object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DatabaseResource {
-
-
-    /// 
-    /// The name of the database resource. Unique to the Data Catalog.
+    /// The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
     /// 
     /// Required: Yes
     ///
@@ -394,209 +597,6 @@ pub struct DatabaseResource {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
-
-}
-
-
-
-
-/// A structure for a data location object where permissions are granted or revoked.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataLocationResource {
-
-
-    /// 
-    /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) that uniquely identifies the data location resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
-
-}
-
-
-
-
-/// The AWS Lake Formation principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataLakePrincipal {
-
-
-    /// 
-    /// An identifier for the AWS Lake Formation principal.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataLakePrincipalIdentifier")]
-    pub data_lake_principal_identifier: Option<String>,
-
-}
-
-
-
-
-/// The LF-tag key and values attached to a resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LFTag {
-
-
-    /// 
-    /// The key-name for the LF-tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TagKey")]
-    pub tag_key: Option<String>,
-
-
-    /// 
-    /// A list of possible values of the corresponding TagKey of an LF-tag key-value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TagValues")]
-    pub tag_values: Option<Vec<String>>,
-
-}
-
-
-
-
-/// A structure that describes certain columns on certain rows.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataCellsFilterResource {
-
-
-    /// 
-    /// A database in the Data Catalog.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: String,
-
-
-    /// 
-    /// The ID of the catalog to which the table belongs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TableCatalogId")]
-    pub table_catalog_id: String,
-
-
-    /// 
-    /// The name given by the user to the data filter cell.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The name of the table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TableName")]
-    pub table_name: String,
-
-}
-
-
-
-
-/// A list of LF-tag conditions that define a resource's LF-tag policy.
-///
-/// A structure that allows an admin to grant user permissions on certain conditions. For example, granting a role access to all columns that do not have the LF-tag 'PII' in tables that have the LF-tag 'Prod'.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LFTagPolicyResource {
-
-
-    /// 
-    /// A list of LF-tag conditions that apply to the resource's LF-tag policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of LFTag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Expression")]
-    pub expression: Vec<LFTag>,
-
-
-    /// 
-    /// The resource type for which the LF-tag policy applies.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceType")]
-    pub resource_type: String,
-
-
-    /// 
-    /// The identifier for the Data Catalog. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CatalogId")]
-    pub catalog_id: String,
 
 }
 

@@ -6,19 +6,23 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The method you want to use to validate that you own or control the domain associated     with a public certificate. You can validate with DNS or validate with       email. We recommend that you use DNS validation.
+    /// The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used    to issue the certificate. If you do not provide an ARN and you are trying to request a private    certificate, ACM will attempt to issue a public certificate. For more information about    private CAs, see the AWS Private Certificate Authority user guide. The ARN must have the following form:
     /// 
-    /// If not specified, this property defaults to email validation.
+    /// arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: DNS | EMAIL
+    /// Minimum: 20
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:[\w+=/,.@-]+:acm-pca:[\w+=/,.@-]*:[0-9]+:[\w+=,.@-]+(/[\w+=,.@-]+)*
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ValidationMethod")]
-    pub validation_method: Option<CertificateValidationMethodEnum>,
+    #[serde(rename = "CertificateAuthorityArn")]
+    pub certificate_authority_arn: Option<String>,
 
 
     /// 
@@ -37,20 +41,6 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "CertificateTransparencyLoggingPreference")]
     pub certificate_transparency_logging_preference: Option<CertificateCertificateTransparencyLoggingPreferenceEnum>,
-
-
-    /// 
-    /// Additional FQDNs to be included in the Subject Alternative Name extension of the ACM     certificate. For example, you can add www.example.net to a certificate for which the       DomainName field is www.example.com if users can reach your site by using     either name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubjectAlternativeNames")]
-    pub subject_alternative_names: Option<Vec<String>>,
 
 
     /// 
@@ -88,23 +78,17 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used    to issue the certificate. If you do not provide an ARN and you are trying to request a private    certificate, ACM will attempt to issue a public certificate. For more information about    private CAs, see the AWS Private Certificate Authority user guide. The ARN must have the following form:
-    /// 
-    /// arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012
+    /// Additional FQDNs to be included in the Subject Alternative Name extension of the ACM     certificate. For example, you can add www.example.net to a certificate for which the       DomainName field is www.example.com if users can reach your site by using     either name.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:[\w+=/,.@-]+:acm-pca:[\w+=/,.@-]*:[0-9]+:[\w+=,.@-]+(/[\w+=,.@-]+)*
+    /// Maximum: 100
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CertificateAuthorityArn")]
-    pub certificate_authority_arn: Option<String>,
+    #[serde(rename = "SubjectAlternativeNames")]
+    pub subject_alternative_names: Option<Vec<String>>,
 
 
     /// 
@@ -119,6 +103,22 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The method you want to use to validate that you own or control the domain associated     with a public certificate. You can validate with DNS or validate with       email. We recommend that you use DNS validation.
+    /// 
+    /// If not specified, this property defaults to email validation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DNS | EMAIL
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ValidationMethod")]
+    pub validation_method: Option<CertificateValidationMethodEnum>,
 
 }
 
@@ -179,6 +179,24 @@ pub struct DomainValidationOption {
 
 
     /// 
+    /// A fully qualified domain name (FQDN) in the certificate request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 253
+    ///
+    /// Pattern: ^(\*\.)?(((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9])\.)+((?!-)[A-Za-z0-9-]{1,62}[A-Za-z0-9])$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DomainName")]
+    pub domain_name: String,
+
+
+    /// 
     /// The HostedZoneId option, which is available if you are using Route 53 as     your domain registrar, causes ACM to add your CNAME to the domain record. Your list of       DomainValidationOptions must contain one and only one of the     domain-validation options, and the HostedZoneId can be used only when       DNS is specified as your validation method.
     /// 
     /// Use the Route 53 ListHostedZones API to discover IDs for available hosted     zones.
@@ -196,24 +214,6 @@ pub struct DomainValidationOption {
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
     pub hosted_zone_id: Option<String>,
-
-
-    /// 
-    /// A fully qualified domain name (FQDN) in the certificate request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 253
-    ///
-    /// Pattern: ^(\*\.)?(((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9])\.)+((?!-)[A-Za-z0-9-]{1,62}[A-Za-z0-9])$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DomainName")]
-    pub domain_name: String,
 
 
     /// 

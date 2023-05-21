@@ -15,18 +15,6 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The unique identifier of the service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceIdentifier")]
-    pub service_identifier: String,
-
-
-    /// 
     /// The unique identifier of the application.
     /// 
     /// Required: Yes
@@ -48,18 +36,6 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "DefaultRoute")]
     pub default_route: Option<DefaultRouteInput>,
-
-
-    /// 
-    /// The tags assigned to the route.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -87,6 +63,30 @@ pub struct CfnRoute {
 
 
     /// 
+    /// The unique identifier of the service.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceIdentifier")]
+    pub service_identifier: String,
+
+
+    /// 
+    /// The tags assigned to the route.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The configuration for the URI path route type.
     /// 
     /// Required: No
@@ -110,6 +110,27 @@ impl cfn_resources::CfnResource for CfnRoute {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The configuration for the default route type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DefaultRouteInput {
+
+
+    /// 
+    /// If set to ACTIVE, traffic is forwarded to this route’s service after the    route is created.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ActivationState")]
+    pub activation_state: String,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -167,6 +188,18 @@ pub struct UriPathRouteInput {
 
 
     /// 
+    /// Indicates whether to match all subpaths of the given source path. If this value is     false, requests must match the source path exactly before they are forwarded to    this route's service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IncludeChildPaths")]
+    pub include_child_paths: Option<bool>,
+
+
+    /// 
     /// A list of HTTP methods to match. An empty list matches all values. If a method is present,    only HTTP requests using that method are forwarded to this route’s service.
     /// 
     /// Required: No
@@ -188,39 +221,6 @@ pub struct UriPathRouteInput {
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
     pub source_path: Option<String>,
-
-
-    /// 
-    /// Indicates whether to match all subpaths of the given source path. If this value is     false, requests must match the source path exactly before they are forwarded to    this route's service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IncludeChildPaths")]
-    pub include_child_paths: Option<bool>,
-
-}
-
-
-
-
-/// The configuration for the default route type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DefaultRouteInput {
-
-
-    /// 
-    /// If set to ACTIVE, traffic is forwarded to this route’s service after the    route is created.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActivationState")]
-    pub activation_state: String,
 
 }
 

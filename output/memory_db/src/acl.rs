@@ -18,18 +18,6 @@ pub struct CfnACL {
 
 
     /// 
-    /// The list of users that belong to the Access Control List.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserNames")]
-    pub user_names: Option<Vec<String>>,
-
-
-    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -41,6 +29,18 @@ pub struct CfnACL {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The list of users that belong to the Access Control List.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserNames")]
+    pub user_names: Option<Vec<String>>,
 
 }
 

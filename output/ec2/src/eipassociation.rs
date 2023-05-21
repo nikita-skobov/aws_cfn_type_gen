@@ -8,6 +8,30 @@ pub struct CfnEIPAssociation {
 
 
     /// 
+    /// The allocation ID. This is required.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "AllocationId")]
+    pub allocation_id: Option<String>,
+
+
+    /// 
+    /// Deprecated.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "EIP")]
+    pub eip: Option<String>,
+
+
+    /// 
     /// The ID of the instance. The instance must have exactly one attached network interface.    You can specify either the instance ID or the network interface ID, but not both.
     /// 
     /// Required: Conditional
@@ -43,30 +67,6 @@ pub struct CfnEIPAssociation {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: Option<String>,
-
-
-    /// 
-    /// The allocation ID. This is required.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "AllocationId")]
-    pub allocation_id: Option<String>,
-
-
-    /// 
-    /// Deprecated.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "EIP")]
-    pub eip: Option<String>,
 
 }
 

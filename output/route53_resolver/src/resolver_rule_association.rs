@@ -6,22 +6,6 @@ pub struct CfnResolverRuleAssociation {
 
 
     /// 
-    /// The ID of the VPC that you associated the Resolver rule with.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VPCId")]
-    pub vpcid: String,
-
-
-    /// 
     /// The name of an association between a Resolver rule and a VPC.
     /// 
     /// Required: No
@@ -51,6 +35,22 @@ pub struct CfnResolverRuleAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ResolverRuleId")]
     pub resolver_rule_id: String,
+
+
+    /// 
+    /// The ID of the VPC that you associated the Resolver rule with.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VPCId")]
+    pub vpcid: String,
 
 }
 

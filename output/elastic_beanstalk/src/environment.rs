@@ -6,6 +6,38 @@ pub struct CfnEnvironment {
 
 
     /// 
+    /// The name of the application that is associated with this environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationName")]
+    pub application_name: String,
+
+
+    /// 
+    /// If specified, the environment attempts to use this value as the prefix for the CNAME in    your Elastic Beanstalk environment URL. If not specified, the CNAME is generated automatically by    appending a random alphanumeric string to the environment name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 4
+    ///
+    /// Maximum: 63
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CNAMEPrefix")]
+    pub cnameprefix: Option<String>,
+
+
+    /// 
     /// Your description for this environment.
     /// 
     /// Required: No
@@ -17,50 +49,6 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// Key-value pairs defining configuration options for this environment, such as the instance    type. These options override the values that are defined in the solution stack or the configuration template.    If you remove any options during a stack update, the removed options retain their current values.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of OptionSetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OptionSettings")]
-    pub option_settings: Option<Vec<OptionSetting>>,
-
-
-    /// 
-    /// The name of an Elastic Beanstalk solution stack (platform version) to use with the environment. If    specified, Elastic Beanstalk sets the configuration values to the default values associated with the    specified solution stack. For a list of current solution stacks, see Elastic Beanstalk Supported Platforms in the         AWS Elastic Beanstalk     Platforms guide.
-    /// 
-    /// NoteIf you specify SolutionStackName, don't specify PlatformArn or      TemplateName.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SolutionStackName")]
-    pub solution_stack_name: Option<String>,
-
-
-    /// 
-    /// ImportantThe operations role feature of AWS Elastic Beanstalk is in beta release and is subject to change.
-    /// 
-    /// The Amazon Resource Name (ARN) of an existing IAM role to be used as the environment's    operations role. If specified, Elastic Beanstalk uses the operations role for permissions to downstream    services during this call and during subsequent calls acting on this environment. To specify    an operations role, you must have the iam:PassRole permission for the role.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OperationsRole")]
-    pub operations_role: Option<String>,
 
 
     /// 
@@ -88,19 +76,73 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The name of the application that is associated with this environment.
+    /// ImportantThe operations role feature of AWS Elastic Beanstalk is in beta release and is subject to change.
     /// 
-    /// Required: Yes
+    /// The Amazon Resource Name (ARN) of an existing IAM role to be used as the environment's    operations role. If specified, Elastic Beanstalk uses the operations role for permissions to downstream    services during this call and during subsequent calls acting on this environment. To specify    an operations role, you must have the iam:PassRole permission for the role.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 100
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OperationsRole")]
+    pub operations_role: Option<String>,
+
+
+    /// 
+    /// Key-value pairs defining configuration options for this environment, such as the instance    type. These options override the values that are defined in the solution stack or the configuration template.    If you remove any options during a stack update, the removed options retain their current values.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of OptionSetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptionSettings")]
+    pub option_settings: Option<Vec<OptionSetting>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the custom platform to use with the environment. For    more information, see Custom Platforms in the             AWS Elastic Beanstalk Developer Guide.
+    /// 
+    /// NoteIf you specify PlatformArn, don't specify     SolutionStackName.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PlatformArn")]
+    pub platform_arn: Option<String>,
+
+
+    /// 
+    /// The name of an Elastic Beanstalk solution stack (platform version) to use with the environment. If    specified, Elastic Beanstalk sets the configuration values to the default values associated with the    specified solution stack. For a list of current solution stacks, see Elastic Beanstalk Supported Platforms in the         AWS Elastic Beanstalk     Platforms guide.
+    /// 
+    /// NoteIf you specify SolutionStackName, don't specify PlatformArn or      TemplateName.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ApplicationName")]
-    pub application_name: String,
+    #[serde(rename = "SolutionStackName")]
+    pub solution_stack_name: Option<String>,
+
+
+    /// 
+    /// Specifies the tags applied to resources in the environment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -150,48 +192,6 @@ pub struct CfnEnvironment {
     #[serde(rename = "VersionLabel")]
     pub version_label: Option<String>,
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the custom platform to use with the environment. For    more information, see Custom Platforms in the             AWS Elastic Beanstalk Developer Guide.
-    /// 
-    /// NoteIf you specify PlatformArn, don't specify     SolutionStackName.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PlatformArn")]
-    pub platform_arn: Option<String>,
-
-
-    /// 
-    /// Specifies the tags applied to resources in the environment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// If specified, the environment attempts to use this value as the prefix for the CNAME in    your Elastic Beanstalk environment URL. If not specified, the CNAME is generated automatically by    appending a random alphanumeric string to the environment name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 4
-    ///
-    /// Maximum: 63
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CNAMEPrefix")]
-    pub cnameprefix: Option<String>,
-
 }
 
 
@@ -205,6 +205,71 @@ impl cfn_resources::CfnResource for CfnEnvironment {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The OptionSetting property type specifies an option for an AWS Elastic Beanstalk environment.
+///
+/// The OptionSettings property of the AWS::ElasticBeanstalk::Environment resource contains a list of     OptionSetting property types.
+///
+/// For a list of possible namespaces and option values, see Option Values in the     AWS Elastic Beanstalk Developer Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OptionSetting {
+
+
+    /// 
+    /// A unique namespace that identifies the option's associated AWS resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Namespace")]
+    pub namespace: String,
+
+
+    /// 
+    /// The name of the configuration option.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptionName")]
+    pub option_name: String,
+
+
+    /// 
+    /// A unique resource name for the option setting. Use it for a time–based scaling configuration option.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceName")]
+    pub resource_name: Option<String>,
+
+
+    /// 
+    /// The current value for the configuration option.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -238,71 +303,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// The OptionSetting property type specifies an option for an AWS Elastic Beanstalk environment.
-///
-/// The OptionSettings property of the AWS::ElasticBeanstalk::Environment resource contains a list of     OptionSetting property types.
-///
-/// For a list of possible namespaces and option values, see Option Values in the     AWS Elastic Beanstalk Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OptionSetting {
-
-
-    /// 
-    /// The current value for the configuration option.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-
-    /// 
-    /// The name of the configuration option.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OptionName")]
-    pub option_name: String,
-
-
-    /// 
-    /// A unique resource name for the option setting. Use it for a time–based scaling configuration option.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceName")]
-    pub resource_name: Option<String>,
-
-
-    /// 
-    /// A unique namespace that identifies the option's associated AWS resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Namespace")]
-    pub namespace: String,
 
 }
 

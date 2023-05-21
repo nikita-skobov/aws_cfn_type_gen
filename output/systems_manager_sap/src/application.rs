@@ -6,17 +6,17 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The Amazon EC2 instances on which your SAP application is running.
+    /// The ID of the application.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 1
+    /// Pattern: [\w\d]{1,50}
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Instances")]
-    pub instances: Option<Vec<String>>,
+    /// Update requires: No interruption
+    #[serde(rename = "ApplicationId")]
+    pub application_id: String,
 
 
     /// 
@@ -34,17 +34,45 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The ID of the application.
+    /// The credentials of the SAP application.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: List of Credential
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Credentials")]
+    pub credentials: Option<Vec<Credential>>,
+
+
+    /// 
+    /// The Amazon EC2 instances on which your SAP application is running.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Instances")]
+    pub instances: Option<Vec<String>>,
+
+
+    /// 
+    /// The SAP instance number of the application.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Pattern: [\w\d]{1,50}
+    /// Pattern: [0-9]{2}
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplicationId")]
-    pub application_id: String,
+    /// Update requires: Replacement
+    #[serde(rename = "SapInstanceNumber")]
+    pub sap_instance_number: Option<String>,
 
 
     /// 
@@ -71,34 +99,6 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The SAP instance number of the application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [0-9]{2}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SapInstanceNumber")]
-    pub sap_instance_number: Option<String>,
-
-
-    /// 
-    /// The credentials of the SAP application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Credential
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Credentials")]
-    pub credentials: Option<Vec<Credential>>,
 
 }
 
@@ -148,18 +148,6 @@ pub struct Credential {
 
 
     /// 
-    /// The secret ID created in AWS Secrets Manager to store the credentials 			of the SAP application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecretId")]
-    pub secret_id: Option<String>,
-
-
-    /// 
     /// The name of the SAP HANA database.
     /// 
     /// Required: No
@@ -169,6 +157,18 @@ pub struct Credential {
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
     pub database_name: Option<String>,
+
+
+    /// 
+    /// The secret ID created in AWS Secrets Manager to store the credentials 			of the SAP application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecretId")]
+    pub secret_id: Option<String>,
 
 }
 
@@ -187,17 +187,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -206,6 +195,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

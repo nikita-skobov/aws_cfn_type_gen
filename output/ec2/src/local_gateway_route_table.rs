@@ -6,18 +6,6 @@ pub struct CfnLocalGatewayRouteTable {
 
 
     /// 
-    /// The tags assigned to the local gateway route table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The ID of the local gateway.
     /// 
     /// Required: Yes
@@ -41,6 +29,18 @@ pub struct CfnLocalGatewayRouteTable {
     /// Update requires: Replacement
     #[serde(rename = "Mode")]
     pub mode: Option<LocalGatewayRouteTableModeEnum>,
+
+
+    /// 
+    /// The tags assigned to the local gateway route table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

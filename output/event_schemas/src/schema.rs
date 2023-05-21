@@ -6,18 +6,6 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The name of the schema.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaName")]
-    pub schema_name: Option<String>,
-
-
-    /// 
     /// The source of the schema definition.
     /// 
     /// Required: Yes
@@ -54,17 +42,15 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The type of schema.
+    /// The name of the schema.
     /// 
-    /// Valid types include OpenApi3 and JSONSchemaDraft4.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaName")]
+    pub schema_name: Option<String>,
 
 
     /// 
@@ -77,6 +63,20 @@ pub struct CfnSchema {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagsEntry>>,
+
+
+    /// 
+    /// The type of schema.
+    /// 
+    /// Valid types include OpenApi3 and JSONSchemaDraft4.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }
 

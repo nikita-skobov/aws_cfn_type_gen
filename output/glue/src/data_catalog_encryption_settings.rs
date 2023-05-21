@@ -6,18 +6,6 @@ pub struct CfnDataCatalogEncryptionSettings {
 
 
     /// 
-    /// Contains configuration information for maintaining Data Catalog security.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: DataCatalogEncryptionSettings
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataCatalogEncryptionSettings")]
-    pub data_catalog_encryption_settings: Box<DataCatalogEncryptionSettings>,
-
-
-    /// 
     /// The ID of the Data Catalog in which the settings are created.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnDataCatalogEncryptionSettings {
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
+
+
+    /// 
+    /// Contains configuration information for maintaining Data Catalog security.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: DataCatalogEncryptionSettings
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataCatalogEncryptionSettings")]
+    pub data_catalog_encryption_settings: Box<DataCatalogEncryptionSettings>,
 
 }
 
@@ -53,18 +53,6 @@ pub struct ConnectionPasswordEncryption {
 
 
     /// 
-    /// When the ReturnConnectionPasswordEncrypted flag is set to "true", passwords remain encrypted in the responses of GetConnection and GetConnections. This encryption takes effect independently from catalog encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReturnConnectionPasswordEncrypted")]
-    pub return_connection_password_encrypted: Option<bool>,
-
-
-    /// 
     /// An AWS KMS key that is used to encrypt the connection password.
     /// 
     /// If connection password protection is enabled, the caller of         CreateConnection and UpdateConnection needs at least         kms:Encrypt permission on the specified AWS KMS key, to encrypt       passwords before storing them in the Data Catalog. You can set the decrypt permission to       enable or restrict access on the password key according to your security       requirements.
@@ -76,6 +64,18 @@ pub struct ConnectionPasswordEncryption {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// When the ReturnConnectionPasswordEncrypted flag is set to "true", passwords remain encrypted in the responses of GetConnection and GetConnections. This encryption takes effect independently from catalog encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReturnConnectionPasswordEncrypted")]
+    pub return_connection_password_encrypted: Option<bool>,
 
 }
 
@@ -121,6 +121,20 @@ pub struct EncryptionAtRest {
 
 
     /// 
+    /// The encryption-at-rest mode for encrypting Data Catalog data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | SSE-KMS
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CatalogEncryptionMode")]
+    pub catalog_encryption_mode: Option<EncryptionAtRestCatalogEncryptionModeEnum>,
+
+
+    /// 
     /// The ID of the AWS KMS key to use for encryption at rest.
     /// 
     /// Required: No
@@ -136,20 +150,6 @@ pub struct EncryptionAtRest {
     /// Update requires: No interruption
     #[serde(rename = "SseAwsKmsKeyId")]
     pub sse_aws_kms_key_id: Option<String>,
-
-
-    /// 
-    /// The encryption-at-rest mode for encrypting Data Catalog data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | SSE-KMS
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CatalogEncryptionMode")]
-    pub catalog_encryption_mode: Option<EncryptionAtRestCatalogEncryptionModeEnum>,
 
 }
 

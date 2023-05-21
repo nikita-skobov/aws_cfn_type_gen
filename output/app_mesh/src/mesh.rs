@@ -10,6 +10,22 @@ pub struct CfnMesh {
 
 
     /// 
+    /// The name to use for the service mesh.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MeshName")]
+    pub mesh_name: Option<String>,
+
+
+    /// 
     /// The service mesh specification to apply.
     /// 
     /// Required: No
@@ -34,22 +50,6 @@ pub struct CfnMesh {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The name to use for the service mesh.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeshName")]
-    pub mesh_name: Option<String>,
-
 }
 
 
@@ -63,6 +63,50 @@ impl cfn_resources::CfnResource for CfnMesh {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// An object that represents the egress filter rules for a service mesh.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EgressFilter {
+
+
+    /// 
+    /// The egress filter type. By default, the type is DROP_ALL, which allows     egress only from virtual nodes to other defined resources in the service mesh (and any     traffic to *.amazonaws.com for AWS API calls). You can set the     egress filter type to ALLOW_ALL to allow egress to any endpoint inside or     outside of the service mesh.
+    /// 
+    /// NoteIf you specify any backends on a virtual node when using ALLOW_ALL, you       must specifiy all egress for that virtual node as backends. Otherwise,        ALLOW_ALL will no longer work for that virtual node.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALLOW_ALL | DROP_ALL
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: EgressFilterTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EgressFilterTypeEnum {
+
+    /// ALLOW_ALL
+    #[serde(rename = "ALLOW_ALL")]
+    Allowall,
+
+    /// DROP_ALL
+    #[serde(rename = "DROP_ALL")]
+    Dropall,
+
+}
+
+impl Default for EgressFilterTypeEnum {
+    fn default() -> Self {
+        EgressFilterTypeEnum::Allowall
+    }
+}
+
 
 
 /// An object that represents the service discovery information for a service mesh.
@@ -120,17 +164,6 @@ impl Default for MeshServiceDiscoveryIpPreferenceEnum {
 pub struct MeshSpec {
 
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: MeshServiceDiscovery
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceDiscovery")]
-    pub service_discovery: Option<MeshServiceDiscovery>,
-
-
     /// 
     /// The egress filter rules for the service mesh.
     /// 
@@ -142,52 +175,19 @@ pub struct MeshSpec {
     #[serde(rename = "EgressFilter")]
     pub egress_filter: Option<EgressFilter>,
 
-}
 
-
-
-
-/// An object that represents the egress filter rules for a service mesh.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EgressFilter {
-
-
-    /// 
-    /// The egress filter type. By default, the type is DROP_ALL, which allows     egress only from virtual nodes to other defined resources in the service mesh (and any     traffic to *.amazonaws.com for AWS API calls). You can set the     egress filter type to ALLOW_ALL to allow egress to any endpoint inside or     outside of the service mesh.
-    /// 
-    /// NoteIf you specify any backends on a virtual node when using ALLOW_ALL, you       must specifiy all egress for that virtual node as backends. Otherwise,        ALLOW_ALL will no longer work for that virtual node.
-    /// 
-    /// Required: Yes
+    /// Property description not available.
     ///
-    /// Type: String
+    /// Required: No
     ///
-    /// Allowed values: ALLOW_ALL | DROP_ALL
+    /// Type: MeshServiceDiscovery
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: EgressFilterTypeEnum,
+    #[serde(rename = "ServiceDiscovery")]
+    pub service_discovery: Option<MeshServiceDiscovery>,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum EgressFilterTypeEnum {
-
-    /// ALLOW_ALL
-    #[serde(rename = "ALLOW_ALL")]
-    Allowall,
-
-    /// DROP_ALL
-    #[serde(rename = "DROP_ALL")]
-    Dropall,
-
-}
-
-impl Default for EgressFilterTypeEnum {
-    fn default() -> Self {
-        EgressFilterTypeEnum::Allowall
-    }
-}
 
 
 
@@ -203,17 +203,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -222,6 +211,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

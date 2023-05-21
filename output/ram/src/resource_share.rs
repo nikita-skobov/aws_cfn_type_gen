@@ -6,6 +6,42 @@ pub struct CfnResourceShare {
 
 
     /// 
+    /// Specifies whether principals outside your organization in AWS Organizations can be associated       with a resource share. A value of true lets you share with individual AWS accounts       that are not in your organization. A value of false       only has meaning if your account is a member of an AWS Organization. The default value       is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowExternalPrincipals")]
+    pub allow_external_principals: Option<bool>,
+
+
+    /// 
+    /// Specifies the name of the resource share.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// Specifies the Amazon Resource Names (ARNs) of the AWS RAM permission to associate with the resource share. If you do       not specify an ARN for the permission, AWS RAM automatically attaches the default version       of the permission for each resource type. You can associate only one permission with       each resource type included in the resource share.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PermissionArns")]
+    pub permission_arns: Option<Vec<String>>,
+
+
+    /// 
     /// Specifies the principals to associate with the resource share. The possible values       are:
     /// 
     /// An AWS account ID               An Amazon Resource Name (ARN) of an organization in AWS Organizations                        An ARN of an organizational unit (OU) in AWS Organizations                        An ARN of an IAM role               An ARN of an IAM user
@@ -22,15 +58,15 @@ pub struct CfnResourceShare {
 
 
     /// 
-    /// Specifies the Amazon Resource Names (ARNs) of the AWS RAM permission to associate with the resource share. If you do       not specify an ARN for the permission, AWS RAM automatically attaches the default version       of the permission for each resource type. You can associate only one permission with       each resource type included in the resource share.
+    /// Specifies a list of one or more ARNs of the resources to associate with the       resource share.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PermissionArns")]
-    pub permission_arns: Option<Vec<String>>,
+    #[serde(rename = "ResourceArns")]
+    pub resource_arns: Option<Vec<String>>,
 
 
     /// 
@@ -43,42 +79,6 @@ pub struct CfnResourceShare {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Specifies the name of the resource share.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// Specifies whether principals outside your organization in AWS Organizations can be associated       with a resource share. A value of true lets you share with individual AWS accounts       that are not in your organization. A value of false       only has meaning if your account is a member of an AWS Organization. The default value       is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowExternalPrincipals")]
-    pub allow_external_principals: Option<bool>,
-
-
-    /// 
-    /// Specifies a list of one or more ARNs of the resources to associate with the       resource share.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceArns")]
-    pub resource_arns: Option<Vec<String>>,
 
 }
 

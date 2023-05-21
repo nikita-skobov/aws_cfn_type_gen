@@ -6,18 +6,6 @@ pub struct CfnProject {
 
 
     /// 
-    /// The name of the project from which to obtain information.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProjectName")]
-    pub project_name: Option<String>,
-
-
-    /// 
     /// The description of the project.
     /// 
     /// Required: No
@@ -39,6 +27,18 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "PlacementTemplate")]
     pub placement_template: PlacementTemplate,
+
+
+    /// 
+    /// The name of the project from which to obtain information.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProjectName")]
+    pub project_name: Option<String>,
 
 }
 
@@ -63,18 +63,6 @@ pub struct DeviceTemplate {
 
 
     /// 
-    /// The device type, which currently must be "button".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeviceType")]
-    pub device_type: Option<String>,
-
-
-    /// 
     /// An optional AWS Lambda function to invoke instead of the default AWS Lambda function provided by    the placement template.
     /// 
     /// Required: No
@@ -84,6 +72,18 @@ pub struct DeviceTemplate {
     /// Update requires: No interruption
     #[serde(rename = "CallbackOverrides")]
     pub callback_overrides: Option<serde_json::Value>,
+
+
+    /// 
+    /// The device type, which currently must be "button".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeviceType")]
+    pub device_type: Option<String>,
 
 }
 
@@ -98,18 +98,6 @@ pub struct PlacementTemplate {
 
 
     /// 
-    /// An object specifying the DeviceTemplate for all placements using this     (PlacementTemplate) template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceTemplates")]
-    pub device_templates: Option<serde_json::Value>,
-
-
-    /// 
     /// The default attributes (key-value pairs) to be applied to all placements using this    template.
     /// 
     /// Required: No
@@ -119,6 +107,18 @@ pub struct PlacementTemplate {
     /// Update requires: No interruption
     #[serde(rename = "DefaultAttributes")]
     pub default_attributes: Option<serde_json::Value>,
+
+
+    /// 
+    /// An object specifying the DeviceTemplate for all placements using this     (PlacementTemplate) template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceTemplates")]
+    pub device_templates: Option<serde_json::Value>,
 
 }
 

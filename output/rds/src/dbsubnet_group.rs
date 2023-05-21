@@ -8,15 +8,15 @@ pub struct CfnDBSubnetGroup {
 
 
     /// 
-    /// An optional array of key-value pairs to apply to this DB subnet group.
+    /// The description for the DB subnet group.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "DBSubnetGroupDescription")]
+    pub dbsubnet_group_description: String,
 
 
     /// 
@@ -48,15 +48,15 @@ pub struct CfnDBSubnetGroup {
 
 
     /// 
-    /// The description for the DB subnet group.
+    /// An optional array of key-value pairs to apply to this DB subnet group.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DBSubnetGroupDescription")]
-    pub dbsubnet_group_description: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

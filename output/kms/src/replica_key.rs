@@ -20,6 +20,70 @@ pub struct CfnReplicaKey {
 
 
     /// 
+    /// A description of the KMS key.
+    /// 
+    /// The default value is an empty string (no description).
+    /// 
+    /// The description is not a shared property of multi-Region keys. You can specify the same    description or a different description for each key in a set of related multi-Region keys. AWS Key Management Service does not synchronize this property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 8192
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Specifies whether the replica key is enabled. Disabled KMS keys cannot be used in    cryptographic operations.
+    /// 
+    /// When Enabled is true, the key state of the    KMS key is Enabled. When Enabled is false, the key state of    the KMS key is Disabled. The default value is true.
+    /// 
+    /// The actual key state of the replica might be affected by actions taken outside of    CloudFormation, such as running the EnableKey, DisableKey,    or ScheduleKeyDeletion operations. Also, while the replica key is being created, its    key state is Creating. When the process is complete, the key state of the replica    key changes to Enabled.
+    /// 
+    /// For information about the key states of a KMS key, see Key state: Effect on your KMS key in the      AWS Key Management Service Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// The key policy that authorizes use of the replica key.
+    /// 
+    /// The key policy is not a shared property of multi-Region keys. You can specify the same key    policy or a different key policy for each key in a set of related multi-Region keys. AWS KMS does not synchronize this property.
+    /// 
+    /// The key policy must conform to the following rules.
+    /// 
+    /// The key policy must give the caller PutKeyPolicy permission on      the KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information,      refer to the scenario in the Default key policy section of the       AWS Key Management Service Developer Guide      .        Each statement in the key policy must contain one or more principals. The principals      in the key policy must exist and be visible to AWS KMS. When you create a new       AWSprincipal (for example, an IAM user or role), you might need to      enforce a delay before including the new principal in a key policy because the new      principal might not be immediately visible to AWS KMS. For more information,      see Changes that I make are not always immediately visible in the AWS Identity and Access Management User Guide.
+    /// 
+    /// A key policy document can include only the following characters:
+    /// 
+    /// Printable ASCII characters from the space character (\u0020) through the end of the ASCII character range.        Printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF).        The tab (\u0009), line feed (\u000A), and carriage return (\u000D) special characters
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 32768
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KeyPolicy")]
+    pub key_policy: serde_json::Value,
+
+
+    /// 
     /// Specifies the number of days in the waiting period before AWS KMS deletes a    replica key that has been removed from a CloudFormation stack. Enter a value between 7 and 30    days. The default value is 30 days.
     /// 
     /// When you remove a replica key from a CloudFormation stack, AWS KMS schedules    the replica key for deletion and starts the mandatory waiting period. The     PendingWindowInDays property determines the length of waiting period. During    the waiting period, the key state of replica key is Pending Deletion, which    prevents it from being used in cryptographic operations. When the waiting period expires,     AWS KMS permanently deletes the replica key.
@@ -43,24 +107,6 @@ pub struct CfnReplicaKey {
     /// Update requires: No interruption
     #[serde(rename = "PendingWindowInDays")]
     pub pending_window_in_days: Option<i64>,
-
-
-    /// 
-    /// Specifies whether the replica key is enabled. Disabled KMS keys cannot be used in    cryptographic operations.
-    /// 
-    /// When Enabled is true, the key state of the    KMS key is Enabled. When Enabled is false, the key state of    the KMS key is Disabled. The default value is true.
-    /// 
-    /// The actual key state of the replica might be affected by actions taken outside of    CloudFormation, such as running the EnableKey, DisableKey,    or ScheduleKeyDeletion operations. Also, while the replica key is being created, its    key state is Creating. When the process is complete, the key state of the replica    key changes to Enabled.
-    /// 
-    /// For information about the key states of a KMS key, see Key state: Effect on your KMS key in the      AWS Key Management Service Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
 
 
     /// 
@@ -101,52 +147,6 @@ pub struct CfnReplicaKey {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A description of the KMS key.
-    /// 
-    /// The default value is an empty string (no description).
-    /// 
-    /// The description is not a shared property of multi-Region keys. You can specify the same    description or a different description for each key in a set of related multi-Region keys. AWS Key Management Service does not synchronize this property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 8192
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The key policy that authorizes use of the replica key.
-    /// 
-    /// The key policy is not a shared property of multi-Region keys. You can specify the same key    policy or a different key policy for each key in a set of related multi-Region keys. AWS KMS does not synchronize this property.
-    /// 
-    /// The key policy must conform to the following rules.
-    /// 
-    /// The key policy must give the caller PutKeyPolicy permission on      the KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information,      refer to the scenario in the Default key policy section of the       AWS Key Management Service Developer Guide      .        Each statement in the key policy must contain one or more principals. The principals      in the key policy must exist and be visible to AWS KMS. When you create a new       AWSprincipal (for example, an IAM user or role), you might need to      enforce a delay before including the new principal in a key policy because the new      principal might not be immediately visible to AWS KMS. For more information,      see Changes that I make are not always immediately visible in the AWS Identity and Access Management User Guide.
-    /// 
-    /// A key policy document can include only the following characters:
-    /// 
-    /// Printable ASCII characters from the space character (\u0020) through the end of the ASCII character range.        Printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF).        The tab (\u0009), line feed (\u000A), and carriage return (\u000D) special characters
-    /// 
-    /// Minimum: 1
-    /// 
-    /// Maximum: 32768
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KeyPolicy")]
-    pub key_policy: serde_json::Value,
 
 }
 

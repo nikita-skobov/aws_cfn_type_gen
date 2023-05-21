@@ -26,18 +26,6 @@ pub struct CfnKeyPair {
 
 
     /// 
-    /// The tags to apply to the key pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The type of key pair. Note that ED25519 keys are not supported for Windows instances.
     /// 
     /// If the PublicKeyMaterial property is specified, the KeyType property is ignored, and the key type      is inferred from the PublicKeyMaterial value.
@@ -65,6 +53,18 @@ pub struct CfnKeyPair {
     /// Update requires: No interruption
     #[serde(rename = "PublicKeyMaterial")]
     pub public_key_material: Option<String>,
+
+
+    /// 
+    /// The tags to apply to the key pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

@@ -6,30 +6,6 @@ pub struct CfnDashboard {
 
 
     /// 
-    /// A friendly name for the dashboard.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DashboardName")]
-    pub dashboard_name: String,
-
-
-    /// 
-    /// A list of key-value pairs that contain metadata for the dashboard. For more information,       see Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The dashboard definition specified in a JSON literal. For detailed information, see       Creating dashboards (CLI) in the AWS IoT SiteWise User Guide.
     /// 
     /// Required: Yes
@@ -54,6 +30,18 @@ pub struct CfnDashboard {
 
 
     /// 
+    /// A friendly name for the dashboard.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DashboardName")]
+    pub dashboard_name: String,
+
+
+    /// 
     /// The ID of the project in which to create the dashboard.
     /// 
     /// Required: No
@@ -63,6 +51,18 @@ pub struct CfnDashboard {
     /// Update requires: Replacement
     #[serde(rename = "ProjectId")]
     pub project_id: Option<String>,
+
+
+    /// 
+    /// A list of key-value pairs that contain metadata for the dashboard. For more information,       see Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

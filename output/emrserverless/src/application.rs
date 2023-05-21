@@ -5,16 +5,15 @@
 pub struct CfnApplication {
 
 
-    /// 
-    /// The network configuration for customer VPC connectivity for the application.
-    /// 
+    /// The CPU architecture type of the application. Allowed values: X86_64 or ARM64
+    ///
     /// Required: No
     ///
-    /// Type: NetworkConfiguration
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NetworkConfiguration")]
-    pub network_configuration: Option<NetworkConfiguration>,
+    #[serde(rename = "Architecture")]
+    pub architecture: Option<ApplicationArchitectureEnum>,
 
 
     /// 
@@ -27,6 +26,41 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "AutoStartConfiguration")]
     pub auto_start_configuration: Option<AutoStartConfiguration>,
+
+
+    /// 
+    /// The configuration for an application to automatically stop after a certain amount of       time being idle.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AutoStopConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoStopConfiguration")]
+    pub auto_stop_configuration: Option<AutoStopConfiguration>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: ImageConfigurationInput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageConfiguration")]
+    pub image_configuration: Option<ImageConfigurationInput>,
+
+
+    /// 
+    /// The initial capacity of the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of InitialCapacityConfigKeyValuePair
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InitialCapacity")]
+    pub initial_capacity: Option<Vec<InitialCapacityConfigKeyValuePair>>,
 
 
     /// 
@@ -59,15 +93,16 @@ pub struct CfnApplication {
     pub name: Option<String>,
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// The network configuration for customer VPC connectivity for the application.
+    /// 
     /// Required: No
     ///
-    /// Type: Map of WorkerTypeSpecificationInput
+    /// Type: NetworkConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "WorkerTypeSpecifications")]
-    pub worker_type_specifications: Option<std::collections::HashMap<String, WorkerTypeSpecificationInput>>,
+    #[serde(rename = "NetworkConfiguration")]
+    pub network_configuration: Option<NetworkConfiguration>,
 
 
     /// 
@@ -112,50 +147,15 @@ pub struct CfnApplication {
     pub cfn_type: String,
 
 
-    /// 
-    /// The configuration for an application to automatically stop after a certain amount of       time being idle.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AutoStopConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoStopConfiguration")]
-    pub auto_stop_configuration: Option<AutoStopConfiguration>,
-
-
     /// Property description not available.
     ///
     /// Required: No
     ///
-    /// Type: ImageConfigurationInput
+    /// Type: Map of WorkerTypeSpecificationInput
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageConfiguration")]
-    pub image_configuration: Option<ImageConfigurationInput>,
-
-
-    /// 
-    /// The initial capacity of the application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of InitialCapacityConfigKeyValuePair
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InitialCapacity")]
-    pub initial_capacity: Option<Vec<InitialCapacityConfigKeyValuePair>>,
-
-
-    /// The CPU architecture type of the application. Allowed values: X86_64 or ARM64
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Architecture")]
-    pub architecture: Option<ApplicationArchitectureEnum>,
+    #[serde(rename = "WorkerTypeSpecifications")]
+    pub worker_type_specifications: Option<std::collections::HashMap<String, WorkerTypeSpecificationInput>>,
 
 }
 
@@ -187,6 +187,64 @@ impl cfn_resources::CfnResource for CfnApplication {
 }
 
 
+/// The conﬁguration for an application to automatically start on job submission.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AutoStartConfiguration {
+
+
+    /// 
+    /// Enables the application to automatically start on job submission. Defaults to       true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+}
+
+
+
+
+/// The conﬁguration for an application to automatically stop after a certain amount of       time being idle.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AutoStopConfiguration {
+
+
+    /// 
+    /// Enables the application to automatically stop after a certain amount of time being       idle. Defaults to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// The amount of idle time in minutes after which your application will automatically       stop. Defaults to 15 minutes.
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 10080
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdleTimeoutMinutes")]
+    pub idle_timeout_minutes: Option<i64>,
+
+}
+
+
+
+
 /// The ImageConfigurationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ImageConfigurationInput {
@@ -213,6 +271,18 @@ pub struct InitialCapacityConfig {
 
 
     /// 
+    /// The resource configuration of the initial capacity configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: WorkerConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WorkerConfiguration")]
+    pub worker_configuration: WorkerConfiguration,
+
+
+    /// 
     /// The number of workers in the initial capacity configuration.
     /// 
     /// Minimum: 1
@@ -227,37 +297,44 @@ pub struct InitialCapacityConfig {
     #[serde(rename = "WorkerCount")]
     pub worker_count: i64,
 
-
-    /// 
-    /// The resource configuration of the initial capacity configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: WorkerConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkerConfiguration")]
-    pub worker_configuration: WorkerConfiguration,
-
 }
 
 
 
 
-/// The WorkerTypeSpecificationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
+/// The initial capacity configuration per worker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct WorkerTypeSpecificationInput {
+pub struct InitialCapacityConfigKeyValuePair {
 
 
-    /// Property description not available.
+    /// 
+    /// The worker type for an analytics framework. For Spark applications, the key can either       be set to Driver or Executor. For Hive applications, it can be       set to HiveDriver or TezTask.
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 50
+    /// 
+    /// Pattern: ^[a-zA-Z]+[-_]*[a-zA-Z]+$
+    /// 
+    /// Required: Yes
     ///
-    /// Required: No
-    ///
-    /// Type: ImageConfigurationInput
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageConfiguration")]
-    pub image_configuration: Option<ImageConfigurationInput>,
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the initial capacity configuration per worker.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: InitialCapacityConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: InitialCapacityConfig,
 
 }
 
@@ -327,64 +404,9 @@ pub struct MaximumAllowedResources {
 
 
 
-/// The conﬁguration for an application to automatically stop after a certain amount of       time being idle.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AutoStopConfiguration {
-
-
-    /// 
-    /// Enables the application to automatically stop after a certain amount of time being       idle. Defaults to true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// The amount of idle time in minutes after which your application will automatically       stop. Defaults to 15 minutes.
-    /// 
-    /// Minimum: 1
-    /// 
-    /// Maximum: 10080
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IdleTimeoutMinutes")]
-    pub idle_timeout_minutes: Option<i64>,
-
-}
-
-
-
-
 /// The network configuration for customer VPC connectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkConfiguration {
-
-
-    /// 
-    /// The array of subnet Ids for customer VPC connectivity.
-    /// 
-    /// Minimum: 1
-    /// 
-    /// Maximum: 32
-    /// 
-    /// Pattern: ^[-0-9a-zA-Z]+
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
 
 
     /// 
@@ -404,6 +426,61 @@ pub struct NetworkConfiguration {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
+
+    /// 
+    /// The array of subnet Ids for customer VPC connectivity.
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 32
+    /// 
+    /// Pattern: ^[-0-9a-zA-Z]+
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
@@ -419,15 +496,15 @@ pub struct WorkerConfiguration {
     /// 
     /// Maximum: 15
     /// 
-    /// Pattern: ^[1-9][0-9]*(\\s)?(GB|gb|gB|Gb)?$
+    /// Pattern: ^[1-9][0-9]*(\\s)?(vCPU|vcpu|VCPU)?$
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Memory")]
-    pub memory: String,
+    #[serde(rename = "Cpu")]
+    pub cpu: String,
 
 
     /// 
@@ -451,112 +528,35 @@ pub struct WorkerConfiguration {
     /// 
     /// Maximum: 15
     /// 
-    /// Pattern: ^[1-9][0-9]*(\\s)?(vCPU|vcpu|VCPU)?$
+    /// Pattern: ^[1-9][0-9]*(\\s)?(GB|gb|gB|Gb)?$
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Cpu")]
-    pub cpu: String,
+    #[serde(rename = "Memory")]
+    pub memory: String,
 
 }
 
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// The WorkerTypeSpecificationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct WorkerTypeSpecificationInput {
 
 
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
-/// The conﬁguration for an application to automatically start on job submission.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AutoStartConfiguration {
-
-
-    /// 
-    /// Enables the application to automatically start on job submission. Defaults to       true.
-    /// 
+    /// Property description not available.
+    ///
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: ImageConfigurationInput
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-}
-
-
-
-
-/// The initial capacity configuration per worker.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InitialCapacityConfigKeyValuePair {
-
-
-    /// 
-    /// The worker type for an analytics framework. For Spark applications, the key can either       be set to Driver or Executor. For Hive applications, it can be       set to HiveDriver or TezTask.
-    /// 
-    /// Minimum: 1
-    /// 
-    /// Maximum: 50
-    /// 
-    /// Pattern: ^[a-zA-Z]+[-_]*[a-zA-Z]+$
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the initial capacity configuration per worker.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: InitialCapacityConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: InitialCapacityConfig,
+    #[serde(rename = "ImageConfiguration")]
+    pub image_configuration: Option<ImageConfigurationInput>,
 
 }
 

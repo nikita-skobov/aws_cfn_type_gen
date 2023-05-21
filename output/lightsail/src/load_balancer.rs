@@ -6,19 +6,15 @@ pub struct CfnLoadBalancer {
 
 
     /// 
-    /// The IP address type of the load balancer.
-    /// 
-    /// The possible values are ipv4 for IPv4 only, and dualstack for     both IPv4 and IPv6.
+    /// The Lightsail instances to attach to the load balancer.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Allowed values: dualstack | ipv4
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "IpAddressType")]
-    pub ip_address_type: Option<LoadBalancerIpAddressTypeEnum>,
+    /// Update requires: No interruption
+    #[serde(rename = "AttachedInstances")]
+    pub attached_instances: Option<Vec<String>>,
 
 
     /// 
@@ -36,15 +32,31 @@ pub struct CfnLoadBalancer {
 
 
     /// 
-    /// The Lightsail instances to attach to the load balancer.
+    /// The port that the load balancer uses to direct traffic to your Lightsail     instances. For HTTP traffic, specify port 80. For HTTPS traffic, specify port     443.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "InstancePort")]
+    pub instance_port: i64,
+
+
+    /// 
+    /// The IP address type of the load balancer.
+    /// 
+    /// The possible values are ipv4 for IPv4 only, and dualstack for     both IPv4 and IPv6.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttachedInstances")]
-    pub attached_instances: Option<Vec<String>>,
+    /// Allowed values: dualstack | ipv4
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "IpAddressType")]
+    pub ip_address_type: Option<LoadBalancerIpAddressTypeEnum>,
 
 
     /// 
@@ -76,18 +88,6 @@ pub struct CfnLoadBalancer {
 
 
     /// 
-    /// The port that the load balancer uses to direct traffic to your Lightsail     instances. For HTTP traffic, specify port 80. For HTTPS traffic, specify port     443.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "InstancePort")]
-    pub instance_port: i64,
-
-
-    /// 
     /// The time period, in seconds, after which the load balancer session stickiness cookie     should be considered stale. If you do not specify this parameter, the default value is 0,     which indicates that the sticky session should last for the duration of the browser     session.
     /// 
     /// Required: No
@@ -97,20 +97,6 @@ pub struct CfnLoadBalancer {
     /// Update requires: No interruption
     #[serde(rename = "SessionStickinessLBCookieDurationSeconds")]
     pub session_stickiness_lbcookie_duration_seconds: Option<String>,
-
-
-    /// 
-    /// The name of the TLS security policy for the load balancer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: \w[\w\-]*\w
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TlsPolicyName")]
-    pub tls_policy_name: Option<String>,
 
 
     /// 
@@ -127,6 +113,20 @@ pub struct CfnLoadBalancer {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of the TLS security policy for the load balancer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: \w[\w\-]*\w
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TlsPolicyName")]
+    pub tls_policy_name: Option<String>,
 
 }
 
@@ -174,17 +174,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -193,6 +182,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

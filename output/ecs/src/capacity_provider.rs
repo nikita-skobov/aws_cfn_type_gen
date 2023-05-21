@@ -8,24 +8,6 @@ pub struct CfnCapacityProvider {
 
 
     /// 
-    /// The metadata that you apply to the capacity provider to help you categorize and 			organize it. Each tag consists of a key and an optional value. You define both.
-    /// 
-    /// The following basic restrictions apply to tags:
-    /// 
-    /// Maximum number of tags per resource - 50               For each resource, each tag key must be unique, and each tag key can have only           one value.               Maximum key length - 128 Unicode characters in UTF-8               Maximum value length - 256 Unicode characters in UTF-8               If your tagging schema is used across multiple services and resources,           remember that other services may have restrictions on allowed characters.           Generally allowed characters are: letters, numbers, and spaces representable in           UTF-8, and the following characters: + - = . _ : / @.               Tag keys and values are case-sensitive.               Do not use aws:, AWS:, or any upper or lowercase           combination of such as a prefix for either keys or values as it is reserved for           AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with           this prefix do not count against your tags per resource limit.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The Auto Scaling group settings for the capacity provider.
     /// 
     /// Required: Yes
@@ -47,6 +29,24 @@ pub struct CfnCapacityProvider {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// The metadata that you apply to the capacity provider to help you categorize and 			organize it. Each tag consists of a key and an optional value. You define both.
+    /// 
+    /// The following basic restrictions apply to tags:
+    /// 
+    /// Maximum number of tags per resource - 50               For each resource, each tag key must be unique, and each tag key can have only           one value.               Maximum key length - 128 Unicode characters in UTF-8               Maximum value length - 256 Unicode characters in UTF-8               If your tagging schema is used across multiple services and resources,           remember that other services may have restrictions on allowed characters.           Generally allowed characters are: letters, numbers, and spaces representable in           UTF-8, and the following characters: + - = . _ : / @.               Tag keys and values are case-sensitive.               Do not use aws:, AWS:, or any upper or lowercase           combination of such as a prefix for either keys or values as it is reserved for           AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with           this prefix do not count against your tags per resource limit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -135,43 +135,6 @@ impl Default for AutoScalingGroupProviderManagedTerminationProtectionEnum {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-
-
 /// The managed scaling settings for the Auto Scaling group capacity provider.
 ///
 /// When managed scaling is turned on, Amazon ECS manages the scale-in and scale-out actions of 			the Auto Scaling group. Amazon ECS manages a target tracking scaling policy using an Amazon ECS 			managed CloudWatch metric with the specified targetCapacity value as the target 			value for the metric. For more information, see Using managed scaling in the Amazon Elastic Container Service Developer Guide.
@@ -179,6 +142,38 @@ pub struct Tag {
 /// If managed scaling is off, the user must manage the scaling of the Auto Scaling 			group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ManagedScaling {
+
+
+    /// 
+    /// The period of time, in seconds, after a newly launched Amazon EC2 instance can contribute 			to CloudWatch metrics for Auto Scaling group. If this parameter is omitted, the default value 			of 300 seconds is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceWarmupPeriod")]
+    pub instance_warmup_period: Option<i64>,
+
+
+    /// 
+    /// The maximum number of Amazon EC2 instances that Amazon ECS will scale out at one time. The scale 			in process is not affected by this parameter. If this parameter is omitted, the default 			value of 1 is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumScalingStepSize")]
+    pub maximum_scaling_step_size: Option<i64>,
 
 
     /// 
@@ -199,38 +194,6 @@ pub struct ManagedScaling {
     /// Update requires: No interruption
     #[serde(rename = "MinimumScalingStepSize")]
     pub minimum_scaling_step_size: Option<i64>,
-
-
-    /// 
-    /// The maximum number of Amazon EC2 instances that Amazon ECS will scale out at one time. The scale 			in process is not affected by this parameter. If this parameter is omitted, the default 			value of 1 is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumScalingStepSize")]
-    pub maximum_scaling_step_size: Option<i64>,
-
-
-    /// 
-    /// The period of time, in seconds, after a newly launched Amazon EC2 instance can contribute 			to CloudWatch metrics for Auto Scaling group. If this parameter is omitted, the default value 			of 300 seconds is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceWarmupPeriod")]
-    pub instance_warmup_period: Option<i64>,
 
 
     /// 
@@ -283,4 +246,41 @@ impl Default for ManagedScalingStatusEnum {
         ManagedScalingStatusEnum::Disabled
     }
 }
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
 

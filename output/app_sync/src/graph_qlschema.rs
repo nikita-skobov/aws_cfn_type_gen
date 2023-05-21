@@ -6,6 +6,18 @@ pub struct CfnGraphQLSchema {
 
 
     /// 
+    /// The AWS AppSync GraphQL API identifier to which you want to apply this schema.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
+
+
+    /// 
     /// The text representation of a GraphQL schema in SDL format.
     /// 
     /// For more information about using the Ref function, see Ref.
@@ -29,18 +41,6 @@ pub struct CfnGraphQLSchema {
     /// Update requires: No interruption
     #[serde(rename = "DefinitionS3Location")]
     pub definition_s3_location: Option<String>,
-
-
-    /// 
-    /// The AWS AppSync GraphQL API identifier to which you want to apply this schema.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
 
 }
 

@@ -6,34 +6,6 @@ pub struct CfnContact {
 
 
     /// 
-    /// A list of stages. A contact has an engagement plan with stages that contact specified     contact channels. An escalation plan uses stages that contact specified contacts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Stage
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Plan")]
-    pub plan: Option<Vec<Stage>>,
-
-
-    /// 
-    /// Refers to the type of contact:
-    /// 
-    /// PERSONAL: A single, individual contact.                        ESCALATION: An escalation plan.                        ONCALL_SCHEDULE: An on-call schedule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ESCALATION | ONCALL_SCHEDULE | PERSONAL
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: ContactTypeEnum,
-
-
-    /// 
     /// The unique and identifiable alias of the contact or escalation plan.
     /// 
     /// Required: Yes
@@ -67,6 +39,34 @@ pub struct CfnContact {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     pub display_name: String,
+
+
+    /// 
+    /// A list of stages. A contact has an engagement plan with stages that contact specified     contact channels. An escalation plan uses stages that contact specified contacts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Stage
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Plan")]
+    pub plan: Option<Vec<Stage>>,
+
+
+    /// 
+    /// Refers to the type of contact:
+    /// 
+    /// PERSONAL: A single, individual contact.                        ESCALATION: An escalation plan.                        ONCALL_SCHEDULE: An on-call schedule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ESCALATION | ONCALL_SCHEDULE | PERSONAL
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: ContactTypeEnum,
 
 }
 
@@ -112,22 +112,6 @@ pub struct ChannelTargetInfo {
 
 
     /// 
-    /// The number of minutes to wait before retrying to send engagement if the engagement     initially failed.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 60
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetryIntervalInMinutes")]
-    pub retry_interval_in_minutes: i64,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the contact channel.
     /// 
     /// Required: Yes
@@ -144,53 +128,21 @@ pub struct ChannelTargetInfo {
     #[serde(rename = "ChannelId")]
     pub channel_id: String,
 
-}
-
-
-
-
-/// The Stage property type specifies a set amount of time that an escalation       plan or engagement plan engages the specified contacts or contact methods.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Stage {
-
 
     /// 
-    /// The time to wait until beginning the next stage. The duration can only be set to 0 if a     target is specified.
+    /// The number of minutes to wait before retrying to send engagement if the engagement     initially failed.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: Integer
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 30
+    /// Maximum: 60
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DurationInMinutes")]
-    pub duration_in_minutes: Option<i64>,
-
-
-    /// 
-    /// The contacts or contact methods that the escalation plan or engagement plan is     engaging.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Targets
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Option<Vec<Targets>>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RotationIds")]
-    pub rotation_ids: Option<Vec<String>>,
+    #[serde(rename = "RetryIntervalInMinutes")]
+    pub retry_interval_in_minutes: i64,
 
 }
 
@@ -236,21 +188,57 @@ pub struct ContactTargetInfo {
 
 
 
-/// The contact or contact channel that's being engaged.
+/// The Stage property type specifies a set amount of time that an escalation       plan or engagement plan engages the specified contacts or contact methods.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Targets {
+pub struct Stage {
 
 
     /// 
-    /// The contact that Incident Manager is engaging during an incident.
+    /// The time to wait until beginning the next stage. The duration can only be set to 0 if a     target is specified.
     /// 
     /// Required: No
     ///
-    /// Type: ContactTargetInfo
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 30
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ContactTargetInfo")]
-    pub contact_target_info: Option<ContactTargetInfo>,
+    #[serde(rename = "DurationInMinutes")]
+    pub duration_in_minutes: Option<i64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RotationIds")]
+    pub rotation_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The contacts or contact methods that the escalation plan or engagement plan is     engaging.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Targets
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Option<Vec<Targets>>,
+
+}
+
+
+
+
+/// The contact or contact channel that's being engaged.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Targets {
 
 
     /// 
@@ -263,6 +251,18 @@ pub struct Targets {
     /// Update requires: No interruption
     #[serde(rename = "ChannelTargetInfo")]
     pub channel_target_info: Option<ChannelTargetInfo>,
+
+
+    /// 
+    /// The contact that Incident Manager is engaging during an incident.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ContactTargetInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContactTargetInfo")]
+    pub contact_target_info: Option<ContactTargetInfo>,
 
 }
 

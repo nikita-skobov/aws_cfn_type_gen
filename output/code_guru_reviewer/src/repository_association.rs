@@ -6,24 +6,6 @@ pub struct CfnRepositoryAssociation {
 
 
     /// 
-    /// The name of the repository.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^\S[\w.-]*$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The name of the bucket. This is required for your S3Bucket repository. The name must start with the prefix codeguru-reviewer-*.
     /// 
     /// Required: No
@@ -56,31 +38,21 @@ pub struct CfnRepositoryAssociation {
 
 
     /// 
-    /// The type of repository that contains the source code to be reviewed. The valid values are:
-    /// 
-    /// CodeCommit            Bitbucket            GitHubEnterpriseServer           S3Bucket
+    /// The name of the repository.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
-    /// 
-    /// A tag key (for example, CostCenter, 						Environment, Project, or Secret). Tag 						keys are case sensitive. 				 					An optional field known as a tag value (for example, 						111122223333, Production, or a team name). 						Omitting the tag value is the same as using an empty string. Like tag keys, tag 						values are case sensitive.
-    /// 
-    /// Required: No
+    /// Minimum: 1
     ///
-    /// Type: List of Tag
+    /// Maximum: 100
+    ///
+    /// Pattern: ^\S[\w.-]*$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -101,6 +73,34 @@ pub struct CfnRepositoryAssociation {
     /// Update requires: Replacement
     #[serde(rename = "Owner")]
     pub owner: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
+    /// 
+    /// A tag key (for example, CostCenter, 						Environment, Project, or Secret). Tag 						keys are case sensitive. 				 					An optional field known as a tag value (for example, 						111122223333, Production, or a team name). 						Omitting the tag value is the same as using an empty string. Like tag keys, tag 						values are case sensitive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The type of repository that contains the source code to be reviewed. The valid values are:
+    /// 
+    /// CodeCommit            Bitbucket            GitHubEnterpriseServer           S3Bucket
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }
 
@@ -129,17 +129,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -148,6 +137,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

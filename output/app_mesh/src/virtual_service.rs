@@ -10,6 +10,22 @@ pub struct CfnVirtualService {
 
 
     /// 
+    /// The name of the service mesh to create the virtual service in.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MeshName")]
+    pub mesh_name: String,
+
+
+    /// 
     /// The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then        the account that you specify must share the mesh with your account before you can create        the resource in the service mesh. For more information about mesh sharing, see Working with shared meshes.
     /// 
     /// Required: No
@@ -23,6 +39,18 @@ pub struct CfnVirtualService {
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
     pub mesh_owner: Option<String>,
+
+
+    /// 
+    /// The virtual service specification to apply.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: VirtualServiceSpec
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Spec")]
+    pub spec: VirtualServiceSpec,
 
 
     /// 
@@ -40,22 +68,6 @@ pub struct CfnVirtualService {
 
 
     /// 
-    /// The name of the service mesh to create the virtual service in.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeshName")]
-    pub mesh_name: String,
-
-
-    /// 
     /// The name to use for the virtual service.
     /// 
     /// Required: Yes
@@ -65,18 +77,6 @@ pub struct CfnVirtualService {
     /// Update requires: Replacement
     #[serde(rename = "VirtualServiceName")]
     pub virtual_service_name: String,
-
-
-    /// 
-    /// The virtual service specification to apply.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: VirtualServiceSpec
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Spec")]
-    pub spec: VirtualServiceSpec,
 
 }
 
@@ -91,6 +91,68 @@ impl cfn_resources::CfnResource for CfnVirtualService {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// An object that represents a virtual node service provider.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VirtualNodeServiceProvider {
+
+
+    /// 
+    /// The name of the virtual node that is acting as a service provider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VirtualNodeName")]
+    pub virtual_node_name: String,
+
+}
+
+
 
 
 /// An object that represents a virtual node service provider.
@@ -118,58 +180,9 @@ pub struct VirtualRouterServiceProvider {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
 /// An object that represents the provider for a virtual service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VirtualServiceProvider {
-
-
-    /// 
-    /// The virtual router associated with a virtual service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VirtualRouterServiceProvider
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VirtualRouter")]
-    pub virtual_router: Option<VirtualRouterServiceProvider>,
 
 
     /// 
@@ -182,6 +195,18 @@ pub struct VirtualServiceProvider {
     /// Update requires: No interruption
     #[serde(rename = "VirtualNode")]
     pub virtual_node: Option<VirtualNodeServiceProvider>,
+
+
+    /// 
+    /// The virtual router associated with a virtual service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VirtualRouterServiceProvider
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VirtualRouter")]
+    pub virtual_router: Option<VirtualRouterServiceProvider>,
 
 }
 
@@ -203,31 +228,6 @@ pub struct VirtualServiceSpec {
     /// Update requires: No interruption
     #[serde(rename = "Provider")]
     pub provider: Option<VirtualServiceProvider>,
-
-}
-
-
-
-
-/// An object that represents a virtual node service provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VirtualNodeServiceProvider {
-
-
-    /// 
-    /// The name of the virtual node that is acting as a service provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VirtualNodeName")]
-    pub virtual_node_name: String,
 
 }
 

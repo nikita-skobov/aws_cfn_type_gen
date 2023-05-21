@@ -10,6 +10,22 @@ pub struct CfnRecordSet {
 
 
     /// 
+    /// Alias resource record sets only: Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that 			you want to route traffic to.
+    /// 
+    /// If you're creating resource records sets for a private hosted zone, note the 			following:
+    /// 
+    /// You can't create an alias resource record set in a private hosted zone to 					route traffic to a CloudFront distribution.               For information about creating failover resource record sets in a private 					hosted zone, see Configuring Failover in a Private Hosted Zone in the 						Amazon Route 53 Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AliasTarget
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AliasTarget")]
+    pub alias_target: Option<AliasTarget>,
+
+
+    /// 
     /// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
     /// 
     /// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
@@ -24,53 +40,17 @@ pub struct CfnRecordSet {
 
 
     /// 
-    /// Resource record sets that have a routing policy other than 				simple: An identifier that differentiates among multiple resource record 			sets that have the same combination of name and type, such as multiple weighted resource 			record sets named acme.example.com that have a type of A. In a group of resource record 			sets that have the same name and type, the value of SetIdentifier must be 			unique for each resource record set.
-    /// 
-    /// For information about routing policies, see Choosing a Routing 				Policy in the Amazon Route 53 Developer Guide.
+    /// Optional: Any comments you want to include about a change batch 			request.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SetIdentifier")]
-    pub set_identifier: Option<String>,
-
-
-    /// 
-    /// The resource record cache time to live (TTL), in seconds. Note the following:
-    /// 
-    /// If you're creating or updating an alias resource record set, omit 						TTL. Amazon Route 53 uses the value of TTL for the 					alias target.               If you're associating this resource record set with a health check (if you're 					adding a HealthCheckId element), we recommend that you specify a 						TTL of 60 seconds or less so clients respond quickly to changes 					in health status.               All of the resource record sets in a group of weighted resource record sets 					must have the same value for TTL.               If a group of weighted resource record sets includes one or more weighted 					alias resource record sets for which the alias target is an ELB load balancer, 					we recommend that you specify a TTL of 60 seconds for all of the 					non-alias weighted resource record sets that have the same name and type. Values 					other than 60 seconds (the TTL for load balancers) will change the effect of the 					values that you specify for Weight.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TTL")]
-    pub ttl: Option<String>,
-
-
-    /// 
-    /// The name of the hosted zone that you want to create records in. You must include a trailing dot (for example, www.example.com.) as part of       the HostedZoneName.
-    /// 
-    /// When you create a stack using an AWS::Route53::RecordSet that specifies HostedZoneName, AWS CloudFormation attempts to find a hosted zone       whose name matches the HostedZoneName. If AWS CloudFormation cannot find a hosted zone with a matching domain name, or if there is more than one       hosted zone with the specified domain name, AWS CloudFormation will not create the stack.
-    /// 
-    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 32
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HostedZoneName")]
-    pub hosted_zone_name: Option<String>,
+    #[serde(rename = "Comment")]
+    pub comment: Option<String>,
 
 
     /// 
@@ -100,62 +80,6 @@ pub struct CfnRecordSet {
 
 
     /// 
-    /// One or more values that correspond with the value that you specified for the Type property. For example, if you specified 			A for Type, you specify one or more IP addresses in IPv4 format for ResourceRecords. 			For information about the format of values for each record type, see 			Supported DNS Resource Record Types 			in the Amazon Route 53 Developer Guide.
-    /// 
-    /// Note the following:
-    /// 
-    /// You can specify more than one value for all record types except CNAME and SOA.The maximum length of a value is 4000 characters.If you're creating an alias record, omit ResourceRecords.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceRecords")]
-    pub resource_records: Option<Vec<String>>,
-
-
-    /// 
-    /// Weighted resource record sets only: Among resource record sets 			that have the same combination of DNS name and type, a value that determines the 			proportion of DNS queries that Amazon Route 53 responds to using the current resource 			record set. Route 53 calculates the sum of the weights for the resource record sets that 			have the same combination of DNS name and type. Route 53 then responds to queries based 			on the ratio of a resource's weight to the total. Note the following:
-    /// 
-    /// You must specify a value for the Weight element for every 					weighted resource record set.               You can only specify one ResourceRecord per weighted resource 					record set.               You can't create latency, failover, or geolocation resource record sets that 					have the same values for the Name and Type elements as 					weighted resource record sets.               You can create a maximum of 100 weighted resource record sets that have the 					same values for the Name and Type elements.               For weighted (but not weighted alias) resource record sets, if you set 						Weight to 0 for a resource record set, Route 53 					never responds to queries with the applicable value for that resource record 					set. However, if you set Weight to 0 for all resource 					record sets that have the same combination of DNS name and type, traffic is 					routed to all resources with equal probability.        The effect of setting Weight to 0 is different when 					you associate health checks with weighted resource record sets. For more 					information, see Options for Configuring Route 53 Active-Active and Active-Passive 						Failover in the Amazon Route 53 Developer 					Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
-
-
-    /// 
-    /// The DNS record type. For information about different record types and how data is 			encoded for them, see Supported DNS Resource 				Record Types in the Amazon Route 53 Developer 			Guide.
-    /// 
-    /// Valid values for basic resource record sets: A | AAAA | 				CAA | CNAME | DS |MX | 				NAPTR | NS | PTR | SOA | 				SPF | SRV | TXT
-    /// 
-    /// Values for weighted, latency, geolocation, and failover resource record sets: 				A | AAAA | CAA | CNAME | 				MX | NAPTR | PTR | SPF | 				SRV | TXT. When creating a group of weighted, latency, 			geolocation, or failover resource record sets, specify the same value for all of the 			resource record sets in the group.
-    /// 
-    /// Valid values for multivalue answer resource record sets: A | 				AAAA | MX | NAPTR | PTR | 				SPF | SRV | TXT
-    /// 
-    /// NoteSPF records were formerly used to verify the identity of the sender of email 				messages. However, we no longer recommend that you create resource record sets for 				which the value of Type is SPF. RFC 7208, Sender 					Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 					1, has been updated to say, "...[I]ts existence and mechanism defined 				in [RFC4408] have led to some interoperability issues. Accordingly, its use is no 				longer appropriate for SPF version 1; implementations are not to use it." In RFC 				7208, see section 14.1, The SPF DNS Record Type.
-    /// 
-    /// Values for alias resource record sets:
-    /// 
-    /// Amazon API Gateway custom regional APIs and 						edge-optimized APIs:          A                                CloudFront distributions:          A                If IPv6 is enabled for the distribution, create two resource record sets to 					route traffic to your distribution, one with a value of A and one 					with a value of AAAA.                         Amazon API Gateway environment that has a regionalized 						subdomain: A                                ELB load balancers:          A | AAAA                                Amazon S3 buckets:          A                                Amazon Virtual Private Cloud interface VPC 						endpoints          A                                Another resource record set in this hosted 						zone: Specify the type of the resource record set that you're 					creating the alias for. All values are supported except NS and 						SOA.        NoteIf you're creating an alias record that has the same name as the hosted 						zone (known as the zone apex), you can't route traffic to a record for which 						the value of Type is CNAME. This is because the 						alias record must have the same type as the record you're routing traffic 						to, and creating a CNAME record for the zone apex isn't supported even for 						an alias record.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: A | AAAA | CAA | CNAME | DS | MX | NAPTR | NS | PTR | SOA | SPF | SRV | TXT
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: RecordSetTypeEnum,
-
-
-    /// 
     /// Geolocation resource record sets only: A complex type that lets 			you control how Amazon Route 53 responds to DNS queries based on the geographic origin 			of the query. For example, if you want all queries from Africa to be routed to a web 			server with an IP address of 192.0.2.111, create a resource record set with 			a Type of A and a ContinentCode of 				AF.
     /// 
     /// NoteAlthough creating geolocation and geolocation alias resource record sets in a 				private hosted zone is allowed, it's not supported.
@@ -177,64 +101,6 @@ pub struct CfnRecordSet {
     /// Update requires: No interruption
     #[serde(rename = "GeoLocation")]
     pub geo_location: Option<GeoLocation>,
-
-
-    /// 
-    /// For ChangeResourceRecordSets requests, the name of the record that you 			want to create, update, or delete. For ListResourceRecordSets responses, 			the name of a record in the specified hosted zone.
-    /// 
-    /// ChangeResourceRecordSets Only
-    /// 
-    /// Enter a fully qualified domain name, for example, www.example.com. You 			can optionally include a trailing dot. If you omit the trailing dot, Amazon Route 53 			assumes that the domain name that you specify is fully qualified. This means that Route 			53 treats www.example.com (without a trailing dot) and 				www.example.com. (with a trailing dot) as identical.
-    /// 
-    /// For information about how to specify characters other than a-z, 				0-9, and - (hyphen) and how to specify internationalized 			domain names, see DNS Domain Name 				Format in the Amazon Route 53 Developer Guide.
-    /// 
-    /// You can use the asterisk (*) wildcard to replace the leftmost label in a domain name, 			for example, *.example.com. Note the following:
-    /// 
-    /// The * must replace the entire label. For example, you can't specify 						*prod.example.com or prod*.example.com.               The * can't replace any of the middle labels, for example, 					marketing.*.example.com.               If you include * in any position other than the leftmost label in a domain 					name, DNS treats it as an * character (ASCII 42), not as a wildcard.        ImportantYou can't use the * wildcard for resource records sets that have a type of 						NS.
-    /// 
-    /// You can use the * wildcard as the leftmost label in a domain name, for example, 				*.example.com. You can't use an * for one of the middle labels, for 			example, marketing.*.example.com. In addition, the * must replace the 			entire label; for example, you can't specify prod*.example.com.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The ID of the hosted zone that you want to create records in.
-    /// 
-    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 32
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: Option<String>,
-
-
-    /// 
-    /// Alias resource record sets only: Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that 			you want to route traffic to.
-    /// 
-    /// If you're creating resource records sets for a private hosted zone, note the 			following:
-    /// 
-    /// You can't create an alias resource record set in a private hosted zone to 					route traffic to a CloudFront distribution.               For information about creating failover resource record sets in a private 					hosted zone, see Configuring Failover in a Private Hosted Zone in the 						Amazon Route 53 Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AliasTarget
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AliasTarget")]
-    pub alias_target: Option<AliasTarget>,
 
 
     /// 
@@ -280,17 +146,37 @@ pub struct CfnRecordSet {
 
 
     /// 
-    /// Optional: Any comments you want to include about a change batch 			request.
+    /// The ID of the hosted zone that you want to create records in.
+    /// 
+    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 256
+    /// Maximum: 32
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Comment")]
-    pub comment: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "HostedZoneId")]
+    pub hosted_zone_id: Option<String>,
+
+
+    /// 
+    /// The name of the hosted zone that you want to create records in. You must include a trailing dot (for example, www.example.com.) as part of       the HostedZoneName.
+    /// 
+    /// When you create a stack using an AWS::Route53::RecordSet that specifies HostedZoneName, AWS CloudFormation attempts to find a hosted zone       whose name matches the HostedZoneName. If AWS CloudFormation cannot find a hosted zone with a matching domain name, or if there is more than one       hosted zone with the specified domain name, AWS CloudFormation will not create the stack.
+    /// 
+    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HostedZoneName")]
+    pub hosted_zone_name: Option<String>,
 
 
     /// 
@@ -307,6 +193,32 @@ pub struct CfnRecordSet {
     /// Update requires: No interruption
     #[serde(rename = "MultiValueAnswer")]
     pub multi_value_answer: Option<bool>,
+
+
+    /// 
+    /// For ChangeResourceRecordSets requests, the name of the record that you 			want to create, update, or delete. For ListResourceRecordSets responses, 			the name of a record in the specified hosted zone.
+    /// 
+    /// ChangeResourceRecordSets Only
+    /// 
+    /// Enter a fully qualified domain name, for example, www.example.com. You 			can optionally include a trailing dot. If you omit the trailing dot, Amazon Route 53 			assumes that the domain name that you specify is fully qualified. This means that Route 			53 treats www.example.com (without a trailing dot) and 				www.example.com. (with a trailing dot) as identical.
+    /// 
+    /// For information about how to specify characters other than a-z, 				0-9, and - (hyphen) and how to specify internationalized 			domain names, see DNS Domain Name 				Format in the Amazon Route 53 Developer Guide.
+    /// 
+    /// You can use the asterisk (*) wildcard to replace the leftmost label in a domain name, 			for example, *.example.com. Note the following:
+    /// 
+    /// The * must replace the entire label. For example, you can't specify 						*prod.example.com or prod*.example.com.               The * can't replace any of the middle labels, for example, 					marketing.*.example.com.               If you include * in any position other than the leftmost label in a domain 					name, DNS treats it as an * character (ASCII 42), not as a wildcard.        ImportantYou can't use the * wildcard for resource records sets that have a type of 						NS.
+    /// 
+    /// You can use the * wildcard as the leftmost label in a domain name, for example, 				*.example.com. You can't use an * for one of the middle labels, for 			example, marketing.*.example.com. In addition, the * must replace the 			entire label; for example, you can't specify prod*.example.com.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -328,90 +240,96 @@ pub struct CfnRecordSet {
     #[serde(rename = "Region")]
     pub region: Option<RecordSetRegionEnum>,
 
+
+    /// 
+    /// One or more values that correspond with the value that you specified for the Type property. For example, if you specified 			A for Type, you specify one or more IP addresses in IPv4 format for ResourceRecords. 			For information about the format of values for each record type, see 			Supported DNS Resource Record Types 			in the Amazon Route 53 Developer Guide.
+    /// 
+    /// Note the following:
+    /// 
+    /// You can specify more than one value for all record types except CNAME and SOA.The maximum length of a value is 4000 characters.If you're creating an alias record, omit ResourceRecords.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceRecords")]
+    pub resource_records: Option<Vec<String>>,
+
+
+    /// 
+    /// Resource record sets that have a routing policy other than 				simple: An identifier that differentiates among multiple resource record 			sets that have the same combination of name and type, such as multiple weighted resource 			record sets named acme.example.com that have a type of A. In a group of resource record 			sets that have the same name and type, the value of SetIdentifier must be 			unique for each resource record set.
+    /// 
+    /// For information about routing policies, see Choosing a Routing 				Policy in the Amazon Route 53 Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SetIdentifier")]
+    pub set_identifier: Option<String>,
+
+
+    /// 
+    /// The resource record cache time to live (TTL), in seconds. Note the following:
+    /// 
+    /// If you're creating or updating an alias resource record set, omit 						TTL. Amazon Route 53 uses the value of TTL for the 					alias target.               If you're associating this resource record set with a health check (if you're 					adding a HealthCheckId element), we recommend that you specify a 						TTL of 60 seconds or less so clients respond quickly to changes 					in health status.               All of the resource record sets in a group of weighted resource record sets 					must have the same value for TTL.               If a group of weighted resource record sets includes one or more weighted 					alias resource record sets for which the alias target is an ELB load balancer, 					we recommend that you specify a TTL of 60 seconds for all of the 					non-alias weighted resource record sets that have the same name and type. Values 					other than 60 seconds (the TTL for load balancers) will change the effect of the 					values that you specify for Weight.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TTL")]
+    pub ttl: Option<String>,
+
+
+    /// 
+    /// The DNS record type. For information about different record types and how data is 			encoded for them, see Supported DNS Resource 				Record Types in the Amazon Route 53 Developer 			Guide.
+    /// 
+    /// Valid values for basic resource record sets: A | AAAA | 				CAA | CNAME | DS |MX | 				NAPTR | NS | PTR | SOA | 				SPF | SRV | TXT
+    /// 
+    /// Values for weighted, latency, geolocation, and failover resource record sets: 				A | AAAA | CAA | CNAME | 				MX | NAPTR | PTR | SPF | 				SRV | TXT. When creating a group of weighted, latency, 			geolocation, or failover resource record sets, specify the same value for all of the 			resource record sets in the group.
+    /// 
+    /// Valid values for multivalue answer resource record sets: A | 				AAAA | MX | NAPTR | PTR | 				SPF | SRV | TXT
+    /// 
+    /// NoteSPF records were formerly used to verify the identity of the sender of email 				messages. However, we no longer recommend that you create resource record sets for 				which the value of Type is SPF. RFC 7208, Sender 					Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 					1, has been updated to say, "...[I]ts existence and mechanism defined 				in [RFC4408] have led to some interoperability issues. Accordingly, its use is no 				longer appropriate for SPF version 1; implementations are not to use it." In RFC 				7208, see section 14.1, The SPF DNS Record Type.
+    /// 
+    /// Values for alias resource record sets:
+    /// 
+    /// Amazon API Gateway custom regional APIs and 						edge-optimized APIs:          A                                CloudFront distributions:          A                If IPv6 is enabled for the distribution, create two resource record sets to 					route traffic to your distribution, one with a value of A and one 					with a value of AAAA.                         Amazon API Gateway environment that has a regionalized 						subdomain: A                                ELB load balancers:          A | AAAA                                Amazon S3 buckets:          A                                Amazon Virtual Private Cloud interface VPC 						endpoints          A                                Another resource record set in this hosted 						zone: Specify the type of the resource record set that you're 					creating the alias for. All values are supported except NS and 						SOA.        NoteIf you're creating an alias record that has the same name as the hosted 						zone (known as the zone apex), you can't route traffic to a record for which 						the value of Type is CNAME. This is because the 						alias record must have the same type as the record you're routing traffic 						to, and creating a CNAME record for the zone apex isn't supported even for 						an alias record.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: A | AAAA | CAA | CNAME | DS | MX | NAPTR | NS | PTR | SOA | SPF | SRV | TXT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: RecordSetTypeEnum,
+
+
+    /// 
+    /// Weighted resource record sets only: Among resource record sets 			that have the same combination of DNS name and type, a value that determines the 			proportion of DNS queries that Amazon Route 53 responds to using the current resource 			record set. Route 53 calculates the sum of the weights for the resource record sets that 			have the same combination of DNS name and type. Route 53 then responds to queries based 			on the ratio of a resource's weight to the total. Note the following:
+    /// 
+    /// You must specify a value for the Weight element for every 					weighted resource record set.               You can only specify one ResourceRecord per weighted resource 					record set.               You can't create latency, failover, or geolocation resource record sets that 					have the same values for the Name and Type elements as 					weighted resource record sets.               You can create a maximum of 100 weighted resource record sets that have the 					same values for the Name and Type elements.               For weighted (but not weighted alias) resource record sets, if you set 						Weight to 0 for a resource record set, Route 53 					never responds to queries with the applicable value for that resource record 					set. However, if you set Weight to 0 for all resource 					record sets that have the same combination of DNS name and type, traffic is 					routed to all resources with equal probability.        The effect of setting Weight to 0 is different when 					you associate health checks with weighted resource record sets. For more 					information, see Options for Configuring Route 53 Active-Active and Active-Passive 						Failover in the Amazon Route 53 Developer 					Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
+
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RecordSetFailoverEnum {
-
-    /// PRIMARY
-    #[serde(rename = "PRIMARY")]
-    Primary,
-
-    /// SECONDARY
-    #[serde(rename = "SECONDARY")]
-    Secondary,
-
-}
-
-impl Default for RecordSetFailoverEnum {
-    fn default() -> Self {
-        RecordSetFailoverEnum::Primary
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RecordSetTypeEnum {
-
-    /// A
-    #[serde(rename = "A")]
-    A,
-
-    /// AAAA
-    #[serde(rename = "AAAA")]
-    Aaaa,
-
-    /// CAA
-    #[serde(rename = "CAA")]
-    Caa,
-
-    /// CNAME
-    #[serde(rename = "CNAME")]
-    Cname,
-
-    /// DS
-    #[serde(rename = "DS")]
-    Ds,
-
-    /// MX
-    #[serde(rename = "MX")]
-    Mx,
-
-    /// NAPTR
-    #[serde(rename = "NAPTR")]
-    Naptr,
-
-    /// NS
-    #[serde(rename = "NS")]
-    Ns,
-
-    /// PTR
-    #[serde(rename = "PTR")]
-    Ptr,
-
-    /// SOA
-    #[serde(rename = "SOA")]
-    Soa,
-
-    /// SPF
-    #[serde(rename = "SPF")]
-    Spf,
-
-    /// SRV
-    #[serde(rename = "SRV")]
-    Srv,
-
-    /// TXT
-    #[serde(rename = "TXT")]
-    Txt,
-
-}
-
-impl Default for RecordSetTypeEnum {
-    fn default() -> Self {
-        RecordSetTypeEnum::A
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RecordSetRegionEnum {
@@ -520,6 +438,88 @@ impl Default for RecordSetRegionEnum {
     }
 }
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RecordSetTypeEnum {
+
+    /// A
+    #[serde(rename = "A")]
+    A,
+
+    /// AAAA
+    #[serde(rename = "AAAA")]
+    Aaaa,
+
+    /// CAA
+    #[serde(rename = "CAA")]
+    Caa,
+
+    /// CNAME
+    #[serde(rename = "CNAME")]
+    Cname,
+
+    /// DS
+    #[serde(rename = "DS")]
+    Ds,
+
+    /// MX
+    #[serde(rename = "MX")]
+    Mx,
+
+    /// NAPTR
+    #[serde(rename = "NAPTR")]
+    Naptr,
+
+    /// NS
+    #[serde(rename = "NS")]
+    Ns,
+
+    /// PTR
+    #[serde(rename = "PTR")]
+    Ptr,
+
+    /// SOA
+    #[serde(rename = "SOA")]
+    Soa,
+
+    /// SPF
+    #[serde(rename = "SPF")]
+    Spf,
+
+    /// SRV
+    #[serde(rename = "SRV")]
+    Srv,
+
+    /// TXT
+    #[serde(rename = "TXT")]
+    Txt,
+
+}
+
+impl Default for RecordSetTypeEnum {
+    fn default() -> Self {
+        RecordSetTypeEnum::A
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RecordSetFailoverEnum {
+
+    /// PRIMARY
+    #[serde(rename = "PRIMARY")]
+    Primary,
+
+    /// SECONDARY
+    #[serde(rename = "SECONDARY")]
+    Secondary,
+
+}
+
+impl Default for RecordSetFailoverEnum {
+    fn default() -> Self {
+        RecordSetFailoverEnum::Primary
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnRecordSet {
     fn type_string() -> &'static str {
@@ -532,104 +532,27 @@ impl cfn_resources::CfnResource for CfnRecordSet {
 }
 
 
-/// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
-///
-/// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CidrRoutingConfig {
-
-
-    /// 
-    /// The CIDR collection location name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 16
-    ///
-    /// Pattern: [0-9A-Za-z_\-\*]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LocationName")]
-    pub location_name: String,
-
-
-    /// 
-    /// The CIDR collection ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CollectionId")]
-    pub collection_id: String,
-
-}
-
-
-
-
-/// A complex type that contains information about a geographic location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GeoLocation {
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset-geolocation.html#cfn-route53-recordset-geolocation-continentcode
-    #[serde(rename = "ContinentCode")]
-    pub continent_code: Option<String>,
-
-
-    /// 
-    /// For geolocation resource record sets, the two-letter code for a state of the United States. 			Route 53 doesn't support any other values for SubdivisionCode. For a list of state abbreviations, see 			Appendix B: Two–Letter State and Possession Abbreviations 			on the United States Postal Service website.
-    /// 
-    /// If you specify subdivisioncode, you must also specify US for CountryCode.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubdivisionCode")]
-    pub subdivision_code: Option<String>,
-
-
-    /// 
-    /// For geolocation resource record sets, the two-letter code for a country.
-    /// 
-    /// Route 53 uses the two-letter country codes that are specified in 			ISO standard 3166-1 alpha-2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CountryCode")]
-    pub country_code: Option<String>,
-
-}
-
-
-
-
 /// Alias records only: Information about the AWS resource, such as a CloudFront distribution or 			an Amazon S3 bucket, that you want to route traffic to.
 ///
 /// When creating records for a private hosted zone, note the following:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AliasTarget {
+
+
+    /// 
+    /// Alias records only: The value that you specify depends on where you want to route queries:
+    /// 
+    /// Amazon API Gateway custom regional APIs and edge-optimized APIs 				 					Specify the applicable domain name for your API. You can get the applicable value using the AWS CLI command 						get-domain-names: 						 							 							 						 								For regional APIs, specify the value of regionalDomainName. 							 								For edge-optimized APIs, specify the value of distributionDomainName. This is the name of the 									associated CloudFront distribution, such as da1b2c3d4e5.cloudfront.net. 							 					NoteThe name of the record that you're creating must match a custom domain name for your API, such as 							api.example.com. 				 			 				Amazon Virtual Private Cloud interface VPC endpoint 					 						Enter the API endpoint for the interface endpoint, such as 						vpce-123456789abcdef01-example-us-east-1a.elasticloadbalancing.us-east-1.vpce.amazonaws.com. For edge-optimized APIs, 						this is the domain name for the corresponding CloudFront distribution. You can get the value of DnsName using the AWS CLI command 						describe-vpc-endpoints. 					 			 				CloudFront distribution 				 					Specify the domain name that CloudFront assigned when you created your distribution. 					Your CloudFront distribution must include an alternate domain name that matches the name of the record. 						For example, if the name of the record is acme.example.com, your CloudFront distribution must 						include acme.example.com as one of the alternate domain names. For more information, see 						Using Alternate Domain Names (CNAMEs) in the Amazon CloudFront Developer Guide. 					You can't create a record in a private hosted zone to route traffic to a CloudFront distribution. 					NoteFor failover alias records, you can't specify a CloudFront distribution for both the primary and secondary records. 							A distribution must include an alternate domain name that matches the name of the record. However, the primary and secondary records 							have the same name, and you can't include the same alternate domain name in more than one distribution. 				 			 				Elastic Beanstalk environment 				 					If the domain name for your Elastic Beanstalk environment includes the region that you deployed the environment in, 						you can create an alias record that routes traffic to the environment. For example, the domain name 						my-environment.us-west-2.elasticbeanstalk.com is a regionalized domain name. 					ImportantFor environments that were created before early 2016, the domain name doesn't include the region. To route traffic 							to these environments, you must create a CNAME record instead of an alias record. Note that you can't create a 							CNAME record for the root domain name. For example, if your domain name is example.com, you can create a record 							that routes traffic for acme.example.com to your Elastic Beanstalk environment, but you can't create a record 							that routes traffic for example.com to your Elastic Beanstalk environment. 					For Elastic Beanstalk environments that have regionalized subdomains, specify the CNAME attribute for the environment. 						You can use the following methods to get the value of the CNAME attribute: 						 							 							 							 						 								AWS Management Console: For information about how to get the value by using the console, 									see Using Custom Domains with AWS Elastic Beanstalk in the 									AWS Elastic Beanstalk Developer Guide. 							 								Elastic Beanstalk API: Use the DescribeEnvironments action to get 									the value of the CNAME attribute. For more information, see 									DescribeEnvironments 									in the AWS Elastic Beanstalk API Reference. 							 								AWS CLI: Use the describe-environments command to get the value of the 									CNAME attribute. For more information, see 									describe-environments in the 									AWS CLI. 							 				 			 				ELB load balancer 				 					Specify the DNS name that is associated with the load balancer. Get the DNS name by using the AWS Management Console, 						the ELB API, or the AWS CLI. 						 							 							 							 							 					 								AWS Management Console: Go to the EC2 page, choose Load Balancers 									in the navigation pane, choose the load balancer, choose the Description tab, and get the value 									of the DNS name field. 								If you're routing traffic to a Classic Load Balancer, get the value that begins with dualstack. 									If you're routing traffic to another type of load balancer, get the value that applies to the record type, A or AAAA. 							 								Elastic Load Balancing API: Use DescribeLoadBalancers to get the value 									of DNSName. For more information, see the applicable guide: 								 									 									 								 										Classic Load Balancers: 											DescribeLoadBalancers 										 									 										Application and Network Load Balancers: 											DescribeLoadBalancers 										 									 							 								CloudFormation Fn::GetAtt intrinsic function: Use the 									Fn::GetAtt 									intrinsic function to get the value of DNSName: 								 									 									 								 										Classic Load Balancers. 									 									 										Application and Network Load Balancers. 									 									 							 								AWS CLI: Use describe-load-balancers to get the value of DNSName. 									For more information, see the applicable guide: 								 									 									 								 										Classic Load Balancers: 											describe-load-balancers 										 									 										Application and Network Load Balancers: 											describe-load-balancers 										 									 							 				 			 				Global Accelerator accelerator 				 					Specify the DNS name for your accelerator: 					 						 						 					Global Accelerator API: To get the DNS name, use 							DescribeAccelerator. AWS CLI: To get the DNS name, use 							describe-accelerator. 				 			 				Amazon S3 bucket that is configured as a static website 				 					Specify the domain name of the Amazon S3 website endpoint that you created the bucket in, for example, 						s3-website.us-east-2.amazonaws.com. For more information about valid values, see the table 						Amazon S3 Website Endpoints 						in the Amazon Web Services General Reference. For more information about using S3 buckets for websites, 						see Getting Started with Amazon Route 53 						in the Amazon Route 53 Developer Guide. 					 				 			 				Another Route 53 record 				 					Specify the value of the Name element for a record in the current hosted zone. 					 					NoteIf you're creating an alias record that has the same name as the hosted zone (known as the zone apex), 							you can't specify the domain name for a record for which the value of Type is CNAME. This is because 							the alias record must have the same type as the record that you're routing traffic to, and creating a CNAME record for the 							zone apex isn't supported even for an alias record.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DNSName")]
+    pub dnsname: String,
 
 
     /// 
@@ -665,21 +588,98 @@ pub struct AliasTarget {
     #[serde(rename = "HostedZoneId")]
     pub hosted_zone_id: String,
 
+}
+
+
+
+
+/// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
+///
+/// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CidrRoutingConfig {
+
 
     /// 
-    /// Alias records only: The value that you specify depends on where you want to route queries:
-    /// 
-    /// Amazon API Gateway custom regional APIs and edge-optimized APIs 				 					Specify the applicable domain name for your API. You can get the applicable value using the AWS CLI command 						get-domain-names: 						 							 							 						 								For regional APIs, specify the value of regionalDomainName. 							 								For edge-optimized APIs, specify the value of distributionDomainName. This is the name of the 									associated CloudFront distribution, such as da1b2c3d4e5.cloudfront.net. 							 					NoteThe name of the record that you're creating must match a custom domain name for your API, such as 							api.example.com. 				 			 				Amazon Virtual Private Cloud interface VPC endpoint 					 						Enter the API endpoint for the interface endpoint, such as 						vpce-123456789abcdef01-example-us-east-1a.elasticloadbalancing.us-east-1.vpce.amazonaws.com. For edge-optimized APIs, 						this is the domain name for the corresponding CloudFront distribution. You can get the value of DnsName using the AWS CLI command 						describe-vpc-endpoints. 					 			 				CloudFront distribution 				 					Specify the domain name that CloudFront assigned when you created your distribution. 					Your CloudFront distribution must include an alternate domain name that matches the name of the record. 						For example, if the name of the record is acme.example.com, your CloudFront distribution must 						include acme.example.com as one of the alternate domain names. For more information, see 						Using Alternate Domain Names (CNAMEs) in the Amazon CloudFront Developer Guide. 					You can't create a record in a private hosted zone to route traffic to a CloudFront distribution. 					NoteFor failover alias records, you can't specify a CloudFront distribution for both the primary and secondary records. 							A distribution must include an alternate domain name that matches the name of the record. However, the primary and secondary records 							have the same name, and you can't include the same alternate domain name in more than one distribution. 				 			 				Elastic Beanstalk environment 				 					If the domain name for your Elastic Beanstalk environment includes the region that you deployed the environment in, 						you can create an alias record that routes traffic to the environment. For example, the domain name 						my-environment.us-west-2.elasticbeanstalk.com is a regionalized domain name. 					ImportantFor environments that were created before early 2016, the domain name doesn't include the region. To route traffic 							to these environments, you must create a CNAME record instead of an alias record. Note that you can't create a 							CNAME record for the root domain name. For example, if your domain name is example.com, you can create a record 							that routes traffic for acme.example.com to your Elastic Beanstalk environment, but you can't create a record 							that routes traffic for example.com to your Elastic Beanstalk environment. 					For Elastic Beanstalk environments that have regionalized subdomains, specify the CNAME attribute for the environment. 						You can use the following methods to get the value of the CNAME attribute: 						 							 							 							 						 								AWS Management Console: For information about how to get the value by using the console, 									see Using Custom Domains with AWS Elastic Beanstalk in the 									AWS Elastic Beanstalk Developer Guide. 							 								Elastic Beanstalk API: Use the DescribeEnvironments action to get 									the value of the CNAME attribute. For more information, see 									DescribeEnvironments 									in the AWS Elastic Beanstalk API Reference. 							 								AWS CLI: Use the describe-environments command to get the value of the 									CNAME attribute. For more information, see 									describe-environments in the 									AWS CLI. 							 				 			 				ELB load balancer 				 					Specify the DNS name that is associated with the load balancer. Get the DNS name by using the AWS Management Console, 						the ELB API, or the AWS CLI. 						 							 							 							 							 					 								AWS Management Console: Go to the EC2 page, choose Load Balancers 									in the navigation pane, choose the load balancer, choose the Description tab, and get the value 									of the DNS name field. 								If you're routing traffic to a Classic Load Balancer, get the value that begins with dualstack. 									If you're routing traffic to another type of load balancer, get the value that applies to the record type, A or AAAA. 							 								Elastic Load Balancing API: Use DescribeLoadBalancers to get the value 									of DNSName. For more information, see the applicable guide: 								 									 									 								 										Classic Load Balancers: 											DescribeLoadBalancers 										 									 										Application and Network Load Balancers: 											DescribeLoadBalancers 										 									 							 								CloudFormation Fn::GetAtt intrinsic function: Use the 									Fn::GetAtt 									intrinsic function to get the value of DNSName: 								 									 									 								 										Classic Load Balancers. 									 									 										Application and Network Load Balancers. 									 									 							 								AWS CLI: Use describe-load-balancers to get the value of DNSName. 									For more information, see the applicable guide: 								 									 									 								 										Classic Load Balancers: 											describe-load-balancers 										 									 										Application and Network Load Balancers: 											describe-load-balancers 										 									 							 				 			 				Global Accelerator accelerator 				 					Specify the DNS name for your accelerator: 					 						 						 					Global Accelerator API: To get the DNS name, use 							DescribeAccelerator. AWS CLI: To get the DNS name, use 							describe-accelerator. 				 			 				Amazon S3 bucket that is configured as a static website 				 					Specify the domain name of the Amazon S3 website endpoint that you created the bucket in, for example, 						s3-website.us-east-2.amazonaws.com. For more information about valid values, see the table 						Amazon S3 Website Endpoints 						in the Amazon Web Services General Reference. For more information about using S3 buckets for websites, 						see Getting Started with Amazon Route 53 						in the Amazon Route 53 Developer Guide. 					 				 			 				Another Route 53 record 				 					Specify the value of the Name element for a record in the current hosted zone. 					 					NoteIf you're creating an alias record that has the same name as the hosted zone (known as the zone apex), 							you can't specify the domain name for a record for which the value of Type is CNAME. This is because 							the alias record must have the same type as the record that you're routing traffic to, and creating a CNAME record for the 							zone apex isn't supported even for an alias record.
+    /// The CIDR collection ID.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 1024
+    /// Pattern: [0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DNSName")]
-    pub dnsname: String,
+    #[serde(rename = "CollectionId")]
+    pub collection_id: String,
+
+
+    /// 
+    /// The CIDR collection location name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 16
+    ///
+    /// Pattern: [0-9A-Za-z_\-\*]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LocationName")]
+    pub location_name: String,
+
+}
+
+
+
+
+/// A complex type that contains information about a geographic location.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GeoLocation {
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset-geolocation.html#cfn-route53-recordset-geolocation-continentcode
+    #[serde(rename = "ContinentCode")]
+    pub continent_code: Option<String>,
+
+
+    /// 
+    /// For geolocation resource record sets, the two-letter code for a country.
+    /// 
+    /// Route 53 uses the two-letter country codes that are specified in 			ISO standard 3166-1 alpha-2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CountryCode")]
+    pub country_code: Option<String>,
+
+
+    /// 
+    /// For geolocation resource record sets, the two-letter code for a state of the United States. 			Route 53 doesn't support any other values for SubdivisionCode. For a list of state abbreviations, see 			Appendix B: Two–Letter State and Possession Abbreviations 			on the United States Postal Service website.
+    /// 
+    /// If you specify subdivisioncode, you must also specify US for CountryCode.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubdivisionCode")]
+    pub subdivision_code: Option<String>,
 
 }
 

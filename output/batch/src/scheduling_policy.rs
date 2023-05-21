@@ -6,18 +6,6 @@ pub struct CfnSchedulingPolicy {
 
 
     /// 
-    /// The name of the scheduling policy. It can be up to 128 letters long. It can contain uppercase and lowercase  letters, numbers, hyphens (-), and underscores (_).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// The fair share policy of the scheduling policy.
     /// 
     /// Required: No
@@ -27,6 +15,18 @@ pub struct CfnSchedulingPolicy {
     /// Update requires: No interruption
     #[serde(rename = "FairsharePolicy")]
     pub fairshare_policy: Option<FairsharePolicy>,
+
+
+    /// 
+    /// The name of the scheduling policy. It can be up to 128 letters long. It can contain uppercase and lowercase  letters, numbers, hyphens (-), and underscores (_).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -63,6 +63,24 @@ pub struct FairsharePolicy {
 
 
     /// 
+    /// A value used to reserve some of the available maximum vCPU for fair share identifiers that  aren't already used.
+    /// 
+    /// The reserved ratio is   (computeReservation/100)^ActiveFairShares         where         ActiveFairShares       is the number of active fair share  identifiers.
+    /// 
+    /// For example, a computeReservation value of 50 indicates that AWS Batchreserves  50% of the maximum available vCPU if there's only one fair share identifier. It reserves 25% if  there are two fair share identifiers. It reserves 12.5% if there are three fair share  identifiers. A computeReservation value of 25 indicates that AWS Batch should reserve  25% of the maximum available vCPU if there's only one fair share identifier, 6.25% if there are  two fair share identifiers, and 1.56% if there are three fair share identifiers.
+    /// 
+    /// The minimum value is 0 and the maximum value is 99.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComputeReservation")]
+    pub compute_reservation: Option<f64>,
+
+
+    /// 
     /// The amount of time (in seconds) to use to calculate a fair share percentage for each fair  share identifier in use. A value of zero (0) indicates that only current usage is measured. The  decay allows for more recently run jobs to have more weight than jobs that ran earlier. The  maximum supported value is 604800 (1 week).
     /// 
     /// Required: No
@@ -85,24 +103,6 @@ pub struct FairsharePolicy {
     #[serde(rename = "ShareDistribution")]
     pub share_distribution: Option<Vec<ShareAttributes>>,
 
-
-    /// 
-    /// A value used to reserve some of the available maximum vCPU for fair share identifiers that  aren't already used.
-    /// 
-    /// The reserved ratio is   (computeReservation/100)^ActiveFairShares         where         ActiveFairShares       is the number of active fair share  identifiers.
-    /// 
-    /// For example, a computeReservation value of 50 indicates that AWS Batchreserves  50% of the maximum available vCPU if there's only one fair share identifier. It reserves 25% if  there are two fair share identifiers. It reserves 12.5% if there are three fair share  identifiers. A computeReservation value of 25 indicates that AWS Batch should reserve  25% of the maximum available vCPU if there's only one fair share identifier, 6.25% if there are  two fair share identifiers, and 1.56% if there are three fair share identifiers.
-    /// 
-    /// The minimum value is 0 and the maximum value is 99.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComputeReservation")]
-    pub compute_reservation: Option<f64>,
-
 }
 
 
@@ -111,20 +111,6 @@ pub struct FairsharePolicy {
 /// Specifies the weights for the fair share identifiers for the fair share policy. Fair share  identifiers that aren't included have a default weight of 1.0.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ShareAttributes {
-
-
-    /// 
-    /// The weight factor for the fair share identifier. The default value is 1.0. A lower value has  a higher priority for compute resources. For example, jobs that use a share identifier with a  weight factor of 0.125 (1/8) get 8 times the compute resources of jobs that use a share  identifier with a weight factor of 1.
-    /// 
-    /// The smallest supported value is 0.0001, and the largest supported value is 999.9999.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WeightFactor")]
-    pub weight_factor: Option<f64>,
 
 
     /// 
@@ -141,6 +127,20 @@ pub struct ShareAttributes {
     /// Update requires: No interruption
     #[serde(rename = "ShareIdentifier")]
     pub share_identifier: Option<String>,
+
+
+    /// 
+    /// The weight factor for the fair share identifier. The default value is 1.0. A lower value has  a higher priority for compute resources. For example, jobs that use a share identifier with a  weight factor of 0.125 (1/8) get 8 times the compute resources of jobs that use a share  identifier with a weight factor of 1.
+    /// 
+    /// The smallest supported value is 0.0001, and the largest supported value is 999.9999.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WeightFactor")]
+    pub weight_factor: Option<f64>,
 
 }
 

@@ -6,18 +6,6 @@ pub struct CfnMember {
 
 
     /// 
-    /// The AWS account ID of the account to designate as a          member.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MemberId")]
-    pub member_id: String,
-
-
-    /// 
     /// The ID of the detector associated with the service to add the member to.
     /// 
     /// Required: Yes
@@ -27,18 +15,6 @@ pub struct CfnMember {
     /// Update requires: Replacement
     #[serde(rename = "DetectorId")]
     pub detector_id: String,
-
-
-    /// 
-    /// You can use the Status property to update the status of the          relationship between the member account and its administrator account. Valid          values are Created and Invited when using an             AWS::GuardDuty::Member resource. If the value for this property          is not provided or set to Created, a member account is created but          not invited. If the value of this property is set to Invited, a          member account is created and invited.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
 
 
     /// 
@@ -66,6 +42,18 @@ pub struct CfnMember {
 
 
     /// 
+    /// The AWS account ID of the account to designate as a          member.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MemberId")]
+    pub member_id: String,
+
+
+    /// 
     /// The invitation message that you want to send to the accounts that you're inviting to    GuardDuty as members.
     /// 
     /// Required: No
@@ -75,6 +63,18 @@ pub struct CfnMember {
     /// Update requires: No interruption
     #[serde(rename = "Message")]
     pub message: Option<String>,
+
+
+    /// 
+    /// You can use the Status property to update the status of the          relationship between the member account and its administrator account. Valid          values are Created and Invited when using an             AWS::GuardDuty::Member resource. If the value for this property          is not provided or set to Created, a member account is created but          not invited. If the value of this property is set to Invited, a          member account is created and invited.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
 
 }
 

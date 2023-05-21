@@ -49,18 +49,6 @@ pub struct Schema {
 
 
     /// 
-    /// The name of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaName")]
-    pub schema_name: Option<String>,
-
-
-    /// 
     /// The name of the registry where the schema is stored. Either SchemaArn, or SchemaName and RegistryName has to be provided.
     /// 
     /// Required: No
@@ -82,6 +70,18 @@ pub struct Schema {
     /// Update requires: Replacement
     #[serde(rename = "SchemaArn")]
     pub schema_arn: Option<String>,
+
+
+    /// 
+    /// The name of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaName")]
+    pub schema_name: Option<String>,
 
 }
 

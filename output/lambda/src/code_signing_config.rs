@@ -6,22 +6,6 @@ pub struct CfnCodeSigningConfig {
 
 
     /// 
-    /// Code signing configuration description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// List of allowed publishers.
     /// 
     /// Required: Yes
@@ -43,6 +27,22 @@ pub struct CfnCodeSigningConfig {
     /// Update requires: No interruption
     #[serde(rename = "CodeSigningPolicies")]
     pub code_signing_policies: Option<CodeSigningPolicies>,
+
+
+    /// 
+    /// Code signing configuration description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }
 

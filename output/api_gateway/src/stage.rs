@@ -6,30 +6,6 @@ pub struct CfnStage {
 
 
     /// 
-    /// The identifier of the Deployment that the stage points to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeploymentId")]
-    pub deployment_id: Option<String>,
-
-
-    /// 
-    /// The collection of tags. Each tag element is associated with a given resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// Access log settings, including the access log format and access log destination ARN.
     /// 
     /// Required: No
@@ -39,6 +15,18 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "AccessLogSetting")]
     pub access_log_setting: Option<AccessLogSetting>,
+
+
+    /// 
+    /// Specifies whether a cache cluster is enabled for the stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheClusterEnabled")]
+    pub cache_cluster_enabled: Option<bool>,
 
 
     /// 
@@ -53,90 +41,6 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "CacheClusterSize")]
     pub cache_cluster_size: Option<StageCacheClusterSizeEnum>,
-
-
-    /// 
-    /// The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to API Gateway. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is 128 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StageName")]
-    pub stage_name: Option<String>,
-
-
-    /// 
-    /// Specifies whether active tracing with X-ray is enabled for the Stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TracingEnabled")]
-    pub tracing_enabled: Option<bool>,
-
-
-    /// 
-    /// The stage's description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The version of the associated API documentation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DocumentationVersion")]
-    pub documentation_version: Option<String>,
-
-
-    /// 
-    /// A map (string-to-string map) that defines the stage variables, where the variable name is the key and the variable value is the value. Variable names are limited to alphanumeric characters. Values must match the following regular expression: [A-Za-z0-9-._~:/?#&=,]+.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Variables")]
-    pub variables: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The string identifier of the associated RestApi.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
-
-
-    /// 
-    /// Specifies whether a cache cluster is enabled for the stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheClusterEnabled")]
-    pub cache_cluster_enabled: Option<bool>,
 
 
     /// 
@@ -164,6 +68,42 @@ pub struct CfnStage {
 
 
     /// 
+    /// The identifier of the Deployment that the stage points to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeploymentId")]
+    pub deployment_id: Option<String>,
+
+
+    /// 
+    /// The stage's description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The version of the associated API documentation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DocumentationVersion")]
+    pub documentation_version: Option<String>,
+
+
+    /// 
     /// A map that defines the method settings for a Stage resource. Keys (designated as /{method_setting_key below) are method paths defined as {resource_path}/{http_method} for an individual method override, or /\*/\* for overriding all methods in the stage.
     /// 
     /// Required: No
@@ -173,6 +113,66 @@ pub struct CfnStage {
     /// Update requires: No interruption
     #[serde(rename = "MethodSettings")]
     pub method_settings: Option<Vec<MethodSetting>>,
+
+
+    /// 
+    /// The string identifier of the associated RestApi.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RestApiId")]
+    pub rest_api_id: String,
+
+
+    /// 
+    /// The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to API Gateway. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is 128 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StageName")]
+    pub stage_name: Option<String>,
+
+
+    /// 
+    /// The collection of tags. Each tag element is associated with a given resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Specifies whether active tracing with X-ray is enabled for the Stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TracingEnabled")]
+    pub tracing_enabled: Option<bool>,
+
+
+    /// 
+    /// A map (string-to-string map) that defines the stage variables, where the variable name is the key and the variable value is the value. Variable names are limited to alphanumeric characters. Values must match the following regular expression: [A-Za-z0-9-._~:/?#&=,]+.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Variables")]
+    pub variables: Option<std::collections::HashMap<String, String>>,
 
 }
 
@@ -232,33 +232,44 @@ impl cfn_resources::CfnResource for CfnStage {
 }
 
 
+/// The AccessLogSetting property type specifies settings for logging access in this stage.
+///
+/// AccessLogSetting is a property of the AWS::ApiGateway::Stage resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AccessLogSetting {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with amazon-apigateway-. This parameter is required to enable access logging.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationArn")]
+    pub destination_arn: Option<String>,
+
+
+    /// 
+    /// A single line format of the access logs of data, as specified by selected $context variables. The format must include at least $context.requestId. This parameter is required to enable access logging.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Format")]
+    pub format: Option<String>,
+
+}
+
+
+
+
 /// Configuration settings of a canary deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CanarySetting {
-
-
-    /// 
-    /// A Boolean flag to indicate whether the canary deployment uses the stage cache or not.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UseStageCache")]
-    pub use_stage_cache: Option<bool>,
-
-
-    /// 
-    /// The percent (0-100) of traffic diverted to a canary deployment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PercentTraffic")]
-    pub percent_traffic: Option<f64>,
 
 
     /// 
@@ -274,6 +285,18 @@ pub struct CanarySetting {
 
 
     /// 
+    /// The percent (0-100) of traffic diverted to a canary deployment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PercentTraffic")]
+    pub percent_traffic: Option<f64>,
+
+
+    /// 
     /// Stage variables overridden for a canary release deployment, including new stage variables introduced in the canary. These stage variables are represented as a string-to-string map between stage variable names and their values.
     /// 
     /// Required: No
@@ -283,6 +306,18 @@ pub struct CanarySetting {
     /// Update requires: No interruption
     #[serde(rename = "StageVariableOverrides")]
     pub stage_variable_overrides: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// A Boolean flag to indicate whether the canary deployment uses the stage cache or not.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseStageCache")]
+    pub use_stage_cache: Option<bool>,
 
 }
 
@@ -297,39 +332,15 @@ pub struct MethodSetting {
 
 
     /// 
-    /// Specifies whether data trace logging is enabled for this method, which affects the log entries pushed to Amazon CloudWatch Logs.
+    /// Specifies whether the cached responses are encrypted.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DataTraceEnabled")]
-    pub data_trace_enabled: Option<bool>,
-
-
-    /// 
-    /// The resource path for this method. Forward slashes (/) are encoded as ~1 and the initial slash must include a forward slash. For example, the path value /resource/subresource must be encoded as /~1resource~1subresource. To specify the root path, use only a slash (/). To apply settings to multiple resources and methods, specify an asterisk (*) for the HttpMethod and /* for the ResourcePath.      This parameter is required when you specify a MethodSetting.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourcePath")]
-    pub resource_path: Option<String>,
-
-
-    /// 
-    /// Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. Valid values are OFF, ERROR, and INFO. Choose ERROR to write only error-level entries to CloudWatch Logs, or choose INFO to include all ERROR events as well as extra informational events.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingLevel")]
-    pub logging_level: Option<String>,
+    #[serde(rename = "CacheDataEncrypted")]
+    pub cache_data_encrypted: Option<bool>,
 
 
     /// 
@@ -357,27 +368,15 @@ pub struct MethodSetting {
 
 
     /// 
-    /// Specifies the throttling rate limit.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThrottlingRateLimit")]
-    pub throttling_rate_limit: Option<f64>,
-
-
-    /// 
-    /// Specifies whether the cached responses are encrypted.
+    /// Specifies whether data trace logging is enabled for this method, which affects the log entries pushed to Amazon CloudWatch Logs.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CacheDataEncrypted")]
-    pub cache_data_encrypted: Option<bool>,
+    #[serde(rename = "DataTraceEnabled")]
+    pub data_trace_enabled: Option<bool>,
 
 
     /// 
@@ -393,6 +392,18 @@ pub struct MethodSetting {
 
 
     /// 
+    /// Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. Valid values are OFF, ERROR, and INFO. Choose ERROR to write only error-level entries to CloudWatch Logs, or choose INFO to include all ERROR events as well as extra informational events.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingLevel")]
+    pub logging_level: Option<String>,
+
+
+    /// 
     /// Specifies whether Amazon CloudWatch metrics are enabled for this method.
     /// 
     /// Required: No
@@ -405,6 +416,18 @@ pub struct MethodSetting {
 
 
     /// 
+    /// The resource path for this method. Forward slashes (/) are encoded as ~1 and the initial slash must include a forward slash. For example, the path value /resource/subresource must be encoded as /~1resource~1subresource. To specify the root path, use only a slash (/). To apply settings to multiple resources and methods, specify an asterisk (*) for the HttpMethod and /* for the ResourcePath.      This parameter is required when you specify a MethodSetting.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourcePath")]
+    pub resource_path: Option<String>,
+
+
+    /// 
     /// Specifies the throttling burst limit.
     /// 
     /// Required: No
@@ -414,6 +437,18 @@ pub struct MethodSetting {
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingBurstLimit")]
     pub throttling_burst_limit: Option<i64>,
+
+
+    /// 
+    /// Specifies the throttling rate limit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThrottlingRateLimit")]
+    pub throttling_rate_limit: Option<f64>,
 
 }
 
@@ -432,17 +467,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -452,40 +476,16 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-
-
-/// The AccessLogSetting property type specifies settings for logging access in this stage.
-///
-/// AccessLogSetting is a property of the AWS::ApiGateway::Stage resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AccessLogSetting {
-
 
     /// 
-    /// A single line format of the access logs of data, as specified by selected $context variables. The format must include at least $context.requestId. This parameter is required to enable access logging.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// Required: Conditional
-    ///
+    /// Required: Yes
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Format")]
-    pub format: Option<String>,
-
-
     /// 
-    /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with amazon-apigateway-. This parameter is required to enable access logging.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationArn")]
-    pub destination_arn: Option<String>,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

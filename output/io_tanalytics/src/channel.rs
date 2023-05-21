@@ -6,34 +6,6 @@ pub struct CfnChannel {
 
 
     /// 
-    /// Where channel data is stored.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ChannelStorage
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChannelStorage")]
-    pub channel_storage: Option<ChannelStorage>,
-
-
-    /// 
-    /// Metadata which can be used to manage the channel.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The name of the channel.
     /// 
     /// Required: No
@@ -52,6 +24,18 @@ pub struct CfnChannel {
 
 
     /// 
+    /// Where channel data is stored.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ChannelStorage
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChannelStorage")]
+    pub channel_storage: Option<ChannelStorage>,
+
+
+    /// 
     /// How long, in days, message data is kept for the channel.
     /// 
     /// Required: No
@@ -61,6 +45,22 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriod")]
     pub retention_period: Option<RetentionPeriod>,
+
+
+    /// 
+    /// Metadata which can be used to manage the channel.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -83,18 +83,6 @@ pub struct ChannelStorage {
 
 
     /// 
-    /// Used to store channel data in an S3 bucket managed by AWS IoT Analytics. You can't change the choice    of S3 storage after the data store is created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceManagedS3")]
-    pub service_managed_s3: Option<serde_json::Value>,
-
-
-    /// 
     /// Used to store channel data in an S3 bucket that you manage. If customer managed storage is    selected, the retentionPeriod parameter is ignored. You can't change the choice    of S3 storage after the data store is created.
     /// 
     /// Required: No
@@ -104,6 +92,18 @@ pub struct ChannelStorage {
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedS3")]
     pub customer_managed_s3: Option<CustomerManagedS3>,
+
+
+    /// 
+    /// Used to store channel data in an S3 bucket managed by AWS IoT Analytics. You can't change the choice    of S3 storage after the data store is created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceManagedS3")]
+    pub service_managed_s3: Option<serde_json::Value>,
 
 }
 
@@ -171,58 +171,9 @@ pub struct CustomerManagedS3 {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
 /// How long, in days, message data is kept.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RetentionPeriod {
-
-
-    /// 
-    /// If true, message data is kept indefinitely.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unlimited")]
-    pub unlimited: Option<bool>,
 
 
     /// 
@@ -237,6 +188,55 @@ pub struct RetentionPeriod {
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDays")]
     pub number_of_days: Option<i64>,
+
+
+    /// 
+    /// If true, message data is kept indefinitely.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Unlimited")]
+    pub unlimited: Option<bool>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

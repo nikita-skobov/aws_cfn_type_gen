@@ -8,91 +8,15 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The attributes.
+    /// Indicates whether health checks are enabled. If the target type is lambda,    health checks are disabled by default but can be enabled. If the target type is     instance, ip, or alb, health checks are always    enabled and cannot be disabled.
     /// 
     /// Required: No
     ///
-    /// Type: List of TargetGroupAttribute
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetGroupAttributes")]
-    pub target_group_attributes: Option<Vec<TargetGroupAttribute>>,
-
-
-    /// 
-    /// [HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking for a successful    response from a target. For target groups with a protocol of TCP, TCP_UDP, UDP or TLS the range    is 200-599. For target groups with a protocol of HTTP or HTTPS, the range is 200-499. For target    groups with a protocol of GENEVE, the range is 200-399.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Matcher
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Matcher")]
-    pub matcher: Option<Matcher>,
-
-
-    /// 
-    /// The name of the target group.
-    /// 
-    /// This name must be unique per region per account, can have a maximum of 32 characters, must    contain only alphanumeric characters or hyphens, and must not begin or end with a    hyphen.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The targets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TargetDescription
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Option<Vec<TargetDescription>>,
-
-
-    /// 
-    /// The identifier of the virtual private cloud (VPC). If the target is a Lambda function,    this parameter does not apply. Otherwise, this parameter is required.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
-
-
-    /// 
-    /// The tags.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The protocol to use for routing traffic to the targets. For Application Load Balancers,    the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported    protocols are TCP, TLS, UDP, or TCP_UDP. For Gateway Load Balancers, the supported protocol is    GENEVE. A TCP_UDP listener must be associated with a TCP_UDP target group. If the target is a    Lambda function, this parameter does not apply.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<TargetGroupProtocolEnum>,
+    #[serde(rename = "HealthCheckEnabled")]
+    pub health_check_enabled: Option<bool>,
 
 
     /// 
@@ -132,79 +56,15 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The number of consecutive health check successes required before considering a target healthy. The range is    2-10. If the target group protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 5. For target groups    with a protocol of GENEVE, the default is 5. If the target type    is lambda, the default is 5.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 2
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthyThresholdCount")]
-    pub healthy_threshold_count: Option<i64>,
-
-
-    /// 
-    /// The port on which the targets receive traffic. This port is used unless you specify a port    override when registering the target. If the target is a Lambda function, this parameter does    not apply. If the protocol is GENEVE, the supported port is 6081.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The number of consecutive health check failures required before considering a target unhealthy. The range is    2-10. If the target group protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 2. For target groups    with a protocol of GENEVE, the default is 2. If the target type    is lambda, the default is 5.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 2
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UnhealthyThresholdCount")]
-    pub unhealthy_threshold_count: Option<i64>,
-
-
-    /// 
-    /// Indicates whether health checks are enabled. If the target type is lambda,    health checks are disabled by default but can be enabled. If the target type is     instance, ip, or alb, health checks are always    enabled and cannot be disabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckEnabled")]
-    pub health_check_enabled: Option<bool>,
-
-
-    /// 
-    /// The type of target that you must specify when registering targets with this target group.    You can't specify targets for a target group using more than one target type.
-    /// 
-    /// instance - Register targets by instance ID. This is the default      value.                        ip - Register targets by IP address. You can specify IP addresses from      the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range      (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10).      You can't specify publicly routable IP addresses.                        lambda - Register a single Lambda function as a target.                        alb - Register a single Application Load Balancer as a target.
+    /// The port the load balancer uses when performing health checks on targets. If the protocol    is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the default is traffic-port, which is    the port on which each target receives traffic from the load balancer. If the protocol is    GENEVE, the default is port 80.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: alb | instance | ip | lambda
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetType")]
-    pub target_type: Option<TargetGroupTargetTypeEnum>,
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckPort")]
+    pub health_check_port: Option<String>,
 
 
     /// 
@@ -219,30 +79,6 @@ pub struct CfnTargetGroup {
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckProtocol")]
     pub health_check_protocol: Option<TargetGroupHealthCheckProtocolEnum>,
-
-
-    /// 
-    /// [HTTP/HTTPS protocol] The protocol version. The possible values are GRPC,     HTTP1, and HTTP2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProtocolVersion")]
-    pub protocol_version: Option<String>,
-
-
-    /// 
-    /// The port the load balancer uses when performing health checks on targets. If the protocol    is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the default is traffic-port, which is    the port on which each target receives traffic from the load balancer. If the protocol is    GENEVE, the default is port 80.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckPort")]
-    pub health_check_port: Option<String>,
 
 
     /// 
@@ -262,6 +98,22 @@ pub struct CfnTargetGroup {
 
 
     /// 
+    /// The number of consecutive health check successes required before considering a target healthy. The range is    2-10. If the target group protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 5. For target groups    with a protocol of GENEVE, the default is 5. If the target type    is lambda, the default is 5.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 2
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthyThresholdCount")]
+    pub healthy_threshold_count: Option<i64>,
+
+
+    /// 
     /// The type of IP address used for this target group. The possible values are     ipv4 and ipv6. This is an optional parameter. If not specified,    the IP address type defaults to ipv4.
     /// 
     /// Required: No
@@ -273,6 +125,154 @@ pub struct CfnTargetGroup {
     /// Update requires: Replacement
     #[serde(rename = "IpAddressType")]
     pub ip_address_type: Option<TargetGroupIpAddressTypeEnum>,
+
+
+    /// 
+    /// [HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking for a successful    response from a target. For target groups with a protocol of TCP, TCP_UDP, UDP or TLS the range    is 200-599. For target groups with a protocol of HTTP or HTTPS, the range is 200-499. For target    groups with a protocol of GENEVE, the range is 200-399.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Matcher
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Matcher")]
+    pub matcher: Option<Matcher>,
+
+
+    /// 
+    /// The name of the target group.
+    /// 
+    /// This name must be unique per region per account, can have a maximum of 32 characters, must    contain only alphanumeric characters or hyphens, and must not begin or end with a    hyphen.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The port on which the targets receive traffic. This port is used unless you specify a port    override when registering the target. If the target is a Lambda function, this parameter does    not apply. If the protocol is GENEVE, the supported port is 6081.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// The protocol to use for routing traffic to the targets. For Application Load Balancers,    the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported    protocols are TCP, TLS, UDP, or TCP_UDP. For Gateway Load Balancers, the supported protocol is    GENEVE. A TCP_UDP listener must be associated with a TCP_UDP target group. If the target is a    Lambda function, this parameter does not apply.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<TargetGroupProtocolEnum>,
+
+
+    /// 
+    /// [HTTP/HTTPS protocol] The protocol version. The possible values are GRPC,     HTTP1, and HTTP2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProtocolVersion")]
+    pub protocol_version: Option<String>,
+
+
+    /// 
+    /// The tags.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The attributes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TargetGroupAttribute
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupAttributes")]
+    pub target_group_attributes: Option<Vec<TargetGroupAttribute>>,
+
+
+    /// 
+    /// The type of target that you must specify when registering targets with this target group.    You can't specify targets for a target group using more than one target type.
+    /// 
+    /// instance - Register targets by instance ID. This is the default      value.                        ip - Register targets by IP address. You can specify IP addresses from      the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range      (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10).      You can't specify publicly routable IP addresses.                        lambda - Register a single Lambda function as a target.                        alb - Register a single Application Load Balancer as a target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: alb | instance | ip | lambda
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetType")]
+    pub target_type: Option<TargetGroupTargetTypeEnum>,
+
+
+    /// 
+    /// The targets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TargetDescription
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Option<Vec<TargetDescription>>,
+
+
+    /// 
+    /// The number of consecutive health check failures required before considering a target unhealthy. The range is    2-10. If the target group protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 2. For target groups    with a protocol of GENEVE, the default is 2. If the target type    is lambda, the default is 5.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 2
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UnhealthyThresholdCount")]
+    pub unhealthy_threshold_count: Option<i64>,
+
+
+    /// 
+    /// The identifier of the virtual private cloud (VPC). If the target is a Lambda function,    this parameter does not apply. Otherwise, this parameter is required.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
 
 }
 
@@ -419,6 +419,18 @@ pub struct Matcher {
 
 
     /// 
+    /// You can specify values between 0 and 99. You can specify multiple values (for example,    "0,1") or a range of values (for example, "0-5"). The default value is 12.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GrpcCode")]
+    pub grpc_code: Option<String>,
+
+
+    /// 
     /// For Application Load Balancers, you can specify values between 200 and 499, with the    default value being 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
     /// 
     /// For Network Load Balancers, you can specify values between 200 and 599, with the    default value being 200-399. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
@@ -434,77 +446,6 @@ pub struct Matcher {
     /// Update requires: No interruption
     #[serde(rename = "HttpCode")]
     pub http_code: Option<String>,
-
-
-    /// 
-    /// You can specify values between 0 and 99. You can specify multiple values (for example,    "0,1") or a range of values (for example, "0-5"). The default value is 12.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GrpcCode")]
-    pub grpc_code: Option<String>,
-
-}
-
-
-
-
-/// Specifies a target to add to a target group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TargetDescription {
-
-
-    /// 
-    /// The port on which the target is listening. If the target group protocol is GENEVE, the    supported port is 6081. If the target type is alb, the targeted Application Load    Balancer must have at least one listener whose port matches the target group port. This    parameter is not used if the target is a Lambda function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// An Availability Zone or all. This determines whether the target receives    traffic from the load balancer nodes in the specified Availability Zone or from all enabled    Availability Zones for the load balancer.
-    /// 
-    /// For Application Load Balancer target groups, the specified Availability Zone value is only applicable    when cross-zone load balancing is off. Otherwise the parameter is ignored and treated    as all.
-    /// 
-    /// This parameter is not supported if the target type of the target group is    instance or alb.
-    /// 
-    /// If the target type is ip and the IP address is in a subnet of the VPC for the target group,    the Availability Zone is automatically detected and this parameter is optional. If the IP address is outside    the VPC, this parameter is required.
-    /// 
-    /// For Application Load Balancer target groups with cross-zone load balancing off, if the target type    is ip and the IP address is outside of the VPC for the target group, this should be an    Availability Zone inside the VPC for the target group.
-    /// 
-    /// If the target type is lambda, this parameter is optional and the only    supported value is all.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
-
-
-    /// 
-    /// The ID of the target. If the target type of the target group is instance,    specify an instance ID. If the target type is ip, specify an IP address. If the    target type is lambda, specify the ARN of the Lambda function. If the target type    is alb, specify the ARN of the Application Load Balancer target.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
 
 }
 
@@ -542,6 +483,65 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+}
+
+
+
+
+/// Specifies a target to add to a target group.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetDescription {
+
+
+    /// 
+    /// An Availability Zone or all. This determines whether the target receives    traffic from the load balancer nodes in the specified Availability Zone or from all enabled    Availability Zones for the load balancer.
+    /// 
+    /// For Application Load Balancer target groups, the specified Availability Zone value is only applicable    when cross-zone load balancing is off. Otherwise the parameter is ignored and treated    as all.
+    /// 
+    /// This parameter is not supported if the target type of the target group is    instance or alb.
+    /// 
+    /// If the target type is ip and the IP address is in a subnet of the VPC for the target group,    the Availability Zone is automatically detected and this parameter is optional. If the IP address is outside    the VPC, this parameter is required.
+    /// 
+    /// For Application Load Balancer target groups with cross-zone load balancing off, if the target type    is ip and the IP address is outside of the VPC for the target group, this should be an    Availability Zone inside the VPC for the target group.
+    /// 
+    /// If the target type is lambda, this parameter is optional and the only    supported value is all.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
+
+
+    /// 
+    /// The ID of the target. If the target type of the target group is instance,    specify an instance ID. If the target type is ip, specify an IP address. If the    target type is lambda, specify the ARN of the Lambda function. If the target type    is alb, specify the ARN of the Application Load Balancer target.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
+    /// 
+    /// The port on which the target is listening. If the target group protocol is GENEVE, the    supported port is 6081. If the target type is alb, the targeted Application Load    Balancer must have at least one listener whose port matches the target group port. This    parameter is not used if the target is a Lambda function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
 
 }
 

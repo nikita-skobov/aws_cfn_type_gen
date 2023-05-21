@@ -12,6 +12,38 @@ pub struct CfnDBParameterGroup {
 
 
     /// 
+    /// The name of the DB parameter group.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be 1 to 255 letters, numbers, or hyphens.               First character must be a letter               Can't end with a hyphen or contain two consecutive hyphens
+    /// 
+    /// If you don't specify a value for DBParameterGroupName property, a name is automatically created for the DB parameter group.
+    /// 
+    /// NoteThis value is stored as a lowercase string.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBParameterGroupName")]
+    pub dbparameter_group_name: Option<String>,
+
+
+    /// 
+    /// Provides the customer-specified description for this DB parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: String,
+
+
+    /// 
     /// The DB parameter group family name. A DB parameter group can be associated with one       and only one DB parameter group family, and can be applied only to a DB instance running       a DB engine and engine version compatible with that DB parameter group family.
     /// 
     /// NoteThe DB parameter group family can't be changed when updating a DB parameter         group.
@@ -31,38 +63,6 @@ pub struct CfnDBParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "Family")]
     pub family: String,
-
-
-    /// 
-    /// Provides the customer-specified description for this DB parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: String,
-
-
-    /// 
-    /// The name of the DB parameter group.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be 1 to 255 letters, numbers, or hyphens.               First character must be a letter               Can't end with a hyphen or contain two consecutive hyphens
-    /// 
-    /// If you don't specify a value for DBParameterGroupName property, a name is automatically created for the DB parameter group.
-    /// 
-    /// NoteThis value is stored as a lowercase string.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBParameterGroupName")]
-    pub dbparameter_group_name: Option<String>,
 
 
     /// 

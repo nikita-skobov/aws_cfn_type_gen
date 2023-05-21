@@ -6,22 +6,6 @@ pub struct CfnConfigurationTemplate {
 
 
     /// 
-    /// The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For    example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack    specifies the operating system, runtime, and application server for a configuration template.    It also determines the set of configuration options as well as the possible and default    values. For more information, see Supported Platforms in the             AWS Elastic Beanstalk Developer Guide.
-    /// 
-    /// You must specify SolutionStackName if you don't specify     PlatformArn, EnvironmentId, or    SourceConfiguration.
-    /// 
-    /// Use the ListAvailableSolutionStacks API to obtain a list of available    solution stacks.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SolutionStackName")]
-    pub solution_stack_name: Option<String>,
-
-
-    /// 
     /// The name of the Elastic Beanstalk application to associate with this configuration    template.
     /// 
     /// Required: Yes
@@ -35,18 +19,6 @@ pub struct CfnConfigurationTemplate {
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
     pub application_name: String,
-
-
-    /// 
-    /// Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these    values override the values obtained from the solution stack or the source configuration    template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the             AWS Elastic Beanstalk Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ConfigurationOptionSetting
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OptionSettings")]
-    pub option_settings: Option<Vec<ConfigurationOptionSetting>>,
 
 
     /// 
@@ -64,6 +36,30 @@ pub struct CfnConfigurationTemplate {
 
 
     /// 
+    /// The ID of an environment whose settings you want to use to create the configuration    template. You must specify EnvironmentId if you don't specify     PlatformArn, SolutionStackName, or     SourceConfiguration.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EnvironmentId")]
+    pub environment_id: Option<String>,
+
+
+    /// 
+    /// Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these    values override the values obtained from the solution stack or the source configuration    template. For a complete list of Elastic Beanstalk configuration options, see Option Values in the             AWS Elastic Beanstalk Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ConfigurationOptionSetting
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptionSettings")]
+    pub option_settings: Option<Vec<ConfigurationOptionSetting>>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the custom platform. For more information, see Custom     Platforms in the         AWS Elastic Beanstalk Developer Guide.
     /// 
     /// NoteIf you specify PlatformArn, then don't specify      SolutionStackName.
@@ -75,6 +71,22 @@ pub struct CfnConfigurationTemplate {
     /// Update requires: Replacement
     #[serde(rename = "PlatformArn")]
     pub platform_arn: Option<String>,
+
+
+    /// 
+    /// The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For    example, 64bit Amazon Linux 2013.09 running Tomcat 7 Java 7. A solution stack    specifies the operating system, runtime, and application server for a configuration template.    It also determines the set of configuration options as well as the possible and default    values. For more information, see Supported Platforms in the             AWS Elastic Beanstalk Developer Guide.
+    /// 
+    /// You must specify SolutionStackName if you don't specify     PlatformArn, EnvironmentId, or    SourceConfiguration.
+    /// 
+    /// Use the ListAvailableSolutionStacks API to obtain a list of available    solution stacks.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SolutionStackName")]
+    pub solution_stack_name: Option<String>,
 
 
     /// 
@@ -93,18 +105,6 @@ pub struct CfnConfigurationTemplate {
     /// Update requires: Replacement
     #[serde(rename = "SourceConfiguration")]
     pub source_configuration: Option<SourceConfiguration>,
-
-
-    /// 
-    /// The ID of an environment whose settings you want to use to create the configuration    template. You must specify EnvironmentId if you don't specify     PlatformArn, SolutionStackName, or     SourceConfiguration.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EnvironmentId")]
-    pub environment_id: Option<String>,
 
 }
 
@@ -131,15 +131,15 @@ pub struct ConfigurationOptionSetting {
 
 
     /// 
-    /// The current value for the configuration option.
+    /// A unique namespace that identifies the option's associated AWS resource.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
+    #[serde(rename = "Namespace")]
+    pub namespace: String,
 
 
     /// 
@@ -171,15 +171,15 @@ pub struct ConfigurationOptionSetting {
 
 
     /// 
-    /// A unique namespace that identifies the option's associated AWS resource.
+    /// The current value for the configuration option.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Namespace")]
-    pub namespace: String,
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 

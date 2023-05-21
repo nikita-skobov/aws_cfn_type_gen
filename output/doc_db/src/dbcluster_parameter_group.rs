@@ -10,48 +10,6 @@ pub struct CfnDBClusterParameterGroup {
 
 
     /// 
-    /// The tags to be assigned to the cluster parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Provides a list of parameters for the cluster parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: serde_json::Value,
-
-
-    /// 
-    /// The name of the DB cluster parameter group.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must not match the name of an existing           DBClusterParameterGroup.
-    /// 
-    /// NoteThis value is stored as a lowercase string.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// The description for the cluster parameter group.
     /// 
     /// Required: Yes
@@ -73,6 +31,48 @@ pub struct CfnDBClusterParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "Family")]
     pub family: String,
+
+
+    /// 
+    /// The name of the DB cluster parameter group.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must not match the name of an existing           DBClusterParameterGroup.
+    /// 
+    /// NoteThis value is stored as a lowercase string.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Provides a list of parameters for the cluster parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: serde_json::Value,
+
+
+    /// 
+    /// The tags to be assigned to the cluster parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

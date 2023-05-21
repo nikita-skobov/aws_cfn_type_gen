@@ -6,6 +6,18 @@ pub struct CfnNamespace {
 
 
     /// 
+    /// The password of the administrator for the primary database created in the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdminUserPassword")]
+    pub admin_user_password: Option<String>,
+
+
+    /// 
     /// The username of the administrator for the primary database created in the namespace.
     /// 
     /// Required: No
@@ -15,30 +27,6 @@ pub struct CfnNamespace {
     /// Update requires: No interruption
     #[serde(rename = "AdminUsername")]
     pub admin_username: Option<String>,
-
-
-    /// 
-    /// The name of the snapshot to be created before the namespace is deleted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FinalSnapshotName")]
-    pub final_snapshot_name: Option<String>,
-
-
-    /// 
-    /// A list of IAM roles to associate with the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IamRoles")]
-    pub iam_roles: Option<Vec<String>>,
 
 
     /// 
@@ -54,30 +42,6 @@ pub struct CfnNamespace {
 
 
     /// 
-    /// How long to retain the final snapshot.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FinalSnapshotRetentionPeriod")]
-    pub final_snapshot_retention_period: Option<i64>,
-
-
-    /// 
-    /// The types of logs the namespace can export.   Available export types are userlog, connectionlog, and useractivitylog.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogExports")]
-    pub log_exports: Option<Vec<String>>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
     /// 
     /// Required: No
@@ -90,15 +54,39 @@ pub struct CfnNamespace {
 
 
     /// 
-    /// The name of the namespace.   Must be between 3-64 alphanumeric characters in lowercase,   and it cannot be a reserved word. A list of reserved words can be found   in Reserved Words in the Amazon Redshift Database Developer Guide.
+    /// The name of the snapshot to be created before the namespace is deleted.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "NamespaceName")]
-    pub namespace_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "FinalSnapshotName")]
+    pub final_snapshot_name: Option<String>,
+
+
+    /// 
+    /// How long to retain the final snapshot.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FinalSnapshotRetentionPeriod")]
+    pub final_snapshot_retention_period: Option<i64>,
+
+
+    /// 
+    /// A list of IAM roles to associate with the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IamRoles")]
+    pub iam_roles: Option<Vec<String>>,
 
 
     /// 
@@ -114,6 +102,30 @@ pub struct CfnNamespace {
 
 
     /// 
+    /// The types of logs the namespace can export.   Available export types are userlog, connectionlog, and useractivitylog.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogExports")]
+    pub log_exports: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the namespace.   Must be between 3-64 alphanumeric characters in lowercase,   and it cannot be a reserved word. A list of reserved words can be found   in Reserved Words in the Amazon Redshift Database Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NamespaceName")]
+    pub namespace_name: String,
+
+
+    /// 
     /// The map of the key-value pairs used to tag the namespace.
     /// 
     /// Required: No
@@ -123,18 +135,6 @@ pub struct CfnNamespace {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The password of the administrator for the primary database created in the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdminUserPassword")]
-    pub admin_user_password: Option<String>,
 
 }
 
@@ -154,6 +154,18 @@ impl cfn_resources::CfnResource for CfnNamespace {
 /// A collection of database objects and users.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Namespace {
+
+
+    /// 
+    /// The username of the administrator for the first database created in the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdminUsername")]
+    pub admin_username: Option<String>,
 
 
     /// 
@@ -181,27 +193,15 @@ pub struct Namespace {
 
 
     /// 
-    /// The status of the namespace.
+    /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// The name of the namespace.    Must be between 3-64 alphanumeric characters in lowercase,    and it cannot be a reserved word. A list of reserved words can be found    in Reserved Words in the Amazon Redshift Database Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NamespaceName")]
-    pub namespace_name: Option<String>,
+    #[serde(rename = "DefaultIamRoleArn")]
+    pub default_iam_role_arn: Option<String>,
 
 
     /// 
@@ -229,15 +229,15 @@ pub struct Namespace {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
+    /// The types of logs the namespace can export. Available export types are User log, Connection log, and User activity log.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultIamRoleArn")]
-    pub default_iam_role_arn: Option<String>,
+    #[serde(rename = "LogExports")]
+    pub log_exports: Option<Vec<String>>,
 
 
     /// 
@@ -253,30 +253,6 @@ pub struct Namespace {
 
 
     /// 
-    /// The types of logs the namespace can export. Available export types are User log, Connection log, and User activity log.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogExports")]
-    pub log_exports: Option<Vec<String>>,
-
-
-    /// 
-    /// The username of the administrator for the first database created in the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdminUsername")]
-    pub admin_username: Option<String>,
-
-
-    /// 
     /// The unique identifier of a namespace.
     /// 
     /// Required: No
@@ -286,6 +262,30 @@ pub struct Namespace {
     /// Update requires: No interruption
     #[serde(rename = "NamespaceId")]
     pub namespace_id: Option<String>,
+
+
+    /// 
+    /// The name of the namespace.    Must be between 3-64 alphanumeric characters in lowercase,    and it cannot be a reserved word. A list of reserved words can be found    in Reserved Words in the Amazon Redshift Database Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NamespaceName")]
+    pub namespace_name: Option<String>,
+
+
+    /// 
+    /// The status of the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
 
 }
 
@@ -304,17 +304,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -323,6 +312,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

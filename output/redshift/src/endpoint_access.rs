@@ -6,6 +6,20 @@ pub struct CfnEndpointAccess {
 
 
     /// 
+    /// The cluster identifier of the cluster associated with the endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterIdentifier")]
+    pub cluster_identifier: String,
+
+
+    /// 
     /// The name of the endpoint.
     /// 
     /// Required: Yes
@@ -34,7 +48,7 @@ pub struct CfnEndpointAccess {
 
 
     /// 
-    /// The cluster identifier of the cluster associated with the endpoint.
+    /// The subnet group name where Amazon Redshift chooses to deploy the endpoint.
     /// 
     /// Required: Yes
     ///
@@ -43,8 +57,8 @@ pub struct CfnEndpointAccess {
     /// Maximum: 2147483647
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
+    #[serde(rename = "SubnetGroupName")]
+    pub subnet_group_name: String,
 
 
     /// 
@@ -57,20 +71,6 @@ pub struct CfnEndpointAccess {
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
     pub vpc_security_group_ids: Vec<String>,
-
-
-    /// 
-    /// The subnet group name where Amazon Redshift chooses to deploy the endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetGroupName")]
-    pub subnet_group_name: String,
 
 }
 
@@ -121,20 +121,6 @@ pub struct NetworkInterface {
 
 
     /// 
-    /// The subnet identifier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: Option<String>,
-
-
-    /// 
     /// The IPv4 address of the network interface within the subnet.
     /// 
     /// Required: No
@@ -147,6 +133,20 @@ pub struct NetworkInterface {
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: Option<String>,
 
+
+    /// 
+    /// The subnet identifier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: Option<String>,
+
 }
 
 
@@ -155,6 +155,18 @@ pub struct NetworkInterface {
 /// The connection endpoint for connecting to an Amazon Redshift cluster through the proxy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcEndpoint {
+
+
+    /// 
+    /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of NetworkInterface
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkInterfaces")]
+    pub network_interfaces: Option<Vec<NetworkInterface>>,
 
 
     /// 
@@ -169,18 +181,6 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
     pub vpc_endpoint_id: Option<String>,
-
-
-    /// 
-    /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of NetworkInterface
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NetworkInterfaces")]
-    pub network_interfaces: Option<Vec<NetworkInterface>>,
 
 
     /// 
@@ -207,20 +207,6 @@ pub struct VpcSecurityGroup {
 
 
     /// 
-    /// The identifier of the VPC security group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSecurityGroupId")]
-    pub vpc_security_group_id: Option<String>,
-
-
-    /// 
     /// The status of the endpoint.
     /// 
     /// Required: No
@@ -232,6 +218,20 @@ pub struct VpcSecurityGroup {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     pub status: Option<String>,
+
+
+    /// 
+    /// The identifier of the VPC security group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcSecurityGroupId")]
+    pub vpc_security_group_id: Option<String>,
 
 }
 

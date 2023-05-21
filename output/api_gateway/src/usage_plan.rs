@@ -8,18 +8,6 @@ pub struct CfnUsagePlan {
 
 
     /// 
-    /// The name of a usage plan.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UsagePlanName")]
-    pub usage_plan_name: Option<String>,
-
-
-    /// 
     /// The associated API stages of a usage plan.
     /// 
     /// Required: No
@@ -44,18 +32,6 @@ pub struct CfnUsagePlan {
 
 
     /// 
-    /// The collection of tags. Each tag element is associated with a given resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The target maximum number of permitted requests per a given unit time interval.
     /// 
     /// Required: No
@@ -68,6 +44,18 @@ pub struct CfnUsagePlan {
 
 
     /// 
+    /// The collection of tags. Each tag element is associated with a given resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// A map containing method level throttling information for API stage in a usage plan.
     /// 
     /// Required: No
@@ -77,6 +65,18 @@ pub struct CfnUsagePlan {
     /// Update requires: No interruption
     #[serde(rename = "Throttle")]
     pub throttle: Option<ThrottleSettings>,
+
+
+    /// 
+    /// The name of a usage plan.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UsagePlanName")]
+    pub usage_plan_name: Option<String>,
 
 }
 
@@ -99,15 +99,15 @@ pub struct ApiStage {
 
 
     /// 
-    /// Map containing method level throttling information for API stage in a usage plan.
+    /// API Id of the associated API stage in a usage plan.
     /// 
     /// Required: No
     ///
-    /// Type: Map of ThrottleSettings
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Throttle")]
-    pub throttle: Option<std::collections::HashMap<String, ThrottleSettings>>,
+    #[serde(rename = "ApiId")]
+    pub api_id: Option<String>,
 
 
     /// 
@@ -123,15 +123,15 @@ pub struct ApiStage {
 
 
     /// 
-    /// API Id of the associated API stage in a usage plan.
+    /// Map containing method level throttling information for API stage in a usage plan.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Map of ThrottleSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ApiId")]
-    pub api_id: Option<String>,
+    #[serde(rename = "Throttle")]
+    pub throttle: Option<std::collections::HashMap<String, ThrottleSettings>>,
 
 }
 
@@ -143,20 +143,6 @@ pub struct ApiStage {
 /// In some cases clients can exceed the targets that you set. Don’t rely on usage plans to control costs. Consider using AWS Budgets to monitor costs     and AWS WAF to manage API requests.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct QuotaSettings {
-
-
-    /// 
-    /// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DAY | MONTH | WEEK
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Period")]
-    pub period: Option<QuotaSettingsPeriodEnum>,
 
 
     /// 
@@ -181,6 +167,20 @@ pub struct QuotaSettings {
     /// Update requires: No interruption
     #[serde(rename = "Offset")]
     pub offset: Option<i64>,
+
+
+    /// 
+    /// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DAY | MONTH | WEEK
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Period")]
+    pub period: Option<QuotaSettingsPeriodEnum>,
 
 }
 
@@ -222,17 +222,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -241,6 +230,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
@@ -253,18 +253,6 @@ pub struct ThrottleSettings {
 
 
     /// 
-    /// The API target request rate limit.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RateLimit")]
-    pub rate_limit: Option<f64>,
-
-
-    /// 
     /// The API target request burst rate limit. This allows more requests through for a period of time than the target rate limit.
     /// 
     /// Required: No
@@ -274,6 +262,18 @@ pub struct ThrottleSettings {
     /// Update requires: No interruption
     #[serde(rename = "BurstLimit")]
     pub burst_limit: Option<i64>,
+
+
+    /// 
+    /// The API target request rate limit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RateLimit")]
+    pub rate_limit: Option<f64>,
 
 }
 

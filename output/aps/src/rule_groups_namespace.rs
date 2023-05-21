@@ -6,6 +6,18 @@ pub struct CfnRuleGroupsNamespace {
 
 
     /// 
+    /// The rules definition file for this namespace.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Data")]
+    pub data: String,
+
+
+    /// 
     /// The name of the rule groups namespace. This property is required.
     /// 
     /// Required: Yes
@@ -15,18 +27,6 @@ pub struct CfnRuleGroupsNamespace {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// The ARN of the workspace that contains this rule groups namespace.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Workspace")]
-    pub workspace: String,
 
 
     /// 
@@ -42,15 +42,15 @@ pub struct CfnRuleGroupsNamespace {
 
 
     /// 
-    /// The rules definition file for this namespace.
+    /// The ARN of the workspace that contains this rule groups namespace.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Data")]
-    pub data: String,
+    #[serde(rename = "Workspace")]
+    pub workspace: String,
 
 }
 

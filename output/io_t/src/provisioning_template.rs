@@ -18,15 +18,15 @@ pub struct CfnProvisioningTemplate {
 
 
     /// 
-    /// The type of the provisioning template.
+    /// True to enable the fleet provisioning template, otherwise false.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "TemplateType")]
-    pub template_type: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
 
 
     /// 
@@ -54,27 +54,15 @@ pub struct CfnProvisioningTemplate {
 
 
     /// 
-    /// The name of the fleet provisioning template.
+    /// Metadata that can be used to manage the fleet provisioning template.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TemplateName")]
-    pub template_name: Option<String>,
-
-
-    /// 
-    /// True to enable the fleet provisioning template, otherwise false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -90,15 +78,27 @@ pub struct CfnProvisioningTemplate {
 
 
     /// 
-    /// Metadata that can be used to manage the fleet provisioning template.
+    /// The name of the fleet provisioning template.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "TemplateName")]
+    pub template_name: Option<String>,
+
+
+    /// 
+    /// The type of the provisioning template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TemplateType")]
+    pub template_type: Option<String>,
 
 }
 
@@ -113,6 +113,39 @@ impl cfn_resources::CfnResource for CfnProvisioningTemplate {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Structure that contains payloadVersion and targetArn. Provisioning hooks can be used when fleet provisioning to validate device parameters before allowing the device to be provisioned.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ProvisioningHook {
+
+
+    /// 
+    /// The payload that was sent to the target function. The valid payload is "2020-04-01".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PayloadVersion")]
+    pub payload_version: Option<String>,
+
+
+    /// 
+    /// The ARN of the target function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetArn")]
+    pub target_arn: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -146,39 +179,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Structure that contains payloadVersion and targetArn. Provisioning hooks can be used when fleet provisioning to validate device parameters before allowing the device to be provisioned.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ProvisioningHook {
-
-
-    /// 
-    /// The payload that was sent to the target function. The valid payload is "2020-04-01".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PayloadVersion")]
-    pub payload_version: Option<String>,
-
-
-    /// 
-    /// The ARN of the target function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetArn")]
-    pub target_arn: Option<String>,
 
 }
 

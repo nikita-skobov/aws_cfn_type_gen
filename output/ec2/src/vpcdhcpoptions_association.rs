@@ -8,18 +8,6 @@ pub struct CfnVPCDHCPOptionsAssociation {
 
 
     /// 
-    /// The ID of the VPC.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
-
-
-    /// 
     /// The ID of the DHCP options set, or default to associate     no DHCP options with the VPC.
     /// 
     /// Required: Yes
@@ -29,6 +17,18 @@ pub struct CfnVPCDHCPOptionsAssociation {
     /// Update requires: Replacement
     #[serde(rename = "DhcpOptionsId")]
     pub dhcp_options_id: String,
+
+
+    /// 
+    /// The ID of the VPC.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
 
 }
 

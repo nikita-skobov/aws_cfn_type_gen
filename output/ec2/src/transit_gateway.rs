@@ -14,18 +14,6 @@ pub struct CfnTransitGateway {
 
 
     /// 
-    /// The ID of the default propagation route table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PropagationDefaultRouteTableId")]
-    pub propagation_default_route_table_id: Option<String>,
-
-
-    /// 
     /// A private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range     is 64512 to 65534 for 16-bit ASNs. The default is 64512.
     /// 
     /// Required: No
@@ -38,7 +26,19 @@ pub struct CfnTransitGateway {
 
 
     /// 
-    /// Indicates whether multicast is enabled on the transit gateway
+    /// The ID of the default association route table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssociationDefaultRouteTableId")]
+    pub association_default_route_table_id: Option<String>,
+
+
+    /// 
+    /// Enable or disable automatic acceptance of attachment requests. Disabled by default.
     /// 
     /// Required: No
     ///
@@ -46,9 +46,23 @@ pub struct CfnTransitGateway {
     ///
     /// Allowed values: disable | enable
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "MulticastSupport")]
-    pub multicast_support: Option<TransitGatewayMulticastSupportEnum>,
+    /// Update requires: No interruption
+    #[serde(rename = "AutoAcceptSharedAttachments")]
+    pub auto_accept_shared_attachments: Option<TransitGatewayAutoAcceptSharedAttachmentsEnum>,
+
+
+    /// 
+    /// Enable or disable automatic association with the default association route table. Enabled by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultRouteTableAssociation")]
+    pub default_route_table_association: Option<TransitGatewayDefaultRouteTableAssociationEnum>,
 
 
     /// 
@@ -78,7 +92,7 @@ pub struct CfnTransitGateway {
 
 
     /// 
-    /// Enable or disable automatic acceptance of attachment requests. Disabled by default.
+    /// Enable or disable DNS support. Enabled by default.
     /// 
     /// Required: No
     ///
@@ -87,26 +101,12 @@ pub struct CfnTransitGateway {
     /// Allowed values: disable | enable
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AutoAcceptSharedAttachments")]
-    pub auto_accept_shared_attachments: Option<TransitGatewayAutoAcceptSharedAttachmentsEnum>,
+    #[serde(rename = "DnsSupport")]
+    pub dns_support: Option<TransitGatewayDnsSupportEnum>,
 
 
     /// 
-    /// Enable or disable Equal Cost Multipath Protocol support. Enabled by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpnEcmpSupport")]
-    pub vpn_ecmp_support: Option<TransitGatewayVpnEcmpSupportEnum>,
-
-
-    /// 
-    /// Enable or disable automatic association with the default association route table. Enabled by default.
+    /// Indicates whether multicast is enabled on the transit gateway
     /// 
     /// Required: No
     ///
@@ -114,33 +114,21 @@ pub struct CfnTransitGateway {
     ///
     /// Allowed values: disable | enable
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultRouteTableAssociation")]
-    pub default_route_table_association: Option<TransitGatewayDefaultRouteTableAssociationEnum>,
+    /// Update requires: Replacement
+    #[serde(rename = "MulticastSupport")]
+    pub multicast_support: Option<TransitGatewayMulticastSupportEnum>,
 
 
     /// 
-    /// The transit gateway CIDR blocks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TransitGatewayCidrBlocks")]
-    pub transit_gateway_cidr_blocks: Option<Vec<String>>,
-
-
-    /// 
-    /// The ID of the default association route table.
+    /// The ID of the default propagation route table.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AssociationDefaultRouteTableId")]
-    pub association_default_route_table_id: Option<String>,
+    #[serde(rename = "PropagationDefaultRouteTableId")]
+    pub propagation_default_route_table_id: Option<String>,
 
 
     /// 
@@ -156,7 +144,19 @@ pub struct CfnTransitGateway {
 
 
     /// 
-    /// Enable or disable DNS support. Enabled by default.
+    /// The transit gateway CIDR blocks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TransitGatewayCidrBlocks")]
+    pub transit_gateway_cidr_blocks: Option<Vec<String>>,
+
+
+    /// 
+    /// Enable or disable Equal Cost Multipath Protocol support. Enabled by default.
     /// 
     /// Required: No
     ///
@@ -165,14 +165,14 @@ pub struct CfnTransitGateway {
     /// Allowed values: disable | enable
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DnsSupport")]
-    pub dns_support: Option<TransitGatewayDnsSupportEnum>,
+    #[serde(rename = "VpnEcmpSupport")]
+    pub vpn_ecmp_support: Option<TransitGatewayVpnEcmpSupportEnum>,
 
 }
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TransitGatewayDefaultRouteTablePropagationEnum {
+pub enum TransitGatewayDefaultRouteTableAssociationEnum {
 
     /// disable
     #[serde(rename = "disable")]
@@ -184,9 +184,9 @@ pub enum TransitGatewayDefaultRouteTablePropagationEnum {
 
 }
 
-impl Default for TransitGatewayDefaultRouteTablePropagationEnum {
+impl Default for TransitGatewayDefaultRouteTableAssociationEnum {
     fn default() -> Self {
-        TransitGatewayDefaultRouteTablePropagationEnum::Disable
+        TransitGatewayDefaultRouteTableAssociationEnum::Disable
     }
 }
 
@@ -210,7 +210,7 @@ impl Default for TransitGatewayAutoAcceptSharedAttachmentsEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum TransitGatewayMulticastSupportEnum {
+pub enum TransitGatewayDefaultRouteTablePropagationEnum {
 
     /// disable
     #[serde(rename = "disable")]
@@ -222,28 +222,9 @@ pub enum TransitGatewayMulticastSupportEnum {
 
 }
 
-impl Default for TransitGatewayMulticastSupportEnum {
+impl Default for TransitGatewayDefaultRouteTablePropagationEnum {
     fn default() -> Self {
-        TransitGatewayMulticastSupportEnum::Disable
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum TransitGatewayDefaultRouteTableAssociationEnum {
-
-    /// disable
-    #[serde(rename = "disable")]
-    Disable,
-
-    /// enable
-    #[serde(rename = "enable")]
-    Enable,
-
-}
-
-impl Default for TransitGatewayDefaultRouteTableAssociationEnum {
-    fn default() -> Self {
-        TransitGatewayDefaultRouteTableAssociationEnum::Disable
+        TransitGatewayDefaultRouteTablePropagationEnum::Disable
     }
 }
 
@@ -263,6 +244,25 @@ pub enum TransitGatewayDnsSupportEnum {
 impl Default for TransitGatewayDnsSupportEnum {
     fn default() -> Self {
         TransitGatewayDnsSupportEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum TransitGatewayMulticastSupportEnum {
+
+    /// disable
+    #[serde(rename = "disable")]
+    Disable,
+
+    /// enable
+    #[serde(rename = "enable")]
+    Enable,
+
+}
+
+impl Default for TransitGatewayMulticastSupportEnum {
+    fn default() -> Self {
+        TransitGatewayMulticastSupportEnum::Disable
     }
 }
 
@@ -309,17 +309,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -328,6 +317,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

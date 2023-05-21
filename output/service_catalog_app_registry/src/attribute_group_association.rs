@@ -6,18 +6,6 @@ pub struct CfnAttributeGroupAssociation {
 
 
     /// 
-    /// The name or ID      of the attribute group      that holds the attributes      to describe the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AttributeGroup")]
-    pub attribute_group: String,
-
-
-    /// 
     /// The name or ID     of the application.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnAttributeGroupAssociation {
     /// Update requires: Replacement
     #[serde(rename = "Application")]
     pub application: String,
+
+
+    /// 
+    /// The name or ID      of the attribute group      that holds the attributes      to describe the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AttributeGroup")]
+    pub attribute_group: String,
 
 }
 

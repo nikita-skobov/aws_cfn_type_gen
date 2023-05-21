@@ -6,17 +6,15 @@ pub struct CfnFirewallRuleGroup {
 
 
     /// 
-    /// A list of the tag keys and values that you want to associate with the rule group.
+    /// A list of the rules that you have defined.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
+    /// Type: List of FirewallRule
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "FirewallRules")]
+    pub firewall_rules: Option<Vec<FirewallRule>>,
 
 
     /// 
@@ -36,15 +34,17 @@ pub struct CfnFirewallRuleGroup {
 
 
     /// 
-    /// A list of the rules that you have defined.
+    /// A list of the tag keys and values that you want to associate with the rule group.
     /// 
     /// Required: No
     ///
-    /// Type: List of FirewallRule
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FirewallRules")]
-    pub firewall_rules: Option<Vec<FirewallRule>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -67,6 +67,22 @@ pub struct FirewallRule {
 
 
     /// 
+    /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list:
+    /// 
+    /// ALLOW - Permit the request to go through.                         ALERT - Permit the request to go through but send an alert to the logs.                         BLOCK - Disallow the request. If this is specified,then BlockResponse must also be specified.         if BlockResponse is OVERRIDE, then all of the           following OVERRIDE attributes must be specified:                                                BlockOverrideDnsType          BlockOverrideDomainBlockOverrideTtl
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALERT | ALLOW | BLOCK
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: FirewallRuleActionEnum,
+
+
+    /// 
     /// The DNS record's type. This determines the format of the record value that you provided in BlockOverrideDomain. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
     /// 
     /// Required: No
@@ -81,19 +97,31 @@ pub struct FirewallRule {
 
 
     /// 
-    /// The ID of the domain list that's used in the rule.
+    /// The custom DNS record to send back in response to the query. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 64
+    /// Maximum: 255
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FirewallDomainListId")]
-    pub firewall_domain_list_id: String,
+    #[serde(rename = "BlockOverrideDomain")]
+    pub block_override_domain: Option<String>,
+
+
+    /// 
+    /// The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BlockOverrideTtl")]
+    pub block_override_ttl: Option<i64>,
 
 
     /// 
@@ -113,47 +141,19 @@ pub struct FirewallRule {
 
 
     /// 
-    /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list:
-    /// 
-    /// ALLOW - Permit the request to go through.                         ALERT - Permit the request to go through but send an alert to the logs.                         BLOCK - Disallow the request. If this is specified,then BlockResponse must also be specified.         if BlockResponse is OVERRIDE, then all of the           following OVERRIDE attributes must be specified:                                                BlockOverrideDnsType          BlockOverrideDomainBlockOverrideTtl
+    /// The ID of the domain list that's used in the rule.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: ALERT | ALLOW | BLOCK
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: FirewallRuleActionEnum,
-
-
-    /// 
-    /// The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockOverrideTtl")]
-    pub block_override_ttl: Option<i64>,
-
-
-    /// 
-    /// The custom DNS record to send back in response to the query. Used for the rule action BLOCK with a BlockResponse setting of OVERRIDE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
     /// Minimum: 1
     ///
-    /// Maximum: 255
+    /// Maximum: 64
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BlockOverrideDomain")]
-    pub block_override_domain: Option<String>,
+    #[serde(rename = "FirewallDomainListId")]
+    pub firewall_domain_list_id: String,
 
 
     /// 

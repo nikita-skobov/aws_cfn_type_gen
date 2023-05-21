@@ -6,6 +6,18 @@ pub struct CfnLogging {
 
 
     /// 
+    /// The account ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AccountId")]
+    pub account_id: String,
+
+
+    /// 
     /// The default log level. Valid Values: DEBUG | INFO | ERROR | WARN | DISABLED
     /// 
     /// Required: Yes
@@ -27,18 +39,6 @@ pub struct CfnLogging {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
-
-
-    /// 
-    /// The account ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccountId")]
-    pub account_id: String,
 
 }
 

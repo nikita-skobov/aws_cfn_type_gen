@@ -6,30 +6,6 @@ pub struct CfnResponsePlan {
 
 
     /// 
-    /// Information about third-party services integrated into the response plan.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Integration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Integrations")]
-    pub integrations: Option<Vec<Integration>>,
-
-
-    /// 
-    /// Details used to create an incident when using this response plan.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: IncidentTemplate
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncidentTemplate")]
-    pub incident_template: IncidentTemplate,
-
-
-    /// 
     /// The actions that the response plan starts at the beginning of an incident.
     /// 
     /// Required: No
@@ -44,17 +20,31 @@ pub struct CfnResponsePlan {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// The AWS Chatbot chat channel used for collaboration during an       incident.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: ChatChannel
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ChatChannel")]
+    pub chat_channel: Option<ChatChannel>,
+
+
+    /// 
+    /// The human readable name of the response plan.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
 
 
     /// 
@@ -72,19 +62,27 @@ pub struct CfnResponsePlan {
 
 
     /// 
-    /// The human readable name of the response plan.
+    /// Details used to create an incident when using this response plan.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: IncidentTemplate
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncidentTemplate")]
+    pub incident_template: IncidentTemplate,
+
+
+    /// 
+    /// Information about third-party services integrated into the response plan.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 200
+    /// Type: List of Integration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
+    #[serde(rename = "Integrations")]
+    pub integrations: Option<Vec<Integration>>,
 
 
     /// 
@@ -106,15 +104,17 @@ pub struct CfnResponsePlan {
 
 
     /// 
-    /// The AWS Chatbot chat channel used for collaboration during an       incident.
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: ChatChannel
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ChatChannel")]
-    pub chat_channel: Option<ChatChannel>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -131,21 +131,85 @@ impl cfn_resources::CfnResource for CfnResponsePlan {
 }
 
 
-/// Details about the PagerDuty service where the response plan creates an       incident.
+/// The Action property type specifies the configuration to launch.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PagerDutyIncidentConfiguration {
+pub struct Action {
 
 
     /// 
-    /// The ID of the PagerDuty service that the response plan associates with an incident       when it launches.
+    /// Details about the Systems Manager automation document that will be used as a       runbook during an incident.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SsmAutomation
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SsmAutomation")]
+    pub ssm_automation: Option<SsmAutomation>,
+
+}
+
+
+
+
+/// The AWS Chatbot chat channel used for collaboration during an       incident.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ChatChannel {
+
+
+    /// 
+    /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates       to an incident. You can also make updates to the incident through the chat channel by       using the SNS topics
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChatbotSns")]
+    pub chatbot_sns: Option<Vec<String>>,
+
+}
+
+
+
+
+/// When you add a runbook to a response plan, you can specify the parameters the runbook       should use at runtime. Response plans support parameters with both static and dynamic       values. For static values, you enter the value when you define the parameter in the       response plan. For dynamic values, the system determines the correct parameter value by       collecting information from the incident. Incident Manager supports the       following dynamic parameters:
+///
+/// Incident ARN
+///
+/// When Incident Manager creates an incident, the system captures the Amazon       Resource Name (ARN) of the corresponding incident record and enters it for this       parameter in the runbook.
+///
+/// Involved resources
+///
+/// When Incident Manager creates an incident, the system captures the ARNs of       the resources involved in the incident. These resource ARNs are then assigned to this       parameter in the runbook.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DynamicSsmParameter {
+
+
+    /// 
+    /// The key parameter to use when running the Systems Manager Automation       runbook.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ServiceId")]
-    pub service_id: String,
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The dynamic parameter value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: DynamicSsmParameterValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: DynamicSsmParameterValue,
 
 }
 
@@ -200,6 +264,22 @@ pub struct IncidentTemplate {
 
 
     /// 
+    /// Used to create only one incident record for an incident.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DedupeString")]
+    pub dedupe_string: Option<String>,
+
+
+    /// 
     /// Defines the impact to the customers. Providing an impact overwrites the impact       provided by a response plan.
     /// 
     /// Possible impacts:                                                1 - Critical impact, this typically relates to full application           failure that impacts many to all customers.                2 - High impact, partial application failure with impact to many           customers.               3 - Medium impact, the application is providing reduced service           to customers.               4 - Low impact, customer might aren't impacted by the problem           yet.               5 - No impact, customers aren't currently impacted but urgent           action is needed to avoid impact.
@@ -215,6 +295,32 @@ pub struct IncidentTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Impact")]
     pub impact: i64,
+
+
+    /// 
+    /// Tags to assign to the template. When the StartIncident API action is       called, Incident Manager assigns the tags specified in the template to the       incident.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncidentTags")]
+    pub incident_tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates       to an incident. You can also make updates to the incident through the chat channel using       the SNS topics.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of NotificationTargetItem
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationTargets")]
+    pub notification_targets: Option<Vec<NotificationTargetItem>>,
 
 
     /// 
@@ -248,48 +354,6 @@ pub struct IncidentTemplate {
     #[serde(rename = "Title")]
     pub title: String,
 
-
-    /// 
-    /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates       to an incident. You can also make updates to the incident through the chat channel using       the SNS topics.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of NotificationTargetItem
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationTargets")]
-    pub notification_targets: Option<Vec<NotificationTargetItem>>,
-
-
-    /// 
-    /// Used to create only one incident record for an incident.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DedupeString")]
-    pub dedupe_string: Option<String>,
-
-
-    /// 
-    /// Tags to assign to the template. When the StartIncident API action is       called, Incident Manager assigns the tags specified in the template to the       incident.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncidentTags")]
-    pub incident_tags: Option<Vec<Tag>>,
-
 }
 
 
@@ -310,169 +374,6 @@ pub struct Integration {
     /// Update requires: No interruption
     #[serde(rename = "PagerDutyConfiguration")]
     pub pager_duty_configuration: PagerDutyConfiguration,
-
-}
-
-
-
-
-/// The Action property type specifies the configuration to launch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Action {
-
-
-    /// 
-    /// Details about the Systems Manager automation document that will be used as a       runbook during an incident.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SsmAutomation
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SsmAutomation")]
-    pub ssm_automation: Option<SsmAutomation>,
-
-}
-
-
-
-
-/// The AWS Chatbot chat channel used for collaboration during an       incident.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ChatChannel {
-
-
-    /// 
-    /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates       to an incident. You can also make updates to the incident through the chat channel by       using the SNS topics
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChatbotSns")]
-    pub chatbot_sns: Option<Vec<String>>,
-
-}
-
-
-
-
-/// The key-value pair parameters to use when running the automation document.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SsmParameter {
-
-
-    /// 
-    /// The value parameter to use when running the automation document.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<String>,
-
-
-    /// 
-    /// The key parameter to use when running the automation document.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
-/// Details about the PagerDuty configuration for a response plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PagerDutyConfiguration {
-
-
-    /// 
-    /// Details about the PagerDuty service associated with the configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: PagerDutyIncidentConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PagerDutyIncidentConfiguration")]
-    pub pager_duty_incident_configuration: PagerDutyIncidentConfiguration,
-
-
-    /// 
-    /// The ID of the AWS Secrets Manager secret that stores your PagerDuty key, either a       General Access REST API Key or User Token REST API Key, and other user       credentials.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretId")]
-    pub secret_id: String,
-
-
-    /// 
-    /// The name of the PagerDuty configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}
-
-
-
-
-/// When you add a runbook to a response plan, you can specify the parameters the runbook       should use at runtime. Response plans support parameters with both static and dynamic       values. For static values, you enter the value when you define the parameter in the       response plan. For dynamic values, the system determines the correct parameter value by       collecting information from the incident. Incident Manager supports the       following dynamic parameters:
-///
-/// Incident ARN
-///
-/// When Incident Manager creates an incident, the system captures the Amazon       Resource Name (ARN) of the corresponding incident record and enters it for this       parameter in the runbook.
-///
-/// Involved resources
-///
-/// When Incident Manager creates an incident, the system captures the ARNs of       the resources involved in the incident. These resource ARNs are then assigned to this       parameter in the runbook.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DynamicSsmParameter {
-
-
-    /// 
-    /// The dynamic parameter value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: DynamicSsmParameterValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: DynamicSsmParameterValue,
-
-
-    /// 
-    /// The key parameter to use when running the Systems Manager Automation       runbook.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
 
 }
 
@@ -506,37 +407,66 @@ pub struct NotificationTargetItem {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// Details about the PagerDuty configuration for a response plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct PagerDutyConfiguration {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The name of the PagerDuty configuration.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// Details about the PagerDuty service associated with the configuration.
     /// 
     /// Required: Yes
+    ///
+    /// Type: PagerDutyIncidentConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PagerDutyIncidentConfiguration")]
+    pub pager_duty_incident_configuration: PagerDutyIncidentConfiguration,
+
+
     /// 
+    /// The ID of the AWS Secrets Manager secret that stores your PagerDuty key, either a       General Access REST API Key or User Token REST API Key, and other user       credentials.
+    /// 
+    /// Required: Yes
+    ///
     /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretId")]
+    pub secret_id: String,
+
+}
+
+
+
+
+/// Details about the PagerDuty service where the response plan creates an       incident.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PagerDutyIncidentConfiguration {
+
+
     /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    /// The ID of the PagerDuty service that the response plan associates with an incident       when it launches.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceId")]
+    pub service_id: String,
 
 }
 
@@ -579,6 +509,30 @@ pub struct SsmAutomation {
 
 
     /// 
+    /// The key-value pairs to resolve dynamic parameter values when processing a Systems Manager Automation runbook.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of DynamicSsmParameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DynamicParameters")]
+    pub dynamic_parameters: Option<Vec<DynamicSsmParameter>>,
+
+
+    /// 
+    /// The key-value pair parameters to use when running the automation document.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of SsmParameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<Vec<SsmParameter>>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the role that the automation document will assume       when running commands.
     /// 
     /// Required: Yes
@@ -609,30 +563,6 @@ pub struct SsmAutomation {
     #[serde(rename = "TargetAccount")]
     pub target_account: Option<SsmAutomationTargetAccountEnum>,
 
-
-    /// 
-    /// The key-value pairs to resolve dynamic parameter values when processing a Systems Manager Automation runbook.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of DynamicSsmParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DynamicParameters")]
-    pub dynamic_parameters: Option<Vec<DynamicSsmParameter>>,
-
-
-    /// 
-    /// The key-value pair parameters to use when running the automation document.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of SsmParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<Vec<SsmParameter>>,
-
 }
 
 
@@ -654,4 +584,74 @@ impl Default for SsmAutomationTargetAccountEnum {
         SsmAutomationTargetAccountEnum::Impactedaccount
     }
 }
+
+
+
+/// The key-value pair parameters to use when running the automation document.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SsmParameter {
+
+
+    /// 
+    /// The key parameter to use when running the automation document.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value parameter to use when running the automation document.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<String>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
 

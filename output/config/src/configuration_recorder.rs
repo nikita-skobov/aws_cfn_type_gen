@@ -12,18 +12,6 @@ pub struct CfnConfigurationRecorder {
 
 
     /// 
-    /// Indicates whether to record configurations for all supported resources or for a list of resource types. The resource types that you list must be supported by AWS Config.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RecordingGroup
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecordingGroup")]
-    pub recording_group: Option<RecordingGroup>,
-
-
-    /// 
     /// A name for the configuration recorder. If you don't specify a name, AWS CloudFormation CloudFormation generates a unique physical ID and uses that ID for the configuration recorder name.       For more information, see Name Type.
     /// 
     /// NoteAfter you create a configuration recorder, you cannot rename it. If you don't want a name that AWS CloudFormation generates, specify a value for this property.
@@ -41,6 +29,18 @@ pub struct CfnConfigurationRecorder {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// Indicates whether to record configurations for all supported resources or for a list of resource types. The resource types that you list must be supported by AWS Config.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RecordingGroup
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecordingGroup")]
+    pub recording_group: Option<RecordingGroup>,
 
 
     /// 
@@ -85,6 +85,22 @@ pub struct RecordingGroup {
 
 
     /// 
+    /// Specifies whether AWS Config records configuration changes for 			every supported type of regional resource.
+    /// 
+    /// If you set this option to true, when AWS Config 			adds support for a new type of regional resource, it starts 			recording resources of that type automatically.
+    /// 
+    /// If you set this option to true, you cannot 			enumerate a list of resourceTypes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllSupported")]
+    pub all_supported: Option<bool>,
+
+
+    /// 
     /// Specifies whether AWS Config includes all supported types of 			global resources (for example, IAM resources) with the resources 			that it records.
     /// 
     /// Before you can set this option to true, you must 			set the AllSupported option to 			true.
@@ -118,22 +134,6 @@ pub struct RecordingGroup {
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypes")]
     pub resource_types: Option<Vec<String>>,
-
-
-    /// 
-    /// Specifies whether AWS Config records configuration changes for 			every supported type of regional resource.
-    /// 
-    /// If you set this option to true, when AWS Config 			adds support for a new type of regional resource, it starts 			recording resources of that type automatically.
-    /// 
-    /// If you set this option to true, you cannot 			enumerate a list of resourceTypes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllSupported")]
-    pub all_supported: Option<bool>,
 
 }
 

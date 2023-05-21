@@ -5,28 +5,15 @@
 pub struct CfnTheme {
 
 
-    /// 
-    /// A list of key-value pairs that defines the properties of the theme.
-    /// 
-    /// Required: Yes
+    /// Property description not available.
     ///
-    /// Type: List of ThemeValues
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<ThemeValues>,
-
-
-    /// 
-    /// One or more key-value pairs to use when tagging the theme.
-    /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    /// Update requires: No interruption
+    #[serde(rename = "AppId")]
+    pub app_id: Option<String>,
 
 
     /// Property description not available.
@@ -38,17 +25,6 @@ pub struct CfnTheme {
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
     pub environment_name: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppId")]
-    pub app_id: Option<String>,
 
 
     /// 
@@ -74,6 +50,30 @@ pub struct CfnTheme {
     #[serde(rename = "Overrides")]
     pub overrides: Option<Vec<ThemeValues>>,
 
+
+    /// 
+    /// One or more key-value pairs to use when tagging the theme.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// A list of key-value pairs that defines the properties of the theme.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of ThemeValues
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<ThemeValues>,
+
 }
 
 
@@ -87,39 +87,6 @@ impl cfn_resources::CfnResource for CfnTheme {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// The ThemeValues property specifies key-value pair that defines a property of a theme.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ThemeValues {
-
-
-    /// 
-    /// The name of the property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
-
-
-    /// 
-    /// The value of the property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ThemeValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<ThemeValue>,
-
-}
-
-
 
 
 /// The ThemeValue property specifies the configuration of a theme's    properties.
@@ -149,6 +116,39 @@ pub struct ThemeValue {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
+
+}
+
+
+
+
+/// The ThemeValues property specifies key-value pair that defines a property of a theme.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ThemeValues {
+
+
+    /// 
+    /// The name of the property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
+
+
+    /// 
+    /// The value of the property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ThemeValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<ThemeValue>,
 
 }
 

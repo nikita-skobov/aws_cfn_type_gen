@@ -6,18 +6,6 @@ pub struct CfnKeyspace {
 
 
     /// 
-    /// A list of key-value pair tags to be       attached to the resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The name of the keyspace to be created. The keyspace name is case sensitive. If you don't specify a name, AWS       CloudFormation generates a unique ID and uses that ID for the keyspace name. For more       information, see Name       type.
     /// 
     /// Length constraints: Minimum length of 3. Maximum length of       255.
@@ -31,6 +19,18 @@ pub struct CfnKeyspace {
     /// Update requires: Replacement
     #[serde(rename = "KeyspaceName")]
     pub keyspace_name: Option<String>,
+
+
+    /// 
+    /// A list of key-value pair tags to be       attached to the resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

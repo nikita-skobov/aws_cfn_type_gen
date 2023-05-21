@@ -6,15 +6,15 @@ pub struct CfnSubnetGroup {
 
 
     /// 
-    /// A list of VPC subnet IDs for the subnet group.
+    /// The description of the subnet group.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -30,15 +30,15 @@ pub struct CfnSubnetGroup {
 
 
     /// 
-    /// The description of the subnet group.
+    /// A list of VPC subnet IDs for the subnet group.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 }
 

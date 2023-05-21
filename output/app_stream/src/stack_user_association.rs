@@ -6,23 +6,17 @@ pub struct CfnStackUserAssociation {
 
 
     /// 
-    /// The email address of the user who is associated with the stack.
-    /// 
-    /// NoteUsers' email addresses are case-sensitive.
+    /// The authentication type for the user who is associated with the stack. You must specify USERPOOL.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\p{L}\p{M}\p{S}\p{N}\p{P}]+
+    /// Allowed values: API | AWS_AD | SAML | USERPOOL
     ///
     /// Update requires: Replacement
-    #[serde(rename = "UserName")]
-    pub user_name: String,
+    #[serde(rename = "AuthenticationType")]
+    pub authentication_type: StackUserAssociationAuthenticationTypeEnum,
 
 
     /// 
@@ -52,17 +46,23 @@ pub struct CfnStackUserAssociation {
 
 
     /// 
-    /// The authentication type for the user who is associated with the stack. You must specify USERPOOL.
+    /// The email address of the user who is associated with the stack.
+    /// 
+    /// NoteUsers' email addresses are case-sensitive.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: API | AWS_AD | SAML | USERPOOL
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\p{L}\p{M}\p{S}\p{N}\p{P}]+
     ///
     /// Update requires: Replacement
-    #[serde(rename = "AuthenticationType")]
-    pub authentication_type: StackUserAssociationAuthenticationTypeEnum,
+    #[serde(rename = "UserName")]
+    pub user_name: String,
 
 }
 

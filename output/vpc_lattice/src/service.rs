@@ -21,6 +21,30 @@ pub struct CfnService {
     pub auth_type: Option<String>,
 
 
+    /// 
+    /// The Amazon Resource Name (ARN) of the certificate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CertificateArn")]
+    pub certificate_arn: Option<String>,
+
+
+    /// 
+    /// The custom domain name of the service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomDomainName")]
+    pub custom_domain_name: Option<String>,
+
+
     /// Property description not available.
     ///
     /// Required: No
@@ -57,30 +81,6 @@ pub struct CfnService {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The custom domain name of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomDomainName")]
-    pub custom_domain_name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CertificateArn")]
-    pub certificate_arn: Option<String>,
-
 }
 
 
@@ -94,6 +94,39 @@ impl cfn_resources::CfnResource for CfnService {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes the DNS information of a service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DnsEntry {
+
+
+    /// 
+    /// The domain name of the service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DomainName")]
+    pub domain_name: Option<String>,
+
+
+    /// 
+    /// The ID of the hosted zone.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostedZoneId")]
+    pub hosted_zone_id: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -127,39 +160,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Describes the DNS information of a service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DnsEntry {
-
-
-    /// 
-    /// The domain name of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DomainName")]
-    pub domain_name: Option<String>,
-
-
-    /// 
-    /// The ID of the hosted zone.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: Option<String>,
 
 }
 

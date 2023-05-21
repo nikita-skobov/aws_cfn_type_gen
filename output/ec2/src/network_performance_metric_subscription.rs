@@ -18,20 +18,6 @@ pub struct CfnNetworkPerformanceMetricSubscription {
 
 
     /// 
-    /// The statistic used for the subscription.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: p50
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Statistic")]
-    pub statistic: NetworkPerformanceMetricSubscriptionStatisticEnum,
-
-
-    /// 
     /// The metric used for the subscription.
     /// 
     /// Required: Yes
@@ -55,6 +41,20 @@ pub struct CfnNetworkPerformanceMetricSubscription {
     /// Update requires: Replacement
     #[serde(rename = "Source")]
     pub source: String,
+
+
+    /// 
+    /// The statistic used for the subscription.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: p50
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Statistic")]
+    pub statistic: NetworkPerformanceMetricSubscriptionStatisticEnum,
 
 }
 

@@ -22,20 +22,6 @@ pub struct CfnWaitCondition {
 
 
     /// 
-    /// The length of time (in seconds) to wait for the number of signals that the Count property  specifies. Timeout is a minimum-bound property, meaning the timeout occurs no sooner than the time you  specify, but can occur shortly thereafter. The maximum time that can be specified for this property is 12 hours  (43200 seconds).
-    /// 
-    /// Updates aren't supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Timeout")]
-    pub timeout: Option<String>,
-
-
-    /// 
     /// A reference to the wait condition handle used to signal this wait condition. Use the Ref intrinsic  function to specify an AWS::CloudFormation::WaitConditionHandle resource.
     /// 
     /// Anytime you add a WaitCondition resource during a stack update, you must associate the wait  condition with a new WaitConditionHandle resource. Don't reuse an old wait condition handle that has already been  defined in the template. If you reuse a wait condition handle, the wait condition might evaluate old signals from a  previous create or update stack command.
@@ -49,6 +35,20 @@ pub struct CfnWaitCondition {
     /// Update requires: No interruption
     #[serde(rename = "Handle")]
     pub handle: Option<String>,
+
+
+    /// 
+    /// The length of time (in seconds) to wait for the number of signals that the Count property  specifies. Timeout is a minimum-bound property, meaning the timeout occurs no sooner than the time you  specify, but can occur shortly thereafter. The maximum time that can be specified for this property is 12 hours  (43200 seconds).
+    /// 
+    /// Updates aren't supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Timeout")]
+    pub timeout: Option<String>,
 
 }
 

@@ -6,17 +6,17 @@ pub struct CfnConfigurationAggregator {
 
 
     /// 
-    /// An array of tag object.
+    /// Provides a list of source accounts and regions to be 			aggregated.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: List of AccountAggregationSource
     ///
-    /// Maximum: 50
+    /// Maximum: 1
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "AccountAggregationSources")]
+    pub account_aggregation_sources: Option<Vec<AccountAggregationSource>>,
 
 
     /// 
@@ -50,17 +50,17 @@ pub struct CfnConfigurationAggregator {
 
 
     /// 
-    /// Provides a list of source accounts and regions to be 			aggregated.
+    /// An array of tag object.
     /// 
     /// Required: No
     ///
-    /// Type: List of AccountAggregationSource
+    /// Type: List of Tag
     ///
-    /// Maximum: 1
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AccountAggregationSources")]
-    pub account_aggregation_sources: Option<Vec<AccountAggregationSource>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -80,6 +80,51 @@ impl cfn_resources::CfnResource for CfnConfigurationAggregator {
 /// A collection of accounts and regions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccountAggregationSource {
+
+
+    /// 
+    /// The 12-digit account ID of the account being aggregated.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccountIds")]
+    pub account_ids: Vec<String>,
+
+
+    /// 
+    /// If true, aggregate existing AWS Config regions and future 			regions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllAwsRegions")]
+    pub all_aws_regions: Option<bool>,
+
+
+    /// 
+    /// The source regions being aggregated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsRegions")]
+    pub aws_regions: Option<Vec<String>>,
+
+}
+
+
+
+
+/// This object contains regions to set up the aggregator and an IAM 			role to retrieve organization details.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OrganizationAggregationSource {
 
 
     /// 
@@ -107,15 +152,15 @@ pub struct AccountAggregationSource {
 
 
     /// 
-    /// The 12-digit account ID of the account being aggregated.
+    /// ARN of the IAM role used to retrieve AWS Organizations details 			associated with the aggregator account.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AccountIds")]
-    pub account_ids: Vec<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
 
 }
 
@@ -153,51 +198,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// This object contains regions to set up the aggregator and an IAM 			role to retrieve organization details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OrganizationAggregationSource {
-
-
-    /// 
-    /// ARN of the IAM role used to retrieve AWS Organizations details 			associated with the aggregator account.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// The source regions being aggregated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsRegions")]
-    pub aws_regions: Option<Vec<String>>,
-
-
-    /// 
-    /// If true, aggregate existing AWS Config regions and future 			regions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllAwsRegions")]
-    pub all_aws_regions: Option<bool>,
 
 }
 

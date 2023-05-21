@@ -8,6 +8,48 @@ pub struct CfnUser {
 
 
     /// 
+    /// A list of group names to which you want to add the user.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Groups")]
+    pub groups: Option<Vec<String>>,
+
+
+    /// 
+    /// Creates a password for the specified IAM user. A password allows an       IAM user to access AWS services through the AWS Management Console.
+    /// 
+    /// You can use the AWS CLI, the AWS API, or the Users page in the IAM console to create a     password for any IAM user. Use ChangePassword to update     your own existing password in the My Security Credentials     page in the AWS Management Console.
+    /// 
+    /// For more information about managing passwords, see Managing passwords in the        IAM User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LoginProfile
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoginProfile")]
+    pub login_profile: Option<LoginProfile>,
+
+
+    /// 
+    /// A list of Amazon Resource Names (ARNs) of the IAM managed policies that     you want to attach to the user.
+    /// 
+    /// For more information about ARNs, see Amazon Resource Names (ARNs) and        AWS Service Namespaces in the AWS       General Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManagedPolicyArns")]
+    pub managed_policy_arns: Option<Vec<String>>,
+
+
+    /// 
     /// The path for the user name. For more information about paths, see IAM         identifiers in the IAM User Guide.
     /// 
     /// This parameter is optional. If it is not included, it defaults to a slash (/).
@@ -30,61 +72,19 @@ pub struct CfnUser {
 
 
     /// 
-    /// Creates a password for the specified IAM user. A password allows an       IAM user to access AWS services through the AWS Management Console.
+    /// The ARN of the managed policy that is used to set the permissions boundary for the       user.
     /// 
-    /// You can use the AWS CLI, the AWS API, or the Users page in the IAM console to create a     password for any IAM user. Use ChangePassword to update     your own existing password in the My Security Credentials     page in the AWS Management Console.
+    /// A permissions boundary policy defines the maximum permissions that identity-based       policies can grant to an entity, but does not grant permissions. Permissions boundaries       do not define the maximum permissions that a resource-based policy can grant to an       entity. To learn more, see Permissions boundaries         for IAM entities in the IAM User Guide.
     /// 
-    /// For more information about managing passwords, see Managing passwords in the        IAM User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LoginProfile
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoginProfile")]
-    pub login_profile: Option<LoginProfile>,
-
-
-    /// 
-    /// A list of tags that you want to attach to the new user. Each tag consists of a key name and an associated value.    For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
-    /// 
-    /// NoteIf any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request   fails and the resource is not created.
+    /// For more information about policy types, see Policy types       in the IAM User Guide.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A list of group names to which you want to add the user.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Groups")]
-    pub groups: Option<Vec<String>>,
-
-
-    /// 
-    /// A list of Amazon Resource Names (ARNs) of the IAM managed policies that     you want to attach to the user.
-    /// 
-    /// For more information about ARNs, see Amazon Resource Names (ARNs) and        AWS Service Namespaces in the AWS       General Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManagedPolicyArns")]
-    pub managed_policy_arns: Option<Vec<String>>,
+    #[serde(rename = "PermissionsBoundary")]
+    pub permissions_boundary: Option<String>,
 
 
     /// 
@@ -101,6 +101,22 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
     pub policies: Option<Vec<Policy>>,
+
+
+    /// 
+    /// A list of tags that you want to attach to the new user. Each tag consists of a key name and an associated value.    For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
+    /// 
+    /// NoteIf any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request   fails and the resource is not created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -122,22 +138,6 @@ pub struct CfnUser {
     #[serde(rename = "UserName")]
     pub user_name: Option<String>,
 
-
-    /// 
-    /// The ARN of the managed policy that is used to set the permissions boundary for the       user.
-    /// 
-    /// A permissions boundary policy defines the maximum permissions that identity-based       policies can grant to an entity, but does not grant permissions. Permissions boundaries       do not define the maximum permissions that a resource-based policy can grant to an       entity. To learn more, see Permissions boundaries         for IAM entities in the IAM User Guide.
-    /// 
-    /// For more information about policy types, see Policy types       in the IAM User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PermissionsBoundary")]
-    pub permissions_boundary: Option<String>,
-
 }
 
 
@@ -153,37 +153,33 @@ impl cfn_resources::CfnResource for CfnUser {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// Creates a password for the specified user, giving the user the ability to access AWS services through the AWS Management Console. For more information about     managing passwords, see Managing Passwords in the        IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct LoginProfile {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The user's password.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: String,
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// Specifies whether the user is required to set a new password on next sign-in.
     /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PasswordResetRequired")]
+    pub password_reset_required: Option<bool>,
 
 }
 
@@ -233,33 +229,37 @@ pub struct Policy {
 
 
 
-/// Creates a password for the specified user, giving the user the ability to access AWS services through the AWS Management Console. For more information about     managing passwords, see Managing Passwords in the        IAM User Guide.
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LoginProfile {
+pub struct Tag {
 
 
     /// 
-    /// Specifies whether the user is required to set a new password on next sign-in.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PasswordResetRequired")]
-    pub password_reset_required: Option<bool>,
-
-
-    /// 
-    /// The user's password.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: String,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

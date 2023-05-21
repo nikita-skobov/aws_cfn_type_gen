@@ -16,18 +16,6 @@ pub struct CfnFargateProfile {
 
 
     /// 
-    /// The IDs of subnets to launch your pods into. At this time, pods running on Fargate are not assigned public IP addresses, so only private subnets (with       no direct route to an Internet Gateway) are accepted for this parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subnets")]
-    pub subnets: Option<Vec<String>>,
-
-
-    /// 
     /// The name of the Amazon EKS cluster to apply the Fargate profile       to.
     /// 
     /// Required: Yes
@@ -40,15 +28,15 @@ pub struct CfnFargateProfile {
 
 
     /// 
-    /// The selectors to match for pods to use this Fargate profile. Each       selector must have an associated namespace. Optionally, you can also specify labels for       a namespace. You may specify up to five selectors in a Fargate       profile.
+    /// The name of the Fargate profile.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of Selector
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Selectors")]
-    pub selectors: Vec<Selector>,
+    #[serde(rename = "FargateProfileName")]
+    pub fargate_profile_name: Option<String>,
 
 
     /// 
@@ -64,6 +52,30 @@ pub struct CfnFargateProfile {
 
 
     /// 
+    /// The selectors to match for pods to use this Fargate profile. Each       selector must have an associated namespace. Optionally, you can also specify labels for       a namespace. You may specify up to five selectors in a Fargate       profile.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Selector
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Selectors")]
+    pub selectors: Vec<Selector>,
+
+
+    /// 
+    /// The IDs of subnets to launch your pods into. At this time, pods running on Fargate are not assigned public IP addresses, so only private subnets (with       no direct route to an Internet Gateway) are accepted for this parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subnets")]
+    pub subnets: Option<Vec<String>>,
+
+
+    /// 
     /// The metadata to apply to the Fargate profile to assist with       categorization and organization. Each tag consists of a key and an optional value. You       define both. Fargate profile tags do not propagate to any other resources       associated with the Fargate profile, such as the pods that are scheduled       with it.
     /// 
     /// Required: No
@@ -73,18 +85,6 @@ pub struct CfnFargateProfile {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The name of the Fargate profile.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FargateProfileName")]
-    pub fargate_profile_name: Option<String>,
 
 }
 
@@ -99,6 +99,39 @@ impl cfn_resources::CfnResource for CfnFargateProfile {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A key-value pair.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Label {
+
+
+    /// 
+    /// Enter a key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// Enter a value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
 
 
 /// An object representing an AWS Fargate profile selector.
@@ -146,17 +179,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -166,36 +188,14 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-
-
-/// A key-value pair.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Label {
-
 
     /// 
-    /// Enter a key.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
     /// 
-    /// Enter a value.
-    /// 
-    /// Required: Yes
-    ///
     /// Type: String
-    ///
-    /// Update requires: Replacement
+    /// 
     #[serde(rename = "Value")]
     pub value: String,
 

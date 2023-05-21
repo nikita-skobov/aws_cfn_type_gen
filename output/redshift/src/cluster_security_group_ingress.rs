@@ -40,6 +40,20 @@ pub struct CfnClusterSecurityGroupIngress {
 
 
     /// 
+    /// The EC2 security group to be added the Amazon Redshift security group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EC2SecurityGroupName")]
+    pub ec2_security_group_name: Option<String>,
+
+
+    /// 
     /// The AWS account number of the owner of the security group specified by       the EC2SecurityGroupName parameter. The AWS Access       Key ID is not an acceptable value.
     /// 
     /// Example: 111122223333
@@ -55,20 +69,6 @@ pub struct CfnClusterSecurityGroupIngress {
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupOwnerId")]
     pub ec2_security_group_owner_id: Option<String>,
-
-
-    /// 
-    /// The EC2 security group to be added the Amazon Redshift security group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EC2SecurityGroupName")]
-    pub ec2_security_group_name: Option<String>,
 
 }
 

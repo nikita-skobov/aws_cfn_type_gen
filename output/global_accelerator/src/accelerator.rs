@@ -6,20 +6,6 @@ pub struct CfnAccelerator {
 
 
     /// 
-    /// The name of the accelerator. The name must contain only alphanumeric characters or 			hyphens (-), and must not begin or end with a hyphen.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
     /// 
     /// If the value is set to true, the accelerator cannot be deleted. If set to false, accelerator can be deleted.
@@ -31,20 +17,6 @@ pub struct CfnAccelerator {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
-
-
-    /// 
-    /// Create tags for an accelerator.
-    /// 
-    /// For more information, see Tagging 				 in the AWS Global Accelerator Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -77,6 +49,34 @@ pub struct CfnAccelerator {
     /// Update requires: No interruption
     #[serde(rename = "IpAddresses")]
     pub ip_addresses: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the accelerator. The name must contain only alphanumeric characters or 			hyphens (-), and must not begin or end with a hyphen.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// Create tags for an accelerator.
+    /// 
+    /// For more information, see Tagging 				 in the AWS Global Accelerator Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -124,17 +124,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -143,6 +132,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

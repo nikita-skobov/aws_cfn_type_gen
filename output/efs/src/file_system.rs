@@ -6,34 +6,6 @@ pub struct CfnFileSystem {
 
 
     /// 
-    /// The performance mode of the file system. We recommend generalPurpose    performance mode for most file systems. File systems using the maxIO performance    mode can scale to higher levels of aggregate throughput and operations per second with a    tradeoff of slightly higher latencies for most file operations. The performance mode    can't be changed after the file system has been created.
-    /// 
-    /// NoteThe maxIO mode is not supported on file systems using One Zone storage classes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: generalPurpose | maxIO
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PerformanceMode")]
-    pub performance_mode: Option<FileSystemPerformanceModeEnum>,
-
-
-    /// 
-    /// Use to create one or more tags associated with the file system. Each     tag is a user-defined key-value pair. Name your file system on creation by including a     "Key":"Name","Value":"{value}" key-value pair. Each key must be unique. For more     information, see Tagging AWS resources     in the         AWS General Reference Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ElasticFileSystemTag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FileSystemTags")]
-    pub file_system_tags: Option<Vec<ElasticFileSystemTag>>,
-
-
-    /// 
     /// Used to create a file system that uses One Zone storage classes. It specifies the AWS    Availability Zone in which to create the file system. Use the format us-east-1a    to specify the Availability Zone. For    more information about One Zone storage classes, see Using EFS storage classes in the Amazon EFS User Guide.
     /// 
     /// NoteOne Zone storage classes are not available in all Availability Zones in AWS Regions where     Amazon EFS is available.
@@ -51,30 +23,6 @@ pub struct CfnFileSystem {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneName")]
     pub availability_zone_name: Option<String>,
-
-
-    /// 
-    /// The throughput, measured in    MiB/s,    that you want to provision for a file system that you're creating. Valid values are    1-1024. Required if ThroughputMode is set to provisioned. The upper    limit for throughput is 1024 MiB/s. To increase this limit, contact AWS Support. For    more information, see Amazon EFS quotas that you can increase in the Amazon EFS User Guide.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisionedThroughputInMibps")]
-    pub provisioned_throughput_in_mibps: Option<f64>,
-
-
-    /// 
-    /// A Boolean value that, if true, creates an encrypted file system. When creating an    encrypted file system, you have the option of specifying a KmsKeyId for an existing AWS KMS key. If you don't specify a KMS key, then the default KMS key for    Amazon EFS, /aws/elasticfilesystem, is used to protect the encrypted file system.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Encrypted")]
-    pub encrypted: Option<bool>,
 
 
     /// 
@@ -99,6 +47,48 @@ pub struct CfnFileSystem {
     /// Update requires: No interruption
     #[serde(rename = "BypassPolicyLockoutSafetyCheck")]
     pub bypass_policy_lockout_safety_check: Option<bool>,
+
+
+    /// 
+    /// A Boolean value that, if true, creates an encrypted file system. When creating an    encrypted file system, you have the option of specifying a KmsKeyId for an existing AWS KMS key. If you don't specify a KMS key, then the default KMS key for    Amazon EFS, /aws/elasticfilesystem, is used to protect the encrypted file system.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Encrypted")]
+    pub encrypted: Option<bool>,
+
+
+    /// 
+    /// The FileSystemPolicy for the EFS file system. A file system policy is an IAM resource policy used to control NFS access to an EFS file system.        For more information, see Using IAM to control NFS access to Amazon EFS      in the Amazon EFS User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 20000
+    ///
+    /// Pattern: [\s\S]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FileSystemPolicy")]
+    pub file_system_policy: Option<serde_json::Value>,
+
+
+    /// 
+    /// Use to create one or more tags associated with the file system. Each     tag is a user-defined key-value pair. Name your file system on creation by including a     "Key":"Name","Value":"{value}" key-value pair. Each key must be unique. For more     information, see Tagging AWS resources     in the         AWS General Reference Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ElasticFileSystemTag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FileSystemTags")]
+    pub file_system_tags: Option<Vec<ElasticFileSystemTag>>,
 
 
     /// 
@@ -140,21 +130,31 @@ pub struct CfnFileSystem {
 
 
     /// 
-    /// The FileSystemPolicy for the EFS file system. A file system policy is an IAM resource policy used to control NFS access to an EFS file system.        For more information, see Using IAM to control NFS access to Amazon EFS      in the Amazon EFS User Guide.
+    /// The performance mode of the file system. We recommend generalPurpose    performance mode for most file systems. File systems using the maxIO performance    mode can scale to higher levels of aggregate throughput and operations per second with a    tradeoff of slightly higher latencies for most file operations. The performance mode    can't be changed after the file system has been created.
+    /// 
+    /// NoteThe maxIO mode is not supported on file systems using One Zone storage classes.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
     ///
-    /// Minimum: 1
+    /// Allowed values: generalPurpose | maxIO
     ///
-    /// Maximum: 20000
+    /// Update requires: Replacement
+    #[serde(rename = "PerformanceMode")]
+    pub performance_mode: Option<FileSystemPerformanceModeEnum>,
+
+
+    /// 
+    /// The throughput, measured in    MiB/s,    that you want to provision for a file system that you're creating. Valid values are    1-1024. Required if ThroughputMode is set to provisioned. The upper    limit for throughput is 1024 MiB/s. To increase this limit, contact AWS Support. For    more information, see Amazon EFS quotas that you can increase in the Amazon EFS User Guide.
+    /// 
+    /// Required: Conditional
     ///
-    /// Pattern: [\s\S]+
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FileSystemPolicy")]
-    pub file_system_policy: Option<serde_json::Value>,
+    #[serde(rename = "ProvisionedThroughputInMibps")]
+    pub provisioned_throughput_in_mibps: Option<f64>,
 
 
     /// 
@@ -229,23 +229,104 @@ impl cfn_resources::CfnResource for CfnFileSystem {
 }
 
 
-/// Describes a policy used by EFS lifecycle management and EFS Intelligent-Tiering that    specifies when to transition files into and out of the file system's Infrequent Access (IA)    storage class. For more information, see EFS Intelligent‐Tiering and EFS Lifecycle     Management.
+/// The backup policy turns automatic backups for the file system on or off.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LifecyclePolicy {
+pub struct BackupPolicy {
 
 
     /// 
-    /// Describes when to transition a file from IA storage to primary storage. Metadata    operations such as listing the contents of a directory don't count as file access    events.
+    /// Set the backup policy status for the file system.
     /// 
-    /// Required: No
+    /// ENABLED - Turns automatic backups on for the file system.                                            DISABLED - Turns automatic backups off for the file system.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: AFTER_1_ACCESS
+    /// Allowed values: DISABLED | DISABLING | ENABLED | ENABLING
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TransitionToPrimaryStorageClass")]
-    pub transition_to_primary_storage_class: Option<LifecyclePolicyTransitionToPrimaryStorageClassEnum>,
+    #[serde(rename = "Status")]
+    pub status: BackupPolicyStatusEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum BackupPolicyStatusEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// DISABLING
+    #[serde(rename = "DISABLING")]
+    Disabling,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+    /// ENABLING
+    #[serde(rename = "ENABLING")]
+    Enabling,
+
+}
+
+impl Default for BackupPolicyStatusEnum {
+    fn default() -> Self {
+        BackupPolicyStatusEnum::Disabled
+    }
+}
+
+
+
+/// A tag is a key-value pair attached to a file system. Allowed characters in the Key and Value properties        are letters, white space, and numbers that    can be represented in UTF-8, and the following characters: + - = . _ : /
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ElasticFileSystemTag {
+
+
+    /// 
+    /// The tag key (String). The key can't start with aws:.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value of the tag key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// Describes a policy used by EFS lifecycle management and EFS Intelligent-Tiering that    specifies when to transition files into and out of the file system's Infrequent Access (IA)    storage class. For more information, see EFS Intelligent‐Tiering and EFS Lifecycle     Management.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LifecyclePolicy {
 
 
     /// 
@@ -260,6 +341,20 @@ pub struct LifecyclePolicy {
     /// Update requires: No interruption
     #[serde(rename = "TransitionToIA")]
     pub transition_to_ia: Option<LifecyclePolicyTransitionToIAEnum>,
+
+
+    /// 
+    /// Describes when to transition a file from IA storage to primary storage. Metadata    operations such as listing the contents of a directory don't count as file access    events.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AFTER_1_ACCESS
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TransitionToPrimaryStorageClass")]
+    pub transition_to_primary_storage_class: Option<LifecyclePolicyTransitionToPrimaryStorageClassEnum>,
 
 }
 
@@ -311,101 +406,6 @@ pub enum LifecyclePolicyTransitionToIAEnum {
 impl Default for LifecyclePolicyTransitionToIAEnum {
     fn default() -> Self {
         LifecyclePolicyTransitionToIAEnum::After14days
-    }
-}
-
-
-
-/// A tag is a key-value pair attached to a file system. Allowed characters in the Key and Value properties        are letters, white space, and numbers that    can be represented in UTF-8, and the following characters: + - = . _ : /
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ElasticFileSystemTag {
-
-
-    /// 
-    /// The tag key (String). The key can't start with aws:.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value of the tag key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-
-
-/// The backup policy turns automatic backups for the file system on or off.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BackupPolicy {
-
-
-    /// 
-    /// Set the backup policy status for the file system.
-    /// 
-    /// ENABLED - Turns automatic backups on for the file system.                                            DISABLED - Turns automatic backups off for the file system.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | DISABLING | ENABLED | ENABLING
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: BackupPolicyStatusEnum,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum BackupPolicyStatusEnum {
-
-    /// DISABLED
-    #[serde(rename = "DISABLED")]
-    Disabled,
-
-    /// DISABLING
-    #[serde(rename = "DISABLING")]
-    Disabling,
-
-    /// ENABLED
-    #[serde(rename = "ENABLED")]
-    Enabled,
-
-    /// ENABLING
-    #[serde(rename = "ENABLING")]
-    Enabling,
-
-}
-
-impl Default for BackupPolicyStatusEnum {
-    fn default() -> Self {
-        BackupPolicyStatusEnum::Disabled
     }
 }
 

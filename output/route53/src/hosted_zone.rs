@@ -28,6 +28,20 @@ pub struct CfnHostedZone {
 
 
     /// 
+    /// Adds, edits, or deletes tags for a health check or a hosted zone.
+    /// 
+    /// For information about using tags for cost allocation, see Using Cost Allocation 				Tags in the         AWS Billing and Cost Management User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of HostedZoneTag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostedZoneTags")]
+    pub hosted_zone_tags: Option<Vec<HostedZoneTag>>,
+
+
+    /// 
     /// The name of the domain. Specify a fully qualified domain name, for example, www.example.com. 			The trailing dot is optional; Amazon Route 53 assumes that the domain name is fully qualified. This means that Route 53 treats 			www.example.com (without a trailing dot) and www.example.com. (with a trailing dot) as identical.
     /// 
     /// If you're creating a public hosted zone, this is the name you have registered with your DNS registrar. If your domain name 			is registered with a registrar other than Route 53, change the name servers for your domain to the set of NameServers that 			are returned by the Fn::GetAtt intrinsic function.
@@ -41,20 +55,6 @@ pub struct CfnHostedZone {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
-
-    /// 
-    /// Private hosted zones: A complex type that contains information about the VPCs that are 			associated with the specified hosted zone.
-    /// 
-    /// NoteFor public hosted zones, omit VPCs, VPCId, and VPCRegion.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of VPC
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VPCs")]
-    pub vpcs: Option<Vec<VPC>>,
 
 
     /// 
@@ -76,17 +76,17 @@ pub struct CfnHostedZone {
 
 
     /// 
-    /// Adds, edits, or deletes tags for a health check or a hosted zone.
+    /// Private hosted zones: A complex type that contains information about the VPCs that are 			associated with the specified hosted zone.
     /// 
-    /// For information about using tags for cost allocation, see Using Cost Allocation 				Tags in the         AWS Billing and Cost Management User Guide.
+    /// NoteFor public hosted zones, omit VPCs, VPCId, and VPCRegion.
     /// 
     /// Required: No
     ///
-    /// Type: List of HostedZoneTag
+    /// Type: List of VPC
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HostedZoneTags")]
-    pub hosted_zone_tags: Option<Vec<HostedZoneTag>>,
+    #[serde(rename = "VPCs")]
+    pub vpcs: Option<Vec<VPC>>,
 
 }
 
@@ -101,6 +101,70 @@ impl cfn_resources::CfnResource for CfnHostedZone {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, omit both the 			HostedZoneConfig and Comment elements.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HostedZoneConfig {
+
+
+    /// 
+    /// Any comments that you want to include about the hosted zone.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Comment")]
+    pub comment: Option<String>,
+
+}
+
+
+
+
+/// A complex type that contains information about a tag that you want to add or edit for 			the specified health check or hosted zone.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HostedZoneTag {
+
+
+    /// 
+    /// The value of Key depends on the operation that you want to 			perform:
+    /// 
+    /// Add a tag to a health check or hosted zone: 						Key is the name that you want to give the new tag.                        Edit a tag: Key is the name of 					the tag that you want to change the Value for.                         Delete a key: Key is the name 					of the tag you want to remove.                        Give a name to a health check: Edit the 					default Name tag. In the Amazon Route 53 console, the list of your 					health checks includes a Name column that lets 					you see the name that you've given to each health check.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value of Value depends on the operation that you want to 			perform:
+    /// 
+    /// Add a tag to a health check or hosted zone: 						Value is the value that you want to give the new tag.                        Edit a tag: Value is the new 					value that you want to assign the tag.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
 
 
 /// A complex type that contains information about a configuration for DNS query 			logging.
@@ -283,68 +347,4 @@ impl Default for VPCVPCRegionEnum {
         VPCVPCRegionEnum::Afsouth1
     }
 }
-
-
-
-/// A complex type that contains information about a tag that you want to add or edit for 			the specified health check or hosted zone.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HostedZoneTag {
-
-
-    /// 
-    /// The value of Value depends on the operation that you want to 			perform:
-    /// 
-    /// Add a tag to a health check or hosted zone: 						Value is the value that you want to give the new tag.                        Edit a tag: Value is the new 					value that you want to assign the tag.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The value of Key depends on the operation that you want to 			perform:
-    /// 
-    /// Add a tag to a health check or hosted zone: 						Key is the name that you want to give the new tag.                        Edit a tag: Key is the name of 					the tag that you want to change the Value for.                         Delete a key: Key is the name 					of the tag you want to remove.                        Give a name to a health check: Edit the 					default Name tag. In the Amazon Route 53 console, the list of your 					health checks includes a Name column that lets 					you see the name that you've given to each health check.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
-/// A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, omit both the 			HostedZoneConfig and Comment elements.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HostedZoneConfig {
-
-
-    /// 
-    /// Any comments that you want to include about the hosted zone.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Comment")]
-    pub comment: Option<String>,
-
-}
-
 

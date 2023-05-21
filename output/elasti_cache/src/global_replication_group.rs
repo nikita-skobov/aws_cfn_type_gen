@@ -18,6 +18,18 @@ pub struct CfnGlobalReplicationGroup {
     pub automatic_failover_enabled: Option<bool>,
 
 
+    /// 
+    /// The cache node type of the Global datastore
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheNodeType")]
+    pub cache_node_type: Option<String>,
+
+
     /// The name of the cache parameter group to use with the Global datastore. It must be compatible with the major engine version used by the Global datastore.
     ///
     /// Required: No
@@ -27,6 +39,29 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
     pub cache_parameter_group_name: Option<String>,
+
+
+    /// 
+    /// The Elasticache Redis engine version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
+
+
+    /// The number of node groups that comprise the Global Datastore.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GlobalNodeGroupCount")]
+    pub global_node_group_count: Option<i64>,
 
 
     /// 
@@ -52,29 +87,6 @@ pub struct CfnGlobalReplicationGroup {
     pub global_replication_group_id_suffix: Option<String>,
 
 
-    /// The number of node groups that comprise the Global Datastore.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GlobalNodeGroupCount")]
-    pub global_node_group_count: Option<i64>,
-
-
-    /// 
-    /// The Elasticache Redis engine version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
-
-
     /// 
     /// The replication groups that comprise the Global datastore.
     /// 
@@ -97,18 +109,6 @@ pub struct CfnGlobalReplicationGroup {
     #[serde(rename = "RegionalConfigurations")]
     pub regional_configurations: Option<Vec<RegionalConfiguration>>,
 
-
-    /// 
-    /// The cache node type of the Global datastore
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheNodeType")]
-    pub cache_node_type: Option<String>,
-
 }
 
 
@@ -124,9 +124,66 @@ impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {
 }
 
 
+/// A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GlobalReplicationGroupMember {
+
+
+    /// 
+    /// The replication group id of the Global datastore member.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationGroupId")]
+    pub replication_group_id: Option<String>,
+
+
+    /// 
+    /// The Amazon region of the Global datastore member.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationGroupRegion")]
+    pub replication_group_region: Option<String>,
+
+
+    /// 
+    /// Indicates the role of the replication group, PRIMARY or SECONDARY.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Role")]
+    pub role: Option<String>,
+
+}
+
+
+
+
 /// A list of the replication groups
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RegionalConfiguration {
+
+
+    /// 
+    /// The name of the secondary cluster
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationGroupId")]
+    pub replication_group_id: Option<String>,
 
 
     /// 
@@ -151,18 +208,6 @@ pub struct RegionalConfiguration {
     #[serde(rename = "ReshardingConfigurations")]
     pub resharding_configurations: Option<Vec<ReshardingConfiguration>>,
 
-
-    /// 
-    /// The name of the secondary cluster
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationGroupId")]
-    pub replication_group_id: Option<String>,
-
 }
 
 
@@ -171,18 +216,6 @@ pub struct RegionalConfiguration {
 /// A list of PreferredAvailabilityZones objects that specifies       the configuration of a node group in the resharded cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReshardingConfiguration {
-
-
-    /// 
-    /// A list of preferred availability zones for the nodes in this cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreferredAvailabilityZones")]
-    pub preferred_availability_zones: Option<Vec<String>>,
 
 
     /// 
@@ -202,50 +235,17 @@ pub struct ReshardingConfiguration {
     #[serde(rename = "NodeGroupId")]
     pub node_group_id: Option<String>,
 
-}
-
-
-
-
-/// A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GlobalReplicationGroupMember {
-
 
     /// 
-    /// The Amazon region of the Global datastore member.
+    /// A list of preferred availability zones for the nodes in this cluster.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ReplicationGroupRegion")]
-    pub replication_group_region: Option<String>,
-
-
-    /// 
-    /// The replication group id of the Global datastore member.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationGroupId")]
-    pub replication_group_id: Option<String>,
-
-
-    /// 
-    /// Indicates the role of the replication group, PRIMARY or SECONDARY.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Role")]
-    pub role: Option<String>,
+    #[serde(rename = "PreferredAvailabilityZones")]
+    pub preferred_availability_zones: Option<Vec<String>>,
 
 }
 

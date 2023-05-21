@@ -6,6 +6,22 @@ pub struct CfnResolverEndpoint {
 
 
     /// 
+    /// Indicates whether the Resolver endpoint allows inbound or outbound DNS queries:
+    /// 
+    /// INBOUND: allows DNS queries to your VPC from your network                        OUTBOUND: allows DNS queries from your VPC to your network
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: INBOUND | OUTBOUND
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Direction")]
+    pub direction: ResolverEndpointDirectionEnum,
+
+
+    /// 
     /// The subnets and IP addresses in your VPC that DNS queries originate from (for outbound endpoints) or that you forward 			DNS queries to (for inbound endpoints). The subnet ID uniquely identifies a VPC.
     /// 
     /// Required: Yes
@@ -17,32 +33,6 @@ pub struct CfnResolverEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "IpAddresses")]
     pub ip_addresses: Vec<IpAddressRequest>,
-
-
-    /// 
-    /// The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules 			(for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. 			For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
-
-
-    /// 
-    /// The Resolver endpoint IP address type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DUALSTACK | IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResolverEndpointType")]
-    pub resolver_endpoint_type: Option<ResolverEndpointResolverEndpointTypeEnum>,
 
 
     /// 
@@ -61,18 +51,15 @@ pub struct CfnResolverEndpoint {
     pub name: Option<String>,
 
 
-    /// 
-    /// Route 53 Resolver doesn't support updating tags through CloudFormation.
-    /// 
+    /// Property description not available.
+    ///
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "OutpostArn")]
+    pub outpost_arn: Option<String>,
 
 
     /// Property description not available.
@@ -87,52 +74,46 @@ pub struct CfnResolverEndpoint {
 
 
     /// 
-    /// Indicates whether the Resolver endpoint allows inbound or outbound DNS queries:
+    /// The Resolver endpoint IP address type.
     /// 
-    /// INBOUND: allows DNS queries to your VPC from your network                        OUTBOUND: allows DNS queries from your VPC to your network
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: INBOUND | OUTBOUND
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Direction")]
-    pub direction: ResolverEndpointDirectionEnum,
-
-
-    /// Property description not available.
-    ///
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Allowed values: DUALSTACK | IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResolverEndpointType")]
+    pub resolver_endpoint_type: Option<ResolverEndpointResolverEndpointTypeEnum>,
+
+
+    /// 
+    /// The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules 			(for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. 			For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "OutpostArn")]
-    pub outpost_arn: Option<String>,
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Vec<String>,
+
+
+    /// 
+    /// Route 53 Resolver doesn't support updating tags through CloudFormation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ResolverEndpointDirectionEnum {
-
-    /// INBOUND
-    #[serde(rename = "INBOUND")]
-    Inbound,
-
-    /// OUTBOUND
-    #[serde(rename = "OUTBOUND")]
-    Outbound,
-
-}
-
-impl Default for ResolverEndpointDirectionEnum {
-    fn default() -> Self {
-        ResolverEndpointDirectionEnum::Inbound
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ResolverEndpointResolverEndpointTypeEnum {
@@ -157,6 +138,25 @@ impl Default for ResolverEndpointResolverEndpointTypeEnum {
     }
 }
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ResolverEndpointDirectionEnum {
+
+    /// INBOUND
+    #[serde(rename = "INBOUND")]
+    Inbound,
+
+    /// OUTBOUND
+    #[serde(rename = "OUTBOUND")]
+    Outbound,
+
+}
+
+impl Default for ResolverEndpointDirectionEnum {
+    fn default() -> Self {
+        ResolverEndpointDirectionEnum::Inbound
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnResolverEndpoint {
     fn type_string() -> &'static str {
@@ -175,19 +175,19 @@ pub struct IpAddressRequest {
 
 
     /// 
-    /// The ID of the subnet that contains the IP address.
+    /// The IPv4 address that you want to use for DNS queries.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Minimum: 7
     ///
-    /// Maximum: 32
+    /// Maximum: 36
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    #[serde(rename = "Ip")]
+    pub ip: Option<String>,
 
 
     /// 
@@ -207,19 +207,19 @@ pub struct IpAddressRequest {
 
 
     /// 
-    /// The IPv4 address that you want to use for DNS queries.
+    /// The ID of the subnet that contains the IP address.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 7
+    /// Minimum: 1
     ///
-    /// Maximum: 36
+    /// Maximum: 32
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Ip")]
-    pub ip: Option<String>,
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
 
 }
 

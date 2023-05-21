@@ -8,18 +8,6 @@ pub struct CfnSlackWorkspaceConfiguration {
 
 
     /// 
-    /// An identifier used to update an existing Slack workspace configuration in AWS CloudFormation, such as 100.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VersionId")]
-    pub version_id: Option<String>,
-
-
-    /// 
     /// The team ID in Slack. This ID uniquely identifies a Slack workspace, such as         T012ABCDEFG.
     /// 
     /// Required: Yes
@@ -29,6 +17,18 @@ pub struct CfnSlackWorkspaceConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "TeamId")]
     pub team_id: String,
+
+
+    /// 
+    /// An identifier used to update an existing Slack workspace configuration in AWS CloudFormation, such as 100.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VersionId")]
+    pub version_id: Option<String>,
 
 }
 

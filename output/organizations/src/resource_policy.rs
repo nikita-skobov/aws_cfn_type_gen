@@ -10,20 +10,6 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// A list of tags that you want to attach to the newly created resource policy. For each       tag in the list, you must specify both a tag key and a value. You can set the value to       an empty string, but you can't set it to null. For more information about       tagging, see Tagging AWS Organizations         resources in the AWS Organizations User       Guide.
-    /// 
-    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for the resource policy, then the entire request fails and the resource policy is         not created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The policy text of the organization resource policy. You can specify the resource       policy content as a JSON object or a JSON string.
     /// 
     /// ImportantWhen you specify the resource policy content as a JSON string, you can't perform         drift detection on the CloudFormation stack. For this reason, we recommend         specifying the resource policy content as a JSON object instead.
@@ -41,6 +27,20 @@ pub struct CfnResourcePolicy {
     /// Update requires: No interruption
     #[serde(rename = "Content")]
     pub content: serde_json::Value,
+
+
+    /// 
+    /// A list of tags that you want to attach to the newly created resource policy. For each       tag in the list, you must specify both a tag key and a value. You can set the value to       an empty string, but you can't set it to null. For more information about       tagging, see Tagging AWS Organizations         resources in the AWS Organizations User       Guide.
+    /// 
+    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for the resource policy, then the entire request fails and the resource policy is         not created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

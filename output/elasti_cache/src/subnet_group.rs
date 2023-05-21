@@ -6,18 +6,6 @@ pub struct CfnSubnetGroup {
 
 
     /// 
-    /// The description for the cache subnet group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: String,
-
-
-    /// 
     /// The name for the cache subnet group. This value is stored as a lowercase string.
     /// 
     /// Constraints: Must contain no more than 255 alphanumeric characters or hyphens.
@@ -31,6 +19,18 @@ pub struct CfnSubnetGroup {
     /// Update requires: Replacement
     #[serde(rename = "CacheSubnetGroupName")]
     pub cache_subnet_group_name: Option<String>,
+
+
+    /// 
+    /// The description for the cache subnet group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: String,
 
 
     /// 

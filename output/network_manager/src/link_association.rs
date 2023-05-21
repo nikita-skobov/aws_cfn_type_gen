@@ -6,24 +6,6 @@ pub struct CfnLinkAssociation {
 
 
     /// 
-    /// The ID of the link.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LinkId")]
-    pub link_id: String,
-
-
-    /// 
     /// The device ID for the link association.
     /// 
     /// Required: Yes
@@ -57,6 +39,24 @@ pub struct CfnLinkAssociation {
     /// Update requires: Replacement
     #[serde(rename = "GlobalNetworkId")]
     pub global_network_id: String,
+
+
+    /// 
+    /// The ID of the link.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LinkId")]
+    pub link_id: String,
 
 }
 

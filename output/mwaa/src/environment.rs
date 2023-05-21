@@ -6,18 +6,6 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The name of your Amazon MWAA environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// A list of key-value pairs containing the Airflow configuration options for your environment. For example, core.default_timezone: utc. To learn more, see Apache Airflow configuration options.
     /// 
     /// Required: No
@@ -30,6 +18,116 @@ pub struct CfnEnvironment {
 
 
     /// 
+    /// The version of Apache Airflow to use for the environment. If no value is specified, defaults to the latest version.
+    /// 
+    /// Allowed Values: 2.0.2 | 1.10.12 | 2.2.2 | 2.4.3 | 2.5.1 (latest)
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AirflowVersion")]
+    pub airflow_version: Option<EnvironmentAirflowVersionEnum>,
+
+
+    /// 
+    /// The relative path to the DAGs folder on your Amazon S3 bucket. For example, dags. To learn more, see Adding or updating DAGs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DagS3Path")]
+    pub dag_s3_path: Option<String>,
+
+
+    /// 
+    /// The environment class type. Valid values: mw1.small, mw1.medium, mw1.large. To learn more, see Amazon MWAA environment class.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnvironmentClass")]
+    pub environment_class: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the execution role in IAM that allows MWAA to access AWS resources in your environment. For example, arn:aws:iam::123456789:role/my-execution-role. To learn more, see Amazon MWAA Execution role.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExecutionRoleArn")]
+    pub execution_role_arn: Option<String>,
+
+
+    /// 
+    /// The AWS Key Management Service (KMS) key to encrypt and decrypt the data in your environment. You can use an AWS KMS key managed by MWAA, or a customer-managed KMS key (advanced).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKey")]
+    pub kms_key: Option<String>,
+
+
+    /// 
+    /// The Apache Airflow logs being sent to CloudWatch Logs: DagProcessingLogs, SchedulerLogs, TaskLogs, WebserverLogs, WorkerLogs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LoggingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingConfiguration")]
+    pub logging_configuration: Option<LoggingConfiguration>,
+
+
+    /// 
+    /// The maximum number of workers that you want to run in your environment. MWAA scales the number of Apache Airflow workers up to the number you specify in the MaxWorkers field. For example, 20. When there are no more tasks running, and no more in the queue, MWAA disposes of the extra workers leaving the one worker that is included with your environment, or the number you specify in MinWorkers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxWorkers")]
+    pub max_workers: Option<i64>,
+
+
+    /// 
+    /// The minimum number of workers that you want to run in your environment. MWAA scales the number of Apache Airflow workers up to the number you specify in the MaxWorkers field. When there are no more tasks running, and no more in the queue, MWAA disposes of the extra workers leaving the worker count you specify in the MinWorkers field. For example, 2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinWorkers")]
+    pub min_workers: Option<i64>,
+
+
+    /// 
+    /// The name of your Amazon MWAA environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// The VPC networking components used to secure and enable network traffic between the AWS resources for your environment. To learn more, see About networking on Amazon MWAA.
     /// 
     /// Required: No
@@ -39,6 +137,54 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
     pub network_configuration: Option<NetworkConfiguration>,
+
+
+    /// 
+    /// The version of the plugins.zip file on your Amazon S3 bucket. To learn more, see Installing custom plugins.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PluginsS3ObjectVersion")]
+    pub plugins_s3_object_version: Option<String>,
+
+
+    /// 
+    /// The relative path to the plugins.zip file on your Amazon S3 bucket. For example, plugins.zip. To learn more, see Installing custom plugins.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PluginsS3Path")]
+    pub plugins_s3_path: Option<String>,
+
+
+    /// 
+    /// The version of the requirements.txt file on your Amazon S3 bucket. To learn more, see Installing Python dependencies.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequirementsS3ObjectVersion")]
+    pub requirements_s3_object_version: Option<String>,
+
+
+    /// 
+    /// The relative path to the requirements.txt file on your Amazon S3 bucket. For example, requirements.txt. To learn more, see Installing Python dependencies.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequirementsS3Path")]
+    pub requirements_s3_path: Option<String>,
 
 
     /// 
@@ -68,128 +214,6 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The version of the plugins.zip file on your Amazon S3 bucket. To learn more, see Installing custom plugins.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PluginsS3ObjectVersion")]
-    pub plugins_s3_object_version: Option<String>,
-
-
-    /// 
-    /// The relative path to the startup shell script in your Amazon S3 bucket. For example, s3://mwaa-environment/startup.sh.
-    /// 
-    /// Amazon MWAA runs the script as your environment starts, and before running the Apache Airflow process.       You can use this script to install dependencies, modify Apache Airflow configuration options, and set environment variables. For more information, see       Using a startup script.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StartupScriptS3Path")]
-    pub startup_script_s3_path: Option<String>,
-
-
-    /// 
-    /// The Apache Airflow Web server access mode. To learn more, see Apache Airflow access modes. Valid values: PRIVATE_ONLY or PUBLIC_ONLY.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WebserverAccessMode")]
-    pub webserver_access_mode: Option<String>,
-
-
-    /// 
-    /// The version of the requirements.txt file on your Amazon S3 bucket. To learn more, see Installing Python dependencies.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RequirementsS3ObjectVersion")]
-    pub requirements_s3_object_version: Option<String>,
-
-
-    /// 
-    /// The Apache Airflow logs being sent to CloudWatch Logs: DagProcessingLogs, SchedulerLogs, TaskLogs, WebserverLogs, WorkerLogs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LoggingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingConfiguration")]
-    pub logging_configuration: Option<LoggingConfiguration>,
-
-
-    /// 
-    /// The minimum number of workers that you want to run in your environment. MWAA scales the number of Apache Airflow workers up to the number you specify in the MaxWorkers field. When there are no more tasks running, and no more in the queue, MWAA disposes of the extra workers leaving the worker count you specify in the MinWorkers field. For example, 2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinWorkers")]
-    pub min_workers: Option<i64>,
-
-
-    /// 
-    /// The environment class type. Valid values: mw1.small, mw1.medium, mw1.large. To learn more, see Amazon MWAA environment class.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnvironmentClass")]
-    pub environment_class: Option<String>,
-
-
-    /// 
-    /// The relative path to the requirements.txt file on your Amazon S3 bucket. For example, requirements.txt. To learn more, see Installing Python dependencies.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RequirementsS3Path")]
-    pub requirements_s3_path: Option<String>,
-
-
-    /// 
-    /// The relative path to the DAGs folder on your Amazon S3 bucket. For example, dags. To learn more, see Adding or updating DAGs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DagS3Path")]
-    pub dag_s3_path: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the execution role in IAM that allows MWAA to access AWS resources in your environment. For example, arn:aws:iam::123456789:role/my-execution-role. To learn more, see Amazon MWAA Execution role.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExecutionRoleArn")]
-    pub execution_role_arn: Option<String>,
-
-
-    /// 
     /// The version of the startup shell script in your Amazon S3 bucket. You must specify the version ID that Amazon S3 assigns to the file       every time you update the script.
     /// 
     /// Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that are no more than 1,024 bytes long. The following is an example:
@@ -208,15 +232,17 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The maximum number of workers that you want to run in your environment. MWAA scales the number of Apache Airflow workers up to the number you specify in the MaxWorkers field. For example, 20. When there are no more tasks running, and no more in the queue, MWAA disposes of the extra workers leaving the one worker that is included with your environment, or the number you specify in MinWorkers.
+    /// The relative path to the startup shell script in your Amazon S3 bucket. For example, s3://mwaa-environment/startup.sh.
+    /// 
+    /// Amazon MWAA runs the script as your environment starts, and before running the Apache Airflow process.       You can use this script to install dependencies, modify Apache Airflow configuration options, and set environment variables. For more information, see       Using a startup script.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxWorkers")]
-    pub max_workers: Option<i64>,
+    #[serde(rename = "StartupScriptS3Path")]
+    pub startup_script_s3_path: Option<String>,
 
 
     /// 
@@ -232,15 +258,15 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The AWS Key Management Service (KMS) key to encrypt and decrypt the data in your environment. You can use an AWS KMS key managed by MWAA, or a customer-managed KMS key (advanced).
+    /// The Apache Airflow Web server access mode. To learn more, see Apache Airflow access modes. Valid values: PRIVATE_ONLY or PUBLIC_ONLY.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKey")]
-    pub kms_key: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "WebserverAccessMode")]
+    pub webserver_access_mode: Option<String>,
 
 
     /// 
@@ -255,32 +281,6 @@ pub struct CfnEnvironment {
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceWindowStart")]
     pub weekly_maintenance_window_start: Option<String>,
-
-
-    /// 
-    /// The relative path to the plugins.zip file on your Amazon S3 bucket. For example, plugins.zip. To learn more, see Installing custom plugins.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PluginsS3Path")]
-    pub plugins_s3_path: Option<String>,
-
-
-    /// 
-    /// The version of Apache Airflow to use for the environment. If no value is specified, defaults to the latest version.
-    /// 
-    /// Allowed Values: 2.0.2 | 1.10.12 | 2.2.2 | 2.4.3 | 2.5.1 (latest)
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AirflowVersion")]
-    pub airflow_version: Option<EnvironmentAirflowVersionEnum>,
 
 }
 
@@ -334,18 +334,6 @@ pub struct LoggingConfiguration {
 
 
     /// 
-    /// Defines the task logs sent to CloudWatch Logs and the logging level to send.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ModuleLoggingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TaskLogs")]
-    pub task_logs: Option<ModuleLoggingConfiguration>,
-
-
-    /// 
     /// Defines the processing logs sent to CloudWatch Logs and the logging level to send.
     /// 
     /// Required: No
@@ -358,18 +346,6 @@ pub struct LoggingConfiguration {
 
 
     /// 
-    /// Defines the web server logs sent to CloudWatch Logs and the logging level to send.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ModuleLoggingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WebserverLogs")]
-    pub webserver_logs: Option<ModuleLoggingConfiguration>,
-
-
-    /// 
     /// Defines the scheduler logs sent to CloudWatch Logs and the logging level to send.
     /// 
     /// Required: No
@@ -379,6 +355,30 @@ pub struct LoggingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SchedulerLogs")]
     pub scheduler_logs: Option<ModuleLoggingConfiguration>,
+
+
+    /// 
+    /// Defines the task logs sent to CloudWatch Logs and the logging level to send.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ModuleLoggingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TaskLogs")]
+    pub task_logs: Option<ModuleLoggingConfiguration>,
+
+
+    /// 
+    /// Defines the web server logs sent to CloudWatch Logs and the logging level to send.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ModuleLoggingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WebserverLogs")]
+    pub webserver_logs: Option<ModuleLoggingConfiguration>,
 
 
     /// 

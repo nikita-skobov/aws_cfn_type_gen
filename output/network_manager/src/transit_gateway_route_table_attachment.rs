@@ -6,6 +6,24 @@ pub struct CfnTransitGatewayRouteTableAttachment {
 
 
     /// 
+    /// The ID of the transit gateway peering.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: ^peering-([0-9a-f]{8,17})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PeeringId")]
+    pub peering_id: String,
+
+
+    /// 
     /// This property is read-only. Values can't be assigned to it.
     /// 
     /// Required: No
@@ -15,6 +33,18 @@ pub struct CfnTransitGatewayRouteTableAttachment {
     /// Update requires: No interruption
     #[serde(rename = "ProposedSegmentChange")]
     pub proposed_segment_change: Option<ProposedSegmentChange>,
+
+
+    /// 
+    /// The list of key-value pairs associated with the transit gateway route table attachment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -33,36 +63,6 @@ pub struct CfnTransitGatewayRouteTableAttachment {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayRouteTableArn")]
     pub transit_gateway_route_table_arn: String,
-
-
-    /// 
-    /// The list of key-value pairs associated with the transit gateway route table attachment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The ID of the transit gateway peering.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: ^peering-([0-9a-f]{8,17})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PeeringId")]
-    pub peering_id: String,
 
 }
 
@@ -85,15 +85,15 @@ pub struct ProposedSegmentChange {
 
 
     /// 
-    /// The list of key-value tags that changed for the segment.
+    /// The rule number in the policy document that applies to this change.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "AttachmentPolicyRuleNumber")]
+    pub attachment_policy_rule_number: Option<i64>,
 
 
     /// 
@@ -115,15 +115,15 @@ pub struct ProposedSegmentChange {
 
 
     /// 
-    /// The rule number in the policy document that applies to this change.
+    /// The list of key-value tags that changed for the segment.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AttachmentPolicyRuleNumber")]
-    pub attachment_policy_rule_number: Option<i64>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -142,17 +142,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -161,6 +150,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

@@ -14,31 +14,15 @@ pub struct CfnDeliveryChannel {
 
 
     /// 
-    /// The name of the Amazon S3 bucket to which AWS Config delivers 			configuration snapshots and configuration history files.
-    /// 
-    /// If you specify a bucket that belongs to another AWS account, 			that bucket must have policies that grant access permissions to AWS Config. For more information, see Permissions for the Amazon S3 Bucket in the         AWS Config 			Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3BucketName")]
-    pub s3_bucket_name: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which 			AWS Config sends notifications about configuration 			changes.
-    /// 
-    /// If you choose a topic from another account, the topic must have 			policies that grant access permissions to AWS Config. For more 			information, see Permissions for the Amazon SNS Topic in the         AWS Config 			Developer Guide.
+    /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: ConfigSnapshotDeliveryProperties
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SnsTopicARN")]
-    pub sns_topic_arn: Option<String>,
+    #[serde(rename = "ConfigSnapshotDeliveryProperties")]
+    pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
 
 
     /// 
@@ -60,6 +44,20 @@ pub struct CfnDeliveryChannel {
 
 
     /// 
+    /// The name of the Amazon S3 bucket to which AWS Config delivers 			configuration snapshots and configuration history files.
+    /// 
+    /// If you specify a bucket that belongs to another AWS account, 			that bucket must have policies that grant access permissions to AWS Config. For more information, see Permissions for the Amazon S3 Bucket in the         AWS Config 			Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3BucketName")]
+    pub s3_bucket_name: String,
+
+
+    /// 
     /// The prefix for the specified Amazon S3 bucket.
     /// 
     /// Required: No
@@ -72,18 +70,6 @@ pub struct CfnDeliveryChannel {
 
 
     /// 
-    /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConfigSnapshotDeliveryProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigSnapshotDeliveryProperties")]
-    pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS ) AWS KMS key (KMS key) used to encrypt objects delivered by AWS Config. 			Must belong to the same Region as the destination S3 bucket.
     /// 
     /// Required: No
@@ -93,6 +79,20 @@ pub struct CfnDeliveryChannel {
     /// Update requires: No interruption
     #[serde(rename = "S3KmsKeyArn")]
     pub s3_kms_key_arn: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which 			AWS Config sends notifications about configuration 			changes.
+    /// 
+    /// If you choose a topic from another account, the topic must have 			policies that grant access permissions to AWS Config. For more 			information, see Permissions for the Amazon SNS Topic in the         AWS Config 			Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnsTopicARN")]
+    pub sns_topic_arn: Option<String>,
 
 }
 

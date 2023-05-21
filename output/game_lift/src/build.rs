@@ -6,7 +6,7 @@ pub struct CfnBuild {
 
 
     /// 
-    /// Version information that is associated with this build. Version strings do not need to be unique.
+    /// A descriptive label that is associated with a build. Build names do not need to be    unique.
     /// 
     /// Required: No
     ///
@@ -17,8 +17,8 @@ pub struct CfnBuild {
     /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -68,7 +68,7 @@ pub struct CfnBuild {
 
 
     /// 
-    /// A descriptive label that is associated with a build. Build names do not need to be    unique.
+    /// Version information that is associated with this build. Version strings do not need to be unique.
     /// 
     /// Required: No
     ///
@@ -79,8 +79,8 @@ pub struct CfnBuild {
     /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
 
 }
 
@@ -146,20 +146,6 @@ pub struct StorageLocation {
 
 
     /// 
-    /// The version of the file, if object versioning is turned on for the bucket. Amazon GameLift    uses this information when retrieving files from your S3 bucket. To retrieve a specific    version of the file, provide an object version. To retrieve the latest version of the    file, do not set this parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ObjectVersion")]
-    pub object_version: Option<String>,
-
-
-    /// 
     /// The name of the zip file that contains the build files or script files.
     /// 
     /// Required: Yes
@@ -171,6 +157,20 @@ pub struct StorageLocation {
     /// Update requires: Replacement
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The version of the file, if object versioning is turned on for the bucket. Amazon GameLift    uses this information when retrieving files from your S3 bucket. To retrieve a specific    version of the file, provide an object version. To retrieve the latest version of the    file, do not set this parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ObjectVersion")]
+    pub object_version: Option<String>,
 
 
     /// 

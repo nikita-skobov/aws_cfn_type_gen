@@ -6,34 +6,6 @@ pub struct CfnAlarm {
 
 
     /// 
-    /// The name of the metric associated with the alarm.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: BurstCapacityPercentage | BurstCapacityTime | ClientTLSNegotiationErrorCount | CPUUtilization | DatabaseConnections | DiskQueueDepth | FreeStorageSpace | HealthyHostCount | HTTPCode_Instance_2XX_Count | HTTPCode_Instance_3XX_Count | HTTPCode_Instance_4XX_Count | HTTPCode_Instance_5XX_Count | HTTPCode_LB_4XX_Count | HTTPCode_LB_5XX_Count | InstanceResponseTime | NetworkIn | NetworkOut | NetworkReceiveThroughput | NetworkTransmitThroughput | RejectedConnectionCount | RequestCount | StatusCheckFailed | StatusCheckFailed_Instance | StatusCheckFailed_System | UnhealthyHostCount
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "MetricName")]
-    pub metric_name: AlarmMetricNameEnum,
-
-
-    /// 
-    /// The contact protocols for the alarm, such as Email, SMS (text     messaging), or both.
-    /// 
-    /// Allowed Values: Email | SMS
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContactProtocols")]
-    pub contact_protocols: Option<Vec<String>>,
-
-
-    /// 
     /// The name of the alarm.
     /// 
     /// Required: Yes
@@ -43,18 +15,6 @@ pub struct CfnAlarm {
     /// Update requires: Replacement
     #[serde(rename = "AlarmName")]
     pub alarm_name: String,
-
-
-    /// 
-    /// The number of data points within the evaluation periods that must be breaching to cause     the alarm to go to the ALARM state.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatapointsToAlarm")]
-    pub datapoints_to_alarm: Option<i64>,
 
 
     /// 
@@ -72,6 +32,58 @@ pub struct CfnAlarm {
 
 
     /// 
+    /// The contact protocols for the alarm, such as Email, SMS (text     messaging), or both.
+    /// 
+    /// Allowed Values: Email | SMS
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContactProtocols")]
+    pub contact_protocols: Option<Vec<String>>,
+
+
+    /// 
+    /// The number of data points within the evaluation periods that must be breaching to cause     the alarm to go to the ALARM state.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatapointsToAlarm")]
+    pub datapoints_to_alarm: Option<i64>,
+
+
+    /// 
+    /// The number of periods over which data is compared to the specified threshold.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EvaluationPeriods")]
+    pub evaluation_periods: i64,
+
+
+    /// 
+    /// The name of the metric associated with the alarm.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BurstCapacityPercentage | BurstCapacityTime | ClientTLSNegotiationErrorCount | CPUUtilization | DatabaseConnections | DiskQueueDepth | FreeStorageSpace | HealthyHostCount | HTTPCode_Instance_2XX_Count | HTTPCode_Instance_3XX_Count | HTTPCode_Instance_4XX_Count | HTTPCode_Instance_5XX_Count | HTTPCode_LB_4XX_Count | HTTPCode_LB_5XX_Count | InstanceResponseTime | NetworkIn | NetworkOut | NetworkReceiveThroughput | NetworkTransmitThroughput | RejectedConnectionCount | RequestCount | StatusCheckFailed | StatusCheckFailed_Instance | StatusCheckFailed_System | UnhealthyHostCount
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "MetricName")]
+    pub metric_name: AlarmMetricNameEnum,
+
+
+    /// 
     /// The name of the Lightsail resource that the alarm monitors.
     /// 
     /// Required: Yes
@@ -81,6 +93,34 @@ pub struct CfnAlarm {
     /// Update requires: Updates are not supported.
     #[serde(rename = "MonitoredResourceName")]
     pub monitored_resource_name: String,
+
+
+    /// 
+    /// A Boolean value indicating whether the alarm is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationEnabled")]
+    pub notification_enabled: Option<bool>,
+
+
+    /// 
+    /// The alarm states that trigger a notification.
+    /// 
+    /// NoteTo specify the OK and INSUFFICIENT_DATA values, you must also       specify ContactProtocols values. Otherwise, the OK       and INSUFFICIENT_DATA values will not take effect and the stack will       drift.
+    /// 
+    /// Allowed Values: OK | ALARM |       INSUFFICIENT_DATA
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationTriggers")]
+    pub notification_triggers: Option<Vec<String>>,
 
 
     /// 
@@ -112,48 +152,62 @@ pub struct CfnAlarm {
     #[serde(rename = "TreatMissingData")]
     pub treat_missing_data: Option<AlarmTreatMissingDataEnum>,
 
-
-    /// 
-    /// The number of periods over which data is compared to the specified threshold.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EvaluationPeriods")]
-    pub evaluation_periods: i64,
+}
 
 
-    /// 
-    /// The alarm states that trigger a notification.
-    /// 
-    /// NoteTo specify the OK and INSUFFICIENT_DATA values, you must also       specify ContactProtocols values. Otherwise, the OK       and INSUFFICIENT_DATA values will not take effect and the stack will       drift.
-    /// 
-    /// Allowed Values: OK | ALARM |       INSUFFICIENT_DATA
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationTriggers")]
-    pub notification_triggers: Option<Vec<String>>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AlarmComparisonOperatorEnum {
 
+    /// GreaterThanOrEqualToThreshold
+    #[serde(rename = "GreaterThanOrEqualToThreshold")]
+    Greaterthanorequaltothreshold,
 
-    /// 
-    /// A Boolean value indicating whether the alarm is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationEnabled")]
-    pub notification_enabled: Option<bool>,
+    /// GreaterThanThreshold
+    #[serde(rename = "GreaterThanThreshold")]
+    Greaterthanthreshold,
+
+    /// LessThanOrEqualToThreshold
+    #[serde(rename = "LessThanOrEqualToThreshold")]
+    Lessthanorequaltothreshold,
+
+    /// LessThanThreshold
+    #[serde(rename = "LessThanThreshold")]
+    Lessthanthreshold,
 
 }
 
+impl Default for AlarmComparisonOperatorEnum {
+    fn default() -> Self {
+        AlarmComparisonOperatorEnum::Greaterthanorequaltothreshold
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AlarmTreatMissingDataEnum {
+
+    /// breaching
+    #[serde(rename = "breaching")]
+    Breaching,
+
+    /// ignore
+    #[serde(rename = "ignore")]
+    Ignore,
+
+    /// missing
+    #[serde(rename = "missing")]
+    Missing,
+
+    /// notBreaching
+    #[serde(rename = "notBreaching")]
+    Notbreaching,
+
+}
+
+impl Default for AlarmTreatMissingDataEnum {
+    fn default() -> Self {
+        AlarmTreatMissingDataEnum::Breaching
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AlarmMetricNameEnum {
@@ -263,60 +317,6 @@ pub enum AlarmMetricNameEnum {
 impl Default for AlarmMetricNameEnum {
     fn default() -> Self {
         AlarmMetricNameEnum::Burstcapacitypercentage
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AlarmTreatMissingDataEnum {
-
-    /// breaching
-    #[serde(rename = "breaching")]
-    Breaching,
-
-    /// ignore
-    #[serde(rename = "ignore")]
-    Ignore,
-
-    /// missing
-    #[serde(rename = "missing")]
-    Missing,
-
-    /// notBreaching
-    #[serde(rename = "notBreaching")]
-    Notbreaching,
-
-}
-
-impl Default for AlarmTreatMissingDataEnum {
-    fn default() -> Self {
-        AlarmTreatMissingDataEnum::Breaching
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AlarmComparisonOperatorEnum {
-
-    /// GreaterThanOrEqualToThreshold
-    #[serde(rename = "GreaterThanOrEqualToThreshold")]
-    Greaterthanorequaltothreshold,
-
-    /// GreaterThanThreshold
-    #[serde(rename = "GreaterThanThreshold")]
-    Greaterthanthreshold,
-
-    /// LessThanOrEqualToThreshold
-    #[serde(rename = "LessThanOrEqualToThreshold")]
-    Lessthanorequaltothreshold,
-
-    /// LessThanThreshold
-    #[serde(rename = "LessThanThreshold")]
-    Lessthanthreshold,
-
-}
-
-impl Default for AlarmComparisonOperatorEnum {
-    fn default() -> Self {
-        AlarmComparisonOperatorEnum::Greaterthanorequaltothreshold
     }
 }
 

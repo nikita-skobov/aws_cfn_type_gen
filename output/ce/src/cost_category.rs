@@ -6,6 +6,42 @@ pub struct CfnCostCategory {
 
 
     /// 
+    /// The default value for the cost category.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultValue")]
+    pub default_value: Option<String>,
+
+
+    /// 
+    /// The unique name of the Cost Category.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The rule schema version in this particular Cost Category.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleVersion")]
+    pub rule_version: String,
+
+
+    /// 
     /// The array of CostCategoryRule in JSON array format.
     /// 
     /// NoteRules are processed in order. If there are multiple rules that match the line item, then     the first rule to match is used to determine that Cost Category value.
@@ -22,18 +58,6 @@ pub struct CfnCostCategory {
 
 
     /// 
-    /// The default value for the cost category.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultValue")]
-    pub default_value: Option<String>,
-
-
-    /// 
     /// The split charge rules that are used to allocate your charges between your Cost       Category values.
     /// 
     /// Required: No
@@ -45,30 +69,6 @@ pub struct CfnCostCategory {
     /// Update requires: No interruption
     #[serde(rename = "SplitChargeRules")]
     pub split_charge_rules: Option<String>,
-
-
-    /// 
-    /// The rule schema version in this particular Cost Category.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleVersion")]
-    pub rule_version: String,
-
-
-    /// 
-    /// The unique name of the Cost Category.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
 
 }
 

@@ -24,17 +24,15 @@ pub struct CfnProfile {
 
 
     /// 
-    /// Key-value pairs that can be used to group and search for profiles.
+    /// An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "CertificateIds")]
+    pub certificate_ids: Option<Vec<String>>,
 
 
     /// 
@@ -52,15 +50,17 @@ pub struct CfnProfile {
 
 
     /// 
-    /// An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
+    /// Key-value pairs that can be used to group and search for profiles.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CertificateIds")]
-    pub certificate_ids: Option<Vec<String>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

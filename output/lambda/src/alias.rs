@@ -8,33 +8,19 @@ pub struct CfnAlias {
 
 
     /// 
-    /// The function version that the alias invokes.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: (\$LATEST|[0-9]+)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionVersion")]
-    pub function_version: String,
-
-
-    /// 
-    /// Specifies a provisioned concurrency configuration for a function's alias.
+    /// A description of the alias.
     /// 
     /// Required: No
     ///
-    /// Type: ProvisionedConcurrencyConfiguration
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ProvisionedConcurrencyConfig")]
-    pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -60,6 +46,24 @@ pub struct CfnAlias {
 
 
     /// 
+    /// The function version that the alias invokes.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: (\$LATEST|[0-9]+)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionVersion")]
+    pub function_version: String,
+
+
+    /// 
     /// The name of the alias.
     /// 
     /// Required: Yes
@@ -78,19 +82,15 @@ pub struct CfnAlias {
 
 
     /// 
-    /// A description of the alias.
+    /// Specifies a provisioned concurrency configuration for a function's alias.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
+    /// Type: ProvisionedConcurrencyConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "ProvisionedConcurrencyConfig")]
+    pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 
 
     /// 
@@ -117,39 +117,6 @@ impl cfn_resources::CfnResource for CfnAlias {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// The traffic-shifting configuration of a Lambda function alias.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VersionWeight {
-
-
-    /// 
-    /// The qualifier of the second version.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionVersion")]
-    pub function_version: String,
-
-
-    /// 
-    /// The percentage of traffic that the alias routes to the second version.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionWeight")]
-    pub function_weight: f64,
-
-}
-
-
 
 
 /// The traffic-shifting configuration of a Lambda function alias.
@@ -188,6 +155,39 @@ pub struct ProvisionedConcurrencyConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedConcurrentExecutions")]
     pub provisioned_concurrent_executions: i64,
+
+}
+
+
+
+
+/// The traffic-shifting configuration of a Lambda function alias.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VersionWeight {
+
+
+    /// 
+    /// The qualifier of the second version.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionVersion")]
+    pub function_version: String,
+
+
+    /// 
+    /// The percentage of traffic that the alias routes to the second version.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionWeight")]
+    pub function_weight: f64,
 
 }
 

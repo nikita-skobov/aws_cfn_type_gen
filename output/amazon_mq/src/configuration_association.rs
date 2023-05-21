@@ -49,18 +49,6 @@ pub struct ConfigurationId {
 
 
     /// 
-    /// The revision number of the configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Revision")]
-    pub revision: i64,
-
-
-    /// 
     /// The unique ID that Amazon MQ generates for the configuration.
     /// 
     /// Required: Yes
@@ -70,6 +58,18 @@ pub struct ConfigurationId {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     pub id: String,
+
+
+    /// 
+    /// The revision number of the configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Revision")]
+    pub revision: i64,
 
 }
 

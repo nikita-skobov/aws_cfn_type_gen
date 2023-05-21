@@ -30,6 +30,18 @@ pub struct CfnVerifiedAccessInstance {
 
 
     /// 
+    /// The tags.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The IDs of the AWS Verified Access trust providers.
     /// 
     /// Required: No
@@ -52,18 +64,6 @@ pub struct CfnVerifiedAccessInstance {
     #[serde(rename = "VerifiedAccessTrustProviders")]
     pub verified_access_trust_providers: Option<Vec<VerifiedAccessTrustProvider>>,
 
-
-    /// 
-    /// The tags.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
 }
 
 
@@ -79,9 +79,9 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessInstance {
 }
 
 
-/// Options for Kinesis as a logging destination.
+/// Options for CloudWatch Logs as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KinesisDataFirehose {
+pub struct CloudWatchLogs {
 
 
     /// 
@@ -94,27 +94,6 @@ pub struct KinesisDataFirehose {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
-
-
-    /// 
-    /// The ID of the delivery stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryStream")]
-    pub delivery_stream: Option<String>,
-
-}
-
-
-
-
-/// Options for CloudWatch Logs as a logging destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CloudWatchLogs {
 
 
     /// 
@@ -128,6 +107,27 @@ pub struct CloudWatchLogs {
     #[serde(rename = "LogGroup")]
     pub log_group: Option<String>,
 
+}
+
+
+
+
+/// Options for Kinesis as a logging destination.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisDataFirehose {
+
+
+    /// 
+    /// The ID of the delivery stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryStream")]
+    pub delivery_stream: Option<String>,
+
 
     /// 
     /// Indicates whether logging is enabled.
@@ -139,6 +139,63 @@ pub struct CloudWatchLogs {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
+
+}
+
+
+
+
+/// Options for Amazon S3 as a logging destination.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3 {
+
+
+    /// 
+    /// The bucket name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketName")]
+    pub bucket_name: Option<String>,
+
+
+    /// 
+    /// The AWS account number that owns the bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketOwner")]
+    pub bucket_owner: Option<String>,
+
+
+    /// 
+    /// Indicates whether logging is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// The bucket prefix.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Prefix")]
+    pub prefix: Option<String>,
 
 }
 
@@ -157,17 +214,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -177,62 +223,16 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-
-
-/// Options for Amazon S3 as a logging destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3 {
-
 
     /// 
-    /// The AWS account number that owns the bucket.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// Required: No
-    ///
+    /// Required: Yes
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketOwner")]
-    pub bucket_owner: Option<String>,
-
-
     /// 
-    /// The bucket prefix.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Prefix")]
-    pub prefix: Option<String>,
-
-
-    /// 
-    /// Indicates whether logging is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// The bucket name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketName")]
-    pub bucket_name: Option<String>,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
@@ -242,18 +242,6 @@ pub struct S3 {
 /// Describes the destinations for Verified Access logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VerifiedAccessLogs {
-
-
-    /// 
-    /// Amazon S3 logging options.
-    /// 
-    /// Required: No
-    ///
-    /// Type: S3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3")]
-    pub s3: Option<S3>,
 
 
     /// 
@@ -279,6 +267,18 @@ pub struct VerifiedAccessLogs {
     #[serde(rename = "KinesisDataFirehose")]
     pub kinesis_data_firehose: Option<KinesisDataFirehose>,
 
+
+    /// 
+    /// Amazon S3 logging options.
+    /// 
+    /// Required: No
+    ///
+    /// Type: S3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3")]
+    pub s3: Option<S3>,
+
 }
 
 
@@ -287,6 +287,18 @@ pub struct VerifiedAccessLogs {
 /// Describes a Verified Access trust provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VerifiedAccessTrustProvider {
+
+
+    /// 
+    /// A description for the AWS Verified Access trust provider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -332,18 +344,6 @@ pub struct VerifiedAccessTrustProvider {
 
 
     /// 
-    /// A description for the AWS Verified Access trust provider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The ID of the AWS Verified Access trust provider.
     /// 
     /// Required: No
@@ -356,25 +356,6 @@ pub struct VerifiedAccessTrustProvider {
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
-
-    /// device
-    #[serde(rename = "device")]
-    Device,
-
-    /// user
-    #[serde(rename = "user")]
-    User,
-
-}
-
-impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
-    fn default() -> Self {
-        VerifiedAccessTrustProviderTrustProviderTypeEnum::Device
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
@@ -411,6 +392,25 @@ pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
 impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
     fn default() -> Self {
         VerifiedAccessTrustProviderUserTrustProviderTypeEnum::Iamidentitycenter
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
+
+    /// device
+    #[serde(rename = "device")]
+    Device,
+
+    /// user
+    #[serde(rename = "user")]
+    User,
+
+}
+
+impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
+    fn default() -> Self {
+        VerifiedAccessTrustProviderTrustProviderTypeEnum::Device
     }
 }
 

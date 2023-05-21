@@ -6,6 +6,18 @@ pub struct CfnService {
 
 
     /// 
+    /// The unique identifier of the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationIdentifier")]
+    pub application_identifier: String,
+
+
+    /// 
     /// A description of the service.
     /// 
     /// Required: No
@@ -15,54 +27,6 @@ pub struct CfnService {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// A summary of the configuration for the AWS Lambda endpoint type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LambdaEndpointInput
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LambdaEndpoint")]
-    pub lambda_endpoint: Option<LambdaEndpointInput>,
-
-
-    /// 
-    /// The tags assigned to the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The ID of the virtual private cloud (VPC).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
-
-
-    /// 
-    /// The summary of the configuration for the URL endpoint type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: UrlEndpointInput
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UrlEndpoint")]
-    pub url_endpoint: Option<UrlEndpointInput>,
 
 
     /// 
@@ -78,6 +42,30 @@ pub struct CfnService {
 
 
     /// 
+    /// The unique identifier of the environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EnvironmentIdentifier")]
+    pub environment_identifier: String,
+
+
+    /// 
+    /// A summary of the configuration for the AWS Lambda endpoint type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LambdaEndpointInput
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LambdaEndpoint")]
+    pub lambda_endpoint: Option<LambdaEndpointInput>,
+
+
+    /// 
     /// The name of the service.
     /// 
     /// Required: Yes
@@ -90,27 +78,39 @@ pub struct CfnService {
 
 
     /// 
-    /// The unique identifier of the application.
+    /// The tags assigned to the service.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The summary of the configuration for the URL endpoint type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: UrlEndpointInput
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UrlEndpoint")]
+    pub url_endpoint: Option<UrlEndpointInput>,
+
+
+    /// 
+    /// The ID of the virtual private cloud (VPC).
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ApplicationIdentifier")]
-    pub application_identifier: String,
-
-
-    /// 
-    /// The unique identifier of the environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EnvironmentIdentifier")]
-    pub environment_identifier: String,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
 
 }
 
@@ -125,6 +125,27 @@ impl cfn_resources::CfnResource for CfnService {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The input for the AWS Lambda endpoint type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LambdaEndpointInput {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Lambda function or alias.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Arn")]
+    pub arn: String,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -191,27 +212,6 @@ pub struct UrlEndpointInput {
     /// Update requires: Replacement
     #[serde(rename = "Url")]
     pub url: String,
-
-}
-
-
-
-
-/// The input for the AWS Lambda endpoint type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LambdaEndpointInput {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Lambda function or alias.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Arn")]
-    pub arn: String,
 
 }
 

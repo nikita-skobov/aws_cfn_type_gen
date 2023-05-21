@@ -18,18 +18,6 @@ pub struct CfnVpcEndpoint {
 
 
     /// 
-    /// The ID of the subnets from which you access OpenSearch Serverless.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
-
-    /// 
     /// The unique identifiers of the security groups that define the ports, protocols, and       sources for inbound traffic that you are authorizing into your endpoint.
     /// 
     /// Required: No
@@ -39,6 +27,18 @@ pub struct CfnVpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The ID of the subnets from which you access OpenSearch Serverless.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 
     /// 

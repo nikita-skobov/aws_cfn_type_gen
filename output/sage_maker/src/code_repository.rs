@@ -8,18 +8,6 @@ pub struct CfnCodeRepository {
 
 
     /// 
-    /// Configuration details for the Git repository, including the URL where it is located       and the ARN of the AWS Secrets Manager secret that contains the       credentials used to access the repository.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: GitConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GitConfig")]
-    pub git_config: GitConfig,
-
-
-    /// 
     /// The name of the Git repository.
     /// 
     /// Required: No
@@ -35,6 +23,18 @@ pub struct CfnCodeRepository {
     /// Update requires: Replacement
     #[serde(rename = "CodeRepositoryName")]
     pub code_repository_name: Option<String>,
+
+
+    /// 
+    /// Configuration details for the Git repository, including the URL where it is located       and the ARN of the AWS Secrets Manager secret that contains the       credentials used to access the repository.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: GitConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GitConfig")]
+    pub git_config: GitConfig,
 
 
     /// 
@@ -69,26 +69,6 @@ pub struct GitConfig {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the AWS Secrets Manager secret that       contains the credentials used to access the git repository. The secret must have a       staging label of AWSCURRENT and must be in the following format:
-    /// 
-    /// {"username": UserName, "password":           Password}
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:aws[a-z\-]*:secretsmanager:[a-z0-9\-]*:[0-9]{12}:secret:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArn")]
-    pub secret_arn: Option<String>,
-
-
-    /// 
     /// The default branch for the Git repository.
     /// 
     /// Required: No
@@ -119,6 +99,26 @@ pub struct GitConfig {
     #[serde(rename = "RepositoryUrl")]
     pub repository_url: String,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the AWS Secrets Manager secret that       contains the credentials used to access the git repository. The secret must have a       staging label of AWSCURRENT and must be in the following format:
+    /// 
+    /// {"username": UserName, "password":           Password}
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:aws[a-z\-]*:secretsmanager:[a-z0-9\-]*:[0-9]{12}:secret:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretArn")]
+    pub secret_arn: Option<String>,
+
 }
 
 
@@ -136,17 +136,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -155,6 +144,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

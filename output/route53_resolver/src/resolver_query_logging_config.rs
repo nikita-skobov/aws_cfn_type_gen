@@ -6,6 +6,22 @@ pub struct CfnResolverQueryLoggingConfig {
 
 
     /// 
+    /// The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group, or 			a Kinesis Data Firehose delivery stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 600
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationArn")]
+    pub destination_arn: Option<String>,
+
+
+    /// 
     /// The name of the query logging configuration.
     /// 
     /// Required: No
@@ -21,22 +37,6 @@ pub struct CfnResolverQueryLoggingConfig {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
-
-    /// 
-    /// The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group, or 			a Kinesis Data Firehose delivery stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 600
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationArn")]
-    pub destination_arn: Option<String>,
 
 }
 

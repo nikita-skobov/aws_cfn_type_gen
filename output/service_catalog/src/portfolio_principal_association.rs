@@ -6,6 +6,22 @@ pub struct CfnPortfolioPrincipalAssociation {
 
 
     /// 
+    /// The language code.
+    /// 
+    /// jp - Japanese                        zh - Chinese
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AcceptLanguage")]
+    pub accept_language: Option<String>,
+
+
+    /// 
     /// The portfolio identifier.
     /// 
     /// Required: Yes
@@ -51,22 +67,6 @@ pub struct CfnPortfolioPrincipalAssociation {
     /// Update requires: Replacement
     #[serde(rename = "PrincipalType")]
     pub principal_type: PortfolioPrincipalAssociationPrincipalTypeEnum,
-
-
-    /// 
-    /// The language code.
-    /// 
-    /// jp - Japanese                        zh - Chinese
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AcceptLanguage")]
-    pub accept_language: Option<String>,
 
 }
 

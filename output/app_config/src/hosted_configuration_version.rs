@@ -6,31 +6,17 @@ pub struct CfnHostedConfigurationVersion {
 
 
     /// 
-    /// A standard MIME type describing the format of the configuration content. For more     information, see Content-Type.
+    /// The application ID.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
+    /// Pattern: [a-z0-9]{4,7}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ContentType")]
-    pub content_type: String,
-
-
-    /// 
-    /// An optional locking token used to prevent race conditions from overwriting configuration     updates when creating a new version. To ensure your data is not overwritten when creating     multiple hosted configuration versions in rapid succession, specify the version number of     the latest hosted configuration version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LatestVersionNumber")]
-    pub latest_version_number: Option<f64>,
+    #[serde(rename = "ApplicationId")]
+    pub application_id: String,
 
 
     /// 
@@ -60,21 +46,19 @@ pub struct CfnHostedConfigurationVersion {
 
 
     /// 
-    /// A user-defined label for an AWS AppConfig hosted configuration version.
+    /// A standard MIME type describing the format of the configuration content. For more     information, see Content-Type.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 64
-    ///
-    /// Pattern: .*[^0-9].*
+    /// Maximum: 255
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VersionLabel")]
-    pub version_label: Option<String>,
+    #[serde(rename = "ContentType")]
+    pub content_type: String,
 
 
     /// 
@@ -94,17 +78,33 @@ pub struct CfnHostedConfigurationVersion {
 
 
     /// 
-    /// The application ID.
+    /// An optional locking token used to prevent race conditions from overwriting configuration     updates when creating a new version. To ensure your data is not overwritten when creating     multiple hosted configuration versions in rapid succession, specify the version number of     the latest hosted configuration version.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LatestVersionNumber")]
+    pub latest_version_number: Option<f64>,
+
+
+    /// 
+    /// A user-defined label for an AWS AppConfig hosted configuration version.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Pattern: [a-z0-9]{4,7}
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: .*[^0-9].*
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ApplicationId")]
-    pub application_id: String,
+    #[serde(rename = "VersionLabel")]
+    pub version_label: Option<String>,
 
 }
 

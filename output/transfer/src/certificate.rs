@@ -6,43 +6,15 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// Specifies whether this certificate is used for signing or encryption.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ENCRYPTION | SIGNING
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Usage")]
-    pub usage: CertificateUsageEnum,
-
-
-    /// 
-    /// Key-value pairs that can be used to group and search for certificates.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// An optional date that specifies when the certificate becomes inactive.
+    /// An optional date that specifies when the certificate becomes active.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InactiveDate")]
-    pub inactive_date: Option<String>,
+    #[serde(rename = "ActiveDate")]
+    pub active_date: Option<String>,
 
 
     /// 
@@ -82,30 +54,6 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The file that contains the private key for the certificate that's being imported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrivateKey")]
-    pub private_key: Option<String>,
-
-
-    /// 
-    /// An optional date that specifies when the certificate becomes active.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActiveDate")]
-    pub active_date: Option<String>,
-
-
-    /// 
     /// The name or description that's used to identity the certificate.
     /// 
     /// Required: No
@@ -121,6 +69,58 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// An optional date that specifies when the certificate becomes inactive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InactiveDate")]
+    pub inactive_date: Option<String>,
+
+
+    /// 
+    /// The file that contains the private key for the certificate that's being imported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrivateKey")]
+    pub private_key: Option<String>,
+
+
+    /// 
+    /// Key-value pairs that can be used to group and search for certificates.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Specifies whether this certificate is used for signing or encryption.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ENCRYPTION | SIGNING
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Usage")]
+    pub usage: CertificateUsageEnum,
 
 }
 
@@ -168,17 +168,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -187,6 +176,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

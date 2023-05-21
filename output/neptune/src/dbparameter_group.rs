@@ -8,6 +8,18 @@ pub struct CfnDBParameterGroup {
 
 
     /// 
+    /// Provides the customer-specified description for this DB parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: String,
+
+
+    /// 
     /// Must be neptune1 for engine versions prior to 1.2.0.0, or    neptune1.2 for engine version 1.2.0.0 and higher.
     /// 
     /// Required: Yes
@@ -29,18 +41,6 @@ pub struct CfnDBParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
-
-    /// 
-    /// Provides the customer-specified description for this DB parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: String,
 
 
     /// 

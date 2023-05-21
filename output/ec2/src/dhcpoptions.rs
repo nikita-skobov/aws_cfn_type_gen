@@ -8,15 +8,15 @@ pub struct CfnDHCPOptions {
 
 
     /// 
-    /// The IPv4 addresses of up to four Network Time Protocol (NTP) servers.
+    /// This value is used to complete unqualified DNS hostnames. If you're using     AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're     using AmazonProvidedDNS in another Region, specify     region.compute.internal (for example,     ap-northeast-1.compute.internal). Otherwise, specify a domain name (for     example, MyCompany.com).
     /// 
-    /// Required: Conditional
+    /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "NtpServers")]
-    pub ntp_servers: Option<Vec<String>>,
+    #[serde(rename = "DomainName")]
+    pub domain_name: Option<String>,
 
 
     /// 
@@ -44,18 +44,6 @@ pub struct CfnDHCPOptions {
 
 
     /// 
-    /// Any tags assigned to the DHCP options set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and     multicast are not currently supported).
     /// 
     /// Required: No
@@ -68,15 +56,27 @@ pub struct CfnDHCPOptions {
 
 
     /// 
-    /// This value is used to complete unqualified DNS hostnames. If you're using     AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're     using AmazonProvidedDNS in another Region, specify     region.compute.internal (for example,     ap-northeast-1.compute.internal). Otherwise, specify a domain name (for     example, MyCompany.com).
+    /// The IPv4 addresses of up to four Network Time Protocol (NTP) servers.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NtpServers")]
+    pub ntp_servers: Option<Vec<String>>,
+
+
+    /// 
+    /// Any tags assigned to the DHCP options set.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainName")]
-    pub domain_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -105,17 +105,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -124,6 +113,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

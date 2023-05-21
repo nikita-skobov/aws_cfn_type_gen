@@ -14,15 +14,15 @@ pub struct CfnDBProxyTargetGroup {
 
 
     /// 
-    /// One or more DB instance identifiers.
+    /// Settings that control the size and behavior of the connection pool associated with a         DBProxyTargetGroup.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: ConnectionPoolConfigurationInfoFormat
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DBInstanceIdentifiers")]
-    pub dbinstance_identifiers: Option<Vec<String>>,
+    #[serde(rename = "ConnectionPoolConfigurationInfo")]
+    pub connection_pool_configuration_info: Option<ConnectionPoolConfigurationInfoFormat>,
 
 
     /// 
@@ -38,15 +38,27 @@ pub struct CfnDBProxyTargetGroup {
 
 
     /// 
-    /// Settings that control the size and behavior of the connection pool associated with a         DBProxyTargetGroup.
+    /// One or more DB instance identifiers.
     /// 
     /// Required: No
     ///
-    /// Type: ConnectionPoolConfigurationInfoFormat
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ConnectionPoolConfigurationInfo")]
-    pub connection_pool_configuration_info: Option<ConnectionPoolConfigurationInfoFormat>,
+    #[serde(rename = "DBInstanceIdentifiers")]
+    pub dbinstance_identifiers: Option<Vec<String>>,
+
+
+    /// 
+    /// The identifier of the DBProxy that is associated with the DBProxyTargetGroup.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBProxyName")]
+    pub dbproxy_name: String,
 
 
     /// 
@@ -61,18 +73,6 @@ pub struct CfnDBProxyTargetGroup {
     /// Update requires: Replacement
     #[serde(rename = "TargetGroupName")]
     pub target_group_name: String,
-
-
-    /// 
-    /// The identifier of the DBProxy that is associated with the DBProxyTargetGroup.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBProxyName")]
-    pub dbproxy_name: String,
 
 }
 
@@ -95,21 +95,33 @@ pub struct ConnectionPoolConfigurationInfoFormat {
 
 
     /// 
-    /// Controls how actively the proxy closes idle database connections in the connection pool.     The value is expressed as a percentage of the max_connections setting for the RDS DB instance or Aurora DB cluster used by the target group.     With a high value, the proxy leaves a high percentage of idle database connections open. A low value causes the proxy to close more idle connections and return them to the database.
+    /// The number of seconds for a proxy to wait for a connection to become available in the connection pool. Only applies when the     proxy has opened its maximum number of connections and all connections are busy with client sessions.
     /// 
-    /// If you specify this parameter, then you must also include a value for MaxConnectionsPercent.
+    /// Default: 120
     /// 
-    /// Default: The default value is half of the value of MaxConnectionsPercent. For example, if MaxConnectionsPercent is 80, then the default value of     MaxIdleConnectionsPercent is 40. If the value of MaxConnectionsPercent isn't specified, then for SQL Server, MaxIdleConnectionsPercent is 5, and     for all other engines, the default is 50.
-    /// 
-    /// Constraints: Must be between 0 and the value of MaxConnectionsPercent.
+    /// Constraints: between 1 and 3600, or 0 representing unlimited
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxIdleConnectionsPercent")]
-    pub max_idle_connections_percent: Option<i64>,
+    #[serde(rename = "ConnectionBorrowTimeout")]
+    pub connection_borrow_timeout: Option<i64>,
+
+
+    /// 
+    /// One or more SQL statements for the proxy to run when opening each new database connection.     Typically used with SET statements to make sure that each connection has identical     settings such as time zone and character set. For multiple statements, use semicolons as the separator.     You can also include multiple variables in a single SET statement, such as     SET x=1, y=2.
+    /// 
+    /// Default: no initialization query
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InitQuery")]
+    pub init_query: Option<String>,
 
 
     /// 
@@ -131,19 +143,21 @@ pub struct ConnectionPoolConfigurationInfoFormat {
 
 
     /// 
-    /// The number of seconds for a proxy to wait for a connection to become available in the connection pool. Only applies when the     proxy has opened its maximum number of connections and all connections are busy with client sessions.
+    /// Controls how actively the proxy closes idle database connections in the connection pool.     The value is expressed as a percentage of the max_connections setting for the RDS DB instance or Aurora DB cluster used by the target group.     With a high value, the proxy leaves a high percentage of idle database connections open. A low value causes the proxy to close more idle connections and return them to the database.
     /// 
-    /// Default: 120
+    /// If you specify this parameter, then you must also include a value for MaxConnectionsPercent.
     /// 
-    /// Constraints: between 1 and 3600, or 0 representing unlimited
+    /// Default: The default value is half of the value of MaxConnectionsPercent. For example, if MaxConnectionsPercent is 80, then the default value of     MaxIdleConnectionsPercent is 40. If the value of MaxConnectionsPercent isn't specified, then for SQL Server, MaxIdleConnectionsPercent is 5, and     for all other engines, the default is 50.
+    /// 
+    /// Constraints: Must be between 0 and the value of MaxConnectionsPercent.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ConnectionBorrowTimeout")]
-    pub connection_borrow_timeout: Option<i64>,
+    #[serde(rename = "MaxIdleConnectionsPercent")]
+    pub max_idle_connections_percent: Option<i64>,
 
 
     /// 
@@ -158,20 +172,6 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     /// Update requires: No interruption
     #[serde(rename = "SessionPinningFilters")]
     pub session_pinning_filters: Option<Vec<String>>,
-
-
-    /// 
-    /// One or more SQL statements for the proxy to run when opening each new database connection.     Typically used with SET statements to make sure that each connection has identical     settings such as time zone and character set. For multiple statements, use semicolons as the separator.     You can also include multiple variables in a single SET statement, such as     SET x=1, y=2.
-    /// 
-    /// Default: no initialization query
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InitQuery")]
-    pub init_query: Option<String>,
 
 }
 

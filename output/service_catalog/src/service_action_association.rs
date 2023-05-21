@@ -6,6 +6,24 @@ pub struct CfnServiceActionAssociation {
 
 
     /// 
+    /// The product identifier. For example, prod-abcdzk7xy33qa.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProductId")]
+    pub product_id: String,
+
+
+    /// 
     /// The identifier of the provisioning artifact. For example, pa-4abcdjnxjj6ne.
     /// 
     /// Required: Yes
@@ -39,24 +57,6 @@ pub struct CfnServiceActionAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ServiceActionId")]
     pub service_action_id: String,
-
-
-    /// 
-    /// The product identifier. For example, prod-abcdzk7xy33qa.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProductId")]
-    pub product_id: String,
 
 }
 

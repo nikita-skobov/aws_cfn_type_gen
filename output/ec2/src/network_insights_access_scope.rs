@@ -8,18 +8,6 @@ pub struct CfnNetworkInsightsAccessScope {
 
 
     /// 
-    /// The paths to match.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AccessScopePathRequest
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MatchPaths")]
-    pub match_paths: Option<Vec<AccessScopePathRequest>>,
-
-
-    /// 
     /// The paths to exclude.
     /// 
     /// Required: No
@@ -29,6 +17,18 @@ pub struct CfnNetworkInsightsAccessScope {
     /// Update requires: Replacement
     #[serde(rename = "ExcludePaths")]
     pub exclude_paths: Option<Vec<AccessScopePathRequest>>,
+
+
+    /// 
+    /// The paths to match.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of AccessScopePathRequest
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MatchPaths")]
+    pub match_paths: Option<Vec<AccessScopePathRequest>>,
 
 
     /// 
@@ -57,9 +57,159 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScope {
 }
 
 
-/// Describes a through resource statement.
+/// Describes a path.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ThroughResourcesStatementRequest {
+pub struct AccessScopePathRequest {
+
+
+    /// 
+    /// The destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PathStatementRequest
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Destination")]
+    pub destination: Option<PathStatementRequest>,
+
+
+    /// 
+    /// The source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PathStatementRequest
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Source")]
+    pub source: Option<PathStatementRequest>,
+
+
+    /// 
+    /// The through resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ThroughResourcesStatementRequest
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ThroughResources")]
+    pub through_resources: Option<Vec<ThroughResourcesStatementRequest>>,
+
+}
+
+
+
+
+/// Describes a packet header statement.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PacketHeaderStatementRequest {
+
+
+    /// 
+    /// The destination addresses.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationAddresses")]
+    pub destination_addresses: Option<Vec<String>>,
+
+
+    /// 
+    /// The destination ports.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationPorts")]
+    pub destination_ports: Option<Vec<String>>,
+
+
+    /// 
+    /// The destination prefix lists.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationPrefixLists")]
+    pub destination_prefix_lists: Option<Vec<String>>,
+
+
+    /// 
+    /// The protocols.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocols")]
+    pub protocols: Option<Vec<String>>,
+
+
+    /// 
+    /// The source addresses.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceAddresses")]
+    pub source_addresses: Option<Vec<String>>,
+
+
+    /// 
+    /// The source ports.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourcePorts")]
+    pub source_ports: Option<Vec<String>>,
+
+
+    /// 
+    /// The source prefix lists.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourcePrefixLists")]
+    pub source_prefix_lists: Option<Vec<String>>,
+
+}
+
+
+
+
+/// Describes a path statement.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PathStatementRequest {
+
+
+    /// 
+    /// The packet header statement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PacketHeaderStatementRequest
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PacketHeaderStatement")]
+    pub packet_header_statement: Option<PacketHeaderStatementRequest>,
 
 
     /// 
@@ -111,51 +261,6 @@ pub struct ResourceStatementRequest {
 
 
 
-/// Describes a path.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AccessScopePathRequest {
-
-
-    /// 
-    /// The destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PathStatementRequest
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Destination")]
-    pub destination: Option<PathStatementRequest>,
-
-
-    /// 
-    /// The through resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ThroughResourcesStatementRequest
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ThroughResources")]
-    pub through_resources: Option<Vec<ThroughResourcesStatementRequest>>,
-
-
-    /// 
-    /// The source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PathStatementRequest
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Source")]
-    pub source: Option<PathStatementRequest>,
-
-}
-
-
-
-
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -193,21 +298,9 @@ pub struct Tag {
 
 
 
-/// Describes a path statement.
+/// Describes a through resource statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PathStatementRequest {
-
-
-    /// 
-    /// The packet header statement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PacketHeaderStatementRequest
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PacketHeaderStatement")]
-    pub packet_header_statement: Option<PacketHeaderStatementRequest>,
+pub struct ThroughResourcesStatementRequest {
 
 
     /// 
@@ -220,99 +313,6 @@ pub struct PathStatementRequest {
     /// Update requires: Replacement
     #[serde(rename = "ResourceStatement")]
     pub resource_statement: Option<ResourceStatementRequest>,
-
-}
-
-
-
-
-/// Describes a packet header statement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PacketHeaderStatementRequest {
-
-
-    /// 
-    /// The destination ports.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationPorts")]
-    pub destination_ports: Option<Vec<String>>,
-
-
-    /// 
-    /// The destination addresses.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationAddresses")]
-    pub destination_addresses: Option<Vec<String>>,
-
-
-    /// 
-    /// The destination prefix lists.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationPrefixLists")]
-    pub destination_prefix_lists: Option<Vec<String>>,
-
-
-    /// 
-    /// The source addresses.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceAddresses")]
-    pub source_addresses: Option<Vec<String>>,
-
-
-    /// 
-    /// The protocols.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocols")]
-    pub protocols: Option<Vec<String>>,
-
-
-    /// 
-    /// The source prefix lists.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourcePrefixLists")]
-    pub source_prefix_lists: Option<Vec<String>>,
-
-
-    /// 
-    /// The source ports.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourcePorts")]
-    pub source_ports: Option<Vec<String>>,
 
 }
 

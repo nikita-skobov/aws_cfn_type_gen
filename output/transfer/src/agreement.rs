@@ -8,6 +8,58 @@ pub struct CfnAgreement {
 
 
     /// 
+    /// With AS2, you can send files by calling StartFileTransfer and specifying the    file paths in the request parameter, SendFilePaths. We use the file’s parent    directory (for example, for --send-file-paths /bucket/dir/file.txt, parent    directory is /bucket/dir/) to temporarily store a processed AS2 message file,    store the MDN when we receive them from the partner, and write a final JSON file containing    relevant metadata of the transmission. So, the AccessRole needs to provide read    and write access to the parent directory of the file location used in the     StartFileTransfer request. Additionally, you need to provide read and write    access to the parent directory of the files that you intend to send with     StartFileTransfer.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*role/.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessRole")]
+    pub access_role: String,
+
+
+    /// 
+    /// The landing directory (folder) for files that are transferred by using the AS2    protocol.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^$|/.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BaseDirectory")]
+    pub base_directory: String,
+
+
+    /// 
+    /// The name or short description that's used to identify the agreement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 200
+    ///
+    /// Pattern: ^[\p{Graph}]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// A unique identifier for the AS2 local profile.
     /// 
     /// Required: Yes
@@ -44,19 +96,21 @@ pub struct CfnAgreement {
 
 
     /// 
-    /// The landing directory (folder) for files that are transferred by using the AS2    protocol.
+    /// A system-assigned unique identifier for a server instance. This identifier indicates the    specific server that the agreement uses.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 1024
+    /// Minimum: 19
     ///
-    /// Pattern: ^$|/.*
+    /// Maximum: 19
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "BaseDirectory")]
-    pub base_directory: String,
+    /// Pattern: ^s-([0-9a-f]{17})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServerId")]
+    pub server_id: String,
 
 
     /// 
@@ -85,60 +139,6 @@ pub struct CfnAgreement {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A system-assigned unique identifier for a server instance. This identifier indicates the    specific server that the agreement uses.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 19
-    ///
-    /// Maximum: 19
-    ///
-    /// Pattern: ^s-([0-9a-f]{17})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServerId")]
-    pub server_id: String,
-
-
-    /// 
-    /// With AS2, you can send files by calling StartFileTransfer and specifying the    file paths in the request parameter, SendFilePaths. We use the file’s parent    directory (for example, for --send-file-paths /bucket/dir/file.txt, parent    directory is /bucket/dir/) to temporarily store a processed AS2 message file,    store the MDN when we receive them from the partner, and write a final JSON file containing    relevant metadata of the transmission. So, the AccessRole needs to provide read    and write access to the parent directory of the file location used in the     StartFileTransfer request. Additionally, you need to provide read and write    access to the parent directory of the files that you intend to send with     StartFileTransfer.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*role/.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessRole")]
-    pub access_role: String,
-
-
-    /// 
-    /// The name or short description that's used to identify the agreement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 200
-    ///
-    /// Pattern: ^[\p{Graph}]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 }
 
@@ -186,17 +186,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -205,6 +194,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

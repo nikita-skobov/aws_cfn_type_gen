@@ -24,18 +24,6 @@ pub struct CfnTable {
 
 
     /// 
-    /// A structure used to define a table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: TableInput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TableInput")]
-    pub table_input: TableInput,
-
-
-    /// 
     /// The name of the database where the table metadata resides.    For Hive compatibility, this must be all lowercase.
     /// 
     /// Required: Yes
@@ -52,6 +40,18 @@ pub struct CfnTable {
     #[serde(rename = "DatabaseName")]
     pub database_name: String,
 
+
+    /// 
+    /// A structure used to define a table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: TableInput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TableInput")]
+    pub table_input: TableInput,
+
 }
 
 
@@ -65,94 +65,6 @@ impl cfn_resources::CfnResource for CfnTable {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// Specifies skewed values in a table. Skewed values are those that occur with very high    frequency.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SkewedInfo {
-
-
-    /// 
-    /// A list of names of columns that contain skewed values.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SkewedColumnNames")]
-    pub skewed_column_names: Option<Vec<String>>,
-
-
-    /// 
-    /// A mapping of skewed values to the columns that contain them.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SkewedColumnValueLocationMaps")]
-    pub skewed_column_value_location_maps: Option<serde_json::Value>,
-
-
-    /// 
-    /// A list of values that appear so frequently as to be considered    skewed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SkewedColumnValues")]
-    pub skewed_column_values: Option<Vec<String>>,
-
-}
-
-
-
-
-/// Specifies the sort order of a sorted column.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Order {
-
-
-    /// 
-    /// The name of the column.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Column")]
-    pub column: String,
-
-
-    /// 
-    /// Indicates that the column is sorted in ascending order    (== 1), or in descending order (==0).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SortOrder")]
-    pub sort_order: i64,
-
-}
-
-
 
 
 /// A column in a Table.
@@ -218,21 +130,97 @@ pub struct Column {
 
 
 
-/// An object that references a schema stored in the AWS Glue Schema Registry.
+/// Specifies the sort order of a sorted column.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SchemaReference {
+pub struct Order {
 
 
     /// 
-    /// The version number of the schema.
+    /// The name of the column.
     /// 
-    /// Required: No
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Column")]
+    pub column: String,
+
+
+    /// 
+    /// Indicates that the column is sorted in ascending order    (== 1), or in descending order (==0).
+    /// 
+    /// Required: Yes
     ///
     /// Type: Integer
     ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "SchemaVersionNumber")]
-    pub schema_version_number: Option<i64>,
+    #[serde(rename = "SortOrder")]
+    pub sort_order: i64,
+
+}
+
+
+
+
+/// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SchemaId {
+
+
+    /// 
+    /// The name of the schema registry that contains the schema.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegistryName")]
+    pub registry_name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the schema. One of SchemaArn or SchemaName has to be provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SchemaArn")]
+    pub schema_arn: Option<String>,
+
+
+    /// 
+    /// The name of the schema. One of SchemaArn or SchemaName has to be provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SchemaName")]
+    pub schema_name: Option<String>,
+
+}
+
+
+
+
+/// An object that references a schema stored in the AWS Glue Schema Registry.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SchemaReference {
 
 
     /// 
@@ -257,6 +245,285 @@ pub struct SchemaReference {
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersionId")]
     pub schema_version_id: Option<String>,
+
+
+    /// 
+    /// The version number of the schema.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SchemaVersionNumber")]
+    pub schema_version_number: Option<i64>,
+
+}
+
+
+
+
+/// Information about a serialization/deserialization program (SerDe) that serves as an    extractor and loader.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SerdeInfo {
+
+
+    /// 
+    /// Name of the SerDe.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// These key-value pairs define initialization parameters for the SerDe.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
+
+
+    /// 
+    /// Usually the class that implements the SerDe. An example is     org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SerializationLibrary")]
+    pub serialization_library: Option<String>,
+
+}
+
+
+
+
+/// Specifies skewed values in a table. Skewed values are those that occur with very high    frequency.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SkewedInfo {
+
+
+    /// 
+    /// A list of names of columns that contain skewed values.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SkewedColumnNames")]
+    pub skewed_column_names: Option<Vec<String>>,
+
+
+    /// 
+    /// A mapping of skewed values to the columns that contain them.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SkewedColumnValueLocationMaps")]
+    pub skewed_column_value_location_maps: Option<serde_json::Value>,
+
+
+    /// 
+    /// A list of values that appear so frequently as to be considered    skewed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SkewedColumnValues")]
+    pub skewed_column_values: Option<Vec<String>>,
+
+}
+
+
+
+
+/// Describes the physical storage of table data.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StorageDescriptor {
+
+
+    /// 
+    /// A list of reducer grouping columns, clustering columns, and    bucketing columns in the table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketColumns")]
+    pub bucket_columns: Option<Vec<String>>,
+
+
+    /// 
+    /// A list of the Columns in the table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Column
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Columns")]
+    pub columns: Option<Vec<Column>>,
+
+
+    /// 
+    /// True if the data in the table is compressed, or False if    not.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Compressed")]
+    pub compressed: Option<bool>,
+
+
+    /// 
+    /// The input format: SequenceFileInputFormat (binary),    or TextInputFormat, or a custom format.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputFormat")]
+    pub input_format: Option<String>,
+
+
+    /// 
+    /// The physical location of the table. By default, this takes the form of the warehouse    location, followed by the database location in the warehouse, followed by the table    name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2056
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Location")]
+    pub location: Option<String>,
+
+
+    /// 
+    /// Must be specified if the table contains any dimension columns.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfBuckets")]
+    pub number_of_buckets: Option<i64>,
+
+
+    /// 
+    /// The output format: SequenceFileOutputFormat (binary),    or IgnoreKeyTextOutputFormat, or a custom format.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OutputFormat")]
+    pub output_format: Option<String>,
+
+
+    /// 
+    /// The user-supplied properties in key-value form.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
+
+
+    /// 
+    /// An object that references a schema stored in the AWS Glue Schema Registry.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SchemaReference
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SchemaReference")]
+    pub schema_reference: Option<SchemaReference>,
+
+
+    /// 
+    /// The serialization/deserialization (SerDe) information.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SerdeInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SerdeInfo")]
+    pub serde_info: Option<SerdeInfo>,
+
+
+    /// 
+    /// The information about values that appear frequently in a column (skewed values).
+    /// 
+    /// Required: No
+    ///
+    /// Type: SkewedInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SkewedInfo")]
+    pub skewed_info: Option<SkewedInfo>,
+
+
+    /// 
+    /// A list specifying the sort order of each bucket in the table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Order
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SortColumns")]
+    pub sort_columns: Option<Vec<Order>>,
+
+
+    /// 
+    /// True if the table data is stored in subdirectories, or False if    not.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StoredAsSubDirectories")]
+    pub stored_as_sub_directories: Option<bool>,
 
 }
 
@@ -314,32 +581,6 @@ pub struct TableInput {
 
 
     /// 
-    /// Included for Apache Hive compatibility. Not used in the normal course of AWS Glue operations.   If the table is a VIRTUAL_VIEW, certain Athena configuration encoded in base64.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 409600
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ViewOriginalText")]
-    pub view_original_text: Option<String>,
-
-
-    /// 
-    /// A TableIdentifier structure that describes a target table for resource linking.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TableIdentifier
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetTable")]
-    pub target_table: Option<TableIdentifier>,
-
-
-    /// 
     /// A description of the table.
     /// 
     /// Required: No
@@ -376,6 +617,52 @@ pub struct TableInput {
 
 
     /// 
+    /// The table owner. Included for Apache Hive compatibility. Not used in the normal course of AWS Glue operations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Owner")]
+    pub owner: Option<String>,
+
+
+    /// 
+    /// These key-value pairs define properties associated with the table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
+
+
+    /// 
+    /// A list of columns by which the table is partitioned. Only primitive    types are supported as partition keys.
+    /// 
+    /// When you create a table used by Amazon Athena, and you do not specify any     partitionKeys, you must at least set the value of partitionKeys to    an empty list. For example:
+    /// 
+    /// "PartitionKeys": []
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Column
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PartitionKeys")]
+    pub partition_keys: Option<Vec<Column>>,
+
+
+    /// 
     /// The retention time for this table.
     /// 
     /// Required: No
@@ -387,6 +674,18 @@ pub struct TableInput {
     /// Update requires: No interruption
     #[serde(rename = "Retention")]
     pub retention: Option<i64>,
+
+
+    /// 
+    /// A storage descriptor containing information about the physical storage    of this table.
+    /// 
+    /// Required: No
+    ///
+    /// Type: StorageDescriptor
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StorageDescriptor")]
+    pub storage_descriptor: Option<StorageDescriptor>,
 
 
     /// 
@@ -408,61 +707,15 @@ pub struct TableInput {
 
 
     /// 
-    /// These key-value pairs define properties associated with the table.
+    /// A TableIdentifier structure that describes a target table for resource linking.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: TableIdentifier
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
-
-
-    /// 
-    /// A storage descriptor containing information about the physical storage    of this table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: StorageDescriptor
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StorageDescriptor")]
-    pub storage_descriptor: Option<StorageDescriptor>,
-
-
-    /// 
-    /// The table owner. Included for Apache Hive compatibility. Not used in the normal course of AWS Glue operations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Owner")]
-    pub owner: Option<String>,
-
-
-    /// 
-    /// A list of columns by which the table is partitioned. Only primitive    types are supported as partition keys.
-    /// 
-    /// When you create a table used by Amazon Athena, and you do not specify any     partitionKeys, you must at least set the value of partitionKeys to    an empty list. For example:
-    /// 
-    /// "PartitionKeys": []
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Column
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PartitionKeys")]
-    pub partition_keys: Option<Vec<Column>>,
+    #[serde(rename = "TargetTable")]
+    pub target_table: Option<TableIdentifier>,
 
 
     /// 
@@ -478,272 +731,19 @@ pub struct TableInput {
     #[serde(rename = "ViewExpandedText")]
     pub view_expanded_text: Option<String>,
 
-}
-
-
-
-
-/// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SchemaId {
-
 
     /// 
-    /// The name of the schema registry that contains the schema.
+    /// Included for Apache Hive compatibility. Not used in the normal course of AWS Glue operations.   If the table is a VIRTUAL_VIEW, certain Athena configuration encoded in base64.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegistryName")]
-    pub registry_name: Option<String>,
-
-
-    /// 
-    /// The name of the schema. One of SchemaArn or SchemaName has to be provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
+    /// Maximum: 409600
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SchemaName")]
-    pub schema_name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the schema. One of SchemaArn or SchemaName has to be provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SchemaArn")]
-    pub schema_arn: Option<String>,
-
-}
-
-
-
-
-/// Describes the physical storage of table data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StorageDescriptor {
-
-
-    /// 
-    /// A list of the Columns in the table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Column
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Columns")]
-    pub columns: Option<Vec<Column>>,
-
-
-    /// 
-    /// The physical location of the table. By default, this takes the form of the warehouse    location, followed by the database location in the warehouse, followed by the table    name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2056
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Location")]
-    pub location: Option<String>,
-
-
-    /// 
-    /// True if the data in the table is compressed, or False if    not.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Compressed")]
-    pub compressed: Option<bool>,
-
-
-    /// 
-    /// An object that references a schema stored in the AWS Glue Schema Registry.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SchemaReference
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SchemaReference")]
-    pub schema_reference: Option<SchemaReference>,
-
-
-    /// 
-    /// The information about values that appear frequently in a column (skewed values).
-    /// 
-    /// Required: No
-    ///
-    /// Type: SkewedInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SkewedInfo")]
-    pub skewed_info: Option<SkewedInfo>,
-
-
-    /// 
-    /// The input format: SequenceFileInputFormat (binary),    or TextInputFormat, or a custom format.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputFormat")]
-    pub input_format: Option<String>,
-
-
-    /// 
-    /// The user-supplied properties in key-value form.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
-
-
-    /// 
-    /// Must be specified if the table contains any dimension columns.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfBuckets")]
-    pub number_of_buckets: Option<i64>,
-
-
-    /// 
-    /// The serialization/deserialization (SerDe) information.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SerdeInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SerdeInfo")]
-    pub serde_info: Option<SerdeInfo>,
-
-
-    /// 
-    /// The output format: SequenceFileOutputFormat (binary),    or IgnoreKeyTextOutputFormat, or a custom format.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OutputFormat")]
-    pub output_format: Option<String>,
-
-
-    /// 
-    /// A list of reducer grouping columns, clustering columns, and    bucketing columns in the table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketColumns")]
-    pub bucket_columns: Option<Vec<String>>,
-
-
-    /// 
-    /// True if the table data is stored in subdirectories, or False if    not.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StoredAsSubDirectories")]
-    pub stored_as_sub_directories: Option<bool>,
-
-
-    /// 
-    /// A list specifying the sort order of each bucket in the table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Order
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SortColumns")]
-    pub sort_columns: Option<Vec<Order>>,
-
-}
-
-
-
-
-/// Information about a serialization/deserialization program (SerDe) that serves as an    extractor and loader.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SerdeInfo {
-
-
-    /// 
-    /// Usually the class that implements the SerDe. An example is     org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SerializationLibrary")]
-    pub serialization_library: Option<String>,
-
-
-    /// 
-    /// These key-value pairs define initialization parameters for the SerDe.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
-
-
-    /// 
-    /// Name of the SerDe.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "ViewOriginalText")]
+    pub view_original_text: Option<String>,
 
 }
 

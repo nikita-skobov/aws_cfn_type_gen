@@ -6,54 +6,6 @@ pub struct CfnFlowOutput {
 
 
     /// 
-    /// The identifier that is assigned to the Zixi receiver. This parameter applies only        to outputs that use Zixi pull.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RemoteId")]
-    pub remote_id: Option<String>,
-
-
-    /// 
-    /// The protocol to use for the output.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: String,
-
-
-    /// 
-    /// The name of the VPC interface.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The VPC interface that you want to send your output to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcInterfaceAttachment
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcInterfaceAttachment")]
-    pub vpc_interface_attachment: Option<VpcInterfaceAttachment>,
-
-
-    /// 
     /// The range of IP addresses that are allowed to initiate output requests to this        flow. Format the IP addresses as a Classless Inter-Domain Routing (CIDR) block; for        example, 10.0.0.0/16.
     /// 
     /// Required: No
@@ -66,27 +18,15 @@ pub struct CfnFlowOutput {
 
 
     /// 
-    /// The maximum latency in milliseconds. This parameter applies only to RIST-based, Zixi-based, and Fujitsu-based streams.
+    /// A description of the output. This description is not visible outside of the        current AWS account even if the account grants entitlements to other accounts.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxLatency")]
-    pub max_latency: Option<i64>,
-
-
-    /// 
-    /// The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SmoothingLatency")]
-    pub smoothing_latency: Option<i64>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -102,30 +42,6 @@ pub struct CfnFlowOutput {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the flow this output is attached to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FlowArn")]
-    pub flow_arn: String,
-
-
-    /// 
-    /// The stream ID that you want to use for this transport. This parameter applies only to Zixi and SRT caller-based streams.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StreamId")]
-    pub stream_id: Option<String>,
-
-
-    /// 
     /// The encryption credentials that you want to use for the output.
     /// 
     /// Required: No
@@ -138,15 +54,27 @@ pub struct CfnFlowOutput {
 
 
     /// 
-    /// The port to use when MediaConnect distributes content to the output.
+    /// The Amazon Resource Name (ARN) of the flow this output is attached to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FlowArn")]
+    pub flow_arn: String,
+
+
+    /// 
+    /// The maximum latency in milliseconds. This parameter applies only to RIST-based, Zixi-based, and Fujitsu-based streams.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
+    #[serde(rename = "MaxLatency")]
+    pub max_latency: Option<i64>,
 
 
     /// 
@@ -162,15 +90,87 @@ pub struct CfnFlowOutput {
 
 
     /// 
-    /// A description of the output. This description is not visible outside of the        current AWS account even if the account grants entitlements to other accounts.
+    /// The name of the VPC interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The port to use when MediaConnect distributes content to the output.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// The protocol to use for the output.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: String,
+
+
+    /// 
+    /// The identifier that is assigned to the Zixi receiver. This parameter applies only        to outputs that use Zixi pull.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "RemoteId")]
+    pub remote_id: Option<String>,
+
+
+    /// 
+    /// The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SmoothingLatency")]
+    pub smoothing_latency: Option<i64>,
+
+
+    /// 
+    /// The stream ID that you want to use for this transport. This parameter applies only to Zixi and SRT caller-based streams.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StreamId")]
+    pub stream_id: Option<String>,
+
+
+    /// 
+    /// The VPC interface that you want to send your output to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcInterfaceAttachment
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcInterfaceAttachment")]
+    pub vpc_interface_attachment: Option<VpcInterfaceAttachment>,
 
 }
 
@@ -187,30 +187,21 @@ impl cfn_resources::CfnResource for CfnFlowOutput {
 }
 
 
-/// The VPC interface that you want to send your output to.
+/// Information about the encryption of the flow.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcInterfaceAttachment {
+pub struct Encryption {
 
 
     /// 
-    /// The name of the VPC interface that you want to send your output to.
+    /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VpcInterfaceName")]
-    pub vpc_interface_name: Option<String>,
-
-}
-
-
-
-
-/// Information about the encryption of the flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Encryption {
+    #[serde(rename = "Algorithm")]
+    pub algorithm: Option<String>,
 
 
     /// 
@@ -238,18 +229,6 @@ pub struct Encryption {
 
 
     /// 
-    /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Algorithm")]
-    pub algorithm: Option<String>,
-
-
-    /// 
     /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
     /// 
     /// Required: Yes
@@ -259,6 +238,27 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     pub secret_arn: String,
+
+}
+
+
+
+
+/// The VPC interface that you want to send your output to.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcInterfaceAttachment {
+
+
+    /// 
+    /// The name of the VPC interface that you want to send your output to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcInterfaceName")]
+    pub vpc_interface_name: Option<String>,
 
 }
 

@@ -8,50 +8,6 @@ pub struct CfnFeatureGroup {
 
 
     /// 
-    /// Tags used to define a FeatureGroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The name of the FeatureGroup.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^[a-zA-Z0-9]([_-]*[a-zA-Z0-9]){0,63}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FeatureGroupName")]
-    pub feature_group_name: String,
-
-
-    /// 
-    /// The configuration of an OfflineStore.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OfflineStoreConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OfflineStoreConfig")]
-    pub offline_store_config: Option<OfflineStoreConfig>,
-
-
-    /// 
     /// A free form description of a FeatureGroup.
     /// 
     /// Required: No
@@ -106,6 +62,36 @@ pub struct CfnFeatureGroup {
 
 
     /// 
+    /// The name of the FeatureGroup.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^[a-zA-Z0-9]([_-]*[a-zA-Z0-9]){0,63}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FeatureGroupName")]
+    pub feature_group_name: String,
+
+
+    /// 
+    /// The configuration of an OfflineStore.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OfflineStoreConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OfflineStoreConfig")]
+    pub offline_store_config: Option<OfflineStoreConfig>,
+
+
+    /// 
     /// The configuration of an OnlineStore.
     /// 
     /// Required: No
@@ -152,6 +138,20 @@ pub struct CfnFeatureGroup {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
+
+    /// 
+    /// Tags used to define a FeatureGroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
 
 
@@ -167,6 +167,133 @@ impl cfn_resources::CfnResource for CfnFeatureGroup {
 }
 
 
+/// The meta data of the Glue table which serves as data catalog for the       OfflineStore.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataCatalogConfig {
+
+
+    /// 
+    /// The name of the Glue table catalog.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Catalog")]
+    pub catalog: String,
+
+
+    /// 
+    /// The name of the Glue table database.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Database")]
+    pub database: String,
+
+
+    /// 
+    /// The name of the Glue table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TableName")]
+    pub table_name: String,
+
+}
+
+
+
+
+/// A list of features. You must include FeatureName and       FeatureType. Valid feature FeatureTypes are       Integral, Fractional and String.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FeatureDefinition {
+
+
+    /// 
+    /// The name of a feature. The type must be a string. FeatureName cannot be any     of the following: is_deleted, write_time,       api_invocation_time.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^[a-zA-Z0-9]([-_]*[a-zA-Z0-9]){0,63}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FeatureName")]
+    pub feature_name: String,
+
+
+    /// 
+    /// The value type of a feature. Valid values are Integral, Fractional, or String.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Fractional | Integral | String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FeatureType")]
+    pub feature_type: FeatureDefinitionFeatureTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FeatureDefinitionFeatureTypeEnum {
+
+    /// Fractional
+    #[serde(rename = "Fractional")]
+    Fractional,
+
+    /// Integral
+    #[serde(rename = "Integral")]
+    Integral,
+
+    /// String
+    #[serde(rename = "String")]
+    String,
+
+}
+
+impl Default for FeatureDefinitionFeatureTypeEnum {
+    fn default() -> Self {
+        FeatureDefinitionFeatureTypeEnum::Fractional
+    }
+}
+
+
+
 /// The configuration of an OfflineStore.
 ///
 /// Provide an OfflineStoreConfig in a request to       CreateFeatureGroup to create an OfflineStore.
@@ -177,15 +304,15 @@ pub struct OfflineStoreConfig {
 
 
     /// 
-    /// The Amazon Simple Storage (Amazon S3) location of OfflineStore.
+    /// The meta data of the Glue table that is autogenerated when an OfflineStore     is created.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: S3StorageConfig
+    /// Type: DataCatalogConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "S3StorageConfig")]
-    pub s3_storage_config: S3StorageConfig,
+    #[serde(rename = "DataCatalogConfig")]
+    pub data_catalog_config: Option<DataCatalogConfig>,
 
 
     /// 
@@ -202,6 +329,18 @@ pub struct OfflineStoreConfig {
     pub disable_glue_table_creation: Option<bool>,
 
 
+    /// 
+    /// The Amazon Simple Storage (Amazon S3) location of OfflineStore.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: S3StorageConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3StorageConfig")]
+    pub s3_storage_config: S3StorageConfig,
+
+
     /// Property description not available.
     ///
     /// Required: No
@@ -212,17 +351,75 @@ pub struct OfflineStoreConfig {
     #[serde(rename = "TableFormat")]
     pub table_format: Option<String>,
 
+}
+
+
+
+
+/// Use this to specify the AWS Key Management Service (KMS) Key ID, or       KMSKeyId, for at rest data encryption. You can turn       OnlineStore on or off by specifying the EnableOnlineStore flag     at General Assembly.
+///
+/// The default value is False.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OnlineStoreConfig {
+
 
     /// 
-    /// The meta data of the Glue table that is autogenerated when an OfflineStore     is created.
+    /// Turn OnlineStore off by specifying False    for the EnableOnlineStore flag. Turn OnlineStore    on by specifying True    for the EnableOnlineStore flag.
+    /// 
+    /// The default value is False.
     /// 
     /// Required: No
     ///
-    /// Type: DataCatalogConfig
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DataCatalogConfig")]
-    pub data_catalog_config: Option<DataCatalogConfig>,
+    #[serde(rename = "EnableOnlineStore")]
+    pub enable_online_store: Option<bool>,
+
+
+    /// 
+    /// Use to specify KMS Key ID (KMSKeyId) for at-rest encryption of your       OnlineStore.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OnlineStoreSecurityConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityConfig")]
+    pub security_config: Option<OnlineStoreSecurityConfig>,
+
+}
+
+
+
+
+/// The security configuration for OnlineStore.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OnlineStoreSecurityConfig {
+
+
+    /// 
+    /// The AWS Key Management Service (KMS) key ARN that SageMaker Feature Store uses     to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption.
+    /// 
+    /// The caller (either user or IAM role) of CreateFeatureGroup must have     below permissions to the OnlineStore       KmsKeyId:
+    /// 
+    /// "kms:Encrypt"                                "kms:Decrypt"                                "kms:DescribeKey"                                "kms:CreateGrant"                                "kms:RetireGrant"                                "kms:ReEncryptFrom"                                "kms:ReEncryptTo"                                "kms:GenerateDataKey"                                "kms:ListAliases"                                "kms:ListGrants"                                "kms:RevokeGrant"
+    /// 
+    /// The caller (either user or IAM role) to all DataPlane operations       (PutRecord, GetRecord, DeleteRecord) must have     the following permissions to the KmsKeyId:
+    /// 
+    /// "kms:Decrypt"
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 }
 
@@ -307,203 +504,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// The meta data of the Glue table which serves as data catalog for the       OfflineStore.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataCatalogConfig {
-
-
-    /// 
-    /// The name of the Glue table catalog.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Catalog")]
-    pub catalog: String,
-
-
-    /// 
-    /// The name of the Glue table database.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Database")]
-    pub database: String,
-
-
-    /// 
-    /// The name of the Glue table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TableName")]
-    pub table_name: String,
-
-}
-
-
-
-
-/// The security configuration for OnlineStore.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OnlineStoreSecurityConfig {
-
-
-    /// 
-    /// The AWS Key Management Service (KMS) key ARN that SageMaker Feature Store uses     to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption.
-    /// 
-    /// The caller (either user or IAM role) of CreateFeatureGroup must have     below permissions to the OnlineStore       KmsKeyId:
-    /// 
-    /// "kms:Encrypt"                                "kms:Decrypt"                                "kms:DescribeKey"                                "kms:CreateGrant"                                "kms:RetireGrant"                                "kms:ReEncryptFrom"                                "kms:ReEncryptTo"                                "kms:GenerateDataKey"                                "kms:ListAliases"                                "kms:ListGrants"                                "kms:RevokeGrant"
-    /// 
-    /// The caller (either user or IAM role) to all DataPlane operations       (PutRecord, GetRecord, DeleteRecord) must have     the following permissions to the KmsKeyId:
-    /// 
-    /// "kms:Decrypt"
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-}
-
-
-
-
-/// A list of features. You must include FeatureName and       FeatureType. Valid feature FeatureTypes are       Integral, Fractional and String.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FeatureDefinition {
-
-
-    /// 
-    /// The value type of a feature. Valid values are Integral, Fractional, or String.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Fractional | Integral | String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FeatureType")]
-    pub feature_type: FeatureDefinitionFeatureTypeEnum,
-
-
-    /// 
-    /// The name of a feature. The type must be a string. FeatureName cannot be any     of the following: is_deleted, write_time,       api_invocation_time.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^[a-zA-Z0-9]([-_]*[a-zA-Z0-9]){0,63}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FeatureName")]
-    pub feature_name: String,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum FeatureDefinitionFeatureTypeEnum {
-
-    /// Fractional
-    #[serde(rename = "Fractional")]
-    Fractional,
-
-    /// Integral
-    #[serde(rename = "Integral")]
-    Integral,
-
-    /// String
-    #[serde(rename = "String")]
-    String,
-
-}
-
-impl Default for FeatureDefinitionFeatureTypeEnum {
-    fn default() -> Self {
-        FeatureDefinitionFeatureTypeEnum::Fractional
-    }
-}
-
-
-
-/// Use this to specify the AWS Key Management Service (KMS) Key ID, or       KMSKeyId, for at rest data encryption. You can turn       OnlineStore on or off by specifying the EnableOnlineStore flag     at General Assembly.
-///
-/// The default value is False.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OnlineStoreConfig {
-
-
-    /// 
-    /// Use to specify KMS Key ID (KMSKeyId) for at-rest encryption of your       OnlineStore.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OnlineStoreSecurityConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityConfig")]
-    pub security_config: Option<OnlineStoreSecurityConfig>,
-
-
-    /// 
-    /// Turn OnlineStore off by specifying False    for the EnableOnlineStore flag. Turn OnlineStore    on by specifying True    for the EnableOnlineStore flag.
-    /// 
-    /// The default value is False.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EnableOnlineStore")]
-    pub enable_online_store: Option<bool>,
 
 }
 

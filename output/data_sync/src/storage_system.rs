@@ -6,6 +6,20 @@ pub struct CfnStorageSystem {
 
 
     /// 
+    /// Specifies the Amazon Resource Name (ARN) of the DataSync agent that connects to    and reads from your on-premises storage system's management interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
+
+
+    /// 
     /// Specifies the ARN of the Amazon CloudWatch log group for monitoring and logging    discovery job events.
     /// 
     /// Required: No
@@ -19,18 +33,6 @@ pub struct CfnStorageSystem {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
     pub cloud_watch_log_group_arn: Option<String>,
-
-
-    /// 
-    /// Specifies the user name and password for accessing your on-premises storage system's    management interface.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ServerCredentials
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerCredentials")]
-    pub server_credentials: Option<ServerCredentials>,
 
 
     /// 
@@ -52,20 +54,6 @@ pub struct CfnStorageSystem {
 
 
     /// 
-    /// Specifies the Amazon Resource Name (ARN) of the DataSync agent that connects to    and reads from your on-premises storage system's management interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
-
-
-    /// 
     /// Specifies the server name and network port required to connect with the management    interface of your on-premises storage system.
     /// 
     /// Required: Yes
@@ -75,6 +63,18 @@ pub struct CfnStorageSystem {
     /// Update requires: No interruption
     #[serde(rename = "ServerConfiguration")]
     pub server_configuration: ServerConfiguration,
+
+
+    /// 
+    /// Specifies the user name and password for accessing your on-premises storage system's    management interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ServerCredentials
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerCredentials")]
+    pub server_credentials: Option<ServerCredentials>,
 
 
     /// 
@@ -136,52 +136,25 @@ impl cfn_resources::CfnResource for CfnStorageSystem {
 }
 
 
-/// The credentials that provide DataSync Discovery read access to your on-premises storage system's    management interface.
-///
-/// DataSync Discovery stores these credentials in AWS Secrets Manager. For more    information, see Accessing your on-premises     storage system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ServerCredentials {
-
-
-    /// 
-    /// Specifies the user name for your storage system's management interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^(?!.*[:\"][^:"]*$).+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Username")]
-    pub username: String,
-
-
-    /// 
-    /// Specifies the password for your storage system's management interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^(?!.*[:\"][^:"]*$).+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: String,
-
-}
-
-
-
-
 /// The network settings that DataSync Discovery uses to connect with your on-premises storage system's    management interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServerConfiguration {
+
+
+    /// 
+    /// The domain name or IP address of your storage system's management interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerHostname")]
+    pub server_hostname: String,
 
 
     /// 
@@ -199,21 +172,48 @@ pub struct ServerConfiguration {
     #[serde(rename = "ServerPort")]
     pub server_port: Option<i64>,
 
+}
+
+
+
+
+/// The credentials that provide DataSync Discovery read access to your on-premises storage system's    management interface.
+///
+/// DataSync Discovery stores these credentials in AWS Secrets Manager. For more    information, see Accessing your on-premises     storage system.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ServerCredentials {
+
 
     /// 
-    /// The domain name or IP address of your storage system's management interface.
+    /// Specifies the password for your storage system's management interface.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 255
+    /// Maximum: 1024
     ///
-    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    /// Pattern: ^(?!.*[:\"][^:"]*$).+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ServerHostname")]
-    pub server_hostname: String,
+    #[serde(rename = "Password")]
+    pub password: String,
+
+
+    /// 
+    /// Specifies the user name for your storage system's management interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^(?!.*[:\"][^:"]*$).+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Username")]
+    pub username: String,
 
 }
 
@@ -232,17 +232,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -251,6 +240,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

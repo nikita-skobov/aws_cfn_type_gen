@@ -6,31 +6,15 @@ pub struct CfnContactChannel {
 
 
     /// 
-    /// If you want to activate the channel at a later time, you can choose to defer activation.     Incident Manager can't engage your contact channel until it has been activated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeferActivation")]
-    pub defer_activation: Option<bool>,
-
-
-    /// 
-    /// The type of the contact channel. Incident Manager supports three contact methods:
-    /// 
-    /// SMS               VOICE               EMAIL
+    /// The details that Incident Manager uses when trying to engage the contact channel.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: EMAIL | SMS | VOICE
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ChannelType")]
-    pub channel_type: ContactChannelChannelTypeEnum,
+    /// Update requires: No interruption
+    #[serde(rename = "ChannelAddress")]
+    pub channel_address: String,
 
 
     /// 
@@ -52,15 +36,19 @@ pub struct CfnContactChannel {
 
 
     /// 
-    /// The details that Incident Manager uses when trying to engage the contact channel.
+    /// The type of the contact channel. Incident Manager supports three contact methods:
+    /// 
+    /// SMS               VOICE               EMAIL
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChannelAddress")]
-    pub channel_address: String,
+    /// Allowed values: EMAIL | SMS | VOICE
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ChannelType")]
+    pub channel_type: ContactChannelChannelTypeEnum,
 
 
     /// 
@@ -79,6 +67,18 @@ pub struct CfnContactChannel {
     /// Update requires: Replacement
     #[serde(rename = "ContactId")]
     pub contact_id: String,
+
+
+    /// 
+    /// If you want to activate the channel at a later time, you can choose to defer activation.     Incident Manager can't engage your contact channel until it has been activated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeferActivation")]
+    pub defer_activation: Option<bool>,
 
 }
 

@@ -6,6 +6,30 @@ pub struct CfnGroup {
 
 
     /// 
+    /// The filter expression defining the parameters to include traces.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FilterExpression")]
+    pub filter_expression: Option<String>,
+
+
+    /// 
+    /// The unique case-sensitive name of the group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GroupName")]
+    pub group_name: String,
+
+
+    /// 
     /// The structure containing configurations related to insights.
     /// 
     /// The InsightsEnabled boolean can be set to true to enable insights for the           group or false to disable insights for the group.               The NotificationsEnabled boolean can be set to true to enable insights           notifications through Amazon EventBridge for the group.
@@ -30,30 +54,6 @@ pub struct CfnGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// The filter expression defining the parameters to include traces.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FilterExpression")]
-    pub filter_expression: Option<String>,
-
-
-    /// 
-    /// The unique case-sensitive name of the group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GroupName")]
-    pub group_name: String,
-
 }
 
 
@@ -75,18 +75,6 @@ pub struct InsightsConfiguration {
 
 
     /// 
-    /// Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be       enabled on a group with InsightsEnabled set to true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationsEnabled")]
-    pub notifications_enabled: Option<bool>,
-
-
-    /// 
     /// Set the InsightsEnabled value to true to enable insights or false to disable       insights.
     /// 
     /// Required: No
@@ -96,6 +84,18 @@ pub struct InsightsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "InsightsEnabled")]
     pub insights_enabled: Option<bool>,
+
+
+    /// 
+    /// Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be       enabled on a group with InsightsEnabled set to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationsEnabled")]
+    pub notifications_enabled: Option<bool>,
 
 }
 
@@ -114,17 +114,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -133,6 +122,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

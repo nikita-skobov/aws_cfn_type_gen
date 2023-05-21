@@ -18,6 +18,18 @@ pub struct CfnTransitGatewayRoute {
 
 
     /// 
+    /// The CIDR block used for destination matches.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationCidrBlock")]
+    pub destination_cidr_block: Option<String>,
+
+
+    /// 
     /// The ID of the attachment.
     /// 
     /// Required: No
@@ -39,18 +51,6 @@ pub struct CfnTransitGatewayRoute {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayRouteTableId")]
     pub transit_gateway_route_table_id: String,
-
-
-    /// 
-    /// The CIDR block used for destination matches.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationCidrBlock")]
-    pub destination_cidr_block: Option<String>,
 
 }
 

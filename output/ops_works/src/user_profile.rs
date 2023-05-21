@@ -6,15 +6,15 @@ pub struct CfnUserProfile {
 
 
     /// 
-    /// The user's SSH user name.
+    /// Whether users can specify their own SSH public key through the My Settings page. For more    information, see Managing User     Permissions.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SshUsername")]
-    pub ssh_username: Option<String>,
+    #[serde(rename = "AllowSelfManagement")]
+    pub allow_self_management: Option<bool>,
 
 
     /// 
@@ -30,18 +30,6 @@ pub struct CfnUserProfile {
 
 
     /// 
-    /// Whether users can specify their own SSH public key through the My Settings page. For more    information, see Managing User     Permissions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowSelfManagement")]
-    pub allow_self_management: Option<bool>,
-
-
-    /// 
     /// The user's SSH public key.
     /// 
     /// Required: No
@@ -51,6 +39,18 @@ pub struct CfnUserProfile {
     /// Update requires: No interruption
     #[serde(rename = "SshPublicKey")]
     pub ssh_public_key: Option<String>,
+
+
+    /// 
+    /// The user's SSH user name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SshUsername")]
+    pub ssh_username: Option<String>,
 
 }
 

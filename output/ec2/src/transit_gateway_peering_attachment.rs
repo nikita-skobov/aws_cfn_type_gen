@@ -8,18 +8,6 @@ pub struct CfnTransitGatewayPeeringAttachment {
 
 
     /// 
-    /// The Region of the transit gateway.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PeerRegion")]
-    pub peer_region: String,
-
-
-    /// 
     /// The ID of the AWS account that owns the transit gateway.
     /// 
     /// Required: Yes
@@ -32,15 +20,27 @@ pub struct CfnTransitGatewayPeeringAttachment {
 
 
     /// 
-    /// The ID of the transit gateway peering attachment.
+    /// The Region of the transit gateway.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayId")]
-    pub transit_gateway_id: String,
+    #[serde(rename = "PeerRegion")]
+    pub peer_region: String,
+
+
+    /// 
+    /// The ID of the transit gateway.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PeerTransitGatewayId")]
+    pub peer_transit_gateway_id: String,
 
 
     /// 
@@ -56,15 +56,15 @@ pub struct CfnTransitGatewayPeeringAttachment {
 
 
     /// 
-    /// The ID of the transit gateway.
+    /// The ID of the transit gateway peering attachment.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PeerTransitGatewayId")]
-    pub peer_transit_gateway_id: String,
+    #[serde(rename = "TransitGatewayId")]
+    pub transit_gateway_id: String,
 
 }
 
@@ -79,6 +79,39 @@ impl cfn_resources::CfnResource for CfnTransitGatewayPeeringAttachment {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The status of the transit gateway peering attachment.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PeeringAttachmentStatus {
+
+
+    /// 
+    /// The status code.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Code")]
+    pub code: Option<String>,
+
+
+    /// 
+    /// The status message, if applicable.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Message")]
+    pub message: Option<String>,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -112,39 +145,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// The status of the transit gateway peering attachment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PeeringAttachmentStatus {
-
-
-    /// 
-    /// The status code.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Code")]
-    pub code: Option<String>,
-
-
-    /// 
-    /// The status message, if applicable.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Message")]
-    pub message: Option<String>,
 
 }
 

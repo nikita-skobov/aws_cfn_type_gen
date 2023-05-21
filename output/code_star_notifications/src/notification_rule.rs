@@ -12,91 +12,8 @@ pub struct CfnNotificationRule {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EventTypeId")]
-    pub event_type_id: Option<String>,
-
-
-    /// 
-    /// The status of the notification rule. The default value is ENABLED. If the status is       set to DISABLED, notifications aren't sent for the notification rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<NotificationRuleStatusEnum>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
     pub created_by: Option<String>,
-
-
-    /// 
-    /// The name for the notification rule. Notification rule names must be unique in your AWS account.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [A-Za-z0-9\-_ ]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// A list of tags to apply to this notification rule. Key names cannot start with "aws".
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service topics and AWS Chatbot clients to associate with the    notification rule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Target
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Targets")]
-    pub targets: Vec<Target>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the resource to associate with the notification rule. Supported resources include pipelines in AWS CodePipeline,    repositories in AWS CodeCommit, and build projects in AWS CodeBuild.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^arn:aws[^:\s]*:[^:\s]*:[^:\s]*:[0-9]{12}:[^\s]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Resource")]
-    pub resource: String,
 
 
     /// 
@@ -120,8 +37,8 @@ pub struct CfnNotificationRule {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetAddress")]
-    pub target_address: Option<String>,
+    #[serde(rename = "EventTypeId")]
+    pub event_type_id: Option<String>,
 
 
     /// 
@@ -134,6 +51,89 @@ pub struct CfnNotificationRule {
     /// Update requires: No interruption
     #[serde(rename = "EventTypeIds")]
     pub event_type_ids: Vec<String>,
+
+
+    /// 
+    /// The name for the notification rule. Notification rule names must be unique in your AWS account.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [A-Za-z0-9\-_ ]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the resource to associate with the notification rule. Supported resources include pipelines in AWS CodePipeline,    repositories in AWS CodeCommit, and build projects in AWS CodeBuild.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^arn:aws[^:\s]*:[^:\s]*:[^:\s]*:[0-9]{12}:[^\s]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Resource")]
+    pub resource: String,
+
+
+    /// 
+    /// The status of the notification rule. The default value is ENABLED. If the status is       set to DISABLED, notifications aren't sent for the notification rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<NotificationRuleStatusEnum>,
+
+
+    /// 
+    /// A list of tags to apply to this notification rule. Key names cannot start with "aws".
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetAddress")]
+    pub target_address: Option<String>,
+
+
+    /// 
+    /// A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service topics and AWS Chatbot clients to associate with the    notification rule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Target
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Targets")]
+    pub targets: Vec<Target>,
 
 }
 

@@ -6,15 +6,15 @@ pub struct CfnAccountAuditConfiguration {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the role that grants permission to AWS IoT to access information about your devices, policies, certificates, and other items as required when performing an audit.
+    /// The ID of the account. You can use the expression !Sub "${AWS::AccountId}" to use your account ID.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    /// Update requires: Replacement
+    #[serde(rename = "AccountId")]
+    pub account_id: String,
 
 
     /// 
@@ -50,15 +50,15 @@ pub struct CfnAccountAuditConfiguration {
 
 
     /// 
-    /// The ID of the account. You can use the expression !Sub "${AWS::AccountId}" to use your account ID.
+    /// The Amazon Resource Name (ARN) of the role that grants permission to AWS IoT to access information about your devices, policies, certificates, and other items as required when performing an audit.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccountId")]
-    pub account_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
 
 }
 
@@ -75,13 +75,13 @@ impl cfn_resources::CfnResource for CfnAccountAuditConfiguration {
 }
 
 
-/// Information about the targets to which audit notifications are sent.
+/// Which audit checks are enabled and disabled for this account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuditNotificationTarget {
+pub struct AuditCheckConfiguration {
 
 
     /// 
-    /// True if notifications to the target are enabled.
+    /// True if this audit check is enabled for this account.
     /// 
     /// Required: No
     ///
@@ -91,30 +91,6 @@ pub struct AuditNotificationTarget {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
-    /// The ARN of the target (SNS topic) to which audit notifications are sent.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetArn")]
-    pub target_arn: Option<String>,
-
-
-    /// 
-    /// The ARN of the role that grants permission to send notifications to the target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
 }
 
 
@@ -123,54 +99,6 @@ pub struct AuditNotificationTarget {
 /// The types of audit checks that can be performed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuditCheckConfigurations {
-
-
-    /// 
-    /// Checks if a CA certificate is expiring. This check applies to CA certificates expiring within 30 days or that have expired.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CaCertificateExpiringCheck")]
-    pub ca_certificate_expiring_check: Option<AuditCheckConfiguration>,
-
-
-    /// 
-    /// Checks if multiple concurrent connections use the same X.509 certificate to authenticate with AWS IoT.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeviceCertificateSharedCheck")]
-    pub device_certificate_shared_check: Option<AuditCheckConfiguration>,
-
-
-    /// 
-    /// Checks if the temporary credentials provided by AWS IoT role aliases are overly permissive.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IotRoleAliasOverlyPermissiveCheck")]
-    pub iot_role_alias_overly_permissive_check: Option<AuditCheckConfiguration>,
-
-
-    /// 
-    /// Checks if a revoked device certificate is still active.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RevokedDeviceCertificateStillActiveCheck")]
-    pub revoked_device_certificate_still_active_check: Option<AuditCheckConfiguration>,
 
 
     /// 
@@ -186,6 +114,100 @@ pub struct AuditCheckConfigurations {
 
 
     /// 
+    /// Checks if a CA certificate is expiring. This check applies to CA certificates expiring within 30 days or that have expired.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CaCertificateExpiringCheck")]
+    pub ca_certificate_expiring_check: Option<AuditCheckConfiguration>,
+
+
+    /// 
+    /// Checks the quality of the CA certificate key. The quality checks if the key is in a valid format, not expired, and if the key meets a minimum required size. This check applies to CA certificates that are ACTIVE or PENDING_TRANSFER.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CaCertificateKeyQualityCheck")]
+    pub ca_certificate_key_quality_check: Option<AuditCheckConfiguration>,
+
+
+    /// 
+    /// Checks if multiple devices connect using the same client ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConflictingClientIdsCheck")]
+    pub conflicting_client_ids_check: Option<AuditCheckConfiguration>,
+
+
+    /// 
+    /// Checks if a device certificate is expiring. This check applies to device certificates expiring within 30 days or that have expired.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeviceCertificateExpiringCheck")]
+    pub device_certificate_expiring_check: Option<AuditCheckConfiguration>,
+
+
+    /// 
+    /// Checks the quality of the device certificate key. The quality checks if the key is in a valid format, not expired, signed by a registered certificate authority, and if the key meets a minimum required size.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeviceCertificateKeyQualityCheck")]
+    pub device_certificate_key_quality_check: Option<AuditCheckConfiguration>,
+
+
+    /// 
+    /// Checks if multiple concurrent connections use the same X.509 certificate to authenticate with AWS IoT.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeviceCertificateSharedCheck")]
+    pub device_certificate_shared_check: Option<AuditCheckConfiguration>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IntermediateCaRevokedForActiveDeviceCertificatesCheck")]
+    pub intermediate_ca_revoked_for_active_device_certificates_check: Option<AuditCheckConfiguration>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IoTPolicyPotentialMisConfigurationCheck")]
+    pub io_tpolicy_potential_mis_configuration_check: Option<AuditCheckConfiguration>,
+
+
+    /// 
     /// Checks the permissiveness of a policy attached to an authenticated Amazon Cognito     identity pool role.
     /// 
     /// Required: No
@@ -195,6 +217,30 @@ pub struct AuditCheckConfigurations {
     /// Update requires: No interruption
     #[serde(rename = "IotPolicyOverlyPermissiveCheck")]
     pub iot_policy_overly_permissive_check: Option<AuditCheckConfiguration>,
+
+
+    /// 
+    /// Checks if a role alias has access to services that haven't been used for the AWS IoT device in the last year.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IotRoleAliasAllowsAccessToUnusedServicesCheck")]
+    pub iot_role_alias_allows_access_to_unused_services_check: Option<AuditCheckConfiguration>,
+
+
+    /// 
+    /// Checks if the temporary credentials provided by AWS IoT role aliases are overly permissive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuditCheckConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IotRoleAliasOverlyPermissiveCheck")]
+    pub iot_role_alias_overly_permissive_check: Option<AuditCheckConfiguration>,
 
 
     /// 
@@ -222,15 +268,15 @@ pub struct AuditCheckConfigurations {
 
 
     /// 
-    /// Checks the quality of the CA certificate key. The quality checks if the key is in a valid format, not expired, and if the key meets a minimum required size. This check applies to CA certificates that are ACTIVE or PENDING_TRANSFER.
+    /// Checks if a revoked device certificate is still active.
     /// 
     /// Required: No
     ///
     /// Type: AuditCheckConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CaCertificateKeyQualityCheck")]
-    pub ca_certificate_key_quality_check: Option<AuditCheckConfiguration>,
+    #[serde(rename = "RevokedDeviceCertificateStillActiveCheck")]
+    pub revoked_device_certificate_still_active_check: Option<AuditCheckConfiguration>,
 
 
     /// 
@@ -244,88 +290,18 @@ pub struct AuditCheckConfigurations {
     #[serde(rename = "UnauthenticatedCognitoRoleOverlyPermissiveCheck")]
     pub unauthenticated_cognito_role_overly_permissive_check: Option<AuditCheckConfiguration>,
 
-
-    /// 
-    /// Checks if a role alias has access to services that haven't been used for the AWS IoT device in the last year.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IotRoleAliasAllowsAccessToUnusedServicesCheck")]
-    pub iot_role_alias_allows_access_to_unused_services_check: Option<AuditCheckConfiguration>,
-
-
-    /// 
-    /// Checks the quality of the device certificate key. The quality checks if the key is in a valid format, not expired, signed by a registered certificate authority, and if the key meets a minimum required size.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeviceCertificateKeyQualityCheck")]
-    pub device_certificate_key_quality_check: Option<AuditCheckConfiguration>,
-
-
-    /// 
-    /// Checks if a device certificate is expiring. This check applies to device certificates expiring within 30 days or that have expired.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeviceCertificateExpiringCheck")]
-    pub device_certificate_expiring_check: Option<AuditCheckConfiguration>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IoTPolicyPotentialMisConfigurationCheck")]
-    pub io_tpolicy_potential_mis_configuration_check: Option<AuditCheckConfiguration>,
-
-
-    /// 
-    /// Checks if multiple devices connect using the same client ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConflictingClientIdsCheck")]
-    pub conflicting_client_ids_check: Option<AuditCheckConfiguration>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: AuditCheckConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IntermediateCaRevokedForActiveDeviceCertificatesCheck")]
-    pub intermediate_ca_revoked_for_active_device_certificates_check: Option<AuditCheckConfiguration>,
-
 }
 
 
 
 
-/// Which audit checks are enabled and disabled for this account.
+/// Information about the targets to which audit notifications are sent.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuditCheckConfiguration {
+pub struct AuditNotificationTarget {
 
 
     /// 
-    /// True if this audit check is enabled for this account.
+    /// True if notifications to the target are enabled.
     /// 
     /// Required: No
     ///
@@ -334,6 +310,30 @@ pub struct AuditCheckConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
+
+
+    /// 
+    /// The ARN of the role that grants permission to send notifications to the target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+
+    /// 
+    /// The ARN of the target (SNS topic) to which audit notifications are sent.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetArn")]
+    pub target_arn: Option<String>,
 
 }
 

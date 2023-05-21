@@ -51,44 +51,9 @@ impl cfn_resources::CfnResource for CfnInstanceAccessControlAttributeConfigurati
 }
 
 
-/// The value used for mapping a specified attribute to an identity source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AccessControlAttributeValue {
-
-
-    /// 
-    /// The identity source to use when mapping a specified attribute to IAM Identity Center.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Source")]
-    pub source: Vec<String>,
-
-}
-
-
-
-
 /// These are IAM Identity Center identity store attributes that you can configure for use in     attributes-based access control (ABAC). You can create permissions policies that determine     who can access your AWS resources based upon the configured attribute values. When you     enable ABAC and specify AccessControlAttributes, IAM Identity Center passes the attribute     values of the authenticated user into IAM for use in policy evaluation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccessControlAttribute {
-
-
-    /// 
-    /// The value used for mapping a specified attribute to an identity source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: AccessControlAttributeValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: AccessControlAttributeValue,
 
 
     /// 
@@ -107,6 +72,41 @@ pub struct AccessControlAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value used for mapping a specified attribute to an identity source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: AccessControlAttributeValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: AccessControlAttributeValue,
+
+}
+
+
+
+
+/// The value used for mapping a specified attribute to an identity source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AccessControlAttributeValue {
+
+
+    /// 
+    /// The identity source to use when mapping a specified attribute to IAM Identity Center.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Source")]
+    pub source: Vec<String>,
 
 }
 

@@ -8,18 +8,6 @@ pub struct CfnVPCEndpointConnectionNotification {
 
 
     /// 
-    /// The ID of the endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VPCEndpointId")]
-    pub vpcendpoint_id: Option<String>,
-
-
-    /// 
     /// The endpoint events for which to receive notifications. Valid values are         Accept, Connect, Delete, and         Reject.
     /// 
     /// Required: Yes
@@ -53,6 +41,18 @@ pub struct CfnVPCEndpointConnectionNotification {
     /// Update requires: Replacement
     #[serde(rename = "ServiceId")]
     pub service_id: Option<String>,
+
+
+    /// 
+    /// The ID of the endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VPCEndpointId")]
+    pub vpcendpoint_id: Option<String>,
 
 }
 

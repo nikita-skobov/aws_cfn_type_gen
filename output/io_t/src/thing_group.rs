@@ -22,18 +22,6 @@ pub struct CfnThingGroup {
 
 
     /// 
-    /// Thing group properties.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ThingGroupProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThingGroupProperties")]
-    pub thing_group_properties: Option<ThingGroupProperties>,
-
-
-    /// 
     /// The dynamic thing group search query string.
     /// 
     /// The queryString attribute is required for       CreateDynamicThingGroup. The queryString attribute       is not required for CreateThingGroup.
@@ -45,6 +33,18 @@ pub struct CfnThingGroup {
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
     pub query_string: Option<String>,
+
+
+    /// 
+    /// Metadata which can be used to manage the thing group or dynamic thing group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -60,15 +60,15 @@ pub struct CfnThingGroup {
 
 
     /// 
-    /// Metadata which can be used to manage the thing group or dynamic thing group.
+    /// Thing group properties.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: ThingGroupProperties
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ThingGroupProperties")]
+    pub thing_group_properties: Option<ThingGroupProperties>,
 
 }
 
@@ -120,17 +120,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -139,6 +128,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

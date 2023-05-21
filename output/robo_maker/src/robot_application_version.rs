@@ -6,24 +6,6 @@ pub struct CfnRobotApplicationVersion {
 
 
     /// 
-    /// The current revision id for the robot application. If you provide a value and it matches     the latest revision ID, a new version will be created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 40
-    ///
-    /// Pattern: [a-zA-Z0-9_.\-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CurrentRevisionId")]
-    pub current_revision_id: Option<String>,
-
-
-    /// 
     /// The application information for the robot application.
     /// 
     /// Required: Yes
@@ -39,6 +21,24 @@ pub struct CfnRobotApplicationVersion {
     /// Update requires: Replacement
     #[serde(rename = "Application")]
     pub application: String,
+
+
+    /// 
+    /// The current revision id for the robot application. If you provide a value and it matches     the latest revision ID, a new version will be created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 40
+    ///
+    /// Pattern: [a-zA-Z0-9_.\-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CurrentRevisionId")]
+    pub current_revision_id: Option<String>,
 
 }
 

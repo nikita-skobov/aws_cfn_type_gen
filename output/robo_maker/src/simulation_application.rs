@@ -6,36 +6,6 @@ pub struct CfnSimulationApplication {
 
 
     /// 
-    /// The rendering engine for the simulation application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RenderingEngine
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RenderingEngine")]
-    pub rendering_engine: Option<RenderingEngine>,
-
-
-    /// 
-    /// The name of the simulation application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [a-zA-Z0-9_\-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// The current revision id.
     /// 
     /// Required: No
@@ -57,6 +27,60 @@ pub struct CfnSimulationApplication {
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
     pub environment: Option<String>,
+
+
+    /// 
+    /// The name of the simulation application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [a-zA-Z0-9_\-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The rendering engine for the simulation application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RenderingEngine
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RenderingEngine")]
+    pub rendering_engine: Option<RenderingEngine>,
+
+
+    /// 
+    /// The robot software suite used by the simulation application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: RobotSoftwareSuite
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RobotSoftwareSuite")]
+    pub robot_software_suite: RobotSoftwareSuite,
+
+
+    /// 
+    /// The simulation software suite used by the simulation application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: SimulationSoftwareSuite
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SimulationSoftwareSuite")]
+    pub simulation_software_suite: SimulationSoftwareSuite,
 
 
     /// 
@@ -82,30 +106,6 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
-    /// The simulation software suite used by the simulation application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: SimulationSoftwareSuite
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SimulationSoftwareSuite")]
-    pub simulation_software_suite: SimulationSoftwareSuite,
-
-
-    /// 
-    /// The robot software suite used by the simulation application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: RobotSoftwareSuite
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RobotSoftwareSuite")]
-    pub robot_software_suite: RobotSoftwareSuite,
-
 }
 
 
@@ -127,6 +127,20 @@ pub struct RenderingEngine {
 
 
     /// 
+    /// The name of the rendering engine.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: OGRE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: RenderingEngineNameEnum,
+
+
+    /// 
     /// The version of the rendering engine.
     /// 
     /// Required: Yes
@@ -143,20 +157,6 @@ pub struct RenderingEngine {
     #[serde(rename = "Version")]
     pub version: String,
 
-
-    /// 
-    /// The name of the rendering engine.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: OGRE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: RenderingEngineNameEnum,
-
 }
 
 
@@ -172,6 +172,93 @@ pub enum RenderingEngineNameEnum {
 impl Default for RenderingEngineNameEnum {
     fn default() -> Self {
         RenderingEngineNameEnum::Ogre
+    }
+}
+
+
+
+/// Information about a robot software suite.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RobotSoftwareSuite {
+
+
+    /// 
+    /// The name of the robot software suite. General is the only supported value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: General | ROS | ROS2
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: RobotSoftwareSuiteNameEnum,
+
+
+    /// 
+    /// The version of the robot software suite. Not applicable for General software suite.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Dashing | Foxy | Kinetic | Melodic
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<RobotSoftwareSuiteVersionEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RobotSoftwareSuiteNameEnum {
+
+    /// General
+    #[serde(rename = "General")]
+    General,
+
+    /// ROS
+    #[serde(rename = "ROS")]
+    Ros,
+
+    /// ROS2
+    #[serde(rename = "ROS2")]
+    Ros2,
+
+}
+
+impl Default for RobotSoftwareSuiteNameEnum {
+    fn default() -> Self {
+        RobotSoftwareSuiteNameEnum::General
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RobotSoftwareSuiteVersionEnum {
+
+    /// Dashing
+    #[serde(rename = "Dashing")]
+    Dashing,
+
+    /// Foxy
+    #[serde(rename = "Foxy")]
+    Foxy,
+
+    /// Kinetic
+    #[serde(rename = "Kinetic")]
+    Kinetic,
+
+    /// Melodic
+    #[serde(rename = "Melodic")]
+    Melodic,
+
+}
+
+impl Default for RobotSoftwareSuiteVersionEnum {
+    fn default() -> Self {
+        RobotSoftwareSuiteVersionEnum::Dashing
     }
 }
 
@@ -247,6 +334,20 @@ pub struct SourceConfig {
 
 
     /// 
+    /// The target processor architecture for the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ARM64 | ARMHF | X86_64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Architecture")]
+    pub architecture: SourceConfigArchitectureEnum,
+
+
+    /// 
     /// The Amazon S3 bucket name.
     /// 
     /// Required: Yes
@@ -281,20 +382,6 @@ pub struct SourceConfig {
     #[serde(rename = "S3Key")]
     pub s3_key: String,
 
-
-    /// 
-    /// The target processor architecture for the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ARM64 | ARMHF | X86_64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Architecture")]
-    pub architecture: SourceConfigArchitectureEnum,
-
 }
 
 
@@ -318,93 +405,6 @@ pub enum SourceConfigArchitectureEnum {
 impl Default for SourceConfigArchitectureEnum {
     fn default() -> Self {
         SourceConfigArchitectureEnum::Arm64
-    }
-}
-
-
-
-/// Information about a robot software suite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RobotSoftwareSuite {
-
-
-    /// 
-    /// The version of the robot software suite. Not applicable for General software suite.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Dashing | Foxy | Kinetic | Melodic
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<RobotSoftwareSuiteVersionEnum>,
-
-
-    /// 
-    /// The name of the robot software suite. General is the only supported value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: General | ROS | ROS2
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: RobotSoftwareSuiteNameEnum,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RobotSoftwareSuiteNameEnum {
-
-    /// General
-    #[serde(rename = "General")]
-    General,
-
-    /// ROS
-    #[serde(rename = "ROS")]
-    Ros,
-
-    /// ROS2
-    #[serde(rename = "ROS2")]
-    Ros2,
-
-}
-
-impl Default for RobotSoftwareSuiteNameEnum {
-    fn default() -> Self {
-        RobotSoftwareSuiteNameEnum::General
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RobotSoftwareSuiteVersionEnum {
-
-    /// Dashing
-    #[serde(rename = "Dashing")]
-    Dashing,
-
-    /// Foxy
-    #[serde(rename = "Foxy")]
-    Foxy,
-
-    /// Kinetic
-    #[serde(rename = "Kinetic")]
-    Kinetic,
-
-    /// Melodic
-    #[serde(rename = "Melodic")]
-    Melodic,
-
-}
-
-impl Default for RobotSoftwareSuiteVersionEnum {
-    fn default() -> Self {
-        RobotSoftwareSuiteVersionEnum::Dashing
     }
 }
 

@@ -14,15 +14,69 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// The name of an existing DB parameter group or a reference to an        AWS::Neptune::DBParameterGroup resource created in the template.        If any of the data members of the referenced parameter          group are changed during an update, the DB instance might need to be restarted,          which causes some interruption. If the parameter group contains static parameters,          whether they were changed or not, an update triggers a reboot.
+    /// Indicates that major version upgrades are allowed. Changing this    parameter doesn't result in an outage and the change is asynchronously    applied as soon as possible. This parameter must be set to true when specifying    a value for the EngineVersion parameter that is a different major version than    the DB instance's current version.
+    /// 
+    /// WarningWhen you change this parameter for an existing DB cluster, CloudFormation will replace your existing DB cluster    with a new, empty one that uses the engine version you specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowMajorVersionUpgrade")]
+    pub allow_major_version_upgrade: Option<bool>,
+
+
+    /// 
+    /// Indicates that minor version patches are applied automatically.
+    /// 
+    /// When updating this property, some interruptions may occur.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoMinorVersionUpgrade")]
+    pub auto_minor_version_upgrade: Option<bool>,
+
+
+    /// 
+    /// Specifies the name of the Availability Zone the DB instance is located in.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBParameterGroupName")]
-    pub dbparameter_group_name: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
+
+
+    /// 
+    /// If the DB instance is a member of a DB cluster, contains the name of the DB cluster that    the DB instance is a member of.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBClusterIdentifier")]
+    pub dbcluster_identifier: Option<String>,
+
+
+    /// 
+    /// Contains the name of the compute and memory capacity class of the DB instance.
+    /// 
+    /// If you update this property, some interruptions may occur.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "DBInstanceClass")]
+    pub dbinstance_class: String,
 
 
     /// 
@@ -35,6 +89,46 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "DBInstanceIdentifier")]
     pub dbinstance_identifier: Option<String>,
+
+
+    /// 
+    /// The name of an existing DB parameter group or a reference to an        AWS::Neptune::DBParameterGroup resource created in the template.        If any of the data members of the referenced parameter          group are changed during an update, the DB instance might need to be restarted,          which causes some interruption. If the parameter group contains static parameters,          whether they were changed or not, an update triggers a reboot.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBParameterGroupName")]
+    pub dbparameter_group_name: Option<String>,
+
+
+    /// 
+    /// This parameter is not supported.
+    /// 
+    /// AWS::Neptune::DBInstance does not support restoring from snapshots.
+    /// 
+    /// AWS::Neptune::DBCluster does support restoring from snapshots.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBSnapshotIdentifier")]
+    pub dbsnapshot_identifier: Option<String>,
+
+
+    /// 
+    /// A DB subnet group to associate with the DB instance. If you update this value,          the new subnet group must be a subnet group in a new virtual private cloud          (VPC).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBSubnetGroupName")]
+    pub dbsubnet_group_name: Option<String>,
 
 
     /// 
@@ -59,100 +153,6 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// This parameter is not supported.
-    /// 
-    /// AWS::Neptune::DBInstance does not support restoring from snapshots.
-    /// 
-    /// AWS::Neptune::DBCluster does support restoring from snapshots.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBSnapshotIdentifier")]
-    pub dbsnapshot_identifier: Option<String>,
-
-
-    /// 
-    /// Contains the name of the compute and memory capacity class of the DB instance.
-    /// 
-    /// If you update this property, some interruptions may occur.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "DBInstanceClass")]
-    pub dbinstance_class: String,
-
-
-    /// 
-    /// Specifies the name of the Availability Zone the DB instance is located in.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
-
-
-    /// 
-    /// Indicates that minor version patches are applied automatically.
-    /// 
-    /// When updating this property, some interruptions may occur.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoMinorVersionUpgrade")]
-    pub auto_minor_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// Indicates that major version upgrades are allowed. Changing this    parameter doesn't result in an outage and the change is asynchronously    applied as soon as possible. This parameter must be set to true when specifying    a value for the EngineVersion parameter that is a different major version than    the DB instance's current version.
-    /// 
-    /// WarningWhen you change this parameter for an existing DB cluster, CloudFormation will replace your existing DB cluster    with a new, empty one that uses the engine version you specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowMajorVersionUpgrade")]
-    pub allow_major_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// If the DB instance is a member of a DB cluster, contains the name of the DB cluster that    the DB instance is a member of.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBClusterIdentifier")]
-    pub dbcluster_identifier: Option<String>,
-
-
-    /// 
-    /// A DB subnet group to associate with the DB instance. If you update this value,          the new subnet group must be a subnet group in a new virtual private cloud          (VPC).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBSubnetGroupName")]
-    pub dbsubnet_group_name: Option<String>,
 
 }
 
@@ -181,17 +181,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -200,6 +189,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

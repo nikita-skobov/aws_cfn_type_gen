@@ -6,6 +6,22 @@ pub struct CfnAcceptedPortfolioShare {
 
 
     /// 
+    /// The language code.
+    /// 
+    /// jp - Japanese                        zh - Chinese
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AcceptLanguage")]
+    pub accept_language: Option<String>,
+
+
+    /// 
     /// The portfolio identifier.
     /// 
     /// Required: Yes
@@ -21,22 +37,6 @@ pub struct CfnAcceptedPortfolioShare {
     /// Update requires: Replacement
     #[serde(rename = "PortfolioId")]
     pub portfolio_id: String,
-
-
-    /// 
-    /// The language code.
-    /// 
-    /// jp - Japanese                        zh - Chinese
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AcceptLanguage")]
-    pub accept_language: Option<String>,
 
 }
 

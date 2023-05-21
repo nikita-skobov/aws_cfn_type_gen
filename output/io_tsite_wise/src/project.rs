@@ -6,18 +6,6 @@ pub struct CfnProject {
 
 
     /// 
-    /// A friendly name for the project.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProjectName")]
-    pub project_name: String,
-
-
-    /// 
     /// A list that contains the IDs of each asset associated with the project.
     /// 
     /// Required: No
@@ -27,6 +15,18 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "AssetIds")]
     pub asset_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The ID of the portal in which to create the project.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PortalId")]
+    pub portal_id: String,
 
 
     /// 
@@ -42,6 +42,18 @@ pub struct CfnProject {
 
 
     /// 
+    /// A friendly name for the project.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProjectName")]
+    pub project_name: String,
+
+
+    /// 
     /// A list of key-value pairs that contain metadata for the project. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
     /// 
     /// Required: No
@@ -51,18 +63,6 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The ID of the portal in which to create the project.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PortalId")]
-    pub portal_id: String,
 
 }
 

@@ -10,17 +10,15 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// The ARN or name of the secret to attach the resource-based policy.
+    /// Specifies whether to block resource-based policies that allow broad access to the secret.    By default, Secrets Manager blocks policies that allow broad access, for example those that    use a wildcard for the principal.
     /// 
-    /// For an ARN, we recommend that you specify a complete ARN rather    than a partial ARN.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecretId")]
-    pub secret_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "BlockPublicPolicy")]
+    pub block_public_policy: Option<bool>,
 
 
     /// 
@@ -36,15 +34,17 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// Specifies whether to block resource-based policies that allow broad access to the secret.    By default, Secrets Manager blocks policies that allow broad access, for example those that    use a wildcard for the principal.
+    /// The ARN or name of the secret to attach the resource-based policy.
     /// 
-    /// Required: No
+    /// For an ARN, we recommend that you specify a complete ARN rather    than a partial ARN.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockPublicPolicy")]
-    pub block_public_policy: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "SecretId")]
+    pub secret_id: String,
 
 }
 

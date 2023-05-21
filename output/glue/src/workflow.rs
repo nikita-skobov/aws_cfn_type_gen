@@ -5,17 +5,6 @@
 pub struct CfnWorkflow {
 
 
-    /// The tags to use with this workflow.
-    ///
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
-
     /// A collection of properties to be used as part of each execution of the workflow
     ///
     /// Required: No
@@ -59,6 +48,17 @@ pub struct CfnWorkflow {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// The tags to use with this workflow.
+    ///
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
 
 }
 

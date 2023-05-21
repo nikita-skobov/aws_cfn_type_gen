@@ -18,15 +18,39 @@ pub struct CfnRestApi {
 
 
     /// 
-    /// The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with aws:. The tag value can be up to 256 characters.
+    /// The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "BinaryMediaTypes")]
+    pub binary_media_types: Option<Vec<String>>,
+
+
+    /// 
+    /// An OpenAPI specification that defines a set of RESTful APIs in JSON format. For YAML templates, you can also provide the specification in YAML format.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Body")]
+    pub body: Option<serde_json::Value>,
+
+
+    /// 
+    /// The Amazon Simple Storage Service (Amazon S3) location that points to an OpenAPI file, which defines a set of RESTful APIs in JSON or YAML format.
+    /// 
+    /// Required: No
+    ///
+    /// Type: S3Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BodyS3Location")]
+    pub body_s3_location: Option<S3Location>,
 
 
     /// 
@@ -39,6 +63,66 @@ pub struct CfnRestApi {
     /// Update requires: No interruption
     #[serde(rename = "CloneFrom")]
     pub clone_from: Option<String>,
+
+
+    /// 
+    /// The description of the RestApi.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Specifies whether clients can invoke your API by using the default execute-api endpoint.    By default, clients can invoke your API with the default    https://{api_id}.execute-api.{region}.amazonaws.com endpoint. To require that clients use a    custom domain name to invoke your API, disable the default endpoint
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisableExecuteApiEndpoint")]
+    pub disable_execute_api_endpoint: Option<bool>,
+
+
+    /// 
+    /// A list of the endpoint types of the API. Use this property when creating an API. When importing an existing API, specify the endpoint configuration types using the Parameters property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EndpointConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndpointConfiguration")]
+    pub endpoint_configuration: Option<EndpointConfiguration>,
+
+
+    /// 
+    /// A query parameter to indicate whether to rollback the API update (true) or not (false)       when a warning is encountered. The default value is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FailOnWarnings")]
+    pub fail_on_warnings: Option<bool>,
+
+
+    /// 
+    /// A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinimumCompressionSize")]
+    pub minimum_compression_size: Option<i64>,
 
 
     /// 
@@ -64,75 +148,15 @@ pub struct CfnRestApi {
 
 
     /// 
-    /// The Amazon Simple Storage Service (Amazon S3) location that points to an OpenAPI file, which defines a set of RESTful APIs in JSON or YAML format.
+    /// The name of the RestApi. A name is required if the REST API is not based on an OpenAPI specification.
     /// 
-    /// Required: No
+    /// Required: Conditional
     ///
-    /// Type: S3Location
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BodyS3Location")]
-    pub body_s3_location: Option<S3Location>,
-
-
-    /// 
-    /// A policy document that contains the permissions for the RestApi resource. To set the ARN for the policy, use the !Join intrinsic function with "" as delimiter and values of "execute-api:/" and "*".
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: Option<serde_json::Value>,
-
-
-    /// 
-    /// Specifies whether clients can invoke your API by using the default execute-api endpoint.    By default, clients can invoke your API with the default    https://{api_id}.execute-api.{region}.amazonaws.com endpoint. To require that clients use a    custom domain name to invoke your API, disable the default endpoint
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisableExecuteApiEndpoint")]
-    pub disable_execute_api_endpoint: Option<bool>,
-
-
-    /// 
-    /// A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinimumCompressionSize")]
-    pub minimum_compression_size: Option<i64>,
-
-
-    /// 
-    /// An OpenAPI specification that defines a set of RESTful APIs in JSON format. For YAML templates, you can also provide the specification in YAML format.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Body")]
-    pub body: Option<serde_json::Value>,
-
-
-    /// 
-    /// The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BinaryMediaTypes")]
-    pub binary_media_types: Option<Vec<String>>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -148,51 +172,27 @@ pub struct CfnRestApi {
 
 
     /// 
-    /// A query parameter to indicate whether to rollback the API update (true) or not (false)       when a warning is encountered. The default value is false.
+    /// A policy document that contains the permissions for the RestApi resource. To set the ARN for the policy, use the !Join intrinsic function with "" as delimiter and values of "execute-api:/" and "*".
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FailOnWarnings")]
-    pub fail_on_warnings: Option<bool>,
+    #[serde(rename = "Policy")]
+    pub policy: Option<serde_json::Value>,
 
 
     /// 
-    /// The name of the RestApi. A name is required if the REST API is not based on an OpenAPI specification.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// A list of the endpoint types of the API. Use this property when creating an API. When importing an existing API, specify the endpoint configuration types using the Parameters property.
+    /// The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with aws:. The tag value can be up to 256 characters.
     /// 
     /// Required: No
     ///
-    /// Type: EndpointConfiguration
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EndpointConfiguration")]
-    pub endpoint_configuration: Option<EndpointConfiguration>,
-
-
-    /// 
-    /// The description of the RestApi.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -244,58 +244,9 @@ pub struct EndpointConfiguration {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
 /// S3Location is a property of the AWS::ApiGateway::RestApi resource that specifies the Amazon S3 location of a OpenAPI (formerly Swagger) file that defines a set of RESTful APIs in JSON or YAML.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Location {
-
-
-    /// 
-    /// The Amazon S3 ETag (a file checksum) of the OpenAPI file. If you don't specify a value, API Gateway skips ETag validation of your OpenAPI file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ETag")]
-    pub etag: Option<String>,
 
 
     /// 
@@ -311,15 +262,15 @@ pub struct S3Location {
 
 
     /// 
-    /// For versioning-enabled buckets, a specific version of the OpenAPI file.
+    /// The Amazon S3 ETag (a file checksum) of the OpenAPI file. If you don't specify a value, API Gateway skips ETag validation of your OpenAPI file.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
+    #[serde(rename = "ETag")]
+    pub etag: Option<String>,
 
 
     /// 
@@ -332,6 +283,55 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<String>,
+
+
+    /// 
+    /// For versioning-enabled buckets, a specific version of the OpenAPI file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

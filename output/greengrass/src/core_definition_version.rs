@@ -51,30 +51,6 @@ pub struct Core {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the core, which is an AWS IoT device (thing).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ThingArn")]
-    pub thing_arn: String,
-
-
-    /// 
-    /// Indicates whether the core's local shadow is synced with the cloud automatically. 				 The default is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SyncShadow")]
-    pub sync_shadow: Option<bool>,
-
-
-    /// 
     /// The ARN of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
     /// 
     /// Required: Yes
@@ -96,6 +72,30 @@ pub struct Core {
     /// Update requires: Replacement
     #[serde(rename = "Id")]
     pub id: String,
+
+
+    /// 
+    /// Indicates whether the core's local shadow is synced with the cloud automatically. 				 The default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SyncShadow")]
+    pub sync_shadow: Option<bool>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the core, which is an AWS IoT device (thing).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ThingArn")]
+    pub thing_arn: String,
 
 }
 

@@ -12,62 +12,6 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// The AWS KMS key identifier (key ID, key alias, or key ARN). AWS AppConfig uses this ID to encrypt the configuration data using a customer managed key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyIdentifier")]
-    pub kms_key_identifier: Option<String>,
-
-
-    /// 
-    /// The deployment strategy ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [a-z0-9]{4,7}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeploymentStrategyId")]
-    pub deployment_strategy_id: String,
-
-
-    /// 
-    /// Metadata to assign to the deployment. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tags
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tags>>,
-
-
-    /// 
-    /// The configuration profile ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [a-z0-9]{4,7}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConfigurationProfileId")]
-    pub configuration_profile_id: String,
-
-
-    /// 
     /// The application ID.
     /// 
     /// Required: Yes
@@ -82,19 +26,17 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// A description of the deployment.
+    /// The configuration profile ID.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
+    /// Pattern: [a-z0-9]{4,7}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "ConfigurationProfileId")]
+    pub configuration_profile_id: String,
 
 
     /// 
@@ -114,6 +56,36 @@ pub struct CfnDeployment {
 
 
     /// 
+    /// The deployment strategy ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [a-z0-9]{4,7}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeploymentStrategyId")]
+    pub deployment_strategy_id: String,
+
+
+    /// 
+    /// A description of the deployment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The environment ID.
     /// 
     /// Required: Yes
@@ -125,6 +97,34 @@ pub struct CfnDeployment {
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentId")]
     pub environment_id: String,
+
+
+    /// 
+    /// The AWS KMS key identifier (key ID, key alias, or key ARN). AWS AppConfig uses this ID to encrypt the configuration data using a customer managed key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyIdentifier")]
+    pub kms_key_identifier: Option<String>,
+
+
+    /// 
+    /// Metadata to assign to the deployment. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tags
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tags>>,
 
 }
 
@@ -147,18 +147,6 @@ pub struct Tags {
 
 
     /// 
-    /// The tag value can be up to 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-
-    /// 
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
     /// 
     /// Required: No
@@ -168,6 +156,18 @@ pub struct Tags {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<String>,
+
+
+    /// 
+    /// The tag value can be up to 256 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 

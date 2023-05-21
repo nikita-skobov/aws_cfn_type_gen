@@ -8,18 +8,6 @@ pub struct CfnRule {
 
 
     /// 
-    /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Predicate
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Predicates")]
-    pub predicates: Option<Vec<Predicate>>,
-
-
-    /// 
     /// The name of the metrics for this Rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain     whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the Rule.
     /// 
     /// Required: Yes
@@ -53,6 +41,18 @@ pub struct CfnRule {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Predicate
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Predicates")]
+    pub predicates: Option<Vec<Predicate>>,
 
 }
 

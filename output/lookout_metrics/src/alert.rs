@@ -6,42 +6,6 @@ pub struct CfnAlert {
 
 
     /// 
-    /// The name of the alert.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AlertName")]
-    pub alert_name: Option<String>,
-
-
-    /// 
-    /// The ARN of the detector to which the alert is attached.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AnomalyDetectorArn")]
-    pub anomaly_detector_arn: String,
-
-
-    /// 
-    /// An integer from 0 to 100 specifying the alert sensitivity threshold.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AlertSensitivityThreshold")]
-    pub alert_sensitivity_threshold: i64,
-
-
-    /// 
     /// Action that will be triggered when there is an alert.
     /// 
     /// Required: Yes
@@ -64,6 +28,42 @@ pub struct CfnAlert {
     #[serde(rename = "AlertDescription")]
     pub alert_description: Option<String>,
 
+
+    /// 
+    /// The name of the alert.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AlertName")]
+    pub alert_name: Option<String>,
+
+
+    /// 
+    /// An integer from 0 to 100 specifying the alert sensitivity threshold.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AlertSensitivityThreshold")]
+    pub alert_sensitivity_threshold: i64,
+
+
+    /// 
+    /// The ARN of the detector to which the alert is attached.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AnomalyDetectorArn")]
+    pub anomaly_detector_arn: String,
+
 }
 
 
@@ -77,39 +77,6 @@ impl cfn_resources::CfnResource for CfnAlert {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// Contains information about a Lambda configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LambdaConfiguration {
-
-
-    /// 
-    /// The ARN of the Lambda function.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LambdaArn")]
-    pub lambda_arn: String,
-
-
-    /// 
-    /// The ARN of an IAM role that has permission to invoke the Lambda function.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-}
-
-
 
 
 /// A configuration that specifies the action to perform when anomalies are detected.
@@ -139,6 +106,39 @@ pub struct Action {
     /// Update requires: Replacement
     #[serde(rename = "SNSConfiguration")]
     pub snsconfiguration: Option<SNSConfiguration>,
+
+}
+
+
+
+
+/// Contains information about a Lambda configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LambdaConfiguration {
+
+
+    /// 
+    /// The ARN of the Lambda function.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LambdaArn")]
+    pub lambda_arn: String,
+
+
+    /// 
+    /// The ARN of an IAM role that has permission to invoke the Lambda function.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
 
 }
 

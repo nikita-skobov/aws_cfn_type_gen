@@ -6,6 +6,20 @@ pub struct CfnOrganizationConformancePack {
 
 
     /// 
+    /// A list of ConformancePackInputParameter objects.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ConformancePackInputParameter
+    ///
+    /// Maximum: 60
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConformancePackInputParameters")]
+    pub conformance_pack_input_parameters: Option<Vec<ConformancePackInputParameter>>,
+
+
+    /// 
     /// The name of the Amazon S3 bucket where AWS Config stores conformance pack templates.
     /// 
     /// NoteThis field is optional.
@@ -21,50 +35,6 @@ pub struct CfnOrganizationConformancePack {
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3Bucket")]
     pub delivery_s3_bucket: Option<String>,
-
-
-    /// 
-    /// A comma-separated list of accounts excluded from organization conformance pack.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludedAccounts")]
-    pub excluded_accounts: Option<Vec<String>>,
-
-
-    /// 
-    /// A string containing full conformance pack template body. Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateBody")]
-    pub template_body: Option<String>,
-
-
-    /// 
-    /// The name you assign to an organization conformance pack.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [a-zA-Z][-a-zA-Z0-9]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OrganizationConformancePackName")]
-    pub organization_conformance_pack_name: String,
 
 
     /// 
@@ -86,17 +56,47 @@ pub struct CfnOrganizationConformancePack {
 
 
     /// 
-    /// A list of ConformancePackInputParameter objects.
+    /// A comma-separated list of accounts excluded from organization conformance pack.
     /// 
     /// Required: No
     ///
-    /// Type: List of ConformancePackInputParameter
+    /// Type: List of String
     ///
-    /// Maximum: 60
+    /// Maximum: 1000
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ConformancePackInputParameters")]
-    pub conformance_pack_input_parameters: Option<Vec<ConformancePackInputParameter>>,
+    #[serde(rename = "ExcludedAccounts")]
+    pub excluded_accounts: Option<Vec<String>>,
+
+
+    /// 
+    /// The name you assign to an organization conformance pack.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [a-zA-Z][-a-zA-Z0-9]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OrganizationConformancePackName")]
+    pub organization_conformance_pack_name: String,
+
+
+    /// 
+    /// A string containing full conformance pack template body. Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateBody")]
+    pub template_body: Option<String>,
 
 
     /// 

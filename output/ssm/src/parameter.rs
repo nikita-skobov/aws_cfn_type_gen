@@ -8,17 +8,51 @@ pub struct CfnParameter {
 
 
     /// 
-    /// The parameter value.
+    /// A regular expression used to validate the parameter value. For example, for String types    with values restricted to numbers, you can specify the following:     AllowedPattern=^\d+$
     /// 
-    /// NoteIf type is StringList, the system returns a comma-separated string with no   spaces between commas in the Value field.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
+    #[serde(rename = "AllowedPattern")]
+    pub allowed_pattern: Option<String>,
+
+
+    /// 
+    /// The data type of the parameter, such as text or aws:ec2:image. The  default is text.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataType")]
+    pub data_type: Option<String>,
+
+
+    /// 
+    /// Information about the parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -54,35 +88,31 @@ pub struct CfnParameter {
 
 
     /// 
-    /// A regular expression used to validate the parameter value. For example, for String types    with values restricted to numbers, you can specify the following:     AllowedPattern=^\d+$
+    /// Optional metadata that you assign to a resource in the form of an arbitrary set of tags    (key-value pairs). Tags enable you to categorize a resource in different ways, such as by    purpose, owner, or environment. For example, you might want to tag a Systems Manager parameter    to identify the type of resource to which it applies, the environment, or the type of    configuration data referenced by the parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+
+    /// 
+    /// The parameter tier.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
+    /// Allowed values: Advanced | Intelligent-Tiering | Standard
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllowedPattern")]
-    pub allowed_pattern: Option<String>,
-
-
-    /// 
-    /// The data type of the parameter, such as text or aws:ec2:image. The  default is text.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataType")]
-    pub data_type: Option<String>,
+    #[serde(rename = "Tier")]
+    pub tier: Option<ParameterTierEnum>,
 
 
     /// 
@@ -102,69 +132,20 @@ pub struct CfnParameter {
 
 
     /// 
-    /// Information about the parameter.
+    /// The parameter value.
     /// 
-    /// Required: No
+    /// NoteIf type is StringList, the system returns a comma-separated string with no   spaces between commas in the Value field.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The parameter tier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Advanced | Intelligent-Tiering | Standard
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tier")]
-    pub tier: Option<ParameterTierEnum>,
-
-
-    /// 
-    /// Optional metadata that you assign to a resource in the form of an arbitrary set of tags    (key-value pairs). Tags enable you to categorize a resource in different ways, such as by    purpose, owner, or environment. For example, you might want to tag a Systems Manager parameter    to identify the type of resource to which it applies, the environment, or the type of    configuration data referenced by the parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ParameterTypeEnum {
-
-    /// String
-    #[serde(rename = "String")]
-    String,
-
-    /// StringList
-    #[serde(rename = "StringList")]
-    Stringlist,
-
-}
-
-impl Default for ParameterTypeEnum {
-    fn default() -> Self {
-        ParameterTypeEnum::String
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ParameterTierEnum {
@@ -186,6 +167,25 @@ pub enum ParameterTierEnum {
 impl Default for ParameterTierEnum {
     fn default() -> Self {
         ParameterTierEnum::Advanced
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ParameterTypeEnum {
+
+    /// String
+    #[serde(rename = "String")]
+    String,
+
+    /// StringList
+    #[serde(rename = "StringList")]
+    Stringlist,
+
+}
+
+impl Default for ParameterTypeEnum {
+    fn default() -> Self {
+        ParameterTypeEnum::String
     }
 }
 

@@ -22,6 +22,20 @@ pub struct CfnLaunchTemplateConstraint {
 
 
     /// 
+    /// The description of the constraint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The portfolio identifier.
     /// 
     /// Required: Yes
@@ -55,20 +69,6 @@ pub struct CfnLaunchTemplateConstraint {
     /// Update requires: Replacement
     #[serde(rename = "ProductId")]
     pub product_id: String,
-
-
-    /// 
-    /// The description of the constraint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 

@@ -14,18 +14,6 @@ pub struct CfnLink {
 
 
     /// 
-    /// The ARN of the sink in the monitoring account that you want to link to.    You can use ListSinks to    find the ARNs of sinks.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SinkIdentifier")]
-    pub sink_identifier: String,
-
-
-    /// 
     /// Specify a friendly human-readable name to use to identify this source account when you are viewing data from it in the monitoring    account.
     /// 
     /// You can include the following variables in your template:
@@ -51,6 +39,18 @@ pub struct CfnLink {
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypes")]
     pub resource_types: Vec<String>,
+
+
+    /// 
+    /// The ARN of the sink in the monitoring account that you want to link to.    You can use ListSinks to    find the ARNs of sinks.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SinkIdentifier")]
+    pub sink_identifier: String,
 
 
     /// 

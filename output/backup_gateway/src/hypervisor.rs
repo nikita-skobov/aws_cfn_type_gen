@@ -8,6 +8,24 @@ pub struct CfnHypervisor {
 
 
     /// 
+    /// The server host of the hypervisor. This can be either an IP address or a fully-qualified    domain name (FQDN).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the AWS Key Management Service used to encrypt the    hypervisor.
     /// 
     /// Required: No
@@ -23,36 +41,6 @@ pub struct CfnHypervisor {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyArn")]
     pub kms_key_arn: Option<String>,
-
-
-    /// 
-    /// The tags of the hypervisor configuration to import.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The password for the hypervisor.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: [ -~]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: Option<String>,
 
 
     /// 
@@ -74,24 +62,6 @@ pub struct CfnHypervisor {
 
 
     /// 
-    /// The server host of the hypervisor. This can be either an IP address or a fully-qualified    domain name (FQDN).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: Option<String>,
-
-
-    /// 
     /// The name of the hypervisor.
     /// 
     /// Required: No
@@ -107,6 +77,36 @@ pub struct CfnHypervisor {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// The password for the hypervisor.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: [ -~]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: Option<String>,
+
+
+    /// 
+    /// The tags of the hypervisor configuration to import.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -153,17 +153,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -172,6 +161,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

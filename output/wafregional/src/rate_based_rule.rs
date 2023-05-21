@@ -12,29 +12,15 @@ pub struct CfnRateBasedRule {
 
 
     /// 
-    /// The field that AWS WAF uses to determine if requests are likely arriving from single     source and thus subject to rate monitoring. The only valid value for RateKey     is IP. IP indicates that requests arriving from the same IP     address are subject to the RateLimit that is specified in the       RateBasedRule.
+    /// The Predicates object contains one Predicate element for      each ByteMatchSet, IPSet, or SqlInjectionMatchSet> object that you want to include in a       RateBasedRule.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: IP
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RateKey")]
-    pub rate_key: RateBasedRuleRateKeyEnum,
-
-
-    /// 
-    /// The maximum number of requests, which have an identical value in the field specified     by the RateKey, allowed in a five-minute period. If the number of requests     exceeds the RateLimit and the other predicates specified in the rule are also       met, AWS WAF triggers the action that is specified for this rule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
+    /// Type: List of Predicate
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RateLimit")]
-    pub rate_limit: i64,
+    #[serde(rename = "MatchPredicates")]
+    pub match_predicates: Option<Vec<Predicate>>,
 
 
     /// 
@@ -74,15 +60,29 @@ pub struct CfnRateBasedRule {
 
 
     /// 
-    /// The Predicates object contains one Predicate element for      each ByteMatchSet, IPSet, or SqlInjectionMatchSet> object that you want to include in a       RateBasedRule.
+    /// The field that AWS WAF uses to determine if requests are likely arriving from single     source and thus subject to rate monitoring. The only valid value for RateKey     is IP. IP indicates that requests arriving from the same IP     address are subject to the RateLimit that is specified in the       RateBasedRule.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Predicate
+    /// Type: String
+    ///
+    /// Allowed values: IP
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RateKey")]
+    pub rate_key: RateBasedRuleRateKeyEnum,
+
+
+    /// 
+    /// The maximum number of requests, which have an identical value in the field specified     by the RateKey, allowed in a five-minute period. If the number of requests     exceeds the RateLimit and the other predicates specified in the rule are also       met, AWS WAF triggers the action that is specified for this rule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MatchPredicates")]
-    pub match_predicates: Option<Vec<Predicate>>,
+    #[serde(rename = "RateLimit")]
+    pub rate_limit: i64,
 
 }
 
@@ -120,17 +120,21 @@ pub struct Predicate {
 
 
     /// 
-    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
+    /// A unique identifier for a predicate in a Rule, such as ByteMatchSetId or IPSetId. 			The ID is returned by the corresponding Create or List command.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: PredicateTypeEnum,
+    #[serde(rename = "DataId")]
+    pub data_id: String,
 
 
     /// 
@@ -148,21 +152,17 @@ pub struct Predicate {
 
 
     /// 
-    /// A unique identifier for a predicate in a Rule, such as ByteMatchSetId or IPSetId. 			The ID is returned by the corresponding Create or List command.
+    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
+    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DataId")]
-    pub data_id: String,
+    #[serde(rename = "Type")]
+    pub cfn_type: PredicateTypeEnum,
 
 }
 

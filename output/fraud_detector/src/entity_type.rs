@@ -6,20 +6,6 @@ pub struct CfnEntityType {
 
 
     /// 
-    /// The entity type name.
-    /// 
-    /// Pattern: ^[0-9a-z_-]+$
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The entity type description.
     /// 
     /// Required: No
@@ -33,6 +19,20 @@ pub struct CfnEntityType {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The entity type name.
+    /// 
+    /// Pattern: ^[0-9a-z_-]+$
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 

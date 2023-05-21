@@ -6,30 +6,6 @@ pub struct CfnInAppTemplate {
 
 
     /// 
-    /// The name of the in-app message template.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
-
-
-    /// 
-    /// An optional description of the in-app template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateDescription")]
-    pub template_description: Option<String>,
-
-
-    /// 
     /// An object that contains information about the content of an in-app message,           including its title and body text, text colors, background colors, images,           buttons, and behaviors.
     /// 
     /// Required: No
@@ -42,17 +18,15 @@ pub struct CfnInAppTemplate {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// Custom data, in the form of key-value pairs, that is included in an in-app messaging       payload.
     /// 
     /// Required: No
     ///
     /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+    #[serde(rename = "CustomConfig")]
+    pub custom_config: Option<serde_json::Value>,
 
 
     /// 
@@ -70,15 +44,41 @@ pub struct CfnInAppTemplate {
 
 
     /// 
-    /// Custom data, in the form of key-value pairs, that is included in an in-app messaging       payload.
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
     /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CustomConfig")]
-    pub custom_config: Option<serde_json::Value>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+
+    /// 
+    /// An optional description of the in-app template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateDescription")]
+    pub template_description: Option<String>,
+
+
+    /// 
+    /// The name of the in-app message template.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
 
 }
 
@@ -95,206 +95,9 @@ impl cfn_resources::CfnResource for CfnInAppTemplate {
 }
 
 
-/// Specifies the configuration and content of the header or title text of the in-app       message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HeaderConfig {
-
-
-    /// 
-    /// The color of the title text, expressed as a hex color code (such as #000000 for       black).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TextColor")]
-    pub text_color: Option<String>,
-
-
-    /// 
-    /// The text alignment of the title of the message. Acceptable values: LEFT,         CENTER, RIGHT.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Alignment")]
-    pub alignment: Option<String>,
-
-
-    /// 
-    /// The title text of the in-app message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Header")]
-    pub header: Option<String>,
-
-}
-
-
-
-
-/// Specifies the behavior of buttons that appear in an in-app message template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ButtonConfig {
-
-
-    /// 
-    /// Optional button configuration to use for in-app messages sent to iOS devices. This       button configuration overrides the default button configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OverrideButtonConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IOS")]
-    pub ios: Option<OverrideButtonConfiguration>,
-
-
-    /// 
-    /// Specifies the default behavior of a button that appears in an in-app message. You can       optionally add button configurations that specifically apply to iOS, Android, or web       browser users.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DefaultButtonConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultConfig")]
-    pub default_config: Option<DefaultButtonConfiguration>,
-
-
-    /// 
-    /// Optional button configuration to use for in-app messages sent to Android devices. This       button configuration overrides the default button configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OverrideButtonConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Android")]
-    pub android: Option<OverrideButtonConfiguration>,
-
-
-    /// 
-    /// Optional button configuration to use for in-app messages sent to web applications.       This button configuration overrides the default button configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OverrideButtonConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Web")]
-    pub web: Option<OverrideButtonConfiguration>,
-
-}
-
-
-
-
-/// Specifies the default behavior of a button that appears in an in-app message. You can       optionally add button configurations that specifically apply to iOS, Android, or web       browser users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DefaultButtonConfiguration {
-
-
-    /// 
-    /// The text that appears on a button in an in-app message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Text")]
-    pub text: Option<String>,
-
-
-    /// 
-    /// The destination (such as a URL) for a button.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Link")]
-    pub link: Option<String>,
-
-
-    /// 
-    /// The action that occurs when a recipient chooses a button in an in-app message.           You can specify one of the following:
-    /// 
-    /// LINK – A link to a web destination.                                      DEEP_LINK – A link to a specific page in an               application.                                      CLOSE – Dismisses the message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ButtonAction")]
-    pub button_action: Option<String>,
-
-
-    /// 
-    /// The border radius of a button.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BorderRadius")]
-    pub border_radius: Option<i64>,
-
-
-    /// 
-    /// The color of the body text in a button, expressed as a hex color code (such as #000000       for black).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TextColor")]
-    pub text_color: Option<String>,
-
-
-    /// 
-    /// The background color of a button, expressed as a hex color code (such as #000000 for       black).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackgroundColor")]
-    pub background_color: Option<String>,
-
-}
-
-
-
-
 /// Specifies the configuration of the main body text of the in-app message.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BodyConfig {
-
-
-    /// 
-    /// The color of the body text, expressed as a hex color code (such as #000000 for       black).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TextColor")]
-    pub text_color: Option<String>,
 
 
     /// 
@@ -320,14 +123,107 @@ pub struct BodyConfig {
     #[serde(rename = "Body")]
     pub body: Option<String>,
 
+
+    /// 
+    /// The color of the body text, expressed as a hex color code (such as #000000 for       black).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TextColor")]
+    pub text_color: Option<String>,
+
 }
 
 
 
 
-/// Specifies the configuration of a button with settings that are specific to a certain       device type.
+/// Specifies the behavior of buttons that appear in an in-app message template.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OverrideButtonConfiguration {
+pub struct ButtonConfig {
+
+
+    /// 
+    /// Optional button configuration to use for in-app messages sent to Android devices. This       button configuration overrides the default button configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OverrideButtonConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Android")]
+    pub android: Option<OverrideButtonConfiguration>,
+
+
+    /// 
+    /// Specifies the default behavior of a button that appears in an in-app message. You can       optionally add button configurations that specifically apply to iOS, Android, or web       browser users.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DefaultButtonConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultConfig")]
+    pub default_config: Option<DefaultButtonConfiguration>,
+
+
+    /// 
+    /// Optional button configuration to use for in-app messages sent to iOS devices. This       button configuration overrides the default button configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OverrideButtonConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IOS")]
+    pub ios: Option<OverrideButtonConfiguration>,
+
+
+    /// 
+    /// Optional button configuration to use for in-app messages sent to web applications.       This button configuration overrides the default button configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OverrideButtonConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Web")]
+    pub web: Option<OverrideButtonConfiguration>,
+
+}
+
+
+
+
+/// Specifies the default behavior of a button that appears in an in-app message. You can       optionally add button configurations that specifically apply to iOS, Android, or web       browser users.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DefaultButtonConfiguration {
+
+
+    /// 
+    /// The background color of a button, expressed as a hex color code (such as #000000 for       black).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackgroundColor")]
+    pub background_color: Option<String>,
+
+
+    /// 
+    /// The border radius of a button.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BorderRadius")]
+    pub border_radius: Option<i64>,
 
 
     /// 
@@ -355,6 +251,75 @@ pub struct OverrideButtonConfiguration {
     #[serde(rename = "Link")]
     pub link: Option<String>,
 
+
+    /// 
+    /// The text that appears on a button in an in-app message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Text")]
+    pub text: Option<String>,
+
+
+    /// 
+    /// The color of the body text in a button, expressed as a hex color code (such as #000000       for black).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TextColor")]
+    pub text_color: Option<String>,
+
+}
+
+
+
+
+/// Specifies the configuration and content of the header or title text of the in-app       message.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HeaderConfig {
+
+
+    /// 
+    /// The text alignment of the title of the message. Acceptable values: LEFT,         CENTER, RIGHT.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Alignment")]
+    pub alignment: Option<String>,
+
+
+    /// 
+    /// The title text of the in-app message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Header")]
+    pub header: Option<String>,
+
+
+    /// 
+    /// The color of the title text, expressed as a hex color code (such as #000000 for       black).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TextColor")]
+    pub text_color: Option<String>,
+
 }
 
 
@@ -363,6 +328,30 @@ pub struct OverrideButtonConfiguration {
 /// Specifies the configuration of an in-app message, including its header, body, buttons,       colors, and images.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InAppMessageContent {
+
+
+    /// 
+    /// The background color for an in-app message banner, expressed as a hex color code (such       as #000000 for black).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackgroundColor")]
+    pub background_color: Option<String>,
+
+
+    /// 
+    /// An object that contains configuration information about the header or title           text of the in-app message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BodyConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BodyConfig")]
+    pub body_config: Option<BodyConfig>,
 
 
     /// 
@@ -402,30 +391,6 @@ pub struct InAppMessageContent {
 
 
     /// 
-    /// The background color for an in-app message banner, expressed as a hex color code (such       as #000000 for black).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackgroundColor")]
-    pub background_color: Option<String>,
-
-
-    /// 
-    /// An object that contains configuration information about the header or title           text of the in-app message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BodyConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BodyConfig")]
-    pub body_config: Option<BodyConfig>,
-
-
-    /// 
     /// An object that contains configuration information about the secondary button           in an in-app message.
     /// 
     /// Required: No
@@ -435,6 +400,41 @@ pub struct InAppMessageContent {
     /// Update requires: No interruption
     #[serde(rename = "SecondaryBtn")]
     pub secondary_btn: Option<ButtonConfig>,
+
+}
+
+
+
+
+/// Specifies the configuration of a button with settings that are specific to a certain       device type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OverrideButtonConfiguration {
+
+
+    /// 
+    /// The action that occurs when a recipient chooses a button in an in-app message.           You can specify one of the following:
+    /// 
+    /// LINK – A link to a web destination.                                      DEEP_LINK – A link to a specific page in an               application.                                      CLOSE – Dismisses the message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ButtonAction")]
+    pub button_action: Option<String>,
+
+
+    /// 
+    /// The destination (such as a URL) for a button.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Link")]
+    pub link: Option<String>,
 
 }
 

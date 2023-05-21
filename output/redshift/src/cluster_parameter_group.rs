@@ -6,6 +6,20 @@ pub struct CfnClusterParameterGroup {
 
 
     /// 
+    /// The description of the parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: String,
+
+
+    /// 
     /// The name of the cluster parameter group family that this cluster parameter group is       compatible with. You can create a custom parameter group and then associate your cluster with it. For more information, see        Amazon Redshift parameter groups.
     /// 
     /// Required: Yes
@@ -17,18 +31,6 @@ pub struct CfnClusterParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "ParameterGroupFamily")]
     pub parameter_group_family: String,
-
-
-    /// 
-    /// The list of tags for the cluster parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -46,20 +48,6 @@ pub struct CfnClusterParameterGroup {
 
 
     /// 
-    /// The description of the parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: String,
-
-
-    /// 
     /// An array of parameters to be modified. A maximum of 20 parameters can be modified       in a single request.
     /// 
     /// For each parameter to be modified, you must supply at least the parameter name and       parameter value; other name-value pairs of the parameter are optional.
@@ -73,6 +61,18 @@ pub struct CfnClusterParameterGroup {
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
     pub parameters: Option<Vec<Parameter>>,
+
+
+    /// 
+    /// The list of tags for the cluster parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -95,20 +95,6 @@ pub struct Parameter {
 
 
     /// 
-    /// The value of the parameter. If ParameterName is wlm_json_configuration,       then the maximum size of ParameterValue is 8000 characters.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
-
-
-    /// 
     /// The name of the parameter.
     /// 
     /// Required: Yes
@@ -120,6 +106,20 @@ pub struct Parameter {
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
     pub parameter_name: String,
+
+
+    /// 
+    /// The value of the parameter. If ParameterName is wlm_json_configuration,       then the maximum size of ParameterValue is 8000 characters.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterValue")]
+    pub parameter_value: String,
 
 }
 
@@ -138,17 +138,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -157,6 +146,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

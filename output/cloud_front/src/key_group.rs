@@ -53,18 +53,6 @@ pub struct KeyGroupConfig {
 
 
     /// 
-    /// A name to identify the key group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// A list of the identifiers of the public keys in the key group.
     /// 
     /// Required: Yes
@@ -74,6 +62,18 @@ pub struct KeyGroupConfig {
     /// Update requires: No interruption
     #[serde(rename = "Items")]
     pub items: Vec<String>,
+
+
+    /// 
+    /// A name to identify the key group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
 

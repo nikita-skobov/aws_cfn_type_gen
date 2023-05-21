@@ -18,20 +18,6 @@ pub struct CfnIPAM {
 
 
     /// 
-    /// The operating Regions for an IPAM. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
-    /// 
-    /// For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of IpamOperatingRegion
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OperatingRegions")]
-    pub operating_regions: Option<Vec<IpamOperatingRegion>>,
-
-
-    /// 
     /// The IPAM's default resource discovery ID.
     /// 
     /// Required: No
@@ -53,6 +39,20 @@ pub struct CfnIPAM {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The operating Regions for an IPAM. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
+    /// 
+    /// For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of IpamOperatingRegion
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OperatingRegions")]
+    pub operating_regions: Option<Vec<IpamOperatingRegion>>,
 
 
     /// 
@@ -116,17 +116,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -135,6 +124,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

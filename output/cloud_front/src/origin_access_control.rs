@@ -57,6 +57,32 @@ pub struct OriginAccessControlConfig {
 
 
     /// 
+    /// A name to identify the origin access control.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The type of origin that this origin access control is for.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: mediastore | s3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OriginAccessControlOriginType")]
+    pub origin_access_control_origin_type: OriginAccessControlConfigOriginAccessControlOriginTypeEnum,
+
+
+    /// 
     /// Specifies which requests CloudFront signs (adds authentication information to). Specify 				always for the most common use case. For more information, see origin access control advanced settings in the 				Amazon CloudFront Developer Guide.
     /// 
     /// This field can have one of the following values:
@@ -75,20 +101,6 @@ pub struct OriginAccessControlConfig {
 
 
     /// 
-    /// The type of origin that this origin access control is for.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: mediastore | s3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OriginAccessControlOriginType")]
-    pub origin_access_control_origin_type: OriginAccessControlConfigOriginAccessControlOriginTypeEnum,
-
-
-    /// 
     /// The signing protocol of the origin access control, which determines how CloudFront signs 			(authenticates) requests. The only valid value is sigv4.
     /// 
     /// Required: Yes
@@ -101,37 +113,21 @@ pub struct OriginAccessControlConfig {
     #[serde(rename = "SigningProtocol")]
     pub signing_protocol: OriginAccessControlConfigSigningProtocolEnum,
 
-
-    /// 
-    /// A name to identify the origin access control.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
+pub enum OriginAccessControlConfigSigningProtocolEnum {
 
-    /// mediastore
-    #[serde(rename = "mediastore")]
-    Mediastore,
-
-    /// s3
-    #[serde(rename = "s3")]
-    S3,
+    /// sigv4
+    #[serde(rename = "sigv4")]
+    Sigv4,
 
 }
 
-impl Default for OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
+impl Default for OriginAccessControlConfigSigningProtocolEnum {
     fn default() -> Self {
-        OriginAccessControlConfigOriginAccessControlOriginTypeEnum::Mediastore
+        OriginAccessControlConfigSigningProtocolEnum::Sigv4
     }
 }
 
@@ -159,17 +155,21 @@ impl Default for OriginAccessControlConfigSigningBehaviorEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum OriginAccessControlConfigSigningProtocolEnum {
+pub enum OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
 
-    /// sigv4
-    #[serde(rename = "sigv4")]
-    Sigv4,
+    /// mediastore
+    #[serde(rename = "mediastore")]
+    Mediastore,
+
+    /// s3
+    #[serde(rename = "s3")]
+    S3,
 
 }
 
-impl Default for OriginAccessControlConfigSigningProtocolEnum {
+impl Default for OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
     fn default() -> Self {
-        OriginAccessControlConfigSigningProtocolEnum::Sigv4
+        OriginAccessControlConfigOriginAccessControlOriginTypeEnum::Mediastore
     }
 }
 

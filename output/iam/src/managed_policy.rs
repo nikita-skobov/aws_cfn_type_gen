@@ -12,6 +12,62 @@ pub struct CfnManagedPolicy {
 
 
     /// 
+    /// A friendly description of the policy.
+    /// 
+    /// Typically used to store information about the permissions defined in the policy. For       example, "Grants access to production DynamoDB tables."
+    /// 
+    /// The policy description is immutable. After a value is assigned, it cannot be       changed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The name (friendly name, not ARN) of the group to attach the policy to.
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\w+=,.@-]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Groups")]
+    pub groups: Option<Vec<String>>,
+
+
+    /// 
+    /// The friendly name of the policy.
+    /// 
+    /// ImportantIf you specify a name, you cannot perform updates that require replacement of this       resource. You can perform updates that require no or some interruption. If you must       replace the resource, specify a new name.
+    /// 
+    /// If you specify a name, you must specify the CAPABILITY_NAMED_IAM value to     acknowledge your template's capabilities. For more information, see Acknowledging IAM Resources in AWS CloudFormation     Templates.
+    /// 
+    /// ImportantNaming an IAM resource can cause an unrecoverable error if you reuse       the same template in multiple Regions. To prevent this, we recommend using        Fn::Join and AWS::Region to create a Region-specific name,       as in the following example: {"Fn::Join": ["", [{"Ref": "AWS::Region"}, {"Ref":        "MyResourceName"}]]}.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ManagedPolicyName")]
+    pub managed_policy_name: Option<String>,
+
+
+    /// 
     /// The path for the policy.
     /// 
     /// For more information about paths, see IAM identifiers in the         IAM User Guide.
@@ -66,41 +122,19 @@ pub struct CfnManagedPolicy {
 
 
     /// 
-    /// The friendly name of the policy.
+    /// The name (friendly name, not ARN) of the role to attach the policy to.
     /// 
-    /// ImportantIf you specify a name, you cannot perform updates that require replacement of this       resource. You can perform updates that require no or some interruption. If you must       replace the resource, specify a new name.
+    /// This parameter allows (per its regex       pattern) a string of characters consisting of upper and lowercase alphanumeric     characters with no spaces. You can also include any of the following characters:     _+=,.@-
     /// 
-    /// If you specify a name, you must specify the CAPABILITY_NAMED_IAM value to     acknowledge your template's capabilities. For more information, see Acknowledging IAM Resources in AWS CloudFormation     Templates.
-    /// 
-    /// ImportantNaming an IAM resource can cause an unrecoverable error if you reuse       the same template in multiple Regions. To prevent this, we recommend using        Fn::Join and AWS::Region to create a Region-specific name,       as in the following example: {"Fn::Join": ["", [{"Ref": "AWS::Region"}, {"Ref":        "MyResourceName"}]]}.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ManagedPolicyName")]
-    pub managed_policy_name: Option<String>,
-
-
-    /// 
-    /// The name (friendly name, not ARN) of the group to attach the policy to.
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// NoteIf an external policy (such as AWS::IAM::Policy or        AWS::IAM::ManagedPolicy) has a Ref to a role and if a       resource (such as AWS::ECS::Service) also has a Ref to the       same role, add a DependsOn attribute to the resource to make the resource       depend on the external policy. This dependency ensures that the role's policy is       available throughout the resource's lifecycle. For example, when you delete a stack with       an AWS::ECS::Service resource, the DependsOn attribute ensures       that AWS CloudFormation deletes the AWS::ECS::Service resource before       deleting its role's policy.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\w+=,.@-]+
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "Groups")]
-    pub groups: Option<Vec<String>>,
+    #[serde(rename = "Roles")]
+    pub roles: Option<Vec<String>>,
 
 
     /// 
@@ -121,40 +155,6 @@ pub struct CfnManagedPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Users")]
     pub users: Option<Vec<String>>,
-
-
-    /// 
-    /// A friendly description of the policy.
-    /// 
-    /// Typically used to store information about the permissions defined in the policy. For       example, "Grants access to production DynamoDB tables."
-    /// 
-    /// The policy description is immutable. After a value is assigned, it cannot be       changed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The name (friendly name, not ARN) of the role to attach the policy to.
-    /// 
-    /// This parameter allows (per its regex       pattern) a string of characters consisting of upper and lowercase alphanumeric     characters with no spaces. You can also include any of the following characters:     _+=,.@-
-    /// 
-    /// NoteIf an external policy (such as AWS::IAM::Policy or        AWS::IAM::ManagedPolicy) has a Ref to a role and if a       resource (such as AWS::ECS::Service) also has a Ref to the       same role, add a DependsOn attribute to the resource to make the resource       depend on the external policy. This dependency ensures that the role's policy is       available throughout the resource's lifecycle. For example, when you delete a stack with       an AWS::ECS::Service resource, the DependsOn attribute ensures       that AWS CloudFormation deletes the AWS::ECS::Service resource before       deleting its role's policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Roles")]
-    pub roles: Option<Vec<String>>,
 
 }
 

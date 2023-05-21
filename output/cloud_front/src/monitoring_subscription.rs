@@ -6,18 +6,6 @@ pub struct CfnMonitoringSubscription {
 
 
     /// 
-    /// A subscription configuration for additional CloudWatch metrics.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MonitoringSubscription
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MonitoringSubscription")]
-    pub monitoring_subscription: Box<MonitoringSubscription>,
-
-
-    /// 
     /// The ID of the distribution that you are enabling metrics for.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnMonitoringSubscription {
     /// Update requires: Replacement
     #[serde(rename = "DistributionId")]
     pub distribution_id: String,
+
+
+    /// 
+    /// A subscription configuration for additional CloudWatch metrics.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MonitoringSubscription
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MonitoringSubscription")]
+    pub monitoring_subscription: Box<MonitoringSubscription>,
 
 }
 

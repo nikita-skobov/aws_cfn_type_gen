@@ -6,51 +6,15 @@ pub struct CfnVpcConnection {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the cluster.
+    /// The type of private link authentication.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TargetClusterArn")]
-    pub target_cluster_arn: String,
-
-
-    /// 
-    /// The security groups to attach to the ENIs for the broker nodes.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroups")]
-    pub security_groups: Vec<String>,
-
-
-    /// 
-    /// The VPC id of the remote client.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
-
-
-    /// 
-    /// Create tags when creating the VPC connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "Authentication")]
+    pub authentication: String,
 
 
     /// 
@@ -66,15 +30,51 @@ pub struct CfnVpcConnection {
 
 
     /// 
-    /// The type of private link authentication.
+    /// The security groups to attach to the ENIs for the broker nodes.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Vec<String>,
+
+
+    /// 
+    /// Create tags when creating the VPC connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the cluster.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Authentication")]
-    pub authentication: String,
+    #[serde(rename = "TargetClusterArn")]
+    pub target_cluster_arn: String,
+
+
+    /// 
+    /// The VPC id of the remote client.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
 
 }
 

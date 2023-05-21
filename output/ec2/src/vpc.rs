@@ -10,15 +10,17 @@ pub struct CfnVPC {
 
 
     /// 
-    /// Indicates whether the DNS resolution is supported for the VPC. If enabled, queries to     the Amazon provided DNS server at the 169.254.169.253 IP address, or the reserved IP     address at the base of the VPC network range "plus two" succeed. If disabled, the Amazon     provided DNS service in the VPC that resolves public DNS hostnames to IP addresses is not     enabled. Enabled by default. For more information, see DNS attributes in your       VPC.
+    /// The IPv4 network range for the VPC, in CIDR notation. For example,     10.0.0.0/16. We modify the specified CIDR block to its canonical form; for example, if you specify 100.68.0.18/18, we modify it to 100.68.0.0/18.
     /// 
-    /// Required: No
+    /// You must specify eitherCidrBlock or Ipv4IpamPoolId.
+    /// 
+    /// Required: Conditional
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableDnsSupport")]
-    pub enable_dns_support: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "CidrBlock")]
+    pub cidr_block: Option<String>,
 
 
     /// 
@@ -36,29 +38,15 @@ pub struct CfnVPC {
 
 
     /// 
-    /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. For more information, see      What is IPAM? in the Amazon VPC IPAM User Guide.
-    /// 
-    /// You must specify eitherCidrBlock or Ipv4IpamPoolId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ipv4IpamPoolId")]
-    pub ipv4_ipam_pool_id: Option<String>,
-
-
-    /// 
-    /// The tags for the VPC.
+    /// Indicates whether the DNS resolution is supported for the VPC. If enabled, queries to     the Amazon provided DNS server at the 169.254.169.253 IP address, or the reserved IP     address at the base of the VPC network range "plus two" succeed. If disabled, the Amazon     provided DNS service in the VPC that resolves public DNS hostnames to IP addresses is not     enabled. Enabled by default. For more information, see DNS attributes in your       VPC.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "EnableDnsSupport")]
+    pub enable_dns_support: Option<bool>,
 
 
     /// 
@@ -80,6 +68,20 @@ pub struct CfnVPC {
 
 
     /// 
+    /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. For more information, see      What is IPAM? in the Amazon VPC IPAM User Guide.
+    /// 
+    /// You must specify eitherCidrBlock or Ipv4IpamPoolId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ipv4IpamPoolId")]
+    pub ipv4_ipam_pool_id: Option<String>,
+
+
+    /// 
     /// The netmask length of the IPv4 CIDR you want to allocate to this VPC from an Amazon VPC IP Address Manager (IPAM) pool. For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM User Guide.
     /// 
     /// Required: No
@@ -92,17 +94,15 @@ pub struct CfnVPC {
 
 
     /// 
-    /// The IPv4 network range for the VPC, in CIDR notation. For example,     10.0.0.0/16. We modify the specified CIDR block to its canonical form; for example, if you specify 100.68.0.18/18, we modify it to 100.68.0.0/18.
+    /// The tags for the VPC.
     /// 
-    /// You must specify eitherCidrBlock or Ipv4IpamPoolId.
-    /// 
-    /// Required: Conditional
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "CidrBlock")]
-    pub cidr_block: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

@@ -51,6 +51,31 @@ impl cfn_resources::CfnResource for CfnDatabase {
 }
 
 
+/// The AWS Lake Formation principal.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataLakePrincipal {
+
+
+    /// 
+    /// An identifier for the AWS Lake Formation principal.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataLakePrincipalIdentifier")]
+    pub data_lake_principal_identifier: Option<String>,
+
+}
+
+
+
+
 /// A structure that describes a target database for resource linking.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatabaseIdentifier {
@@ -84,85 +109,21 @@ pub struct DatabaseIdentifier {
 
 
 
-/// the permissions granted to a principal
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PrincipalPrivileges {
-
-
-    /// 
-    /// The principal who is granted permissions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataLakePrincipal
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Principal")]
-    pub principal: Option<DataLakePrincipal>,
-
-
-    /// 
-    /// The permissions that are granted to the principal.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Permissions")]
-    pub permissions: Option<Vec<String>>,
-
-}
-
-
-
-
-/// The AWS Lake Formation principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataLakePrincipal {
-
-
-    /// 
-    /// An identifier for the AWS Lake Formation principal.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataLakePrincipalIdentifier")]
-    pub data_lake_principal_identifier: Option<String>,
-
-}
-
-
-
-
 /// The structure used to create or update a database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatabaseInput {
 
 
     /// 
-    /// The location of the database (for example, an HDFS path).
+    /// Creates a set of default permissions on the table for principals. Used by AWS Lake Formation. Not used in the normal course of AWS Glue operations.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    /// Type: List of PrincipalPrivileges
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LocationUri")]
-    pub location_uri: Option<String>,
+    #[serde(rename = "CreateTableDefaultPermissions")]
+    pub create_table_default_permissions: Option<Vec<PrincipalPrivileges>>,
 
 
     /// 
@@ -195,27 +156,21 @@ pub struct DatabaseInput {
 
 
     /// 
-    /// These key-value pairs define parameters and properties    of the database.
+    /// The location of the database (for example, an HDFS path).
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
-
-
-    /// 
-    /// Creates a set of default permissions on the table for principals. Used by AWS Lake Formation. Not used in the normal course of AWS Glue operations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PrincipalPrivileges
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreateTableDefaultPermissions")]
-    pub create_table_default_permissions: Option<Vec<PrincipalPrivileges>>,
+    #[serde(rename = "LocationUri")]
+    pub location_uri: Option<String>,
 
 
     /// 
@@ -234,6 +189,18 @@ pub struct DatabaseInput {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+
+    /// 
+    /// These key-value pairs define parameters and properties    of the database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
 
 
     /// 
@@ -277,6 +244,39 @@ pub struct FederatedDatabase {
     /// Update requires: No interruption
     #[serde(rename = "Identifier")]
     pub identifier: Option<String>,
+
+}
+
+
+
+
+/// the permissions granted to a principal
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PrincipalPrivileges {
+
+
+    /// 
+    /// The permissions that are granted to the principal.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Permissions")]
+    pub permissions: Option<Vec<String>>,
+
+
+    /// 
+    /// The principal who is granted permissions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DataLakePrincipal
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Principal")]
+    pub principal: Option<DataLakePrincipal>,
 
 }
 

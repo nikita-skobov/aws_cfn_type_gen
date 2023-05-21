@@ -20,6 +20,52 @@ pub struct CfnNetworkInsightsPath {
 
 
     /// 
+    /// The IP address of the destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 15
+    ///
+    /// Pattern: ^([0-9]{1,3}.){3}[0-9]{1,3}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationIp")]
+    pub destination_ip: Option<String>,
+
+
+    /// 
+    /// The destination port.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationPort")]
+    pub destination_port: Option<i64>,
+
+
+    /// 
+    /// Scopes the analysis to network paths that match specific filters at the destination. If you specify      this parameter, you can't specify the parameter for the destination IP address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PathFilter
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FilterAtDestination")]
+    pub filter_at_destination: Option<PathFilter>,
+
+
+    /// 
     /// Scopes the analysis to network paths that match specific filters at the source. If you specify      this parameter, you can't specify the parameters for the source IP address or the destination port.
     /// 
     /// Required: No
@@ -29,6 +75,32 @@ pub struct CfnNetworkInsightsPath {
     /// Update requires: Replacement
     #[serde(rename = "FilterAtSource")]
     pub filter_at_source: Option<PathFilter>,
+
+
+    /// 
+    /// The protocol.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: tcp | udp
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: NetworkInsightsPathProtocolEnum,
+
+
+    /// 
+    /// The ID or ARN of the source. If the resource is in another account, you must specify an ARN.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Source")]
+    pub source: String,
 
 
     /// 
@@ -50,36 +122,6 @@ pub struct CfnNetworkInsightsPath {
 
 
     /// 
-    /// The IP address of the destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 15
-    ///
-    /// Pattern: ^([0-9]{1,3}.){3}[0-9]{1,3}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationIp")]
-    pub destination_ip: Option<String>,
-
-
-    /// 
-    /// Scopes the analysis to network paths that match specific filters at the destination. If you specify      this parameter, you can't specify the parameter for the destination IP address.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PathFilter
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FilterAtDestination")]
-    pub filter_at_destination: Option<PathFilter>,
-
-
-    /// 
     /// The tags to add to the path.
     /// 
     /// Required: No
@@ -89,48 +131,6 @@ pub struct CfnNetworkInsightsPath {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The protocol.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: tcp | udp
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: NetworkInsightsPathProtocolEnum,
-
-
-    /// 
-    /// The destination port.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationPort")]
-    pub destination_port: Option<i64>,
-
-
-    /// 
-    /// The ID or ARN of the source. If the resource is in another account, you must specify an ARN.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Source")]
-    pub source: String,
 
 }
 
@@ -166,37 +166,41 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsPath {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// Describes a port range.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct FilterPortRange {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The first port in the range.
     /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FromPort")]
+    pub from_port: Option<i64>,
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The last port in the range.
     /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ToPort")]
+    pub to_port: Option<i64>,
 
 }
 
@@ -209,15 +213,33 @@ pub struct PathFilter {
 
 
     /// 
-    /// The source port range.
+    /// The destination IPv4 address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 15
+    ///
+    /// Pattern: ^([0-9]{1,3}.){3}[0-9]{1,3}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationAddress")]
+    pub destination_address: Option<String>,
+
+
+    /// 
+    /// The destination port range.
     /// 
     /// Required: No
     ///
     /// Type: FilterPortRange
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SourcePortRange")]
-    pub source_port_range: Option<FilterPortRange>,
+    #[serde(rename = "DestinationPortRange")]
+    pub destination_port_range: Option<FilterPortRange>,
 
 
     /// 
@@ -239,74 +261,52 @@ pub struct PathFilter {
 
 
     /// 
-    /// The destination port range.
+    /// The source port range.
     /// 
     /// Required: No
     ///
     /// Type: FilterPortRange
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DestinationPortRange")]
-    pub destination_port_range: Option<FilterPortRange>,
-
-
-    /// 
-    /// The destination IPv4 address.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 15
-    ///
-    /// Pattern: ^([0-9]{1,3}.){3}[0-9]{1,3}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationAddress")]
-    pub destination_address: Option<String>,
+    #[serde(rename = "SourcePortRange")]
+    pub source_port_range: Option<FilterPortRange>,
 
 }
 
 
 
 
-/// Describes a port range.
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FilterPortRange {
+pub struct Tag {
 
 
     /// 
-    /// The last port in the range.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ToPort")]
-    pub to_port: Option<i64>,
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
-    /// The first port in the range.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FromPort")]
-    pub from_port: Option<i64>,
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

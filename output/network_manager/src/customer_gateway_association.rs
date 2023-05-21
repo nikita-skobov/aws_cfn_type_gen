@@ -8,24 +8,6 @@ pub struct CfnCustomerGatewayAssociation {
 
 
     /// 
-    /// The ID of the device.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceId")]
-    pub device_id: String,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the customer gateway.
     /// 
     /// Required: Yes
@@ -41,6 +23,24 @@ pub struct CfnCustomerGatewayAssociation {
     /// Update requires: Replacement
     #[serde(rename = "CustomerGatewayArn")]
     pub customer_gateway_arn: String,
+
+
+    /// 
+    /// The ID of the device.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceId")]
+    pub device_id: String,
 
 
     /// 

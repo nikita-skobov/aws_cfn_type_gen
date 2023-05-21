@@ -20,27 +20,19 @@ pub struct CfnKey {
 
 
     /// 
-    /// Specifies the number of days in the waiting period before AWS KMS deletes a    KMS key that has been removed from a CloudFormation stack. Enter a value between 7 and 30 days.    The default value is 30 days.
-    /// 
-    /// When you remove a KMS key from a CloudFormation stack, AWS KMS schedules the    KMS key for deletion and starts the mandatory waiting period. The PendingWindowInDays    property determines the length of waiting period. During the waiting period, the key state of    KMS key is Pending Deletion or Pending Replica Deletion, which prevents    the KMS key from being used in cryptographic operations. When the waiting period expires, AWS KMS permanently deletes the KMS key.
-    /// 
-    /// AWS KMS will not delete a multi-Region primary     key that has replica keys. If you remove a multi-Region primary key from a    CloudFormation stack, its key state changes to PendingReplicaDeletion so it    cannot be replicated or used in cryptographic operations. This state can persist indefinitely.    When the last of its replica keys is deleted, the key state of the primary key changes to     PendingDeletion and the waiting period specified by     PendingWindowInDays begins. When this waiting period expires, AWS KMS deletes the primary key. For details, see Deleting multi-Region     keys in the AWS Key Management Service Developer Guide.
-    /// 
-    /// You cannot use a CloudFormation template to cancel deletion of the KMS key after you remove it    from the stack, regardless of the waiting period. If you specify a KMS key in your template, even    one with the same name, CloudFormation creates a new KMS key. To cancel deletion of a KMS key, use the     AWS KMS console or the CancelKeyDeletion    operation.
-    /// 
-    /// For information about the Pending Deletion and Pending Replica     Deletion key states, see Key state: Effect on your KMS key in the      AWS Key Management Service Developer Guide. For more information about    deleting KMS keys, see the ScheduleKeyDeletion    operation in the AWS Key Management Service API Reference and Deleting KMS     keys in the AWS Key Management Service Developer Guide.
-    /// 
-    /// Minimum: 7
-    /// 
-    /// Maximum: 30
+    /// A description of the KMS key. Use a description that helps you to distinguish this KMS key from    others in the account, such as its intended use.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 8192
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PendingWindowInDays")]
-    pub pending_window_in_days: Option<i64>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -62,58 +54,6 @@ pub struct CfnKey {
 
 
     /// 
-    /// Assigns one or more tags to the replica key.
-    /// 
-    /// NoteTagging or untagging a KMS key can allow or deny permission to the KMS key. For details, see      ABAC for       AWS KMS in the AWS Key Management Service Developer      Guide.
-    /// 
-    /// For information about tags in AWS KMS, see Tagging keys in the      AWS Key Management Service Developer Guide. For information about tags    in CloudFormation, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Determines the cryptographic     operations for which you can use the KMS key. The default value is     ENCRYPT_DECRYPT. This property is required for asymmetric KMS keys and HMAC KMS keys. You can't    change the KeyUsage value after the KMS key is created.
-    /// 
-    /// ImportantIf you change the value of the KeyUsage property on an existing KMS key,     the update request fails, regardless of the value of the UpdateReplacePolicy attribute. This prevents you from accidentally     deleting a KMS key by changing an immutable property value.
-    /// 
-    /// Select only one valid value.
-    /// 
-    /// For symmetric encryption KMS keys, omit the property or specify ENCRYPT_DECRYPT.        For asymmetric KMS keys with RSA key material, specify ENCRYPT_DECRYPT or       SIGN_VERIFY.        For asymmetric KMS keys with ECC key material, specify SIGN_VERIFY.        For asymmetric KMS keys with SM2 (China Regions only) key material, specify ENCRYPT_DECRYPT or      SIGN_VERIFY.        For HMAC KMS keys, specify GENERATE_VERIFY_MAC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ENCRYPT_DECRYPT | GENERATE_VERIFY_MAC | SIGN_VERIFY
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyUsage")]
-    pub key_usage: Option<KeyKeyUsageEnum>,
-
-
-    /// 
-    /// A description of the KMS key. Use a description that helps you to distinguish this KMS key from    others in the account, such as its intended use.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 8192
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// Specifies whether the KMS key is enabled. Disabled KMS keys cannot be used in cryptographic    operations.
     /// 
     /// When Enabled is true, the key state of the    KMS key is Enabled. When Enabled is false, the key state of    the KMS key is Disabled. The default value is true.
@@ -129,6 +69,30 @@ pub struct CfnKey {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
+
+
+    /// 
+    /// The key policy that authorizes use of the KMS key. The key policy must conform to the    following rules.
+    /// 
+    /// The key policy must allow the caller to make a subsequent PutKeyPolicy request on the      KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, refer      to the scenario in the Default key policy section of the       AWS Key Management Service Developer Guide      .        Each statement in the key policy must contain one or more principals. The principals      in the key policy must exist and be visible to AWS KMS. When you create a new       AWS principal (for example, an IAM user or role), you might need to      enforce a delay before including the new principal in a key policy because the new      principal might not be immediately visible to AWS KMS. For more information,      see Changes that I make are not always immediately visible in the AWS Identity and Access Management User Guide.
+    /// 
+    /// If you are unsure of which policy to use, consider the default key    policy. This is the key policy that AWS KMS applies to KMS keys that are    created by using the CreateKey API with no specified key policy. It gives the AWS account that owns the key permission to perform all operations on the key. It    also allows you write IAM policies to authorize access to the key. For details, see Default key policy in the AWS Key Management Service Developer     Guide.
+    /// 
+    /// A key policy document can include only the following characters:
+    /// 
+    /// Printable ASCII characters        Printable characters in the Basic Latin and Latin-1 Supplement character set        The tab (\u0009), line feed (\u000A), and carriage return (\u000D) special characters
+    /// 
+    /// Minimum: 1
+    /// 
+    /// Maximum: 32768
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KeyPolicy")]
+    pub key_policy: serde_json::Value,
 
 
     /// 
@@ -156,6 +120,26 @@ pub struct CfnKey {
 
 
     /// 
+    /// Determines the cryptographic     operations for which you can use the KMS key. The default value is     ENCRYPT_DECRYPT. This property is required for asymmetric KMS keys and HMAC KMS keys. You can't    change the KeyUsage value after the KMS key is created.
+    /// 
+    /// ImportantIf you change the value of the KeyUsage property on an existing KMS key,     the update request fails, regardless of the value of the UpdateReplacePolicy attribute. This prevents you from accidentally     deleting a KMS key by changing an immutable property value.
+    /// 
+    /// Select only one valid value.
+    /// 
+    /// For symmetric encryption KMS keys, omit the property or specify ENCRYPT_DECRYPT.        For asymmetric KMS keys with RSA key material, specify ENCRYPT_DECRYPT or       SIGN_VERIFY.        For asymmetric KMS keys with ECC key material, specify SIGN_VERIFY.        For asymmetric KMS keys with SM2 (China Regions only) key material, specify ENCRYPT_DECRYPT or      SIGN_VERIFY.        For HMAC KMS keys, specify GENERATE_VERIFY_MAC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ENCRYPT_DECRYPT | GENERATE_VERIFY_MAC | SIGN_VERIFY
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyUsage")]
+    pub key_usage: Option<KeyKeyUsageEnum>,
+
+
+    /// 
     /// Creates a multi-Region primary key that you can replicate in other AWS Regions. You can't change the    MultiRegion value after the KMS key is created.
     /// 
     /// For a list of AWS Regions in which multi-Region keys are supported, see Multi-Region keys in AWS KMS in the AWS Key Management Service Developer Guide.
@@ -180,27 +164,43 @@ pub struct CfnKey {
 
 
     /// 
-    /// The key policy that authorizes use of the KMS key. The key policy must conform to the    following rules.
+    /// Specifies the number of days in the waiting period before AWS KMS deletes a    KMS key that has been removed from a CloudFormation stack. Enter a value between 7 and 30 days.    The default value is 30 days.
     /// 
-    /// The key policy must allow the caller to make a subsequent PutKeyPolicy request on the      KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, refer      to the scenario in the Default key policy section of the       AWS Key Management Service Developer Guide      .        Each statement in the key policy must contain one or more principals. The principals      in the key policy must exist and be visible to AWS KMS. When you create a new       AWS principal (for example, an IAM user or role), you might need to      enforce a delay before including the new principal in a key policy because the new      principal might not be immediately visible to AWS KMS. For more information,      see Changes that I make are not always immediately visible in the AWS Identity and Access Management User Guide.
+    /// When you remove a KMS key from a CloudFormation stack, AWS KMS schedules the    KMS key for deletion and starts the mandatory waiting period. The PendingWindowInDays    property determines the length of waiting period. During the waiting period, the key state of    KMS key is Pending Deletion or Pending Replica Deletion, which prevents    the KMS key from being used in cryptographic operations. When the waiting period expires, AWS KMS permanently deletes the KMS key.
     /// 
-    /// If you are unsure of which policy to use, consider the default key    policy. This is the key policy that AWS KMS applies to KMS keys that are    created by using the CreateKey API with no specified key policy. It gives the AWS account that owns the key permission to perform all operations on the key. It    also allows you write IAM policies to authorize access to the key. For details, see Default key policy in the AWS Key Management Service Developer     Guide.
+    /// AWS KMS will not delete a multi-Region primary     key that has replica keys. If you remove a multi-Region primary key from a    CloudFormation stack, its key state changes to PendingReplicaDeletion so it    cannot be replicated or used in cryptographic operations. This state can persist indefinitely.    When the last of its replica keys is deleted, the key state of the primary key changes to     PendingDeletion and the waiting period specified by     PendingWindowInDays begins. When this waiting period expires, AWS KMS deletes the primary key. For details, see Deleting multi-Region     keys in the AWS Key Management Service Developer Guide.
     /// 
-    /// A key policy document can include only the following characters:
+    /// You cannot use a CloudFormation template to cancel deletion of the KMS key after you remove it    from the stack, regardless of the waiting period. If you specify a KMS key in your template, even    one with the same name, CloudFormation creates a new KMS key. To cancel deletion of a KMS key, use the     AWS KMS console or the CancelKeyDeletion    operation.
     /// 
-    /// Printable ASCII characters        Printable characters in the Basic Latin and Latin-1 Supplement character set        The tab (\u0009), line feed (\u000A), and carriage return (\u000D) special characters
+    /// For information about the Pending Deletion and Pending Replica     Deletion key states, see Key state: Effect on your KMS key in the      AWS Key Management Service Developer Guide. For more information about    deleting KMS keys, see the ScheduleKeyDeletion    operation in the AWS Key Management Service API Reference and Deleting KMS     keys in the AWS Key Management Service Developer Guide.
     /// 
-    /// Minimum: 1
+    /// Minimum: 7
     /// 
-    /// Maximum: 32768
+    /// Maximum: 30
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: Json
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KeyPolicy")]
-    pub key_policy: serde_json::Value,
+    #[serde(rename = "PendingWindowInDays")]
+    pub pending_window_in_days: Option<i64>,
+
+
+    /// 
+    /// Assigns one or more tags to the replica key.
+    /// 
+    /// NoteTagging or untagging a KMS key can allow or deny permission to the KMS key. For details, see      ABAC for       AWS KMS in the AWS Key Management Service Developer      Guide.
+    /// 
+    /// For information about tags in AWS KMS, see Tagging keys in the      AWS Key Management Service Developer Guide. For information about tags    in CloudFormation, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

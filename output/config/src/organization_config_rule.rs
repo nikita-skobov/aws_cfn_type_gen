@@ -19,17 +19,6 @@
 pub struct CfnOrganizationConfigRule {
 
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: OrganizationCustomPolicyRuleMetadata
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationCustomPolicyRuleMetadata")]
-    pub organization_custom_policy_rule_metadata: Option<OrganizationCustomPolicyRuleMetadata>,
-
-
     /// 
     /// A comma-separated list of accounts excluded from organization AWS Config rule.
     /// 
@@ -42,30 +31,6 @@ pub struct CfnOrganizationConfigRule {
     /// Update requires: No interruption
     #[serde(rename = "ExcludedAccounts")]
     pub excluded_accounts: Option<Vec<String>>,
-
-
-    /// 
-    /// An OrganizationManagedRuleMetadata object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OrganizationManagedRuleMetadata
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationManagedRuleMetadata")]
-    pub organization_managed_rule_metadata: Option<OrganizationManagedRuleMetadata>,
-
-
-    /// 
-    /// An OrganizationCustomRuleMetadata object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OrganizationCustomRuleMetadata
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationCustomRuleMetadata")]
-    pub organization_custom_rule_metadata: Option<OrganizationCustomRuleMetadata>,
 
 
     /// 
@@ -85,6 +50,41 @@ pub struct CfnOrganizationConfigRule {
     #[serde(rename = "OrganizationConfigRuleName")]
     pub organization_config_rule_name: String,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: OrganizationCustomPolicyRuleMetadata
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationCustomPolicyRuleMetadata")]
+    pub organization_custom_policy_rule_metadata: Option<OrganizationCustomPolicyRuleMetadata>,
+
+
+    /// 
+    /// An OrganizationCustomRuleMetadata object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OrganizationCustomRuleMetadata
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationCustomRuleMetadata")]
+    pub organization_custom_rule_metadata: Option<OrganizationCustomRuleMetadata>,
+
+
+    /// 
+    /// An OrganizationManagedRuleMetadata object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OrganizationManagedRuleMetadata
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationManagedRuleMetadata")]
+    pub organization_managed_rule_metadata: Option<OrganizationManagedRuleMetadata>,
+
 }
 
 
@@ -100,39 +100,139 @@ impl cfn_resources::CfnResource for CfnOrganizationConfigRule {
 }
 
 
-/// An object that specifies organization managed rule metadata such as resource type and ID of AWS resource along with the rule identifier. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
+/// The OrganizationCustomPolicyRuleMetadata property type specifies Property description not available. for an AWS::Config::OrganizationConfigRule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OrganizationManagedRuleMetadata {
+pub struct OrganizationCustomPolicyRuleMetadata {
 
 
-    /// 
-    /// The type of the AWS resource that was evaluated.
-    /// 
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: List of String
     ///
-    /// Maximum: 100
+    /// Update requires: No interruption
+    #[serde(rename = "DebugLogDeliveryAccounts")]
+    pub debug_log_delivery_accounts: Option<Vec<String>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputParameters")]
+    pub input_parameters: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumExecutionFrequency")]
+    pub maximum_execution_frequency: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationConfigRuleTriggerTypes")]
+    pub organization_config_rule_trigger_types: Option<Vec<String>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyText")]
+    pub policy_text: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceIdScope")]
+    pub resource_id_scope: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypesScope")]
     pub resource_types_scope: Option<Vec<String>>,
 
 
-    /// 
-    /// The optional part of a key-value pair that make up a tag. 			A value acts as a descriptor within a tag category (key).
-    /// 
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Runtime")]
+    pub runtime: String,
+
+
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Update requires: No interruption
+    #[serde(rename = "TagKeyScope")]
+    pub tag_key_scope: Option<String>,
+
+
+    /// Property description not available.
     ///
-    /// Maximum: 256
+    /// Required: No
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagValueScope")]
     pub tag_value_scope: Option<String>,
+
+}
+
+
+
+
+/// An object that specifies organization custom rule metadata such as resource type, resource ID of AWS resource, Lambda function ARN, 			and organization trigger types that trigger AWS Config to evaluate your AWS resources against a rule. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OrganizationCustomRuleMetadata {
 
 
     /// 
@@ -152,38 +252,6 @@ pub struct OrganizationManagedRuleMetadata {
 
 
     /// 
-    /// For organization config managed rules, a predefined identifier from a 			list. For example, IAM_PASSWORD_POLICY is a managed 			rule. To reference a managed rule, see Using AWS Config managed rules.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleIdentifier")]
-    pub rule_identifier: String,
-
-
-    /// 
-    /// The ID of the AWS resource that was evaluated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 768
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceIdScope")]
-    pub resource_id_scope: Option<String>,
-
-
-    /// 
     /// A string, in JSON format, that is passed to your organization AWS Config rule Lambda function.
     /// 
     /// Required: No
@@ -197,170 +265,6 @@ pub struct OrganizationManagedRuleMetadata {
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
     pub input_parameters: Option<String>,
-
-
-    /// 
-    /// The maximum frequency with which AWS Config runs evaluations for a rule. This is for an AWS Config managed rule that is triggered at a periodic frequency.
-    /// 
-    /// NoteBy default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid 			value for the MaximumExecutionFrequency parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumExecutionFrequency")]
-    pub maximum_execution_frequency: Option<OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum>,
-
-
-    /// 
-    /// One part of a key-value pair that make up a tag. 			A key is a general label that acts like a category for more specific tag values.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagKeyScope")]
-    pub tag_key_scope: Option<String>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum {
-
-    /// One_Hour
-    #[serde(rename = "One_Hour")]
-    Onehour,
-
-    /// Six_Hours
-    #[serde(rename = "Six_Hours")]
-    Sixhours,
-
-    /// Three_Hours
-    #[serde(rename = "Three_Hours")]
-    Threehours,
-
-    /// Twelve_Hours
-    #[serde(rename = "Twelve_Hours")]
-    Twelvehours,
-
-    /// TwentyFour_Hours
-    #[serde(rename = "TwentyFour_Hours")]
-    Twentyfourhours,
-
-}
-
-impl Default for OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum {
-    fn default() -> Self {
-        OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum::Onehour
-    }
-}
-
-
-
-/// An object that specifies organization custom rule metadata such as resource type, resource ID of AWS resource, Lambda function ARN, 			and organization trigger types that trigger AWS Config to evaluate your AWS resources against a rule. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OrganizationCustomRuleMetadata {
-
-
-    /// 
-    /// The ID of the AWS resource that was evaluated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 768
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceIdScope")]
-    pub resource_id_scope: Option<String>,
-
-
-    /// 
-    /// The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:
-    /// 
-    /// ConfigurationItemChangeNotification - Triggers an evaluation when AWS Config delivers a configuration item as a result of a resource change.                        OversizedConfigurationItemChangeNotification - Triggers an evaluation when AWS Config delivers an oversized configuration item. 			     	AWS Config may generate this notification type when a resource changes and the notification exceeds the maximum size allowed by Amazon SNS.                        ScheduledNotification - Triggers a periodic evaluation at the frequency specified for MaximumExecutionFrequency.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationConfigRuleTriggerTypes")]
-    pub organization_config_rule_trigger_types: Vec<String>,
-
-
-    /// 
-    /// One part of a key-value pair that make up a tag. 			A key is a general label that acts like a category for more specific tag values.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagKeyScope")]
-    pub tag_key_scope: Option<String>,
-
-
-    /// 
-    /// The type of the AWS resource that was evaluated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceTypesScope")]
-    pub resource_types_scope: Option<Vec<String>>,
-
-
-    /// 
-    /// The optional part of a key-value pair that make up a tag. 			A value acts as a descriptor within a tag category (key).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagValueScope")]
-    pub tag_value_scope: Option<String>,
-
-
-    /// 
-    /// The maximum frequency with which AWS Config runs evaluations for a rule. 			Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see ConfigSnapshotDeliveryProperties.
-    /// 
-    /// NoteBy default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid 			value for the MaximumExecutionFrequency parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumExecutionFrequency")]
-    pub maximum_execution_frequency: Option<OrganizationCustomRuleMetadataMaximumExecutionFrequencyEnum>,
 
 
     /// 
@@ -380,23 +284,37 @@ pub struct OrganizationCustomRuleMetadata {
 
 
     /// 
-    /// The description that you provide for your organization AWS Config rule.
+    /// The maximum frequency with which AWS Config runs evaluations for a rule. 			Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see ConfigSnapshotDeliveryProperties.
+    /// 
+    /// NoteBy default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid 			value for the MaximumExecutionFrequency parameter.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
+    /// Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "MaximumExecutionFrequency")]
+    pub maximum_execution_frequency: Option<OrganizationCustomRuleMetadataMaximumExecutionFrequencyEnum>,
 
 
     /// 
-    /// A string, in JSON format, that is passed to your organization AWS Config rule Lambda function.
+    /// The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:
+    /// 
+    /// ConfigurationItemChangeNotification - Triggers an evaluation when AWS Config delivers a configuration item as a result of a resource change.                        OversizedConfigurationItemChangeNotification - Triggers an evaluation when AWS Config delivers an oversized configuration item. 			     	AWS Config may generate this notification type when a resource changes and the notification exceeds the maximum size allowed by Amazon SNS.                        ScheduledNotification - Triggers a periodic evaluation at the frequency specified for MaximumExecutionFrequency.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationConfigRuleTriggerTypes")]
+    pub organization_config_rule_trigger_types: Vec<String>,
+
+
+    /// 
+    /// The ID of the AWS resource that was evaluated.
     /// 
     /// Required: No
     ///
@@ -404,11 +322,57 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 2048
+    /// Maximum: 768
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InputParameters")]
-    pub input_parameters: Option<String>,
+    #[serde(rename = "ResourceIdScope")]
+    pub resource_id_scope: Option<String>,
+
+
+    /// 
+    /// The type of the AWS resource that was evaluated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceTypesScope")]
+    pub resource_types_scope: Option<Vec<String>>,
+
+
+    /// 
+    /// One part of a key-value pair that make up a tag. 			A key is a general label that acts like a category for more specific tag values.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TagKeyScope")]
+    pub tag_key_scope: Option<String>,
+
+
+    /// 
+    /// The optional part of a key-value pair that make up a tag. 			A value acts as a descriptor within a tag category (key).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TagValueScope")]
+    pub tag_value_scope: Option<String>,
 
 }
 
@@ -446,131 +410,167 @@ impl Default for OrganizationCustomRuleMetadataMaximumExecutionFrequencyEnum {
 
 
 
-/// The OrganizationCustomPolicyRuleMetadata property type specifies Property description not available. for an AWS::Config::OrganizationConfigRule.
+/// An object that specifies organization managed rule metadata such as resource type and ID of AWS resource along with the rule identifier. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OrganizationCustomPolicyRuleMetadata {
+pub struct OrganizationManagedRuleMetadata {
 
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationConfigRuleTriggerTypes")]
-    pub organization_config_rule_trigger_types: Option<Vec<String>>,
-
-
-    /// Property description not available.
-    ///
+    /// 
+    /// The description that you provide for your organization AWS Config rule.
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumExecutionFrequency")]
-    pub maximum_execution_frequency: Option<String>,
-
-
-    /// Property description not available.
+    /// Minimum: 0
     ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceTypesScope")]
-    pub resource_types_scope: Option<Vec<String>>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
+    /// Maximum: 256
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
 
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyText")]
-    pub policy_text: String,
-
-
-    /// Property description not available.
-    ///
+    /// 
+    /// A string, in JSON format, that is passed to your organization AWS Config rule Lambda function.
+    /// 
     /// Required: No
     ///
     /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
     pub input_parameters: Option<String>,
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// The maximum frequency with which AWS Config runs evaluations for a rule. This is for an AWS Config managed rule that is triggered at a periodic frequency.
+    /// 
+    /// NoteBy default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid 			value for the MaximumExecutionFrequency parameter.
+    /// 
     /// Required: No
     ///
     /// Type: String
+    ///
+    /// Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumExecutionFrequency")]
+    pub maximum_execution_frequency: Option<OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum>,
+
+
+    /// 
+    /// The ID of the AWS resource that was evaluated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 768
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdScope")]
     pub resource_id_scope: Option<String>,
 
 
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Runtime")]
-    pub runtime: String,
-
-
-    /// Property description not available.
-    ///
+    /// 
+    /// The type of the AWS resource that was evaluated.
+    /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DebugLogDeliveryAccounts")]
-    pub debug_log_delivery_accounts: Option<Vec<String>>,
-
-
-    /// Property description not available.
+    /// Maximum: 100
     ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceTypesScope")]
+    pub resource_types_scope: Option<Vec<String>>,
+
+
+    /// 
+    /// For organization config managed rules, a predefined identifier from a 			list. For example, IAM_PASSWORD_POLICY is a managed 			rule. To reference a managed rule, see Using AWS Config managed rules.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleIdentifier")]
+    pub rule_identifier: String,
+
+
+    /// 
+    /// One part of a key-value pair that make up a tag. 			A key is a general label that acts like a category for more specific tag values.
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "TagValueScope")]
-    pub tag_value_scope: Option<String>,
-
-
-    /// Property description not available.
+    /// Minimum: 1
     ///
-    /// Required: No
-    ///
-    /// Type: String
+    /// Maximum: 128
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagKeyScope")]
     pub tag_key_scope: Option<String>,
 
+
+    /// 
+    /// The optional part of a key-value pair that make up a tag. 			A value acts as a descriptor within a tag category (key).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TagValueScope")]
+    pub tag_value_scope: Option<String>,
+
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum {
+
+    /// One_Hour
+    #[serde(rename = "One_Hour")]
+    Onehour,
+
+    /// Six_Hours
+    #[serde(rename = "Six_Hours")]
+    Sixhours,
+
+    /// Three_Hours
+    #[serde(rename = "Three_Hours")]
+    Threehours,
+
+    /// Twelve_Hours
+    #[serde(rename = "Twelve_Hours")]
+    Twelvehours,
+
+    /// TwentyFour_Hours
+    #[serde(rename = "TwentyFour_Hours")]
+    Twentyfourhours,
+
+}
+
+impl Default for OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum {
+    fn default() -> Self {
+        OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum::Onehour
+    }
+}
 

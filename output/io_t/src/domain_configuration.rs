@@ -18,17 +18,41 @@ pub struct CfnDomainConfiguration {
 
 
     /// 
-    /// Metadata which can be used to manage the domain configuration.
-    /// 
-    /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
+    /// The name of the domain configuration. This value must be unique to a region.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainConfigurationName")]
+    pub domain_configuration_name: Option<String>,
+
+
+    /// 
+    /// The status to which the domain configuration should be updated.
+    /// 
+    /// Valid values: ENABLED | DISABLED
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "DomainConfigurationStatus")]
+    pub domain_configuration_status: Option<String>,
+
+
+    /// 
+    /// The name of the domain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainName")]
+    pub domain_name: Option<String>,
 
 
     /// 
@@ -41,18 +65,6 @@ pub struct CfnDomainConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ServerCertificateArns")]
     pub server_certificate_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of the domain configuration. This value must be unique to a region.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainConfigurationName")]
-    pub domain_configuration_name: Option<String>,
 
 
     /// 
@@ -70,29 +82,17 @@ pub struct CfnDomainConfiguration {
 
 
     /// 
-    /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority.      This value is not required for AWS-managed domains.
+    /// Metadata which can be used to manage the domain configuration.
+    /// 
+    /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ValidationCertificateArn")]
-    pub validation_certificate_arn: Option<String>,
-
-
-    /// 
-    /// The status to which the domain configuration should be updated.
-    /// 
-    /// Valid values: ENABLED | DISABLED
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DomainConfigurationStatus")]
-    pub domain_configuration_status: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// Property description not available.
@@ -107,15 +107,15 @@ pub struct CfnDomainConfiguration {
 
 
     /// 
-    /// The name of the domain.
+    /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority.      This value is not required for AWS-managed domains.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DomainName")]
-    pub domain_name: Option<String>,
+    #[serde(rename = "ValidationCertificateArn")]
+    pub validation_certificate_arn: Option<String>,
 
 }
 
@@ -132,20 +132,33 @@ impl cfn_resources::CfnResource for CfnDomainConfiguration {
 }
 
 
-/// The TlsConfig property type specifies Property description not available. for an AWS::IoT::DomainConfiguration.
+/// An object that specifies the authorization service for a domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TlsConfig {
+pub struct AuthorizerConfig {
 
 
-    /// Property description not available.
+    /// 
+    /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
+    /// 
+    /// Required: No
     ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowAuthorizerOverride")]
+    pub allow_authorizer_override: Option<bool>,
+
+
+    /// 
+    /// The name of the authorization service for a domain configuration.
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecurityPolicy")]
-    pub security_policy: Option<String>,
+    #[serde(rename = "DefaultAuthorizerName")]
+    pub default_authorizer_name: Option<String>,
 
 }
 
@@ -197,39 +210,6 @@ pub struct ServerCertificateSummary {
 
 
 
-/// An object that specifies the authorization service for a domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthorizerConfig {
-
-
-    /// 
-    /// The name of the authorization service for a domain configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultAuthorizerName")]
-    pub default_authorizer_name: Option<String>,
-
-
-    /// 
-    /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowAuthorizerOverride")]
-    pub allow_authorizer_override: Option<bool>,
-
-}
-
-
-
-
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -242,6 +222,17 @@ pub struct Tag {
 
 
     /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
@@ -251,16 +242,25 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+}
 
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
+
+
+
+/// The TlsConfig property type specifies Property description not available. for an AWS::IoT::DomainConfiguration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TlsConfig {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityPolicy")]
+    pub security_policy: Option<String>,
 
 }
 

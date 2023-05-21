@@ -6,38 +6,6 @@ pub struct CfnInstanceGroupConfig {
 
 
     /// 
-    /// Market type of the EC2 instances used to create a cluster node.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ON_DEMAND | SPOT
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Market")]
-    pub market: Option<InstanceGroupConfigMarketEnum>,
-
-
-    /// 
-    /// The EC2 instance type for all instances in the instance group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
-
-
-    /// 
     /// AutoScalingPolicy is a subproperty of InstanceGroupConfig. AutoScalingPolicy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. For more information, see Using Automatic Scaling in Amazon EMR in the Amazon EMR Management Guide.
     /// 
     /// Required: No
@@ -68,27 +36,17 @@ pub struct CfnInstanceGroupConfig {
 
 
     /// 
-    /// The ID of an Amazon EMR cluster that you want to associate this instance group with.
+    /// NoteAmazon EMR releases 4.x or later.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "JobFlowId")]
-    pub job_flow_id: String,
-
-
-    /// 
-    /// EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
+    /// The list of configurations supplied for an EMR cluster instance group. You can specify a     separate configuration for each instance group (master, core, and task).
     /// 
     /// Required: No
     ///
-    /// Type: EbsConfiguration
+    /// Type: List of Configuration
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EbsConfiguration")]
-    pub ebs_configuration: Option<EbsConfiguration>,
+    #[serde(rename = "Configurations")]
+    pub configurations: Option<Vec<Configuration>>,
 
 
     /// 
@@ -110,6 +68,18 @@ pub struct CfnInstanceGroupConfig {
 
 
     /// 
+    /// EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EbsConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EbsConfiguration")]
+    pub ebs_configuration: Option<EbsConfiguration>,
+
+
+    /// 
     /// Target number of instances for the instance group.
     /// 
     /// Required: Yes
@@ -122,17 +92,61 @@ pub struct CfnInstanceGroupConfig {
 
 
     /// 
-    /// NoteAmazon EMR releases 4.x or later.
+    /// The role of the instance group in the cluster.
     /// 
-    /// The list of configurations supplied for an EMR cluster instance group. You can specify a     separate configuration for each instance group (master, core, and task).
+    /// Allowed Values: TASK
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceRole")]
+    pub instance_role: InstanceGroupConfigInstanceRoleEnum,
+
+
+    /// 
+    /// The EC2 instance type for all instances in the instance group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
+
+
+    /// 
+    /// The ID of an Amazon EMR cluster that you want to associate this instance group with.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "JobFlowId")]
+    pub job_flow_id: String,
+
+
+    /// 
+    /// Market type of the EC2 instances used to create a cluster node.
     /// 
     /// Required: No
     ///
-    /// Type: List of Configuration
+    /// Type: String
+    ///
+    /// Allowed values: ON_DEMAND | SPOT
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Configurations")]
-    pub configurations: Option<Vec<Configuration>>,
+    #[serde(rename = "Market")]
+    pub market: Option<InstanceGroupConfigMarketEnum>,
 
 
     /// 
@@ -151,20 +165,6 @@ pub struct CfnInstanceGroupConfig {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
-
-    /// 
-    /// The role of the instance group in the cluster.
-    /// 
-    /// Allowed Values: TASK
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceRole")]
-    pub instance_role: InstanceGroupConfigInstanceRoleEnum,
 
 }
 
@@ -215,123 +215,33 @@ impl cfn_resources::CfnResource for CfnInstanceGroupConfig {
 }
 
 
-/// The Amazon EBS configuration of a cluster instance.
+/// AutoScalingPolicy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. For more information, see Using Automatic Scaling in Amazon EMR in the Amazon EMR Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EbsConfiguration {
+pub struct AutoScalingPolicy {
 
 
     /// 
-    /// An array of Amazon EBS volume specifications attached to a cluster     instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of EbsBlockDeviceConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EbsBlockDeviceConfigs")]
-    pub ebs_block_device_configs: Option<Vec<EbsBlockDeviceConfig>>,
-
-
-    /// 
-    /// Indicates whether an Amazon EBS volume is EBS-optimized.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EbsOptimized")]
-    pub ebs_optimized: Option<bool>,
-
-}
-
-
-
-
-/// ScalingRule is a subproperty of the AutoScalingPolicy property type. ScalingRule defines the scale-in or scale-out rules for scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ScalingRule {
-
-
-    /// 
-    /// A friendly, more verbose description of the automatic scaling rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The CloudWatch alarm definition that determines when automatic scaling activity is     triggered.
+    /// The upper and lower EC2 instance limits for an automatic scaling policy. Automatic     scaling activity will not cause an instance group to grow above or below these     limits.
     /// 
     /// Required: Yes
     ///
-    /// Type: ScalingTrigger
+    /// Type: ScalingConstraints
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Trigger")]
-    pub trigger: ScalingTrigger,
+    #[serde(rename = "Constraints")]
+    pub constraints: ScalingConstraints,
 
 
     /// 
-    /// The name used to identify an automatic scaling rule. Rule names must be unique within a     scaling policy.
+    /// The scale-in and scale-out rules that comprise the automatic scaling policy.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of ScalingRule
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The conditions that trigger an automatic scaling activity.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ScalingAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: ScalingAction,
-
-}
-
-
-
-
-/// ScalingConstraints is a subproperty of the AutoScalingPolicy property type. ScalingConstraints defines the upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or shrink below these limits.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ScalingConstraints {
-
-
-    /// 
-    /// The upper boundary of EC2 instances in an instance group beyond which scaling activities     are not allowed to grow. Scale-out activities will not add instances beyond this     boundary.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxCapacity")]
-    pub max_capacity: i64,
-
-
-    /// 
-    /// The lower boundary of EC2 instances in an instance group below which scaling activities     are not allowed to shrink. Scale-in activities will not terminate instances below this     boundary.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinCapacity")]
-    pub min_capacity: i64,
+    #[serde(rename = "Rules")]
+    pub rules: Vec<ScalingRule>,
 
 }
 
@@ -341,32 +251,6 @@ pub struct ScalingConstraints {
 /// CloudWatchAlarmDefinition is a subproperty of the ScalingTrigger property, which determines when to trigger an automatic scaling activity. Scaling activity begins when you satisfy the defined alarm conditions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchAlarmDefinition {
-
-
-    /// 
-    /// The statistic to apply to the metric associated with the alarm. The default is       AVERAGE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AVERAGE | MAXIMUM | MINIMUM | SAMPLE_COUNT | SUM
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statistic")]
-    pub statistic: Option<CloudWatchAlarmDefinitionStatisticEnum>,
-
-
-    /// 
-    /// The value against which the specified statistic is compared.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Threshold")]
-    pub threshold: f64,
 
 
     /// 
@@ -408,6 +292,18 @@ pub struct CloudWatchAlarmDefinition {
 
 
     /// 
+    /// The name of the CloudWatch metric that is watched to determine an alarm     condition.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
+
+
+    /// 
     /// The namespace for the CloudWatch metric. The default is       AWS/ElasticMapReduce.
     /// 
     /// Required: No
@@ -420,15 +316,41 @@ pub struct CloudWatchAlarmDefinition {
 
 
     /// 
-    /// The name of the CloudWatch metric that is watched to determine an alarm     condition.
+    /// The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are     emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified,     specify 300.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    #[serde(rename = "Period")]
+    pub period: i64,
+
+
+    /// 
+    /// The statistic to apply to the metric associated with the alarm. The default is       AVERAGE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AVERAGE | MAXIMUM | MINIMUM | SAMPLE_COUNT | SUM
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statistic")]
+    pub statistic: Option<CloudWatchAlarmDefinitionStatisticEnum>,
+
+
+    /// 
+    /// The value against which the specified statistic is compared.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Threshold")]
+    pub threshold: f64,
 
 
     /// 
@@ -444,78 +366,8 @@ pub struct CloudWatchAlarmDefinition {
     #[serde(rename = "Unit")]
     pub unit: Option<CloudWatchAlarmDefinitionUnitEnum>,
 
-
-    /// 
-    /// The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are     emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified,     specify 300.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Period")]
-    pub period: i64,
-
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CloudWatchAlarmDefinitionComparisonOperatorEnum {
-
-    /// GREATER_THAN
-    #[serde(rename = "GREATER_THAN")]
-    Greaterthan,
-
-    /// GREATER_THAN_OR_EQUAL
-    #[serde(rename = "GREATER_THAN_OR_EQUAL")]
-    Greaterthanorequal,
-
-    /// LESS_THAN
-    #[serde(rename = "LESS_THAN")]
-    Lessthan,
-
-    /// LESS_THAN_OR_EQUAL
-    #[serde(rename = "LESS_THAN_OR_EQUAL")]
-    Lessthanorequal,
-
-}
-
-impl Default for CloudWatchAlarmDefinitionComparisonOperatorEnum {
-    fn default() -> Self {
-        CloudWatchAlarmDefinitionComparisonOperatorEnum::Greaterthan
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CloudWatchAlarmDefinitionStatisticEnum {
-
-    /// AVERAGE
-    #[serde(rename = "AVERAGE")]
-    Average,
-
-    /// MAXIMUM
-    #[serde(rename = "MAXIMUM")]
-    Maximum,
-
-    /// MINIMUM
-    #[serde(rename = "MINIMUM")]
-    Minimum,
-
-    /// SAMPLE_COUNT
-    #[serde(rename = "SAMPLE_COUNT")]
-    Samplecount,
-
-    /// SUM
-    #[serde(rename = "SUM")]
-    Sum,
-
-}
-
-impl Default for CloudWatchAlarmDefinitionStatisticEnum {
-    fn default() -> Self {
-        CloudWatchAlarmDefinitionStatisticEnum::Average
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CloudWatchAlarmDefinitionUnitEnum {
@@ -636,6 +488,177 @@ impl Default for CloudWatchAlarmDefinitionUnitEnum {
     }
 }
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CloudWatchAlarmDefinitionStatisticEnum {
+
+    /// AVERAGE
+    #[serde(rename = "AVERAGE")]
+    Average,
+
+    /// MAXIMUM
+    #[serde(rename = "MAXIMUM")]
+    Maximum,
+
+    /// MINIMUM
+    #[serde(rename = "MINIMUM")]
+    Minimum,
+
+    /// SAMPLE_COUNT
+    #[serde(rename = "SAMPLE_COUNT")]
+    Samplecount,
+
+    /// SUM
+    #[serde(rename = "SUM")]
+    Sum,
+
+}
+
+impl Default for CloudWatchAlarmDefinitionStatisticEnum {
+    fn default() -> Self {
+        CloudWatchAlarmDefinitionStatisticEnum::Average
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CloudWatchAlarmDefinitionComparisonOperatorEnum {
+
+    /// GREATER_THAN
+    #[serde(rename = "GREATER_THAN")]
+    Greaterthan,
+
+    /// GREATER_THAN_OR_EQUAL
+    #[serde(rename = "GREATER_THAN_OR_EQUAL")]
+    Greaterthanorequal,
+
+    /// LESS_THAN
+    #[serde(rename = "LESS_THAN")]
+    Lessthan,
+
+    /// LESS_THAN_OR_EQUAL
+    #[serde(rename = "LESS_THAN_OR_EQUAL")]
+    Lessthanorequal,
+
+}
+
+impl Default for CloudWatchAlarmDefinitionComparisonOperatorEnum {
+    fn default() -> Self {
+        CloudWatchAlarmDefinitionComparisonOperatorEnum::Greaterthan
+    }
+}
+
+
+
+/// Configurations is a property of the AWS::EMR::Cluster resource that specifies the configuration of applications on an Amazon EMR cluster.
+///
+/// Configurations are optional. You can use them to have EMR customize applications and software bundled with Amazon EMR when a cluster is created. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Configuration {
+
+
+    /// 
+    /// The classification within a configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Classification")]
+    pub classification: Option<String>,
+
+
+    /// 
+    /// Within a configuration classification, a set of properties that represent the settings that you want to change in the configuration file. Duplicates not allowed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConfigurationProperties")]
+    pub configuration_properties: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// A list of additional configurations to apply within a configuration object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Configuration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Configurations")]
+    pub configurations: Option<Vec<Configuration>>,
+
+}
+
+
+
+
+/// Configuration of requested EBS block device associated with the instance group with     count of volumes that are associated to every instance.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EbsBlockDeviceConfig {
+
+
+    /// 
+    /// EBS volume specifications such as volume type, IOPS, size (GiB) and throughput (MiB/s)     that are requested for the EBS volume attached to an EC2 instance in the cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: VolumeSpecification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumeSpecification")]
+    pub volume_specification: VolumeSpecification,
+
+
+    /// 
+    /// Number of EBS volumes with a specific volume configuration that are associated with     every instance in the instance group
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumesPerInstance")]
+    pub volumes_per_instance: Option<i64>,
+
+}
+
+
+
+
+/// The Amazon EBS configuration of a cluster instance.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EbsConfiguration {
+
+
+    /// 
+    /// An array of Amazon EBS volume specifications attached to a cluster     instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of EbsBlockDeviceConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EbsBlockDeviceConfigs")]
+    pub ebs_block_device_configs: Option<Vec<EbsBlockDeviceConfig>>,
+
+
+    /// 
+    /// Indicates whether an Amazon EBS volume is EBS-optimized.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EbsOptimized")]
+    pub ebs_optimized: Option<bool>,
+
+}
+
+
 
 
 /// MetricDimension is a subproperty of the CloudWatchAlarmDefinition property type. MetricDimension specifies a CloudWatch dimension, which is specified with a Key Value pair. The key is known as a Name in CloudWatch. By default, Amazon EMR uses one dimension whose Key is JobFlowID and Value is a variable representing the cluster ID, which is ${emr.clusterId}. This enables the automatic scaling rule for EMR to bootstrap when the cluster ID becomes available during cluster creation.
@@ -671,33 +694,165 @@ pub struct MetricDimension {
 
 
 
-/// AutoScalingPolicy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. For more information, see Using Automatic Scaling in Amazon EMR in the Amazon EMR Management Guide.
+/// ScalingAction is a subproperty of the ScalingRule property type. ScalingAction determines the type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AutoScalingPolicy {
+pub struct ScalingAction {
 
 
     /// 
-    /// The upper and lower EC2 instance limits for an automatic scaling policy. Automatic     scaling activity will not cause an instance group to grow above or below these     limits.
+    /// Not available for instance groups. Instance groups use the market type specified for the     group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ON_DEMAND | SPOT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Market")]
+    pub market: Option<ScalingActionMarketEnum>,
+
+
+    /// 
+    /// The type of adjustment the automatic scaling activity makes when triggered, and the     periodicity of the adjustment.
     /// 
     /// Required: Yes
     ///
-    /// Type: ScalingConstraints
+    /// Type: SimpleScalingPolicyConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Constraints")]
-    pub constraints: ScalingConstraints,
+    #[serde(rename = "SimpleScalingPolicyConfiguration")]
+    pub simple_scaling_policy_configuration: SimpleScalingPolicyConfiguration,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ScalingActionMarketEnum {
+
+    /// ON_DEMAND
+    #[serde(rename = "ON_DEMAND")]
+    Ondemand,
+
+    /// SPOT
+    #[serde(rename = "SPOT")]
+    Spot,
+
+}
+
+impl Default for ScalingActionMarketEnum {
+    fn default() -> Self {
+        ScalingActionMarketEnum::Ondemand
+    }
+}
+
+
+
+/// ScalingConstraints is a subproperty of the AutoScalingPolicy property type. ScalingConstraints defines the upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or shrink below these limits.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScalingConstraints {
 
 
     /// 
-    /// The scale-in and scale-out rules that comprise the automatic scaling policy.
+    /// The upper boundary of EC2 instances in an instance group beyond which scaling activities     are not allowed to grow. Scale-out activities will not add instances beyond this     boundary.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of ScalingRule
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Rules")]
-    pub rules: Vec<ScalingRule>,
+    #[serde(rename = "MaxCapacity")]
+    pub max_capacity: i64,
+
+
+    /// 
+    /// The lower boundary of EC2 instances in an instance group below which scaling activities     are not allowed to shrink. Scale-in activities will not terminate instances below this     boundary.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinCapacity")]
+    pub min_capacity: i64,
+
+}
+
+
+
+
+/// ScalingRule is a subproperty of the AutoScalingPolicy property type. ScalingRule defines the scale-in or scale-out rules for scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScalingRule {
+
+
+    /// 
+    /// The conditions that trigger an automatic scaling activity.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ScalingAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: ScalingAction,
+
+
+    /// 
+    /// A friendly, more verbose description of the automatic scaling rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The name used to identify an automatic scaling rule. Rule names must be unique within a     scaling policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The CloudWatch alarm definition that determines when automatic scaling activity is     triggered.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ScalingTrigger
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Trigger")]
+    pub trigger: ScalingTrigger,
+
+}
+
+
+
+
+/// ScalingTrigger is a subproperty of the ScalingRule property type. ScalingTrigger determines the conditions that trigger an automatic scaling activity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScalingTrigger {
+
+
+    /// 
+    /// The definition of a CloudWatch metric alarm. When the defined alarm conditions are met     along with other trigger parameters, scaling activity begins.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: CloudWatchAlarmDefinition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchAlarmDefinition")]
+    pub cloud_watch_alarm_definition: CloudWatchAlarmDefinition,
 
 }
 
@@ -774,176 +929,9 @@ impl Default for SimpleScalingPolicyConfigurationAdjustmentTypeEnum {
 
 
 
-/// Configuration of requested EBS block device associated with the instance group with     count of volumes that are associated to every instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EbsBlockDeviceConfig {
-
-
-    /// 
-    /// EBS volume specifications such as volume type, IOPS, size (GiB) and throughput (MiB/s)     that are requested for the EBS volume attached to an EC2 instance in the cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: VolumeSpecification
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VolumeSpecification")]
-    pub volume_specification: VolumeSpecification,
-
-
-    /// 
-    /// Number of EBS volumes with a specific volume configuration that are associated with     every instance in the instance group
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VolumesPerInstance")]
-    pub volumes_per_instance: Option<i64>,
-
-}
-
-
-
-
-/// ScalingAction is a subproperty of the ScalingRule property type. ScalingAction determines the type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ScalingAction {
-
-
-    /// 
-    /// Not available for instance groups. Instance groups use the market type specified for the     group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ON_DEMAND | SPOT
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Market")]
-    pub market: Option<ScalingActionMarketEnum>,
-
-
-    /// 
-    /// The type of adjustment the automatic scaling activity makes when triggered, and the     periodicity of the adjustment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: SimpleScalingPolicyConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SimpleScalingPolicyConfiguration")]
-    pub simple_scaling_policy_configuration: SimpleScalingPolicyConfiguration,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ScalingActionMarketEnum {
-
-    /// ON_DEMAND
-    #[serde(rename = "ON_DEMAND")]
-    Ondemand,
-
-    /// SPOT
-    #[serde(rename = "SPOT")]
-    Spot,
-
-}
-
-impl Default for ScalingActionMarketEnum {
-    fn default() -> Self {
-        ScalingActionMarketEnum::Ondemand
-    }
-}
-
-
-
-/// Configurations is a property of the AWS::EMR::Cluster resource that specifies the configuration of applications on an Amazon EMR cluster.
-///
-/// Configurations are optional. You can use them to have EMR customize applications and software bundled with Amazon EMR when a cluster is created. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Configuration {
-
-
-    /// 
-    /// Within a configuration classification, a set of properties that represent the settings that you want to change in the configuration file. Duplicates not allowed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConfigurationProperties")]
-    pub configuration_properties: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// A list of additional configurations to apply within a configuration object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Configuration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Configurations")]
-    pub configurations: Option<Vec<Configuration>>,
-
-
-    /// 
-    /// The classification within a configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Classification")]
-    pub classification: Option<String>,
-
-}
-
-
-
-
-/// ScalingTrigger is a subproperty of the ScalingRule property type. ScalingTrigger determines the conditions that trigger an automatic scaling activity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ScalingTrigger {
-
-
-    /// 
-    /// The definition of a CloudWatch metric alarm. When the defined alarm conditions are met     along with other trigger parameters, scaling activity begins.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: CloudWatchAlarmDefinition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchAlarmDefinition")]
-    pub cloud_watch_alarm_definition: CloudWatchAlarmDefinition,
-
-}
-
-
-
-
 /// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VolumeSpecification {
-
-
-    /// 
-    /// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume     type is EBS-optimized, the minimum value is 10.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SizeInGB")]
-    pub size_in_gb: i64,
 
 
     /// 
@@ -956,6 +944,18 @@ pub struct VolumeSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
     pub iops: Option<i64>,
+
+
+    /// 
+    /// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume     type is EBS-optimized, the minimum value is 10.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SizeInGB")]
+    pub size_in_gb: i64,
 
 
     /// 

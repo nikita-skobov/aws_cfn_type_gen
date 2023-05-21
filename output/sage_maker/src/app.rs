@@ -22,6 +22,20 @@ pub struct CfnApp {
 
 
     /// 
+    /// The type of app.
+    /// 
+    /// Allowed Values: JupyterServer | KernelGateway |         RSessionGateway | RStudioServerPro | TensorBoard | Canvas
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AppType")]
+    pub app_type: AppAppTypeEnum,
+
+
+    /// 
     /// The domain ID.
     /// 
     /// Required: Yes
@@ -33,6 +47,18 @@ pub struct CfnApp {
     /// Update requires: Replacement
     #[serde(rename = "DomainId")]
     pub domain_id: String,
+
+
+    /// 
+    /// Specifies the ARNs of a SageMaker image and SageMaker image version, and the instance       type that the version runs on.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ResourceSpec
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceSpec")]
+    pub resource_spec: Option<ResourceSpec>,
 
 
     /// 
@@ -50,18 +76,6 @@ pub struct CfnApp {
 
 
     /// 
-    /// Specifies the ARNs of a SageMaker image and SageMaker image version, and the instance       type that the version runs on.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ResourceSpec
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceSpec")]
-    pub resource_spec: Option<ResourceSpec>,
-
-
-    /// 
     /// The user profile name.
     /// 
     /// Required: Yes
@@ -75,20 +89,6 @@ pub struct CfnApp {
     /// Update requires: Replacement
     #[serde(rename = "UserProfileName")]
     pub user_profile_name: String,
-
-
-    /// 
-    /// The type of app.
-    /// 
-    /// Allowed Values: JupyterServer | KernelGateway |         RSessionGateway | RStudioServerPro | TensorBoard | Canvas
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AppType")]
-    pub app_type: AppAppTypeEnum,
 
 }
 

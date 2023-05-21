@@ -22,6 +22,18 @@ pub struct CfnSecurityPolicy {
 
 
     /// 
+    /// The name of the policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// The JSON policy document without any whitespaces.
     /// 
     /// Required: Yes
@@ -43,18 +55,6 @@ pub struct CfnSecurityPolicy {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
-
-    /// 
-    /// The name of the policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
 
 }
 

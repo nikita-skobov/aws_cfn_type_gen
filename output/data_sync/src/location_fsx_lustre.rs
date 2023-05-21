@@ -6,6 +6,22 @@ pub struct CfnLocationFSxLustre {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FsxFilesystemArn")]
+    pub fsx_filesystem_arn: Option<String>,
+
+
+    /// 
     /// The ARNs of the security groups that are used to configure the FSx for Lustre file system.
     /// 
     /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
@@ -24,19 +40,19 @@ pub struct CfnLocationFSxLustre {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
+    /// A subdirectory in the location's path. This subdirectory in the FSx for Lustre    file system is used to read data from the FSx for Lustre source location or write    data to the FSx for Lustre destination.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 128
+    /// Maximum: 4096
     ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$
+    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FsxFilesystemArn")]
-    pub fsx_filesystem_arn: Option<String>,
+    #[serde(rename = "Subdirectory")]
+    pub subdirectory: Option<String>,
 
 
     /// 
@@ -51,22 +67,6 @@ pub struct CfnLocationFSxLustre {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A subdirectory in the location's path. This subdirectory in the FSx for Lustre    file system is used to read data from the FSx for Lustre source location or write    data to the FSx for Lustre destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 4096
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subdirectory")]
-    pub subdirectory: Option<String>,
 
 }
 
@@ -95,17 +95,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -114,6 +103,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

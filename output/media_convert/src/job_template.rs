@@ -10,29 +10,15 @@ pub struct CfnJobTemplate {
 
 
     /// 
-    /// Specify, in JSON format, the transcoding job settings for this job template. This       specification must conform to the AWS Elemental MediaConvert job validation. For       information about forming this specification, see the Remarks section later in this       topic.
-    /// 
-    /// For more information about MediaConvert job templates, see Working with AWS Elemental MediaConvert Job Templates in the           AWS Elemental MediaConvert User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SettingsJson")]
-    pub settings_json: serde_json::Value,
-
-
-    /// 
-    /// Specify the relative priority for this job. In any given queue, the service begins       processing the job with the highest value first. When more than one job has the same       priority, the service begins processing the job that you submitted first. If you don't       specify a priority, the service uses the default value 0. Minimum: -50 Maximum:       50
+    /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see Job Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: AccelerationSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: Option<i64>,
+    #[serde(rename = "AccelerationSettings")]
+    pub acceleration_settings: Option<AccelerationSettings>,
 
 
     /// 
@@ -48,17 +34,77 @@ pub struct CfnJobTemplate {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// Optional. A description of the job template you are creating.
     /// 
     /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of HopDestination
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HopDestinations")]
+    pub hop_destinations: Option<Vec<HopDestination>>,
+
+
+    /// 
+    /// The name of the job template you are creating.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Specify the relative priority for this job. In any given queue, the service begins       processing the job with the highest value first. When more than one job has the same       priority, the service begins processing the job that you submitted first. If you don't       specify a priority, the service uses the default value 0. Minimum: -50 Maximum:       50
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Priority")]
+    pub priority: Option<i64>,
+
+
+    /// 
+    /// Optional. The queue that jobs created from this template are assigned to. Specify the       Amazon Resource Name (ARN) of the queue. For example,       arn:aws:mediaconvert:us-west-2:505474453218:queues/Default. If you don't specify this,       jobs will go to the default queue.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Queue")]
+    pub queue: Option<String>,
+
+
+    /// 
+    /// Specify, in JSON format, the transcoding job settings for this job template. This       specification must conform to the AWS Elemental MediaConvert job validation. For       information about forming this specification, see the Remarks section later in this       topic.
+    /// 
+    /// For more information about MediaConvert job templates, see Working with AWS Elemental MediaConvert Job Templates in the           AWS Elemental MediaConvert User Guide.
+    /// 
+    /// Required: Yes
     ///
     /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+    #[serde(rename = "SettingsJson")]
+    pub settings_json: serde_json::Value,
 
 
     /// 
@@ -106,63 +152,17 @@ pub struct CfnJobTemplate {
 
 
     /// 
-    /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see Job Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: AccelerationSettings
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AccelerationSettings")]
-    pub acceleration_settings: Option<AccelerationSettings>,
-
-
-    /// 
-    /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of HopDestination
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HopDestinations")]
-    pub hop_destinations: Option<Vec<HopDestination>>,
-
-
-    /// 
-    /// Optional. A description of the job template you are creating.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The name of the job template you are creating.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Optional. The queue that jobs created from this template are assigned to. Specify the       Amazon Resource Name (ARN) of the queue. For example,       arn:aws:mediaconvert:us-west-2:505474453218:queues/Default. If you don't specify this,       jobs will go to the default queue.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Queue")]
-    pub queue: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
 
 }
 

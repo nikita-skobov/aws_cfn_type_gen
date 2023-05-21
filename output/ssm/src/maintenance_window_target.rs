@@ -6,20 +6,6 @@ pub struct CfnMaintenanceWindowTarget {
 
 
     /// 
-    /// The type of target that is being registered with the maintenance window.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: INSTANCE | RESOURCE_GROUP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceType")]
-    pub resource_type: MaintenanceWindowTargetResourceTypeEnum,
-
-
-    /// 
     /// A description for the target.
     /// 
     /// Required: No
@@ -33,6 +19,24 @@ pub struct CfnMaintenanceWindowTarget {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The name for the maintenance window target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -52,21 +56,17 @@ pub struct CfnMaintenanceWindowTarget {
 
 
     /// 
-    /// The name for the maintenance window target.
+    /// The type of target that is being registered with the maintenance window.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
+    /// Allowed values: INSTANCE | RESOURCE_GROUP
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "ResourceType")]
+    pub resource_type: MaintenanceWindowTargetResourceTypeEnum,
 
 
     /// 

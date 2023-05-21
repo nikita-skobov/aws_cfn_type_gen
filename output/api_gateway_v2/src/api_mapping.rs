@@ -18,18 +18,6 @@ pub struct CfnApiMapping {
 
 
     /// 
-    /// The domain name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainName")]
-    pub domain_name: String,
-
-
-    /// 
     /// The API mapping key.
     /// 
     /// Required: No
@@ -39,6 +27,18 @@ pub struct CfnApiMapping {
     /// Update requires: No interruption
     #[serde(rename = "ApiMappingKey")]
     pub api_mapping_key: Option<String>,
+
+
+    /// 
+    /// The domain name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainName")]
+    pub domain_name: String,
 
 
     /// 

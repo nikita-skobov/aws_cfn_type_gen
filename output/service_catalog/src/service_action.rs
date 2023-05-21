@@ -5,6 +5,45 @@
 pub struct CfnServiceAction {
 
 
+    /// The language code.
+    /// 
+    /// en - English (default)jp - Japanesezh - Chinese
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AcceptLanguage")]
+    pub accept_language: Option<String>,
+
+
+    /// 
+    /// A map that defines the self-service action.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of DefinitionParameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Definition")]
+    pub definition: Vec<DefinitionParameter>,
+
+
+    /// 
+    /// The self-service action definition type. For example, SSM_AUTOMATION.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SSM_AUTOMATION
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefinitionType")]
+    pub definition_type: ServiceActionDefinitionTypeEnum,
+
+
     /// 
     /// The self-service action description.
     /// 
@@ -35,45 +74,6 @@ pub struct CfnServiceAction {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// The self-service action definition type. For example, SSM_AUTOMATION.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: SSM_AUTOMATION
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefinitionType")]
-    pub definition_type: ServiceActionDefinitionTypeEnum,
-
-
-    /// The language code.
-    /// 
-    /// en - English (default)jp - Japanesezh - Chinese
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AcceptLanguage")]
-    pub accept_language: Option<String>,
-
-
-    /// 
-    /// A map that defines the self-service action.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of DefinitionParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Definition")]
-    pub definition: Vec<DefinitionParameter>,
 
 }
 

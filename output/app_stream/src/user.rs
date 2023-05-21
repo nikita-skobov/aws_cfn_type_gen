@@ -6,6 +6,36 @@ pub struct CfnUser {
 
 
     /// 
+    /// The authentication type for the user. You must specify USERPOOL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: API | AWS_AD | SAML | USERPOOL
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthenticationType")]
+    pub authentication_type: UserAuthenticationTypeEnum,
+
+
+    /// 
+    /// The first name, or given name, of the user.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: ^[A-Za-z0-9_\-\s]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FirstName")]
+    pub first_name: Option<String>,
+
+
+    /// 
     /// The last name, or surname, of the user.
     /// 
     /// Required: No
@@ -22,17 +52,19 @@ pub struct CfnUser {
 
 
     /// 
-    /// The authentication type for the user. You must specify USERPOOL.
+    /// The action to take for the welcome email that is sent to a user after the user is created in the user pool. If you specify SUPPRESS, no email is sent. If you specify RESEND, do not specify the first name or last name of the user. If the value is null, the email is sent.
     /// 
-    /// Required: Yes
+    /// NoteThe temporary password in the welcome email is valid for only 7 days. If users don’t set their passwords within 7 days, you must send them a new welcome email.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: API | AWS_AD | SAML | USERPOOL
+    /// Allowed values: RESEND | SUPPRESS
     ///
     /// Update requires: Replacement
-    #[serde(rename = "AuthenticationType")]
-    pub authentication_type: UserAuthenticationTypeEnum,
+    #[serde(rename = "MessageAction")]
+    pub message_action: Option<UserMessageActionEnum>,
 
 
     /// 
@@ -54,40 +86,27 @@ pub struct CfnUser {
     #[serde(rename = "UserName")]
     pub user_name: String,
 
-
-    /// 
-    /// The action to take for the welcome email that is sent to a user after the user is created in the user pool. If you specify SUPPRESS, no email is sent. If you specify RESEND, do not specify the first name or last name of the user. If the value is null, the email is sent.
-    /// 
-    /// NoteThe temporary password in the welcome email is valid for only 7 days. If users don’t set their passwords within 7 days, you must send them a new welcome email.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: RESEND | SUPPRESS
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MessageAction")]
-    pub message_action: Option<UserMessageActionEnum>,
+}
 
 
-    /// 
-    /// The first name, or given name, of the user.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: ^[A-Za-z0-9_\-\s]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FirstName")]
-    pub first_name: Option<String>,
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UserMessageActionEnum {
+
+    /// RESEND
+    #[serde(rename = "RESEND")]
+    Resend,
+
+    /// SUPPRESS
+    #[serde(rename = "SUPPRESS")]
+    Suppress,
 
 }
 
+impl Default for UserMessageActionEnum {
+    fn default() -> Self {
+        UserMessageActionEnum::Resend
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum UserAuthenticationTypeEnum {
@@ -113,25 +132,6 @@ pub enum UserAuthenticationTypeEnum {
 impl Default for UserAuthenticationTypeEnum {
     fn default() -> Self {
         UserAuthenticationTypeEnum::Api
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum UserMessageActionEnum {
-
-    /// RESEND
-    #[serde(rename = "RESEND")]
-    Resend,
-
-    /// SUPPRESS
-    #[serde(rename = "SUPPRESS")]
-    Suppress,
-
-}
-
-impl Default for UserMessageActionEnum {
-    fn default() -> Self {
-        UserMessageActionEnum::Resend
     }
 }
 

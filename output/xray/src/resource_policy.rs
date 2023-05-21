@@ -6,18 +6,6 @@ pub struct CfnResourcePolicy {
 
 
     /// 
-    /// The name of the resource-based policy. Must be unique within a specific AWS account.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PolicyName")]
-    pub policy_name: String,
-
-
-    /// 
     /// A flag to indicate whether to bypass the resource-based policy lockout safety check.
     /// 
     /// Required: No
@@ -39,6 +27,18 @@ pub struct CfnResourcePolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
     pub policy_document: String,
+
+
+    /// 
+    /// The name of the resource-based policy. Must be unique within a specific AWS account.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyName")]
+    pub policy_name: String,
 
 }
 

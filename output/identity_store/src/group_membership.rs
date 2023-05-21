@@ -11,6 +11,17 @@ pub struct CfnGroupMembership {
     ///
     /// Type: String
     ///
+    /// Update requires: No interruption
+    #[serde(rename = "GroupId")]
+    pub group_id: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityStoreId")]
     pub identity_store_id: String,
@@ -26,17 +37,6 @@ pub struct CfnGroupMembership {
     /// Update requires: No interruption
     #[serde(rename = "MemberId")]
     pub member_id: MemberId,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GroupId")]
-    pub group_id: String,
 
 }
 

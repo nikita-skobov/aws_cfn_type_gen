@@ -20,18 +20,6 @@ pub struct CfnDomainName {
 
 
     /// 
-    /// The collection of tags associated with a domain name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
-
-    /// 
     /// The domain name configurations.
     /// 
     /// Required: No
@@ -53,6 +41,18 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "MutualTlsAuthentication")]
     pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
+
+
+    /// 
+    /// The collection of tags associated with a domain name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
 
 }
 
@@ -89,6 +89,18 @@ pub struct DomainNameConfiguration {
 
 
     /// 
+    /// The user-friendly name of the certificate that will be used by the edge-optimized endpoint for this domain name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CertificateName")]
+    pub certificate_name: Option<String>,
+
+
+    /// 
     /// The endpoint type.
     /// 
     /// Required: No
@@ -98,18 +110,6 @@ pub struct DomainNameConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "EndpointType")]
     pub endpoint_type: Option<String>,
-
-
-    /// 
-    /// The Transport Layer Security (TLS) version of the security policy for this domain name. The valid values are TLS_1_0 and TLS_1_2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityPolicy")]
-    pub security_policy: Option<String>,
 
 
     /// 
@@ -125,15 +125,15 @@ pub struct DomainNameConfiguration {
 
 
     /// 
-    /// The user-friendly name of the certificate that will be used by the edge-optimized endpoint for this domain name.
+    /// The Transport Layer Security (TLS) version of the security policy for this domain name. The valid values are TLS_1_0 and TLS_1_2.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CertificateName")]
-    pub certificate_name: Option<String>,
+    #[serde(rename = "SecurityPolicy")]
+    pub security_policy: Option<String>,
 
 }
 
@@ -146,18 +146,6 @@ pub struct MutualTlsAuthentication {
 
 
     /// 
-    /// The version of the S3 object that contains your truststore. To           specify a version, you must have versioning enabled for the S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TruststoreVersion")]
-    pub truststore_version: Option<String>,
-
-
-    /// 
     /// An Amazon S3 URL that specifies the truststore for mutual TLS           authentication, for example, s3://bucket-name/key-name           .           The truststore can contain certificates from public or private certificate           authorities. To update the truststore, upload a new version to S3, and then           update your custom domain name to use the new version. To update the truststore,           you must have permissions to access the S3 object.
     /// 
     /// Required: No
@@ -167,6 +155,18 @@ pub struct MutualTlsAuthentication {
     /// Update requires: No interruption
     #[serde(rename = "TruststoreUri")]
     pub truststore_uri: Option<String>,
+
+
+    /// 
+    /// The version of the S3 object that contains your truststore. To           specify a version, you must have versioning enabled for the S3 bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TruststoreVersion")]
+    pub truststore_version: Option<String>,
 
 }
 

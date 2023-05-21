@@ -48,6 +48,18 @@ pub struct CfnUrl {
 
 
     /// 
+    /// The alias name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Qualifier")]
+    pub qualifier: Option<String>,
+
+
+    /// 
     /// The name of the Lambda function.
     /// 
     /// Name formats                   Function name - my-function.        Function ARN - arn:aws:lambda:us-west-2:123456789012:function:my-function.        Partial ARN - 123456789012:function:my-function.
@@ -62,39 +74,8 @@ pub struct CfnUrl {
     #[serde(rename = "TargetFunctionArn")]
     pub target_function_arn: String,
 
-
-    /// 
-    /// The alias name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Qualifier")]
-    pub qualifier: Option<String>,
-
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum UrlInvokeModeEnum {
-
-    /// BUFFERED
-    #[serde(rename = "BUFFERED")]
-    Buffered,
-
-    /// RESPONSE_STREAM
-    #[serde(rename = "RESPONSE_STREAM")]
-    Responsestream,
-
-}
-
-impl Default for UrlInvokeModeEnum {
-    fn default() -> Self {
-        UrlInvokeModeEnum::Buffered
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum UrlAuthTypeEnum {
@@ -115,6 +96,25 @@ impl Default for UrlAuthTypeEnum {
     }
 }
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum UrlInvokeModeEnum {
+
+    /// BUFFERED
+    #[serde(rename = "BUFFERED")]
+    Buffered,
+
+    /// RESPONSE_STREAM
+    #[serde(rename = "RESPONSE_STREAM")]
+    Responsestream,
+
+}
+
+impl Default for UrlInvokeModeEnum {
+    fn default() -> Self {
+        UrlInvokeModeEnum::Buffered
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnUrl {
     fn type_string() -> &'static str {
@@ -130,6 +130,32 @@ impl cfn_resources::CfnResource for CfnUrl {
 /// The Cross-Origin Resource Sharing (CORS)    settings for your function URL. Use CORS to grant access to your function URL from any origin. You can also use CORS    to control access for specific HTTP headers and methods in requests to your function URL.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Cors {
+
+
+    /// 
+    /// Whether you want to allow cookies or other credentials in requests to your function URL. The default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowCredentials")]
+    pub allow_credentials: Option<bool>,
+
+
+    /// 
+    /// The HTTP headers that origins can include in requests to your function URL. For example: Date, Keep-Alive,    X-Custom-Header.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowHeaders")]
+    pub allow_headers: Option<Vec<String>>,
 
 
     /// 
@@ -163,36 +189,6 @@ pub struct Cors {
 
 
     /// 
-    /// The maximum amount of time, in seconds, that browsers can cache results of a preflight request. By default, this is set to 0,    which means the browser will not cache results.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 86400
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxAge")]
-    pub max_age: Option<i64>,
-
-
-    /// 
-    /// The HTTP headers that origins can include in requests to your function URL. For example: Date, Keep-Alive,    X-Custom-Header.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowHeaders")]
-    pub allow_headers: Option<Vec<String>>,
-
-
-    /// 
     /// The HTTP headers in your function response that you want to expose to origins that call your function URL. For example:    Date, Keep-Alive, X-Custom-Header.
     /// 
     /// Required: No
@@ -207,15 +203,19 @@ pub struct Cors {
 
 
     /// 
-    /// Whether you want to allow cookies or other credentials in requests to your function URL. The default is false.
+    /// The maximum amount of time, in seconds, that browsers can cache results of a preflight request. By default, this is set to 0,    which means the browser will not cache results.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 86400
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllowCredentials")]
-    pub allow_credentials: Option<bool>,
+    #[serde(rename = "MaxAge")]
+    pub max_age: Option<i64>,
 
 }
 

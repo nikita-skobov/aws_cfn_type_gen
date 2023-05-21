@@ -6,18 +6,6 @@ pub struct CfnTaskSet {
 
 
     /// 
-    /// The task definition for the tasks in the task set to use.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TaskDefinition")]
-    pub task_definition: String,
-
-
-    /// 
     /// The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to create the 			task set in.
     /// 
     /// Required: Yes
@@ -30,27 +18,15 @@ pub struct CfnTaskSet {
 
 
     /// 
-    /// A load balancer object representing the load balancer to use with the task set. The 			supported load balancer types are either an Application Load Balancer or a Network Load Balancer.
+    /// An optional non-unique tag that identifies this task set in external systems. If the 			task set is associated with a service discovery registry, the tasks in this task set 			will have the ECS_TASK_SET_EXTERNAL_ID       AWS Cloud Map attribute set to the provided 			value.
     /// 
     /// Required: No
     ///
-    /// Type: List of LoadBalancer
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "LoadBalancers")]
-    pub load_balancers: Option<Vec<LoadBalancer>>,
-
-
-    /// 
-    /// The details of the service discovery registries to assign to this task set. For more 			information, see Service 				discovery.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ServiceRegistry
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceRegistries")]
-    pub service_registries: Option<Vec<ServiceRegistry>>,
+    #[serde(rename = "ExternalId")]
+    pub external_id: Option<String>,
 
 
     /// 
@@ -70,27 +46,15 @@ pub struct CfnTaskSet {
 
 
     /// 
-    /// The short name or full Amazon Resource Name (ARN) of the service to create the task set in.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Service")]
-    pub service: String,
-
-
-    /// 
-    /// The platform version that the tasks in the task set uses. A platform version is 			specified only for tasks using the Fargate launch type. If one isn't 			specified, the LATEST platform version is used.
+    /// A load balancer object representing the load balancer to use with the task set. The 			supported load balancer types are either an Application Load Balancer or a Network Load Balancer.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of LoadBalancer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PlatformVersion")]
-    pub platform_version: Option<String>,
+    #[serde(rename = "LoadBalancers")]
+    pub load_balancers: Option<Vec<LoadBalancer>>,
 
 
     /// 
@@ -106,15 +70,15 @@ pub struct CfnTaskSet {
 
 
     /// 
-    /// An optional non-unique tag that identifies this task set in external systems. If the 			task set is associated with a service discovery registry, the tasks in this task set 			will have the ECS_TASK_SET_EXTERNAL_ID       AWS Cloud Map attribute set to the provided 			value.
+    /// The platform version that the tasks in the task set uses. A platform version is 			specified only for tasks using the Fargate launch type. If one isn't 			specified, the LATEST platform version is used.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ExternalId")]
-    pub external_id: Option<String>,
+    #[serde(rename = "PlatformVersion")]
+    pub platform_version: Option<String>,
 
 
     /// 
@@ -127,6 +91,42 @@ pub struct CfnTaskSet {
     /// Update requires: No interruption
     #[serde(rename = "Scale")]
     pub scale: Option<Scale>,
+
+
+    /// 
+    /// The short name or full Amazon Resource Name (ARN) of the service to create the task set in.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Service")]
+    pub service: String,
+
+
+    /// 
+    /// The details of the service discovery registries to assign to this task set. For more 			information, see Service 				discovery.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ServiceRegistry
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceRegistries")]
+    pub service_registries: Option<Vec<ServiceRegistry>>,
+
+
+    /// 
+    /// The task definition for the tasks in the task set to use.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TaskDefinition")]
+    pub task_definition: String,
 
 }
 
@@ -172,20 +172,6 @@ pub struct AwsVpcConfiguration {
 
 
     /// 
-    /// The IDs of the security groups associated with the task or service. If you don't 			specify a security group, the default security group for the VPC is used. There's a 			limit of 5 security groups that can be specified per 			AwsVpcConfiguration.
-    /// 
-    /// NoteAll specified security groups must be from the same VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroups")]
-    pub security_groups: Option<Vec<String>>,
-
-
-    /// 
     /// Whether the task's elastic network interface receives a public IP address. The default 			value is DISABLED.
     /// 
     /// Required: No
@@ -197,6 +183,20 @@ pub struct AwsVpcConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "AssignPublicIp")]
     pub assign_public_ip: Option<AwsVpcConfigurationAssignPublicIpEnum>,
+
+
+    /// 
+    /// The IDs of the security groups associated with the task or service. If you don't 			specify a security group, the default security group for the VPC is used. There's a 			limit of 5 security groups that can be specified per 			AwsVpcConfiguration.
+    /// 
+    /// NoteAll specified security groups must be from the same VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Option<Vec<String>>,
 
 
     /// 
@@ -231,79 +231,6 @@ pub enum AwsVpcConfigurationAssignPublicIpEnum {
 impl Default for AwsVpcConfigurationAssignPublicIpEnum {
     fn default() -> Self {
         AwsVpcConfigurationAssignPublicIpEnum::Disabled
-    }
-}
-
-
-
-/// The network configuration for a task or service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NetworkConfiguration {
-
-
-    /// 
-    /// The VPC subnets and security groups that are associated with a task.
-    /// 
-    /// NoteAll specified subnets and security groups must be from the same VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AwsVpcConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AwsVpcConfiguration")]
-    pub aws_vpc_configuration: Option<AwsVpcConfiguration>,
-
-}
-
-
-
-
-/// A floating-point percentage of the desired number of tasks to place and keep running 			in the task set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Scale {
-
-
-    /// 
-    /// The unit of measure for the scale value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: PERCENT
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unit")]
-    pub unit: Option<ScaleUnitEnum>,
-
-
-    /// 
-    /// The value, specified as a percent total of a service's desiredCount, to 			scale the task set. Accepted values are numbers between 0 and 100.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<f64>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ScaleUnitEnum {
-
-    /// PERCENT
-    #[serde(rename = "PERCENT")]
-    Percent,
-
-}
-
-impl Default for ScaleUnitEnum {
-    fn default() -> Self {
-        ScaleUnitEnum::Percent
     }
 }
 
@@ -382,6 +309,79 @@ pub struct LoadBalancer {
 
 
 
+/// The network configuration for a task or service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NetworkConfiguration {
+
+
+    /// 
+    /// The VPC subnets and security groups that are associated with a task.
+    /// 
+    /// NoteAll specified subnets and security groups must be from the same VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AwsVpcConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AwsVpcConfiguration")]
+    pub aws_vpc_configuration: Option<AwsVpcConfiguration>,
+
+}
+
+
+
+
+/// A floating-point percentage of the desired number of tasks to place and keep running 			in the task set.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Scale {
+
+
+    /// 
+    /// The unit of measure for the scale value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: PERCENT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Unit")]
+    pub unit: Option<ScaleUnitEnum>,
+
+
+    /// 
+    /// The value, specified as a percent total of a service's desiredCount, to 			scale the task set. Accepted values are numbers between 0 and 100.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<f64>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ScaleUnitEnum {
+
+    /// PERCENT
+    #[serde(rename = "PERCENT")]
+    Percent,
+
+}
+
+impl Default for ScaleUnitEnum {
+    fn default() -> Self {
+        ScaleUnitEnum::Percent
+    }
+}
+
+
+
 /// The details for the service registry.
 ///
 /// Each service may be associated with one service registry. Multiple service registries 			for each service are not supported.
@@ -389,18 +389,6 @@ pub struct LoadBalancer {
 /// When you add, update, or remove the service registries configuration, Amazon ECS starts a 			new deployment. New tasks are registered and deregistered to the updated service 			registry configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServiceRegistry {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the service registry. The currently supported service registry is 			AWS Cloud Map. For more information, see CreateService.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RegistryArn")]
-    pub registry_arn: Option<String>,
 
 
     /// 
@@ -416,6 +404,18 @@ pub struct ServiceRegistry {
 
 
     /// 
+    /// The port value to be used for your service discovery service. It's already specified 			in the task definition. If the task definition your service task specifies uses the 				bridge or host network mode, you must specify a 				containerName and containerPort combination from the task 			definition. If the task definition your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContainerPort")]
+    pub container_port: Option<i64>,
+
+
+    /// 
     /// The port value used if your service discovery service specified an SRV record. This 			field might be used if both the awsvpc network mode and SRV records are 			used.
     /// 
     /// Required: No
@@ -428,15 +428,15 @@ pub struct ServiceRegistry {
 
 
     /// 
-    /// The port value to be used for your service discovery service. It's already specified 			in the task definition. If the task definition your service task specifies uses the 				bridge or host network mode, you must specify a 				containerName and containerPort combination from the task 			definition. If the task definition your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
+    /// The Amazon Resource Name (ARN) of the service registry. The currently supported service registry is 			AWS Cloud Map. For more information, see CreateService.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ContainerPort")]
-    pub container_port: Option<i64>,
+    #[serde(rename = "RegistryArn")]
+    pub registry_arn: Option<String>,
 
 }
 

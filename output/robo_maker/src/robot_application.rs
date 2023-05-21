@@ -6,30 +6,6 @@ pub struct CfnRobotApplication {
 
 
     /// 
-    /// A map that contains tag keys and tag values that are attached to the robot     application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The robot software suite used by the robot application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: RobotSoftwareSuite
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RobotSoftwareSuite")]
-    pub robot_software_suite: RobotSoftwareSuite,
-
-
-    /// 
     /// The current revision id.
     /// 
     /// Required: No
@@ -42,15 +18,15 @@ pub struct CfnRobotApplication {
 
 
     /// 
-    /// The sources of the robot application.
+    /// The environment of the robot application.
     /// 
     /// Required: No
     ///
-    /// Type: List of SourceConfig
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Sources")]
-    pub sources: Option<Vec<SourceConfig>>,
+    #[serde(rename = "Environment")]
+    pub environment: Option<String>,
 
 
     /// 
@@ -72,15 +48,39 @@ pub struct CfnRobotApplication {
 
 
     /// 
-    /// The environment of the robot application.
+    /// The robot software suite used by the robot application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: RobotSoftwareSuite
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RobotSoftwareSuite")]
+    pub robot_software_suite: RobotSoftwareSuite,
+
+
+    /// 
+    /// The sources of the robot application.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of SourceConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Environment")]
-    pub environment: Option<String>,
+    #[serde(rename = "Sources")]
+    pub sources: Option<Vec<SourceConfig>>,
+
+
+    /// 
+    /// A map that contains tag keys and tag values that are attached to the robot     application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
 
@@ -103,20 +103,6 @@ pub struct RobotSoftwareSuite {
 
 
     /// 
-    /// The version of the robot software suite. Not applicable for General software suite.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Dashing | Foxy | Kinetic | Melodic
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<RobotSoftwareSuiteVersionEnum>,
-
-
-    /// 
     /// The name of the robot software suite. General is the only supported value.
     /// 
     /// Required: Yes
@@ -128,6 +114,20 @@ pub struct RobotSoftwareSuite {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: RobotSoftwareSuiteNameEnum,
+
+
+    /// 
+    /// The version of the robot software suite. Not applicable for General software suite.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Dashing | Foxy | Kinetic | Melodic
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<RobotSoftwareSuiteVersionEnum>,
 
 }
 
@@ -190,6 +190,20 @@ pub struct SourceConfig {
 
 
     /// 
+    /// The target processor architecture for the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ARM64 | ARMHF | X86_64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Architecture")]
+    pub architecture: SourceConfigArchitectureEnum,
+
+
+    /// 
     /// The Amazon S3 bucket name.
     /// 
     /// Required: Yes
@@ -205,20 +219,6 @@ pub struct SourceConfig {
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
-
-
-    /// 
-    /// The target processor architecture for the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ARM64 | ARMHF | X86_64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Architecture")]
-    pub architecture: SourceConfigArchitectureEnum,
 
 
     /// 

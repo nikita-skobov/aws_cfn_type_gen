@@ -22,18 +22,6 @@ pub struct CfnPreparedStatement {
 
 
     /// 
-    /// The workgroup to which the prepared statement belongs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WorkGroup")]
-    pub work_group: String,
-
-
-    /// 
     /// The query string for the prepared statement.
     /// 
     /// Required: Yes
@@ -65,6 +53,18 @@ pub struct CfnPreparedStatement {
     /// Update requires: Replacement
     #[serde(rename = "StatementName")]
     pub statement_name: String,
+
+
+    /// 
+    /// The workgroup to which the prepared statement belongs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WorkGroup")]
+    pub work_group: String,
 
 }
 

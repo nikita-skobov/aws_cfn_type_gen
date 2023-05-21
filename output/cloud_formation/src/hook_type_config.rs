@@ -34,6 +34,20 @@ pub struct CfnHookTypeConfig {
 
 
     /// 
+    /// The Amazon Resource Number (ARN) for the hook to set Configuration for.
+    /// 
+    /// You must specify either TypeName and Configuration or TypeARN and   Configuration.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TypeArn")]
+    pub type_arn: Option<String>,
+
+
+    /// 
     /// The unique name for your hook. Specifies a three-part namespace for your hook, with a recommended pattern of   Organization::Service::Hook.
     /// 
     /// You must specify either TypeName and Configuration or TypeARN and   Configuration.
@@ -49,20 +63,6 @@ pub struct CfnHookTypeConfig {
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
     pub type_name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Number (ARN) for the hook to set Configuration for.
-    /// 
-    /// You must specify either TypeName and Configuration or TypeARN and   Configuration.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TypeArn")]
-    pub type_arn: Option<String>,
 
 }
 

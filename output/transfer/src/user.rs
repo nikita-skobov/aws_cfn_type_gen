@@ -6,17 +6,21 @@ pub struct CfnUser {
 
 
     /// 
-    /// Specifies the public key portion of the Secure Shell (SSH) keys stored for the described    user.
+    /// The landing directory (folder) for a user when they log in to the server using the client.
+    /// 
+    /// A HomeDirectory example is /bucket_name/home/mydirectory.
     /// 
     /// Required: No
     ///
-    /// Type: List of SshPublicKey
+    /// Type: String
     ///
-    /// Maximum: 5
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^$|/.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SshPublicKeys")]
-    pub ssh_public_keys: Option<Vec<SshPublicKey>>,
+    #[serde(rename = "HomeDirectory")]
+    pub home_directory: Option<String>,
 
 
     /// 
@@ -40,15 +44,17 @@ pub struct CfnUser {
 
 
     /// 
-    /// Specifies the full POSIX identity, including user ID (Uid), group ID     (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon Elastic File System (Amazon EFS) file systems. The POSIX    permissions that are set on files and directories in your file system determine the level of    access your users get when transferring files into and out of your Amazon EFS file    systems.
+    /// The type of landing directory (folder) that you want your users' home directory to be when they log in to the server.   If you set it to PATH, the user will see the absolute Amazon S3 bucket or EFS paths as is in their file transfer   protocol clients. If you set it LOGICAL, you need to provide mappings in the HomeDirectoryMappings for   how you want to make Amazon S3 or Amazon EFS paths visible to your users.
     /// 
     /// Required: No
     ///
-    /// Type: PosixProfile
+    /// Type: String
+    ///
+    /// Allowed values: LOGICAL | PATH
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PosixProfile")]
-    pub posix_profile: Option<PosixProfile>,
+    #[serde(rename = "HomeDirectoryType")]
+    pub home_directory_type: Option<UserHomeDirectoryTypeEnum>,
 
 
     /// 
@@ -65,6 +71,18 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
     pub policy: Option<String>,
+
+
+    /// 
+    /// Specifies the full POSIX identity, including user ID (Uid), group ID     (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon Elastic File System (Amazon EFS) file systems. The POSIX    permissions that are set on files and directories in your file system determine the level of    access your users get when transferring files into and out of your Amazon EFS file    systems.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PosixProfile
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PosixProfile")]
+    pub posix_profile: Option<PosixProfile>,
 
 
     /// 
@@ -104,6 +122,20 @@ pub struct CfnUser {
 
 
     /// 
+    /// Specifies the public key portion of the Secure Shell (SSH) keys stored for the described    user.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of SshPublicKey
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SshPublicKeys")]
+    pub ssh_public_keys: Option<Vec<SshPublicKey>>,
+
+
+    /// 
     /// Key-value pairs that can be used to group and search for users. Tags are metadata attached    to users for any purpose.
     /// 
     /// Required: No
@@ -115,20 +147,6 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The type of landing directory (folder) that you want your users' home directory to be when they log in to the server.   If you set it to PATH, the user will see the absolute Amazon S3 bucket or EFS paths as is in their file transfer   protocol clients. If you set it LOGICAL, you need to provide mappings in the HomeDirectoryMappings for   how you want to make Amazon S3 or Amazon EFS paths visible to your users.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: LOGICAL | PATH
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HomeDirectoryType")]
-    pub home_directory_type: Option<UserHomeDirectoryTypeEnum>,
 
 
     /// 
@@ -147,24 +165,6 @@ pub struct CfnUser {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: String,
-
-
-    /// 
-    /// The landing directory (folder) for a user when they log in to the server using the client.
-    /// 
-    /// A HomeDirectory example is /bucket_name/home/mydirectory.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^$|/.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HomeDirectory")]
-    pub home_directory: Option<String>,
 
 }
 
@@ -200,62 +200,9 @@ impl cfn_resources::CfnResource for CfnUser {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-
-
 /// Represents an object that contains entries and targets for       HomeDirectoryMappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HomeDirectoryMapEntry {
-
-
-    /// 
-    /// Represents the map target that is used in a HomeDirectorymapEntry.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^/.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Target")]
-    pub target: String,
 
 
     /// 
@@ -273,6 +220,22 @@ pub struct HomeDirectoryMapEntry {
     #[serde(rename = "Entry")]
     pub entry: String,
 
+
+    /// 
+    /// Represents the map target that is used in a HomeDirectorymapEntry.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^/.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Target")]
+    pub target: String,
+
 }
 
 
@@ -281,6 +244,18 @@ pub struct HomeDirectoryMapEntry {
 /// The full POSIX identity, including user ID (Uid), group ID    (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon EFS file systems. The POSIX permissions that are set on    files and directories in your file system determine the level of access your users get when    transferring files into and out of your Amazon EFS file systems.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PosixProfile {
+
+
+    /// 
+    /// The POSIX group ID used for all EFS operations by this user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Gid")]
+    pub gid: f64,
 
 
     /// 
@@ -295,18 +270,6 @@ pub struct PosixProfile {
     /// Update requires: No interruption
     #[serde(rename = "SecondaryGids")]
     pub secondary_gids: Option<Vec<f64>>,
-
-
-    /// 
-    /// The POSIX group ID used for all EFS operations by this user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Gid")]
-    pub gid: f64,
 
 
     /// 
@@ -340,6 +303,43 @@ pub struct PosixProfile {
 /// Required: Yes
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SshPublicKey {
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

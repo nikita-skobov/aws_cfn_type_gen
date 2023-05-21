@@ -12,39 +12,17 @@ pub struct CfnVPCPeeringConnection {
 
 
     /// 
-    /// The ID of the VPC.
+    /// The AWS account ID of the owner of the accepter VPC.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
-
-
-    /// 
-    /// The ID of the VPC with which you are creating the VPC peering connection. You must 			specify this parameter in the request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PeerVpcId")]
-    pub peer_vpc_id: String,
-
-
-    /// 
-    /// Any tags assigned to the resource.
+    /// Default: Your AWS account ID
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "PeerOwnerId")]
+    pub peer_owner_id: Option<String>,
 
 
     /// 
@@ -76,17 +54,39 @@ pub struct CfnVPCPeeringConnection {
 
 
     /// 
-    /// The AWS account ID of the owner of the accepter VPC.
+    /// The ID of the VPC with which you are creating the VPC peering connection. You must 			specify this parameter in the request.
     /// 
-    /// Default: Your AWS account ID
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PeerOwnerId")]
-    pub peer_owner_id: Option<String>,
+    #[serde(rename = "PeerVpcId")]
+    pub peer_vpc_id: String,
+
+
+    /// 
+    /// Any tags assigned to the resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the VPC.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
 
 }
 

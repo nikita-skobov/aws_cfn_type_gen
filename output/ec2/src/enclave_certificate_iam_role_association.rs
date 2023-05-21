@@ -10,18 +10,6 @@ pub struct CfnEnclaveCertificateIamRoleAssociation {
 
 
     /// 
-    /// The ARN of the IAM role to associate with the ACM certificate. You can associate up to 16 IAM roles with an ACM 			certificate.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
     /// The ARN of the ACM certificate with which to associate the IAM role.
     /// 
     /// Required: Yes
@@ -31,6 +19,18 @@ pub struct CfnEnclaveCertificateIamRoleAssociation {
     /// Update requires: Replacement
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: String,
+
+
+    /// 
+    /// The ARN of the IAM role to associate with the ACM certificate. You can associate up to 16 IAM roles with an ACM 			certificate.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
 
 }
 

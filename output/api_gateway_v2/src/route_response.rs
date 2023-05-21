@@ -6,39 +6,15 @@ pub struct CfnRouteResponse {
 
 
     /// 
-    /// The route ID.
+    /// The API identifier.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "RouteId")]
-    pub route_id: String,
-
-
-    /// 
-    /// The response models for the route response.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResponseModels")]
-    pub response_models: Option<serde_json::Value>,
-
-
-    /// 
-    /// The route response key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RouteResponseKey")]
-    pub route_response_key: String,
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
 
 
     /// 
@@ -54,15 +30,15 @@ pub struct CfnRouteResponse {
 
 
     /// 
-    /// The API identifier.
+    /// The response models for the route response.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Json
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "ResponseModels")]
+    pub response_models: Option<serde_json::Value>,
 
 
     /// 
@@ -75,6 +51,30 @@ pub struct CfnRouteResponse {
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
     pub response_parameters: Option<serde_json::Value>,
+
+
+    /// 
+    /// The route ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RouteId")]
+    pub route_id: String,
+
+
+    /// 
+    /// The route response key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RouteResponseKey")]
+    pub route_response_key: String,
 
 }
 

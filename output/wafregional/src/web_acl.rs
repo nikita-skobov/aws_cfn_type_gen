@@ -8,36 +8,6 @@ pub struct CfnWebACL {
 
 
     /// 
-    /// A friendly name or description of the WebACL. You can't change the name of a WebACL after you create it.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// An array that contains the action for each Rule in a WebACL, the priority of the Rule, 			and the ID of the Rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Rule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Rules")]
-    pub rules: Option<Vec<Rule>>,
-
-
-    /// 
     /// The action to perform if none of the Rules contained in the WebACL match. The action is specified by the      WafAction object.
     /// 
     /// Required: Yes
@@ -65,6 +35,36 @@ pub struct CfnWebACL {
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
     pub metric_name: String,
+
+
+    /// 
+    /// A friendly name or description of the WebACL. You can't change the name of a WebACL after you create it.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// An array that contains the action for each Rule in a WebACL, the priority of the Rule, 			and the ID of the Rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Rule
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Rules")]
+    pub rules: Option<Vec<Rule>>,
 
 }
 
@@ -116,24 +116,6 @@ pub struct Rule {
 
 
     /// 
-    /// The ID of an AWS WAF Regional rule to associate with a web ACL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleId")]
-    pub rule_id: String,
-
-
-    /// 
     /// The action that AWS WAF takes when a web request matches all conditions in the rule, such as allow, block, or count the request.
     /// 
     /// Required: Yes
@@ -155,6 +137,24 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
     pub priority: i64,
+
+
+    /// 
+    /// The ID of an AWS WAF Regional rule to associate with a web ACL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleId")]
+    pub rule_id: String,
 
 }
 

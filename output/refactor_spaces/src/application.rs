@@ -8,39 +8,15 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The proxy type of the proxy created within the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProxyType")]
-    pub proxy_type: String,
-
-
-    /// 
-    /// The ID of the virtual private cloud (VPC).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
-
-
-    /// 
-    /// The tags assigned to the application.
+    /// The endpoint URL of the Amazon API Gateway proxy.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: ApiGatewayProxyInput
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "ApiGatewayProxy")]
+    pub api_gateway_proxy: Option<ApiGatewayProxyInput>,
 
 
     /// 
@@ -68,15 +44,39 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The endpoint URL of the Amazon API Gateway proxy.
+    /// The proxy type of the proxy created within the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProxyType")]
+    pub proxy_type: String,
+
+
+    /// 
+    /// The tags assigned to the application.
     /// 
     /// Required: No
     ///
-    /// Type: ApiGatewayProxyInput
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the virtual private cloud (VPC).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ApiGatewayProxy")]
-    pub api_gateway_proxy: Option<ApiGatewayProxyInput>,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
 
 }
 

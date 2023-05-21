@@ -6,6 +6,54 @@ pub struct CfnScheduledAudit {
 
 
     /// 
+    /// The day of the month on which the scheduled audit is run (if the      frequency is "MONTHLY").     If days 29-31 are specified, and the month does not have that many     days, the audit takes place on the "LAST" day of the month.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DayOfMonth")]
+    pub day_of_month: Option<String>,
+
+
+    /// 
+    /// The day of the week on which the scheduled audit is run (if the       frequency is "WEEKLY" or "BIWEEKLY").
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DayOfWeek")]
+    pub day_of_week: Option<String>,
+
+
+    /// 
+    /// How often the scheduled audit occurs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Frequency")]
+    pub frequency: String,
+
+
+    /// 
+    /// The name of the scheduled audit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ScheduledAuditName")]
+    pub scheduled_audit_name: Option<String>,
+
+
+    /// 
     /// Metadata that can be used to manage the scheduled audit.
     /// 
     /// Required: No
@@ -31,54 +79,6 @@ pub struct CfnScheduledAudit {
     /// Update requires: No interruption
     #[serde(rename = "TargetCheckNames")]
     pub target_check_names: Vec<String>,
-
-
-    /// 
-    /// How often the scheduled audit occurs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Frequency")]
-    pub frequency: String,
-
-
-    /// 
-    /// The day of the month on which the scheduled audit is run (if the      frequency is "MONTHLY").     If days 29-31 are specified, and the month does not have that many     days, the audit takes place on the "LAST" day of the month.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DayOfMonth")]
-    pub day_of_month: Option<String>,
-
-
-    /// 
-    /// The day of the week on which the scheduled audit is run (if the       frequency is "WEEKLY" or "BIWEEKLY").
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DayOfWeek")]
-    pub day_of_week: Option<String>,
-
-
-    /// 
-    /// The name of the scheduled audit.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ScheduledAuditName")]
-    pub scheduled_audit_name: Option<String>,
 
 }
 
@@ -107,17 +107,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -126,6 +115,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

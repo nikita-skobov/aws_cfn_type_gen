@@ -10,6 +10,20 @@ pub struct CfnSchema {
 
 
     /// 
+    /// The domain of a schema that you created for a dataset in a Domain dataset group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ECOMMERCE | VIDEO_ON_DEMAND
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Domain")]
+    pub domain: Option<SchemaDomainEnum>,
+
+
+    /// 
     /// The name of the schema.
     /// 
     /// Required: Yes
@@ -25,20 +39,6 @@ pub struct CfnSchema {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// The domain of a schema that you created for a dataset in a Domain dataset group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ECOMMERCE | VIDEO_ON_DEMAND
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Domain")]
-    pub domain: Option<SchemaDomainEnum>,
 
 
     /// 

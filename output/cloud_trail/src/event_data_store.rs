@@ -6,36 +6,6 @@ pub struct CfnEventDataStore {
 
 
     /// 
-    /// The name of the event data store.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z0-9._\-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Specifies whether an event data store collects events logged for an organization in       AWS Organizations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrganizationEnabled")]
-    pub organization_enabled: Option<bool>,
-
-
-    /// 
     /// The advanced event selectors to use to select the events for the data store. You can     configure up to five advanced event selectors for each event data store.
     /// 
     /// For more information about how to use advanced event selectors to log CloudTrail     events, see Log events by using advanced event selectors in the CloudTrail User Guide.
@@ -51,48 +21,6 @@ pub struct CfnEventDataStore {
     /// Update requires: No interruption
     #[serde(rename = "AdvancedEventSelectors")]
     pub advanced_event_selectors: Option<Vec<AdvancedEventSelector>>,
-
-
-    /// 
-    /// Specifies whether termination protection is enabled for the event data store. If     termination protection is enabled, you cannot delete the event data store until termination     protection is disabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TerminationProtectionEnabled")]
-    pub termination_protection_enabled: Option<bool>,
-
-
-    /// 
-    /// A list of tags.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The retention period of the event data store, in days. You can set a retention period of up to 2557 days,      the equivalent of seven years.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 7
-    ///
-    /// Maximum: 2557
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetentionPeriod")]
-    pub retention_period: Option<i64>,
 
 
     /// 
@@ -132,6 +60,78 @@ pub struct CfnEventDataStore {
     #[serde(rename = "MultiRegionEnabled")]
     pub multi_region_enabled: Option<bool>,
 
+
+    /// 
+    /// The name of the event data store.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z0-9._\-]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Specifies whether an event data store collects events logged for an organization in       AWS Organizations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrganizationEnabled")]
+    pub organization_enabled: Option<bool>,
+
+
+    /// 
+    /// The retention period of the event data store, in days. You can set a retention period of up to 2557 days,      the equivalent of seven years.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 7
+    ///
+    /// Maximum: 2557
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetentionPeriod")]
+    pub retention_period: Option<i64>,
+
+
+    /// 
+    /// A list of tags.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Specifies whether termination protection is enabled for the event data store. If     termination protection is enabled, you cannot delete the event data store until termination     protection is disabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TerminationProtectionEnabled")]
+    pub termination_protection_enabled: Option<bool>,
+
 }
 
 
@@ -147,21 +147,74 @@ impl cfn_resources::CfnResource for CfnEventDataStore {
 }
 
 
+/// Advanced event selectors let you create fine-grained selectors for the following AWS CloudTrail event record ﬁelds. They help you control costs by logging only those     events that are important to you. For more information about advanced event selectors, see       Logging data events in the         AWS CloudTrail User Guide.
+///
+/// You cannot apply both event selectors and advanced event selectors to a trail.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AdvancedEventSelector {
+
+
+    /// 
+    /// Contains all selector statements in an advanced event selector.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of AdvancedFieldSelector
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldSelectors")]
+    pub field_selectors: Vec<AdvancedFieldSelector>,
+
+
+    /// 
+    /// An optional, descriptive name for an advanced event selector, such as "Log data events     for only two S3 buckets".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+
+
 /// A single selector statement in an advanced event selector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AdvancedFieldSelector {
 
 
     /// 
-    /// An operator that excludes events that match the exact value of the event record field     specified as the value of Field.
+    /// An operator that includes events that match the last few characters of the event record     field specified as the value of Field.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotEquals")]
-    pub not_equals: Option<Vec<String>>,
+    #[serde(rename = "EndsWith")]
+    pub ends_with: Option<Vec<String>>,
+
+
+    /// 
+    /// An operator that includes events that match the exact value of the event record field     specified as the value of Field. This is the only valid operator that you can     use with the readOnly, eventCategory, and       resources.type fields.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Equals")]
+    pub equals: Option<Vec<String>>,
 
 
     /// 
@@ -201,39 +254,15 @@ pub struct AdvancedFieldSelector {
 
 
     /// 
-    /// An operator that includes events that match the last few characters of the event record     field specified as the value of Field.
+    /// An operator that excludes events that match the exact value of the event record field     specified as the value of Field.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EndsWith")]
-    pub ends_with: Option<Vec<String>>,
-
-
-    /// 
-    /// An operator that includes events that match the exact value of the event record field     specified as the value of Field. This is the only valid operator that you can     use with the readOnly, eventCategory, and       resources.type fields.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Equals")]
-    pub equals: Option<Vec<String>>,
-
-
-    /// 
-    /// An operator that includes events that match the first few characters of the event record     field specified as the value of Field.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StartsWith")]
-    pub starts_with: Option<Vec<String>>,
+    #[serde(rename = "NotEquals")]
+    pub not_equals: Option<Vec<String>>,
 
 
     /// 
@@ -246,6 +275,18 @@ pub struct AdvancedFieldSelector {
     /// Update requires: No interruption
     #[serde(rename = "NotStartsWith")]
     pub not_starts_with: Option<Vec<String>>,
+
+
+    /// 
+    /// An operator that includes events that match the first few characters of the event record     field specified as the value of Field.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StartsWith")]
+    pub starts_with: Option<Vec<String>>,
 
 }
 
@@ -264,17 +305,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -284,46 +314,16 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-
-
-/// Advanced event selectors let you create fine-grained selectors for the following AWS CloudTrail event record ﬁelds. They help you control costs by logging only those     events that are important to you. For more information about advanced event selectors, see       Logging data events in the         AWS CloudTrail User Guide.
-///
-/// You cannot apply both event selectors and advanced event selectors to a trail.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AdvancedEventSelector {
-
 
     /// 
-    /// An optional, descriptive name for an advanced event selector, such as "Log data events     for only two S3 buckets".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Contains all selector statements in an advanced event selector.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
-    /// Type: List of AdvancedFieldSelector
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldSelectors")]
-    pub field_selectors: Vec<AdvancedFieldSelector>,
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

@@ -6,15 +6,15 @@ pub struct CfnGroupVersion {
 
 
     /// 
-    /// The ARN of the resource definition version that contains the resources you want to deploy with the group version.
+    /// The Amazon Resource Name (ARN) of the connector definition version that contains the connectors you want to deploy with the group version.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ResourceDefinitionVersionArn")]
-    pub resource_definition_version_arn: Option<String>,
+    #[serde(rename = "ConnectorDefinitionVersionArn")]
+    pub connector_definition_version_arn: Option<String>,
 
 
     /// 
@@ -30,15 +30,27 @@ pub struct CfnGroupVersion {
 
 
     /// 
-    /// The ARN of the subscription definition version that contains the subscriptions you want to deploy with the group version.
+    /// The ARN of the device definition version that contains the devices you want to deploy with the group version.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SubscriptionDefinitionVersionArn")]
-    pub subscription_definition_version_arn: Option<String>,
+    #[serde(rename = "DeviceDefinitionVersionArn")]
+    pub device_definition_version_arn: Option<String>,
+
+
+    /// 
+    /// The ARN of the function definition version that contains the functions you want to deploy with the group version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FunctionDefinitionVersionArn")]
+    pub function_definition_version_arn: Option<String>,
 
 
     /// 
@@ -66,39 +78,27 @@ pub struct CfnGroupVersion {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the connector definition version that contains the connectors you want to deploy with the group version.
+    /// The ARN of the resource definition version that contains the resources you want to deploy with the group version.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ConnectorDefinitionVersionArn")]
-    pub connector_definition_version_arn: Option<String>,
+    #[serde(rename = "ResourceDefinitionVersionArn")]
+    pub resource_definition_version_arn: Option<String>,
 
 
     /// 
-    /// The ARN of the function definition version that contains the functions you want to deploy with the group version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FunctionDefinitionVersionArn")]
-    pub function_definition_version_arn: Option<String>,
-
-
-    /// 
-    /// The ARN of the device definition version that contains the devices you want to deploy with the group version.
+    /// The ARN of the subscription definition version that contains the subscriptions you want to deploy with the group version.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DeviceDefinitionVersionArn")]
-    pub device_definition_version_arn: Option<String>,
+    #[serde(rename = "SubscriptionDefinitionVersionArn")]
+    pub subscription_definition_version_arn: Option<String>,
 
 }
 

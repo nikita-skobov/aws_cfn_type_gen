@@ -12,17 +12,39 @@ pub struct CfnServerCertificate {
 
 
     /// 
-    /// A list of tags that are attached to the server certificate. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
+    /// The contents of the public key certificate.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Maximum: 16384
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateBody")]
+    pub certificate_body: Option<String>,
+
+
+    /// 
+    /// The contents of the public key certificate chain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2097152
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateChain")]
+    pub certificate_chain: Option<String>,
 
 
     /// 
@@ -48,6 +70,28 @@ pub struct CfnServerCertificate {
 
 
     /// 
+    /// The contents of the private key in PEM-encoded format.
+    /// 
+    /// The regex pattern   used to validate this parameter is a string of characters consisting of the following:
+    /// 
+    /// Any printable ASCII   character ranging from the space character (\u0020) through the end of the ASCII character range               The printable characters in the Basic Latin and Latin-1 Supplement character set   (through \u00FF)               The special characters tab (\u0009), line feed (\u000A), and   carriage return (\u000D)
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 16384
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrivateKey")]
+    pub private_key: Option<String>,
+
+
+    /// 
     /// The name for the server certificate. Do not include the path in this value. The name       of the certificate cannot contain any spaces.
     /// 
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
@@ -68,61 +112,17 @@ pub struct CfnServerCertificate {
 
 
     /// 
-    /// The contents of the public key certificate chain.
+    /// A list of tags that are attached to the server certificate. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Minimum: 1
+    /// Maximum: 50
     ///
-    /// Maximum: 2097152
-    ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateChain")]
-    pub certificate_chain: Option<String>,
-
-
-    /// 
-    /// The contents of the public key certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 16384
-    ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateBody")]
-    pub certificate_body: Option<String>,
-
-
-    /// 
-    /// The contents of the private key in PEM-encoded format.
-    /// 
-    /// The regex pattern   used to validate this parameter is a string of characters consisting of the following:
-    /// 
-    /// Any printable ASCII   character ranging from the space character (\u0020) through the end of the ASCII character range               The printable characters in the Basic Latin and Latin-1 Supplement character set   (through \u00FF)               The special characters tab (\u0009), line feed (\u000A), and   carriage return (\u000D)
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 16384
-    ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrivateKey")]
-    pub private_key: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

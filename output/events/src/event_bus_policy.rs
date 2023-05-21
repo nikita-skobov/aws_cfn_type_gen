@@ -14,7 +14,7 @@ pub struct CfnEventBusPolicy {
 
 
     /// 
-    /// The name of the event bus associated with the rule. If you omit this, the default event    bus is used.
+    /// The action that you are enabling the other account to perform.
     /// 
     /// Required: No
     ///
@@ -22,13 +22,13 @@ pub struct CfnEventBusPolicy {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 256
+    /// Maximum: 64
     ///
-    /// Pattern: [\.\-_A-Za-z0-9]+
+    /// Pattern: events:[a-zA-Z]+
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "EventBusName")]
-    pub event_bus_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: Option<String>,
 
 
     /// 
@@ -48,23 +48,21 @@ pub struct CfnEventBusPolicy {
 
 
     /// 
-    /// An identifier string for the external account that you are granting permissions to. If you    later want to revoke the permission for this external account, specify this    StatementId when you run RemovePermission.
+    /// The name of the event bus associated with the rule. If you omit this, the default event    bus is used.
     /// 
-    /// NoteEach StatementId must be unique.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 64
+    /// Maximum: 256
     ///
-    /// Pattern: [a-zA-Z0-9-_]+
+    /// Pattern: [\.\-_A-Za-z0-9]+
     ///
     /// Update requires: Replacement
-    #[serde(rename = "StatementId")]
-    pub statement_id: String,
+    #[serde(rename = "EventBusName")]
+    pub event_bus_name: Option<String>,
 
 
     /// 
@@ -88,24 +86,6 @@ pub struct CfnEventBusPolicy {
 
 
     /// 
-    /// The action that you are enabling the other account to perform.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: events:[a-zA-Z]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: Option<String>,
-
-
-    /// 
     /// A JSON string that describes the permission policy statement. You can include a     Policy parameter in the request instead of using the StatementId,     Action, Principal, or Condition parameters.
     /// 
     /// Required: No
@@ -115,6 +95,26 @@ pub struct CfnEventBusPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Statement")]
     pub statement: Option<serde_json::Value>,
+
+
+    /// 
+    /// An identifier string for the external account that you are granting permissions to. If you    later want to revoke the permission for this external account, specify this    StatementId when you run RemovePermission.
+    /// 
+    /// NoteEach StatementId must be unique.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [a-zA-Z0-9-_]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StatementId")]
+    pub statement_id: String,
 
 }
 
@@ -139,18 +139,6 @@ pub struct Condition {
 
 
     /// 
-    /// Specifies the type of condition. Currently the only supported value is     StringEquals.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
     /// Specifies the key for the condition. Currently the only supported key is     aws:PrincipalOrgID.
     /// 
     /// Required: No
@@ -160,6 +148,18 @@ pub struct Condition {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<String>,
+
+
+    /// 
+    /// Specifies the type of condition. Currently the only supported value is     StringEquals.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
 
 
     /// 

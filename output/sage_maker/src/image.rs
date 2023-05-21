@@ -6,22 +6,6 @@ pub struct CfnImage {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to perform       tasks on your behalf.
-    /// 
-    /// Length Constraints: Minimum length of 20. Maximum length of       2048.
-    /// 
-    /// Pattern:         ^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageRoleArn")]
-    pub image_role_arn: String,
-
-
-    /// 
     /// The description of the image.
     /// 
     /// Length Constraints: Minimum length of 1. Maximum length of       512.
@@ -70,6 +54,22 @@ pub struct CfnImage {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to perform       tasks on your behalf.
+    /// 
+    /// Length Constraints: Minimum length of 20. Maximum length of       2048.
+    /// 
+    /// Pattern:         ^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageRoleArn")]
+    pub image_role_arn: String,
+
+
+    /// 
     /// A list of key-value pairs to apply to this resource.
     /// 
     /// Array Members: Minimum number of 0 items. Maximum number of 50       items.
@@ -109,17 +109,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -128,6 +117,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

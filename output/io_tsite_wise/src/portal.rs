@@ -6,15 +6,15 @@ pub struct CfnPortal {
 
 
     /// 
-    /// A description for the portal.
+    /// Contains the configuration information of an alarm created in an AWS IoT SiteWise Monitor portal.  You can use the alarm to monitor an asset property and get notified when the asset property value is outside a specified range.  For more information, see Monitoring with alarms in the         AWS IoT SiteWise Application Guide.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Alarms
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PortalDescription")]
-    pub portal_description: Option<String>,
+    #[serde(rename = "Alarms")]
+    pub alarms: Option<Alarms>,
 
 
     /// 
@@ -29,30 +29,6 @@ pub struct CfnPortal {
     /// Update requires: No interruption
     #[serde(rename = "NotificationSenderEmail")]
     pub notification_sender_email: Option<String>,
-
-
-    /// 
-    /// A friendly name for the portal.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PortalName")]
-    pub portal_name: String,
-
-
-    /// 
-    /// A list of key-value pairs that contain metadata for the portal. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -86,15 +62,27 @@ pub struct CfnPortal {
 
 
     /// 
-    /// Contains the configuration information of an alarm created in an AWS IoT SiteWise Monitor portal.  You can use the alarm to monitor an asset property and get notified when the asset property value is outside a specified range.  For more information, see Monitoring with alarms in the         AWS IoT SiteWise Application Guide.
+    /// A description for the portal.
     /// 
     /// Required: No
     ///
-    /// Type: Alarms
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Alarms")]
-    pub alarms: Option<Alarms>,
+    #[serde(rename = "PortalDescription")]
+    pub portal_description: Option<String>,
+
+
+    /// 
+    /// A friendly name for the portal.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PortalName")]
+    pub portal_name: String,
 
 
     /// 
@@ -107,6 +95,18 @@ pub struct CfnPortal {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
+
+
+    /// 
+    /// A list of key-value pairs that contain metadata for the portal. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -168,17 +168,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -187,6 +176,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

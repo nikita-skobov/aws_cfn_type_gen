@@ -6,6 +6,50 @@ pub struct CfnLocationSMB {
 
 
     /// 
+    /// The Amazon Resource Names (ARNs) of agents to use for a Server Message Block (SMB)    location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
+
+
+    /// 
+    /// Specifies the Windows domain name that your SMB file server belongs to.
+    /// 
+    /// For more information, see required permissions for SMB locations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 253
+    ///
+    /// Pattern: ^[A-Za-z0-9]((\.|-+)?[A-Za-z0-9]){0,252}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Domain")]
+    pub domain: Option<String>,
+
+
+    /// 
+    /// Specifies the version of the SMB protocol that DataSync uses to access your SMB    file server.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MountOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MountOptions")]
+    pub mount_options: Option<MountOptions>,
+
+
+    /// 
     /// The password of the user who can mount the share and has the permissions to access files and    folders in the SMB share.
     /// 
     /// Required: No
@@ -19,38 +63,6 @@ pub struct CfnLocationSMB {
     /// Update requires: No interruption
     #[serde(rename = "Password")]
     pub password: Option<String>,
-
-
-    /// 
-    /// The user who can mount the share and has the permissions to access files and folders in the    SMB share.
-    /// 
-    /// For information about choosing a user name that ensures sufficient permissions to files,       folders, and metadata, see user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 104
-    ///
-    /// Pattern: ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "User")]
-    pub user: String,
-
-
-    /// 
-    /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -92,47 +104,35 @@ pub struct CfnLocationSMB {
 
 
     /// 
-    /// Specifies the Windows domain name that your SMB file server belongs to.
-    /// 
-    /// For more information, see required permissions for SMB locations.
+    /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Maximum: 253
-    ///
-    /// Pattern: ^[A-Za-z0-9]((\.|-+)?[A-Za-z0-9]){0,252}$
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Domain")]
-    pub domain: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
-    /// The Amazon Resource Names (ARNs) of agents to use for a Server Message Block (SMB)    location.
+    /// The user who can mount the share and has the permissions to access files and folders in the    SMB share.
+    /// 
+    /// For information about choosing a user name that ensures sufficient permissions to files,       folders, and metadata, see user.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 4
+    /// Maximum: 104
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
-
-
-    /// 
-    /// Specifies the version of the SMB protocol that DataSync uses to access your SMB    file server.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MountOptions
+    /// Pattern: ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MountOptions")]
-    pub mount_options: Option<MountOptions>,
+    #[serde(rename = "User")]
+    pub user: String,
 
 }
 
@@ -219,17 +219,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -238,6 +227,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

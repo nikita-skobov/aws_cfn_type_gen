@@ -6,17 +6,15 @@ pub struct CfnNetworkInterfacePermission {
 
 
     /// 
-    /// The type of permission to grant: INSTANCE-ATTACH or       EIP-ASSOCIATE.
+    /// The AWS account ID.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: EIP-ASSOCIATE | INSTANCE-ATTACH
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "Permission")]
-    pub permission: NetworkInterfacePermissionPermissionEnum,
+    #[serde(rename = "AwsAccountId")]
+    pub aws_account_id: String,
 
 
     /// 
@@ -32,15 +30,17 @@ pub struct CfnNetworkInterfacePermission {
 
 
     /// 
-    /// The AWS account ID.
+    /// The type of permission to grant: INSTANCE-ATTACH or       EIP-ASSOCIATE.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Allowed values: EIP-ASSOCIATE | INSTANCE-ATTACH
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "AwsAccountId")]
-    pub aws_account_id: String,
+    #[serde(rename = "Permission")]
+    pub permission: NetworkInterfacePermissionPermissionEnum,
 
 }
 

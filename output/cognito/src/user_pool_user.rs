@@ -6,6 +6,36 @@ pub struct CfnUserPoolUser {
 
 
     /// 
+    /// A map of custom key-value pairs that you can provide as input for the custom workflow that    is invoked by the pre sign-up trigger.
+    /// 
+    /// You create custom workflows by assigning AWS Lambda functions to user pool    triggers. When you create a UserPoolUser resource and include the     ClientMetadata property, Amazon Cognito invokes the function that is assigned    to the pre sign-up trigger. When Amazon Cognito invokes this function, it    passes a JSON payload, which the function receives as input. This payload contains a     clientMetadata attribute, which provides the data that you assigned to the    ClientMetadata property. In your function code in AWS Lambda, you can process    the clientMetadata value to enhance your workflow for your specific needs.
+    /// 
+    /// For more information, see Customizing User Pool Workflows with Lambda Triggers in the Amazon     Cognito Developer Guide.
+    /// 
+    /// NoteTake the following limitations into consideration when you use the ClientMetadata     parameter:                        Amazon Cognito does not store the ClientMetadata value. This data is available only       to AWS Lambda triggers that are assigned to a user pool to support custom       workflows. If your user pool configuration does not include triggers, the ClientMetadata       parameter serves no purpose.          Amazon Cognito does not validate the ClientMetadata value.          Amazon Cognito does not encrypt the the ClientMetadata value, so don't use it to       provide sensitive information.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClientMetadata")]
+    pub client_metadata: Option<serde_json::Value>,
+
+
+    /// 
+    /// Specify "EMAIL" if email will be used to send the welcome message.       Specify "SMS" if the phone number will be used. The default value is         "SMS". You can specify more than one value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DesiredDeliveryMediums")]
+    pub desired_delivery_mediums: Option<Vec<String>>,
+
+
+    /// 
     /// This parameter is used only if the phone_number_verified or         email_verified attribute is set to True. Otherwise, it is       ignored.
     /// 
     /// If this parameter is set to True and the phone number or email address       specified in the UserAttributes parameter already exists as an alias with a different       user, the API call will migrate the alias from the previous user to the newly created       user. The previous user will no longer be able to log in using that alias.
@@ -19,6 +49,20 @@ pub struct CfnUserPoolUser {
     /// Update requires: Replacement
     #[serde(rename = "ForceAliasCreation")]
     pub force_alias_creation: Option<bool>,
+
+
+    /// 
+    /// Set to RESEND to resend the invitation message to a user that already       exists and reset the expiration limit on the user's account. Set to         SUPPRESS to suppress sending the message. You can specify only one       value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: RESEND | SUPPRESS
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MessageAction")]
+    pub message_action: Option<UserPoolUserMessageActionEnum>,
 
 
     /// 
@@ -60,38 +104,6 @@ pub struct CfnUserPoolUser {
 
 
     /// 
-    /// A map of custom key-value pairs that you can provide as input for the custom workflow that    is invoked by the pre sign-up trigger.
-    /// 
-    /// You create custom workflows by assigning AWS Lambda functions to user pool    triggers. When you create a UserPoolUser resource and include the     ClientMetadata property, Amazon Cognito invokes the function that is assigned    to the pre sign-up trigger. When Amazon Cognito invokes this function, it    passes a JSON payload, which the function receives as input. This payload contains a     clientMetadata attribute, which provides the data that you assigned to the    ClientMetadata property. In your function code in AWS Lambda, you can process    the clientMetadata value to enhance your workflow for your specific needs.
-    /// 
-    /// For more information, see Customizing User Pool Workflows with Lambda Triggers in the Amazon     Cognito Developer Guide.
-    /// 
-    /// NoteTake the following limitations into consideration when you use the ClientMetadata     parameter:                        Amazon Cognito does not store the ClientMetadata value. This data is available only       to AWS Lambda triggers that are assigned to a user pool to support custom       workflows. If your user pool configuration does not include triggers, the ClientMetadata       parameter serves no purpose.          Amazon Cognito does not validate the ClientMetadata value.          Amazon Cognito does not encrypt the the ClientMetadata value, so don't use it to       provide sensitive information.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClientMetadata")]
-    pub client_metadata: Option<serde_json::Value>,
-
-
-    /// 
-    /// Set to RESEND to resend the invitation message to a user that already       exists and reset the expiration limit on the user's account. Set to         SUPPRESS to suppress sending the message. You can specify only one       value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: RESEND | SUPPRESS
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MessageAction")]
-    pub message_action: Option<UserPoolUserMessageActionEnum>,
-
-
-    /// 
     /// The username for the user. Must be unique within the user pool. Must be a UTF-8 string       between 1 and 128 characters. After the user is created, the username can't be       changed.
     /// 
     /// Required: No
@@ -123,18 +135,6 @@ pub struct CfnUserPoolUser {
     /// Update requires: Replacement
     #[serde(rename = "ValidationData")]
     pub validation_data: Option<Vec<AttributeType>>,
-
-
-    /// 
-    /// Specify "EMAIL" if email will be used to send the welcome message.       Specify "SMS" if the phone number will be used. The default value is         "SMS". You can specify more than one value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DesiredDeliveryMediums")]
-    pub desired_delivery_mediums: Option<Vec<String>>,
 
 }
 

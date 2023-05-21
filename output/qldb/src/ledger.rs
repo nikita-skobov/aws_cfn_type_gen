@@ -8,58 +8,6 @@ pub struct CfnLedger {
 
 
     /// 
-    /// The name of the ledger that you want to create. The name must be unique among all of the     ledgers in your AWS account in the current Region.
-    /// 
-    /// Naming constraints for ledger names are defined in Quotas in Amazon QLDB     in the Amazon QLDB Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 32
-    ///
-    /// Pattern: (?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The permissions mode to assign to the ledger that you want to create. This parameter can     have one of the following values:
-    /// 
-    /// ALLOW_ALL: A legacy permissions mode that enables access control with        API-level granularity for ledgers.        This mode allows users who have the SendCommand API permission for        this ledger to run all PartiQL commands (hence, ALLOW_ALL) on any tables        in the specified ledger. This mode disregards any table-level or command-level IAM        permissions policies that you create for the ledger.                        STANDARD: (Recommended) A permissions mode that        enables access control with finer granularity for ledgers, tables, and PartiQL        commands.        By default, this mode denies all user requests to run any PartiQL commands on any        tables in this ledger. To allow PartiQL commands to run, you must create IAM        permissions policies for specific table resources and PartiQL actions, in addition to        the SendCommand API permission for the ledger. For information, see          Getting          started with the standard permissions mode in the Amazon QLDB          Developer Guide.
-    /// 
-    /// NoteWe strongly recommend using the STANDARD permissions mode to maximize       the security of your ledger data.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALLOW_ALL | STANDARD
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PermissionsMode")]
-    pub permissions_mode: LedgerPermissionsModeEnum,
-
-
-    /// 
     /// Specifies whether the ledger is protected from being deleted by any user. If not defined during    ledger creation, this feature is enabled (true) by default.
     /// 
     /// If deletion protection is enabled, you must first disable it before you can delete the    ledger. You can disable it by calling the UpdateLedger operation to set this parameter to false.
@@ -97,6 +45,58 @@ pub struct CfnLedger {
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
     pub kms_key: Option<String>,
+
+
+    /// 
+    /// The name of the ledger that you want to create. The name must be unique among all of the     ledgers in your AWS account in the current Region.
+    /// 
+    /// Naming constraints for ledger names are defined in Quotas in Amazon QLDB     in the Amazon QLDB Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 32
+    ///
+    /// Pattern: (?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The permissions mode to assign to the ledger that you want to create. This parameter can     have one of the following values:
+    /// 
+    /// ALLOW_ALL: A legacy permissions mode that enables access control with        API-level granularity for ledgers.        This mode allows users who have the SendCommand API permission for        this ledger to run all PartiQL commands (hence, ALLOW_ALL) on any tables        in the specified ledger. This mode disregards any table-level or command-level IAM        permissions policies that you create for the ledger.                        STANDARD: (Recommended) A permissions mode that        enables access control with finer granularity for ledgers, tables, and PartiQL        commands.        By default, this mode denies all user requests to run any PartiQL commands on any        tables in this ledger. To allow PartiQL commands to run, you must create IAM        permissions policies for specific table resources and PartiQL actions, in addition to        the SendCommand API permission for the ledger. For information, see          Getting          started with the standard permissions mode in the Amazon QLDB          Developer Guide.
+    /// 
+    /// NoteWe strongly recommend using the STANDARD permissions mode to maximize       the security of your ledger data.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALLOW_ALL | STANDARD
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PermissionsMode")]
+    pub permissions_mode: LedgerPermissionsModeEnum,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

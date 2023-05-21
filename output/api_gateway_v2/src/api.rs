@@ -6,15 +6,15 @@ pub struct CfnApi {
 
 
     /// 
-    /// The collection of tags. Each tag element is associated with a given resource.
+    /// An API key selection expression. Supported only for WebSocket APIs. See API Key Selection Expressions.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "ApiKeySelectionExpression")]
+    pub api_key_selection_expression: Option<String>,
 
 
     /// 
@@ -30,30 +30,6 @@ pub struct CfnApi {
 
 
     /// 
-    /// The description of the API.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The API protocol. Valid values are WEBSOCKET or HTTP. Required unless you specify an OpenAPI definition for Body or S3BodyLocation.
-    ///
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProtocolType")]
-    pub protocol_type: Option<String>,
-
-
-    /// 
     /// The OpenAPI definition. Supported only for HTTP APIs. To import an HTTP API, you must specify a Body or BodyS3Location. If you specify        a Body or BodyS3Location, don't specify CloudFormation resources such as AWS::ApiGatewayV2::Authorizer or AWS::ApiGatewayV2::Route.        API Gateway doesn't support the combination of OpenAPI and CloudFormation resources.
     /// 
     /// Required: Conditional
@@ -66,51 +42,15 @@ pub struct CfnApi {
 
 
     /// 
-    /// The route selection expression for the API. For HTTP APIs, the routeSelectionExpression must be ${request.method} ${request.path}. If not provided, this will be the default for HTTP APIs. This property is required for WebSocket APIs.
+    /// The S3 location of an OpenAPI definition. Supported only for HTTP APIs. To import an HTTP API, you must specify a Body or BodyS3Location. If you specify      a Body or BodyS3Location, don't specify CloudFormation resources such as AWS::ApiGatewayV2::Authorizer or AWS::ApiGatewayV2::Route.      API Gateway doesn't support the combination of OpenAPI and CloudFormation resources.
     /// 
     /// Required: Conditional
     ///
-    /// Type: String
+    /// Type: BodyS3Location
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RouteSelectionExpression")]
-    pub route_selection_expression: Option<String>,
-
-
-    /// 
-    /// A version identifier for the API.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
-
-
-    /// 
-    /// This property is part of quick create. If you don't specify a          routeKey, a default route of $default is created. The          $default route acts as a catch-all for any request made to your API,        for a particular stage. The $default route key can't be modified. You        can add routes after creating the API, and you can update the route keys of        additional routes. Supported only for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RouteKey")]
-    pub route_key: Option<String>,
-
-
-    /// 
-    /// Avoid validating models when creating a deployment. Supported only for WebSocket APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisableSchemaValidation")]
-    pub disable_schema_validation: Option<bool>,
+    #[serde(rename = "BodyS3Location")]
+    pub body_s3_location: Option<BodyS3Location>,
 
 
     /// 
@@ -138,6 +78,18 @@ pub struct CfnApi {
 
 
     /// 
+    /// The description of the API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// Specifies whether clients can invoke your API by using the default             execute-api endpoint. By default, clients can invoke your API           with the default https://{api_id}.execute-api.{region}.amazonaws.com endpoint.           To require that clients use a custom domain name to invoke your API, disable the           default endpoint.
     /// 
     /// Required: No
@@ -147,6 +99,18 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "DisableExecuteApiEndpoint")]
     pub disable_execute_api_endpoint: Option<bool>,
+
+
+    /// 
+    /// Avoid validating models when creating a deployment. Supported only for WebSocket APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisableSchemaValidation")]
+    pub disable_schema_validation: Option<bool>,
 
 
     /// 
@@ -174,27 +138,51 @@ pub struct CfnApi {
 
 
     /// 
-    /// The S3 location of an OpenAPI definition. Supported only for HTTP APIs. To import an HTTP API, you must specify a Body or BodyS3Location. If you specify      a Body or BodyS3Location, don't specify CloudFormation resources such as AWS::ApiGatewayV2::Authorizer or AWS::ApiGatewayV2::Route.      API Gateway doesn't support the combination of OpenAPI and CloudFormation resources.
-    /// 
+    /// The API protocol. Valid values are WEBSOCKET or HTTP. Required unless you specify an OpenAPI definition for Body or S3BodyLocation.
+    ///
     /// Required: Conditional
     ///
-    /// Type: BodyS3Location
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "BodyS3Location")]
-    pub body_s3_location: Option<BodyS3Location>,
+    /// Update requires: Replacement
+    #[serde(rename = "ProtocolType")]
+    pub protocol_type: Option<String>,
 
 
     /// 
-    /// An API key selection expression. Supported only for WebSocket APIs. See API Key Selection Expressions.
+    /// This property is part of quick create. If you don't specify a          routeKey, a default route of $default is created. The          $default route acts as a catch-all for any request made to your API,        for a particular stage. The $default route key can't be modified. You        can add routes after creating the API, and you can update the route keys of        additional routes. Supported only for HTTP APIs.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ApiKeySelectionExpression")]
-    pub api_key_selection_expression: Option<String>,
+    #[serde(rename = "RouteKey")]
+    pub route_key: Option<String>,
+
+
+    /// 
+    /// The route selection expression for the API. For HTTP APIs, the routeSelectionExpression must be ${request.method} ${request.path}. If not provided, this will be the default for HTTP APIs. This property is required for WebSocket APIs.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RouteSelectionExpression")]
+    pub route_selection_expression: Option<String>,
+
+
+    /// 
+    /// The collection of tags. Each tag element is associated with a given resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -207,6 +195,18 @@ pub struct CfnApi {
     /// Update requires: No interruption
     #[serde(rename = "Target")]
     pub target: Option<String>,
+
+
+    /// 
+    /// A version identifier for the API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
 
 }
 
@@ -226,30 +226,6 @@ impl cfn_resources::CfnResource for CfnApi {
 /// The BodyS3Location property specifies an S3 location from which to          import an OpenAPI definition. Supported only for HTTP APIs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BodyS3Location {
-
-
-    /// 
-    /// The version of the S3 object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
-
-
-    /// 
-    /// The key of the S3 object. Required if you specify a BodyS3Location for an API.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
 
 
     /// 
@@ -275,6 +251,30 @@ pub struct BodyS3Location {
     #[serde(rename = "Etag")]
     pub etag: Option<String>,
 
+
+    /// 
+    /// The key of the S3 object. Required if you specify a BodyS3Location for an API.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
+
+
+    /// 
+    /// The version of the S3 object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
+
 }
 
 
@@ -283,42 +283,6 @@ pub struct BodyS3Location {
 /// The Cors property specifies a CORS configuration for an API.          Supported only for HTTP APIs. See Configuring CORS for more information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Cors {
-
-
-    /// 
-    /// The number of seconds that the browser should cache preflight request results. Supported only for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxAge")]
-    pub max_age: Option<i64>,
-
-
-    /// 
-    /// Represents a collection of allowed origins. Supported only for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowOrigins")]
-    pub allow_origins: Option<Vec<String>>,
-
-
-    /// 
-    /// Represents a collection of allowed headers. Supported only for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowHeaders")]
-    pub allow_headers: Option<Vec<String>>,
 
 
     /// 
@@ -334,6 +298,18 @@ pub struct Cors {
 
 
     /// 
+    /// Represents a collection of allowed headers. Supported only for HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowHeaders")]
+    pub allow_headers: Option<Vec<String>>,
+
+
+    /// 
     /// Represents a collection of allowed HTTP methods. Supported only for HTTP APIs.
     /// 
     /// Required: No
@@ -346,6 +322,18 @@ pub struct Cors {
 
 
     /// 
+    /// Represents a collection of allowed origins. Supported only for HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowOrigins")]
+    pub allow_origins: Option<Vec<String>>,
+
+
+    /// 
     /// Represents a collection of exposed headers. Supported only for HTTP APIs.
     /// 
     /// Required: No
@@ -355,6 +343,18 @@ pub struct Cors {
     /// Update requires: No interruption
     #[serde(rename = "ExposeHeaders")]
     pub expose_headers: Option<Vec<String>>,
+
+
+    /// 
+    /// The number of seconds that the browser should cache preflight request results. Supported only for HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxAge")]
+    pub max_age: Option<i64>,
 
 }
 

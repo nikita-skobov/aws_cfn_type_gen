@@ -6,18 +6,6 @@ pub struct CfnVpcLink {
 
 
     /// 
-    /// A list of subnet IDs to include in the VPC link.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
-
-
-    /// 
     /// The name of the VPC link.
     ///
     /// Required: Yes
@@ -39,6 +27,18 @@ pub struct CfnVpcLink {
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// A list of subnet IDs to include in the VPC link.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 
     /// 

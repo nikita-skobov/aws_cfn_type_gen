@@ -6,18 +6,6 @@ pub struct CfnDevice {
 
 
     /// 
-    /// A Boolean value indicating whether the device is enabled (true) or not (false).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-
-    /// 
     /// The ID of the device, such as G030PX0312744DWM.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnDevice {
     /// Update requires: Replacement
     #[serde(rename = "DeviceId")]
     pub device_id: String,
+
+
+    /// 
+    /// A Boolean value indicating whether the device is enabled (true) or not (false).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
 
 }
 

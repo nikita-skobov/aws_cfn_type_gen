@@ -6,15 +6,15 @@ pub struct CfnImageRecipe {
 
 
     /// 
-    /// The components of the image recipe. Components are orchestration documents that define a 			sequence of steps for downloading, installing, configuring, and testing software packages. 			They also define validation and security hardening steps. A component is defined using a 			YAML document format.
+    /// Before you create a new AMI, Image Builder launches temporary Amazon EC2 instances to build and test 			your image configuration. Instance configuration adds a layer of control over those 			instances. You can define settings and add scripts to run when an instance is launched 			from your AMI.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of ComponentConfiguration
+    /// Type: AdditionalInstanceConfiguration
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Components")]
-    pub components: Vec<ComponentConfiguration>,
+    /// Update requires: No interruption
+    #[serde(rename = "AdditionalInstanceConfiguration")]
+    pub additional_instance_configuration: Option<AdditionalInstanceConfiguration>,
 
 
     /// 
@@ -30,7 +30,19 @@ pub struct CfnImageRecipe {
 
 
     /// 
-    /// The working directory to be used during build and test workflows.
+    /// The components of the image recipe. Components are orchestration documents that define a 			sequence of steps for downloading, installing, configuring, and testing software packages. 			They also define validation and security hardening steps. A component is defined using a 			YAML document format.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of ComponentConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Components")]
+    pub components: Vec<ComponentConfiguration>,
+
+
+    /// 
+    /// The description of the image recipe.
     /// 
     /// Required: No
     ///
@@ -41,20 +53,8 @@ pub struct CfnImageRecipe {
     /// Maximum: 1024
     ///
     /// Update requires: Replacement
-    #[serde(rename = "WorkingDirectory")]
-    pub working_directory: Option<String>,
-
-
-    /// 
-    /// Before you create a new AMI, Image Builder launches temporary Amazon EC2 instances to build and test 			your image configuration. Instance configuration adds a layer of control over those 			instances. You can define settings and add scripts to run when an instance is launched 			from your AMI.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AdditionalInstanceConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdditionalInstanceConfiguration")]
-    pub additional_instance_configuration: Option<AdditionalInstanceConfiguration>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -69,6 +69,22 @@ pub struct CfnImageRecipe {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// The parent image of the image recipe. The string must be either an Image ARN or an AMI ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ParentImage")]
+    pub parent_image: String,
 
 
     /// 
@@ -98,23 +114,7 @@ pub struct CfnImageRecipe {
 
 
     /// 
-    /// The parent image of the image recipe. The string must be either an Image ARN or an AMI ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ParentImage")]
-    pub parent_image: String,
-
-
-    /// 
-    /// The description of the image recipe.
+    /// The working directory to be used during build and test workflows.
     /// 
     /// Required: No
     ///
@@ -125,8 +125,8 @@ pub struct CfnImageRecipe {
     /// Maximum: 1024
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "WorkingDirectory")]
+    pub working_directory: Option<String>,
 
 }
 
@@ -143,50 +143,23 @@ impl cfn_resources::CfnResource for CfnImageRecipe {
 }
 
 
-/// Contains a key/value pair that sets the named component parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ComponentParameter {
-
-
-    /// 
-    /// Sets the value for the named component parameter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: Vec<String>,
-
-
-    /// 
-    /// The name of the component parameter to set.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [^\x00]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}
-
-
-
-
 /// In addition to your infrastructure configuration, these settings provide an extra 			layer of control over your build instances. You can also specify commands to run on 			launch for all of your build instances.
 ///
 /// Image Builder does not automatically install the Systems Manager agent on Windows instances. If your base 			image includes the Systems Manager agent, then the AMI that you create will also include the 			agent. For Linux instances, if the base image does not already include the Systems Manager agent, 			Image Builder installs it. For Linux instances where Image Builder installs the Systems Manager agent, you can 			choose whether to keep it for the AMI that you create.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AdditionalInstanceConfiguration {
+
+
+    /// 
+    /// Contains settings for the Systems Manager agent on your build instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SystemsManagerAgent
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SystemsManagerAgent")]
+    pub systems_manager_agent: Option<SystemsManagerAgent>,
 
 
     /// 
@@ -209,18 +182,6 @@ pub struct AdditionalInstanceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "UserDataOverride")]
     pub user_data_override: Option<String>,
-
-
-    /// 
-    /// Contains settings for the Systems Manager agent on your build instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SystemsManagerAgent
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SystemsManagerAgent")]
-    pub systems_manager_agent: Option<SystemsManagerAgent>,
 
 }
 
@@ -262,6 +223,45 @@ pub struct ComponentConfiguration {
 
 
 
+/// Contains a key/value pair that sets the named component parameter.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ComponentParameter {
+
+
+    /// 
+    /// The name of the component parameter to set.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [^\x00]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// Sets the value for the named component parameter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: Vec<String>,
+
+}
+
+
+
+
 /// The image recipe EBS instance block device specification includes the Amazon     EBS-specific block device mapping specifications for the image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EbsInstanceBlockDeviceSpecification {
@@ -280,6 +280,18 @@ pub struct EbsInstanceBlockDeviceSpecification {
 
 
     /// 
+    /// Use to configure device encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Encrypted")]
+    pub encrypted: Option<bool>,
+
+
+    /// 
     /// Use to configure device IOPS.
     /// 
     /// Required: No
@@ -293,6 +305,38 @@ pub struct EbsInstanceBlockDeviceSpecification {
     /// Update requires: Replacement
     #[serde(rename = "Iops")]
     pub iops: Option<i64>,
+
+
+    /// 
+    /// Use to configure the KMS key to use when encrypting the device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// The snapshot that defines the device contents.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotId")]
+    pub snapshot_id: Option<String>,
 
 
     /// 
@@ -328,34 +372,6 @@ pub struct EbsInstanceBlockDeviceSpecification {
 
 
     /// 
-    /// The snapshot that defines the device contents.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotId")]
-    pub snapshot_id: Option<String>,
-
-
-    /// 
-    /// Use to configure device encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Encrypted")]
-    pub encrypted: Option<bool>,
-
-
-    /// 
     /// Overrides the volume type of the device.
     /// 
     /// Required: No
@@ -367,22 +383,6 @@ pub struct EbsInstanceBlockDeviceSpecification {
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
     pub volume_type: Option<EbsInstanceBlockDeviceSpecificationVolumeTypeEnum>,
-
-
-    /// 
-    /// Use to configure the KMS key to use when encrypting the device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
 
 }
 
@@ -434,38 +434,6 @@ pub struct InstanceBlockDeviceMapping {
 
 
     /// 
-    /// Manages the instance ephemeral devices.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VirtualName")]
-    pub virtual_name: Option<String>,
-
-
-    /// 
-    /// Enter an empty string to remove a mapping from the parent image.
-    /// 
-    /// The following is an example of an empty string value in the NoDevice field.
-    /// 
-    /// NoDevice:""
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NoDevice")]
-    pub no_device: Option<String>,
-
-
-    /// 
     /// The device to which these mappings apply.
     /// 
     /// Required: No
@@ -491,6 +459,38 @@ pub struct InstanceBlockDeviceMapping {
     /// Update requires: Replacement
     #[serde(rename = "Ebs")]
     pub ebs: Option<EbsInstanceBlockDeviceSpecification>,
+
+
+    /// 
+    /// Enter an empty string to remove a mapping from the parent image.
+    /// 
+    /// The following is an example of an empty string value in the NoDevice field.
+    /// 
+    /// NoDevice:""
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NoDevice")]
+    pub no_device: Option<String>,
+
+
+    /// 
+    /// Manages the instance ephemeral devices.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VirtualName")]
+    pub virtual_name: Option<String>,
 
 }
 

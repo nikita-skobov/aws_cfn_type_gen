@@ -20,6 +20,18 @@ pub struct CfnSecretTargetAttachment {
 
 
     /// 
+    /// The ID of the database or cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetId")]
+    pub target_id: String,
+
+
+    /// 
     /// A string that defines the type of service or database associated with the secret. This    value instructs Secrets Manager how to update the secret with the details of the service or    database. This value must be one of the following:
     /// 
     /// AWS::RDS::DBInstance        AWS::RDS::DBCluster        AWS::Redshift::Cluster        AWS::DocDB::DBInstance        AWS::DocDB::DBCluster
@@ -31,18 +43,6 @@ pub struct CfnSecretTargetAttachment {
     /// Update requires: No interruption
     #[serde(rename = "TargetType")]
     pub target_type: String,
-
-
-    /// 
-    /// The ID of the database or cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetId")]
-    pub target_id: String,
 
 }
 

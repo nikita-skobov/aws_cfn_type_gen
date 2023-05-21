@@ -17,21 +17,21 @@ pub struct CfnConnectPeer {
 
 
     /// 
-    /// The IP address of the Connect peer.
+    /// The ID of the attachment to connect.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Minimum: 0
     ///
     /// Maximum: 50
     ///
-    /// Pattern: [\s\S]*
+    /// Pattern: ^attachment-([0-9a-f]{8,17})$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PeerAddress")]
-    pub peer_address: String,
+    #[serde(rename = "ConnectAttachmentId")]
+    pub connect_attachment_id: String,
 
 
     /// 
@@ -65,21 +65,21 @@ pub struct CfnConnectPeer {
 
 
     /// 
-    /// The ID of the attachment to connect.
+    /// The IP address of the Connect peer.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 1
     ///
     /// Maximum: 50
     ///
-    /// Pattern: ^attachment-([0-9a-f]{8,17})$
+    /// Pattern: [\s\S]*
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ConnectAttachmentId")]
-    pub connect_attachment_id: String,
+    #[serde(rename = "PeerAddress")]
+    pub peer_address: String,
 
 
     /// 
@@ -108,9 +108,48 @@ impl cfn_resources::CfnResource for CfnConnectPeer {
 }
 
 
+/// Describes the BGP options.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BgpOptions {
+
+
+    /// 
+    /// The Peer ASN of the BGP.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PeerAsn")]
+    pub peer_asn: Option<f64>,
+
+}
+
+
+
+
 /// Describes a core network BGP configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectPeerBgpConfiguration {
+
+
+    /// 
+    /// The address of a core network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CoreNetworkAddress")]
+    pub core_network_address: Option<String>,
 
 
     /// 
@@ -144,24 +183,6 @@ pub struct ConnectPeerBgpConfiguration {
 
 
     /// 
-    /// The address of a core network.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CoreNetworkAddress")]
-    pub core_network_address: Option<String>,
-
-
-    /// 
     /// The ASN of the Connect peer.
     /// 
     /// Required: No
@@ -177,30 +198,21 @@ pub struct ConnectPeerBgpConfiguration {
 
 
 
-/// Describes the BGP options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct BgpOptions {
-
-
-    /// 
-    /// The Peer ASN of the BGP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PeerAsn")]
-    pub peer_asn: Option<f64>,
-
-}
-
-
-
-
 /// Describes a core network Connect peer configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectPeerConfiguration {
+
+
+    /// 
+    /// The Connect peer BGP configurations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ConnectPeerBgpConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BgpConfigurations")]
+    pub bgp_configurations: Option<Vec<ConnectPeerBgpConfiguration>>,
 
 
     /// 
@@ -219,32 +231,6 @@ pub struct ConnectPeerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAddress")]
     pub core_network_address: Option<String>,
-
-
-    /// 
-    /// The Connect peer BGP configurations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ConnectPeerBgpConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BgpConfigurations")]
-    pub bgp_configurations: Option<Vec<ConnectPeerBgpConfiguration>>,
-
-
-    /// 
-    /// The protocol used for a Connect peer configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GRE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<ConnectPeerConfigurationProtocolEnum>,
 
 
     /// 
@@ -275,6 +261,20 @@ pub struct ConnectPeerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PeerAddress")]
     pub peer_address: Option<String>,
+
+
+    /// 
+    /// The protocol used for a Connect peer configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GRE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<ConnectPeerConfigurationProtocolEnum>,
 
 }
 

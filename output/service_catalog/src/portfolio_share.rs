@@ -22,18 +22,6 @@ pub struct CfnPortfolioShare {
 
 
     /// 
-    /// Indicates whether TagOptions sharing is enabled or disabled for the portfolio share.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ShareTagOptions")]
-    pub share_tag_options: Option<bool>,
-
-
-    /// 
     /// The AWS account ID. For example, 123456789012.
     /// 
     /// Required: Yes
@@ -63,6 +51,18 @@ pub struct CfnPortfolioShare {
     /// Update requires: Replacement
     #[serde(rename = "PortfolioId")]
     pub portfolio_id: String,
+
+
+    /// 
+    /// Indicates whether TagOptions sharing is enabled or disabled for the portfolio share.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ShareTagOptions")]
+    pub share_tag_options: Option<bool>,
 
 }
 

@@ -8,30 +8,6 @@ pub struct CfnLaunch {
 
 
     /// 
-    /// The name for the launch. It can include up to 127 characters.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The name or ARN of the project that you want to create the launch in.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Project")]
-    pub project: String,
-
-
-    /// 
     /// An optional description for the launch.
     ///
     /// Required: No
@@ -41,18 +17,6 @@ pub struct CfnLaunch {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// An array of structures that define the traffic allocation percentages among the feature       variations during each step of the launch.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of StepConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduledSplitsConfig")]
-    pub scheduled_splits_config: Vec<StepConfig>,
 
 
     /// A structure that you can use to start and stop     the launch.
@@ -79,6 +43,42 @@ pub struct CfnLaunch {
 
 
     /// 
+    /// An array of structures that define the metrics that will be used to monitor       the launch performance. You can have up to three metric monitors in the array.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of MetricDefinitionObject
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricMonitors")]
+    pub metric_monitors: Option<Vec<MetricDefinitionObject>>,
+
+
+    /// 
+    /// The name for the launch. It can include up to 127 characters.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The name or ARN of the project that you want to create the launch in.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Project")]
+    pub project: String,
+
+
+    /// 
     /// When Evidently assigns a particular user session to a launch, it must use a randomization ID       to determine which variation the user session is served. This randomization ID is a combination of the entity ID       and randomizationSalt. If you omit randomizationSalt, Evidently uses       the launch name as the randomizationsSalt.
     ///
     /// Required: No
@@ -91,15 +91,15 @@ pub struct CfnLaunch {
 
 
     /// 
-    /// An array of structures that define the metrics that will be used to monitor       the launch performance. You can have up to three metric monitors in the array.
+    /// An array of structures that define the traffic allocation percentages among the feature       variations during each step of the launch.
     ///
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of MetricDefinitionObject
+    /// Type: List of StepConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MetricMonitors")]
-    pub metric_monitors: Option<Vec<MetricDefinitionObject>>,
+    #[serde(rename = "ScheduledSplitsConfig")]
+    pub scheduled_splits_config: Vec<StepConfig>,
 
 
     /// 
@@ -136,128 +136,43 @@ impl cfn_resources::CfnResource for CfnLaunch {
 }
 
 
-/// This structure defines a metric that you want to use to evaluate the variations       during a launch or experiment.
+/// Use this structure to start and stop     the launch.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MetricDefinitionObject {
+pub struct ExecutionStatusObject {
 
 
     /// 
-    /// The entity, such as a user or session, that does an action that causes a metric       value to be recorded. An example is userDetails.userID.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EntityIdKey")]
-    pub entity_id_key: String,
-
-
-    /// 
-    /// The EventBridge event pattern that defines how the metric is recorded.
-    /// 
-    /// For more information about EventBridge event patterns, see       Amazon EventBridge event patterns.
+    /// If you are using AWS CloudFormation to stop this       launch, specify either COMPLETED or CANCELLED here to indicate how to classify this       experiment. If you omit this parameter, the default of COMPLETED is used.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EventPattern")]
-    pub event_pattern: Option<String>,
+    #[serde(rename = "DesiredState")]
+    pub desired_state: Option<String>,
 
 
-    /// 
-    /// A label for the units that the metric is measuring.
+    /// If you are using AWS CloudFormation to stop this     launch, this is an optional field that you can use to record why the launch is being stopped or cancelled.
     ///
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UnitLabel")]
-    pub unit_label: Option<String>,
+    #[serde(rename = "Reason")]
+    pub reason: Option<String>,
 
 
-    /// 
-    /// The value that is tracked to produce the metric.
+    /// To start the launch now, specify START     for this parameter. If this launch is currently running and you want to stop it now, specify STOP.
     ///
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ValueKey")]
-    pub value_key: String,
-
-
-    /// 
-    /// A name for the metric. It can include up to 255 characters.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
-
-}
-
-
-
-
-/// A structure that defines one launch group in a launch. A launch group is a variation of       the feature that you are including in the launch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LaunchGroupObject {
-
-
-    /// 
-    /// The feature that this launch is using.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Feature")]
-    pub feature: String,
-
-
-    /// 
-    /// A description of the launch group.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The feature variation to use for this launch group.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Variation")]
-    pub variation: String,
-
-
-    /// 
-    /// A name for this launch group. It can include up to 127 characters.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GroupName")]
-    pub group_name: String,
+    #[serde(rename = "Status")]
+    pub status: String,
 
 }
 
@@ -299,9 +214,198 @@ pub struct GroupToWeight {
 
 
 
+/// A structure that defines one launch group in a launch. A launch group is a variation of       the feature that you are including in the launch.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LaunchGroupObject {
+
+
+    /// 
+    /// A description of the launch group.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The feature that this launch is using.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Feature")]
+    pub feature: String,
+
+
+    /// 
+    /// A name for this launch group. It can include up to 127 characters.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GroupName")]
+    pub group_name: String,
+
+
+    /// 
+    /// The feature variation to use for this launch group.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Variation")]
+    pub variation: String,
+
+}
+
+
+
+
+/// This structure defines a metric that you want to use to evaluate the variations       during a launch or experiment.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MetricDefinitionObject {
+
+
+    /// 
+    /// The entity, such as a user or session, that does an action that causes a metric       value to be recorded. An example is userDetails.userID.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EntityIdKey")]
+    pub entity_id_key: String,
+
+
+    /// 
+    /// The EventBridge event pattern that defines how the metric is recorded.
+    /// 
+    /// For more information about EventBridge event patterns, see       Amazon EventBridge event patterns.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventPattern")]
+    pub event_pattern: Option<String>,
+
+
+    /// 
+    /// A name for the metric. It can include up to 255 characters.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
+
+
+    /// 
+    /// A label for the units that the metric is measuring.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UnitLabel")]
+    pub unit_label: Option<String>,
+
+
+    /// 
+    /// The value that is tracked to produce the metric.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ValueKey")]
+    pub value_key: String,
+
+}
+
+
+
+
+/// Use this structure to specify different traffic splits for one or more audience segments. A       segment is a portion of your audience that share one or more characteristics. Examples could be       Chrome browser users, users in Europe, or Firefox browser users in Europe who also fit       other criteria that your application collects, such as age.
+///
+/// For more information,       see         Use segments to focus your audience.
+///
+/// This sructure is an array of up to six segment override objects. Each of these objects specifies a       segment that you have already created, and defines the traffic split for that segment.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SegmentOverride {
+
+
+    /// 
+    /// A number indicating the order to use to evaluate segment overrides, if there are more than       one. Segment overrides with lower numbers are evaluated first.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EvaluationOrder")]
+    pub evaluation_order: i64,
+
+
+    /// 
+    /// The ARN of the segment to use for this override.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Segment")]
+    pub segment: String,
+
+
+    /// 
+    /// The traffic allocation percentages among the feature variations to assign to this segment.       This is a set of key-value pairs. The keys are variation names. The values       represent the amount of traffic to allocate to that variation for this segment.       This is expressed in thousandths of a percent, so a weight of 50000 represents 50% of traffic.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of GroupToWeight
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weights")]
+    pub weights: Vec<GroupToWeight>,
+
+}
+
+
+
+
 /// A structure that defines when each step of the launch is to start, and how much launch traffic     is to be allocated to each variation during each step.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StepConfig {
+
+
+    /// 
+    /// An array of structures that define how much launch traffic to allocate to each launch group     during this step of the launch.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: List of GroupToWeight
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GroupWeights")]
+    pub group_weights: Vec<GroupToWeight>,
 
 
     /// 
@@ -319,18 +423,6 @@ pub struct StepConfig {
 
 
     /// 
-    /// An array of structures that define how much launch traffic to allocate to each launch group     during this step of the launch.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of GroupToWeight
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GroupWeights")]
-    pub group_weights: Vec<GroupToWeight>,
-
-
-    /// 
     /// The date and time to start this step of the launch. Use UTC format, yyyy-MM-ddTHH:mm:ssZ. For example,       2025-11-25T23:59:59Z
     ///
     /// Required: Yes
@@ -340,49 +432,6 @@ pub struct StepConfig {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     pub start_time: String,
-
-}
-
-
-
-
-/// Use this structure to start and stop     the launch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ExecutionStatusObject {
-
-
-    /// 
-    /// If you are using AWS CloudFormation to stop this       launch, specify either COMPLETED or CANCELLED here to indicate how to classify this       experiment. If you omit this parameter, the default of COMPLETED is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DesiredState")]
-    pub desired_state: Option<String>,
-
-
-    /// To start the launch now, specify START     for this parameter. If this launch is currently running and you want to stop it now, specify STOP.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: String,
-
-
-    /// If you are using AWS CloudFormation to stop this     launch, this is an optional field that you can use to record why the launch is being stopped or cancelled.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Reason")]
-    pub reason: Option<String>,
 
 }
 
@@ -420,55 +469,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Use this structure to specify different traffic splits for one or more audience segments. A       segment is a portion of your audience that share one or more characteristics. Examples could be       Chrome browser users, users in Europe, or Firefox browser users in Europe who also fit       other criteria that your application collects, such as age.
-///
-/// For more information,       see         Use segments to focus your audience.
-///
-/// This sructure is an array of up to six segment override objects. Each of these objects specifies a       segment that you have already created, and defines the traffic split for that segment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SegmentOverride {
-
-
-    /// 
-    /// The traffic allocation percentages among the feature variations to assign to this segment.       This is a set of key-value pairs. The keys are variation names. The values       represent the amount of traffic to allocate to that variation for this segment.       This is expressed in thousandths of a percent, so a weight of 50000 represents 50% of traffic.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of GroupToWeight
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weights")]
-    pub weights: Vec<GroupToWeight>,
-
-
-    /// 
-    /// A number indicating the order to use to evaluate segment overrides, if there are more than       one. Segment overrides with lower numbers are evaluated first.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EvaluationOrder")]
-    pub evaluation_order: i64,
-
-
-    /// 
-    /// The ARN of the segment to use for this override.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Segment")]
-    pub segment: String,
 
 }
 

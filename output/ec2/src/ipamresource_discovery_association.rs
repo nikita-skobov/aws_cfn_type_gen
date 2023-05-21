@@ -6,18 +6,6 @@ pub struct CfnIPAMResourceDiscoveryAssociation {
 
 
     /// 
-    /// The resource discovery ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpamResourceDiscoveryId")]
-    pub ipam_resource_discovery_id: String,
-
-
-    /// 
     /// The IPAM ID.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnIPAMResourceDiscoveryAssociation {
     /// Update requires: Replacement
     #[serde(rename = "IpamId")]
     pub ipam_id: String,
+
+
+    /// 
+    /// The resource discovery ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpamResourceDiscoveryId")]
+    pub ipam_resource_discovery_id: String,
 
 
     /// 

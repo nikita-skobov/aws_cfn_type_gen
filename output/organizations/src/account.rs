@@ -22,66 +22,6 @@ pub struct CfnAccount {
 
 
     /// 
-    /// The name of an IAM role that AWS Organizations automatically preconfigures in the new member       account. This role trusts the management account, allowing users in the management       account to assume the role, as permitted by the management account administrator. The       role has administrator permissions in the new member account.
-    /// 
-    /// If you don't specify this parameter, the role name defaults to         OrganizationAccountAccessRole.
-    /// 
-    /// For more information about how to use this role to access the member account, see the       following links:
-    /// 
-    /// Accessing and Administering the Member Accounts in Your             Organization in the            AWS Organizations User Guide                       Steps 2 and 3 in Tutorial:             Delegate Access Across AWS accounts Using IAM Roles in the             IAM User Guide
-    /// 
-    /// The regex pattern that   is used to validate this parameter. The pattern can include uppercase   letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [\w+=,.@-]{1,64}
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "RoleName")]
-    pub role_name: Option<String>,
-
-
-    /// 
-    /// A list of tags that you want to attach to the newly created account. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
-    /// 
-    /// NoteIf any one of the tags is not valid or if you exceed the maximum allowed number of         tags for an account, then the entire request fails and the account is not         created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The unique identifier (ID) of the root or organizational unit (OU) that you want to       create the new account in. If you don't specify this parameter, the         ParentId defaults to the root ID.
-    /// 
-    /// This parameter only accepts a string array with one string value.
-    /// 
-    /// The regex pattern for a parent ID       string requires one of the following:
-    /// 
-    /// Root - A string that begins with "r-" followed           by from 4 to 32 lowercase letters or digits.                          Organizational unit (OU) - A string that begins           with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the           root that the OU is in). This string is followed by a second "-" dash and from 8           to 32 additional lowercase letters or digits.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^(r-[0-9a-z]{4,32})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParentIds")]
-    pub parent_ids: Option<Vec<String>>,
-
-
-    /// 
     /// The account name given to the account when it was created.
     /// 
     /// Required: Yes
@@ -117,6 +57,66 @@ pub struct CfnAccount {
     /// Update requires: Updates are not supported.
     #[serde(rename = "Email")]
     pub email: String,
+
+
+    /// 
+    /// The unique identifier (ID) of the root or organizational unit (OU) that you want to       create the new account in. If you don't specify this parameter, the         ParentId defaults to the root ID.
+    /// 
+    /// This parameter only accepts a string array with one string value.
+    /// 
+    /// The regex pattern for a parent ID       string requires one of the following:
+    /// 
+    /// Root - A string that begins with "r-" followed           by from 4 to 32 lowercase letters or digits.                          Organizational unit (OU) - A string that begins           with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the           root that the OU is in). This string is followed by a second "-" dash and from 8           to 32 additional lowercase letters or digits.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^(r-[0-9a-z]{4,32})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParentIds")]
+    pub parent_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of an IAM role that AWS Organizations automatically preconfigures in the new member       account. This role trusts the management account, allowing users in the management       account to assume the role, as permitted by the management account administrator. The       role has administrator permissions in the new member account.
+    /// 
+    /// If you don't specify this parameter, the role name defaults to         OrganizationAccountAccessRole.
+    /// 
+    /// For more information about how to use this role to access the member account, see the       following links:
+    /// 
+    /// Accessing and Administering the Member Accounts in Your             Organization in the            AWS Organizations User Guide                       Steps 2 and 3 in Tutorial:             Delegate Access Across AWS accounts Using IAM Roles in the             IAM User Guide
+    /// 
+    /// The regex pattern that   is used to validate this parameter. The pattern can include uppercase   letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [\w+=,.@-]{1,64}
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "RoleName")]
+    pub role_name: Option<String>,
+
+
+    /// 
+    /// A list of tags that you want to attach to the newly created account. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
+    /// 
+    /// NoteIf any one of the tags is not valid or if you exceed the maximum allowed number of         tags for an account, then the entire request fails and the account is not         created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

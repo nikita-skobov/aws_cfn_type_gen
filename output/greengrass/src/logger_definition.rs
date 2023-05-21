@@ -8,18 +8,6 @@ pub struct CfnLoggerDefinition {
 
 
     /// 
-    /// The name of the logger definition.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The logger definition version to include when the logger definition is created.          A logger definition version contains a list of          logger property types.
     /// 
     /// NoteTo associate a logger definition version after the logger definition is created, 				   create an AWS::Greengrass::LoggerDefinitionVersion 				   resource and specify the ID of this logger definition.
@@ -31,6 +19,18 @@ pub struct CfnLoggerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
     pub initial_version: Option<LoggerDefinitionVersion>,
+
+
+    /// 
+    /// The name of the logger definition.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -71,15 +71,15 @@ pub struct Logger {
 
 
     /// 
-    /// The amount of file space (in KB) to use when writing logs to the local file system. 				 This property does not apply for CloudWatch Logs.
+    /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Space")]
-    pub space: Option<i64>,
+    #[serde(rename = "Component")]
+    pub component: String,
 
 
     /// 
@@ -95,30 +95,6 @@ pub struct Logger {
 
 
     /// 
-    /// The storage mechanism for log events. Valid values are FileSystem or AWSCloudWatch. 				 When AWSCloudWatch is used, log events are sent to CloudWatch Logs. 				 When FileSystem is used, log events are stored on the local file system.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Component")]
-    pub component: String,
-
-
-    /// 
     /// The log-level threshold. Log events below this threshold are filtered out and aren't stored. 				 Valid values are DEBUG, INFO (recommended), WARN, 				 ERROR, or FATAL.
     /// 
     /// Required: Yes
@@ -128,6 +104,30 @@ pub struct Logger {
     /// Update requires: Replacement
     #[serde(rename = "Level")]
     pub level: String,
+
+
+    /// 
+    /// The amount of file space (in KB) to use when writing logs to the local file system. 				 This property does not apply for CloudWatch Logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Space")]
+    pub space: Option<i64>,
+
+
+    /// 
+    /// The storage mechanism for log events. Valid values are FileSystem or AWSCloudWatch. 				 When AWSCloudWatch is used, log events are sent to CloudWatch Logs. 				 When FileSystem is used, log events are stored on the local file system.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }
 

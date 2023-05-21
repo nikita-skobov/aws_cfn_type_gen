@@ -6,17 +6,41 @@ pub struct CfnApiCache {
 
 
     /// 
-    /// TTL in seconds for cache entries.
+    /// Caching behavior.
     /// 
-    /// Valid values are 1–3,600 seconds.
+    /// FULL_REQUEST_CACHING: All requests are fully        cached.                        PER_RESOLVER_CACHING: Individual resolvers        that you specify are cached.
     /// 
     /// Required: Yes
     ///
-    /// Type: Double
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Ttl")]
-    pub ttl: f64,
+    #[serde(rename = "ApiCachingBehavior")]
+    pub api_caching_behavior: String,
+
+
+    /// 
+    /// The GraphQL API ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
+
+
+    /// 
+    /// At-rest encryption flag for cache. You cannot update this setting after creation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AtRestEncryptionEnabled")]
+    pub at_rest_encryption_enabled: Option<bool>,
 
 
     /// 
@@ -32,15 +56,17 @@ pub struct CfnApiCache {
 
 
     /// 
-    /// The GraphQL API ID.
+    /// TTL in seconds for cache entries.
+    /// 
+    /// Valid values are 1–3,600 seconds.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Double
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Ttl")]
+    pub ttl: f64,
 
 
     /// 
@@ -61,32 +87,6 @@ pub struct CfnApiCache {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
-
-    /// 
-    /// At-rest encryption flag for cache. You cannot update this setting after creation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AtRestEncryptionEnabled")]
-    pub at_rest_encryption_enabled: Option<bool>,
-
-
-    /// 
-    /// Caching behavior.
-    /// 
-    /// FULL_REQUEST_CACHING: All requests are fully        cached.                        PER_RESOLVER_CACHING: Individual resolvers        that you specify are cached.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApiCachingBehavior")]
-    pub api_caching_behavior: String,
 
 }
 

@@ -6,7 +6,21 @@ pub struct CfnEndpointGroup {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the listener.
+    /// The list of endpoint objects.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of EndpointConfiguration
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndpointConfigurations")]
+    pub endpoint_configurations: Option<Vec<EndpointConfiguration>>,
+
+
+    /// 
+    /// The AWS Regions where the endpoint group is located.
     /// 
     /// Required: Yes
     ///
@@ -15,8 +29,8 @@ pub struct CfnEndpointGroup {
     /// Maximum: 255
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ListenerArn")]
-    pub listener_arn: String,
+    #[serde(rename = "EndpointGroupRegion")]
+    pub endpoint_group_region: String,
 
 
     /// 
@@ -33,52 +47,6 @@ pub struct CfnEndpointGroup {
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckIntervalSeconds")]
     pub health_check_interval_seconds: Option<i64>,
-
-
-    /// 
-    /// The percentage of traffic to send to an AWS Regions. Additional traffic is distributed to other endpoint groups for 			this listener.
-    /// 
-    /// Use this action to increase (dial up) or decrease (dial down) traffic to a specific Region. The percentage is 			applied to the traffic that would otherwise have been routed to the Region based on optimal routing.
-    /// 
-    /// The default value is 100.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TrafficDialPercentage")]
-    pub traffic_dial_percentage: Option<f64>,
-
-
-    /// 
-    /// The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an 			unhealthy endpoint to healthy. The default value is 3.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThresholdCount")]
-    pub threshold_count: Option<i64>,
-
-
-    /// 
-    /// Allows you to override the destination ports used to route traffic to an endpoint. 			Using a port override lets you map a list of external destination ports (that your 			users send traffic to) to a list of internal destination ports that you want an application 			endpoint to receive traffic on.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PortOverride
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PortOverrides")]
-    pub port_overrides: Option<Vec<PortOverride>>,
 
 
     /// 
@@ -130,7 +98,7 @@ pub struct CfnEndpointGroup {
 
 
     /// 
-    /// The AWS Regions where the endpoint group is located.
+    /// The Amazon Resource Name (ARN) of the listener.
     /// 
     /// Required: Yes
     ///
@@ -139,22 +107,54 @@ pub struct CfnEndpointGroup {
     /// Maximum: 255
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EndpointGroupRegion")]
-    pub endpoint_group_region: String,
+    #[serde(rename = "ListenerArn")]
+    pub listener_arn: String,
 
 
     /// 
-    /// The list of endpoint objects.
+    /// Allows you to override the destination ports used to route traffic to an endpoint. 			Using a port override lets you map a list of external destination ports (that your 			users send traffic to) to a list of internal destination ports that you want an application 			endpoint to receive traffic on.
     /// 
     /// Required: No
     ///
-    /// Type: List of EndpointConfiguration
+    /// Type: List of PortOverride
     ///
     /// Maximum: 10
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EndpointConfigurations")]
-    pub endpoint_configurations: Option<Vec<EndpointConfiguration>>,
+    #[serde(rename = "PortOverrides")]
+    pub port_overrides: Option<Vec<PortOverride>>,
+
+
+    /// 
+    /// The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an 			unhealthy endpoint to healthy. The default value is 3.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThresholdCount")]
+    pub threshold_count: Option<i64>,
+
+
+    /// 
+    /// The percentage of traffic to send to an AWS Regions. Additional traffic is distributed to other endpoint groups for 			this listener.
+    /// 
+    /// Use this action to increase (dial up) or decrease (dial down) traffic to a specific Region. The percentage is 			applied to the traffic that would otherwise have been routed to the Region based on optimal routing.
+    /// 
+    /// The default value is 100.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TrafficDialPercentage")]
+    pub traffic_dial_percentage: Option<f64>,
 
 }
 
@@ -194,6 +194,63 @@ impl cfn_resources::CfnResource for CfnEndpointGroup {
 }
 
 
+/// A complex type for endpoints. A resource must be valid and active when you add it as an endpoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EndpointConfiguration {
+
+
+    /// 
+    /// Indicates whether client IP address preservation is enabled for an Application Load Balancer endpoint. 			The value is true or false. The default value is true for new accelerators.
+    /// 
+    /// If the value is set to true, the client's IP address is preserved in the X-Forwarded-For request header as 			traffic travels to applications on the Application Load Balancer endpoint fronted by the accelerator.
+    /// 
+    /// For more information, see 			Preserve Client IP Addresses in the AWS Global Accelerator Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientIPPreservationEnabled")]
+    pub client_ippreservation_enabled: Option<bool>,
+
+
+    /// 
+    /// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon 			Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address 			allocation ID. For Amazon EC2 instances, this is the EC2 instance ID. A resource must be valid and active 			when you add it as an endpoint.
+    /// 
+    /// An Application Load Balancer can be either internal or internet-facing.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndpointId")]
+    pub endpoint_id: String,
+
+
+    /// 
+    /// The weight associated with the endpoint. When you add weights to endpoints, you configure Global Accelerator to route traffic 			based on proportions that you specify. For example, you might specify endpoint weights of 4, 5, 5, and 6 (sum=20). The 			result is that 4/20 of your traffic, on average, is routed to the first endpoint, 5/20 is routed both to the second 			and third endpoints, and 6/20 is routed to the last endpoint. For more information, see Endpoint Weights in the 		    	AWS Global Accelerator Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
+
+}
+
+
+
+
 /// Override specific listener ports used to route traffic to endpoints that are part of an endpoint group. 			For example, you can create a port override in which the listener 			receives user traffic on ports 80 and 443, but your accelerator routes that traffic to ports 1080 			and 1443, respectively, on the endpoints.
 ///
 /// For more information, see 			Port overrides in the AWS Global Accelerator Developer Guide.
@@ -231,63 +288,6 @@ pub struct PortOverride {
     /// Update requires: No interruption
     #[serde(rename = "ListenerPort")]
     pub listener_port: i64,
-
-}
-
-
-
-
-/// A complex type for endpoints. A resource must be valid and active when you add it as an endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EndpointConfiguration {
-
-
-    /// 
-    /// The weight associated with the endpoint. When you add weights to endpoints, you configure Global Accelerator to route traffic 			based on proportions that you specify. For example, you might specify endpoint weights of 4, 5, 5, and 6 (sum=20). The 			result is that 4/20 of your traffic, on average, is routed to the first endpoint, 5/20 is routed both to the second 			and third endpoints, and 6/20 is routed to the last endpoint. For more information, see Endpoint Weights in the 		    	AWS Global Accelerator Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
-
-
-    /// 
-    /// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon 			Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address 			allocation ID. For Amazon EC2 instances, this is the EC2 instance ID. A resource must be valid and active 			when you add it as an endpoint.
-    /// 
-    /// An Application Load Balancer can be either internal or internet-facing.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndpointId")]
-    pub endpoint_id: String,
-
-
-    /// 
-    /// Indicates whether client IP address preservation is enabled for an Application Load Balancer endpoint. 			The value is true or false. The default value is true for new accelerators.
-    /// 
-    /// If the value is set to true, the client's IP address is preserved in the X-Forwarded-For request header as 			traffic travels to applications on the Application Load Balancer endpoint fronted by the accelerator.
-    /// 
-    /// For more information, see 			Preserve Client IP Addresses in the AWS Global Accelerator Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientIPPreservationEnabled")]
-    pub client_ippreservation_enabled: Option<bool>,
 
 }
 

@@ -6,6 +6,32 @@ pub struct CfnLocationNFS {
 
 
     /// 
+    /// The NFS mount options that DataSync can use to mount your NFS share.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MountOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MountOptions")]
+    pub mount_options: Option<MountOptions>,
+
+
+    /// 
+    /// Contains a list of Amazon Resource Names (ARNs) of agents that are used to connect to    an NFS server.
+    /// 
+    /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: OnPremConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OnPremConfig")]
+    pub on_prem_config: OnPremConfig,
+
+
+    /// 
     /// The name of the NFS server. This value is the IP address or Domain Name Service (DNS)    name of the NFS server. An agent that is installed on-premises uses this hostname to mount the    NFS server in a network.
     /// 
     /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
@@ -50,18 +76,6 @@ pub struct CfnLocationNFS {
 
 
     /// 
-    /// The NFS mount options that DataSync can use to mount your NFS share.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MountOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MountOptions")]
-    pub mount_options: Option<MountOptions>,
-
-
-    /// 
     /// The key-value pair that represents the tag that you want to add to the location. The    value can be an empty string. We recommend using tags to name your resources.
     /// 
     /// Required: No
@@ -73,20 +87,6 @@ pub struct CfnLocationNFS {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Contains a list of Amazon Resource Names (ARNs) of agents that are used to connect to    an NFS server.
-    /// 
-    /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: OnPremConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnPremConfig")]
-    pub on_prem_config: OnPremConfig,
 
 }
 
@@ -101,66 +101,6 @@ impl cfn_resources::CfnResource for CfnLocationNFS {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
-/// A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)    location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OnPremConfig {
-
-
-    /// 
-    /// ARNs of the agents to use for an NFS location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
-
-}
-
-
 
 
 /// The NFS mount options that DataSync can use to mount your NFS share.
@@ -216,4 +156,64 @@ impl Default for MountOptionsVersionEnum {
         MountOptionsVersionEnum::Automatic
     }
 }
+
+
+
+/// A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)    location.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OnPremConfig {
+
+
+    /// 
+    /// ARNs of the agents to use for an NFS location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
 

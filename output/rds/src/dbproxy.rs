@@ -10,18 +10,6 @@ pub struct CfnDBProxy {
 
 
     /// 
-    /// A Boolean parameter that specifies whether Transport Layer Security (TLS) encryption is required for connections to the proxy.     By enabling this setting, you can enforce encrypted TLS connections to the proxy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RequireTLS")]
-    pub require_tls: Option<bool>,
-
-
-    /// 
     /// The authorization mechanism that the proxy uses.
     /// 
     /// Required: Yes
@@ -34,18 +22,6 @@ pub struct CfnDBProxy {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in AWS Secrets Manager.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
     /// The identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
     /// 
     /// Required: Yes
@@ -55,32 +31,6 @@ pub struct CfnDBProxy {
     /// Update requires: Replacement
     #[serde(rename = "DBProxyName")]
     pub dbproxy_name: String,
-
-
-    /// 
-    /// One or more VPC security group IDs to associate with the new proxy.
-    /// 
-    /// If you plan to update the resource, don't specify VPC security groups in a shared VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSecurityGroupIds")]
-    pub vpc_security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The number of seconds that a connection to the proxy can be inactive before the proxy disconnects it. You can set this     value higher or lower than the connection timeout limit for the associated database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IdleClientTimeout")]
-    pub idle_client_timeout: Option<i64>,
 
 
     /// 
@@ -110,6 +60,42 @@ pub struct CfnDBProxy {
 
 
     /// 
+    /// The number of seconds that a connection to the proxy can be inactive before the proxy disconnects it. You can set this     value higher or lower than the connection timeout limit for the associated database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdleClientTimeout")]
+    pub idle_client_timeout: Option<i64>,
+
+
+    /// 
+    /// A Boolean parameter that specifies whether Transport Layer Security (TLS) encryption is required for connections to the proxy.     By enabling this setting, you can enforce encrypted TLS connections to the proxy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequireTLS")]
+    pub require_tls: Option<bool>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in AWS Secrets Manager.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
     /// An optional set of key-value pairs to associate arbitrary data of your choosing with the proxy.
     /// 
     /// Required: No
@@ -119,6 +105,20 @@ pub struct CfnDBProxy {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagFormat>>,
+
+
+    /// 
+    /// One or more VPC security group IDs to associate with the new proxy.
+    /// 
+    /// If you plan to update the resource, don't specify VPC security groups in a shared VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcSecurityGroupIds")]
+    pub vpc_security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -150,6 +150,20 @@ impl cfn_resources::CfnResource for CfnDBProxy {
 /// Specifies the details of authentication used by a proxy to log in as a specific       database user.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuthFormat {
+
+
+    /// 
+    /// The type of authentication that the proxy uses for connections from the proxy to the       underlying database.
+    /// 
+    /// Valid Values: SECRETS
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthScheme")]
+    pub auth_scheme: Option<AuthFormatAuthSchemeEnum>,
 
 
     /// 
@@ -201,37 +215,8 @@ pub struct AuthFormat {
     #[serde(rename = "SecretArn")]
     pub secret_arn: Option<String>,
 
-
-    /// 
-    /// The type of authentication that the proxy uses for connections from the proxy to the       underlying database.
-    /// 
-    /// Valid Values: SECRETS
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthScheme")]
-    pub auth_scheme: Option<AuthFormatAuthSchemeEnum>,
-
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AuthFormatAuthSchemeEnum {
-
-    /// SECRETS
-    #[serde(rename = "SECRETS")]
-    Secrets,
-
-}
-
-impl Default for AuthFormatAuthSchemeEnum {
-    fn default() -> Self {
-        AuthFormatAuthSchemeEnum::Secrets
-    }
-}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AuthFormatIAMAuthEnum {
@@ -256,23 +241,26 @@ impl Default for AuthFormatIAMAuthEnum {
     }
 }
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AuthFormatAuthSchemeEnum {
+
+    /// SECRETS
+    #[serde(rename = "SECRETS")]
+    Secrets,
+
+}
+
+impl Default for AuthFormatAuthSchemeEnum {
+    fn default() -> Self {
+        AuthFormatAuthSchemeEnum::Secrets
+    }
+}
+
 
 
 /// Metadata assigned to a DB proxy consisting of a key-value pair.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagFormat {
-
-
-    /// 
-    /// A value is the optional value of the tag. The string value can be 1-256 Unicode       characters in length and can't be prefixed with aws:. The string can contain only the       set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:       "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
 
 
     /// 
@@ -285,6 +273,18 @@ pub struct TagFormat {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<String>,
+
+
+    /// 
+    /// A value is the optional value of the tag. The string value can be 1-256 Unicode       characters in length and can't be prefixed with aws:. The string can contain only the       set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:       "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 

@@ -32,18 +32,6 @@ pub struct CfnAttributeGroup {
 
 
     /// 
-    /// Key-value pairs you can use to associate with the attribute group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
     /// The name of the attribute group.
     /// 
     /// Required: Yes
@@ -59,6 +47,18 @@ pub struct CfnAttributeGroup {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// Key-value pairs you can use to associate with the attribute group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
 

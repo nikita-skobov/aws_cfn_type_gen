@@ -8,18 +8,6 @@ pub struct CfnLayer {
 
 
     /// 
-    /// Whether to automatically assign an Elastic IP     address to the layer's instances. For more information, see How to Edit     a Layer.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoAssignElasticIps")]
-    pub auto_assign_elastic_ips: bool,
-
-
-    /// 
     /// One or more user-defined key-value pairs to be added to the stack attributes.
     /// 
     /// To create a cluster layer, set the EcsClusterArn attribute to the cluster's ARN.
@@ -31,6 +19,18 @@ pub struct CfnLayer {
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// Whether to automatically assign an Elastic IP     address to the layer's instances. For more information, see How to Edit     a Layer.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoAssignElasticIps")]
+    pub auto_assign_elastic_ips: bool,
 
 
     /// 
@@ -46,54 +46,6 @@ pub struct CfnLayer {
 
 
     /// 
-    /// A LifeCycleEventConfiguration object that you can use to configure the Shutdown event to    specify an execution timeout and enable or disable Elastic Load Balancer connection    draining.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LifecycleEventConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LifecycleEventConfiguration")]
-    pub lifecycle_event_configuration: Option<LifecycleEventConfiguration>,
-
-
-    /// 
-    /// A LayerCustomRecipes object that specifies the layer custom recipes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Recipes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomRecipes")]
-    pub custom_recipes: Option<Recipes>,
-
-
-    /// 
-    /// A VolumeConfigurations object that describes the layer's Amazon EBS volumes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of VolumeConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VolumeConfigurations")]
-    pub volume_configurations: Option<Vec<VolumeConfiguration>>,
-
-
-    /// 
-    /// The layer stack ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StackId")]
-    pub stack_id: String,
-
-
-    /// 
     /// The ARN of an IAM profile to be used for the layer's EC2 instances. For more information      about IAM ARNs, see Using Identifiers.
     /// 
     /// Required: No
@@ -103,32 +55,6 @@ pub struct CfnLayer {
     /// Update requires: No interruption
     #[serde(rename = "CustomInstanceProfileArn")]
     pub custom_instance_profile_arn: Option<String>,
-
-
-    /// 
-    /// For custom layers only, use this parameter to specify the layer's short name, which is used internally by      AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your      app files are installed. It can have a maximum of 32 characters, which are limited to the alphanumeric      characters, '-', '_', and '.'.
-    /// 
-    /// Built-in layer short names are defined by AWS OpsWorks Stacks. For more information, see the      Layer Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Shortname")]
-    pub shortname: String,
-
-
-    /// 
-    /// An array containing the layer custom security group IDs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomSecurityGroupIds")]
-    pub custom_security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -144,27 +70,39 @@ pub struct CfnLayer {
 
 
     /// 
-    /// The layer name, which is used by the console. Layer names can be a maximum of 32 characters.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// Specifies one or more sets of tags (key–value pairs) to associate with this AWS OpsWorks layer.      Use tags to manage your resources.
+    /// A LayerCustomRecipes object that specifies the layer custom recipes.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Recipes
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "CustomRecipes")]
+    pub custom_recipes: Option<Recipes>,
+
+
+    /// 
+    /// An array containing the layer custom security group IDs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomSecurityGroupIds")]
+    pub custom_security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// Whether to disable auto healing for the layer.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableAutoHealing")]
+    pub enable_auto_healing: bool,
 
 
     /// 
@@ -182,6 +120,18 @@ pub struct CfnLayer {
 
 
     /// 
+    /// A LifeCycleEventConfiguration object that you can use to configure the Shutdown event to    specify an execution timeout and enable or disable Elastic Load Balancer connection    draining.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LifecycleEventConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LifecycleEventConfiguration")]
+    pub lifecycle_event_configuration: Option<LifecycleEventConfiguration>,
+
+
+    /// 
     /// The load-based scaling configuration for the AWS OpsWorks layer.
     /// 
     /// Required: No
@@ -191,6 +141,18 @@ pub struct CfnLayer {
     /// Update requires: No interruption
     #[serde(rename = "LoadBasedAutoScaling")]
     pub load_based_auto_scaling: Option<LoadBasedAutoScaling>,
+
+
+    /// 
+    /// The layer name, which is used by the console. Layer names can be a maximum of 32 characters.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -206,27 +168,41 @@ pub struct CfnLayer {
 
 
     /// 
-    /// Whether to use Amazon EBS-optimized instances.
+    /// For custom layers only, use this parameter to specify the layer's short name, which is used internally by      AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your      app files are installed. It can have a maximum of 32 characters, which are limited to the alphanumeric      characters, '-', '_', and '.'.
     /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UseEbsOptimizedInstances")]
-    pub use_ebs_optimized_instances: Option<bool>,
-
-
-    /// 
-    /// Whether to disable auto healing for the layer.
+    /// Built-in layer short names are defined by AWS OpsWorks Stacks. For more information, see the      Layer Reference.
     /// 
     /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnableAutoHealing")]
-    pub enable_auto_healing: bool,
+    #[serde(rename = "Shortname")]
+    pub shortname: String,
+
+
+    /// 
+    /// The layer stack ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StackId")]
+    pub stack_id: String,
+
+
+    /// 
+    /// Specifies one or more sets of tags (key–value pairs) to associate with this AWS OpsWorks layer.      Use tags to manage your resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -241,6 +217,30 @@ pub struct CfnLayer {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: LayerTypeEnum,
+
+
+    /// 
+    /// Whether to use Amazon EBS-optimized instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseEbsOptimizedInstances")]
+    pub use_ebs_optimized_instances: Option<bool>,
+
+
+    /// 
+    /// A VolumeConfigurations object that describes the layer's Amazon EBS volumes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of VolumeConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumeConfigurations")]
+    pub volume_configurations: Option<Vec<VolumeConfiguration>>,
 
 }
 
@@ -316,115 +316,89 @@ impl cfn_resources::CfnResource for CfnLayer {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or      stops load-based instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct AutoScalingThresholds {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
-/// Describes a layer's load-based auto scaling configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LoadBasedAutoScaling {
-
-
-    /// 
-    /// Whether load-based auto scaling is enabled for the layer.
+    /// The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enable")]
-    pub enable: Option<bool>,
+    #[serde(rename = "CpuThreshold")]
+    pub cpu_threshold: Option<f64>,
 
 
     /// 
-    /// An AutoScalingThresholds object that describes the downscaling configuration,      which defines how and when AWS OpsWorks Stacks reduces the number of instances.
+    /// The amount of time (in minutes) after a scaling event occurs that AWS OpsWorks Stacks should ignore metrics      and suppress additional scaling events. For example, AWS OpsWorks Stacks adds new instances following    an upscaling event but the instances won't start reducing the load until they have been booted    and configured. There is no point in raising additional scaling events during that operation,    which typically takes several minutes. IgnoreMetricsTime allows you to direct      AWS OpsWorks Stacks to suppress scaling events long enough to get the new instances online.
     /// 
     /// Required: No
     ///
-    /// Type: AutoScalingThresholds
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DownScaling")]
-    pub down_scaling: Option<AutoScalingThresholds>,
+    #[serde(rename = "IgnoreMetricsTime")]
+    pub ignore_metrics_time: Option<i64>,
 
 
     /// 
-    /// An AutoScalingThresholds object that describes the upscaling configuration,      which defines how and when AWS OpsWorks Stacks increases the number of instances.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AutoScalingThresholds
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UpScaling")]
-    pub up_scaling: Option<AutoScalingThresholds>,
-
-}
-
-
-
-
-/// The Shutdown event configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ShutdownEventConfiguration {
-
-
-    /// 
-    /// The time, in seconds, that AWS OpsWorks Stacks waits after triggering a Shutdown event before      shutting down an instance.
+    /// The number of instances to add or remove when the load exceeds a threshold.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ExecutionTimeout")]
-    pub execution_timeout: Option<i64>,
+    #[serde(rename = "InstanceCount")]
+    pub instance_count: Option<i64>,
 
 
     /// 
-    /// Whether to enable Elastic Load Balancing connection draining. For more information, see Connection Draining
+    /// The load threshold. A value of -1 disables the threshold. For more information about how load is computed,      see Load (computing).
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DelayUntilElbConnectionsDrained")]
-    pub delay_until_elb_connections_drained: Option<bool>,
+    #[serde(rename = "LoadThreshold")]
+    pub load_threshold: Option<f64>,
+
+
+    /// 
+    /// The memory utilization threshold, as a percent of the available memory. A value of -1 disables the threshold.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MemoryThreshold")]
+    pub memory_threshold: Option<f64>,
+
+
+    /// 
+    /// The amount of time, in minutes, that the load must exceed a threshold before more instances are added or removed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThresholdsWaitTime")]
+    pub thresholds_wait_time: Option<i64>,
 
 }
 
@@ -452,23 +426,56 @@ pub struct LifecycleEventConfiguration {
 
 
 
+/// Describes a layer's load-based auto scaling configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LoadBasedAutoScaling {
+
+
+    /// 
+    /// An AutoScalingThresholds object that describes the downscaling configuration,      which defines how and when AWS OpsWorks Stacks reduces the number of instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AutoScalingThresholds
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DownScaling")]
+    pub down_scaling: Option<AutoScalingThresholds>,
+
+
+    /// 
+    /// Whether load-based auto scaling is enabled for the layer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enable")]
+    pub enable: Option<bool>,
+
+
+    /// 
+    /// An AutoScalingThresholds object that describes the upscaling configuration,      which defines how and when AWS OpsWorks Stacks increases the number of instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AutoScalingThresholds
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UpScaling")]
+    pub up_scaling: Option<AutoScalingThresholds>,
+
+}
+
+
+
+
 /// AWS OpsWorks Stacks supports five    lifecycle events:     setup, configuration, deploy, undeploy, and shutdown. For      each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. In addition, you can provide      custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the    standard recipes. LayerCustomRecipes specifies the custom recipes for a    particular layer to be run in response to each of the five events.
 ///
 /// To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name,      which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in      the repository's phpapp2 folder.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Recipes {
-
-
-    /// 
-    /// An array of custom recipe names to be run following a undeploy event.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Undeploy")]
-    pub undeploy: Option<Vec<String>>,
 
 
     /// 
@@ -481,6 +488,18 @@ pub struct Recipes {
     /// Update requires: No interruption
     #[serde(rename = "Configure")]
     pub configure: Option<Vec<String>>,
+
+
+    /// 
+    /// An array of custom recipe names to be run following a deploy event.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Deploy")]
+    pub deploy: Option<Vec<String>>,
 
 
     /// 
@@ -508,104 +527,85 @@ pub struct Recipes {
 
 
     /// 
-    /// An array of custom recipe names to be run following a deploy event.
+    /// An array of custom recipe names to be run following a undeploy event.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Deploy")]
-    pub deploy: Option<Vec<String>>,
+    #[serde(rename = "Undeploy")]
+    pub undeploy: Option<Vec<String>>,
 
 }
 
 
 
 
-/// Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or      stops load-based instances.
+/// The Shutdown event configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AutoScalingThresholds {
+pub struct ShutdownEventConfiguration {
 
 
     /// 
-    /// The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CpuThreshold")]
-    pub cpu_threshold: Option<f64>,
-
-
-    /// 
-    /// The number of instances to add or remove when the load exceeds a threshold.
+    /// Whether to enable Elastic Load Balancing connection draining. For more information, see Connection Draining
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceCount")]
-    pub instance_count: Option<i64>,
+    #[serde(rename = "DelayUntilElbConnectionsDrained")]
+    pub delay_until_elb_connections_drained: Option<bool>,
 
 
     /// 
-    /// The memory utilization threshold, as a percent of the available memory. A value of -1 disables the threshold.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MemoryThreshold")]
-    pub memory_threshold: Option<f64>,
-
-
-    /// 
-    /// The load threshold. A value of -1 disables the threshold. For more information about how load is computed,      see Load (computing).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoadThreshold")]
-    pub load_threshold: Option<f64>,
-
-
-    /// 
-    /// The amount of time, in minutes, that the load must exceed a threshold before more instances are added or removed.
+    /// The time, in seconds, that AWS OpsWorks Stacks waits after triggering a Shutdown event before      shutting down an instance.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "ThresholdsWaitTime")]
-    pub thresholds_wait_time: Option<i64>,
+    #[serde(rename = "ExecutionTimeout")]
+    pub execution_timeout: Option<i64>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
 
 
     /// 
-    /// The amount of time (in minutes) after a scaling event occurs that AWS OpsWorks Stacks should ignore metrics      and suppress additional scaling events. For example, AWS OpsWorks Stacks adds new instances following    an upscaling event but the instances won't start reducing the load until they have been booted    and configured. There is no point in raising additional scaling events during that operation,    which typically takes several minutes. IgnoreMetricsTime allows you to direct      AWS OpsWorks Stacks to suppress scaling events long enough to get the new instances online.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IgnoreMetricsTime")]
-    pub ignore_metrics_time: Option<i64>,
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
@@ -618,29 +618,15 @@ pub struct VolumeConfiguration {
 
 
     /// 
-    /// The volume type. For more information, see      Amazon EBS Volume Types.
-    /// 
-    /// standard - Magnetic. Magnetic volumes must have a minimum size of 1 GiB and a maximum size of 1024 GiB.                        io1 - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size of 4 GiB and a maximum size of 16384 GiB.                        gp2 - General Purpose (SSD). General purpose volumes must have a minimum size of 1 GiB and a maximum size        of 16384 GiB.                        st1 - Throughput Optimized hard disk drive (HDD). Throughput optimized HDD volumes must have a          minimum size of 500 GiB and a maximum size of 16384 GiB.                        sc1 - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.
+    /// Specifies whether an Amazon EBS volume is encrypted. For more information,       see Amazon EBS Encryption.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VolumeType")]
-    pub volume_type: Option<String>,
-
-
-    /// 
-    /// The volume size.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Size")]
-    pub size: Option<i64>,
+    #[serde(rename = "Encrypted")]
+    pub encrypted: Option<bool>,
 
 
     /// 
@@ -658,6 +644,18 @@ pub struct VolumeConfiguration {
 
 
     /// 
+    /// The volume mount point. For example "/dev/sdh".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MountPoint")]
+    pub mount_point: Option<String>,
+
+
+    /// 
     /// The number of disks in the volume.
     /// 
     /// Required: No
@@ -667,18 +665,6 @@ pub struct VolumeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDisks")]
     pub number_of_disks: Option<i64>,
-
-
-    /// 
-    /// Specifies whether an Amazon EBS volume is encrypted. For more information,       see Amazon EBS Encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Encrypted")]
-    pub encrypted: Option<bool>,
 
 
     /// 
@@ -694,15 +680,29 @@ pub struct VolumeConfiguration {
 
 
     /// 
-    /// The volume mount point. For example "/dev/sdh".
+    /// The volume size.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Size")]
+    pub size: Option<i64>,
+
+
+    /// 
+    /// The volume type. For more information, see      Amazon EBS Volume Types.
+    /// 
+    /// standard - Magnetic. Magnetic volumes must have a minimum size of 1 GiB and a maximum size of 1024 GiB.                        io1 - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size of 4 GiB and a maximum size of 16384 GiB.                        gp2 - General Purpose (SSD). General purpose volumes must have a minimum size of 1 GiB and a maximum size        of 16384 GiB.                        st1 - Throughput Optimized hard disk drive (HDD). Throughput optimized HDD volumes must have a          minimum size of 500 GiB and a maximum size of 16384 GiB.                        sc1 - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MountPoint")]
-    pub mount_point: Option<String>,
+    #[serde(rename = "VolumeType")]
+    pub volume_type: Option<String>,
 
 }
 

@@ -6,18 +6,6 @@ pub struct CfnGlobalNetwork {
 
 
     /// 
-    /// The tags for the global network.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A description of the global network.
     /// 
     /// Constraints: Maximum length of 256 characters.
@@ -35,6 +23,18 @@ pub struct CfnGlobalNetwork {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The tags for the global network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

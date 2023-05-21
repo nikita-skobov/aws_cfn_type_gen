@@ -5,17 +5,6 @@
 pub struct CfnLocation {
 
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
     /// 
     /// The location's name.
     /// 
@@ -32,6 +21,17 @@ pub struct CfnLocation {
     /// Update requires: Replacement
     #[serde(rename = "LocationName")]
     pub location_name: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

@@ -65,6 +65,18 @@ pub struct Connector {
 
 
     /// 
+    /// A descriptive or arbitrary ID for the connector. This value must be unique within       the connector definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
+    /// 
     /// The parameters or configuration that the connector uses.
     /// 
     /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
@@ -76,18 +88,6 @@ pub struct Connector {
     /// Update requires: Replacement
     #[serde(rename = "Parameters")]
     pub parameters: Option<serde_json::Value>,
-
-
-    /// 
-    /// A descriptive or arbitrary ID for the connector. This value must be unique within       the connector definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Id")]
-    pub id: String,
 
 }
 

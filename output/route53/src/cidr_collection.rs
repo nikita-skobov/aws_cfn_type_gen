@@ -6,6 +6,18 @@ pub struct CfnCidrCollection {
 
 
     /// 
+    /// A complex type that contains information about the list of CIDR locations.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Locations")]
+    pub locations: Option<Vec<Location>>,
+
+
+    /// 
     /// The name of a CIDR collection.
     /// 
     /// Required: Yes
@@ -21,18 +33,6 @@ pub struct CfnCidrCollection {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// A complex type that contains information about the list of CIDR locations.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Locations")]
-    pub locations: Option<Vec<Location>>,
 
 }
 

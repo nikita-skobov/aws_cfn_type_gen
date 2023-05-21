@@ -6,15 +6,15 @@ pub struct CfnSecurityConfig {
 
 
     /// 
-    /// The type of security configuration. Currently the only option is saml.
+    /// The description of the security configuration.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -30,18 +30,6 @@ pub struct CfnSecurityConfig {
 
 
     /// 
-    /// The description of the security configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// SAML options for the security configuration in the form of a key-value map.
     /// 
     /// Required: No
@@ -51,6 +39,18 @@ pub struct CfnSecurityConfig {
     /// Update requires: No interruption
     #[serde(rename = "SamlOptions")]
     pub saml_options: Option<SamlConfigOptions>,
+
+
+    /// 
+    /// The type of security configuration. Currently the only option is saml.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
 
 }
 
@@ -73,18 +73,6 @@ pub struct SamlConfigOptions {
 
 
     /// 
-    /// The XML IdP metadata file generated from your identity provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Metadata")]
-    pub metadata: String,
-
-
-    /// 
     /// The group attribute for this SAML integration.
     /// 
     /// Required: No
@@ -94,6 +82,18 @@ pub struct SamlConfigOptions {
     /// Update requires: No interruption
     #[serde(rename = "GroupAttribute")]
     pub group_attribute: Option<String>,
+
+
+    /// 
+    /// The XML IdP metadata file generated from your identity provider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Metadata")]
+    pub metadata: String,
 
 
     /// 

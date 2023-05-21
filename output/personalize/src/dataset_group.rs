@@ -8,6 +8,20 @@ pub struct CfnDatasetGroup {
 
 
     /// 
+    /// The domain of a Domain dataset group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ECOMMERCE | VIDEO_ON_DEMAND
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Domain")]
+    pub domain: Option<DatasetGroupDomainEnum>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to    encrypt the datasets.
     /// 
     /// Required: No
@@ -21,20 +35,6 @@ pub struct CfnDatasetGroup {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyArn")]
     pub kms_key_arn: Option<String>,
-
-
-    /// 
-    /// The domain of a Domain dataset group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ECOMMERCE | VIDEO_ON_DEMAND
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Domain")]
-    pub domain: Option<DatasetGroupDomainEnum>,
 
 
     /// 

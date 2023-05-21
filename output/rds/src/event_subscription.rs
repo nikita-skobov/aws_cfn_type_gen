@@ -6,6 +6,42 @@ pub struct CfnEventSubscription {
 
 
     /// 
+    /// A value that indicates whether to activate the subscription. If the event notification subscription isn't activated, the subscription is created but not active.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// A list of event categories for a particular source type (SourceType)       that you want to subscribe to. You can see a list of the categories for a given source type in the "Amazon RDS event categories and event messages" section of the Amazon RDS User Guide or the         Amazon Aurora User Guide.         You can also see this list by using the DescribeEventCategories operation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventCategories")]
+    pub event_categories: Option<Vec<String>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnsTopicArn")]
+    pub sns_topic_arn: String,
+
+
+    /// 
     /// The list of identifiers of the event sources for which events are returned. If not specified, then all sources are included in the response.      An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It can't end with a hyphen or contain two consecutive hyphens.
     /// 
     /// Constraints:
@@ -19,20 +55,6 @@ pub struct CfnEventSubscription {
     /// Update requires: No interruption
     #[serde(rename = "SourceIds")]
     pub source_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of the subscription.
-    /// 
-    /// Constraints: The name must be less than 255 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubscriptionName")]
-    pub subscription_name: Option<String>,
 
 
     /// 
@@ -50,15 +72,17 @@ pub struct CfnEventSubscription {
 
 
     /// 
-    /// A value that indicates whether to activate the subscription. If the event notification subscription isn't activated, the subscription is created but not active.
+    /// The name of the subscription.
+    /// 
+    /// Constraints: The name must be less than 255 characters.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "SubscriptionName")]
+    pub subscription_name: Option<String>,
 
 
     /// 
@@ -71,30 +95,6 @@ pub struct CfnEventSubscription {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnsTopicArn")]
-    pub sns_topic_arn: String,
-
-
-    /// 
-    /// A list of event categories for a particular source type (SourceType)       that you want to subscribe to. You can see a list of the categories for a given source type in the "Amazon RDS event categories and event messages" section of the Amazon RDS User Guide or the         Amazon Aurora User Guide.         You can also see this list by using the DescribeEventCategories operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventCategories")]
-    pub event_categories: Option<Vec<String>>,
 
 }
 

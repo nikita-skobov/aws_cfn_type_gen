@@ -8,21 +8,15 @@ pub struct CfnExecutionPlan {
 
 
     /// 
-    /// A name for the rescore execution plan.
+    /// You can set additional capacity units to meet the       needs of your rescore execution plan. You are given a single       capacity unit by default. If you want to use the default       capacity, you don't set additional capacity units. For more       information on the default capacity and additional capacity       units, see Adjusting         capacity.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: [a-zA-Z0-9][a-zA-Z0-9_-]*
+    /// Type: CapacityUnitsConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "CapacityUnits")]
+    pub capacity_units: Option<CapacityUnitsConfiguration>,
 
 
     /// 
@@ -44,15 +38,21 @@ pub struct CfnExecutionPlan {
 
 
     /// 
-    /// You can set additional capacity units to meet the       needs of your rescore execution plan. You are given a single       capacity unit by default. If you want to use the default       capacity, you don't set additional capacity units. For more       information on the default capacity and additional capacity       units, see Adjusting         capacity.
+    /// A name for the rescore execution plan.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: CapacityUnitsConfiguration
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: [a-zA-Z0-9][a-zA-Z0-9_-]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CapacityUnits")]
-    pub capacity_units: Option<CapacityUnitsConfiguration>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -81,6 +81,31 @@ impl cfn_resources::CfnResource for CfnExecutionPlan {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Sets additional capacity units configured for your       rescore execution plan. A rescore execution plan is an       Amazon Kendra Intelligent Ranking resource used for       provisioning the Rescore API. You can add and       remove capacity units to fit your usage requirements.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CapacityUnitsConfiguration {
+
+
+    /// 
+    /// The amount of extra capacity for your rescore execution       plan.
+    /// 
+    /// A single extra capacity unit for a rescore execution       plan provides 0.01 rescore requests per second. You can add       up to 1000 extra capacity units.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RescoreCapacityUnits")]
+    pub rescore_capacity_units: i64,
+
+}
+
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -114,31 +139,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Sets additional capacity units configured for your       rescore execution plan. A rescore execution plan is an       Amazon Kendra Intelligent Ranking resource used for       provisioning the Rescore API. You can add and       remove capacity units to fit your usage requirements.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CapacityUnitsConfiguration {
-
-
-    /// 
-    /// The amount of extra capacity for your rescore execution       plan.
-    /// 
-    /// A single extra capacity unit for a rescore execution       plan provides 0.01 rescore requests per second. You can add       up to 1000 extra capacity units.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RescoreCapacityUnits")]
-    pub rescore_capacity_units: i64,
 
 }
 

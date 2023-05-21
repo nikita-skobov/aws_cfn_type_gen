@@ -30,6 +30,20 @@ pub struct CfnDataCatalog {
 
 
     /// 
+    /// Specifies the Lambda function or functions to use for the data catalog. The mapping       used depends on the catalog type.
+    /// 
+    /// The HIVE data catalog type uses the following syntax. The             metadata-function parameter is required. The             sdk-version parameter is optional and defaults to the currently           supported version.         metadata-function=lambda_arn,               sdk-version=version_number               The LAMBDA data catalog type uses one of the following sets of           required parameters, but not both.                                                    When one Lambda function processes metadata and another Lambda               function reads data, the following syntax is used. Both parameters are               required.             metadata-function=lambda_arn,                   record-function=lambda_arn                       A composite Lambda function that processes both metadata and data uses               the following syntax.             function=lambda_arn                          The GLUE type takes a catalog ID parameter and is required. The               catalog_id is the account ID of the             AWS account to which the Glue catalog belongs.         catalog-id=catalog_id                                                               The GLUE data catalog type also applies to the default                 AwsDataCatalog that already exists in your account, of               which you can have only one and cannot modify.                       Queries that specify a GLUE data catalog other than the default                 AwsDataCatalog must be run on Athena engine version               2.                       In Regions where Athena engine version 2 is not available, creating               new GLUE data catalogs results in an INVALID_INPUT               error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
     /// The tags (key-value pairs) to associate with this resource.
     /// 
     /// Required: No
@@ -51,20 +65,6 @@ pub struct CfnDataCatalog {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
-
-    /// 
-    /// Specifies the Lambda function or functions to use for the data catalog. The mapping       used depends on the catalog type.
-    /// 
-    /// The HIVE data catalog type uses the following syntax. The             metadata-function parameter is required. The             sdk-version parameter is optional and defaults to the currently           supported version.         metadata-function=lambda_arn,               sdk-version=version_number               The LAMBDA data catalog type uses one of the following sets of           required parameters, but not both.                                                    When one Lambda function processes metadata and another Lambda               function reads data, the following syntax is used. Both parameters are               required.             metadata-function=lambda_arn,                   record-function=lambda_arn                       A composite Lambda function that processes both metadata and data uses               the following syntax.             function=lambda_arn                          The GLUE type takes a catalog ID parameter and is required. The               catalog_id is the account ID of the             AWS account to which the Glue catalog belongs.         catalog-id=catalog_id                                                               The GLUE data catalog type also applies to the default                 AwsDataCatalog that already exists in your account, of               which you can have only one and cannot modify.                       Queries that specify a GLUE data catalog other than the default                 AwsDataCatalog must be run on Athena engine version               2.                       In Regions where Athena engine version 2 is not available, creating               new GLUE data catalogs results in an INVALID_INPUT               error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<std::collections::HashMap<String, String>>,
 
 }
 
@@ -93,17 +93,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -112,6 +101,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

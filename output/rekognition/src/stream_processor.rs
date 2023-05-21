@@ -26,30 +26,6 @@ pub struct CfnStreamProcessor {
 
 
     /// 
-    /// The Kinesis video stream that provides the source of the streaming video for an Amazon Rekognition Video stream processor. For more information,      see KinesisVideoStream.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: KinesisVideoStream
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KinesisVideoStream")]
-    pub kinesis_video_stream: KinesisVideoStream,
-
-
-    /// 
-    /// Amazon Rekognition's Video Stream Processor takes a Kinesis video stream as input. This is the Amazon Kinesis Data Streams instance      to which the Amazon Rekognition stream processor streams the analysis results.     This must be created within the constraints specified at      KinesisDataStream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KinesisDataStream
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KinesisDataStream")]
-    pub kinesis_data_stream: Option<KinesisDataStream>,
-
-
-    /// 
     /// Connected home settings to use on a streaming video. You can use a stream processor for connected home features and select      what you want the stream processor to detect, such as people or pets. When the stream processor has started, one notification is sent for      each object class specified. For more information,      see the ConnectedHome section of StreamProcessorSettings.
     /// 
     /// Required: No
@@ -59,18 +35,6 @@ pub struct CfnStreamProcessor {
     /// Update requires: Replacement
     #[serde(rename = "ConnectedHomeSettings")]
     pub connected_home_settings: Option<ConnectedHomeSettings>,
-
-
-    /// 
-    /// The input parameters used to recognize faces in a streaming video analyzed by an Amazon Rekognition stream processor.      For more information regarding the contents of the parameters, see FaceSearchSettings.
-    ///
-    /// Required: No
-    ///
-    /// Type: FaceSearchSettings
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FaceSearchSettings")]
-    pub face_search_settings: Option<FaceSearchSettings>,
 
 
     /// 
@@ -86,15 +50,51 @@ pub struct CfnStreamProcessor {
 
 
     /// 
-    /// The ARN of the IAM role that allows access to the stream processor. The IAM role provides Rekognition read permissions to the Kinesis stream.      It also provides write permissions to an Amazon S3 bucket and Amazon Simple Notification Service topic for a connected home stream processor.      This is required for both face search and connected home stream processors.      For information about constraints, see the RoleArn section of CreateStreamProcessor.
+    /// The input parameters used to recognize faces in a streaming video analyzed by an Amazon Rekognition stream processor.      For more information regarding the contents of the parameters, see FaceSearchSettings.
+    ///
+    /// Required: No
+    ///
+    /// Type: FaceSearchSettings
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FaceSearchSettings")]
+    pub face_search_settings: Option<FaceSearchSettings>,
+
+
+    /// 
+    /// Amazon Rekognition's Video Stream Processor takes a Kinesis video stream as input. This is the Amazon Kinesis Data Streams instance      to which the Amazon Rekognition stream processor streams the analysis results.     This must be created within the constraints specified at      KinesisDataStream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: KinesisDataStream
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KinesisDataStream")]
+    pub kinesis_data_stream: Option<KinesisDataStream>,
+
+
+    /// 
+    /// The Kinesis video stream that provides the source of the streaming video for an Amazon Rekognition Video stream processor. For more information,      see KinesisVideoStream.
     /// 
     /// Required: Yes
+    ///
+    /// Type: KinesisVideoStream
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KinesisVideoStream")]
+    pub kinesis_video_stream: KinesisVideoStream,
+
+
+    /// 
+    /// The identifier for your Amazon Key Management Service key (Amazon KMS key). Optional parameter for connected home stream processors      used to encrypt results and data published to your Amazon S3 bucket.      For more information, see the KMSKeyId section of CreateStreamProcessor.
+    ///
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
@@ -116,15 +116,15 @@ pub struct CfnStreamProcessor {
 
 
     /// 
-    /// A set of tags (key-value pairs) that you want to attach to the stream processor.     For more information, see the Tags section of CreateStreamProcessor.
+    /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the object detection results and completion status of a video analysis operation.     Amazon Rekognition publishes a notification the first time an object of interest or a person is detected in the video stream.      Amazon Rekognition also publishes an end-of-session notification with a summary when the stream processing session is complete.     For more information, see StreamProcessorNotificationChannel.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: NotificationChannel
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "NotificationChannel")]
+    pub notification_channel: Option<NotificationChannel>,
 
 
     /// 
@@ -140,27 +140,15 @@ pub struct CfnStreamProcessor {
 
 
     /// 
-    /// The identifier for your Amazon Key Management Service key (Amazon KMS key). Optional parameter for connected home stream processors      used to encrypt results and data published to your Amazon S3 bucket.      For more information, see the KMSKeyId section of CreateStreamProcessor.
-    ///
-    /// Required: No
+    /// The ARN of the IAM role that allows access to the stream processor. The IAM role provides Rekognition read permissions to the Kinesis stream.      It also provides write permissions to an Amazon S3 bucket and Amazon Simple Notification Service topic for a connected home stream processor.      This is required for both face search and connected home stream processors.      For information about constraints, see the RoleArn section of CreateStreamProcessor.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the object detection results and completion status of a video analysis operation.     Amazon Rekognition publishes a notification the first time an object of interest or a person is detected in the video stream.      Amazon Rekognition also publishes an end-of-session notification with a summary when the stream processing session is complete.     For more information, see StreamProcessorNotificationChannel.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NotificationChannel
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NotificationChannel")]
-    pub notification_channel: Option<NotificationChannel>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
 
 
     /// 
@@ -173,6 +161,18 @@ pub struct CfnStreamProcessor {
     /// Update requires: Replacement
     #[serde(rename = "S3Destination")]
     pub s3_destination: Option<S3Destination>,
+
+
+    /// 
+    /// A set of tags (key-value pairs) that you want to attach to the stream processor.     For more information, see the Tags section of CreateStreamProcessor.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -199,18 +199,6 @@ pub struct BoundingBox {
 
 
     /// 
-    /// Width of the bounding box as a ratio of the overall image width.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Width")]
-    pub width: f64,
-
-
-    /// 
     /// Height of the bounding box as a ratio of the overall image height.
     /// 
     /// Required: Yes
@@ -220,6 +208,18 @@ pub struct BoundingBox {
     /// Update requires: Replacement
     #[serde(rename = "Height")]
     pub height: f64,
+
+
+    /// 
+    /// Left coordinate of the bounding box as a ratio of overall image width.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Left")]
+    pub left: f64,
 
 
     /// 
@@ -235,15 +235,15 @@ pub struct BoundingBox {
 
 
     /// 
-    /// Left coordinate of the bounding box as a ratio of overall image width.
+    /// Width of the bounding box as a ratio of the overall image width.
     /// 
     /// Required: Yes
     ///
     /// Type: Double
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Left")]
-    pub left: f64,
+    #[serde(rename = "Width")]
+    pub width: f64,
 
 }
 
@@ -258,6 +258,18 @@ pub struct ConnectedHomeSettings {
 
 
     /// 
+    /// Specifies what you want to detect in the video, such as people, packages, or pets.      The current valid labels you can include in this list are: "PERSON", "PET", "PACKAGE", and "ALL".
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Labels")]
+    pub labels: Vec<String>,
+
+
+    /// 
     /// The minimum confidence required to label an object in the video.
     /// 
     /// Required: No
@@ -268,17 +280,88 @@ pub struct ConnectedHomeSettings {
     #[serde(rename = "MinConfidence")]
     pub min_confidence: Option<f64>,
 
+}
+
+
+
+
+/// Allows you to opt in or opt out to share data with Rekognition to improve model performance.      You can choose this option at the account level or on a per-stream basis. Note that if you opt out at the account level, this setting is ignored on individual streams.     For more information, see StreamProcessorDataSharingPreference.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataSharingPreference {
+
 
     /// 
-    /// Specifies what you want to detect in the video, such as people, packages, or pets.      The current valid labels you can include in this list are: "PERSON", "PET", "PACKAGE", and "ALL".
+    /// Describes the opt-in status applied to a stream processor's data sharing policy.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Labels")]
-    pub labels: Vec<String>,
+    #[serde(rename = "OptIn")]
+    pub opt_in: bool,
+
+}
+
+
+
+
+/// The input parameters used to recognize faces in a streaming video analyzed by a Amazon Rekognition stream processor. FaceSearchSettings is a request      parameter for CreateStreamProcessor.       For more information, see FaceSearchSettings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FaceSearchSettings {
+
+
+    /// 
+    /// The ID of a collection that contains faces that you want to search for.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [a-zA-Z0-9_.\-]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CollectionId")]
+    pub collection_id: String,
+
+
+    /// 
+    /// Minimum face match confidence score that must be met to return a result for a recognized face. The default is 80.     0 is the lowest confidence. 100 is the highest confidence. Values between 0 and 100 are accepted, and values lower than 80 are set to 80.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FaceMatchThreshold")]
+    pub face_match_threshold: Option<f64>,
+
+}
+
+
+
+
+/// Amazon Rekognition Video Stream Processor take as input a Kinesis video stream (Input) and a Kinesis data stream (Output).      This is the Amazon Kinesis Data Streams instance to which the Amazon Rekognition stream processor streams the analysis results.      This must be created within the constraints specified at      KinesisDataStream.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisDataStream {
+
+
+    /// 
+    /// ARN of the output Amazon Kinesis Data Streams stream.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: (^arn:([a-z\d-]+):kinesis:([a-z\d-]+):\d{12}:.+$)
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Arn")]
+    pub arn: String,
 
 }
 
@@ -319,50 +402,6 @@ pub struct NotificationChannel {
     /// Required: Yes
     ///
     /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Arn")]
-    pub arn: String,
-
-}
-
-
-
-
-/// Allows you to opt in or opt out to share data with Rekognition to improve model performance.      You can choose this option at the account level or on a per-stream basis. Note that if you opt out at the account level, this setting is ignored on individual streams.     For more information, see StreamProcessorDataSharingPreference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataSharingPreference {
-
-
-    /// 
-    /// Describes the opt-in status applied to a stream processor's data sharing policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OptIn")]
-    pub opt_in: bool,
-
-}
-
-
-
-
-/// Amazon Rekognition Video Stream Processor take as input a Kinesis video stream (Input) and a Kinesis data stream (Output).      This is the Amazon Kinesis Data Streams instance to which the Amazon Rekognition stream processor streams the analysis results.      This must be created within the constraints specified at      KinesisDataStream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KinesisDataStream {
-
-
-    /// 
-    /// ARN of the output Amazon Kinesis Data Streams stream.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: (^arn:([a-z\d-]+):kinesis:([a-z\d-]+):\d{12}:.+$)
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
@@ -418,17 +457,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -438,44 +466,16 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-
-
-/// The input parameters used to recognize faces in a streaming video analyzed by a Amazon Rekognition stream processor. FaceSearchSettings is a request      parameter for CreateStreamProcessor.       For more information, see FaceSearchSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FaceSearchSettings {
-
 
     /// 
-    /// The ID of a collection that contains faces that you want to search for.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [a-zA-Z0-9_.\-]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CollectionId")]
-    pub collection_id: String,
-
-
     /// 
-    /// Minimum face match confidence score that must be met to return a result for a recognized face. The default is 80.     0 is the lowest confidence. 100 is the highest confidence. Values between 0 and 100 are accepted, and values lower than 80 are set to 80.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FaceMatchThreshold")]
-    pub face_match_threshold: Option<f64>,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

@@ -18,6 +18,18 @@ pub struct CfnFlow {
 
 
     /// 
+    /// The name of the flow.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// The settings for the source that you want to use for the new flow.
     /// 
     /// Required: Yes
@@ -40,18 +52,6 @@ pub struct CfnFlow {
     #[serde(rename = "SourceFailoverConfig")]
     pub source_failover_config: Option<FailoverConfig>,
 
-
-    /// 
-    /// The name of the flow.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
 
 
@@ -73,18 +73,6 @@ pub struct Encryption {
 
 
     /// 
-    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArn")]
-    pub secret_arn: Option<String>,
-
-
-    /// 
     /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or        aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
     /// 
     /// Required: No
@@ -97,51 +85,15 @@ pub struct Encryption {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the role that you created during setup (when you        set up MediaConnect as a trusted entity).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// The URL from the API Gateway proxy that you set up to talk to your key server.        This parameter is required for SPEKE encryption and is not valid for static key        encryption.
+    /// A 128-bit, 16-byte hex value represented by a 32-character string, to be used with        the key for encrypting content. This parameter is not valid for static key        encryption.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Url")]
-    pub url: Option<String>,
-
-
-    /// 
-    /// The type of key that is used for the encryption. If you don't specify a          keyType value, the service uses the default setting            (static-key). Valid key types are: static-key, speke, and srt-password.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KeyType")]
-    pub key_type: Option<String>,
-
-
-    /// 
-    /// An identifier for the content. The service sends this value to the key server to        identify the current endpoint. The resource ID is also known as the content ID. This        parameter is required for SPEKE encryption and is not valid for static key        encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceId")]
-    pub resource_id: Option<String>,
+    #[serde(rename = "ConstantInitializationVector")]
+    pub constant_initialization_vector: Option<String>,
 
 
     /// 
@@ -157,6 +109,18 @@ pub struct Encryption {
 
 
     /// 
+    /// The type of key that is used for the encryption. If you don't specify a          keyType value, the service uses the default setting            (static-key). Valid key types are: static-key, speke, and srt-password.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KeyType")]
+    pub key_type: Option<String>,
+
+
+    /// 
     /// The AWS Region that the API Gateway proxy endpoint was created in. This parameter        is required for SPEKE encryption and is not valid for static key encryption.
     /// 
     /// Required: No
@@ -169,15 +133,108 @@ pub struct Encryption {
 
 
     /// 
-    /// A 128-bit, 16-byte hex value represented by a 32-character string, to be used with        the key for encrypting content. This parameter is not valid for static key        encryption.
+    /// An identifier for the content. The service sends this value to the key server to        identify the current endpoint. The resource ID is also known as the content ID. This        parameter is required for SPEKE encryption and is not valid for static key        encryption.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ConstantInitializationVector")]
-    pub constant_initialization_vector: Option<String>,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the role that you created during setup (when you        set up MediaConnect as a trusted entity).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
+    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretArn")]
+    pub secret_arn: Option<String>,
+
+
+    /// 
+    /// The URL from the API Gateway proxy that you set up to talk to your key server.        This parameter is required for SPEKE encryption and is not valid for static key        encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Url")]
+    pub url: Option<String>,
+
+}
+
+
+
+
+/// The settings for source failover.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FailoverConfig {
+
+
+    /// 
+    /// The type of failover you choose for this flow. MERGE combines the source streams        into a single stream, allowing graceful recovery from any single-source loss.        FAILOVER allows switching between different streams. The string for this property must be entered as MERGE or FAILOVER. No other string entry is valid.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FailoverMode")]
+    pub failover_mode: Option<String>,
+
+
+    /// 
+    /// The size of the buffer (delay) that the service maintains. A larger buffer means a        longer delay in transmitting the stream, but more room for error correction. A        smaller buffer means a shorter delay, but less room for error correction. You can choose a value from 100-500 ms. If you keep this field blank, the service uses the default value of 200 ms. This setting only applies when Failover Mode is set to MERGE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecoveryWindow")]
+    pub recovery_window: Option<i64>,
+
+
+    /// 
+    /// The priority you want to assign to a source. You can have a primary stream and a backup stream or two equally prioritized streams. This setting only applies when Failover Mode is set to FAILOVER.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SourcePriority
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourcePriority")]
+    pub source_priority: Option<SourcePriority>,
+
+
+    /// 
+    /// The state of source failover on the flow. If the state is inactive, the flow can        have only one source. If the state is active, the flow can have one or two        sources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "State")]
+    pub state: Option<String>,
 
 }
 
@@ -189,42 +246,6 @@ pub struct Encryption {
 /// If you are creating a flow with a VPC source, you must first create the flow with a       temporary standard source by doing the following:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Source {
-
-
-    /// 
-    /// A description of the source. This description is not visible outside of the        current AWS account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The IP address that the flow communicates with to initiate connection with the        sender.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SenderIpAddress")]
-    pub sender_ip_address: Option<String>,
-
-
-    /// 
-    /// The protocol that is used by the source. AWS CloudFormation does not currently support CDI or ST 2110 JPEG XS source protocols.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
 
 
     /// 
@@ -240,39 +261,15 @@ pub struct Source {
 
 
     /// 
-    /// The port that the flow listens on for incoming content. If the protocol of the        source is Zixi, the port must be set to 2088.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IngestPort")]
-    pub ingest_port: Option<i64>,
-
-
-    /// 
-    /// The name of the VPC interface that the source content comes from.
+    /// A description of the source. This description is not visible outside of the        current AWS account.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VpcInterfaceName")]
-    pub vpc_interface_name: Option<String>,
-
-
-    /// 
-    /// The port that the flow uses to send outbound requests to initiate connection with        the sender.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SenderControlPort")]
-    pub sender_control_port: Option<i64>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -288,27 +285,27 @@ pub struct Source {
 
 
     /// 
-    /// The ARN of the source.
+    /// The IP address that the flow listens on for incoming content.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SourceArn")]
-    pub source_arn: Option<String>,
+    #[serde(rename = "IngestIp")]
+    pub ingest_ip: Option<String>,
 
 
     /// 
-    /// Source IP or domain name for SRT-caller protocol.
+    /// The port that the flow listens on for incoming content. If the protocol of the        source is Zixi, the port must be set to 2088.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SourceListenerAddress")]
-    pub source_listener_address: Option<String>,
+    #[serde(rename = "IngestPort")]
+    pub ingest_port: Option<i64>,
 
 
     /// 
@@ -324,18 +321,6 @@ pub struct Source {
 
 
     /// 
-    /// The name of the source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// The maximum latency in milliseconds for a RIST or Zixi-based source.
     /// 
     /// Required: No
@@ -345,53 +330,6 @@ pub struct Source {
     /// Update requires: No interruption
     #[serde(rename = "MaxLatency")]
     pub max_latency: Option<i64>,
-
-
-    /// 
-    /// The range of IP addresses that are allowed to contribute content to your source.        Format the IP addresses as a Classless Inter-Domain Routing (CIDR) block; for        example, 10.0.0.0/16.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WhitelistCidr")]
-    pub whitelist_cidr: Option<String>,
-
-
-    /// Source port for SRT-caller protocol.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceListenerPort")]
-    pub source_listener_port: Option<i64>,
-
-
-    /// 
-    /// The port that the flow will be listening on for incoming content.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceIngestPort")]
-    pub source_ingest_port: Option<String>,
-
-
-    /// 
-    /// The stream ID that you want to use for the transport. This parameter applies only to       Zixi-based streams.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StreamId")]
-    pub stream_id: Option<String>,
 
 
     /// 
@@ -407,15 +345,134 @@ pub struct Source {
 
 
     /// 
-    /// The IP address that the flow listens on for incoming content.
+    /// The name of the source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The protocol that is used by the source. AWS CloudFormation does not currently support CDI or ST 2110 JPEG XS source protocols.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IngestIp")]
-    pub ingest_ip: Option<String>,
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<String>,
+
+
+    /// 
+    /// The port that the flow uses to send outbound requests to initiate connection with        the sender.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SenderControlPort")]
+    pub sender_control_port: Option<i64>,
+
+
+    /// 
+    /// The IP address that the flow communicates with to initiate connection with the        sender.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SenderIpAddress")]
+    pub sender_ip_address: Option<String>,
+
+
+    /// 
+    /// The ARN of the source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceArn")]
+    pub source_arn: Option<String>,
+
+
+    /// 
+    /// The port that the flow will be listening on for incoming content.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceIngestPort")]
+    pub source_ingest_port: Option<String>,
+
+
+    /// 
+    /// Source IP or domain name for SRT-caller protocol.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceListenerAddress")]
+    pub source_listener_address: Option<String>,
+
+
+    /// Source port for SRT-caller protocol.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceListenerPort")]
+    pub source_listener_port: Option<i64>,
+
+
+    /// 
+    /// The stream ID that you want to use for the transport. This parameter applies only to       Zixi-based streams.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StreamId")]
+    pub stream_id: Option<String>,
+
+
+    /// 
+    /// The name of the VPC interface that the source content comes from.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcInterfaceName")]
+    pub vpc_interface_name: Option<String>,
+
+
+    /// 
+    /// The range of IP addresses that are allowed to contribute content to your source.        Format the IP addresses as a Classless Inter-Domain Routing (CIDR) block; for        example, 10.0.0.0/16.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WhitelistCidr")]
+    pub whitelist_cidr: Option<String>,
 
 }
 
@@ -437,63 +494,6 @@ pub struct SourcePriority {
     /// Update requires: No interruption
     #[serde(rename = "PrimarySource")]
     pub primary_source: String,
-
-}
-
-
-
-
-/// The settings for source failover.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FailoverConfig {
-
-
-    /// 
-    /// The priority you want to assign to a source. You can have a primary stream and a backup stream or two equally prioritized streams. This setting only applies when Failover Mode is set to FAILOVER.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SourcePriority
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourcePriority")]
-    pub source_priority: Option<SourcePriority>,
-
-
-    /// 
-    /// The size of the buffer (delay) that the service maintains. A larger buffer means a        longer delay in transmitting the stream, but more room for error correction. A        smaller buffer means a shorter delay, but less room for error correction. You can choose a value from 100-500 ms. If you keep this field blank, the service uses the default value of 200 ms. This setting only applies when Failover Mode is set to MERGE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecoveryWindow")]
-    pub recovery_window: Option<i64>,
-
-
-    /// 
-    /// The type of failover you choose for this flow. MERGE combines the source streams        into a single stream, allowing graceful recovery from any single-source loss.        FAILOVER allows switching between different streams. The string for this property must be entered as MERGE or FAILOVER. No other string entry is valid.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FailoverMode")]
-    pub failover_mode: Option<String>,
-
-
-    /// 
-    /// The state of source failover on the flow. If the state is inactive, the flow can        have only one source. If the state is active, the flow can have one or two        sources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "State")]
-    pub state: Option<String>,
 
 }
 

@@ -6,18 +6,6 @@ pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociation {
 
 
     /// 
-    /// The ID of the virtual interface group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LocalGatewayVirtualInterfaceGroupId")]
-    pub local_gateway_virtual_interface_group_id: String,
-
-
-    /// 
     /// The ID of the local gateway route table.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociation {
     /// Update requires: Replacement
     #[serde(rename = "LocalGatewayRouteTableId")]
     pub local_gateway_route_table_id: String,
+
+
+    /// 
+    /// The ID of the virtual interface group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LocalGatewayVirtualInterfaceGroupId")]
+    pub local_gateway_virtual_interface_group_id: String,
 
 
     /// 

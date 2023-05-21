@@ -8,60 +8,6 @@ pub struct CfnGrant {
 
 
     /// 
-    /// Home Region of the grant.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HomeRegion")]
-    pub home_region: Option<String>,
-
-
-    /// 
-    /// Granted license status.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// The grant principals. You can specify one of the following as an Amazon Resource Name     (ARN):
-    /// 
-    /// An AWS account, which includes only the account specified.
-    /// 
-    /// An organizational unit (OU), which includes all accounts in the OU.
-    /// 
-    /// An organization, which will include all accounts across your organization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Principals")]
-    pub principals: Option<Vec<String>>,
-
-
-    /// 
-    /// License ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LicenseArn")]
-    pub license_arn: Option<String>,
-
-
-    /// 
     /// Allowed operations for the grant.
     /// 
     /// Required: No
@@ -83,6 +29,60 @@ pub struct CfnGrant {
     /// Update requires: No interruption
     #[serde(rename = "GrantName")]
     pub grant_name: Option<String>,
+
+
+    /// 
+    /// Home Region of the grant.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HomeRegion")]
+    pub home_region: Option<String>,
+
+
+    /// 
+    /// License ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LicenseArn")]
+    pub license_arn: Option<String>,
+
+
+    /// 
+    /// The grant principals. You can specify one of the following as an Amazon Resource Name     (ARN):
+    /// 
+    /// An AWS account, which includes only the account specified.
+    /// 
+    /// An organizational unit (OU), which includes all accounts in the OU.
+    /// 
+    /// An organization, which will include all accounts across your organization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Principals")]
+    pub principals: Option<Vec<String>>,
+
+
+    /// 
+    /// Granted license status.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
 
 }
 

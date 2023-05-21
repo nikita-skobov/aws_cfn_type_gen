@@ -6,6 +6,18 @@ pub struct CfnImage {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContainerRecipeArn")]
+    pub container_recipe_arn: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the distribution configuration.
     /// 
     /// Required: No
@@ -20,18 +32,6 @@ pub struct CfnImage {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the infrastructure configuration associated with 			this image pipeline.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InfrastructureConfigurationArn")]
-    pub infrastructure_configuration_arn: String,
-
-
-    /// 
     /// Indicates whether Image Builder collects additional information about the image, such as the 			operating system (OS) version and package list.
     /// 
     /// Required: No
@@ -41,53 +41,6 @@ pub struct CfnImage {
     /// Update requires: Replacement
     #[serde(rename = "EnhancedImageMetadataEnabled")]
     pub enhanced_image_metadata_enabled: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: ImageScanningConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ImageScanningConfiguration")]
-    pub image_scanning_configuration: Option<ImageScanningConfiguration>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContainerRecipeArn")]
-    pub container_recipe_arn: Option<String>,
-
-
-    /// 
-    /// The configuration settings for your image test components, which includes 			a toggle that allows you to turn off tests, and a timeout setting.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ImageTestsConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ImageTestsConfiguration")]
-    pub image_tests_configuration: Option<ImageTestsConfiguration>,
-
-
-    /// 
-    /// The tags of the image.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -103,6 +56,53 @@ pub struct CfnImage {
     #[serde(rename = "ImageRecipeArn")]
     pub image_recipe_arn: Option<String>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: ImageScanningConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ImageScanningConfiguration")]
+    pub image_scanning_configuration: Option<ImageScanningConfiguration>,
+
+
+    /// 
+    /// The configuration settings for your image test components, which includes 			a toggle that allows you to turn off tests, and a timeout setting.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ImageTestsConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ImageTestsConfiguration")]
+    pub image_tests_configuration: Option<ImageTestsConfiguration>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the infrastructure configuration associated with 			this image pipeline.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InfrastructureConfigurationArn")]
+    pub infrastructure_configuration_arn: String,
+
+
+    /// 
+    /// The tags of the image.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
 }
 
 
@@ -116,6 +116,37 @@ impl cfn_resources::CfnResource for CfnImage {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EcrConfiguration {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContainerTags")]
+    pub container_tags: Option<Vec<String>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RepositoryName")]
+    pub repository_name: Option<String>,
+
+}
+
+
 
 
 /// The ImageScanningConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
@@ -143,37 +174,6 @@ pub struct ImageScanningConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ImageScanningEnabled")]
     pub image_scanning_enabled: Option<bool>,
-
-}
-
-
-
-
-/// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EcrConfiguration {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RepositoryName")]
-    pub repository_name: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContainerTags")]
-    pub container_tags: Option<Vec<String>>,
 
 }
 

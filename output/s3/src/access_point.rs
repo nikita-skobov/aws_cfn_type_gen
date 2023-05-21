@@ -18,42 +18,6 @@ pub struct CfnAccessPoint {
 
 
     /// 
-    /// The access point policy associated with this access point.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: Option<serde_json::Value>,
-
-
-    /// 
-    /// The Virtual Private Cloud (VPC) configuration for this access point, if one exists.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcConfiguration")]
-    pub vpc_configuration: Option<VpcConfiguration>,
-
-
-    /// 
-    /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You    can enable the configuration options in any combination. For more information about when    Amazon S3 considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PublicAccessBlockConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PublicAccessBlockConfiguration")]
-    pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
-
-
-    /// 
     /// The AWS account ID associated with the S3 bucket associated with this access point.
     /// 
     /// Required: No
@@ -76,6 +40,42 @@ pub struct CfnAccessPoint {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// The access point policy associated with this access point.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Policy")]
+    pub policy: Option<serde_json::Value>,
+
+
+    /// 
+    /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You    can enable the configuration options in any combination. For more information about when    Amazon S3 considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PublicAccessBlockConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PublicAccessBlockConfiguration")]
+    pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
+
+
+    /// 
+    /// The Virtual Private Cloud (VPC) configuration for this access point, if one exists.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcConfiguration")]
+    pub vpc_configuration: Option<VpcConfiguration>,
+
 }
 
 
@@ -89,27 +89,6 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// The Virtual Private Cloud (VPC) configuration for this access point.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConfiguration {
-
-
-    /// 
-    /// If this field is specified, the access point will only allow connections from the    specified VPC ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
-
-}
-
-
 
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can     enable the configuration options in any combination. For more information about when Amazon S3     considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
@@ -173,6 +152,27 @@ pub struct PublicAccessBlockConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "RestrictPublicBuckets")]
     pub restrict_public_buckets: Option<bool>,
+
+}
+
+
+
+
+/// The Virtual Private Cloud (VPC) configuration for this access point.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConfiguration {
+
+
+    /// 
+    /// If this field is specified, the access point will only allow connections from the    specified VPC ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
 
 }
 

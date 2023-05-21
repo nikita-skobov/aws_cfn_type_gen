@@ -35,6 +35,70 @@ impl cfn_resources::CfnResource for CfnOriginRequestPolicy {
 }
 
 
+/// An object that determines whether any cookies in viewer requests (and if so, which 			cookies) are included in requests that CloudFront sends to the origin.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CookiesConfig {
+
+
+    /// 
+    /// Determines whether cookies in viewer requests are included in requests that CloudFront sends 			to the origin. Valid values are:
+    /// 
+    /// none – No cookies in viewer requests are included in requests that CloudFront sends 					to the origin. Even when this field is set to none, any cookies 					that are listed in a CachePolicy          are included 					in origin requests.                        whitelist – Only the cookies in viewer requests that are listed in the 					CookieNames type are included in requests that CloudFront sends to the 					origin.                        all – All cookies in viewer requests are included in requests 					that CloudFront sends to the origin.                        allExcept – All cookies in viewer requests are included in 					requests that CloudFront sends to the origin,            except          for those listed in the CookieNames 					type, which are not included.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: all | allExcept | none | whitelist
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CookieBehavior")]
+    pub cookie_behavior: CookiesConfigCookieBehaviorEnum,
+
+
+    /// 
+    /// Contains a list of cookie names.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Cookies")]
+    pub cookies: Option<Vec<String>>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CookiesConfigCookieBehaviorEnum {
+
+    /// all
+    #[serde(rename = "all")]
+    All,
+
+    /// allExcept
+    #[serde(rename = "allExcept")]
+    Allexcept,
+
+    /// none
+    #[serde(rename = "none")]
+    None,
+
+    /// whitelist
+    #[serde(rename = "whitelist")]
+    Whitelist,
+
+}
+
+impl Default for CookiesConfigCookieBehaviorEnum {
+    fn default() -> Self {
+        CookiesConfigCookieBehaviorEnum::All
+    }
+}
+
+
+
 /// An object that determines whether any HTTP headers (and if so, which headers) are 			included in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HeadersConfig {
@@ -113,15 +177,15 @@ pub struct OriginRequestPolicyConfig {
 
 
     /// 
-    /// The HTTP headers to include in origin requests. These can include headers from viewer 			requests and additional headers added by CloudFront.
+    /// A comment to describe the origin request policy. The comment cannot be longer than 128 			characters.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: HeadersConfig
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HeadersConfig")]
-    pub headers_config: HeadersConfig,
+    #[serde(rename = "Comment")]
+    pub comment: Option<String>,
 
 
     /// 
@@ -137,27 +201,15 @@ pub struct OriginRequestPolicyConfig {
 
 
     /// 
-    /// A comment to describe the origin request policy. The comment cannot be longer than 128 			characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Comment")]
-    pub comment: Option<String>,
-
-
-    /// 
-    /// The URL query strings from viewer requests to include in origin requests.
+    /// The HTTP headers to include in origin requests. These can include headers from viewer 			requests and additional headers added by CloudFront.
     /// 
     /// Required: Yes
     ///
-    /// Type: QueryStringsConfig
+    /// Type: HeadersConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "QueryStringsConfig")]
-    pub query_strings_config: QueryStringsConfig,
+    #[serde(rename = "HeadersConfig")]
+    pub headers_config: HeadersConfig,
 
 
     /// 
@@ -171,72 +223,20 @@ pub struct OriginRequestPolicyConfig {
     #[serde(rename = "Name")]
     pub name: String,
 
-}
-
-
-
-
-/// An object that determines whether any cookies in viewer requests (and if so, which 			cookies) are included in requests that CloudFront sends to the origin.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CookiesConfig {
-
 
     /// 
-    /// Determines whether cookies in viewer requests are included in requests that CloudFront sends 			to the origin. Valid values are:
-    /// 
-    /// none – No cookies in viewer requests are included in requests that CloudFront sends 					to the origin. Even when this field is set to none, any cookies 					that are listed in a CachePolicy          are included 					in origin requests.                        whitelist – Only the cookies in viewer requests that are listed in the 					CookieNames type are included in requests that CloudFront sends to the 					origin.                        all – All cookies in viewer requests are included in requests 					that CloudFront sends to the origin.                        allExcept – All cookies in viewer requests are included in 					requests that CloudFront sends to the origin,            except          for those listed in the CookieNames 					type, which are not included.
+    /// The URL query strings from viewer requests to include in origin requests.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: all | allExcept | none | whitelist
+    /// Type: QueryStringsConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CookieBehavior")]
-    pub cookie_behavior: CookiesConfigCookieBehaviorEnum,
-
-
-    /// 
-    /// Contains a list of cookie names.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Cookies")]
-    pub cookies: Option<Vec<String>>,
+    #[serde(rename = "QueryStringsConfig")]
+    pub query_strings_config: QueryStringsConfig,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CookiesConfigCookieBehaviorEnum {
-
-    /// all
-    #[serde(rename = "all")]
-    All,
-
-    /// allExcept
-    #[serde(rename = "allExcept")]
-    Allexcept,
-
-    /// none
-    #[serde(rename = "none")]
-    None,
-
-    /// whitelist
-    #[serde(rename = "whitelist")]
-    Whitelist,
-
-}
-
-impl Default for CookiesConfigCookieBehaviorEnum {
-    fn default() -> Self {
-        CookiesConfigCookieBehaviorEnum::All
-    }
-}
 
 
 

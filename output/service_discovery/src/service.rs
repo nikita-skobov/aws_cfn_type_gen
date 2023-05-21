@@ -6,6 +6,20 @@ pub struct CfnService {
 
 
     /// 
+    /// The description of the service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// A complex type that contains information about the Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
     /// 
     /// ImportantThe record types of a service can only be changed by deleting the service and recreating it   with a new Dnsconfig.
@@ -34,47 +48,17 @@ pub struct CfnService {
 
 
     /// 
-    /// The ID of the namespace that was used to create the service.
+    /// A complex type that contains information about an optional custom health check.
     /// 
-    /// ImportantYou must specify a value for NamespaceId either for the service properties or for DnsConfig.   Don't specify a value in both places.
+    /// ImportantIf you specify a health check configuration, you can specify either   HealthCheckCustomConfig or HealthCheckConfig but not both.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 64
+    /// Type: HealthCheckCustomConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "NamespaceId")]
-    pub namespace_id: Option<String>,
-
-
-    /// 
-    /// If present, specifies that the service instances are only discoverable using the   DiscoverInstances API operation. No DNS records is registered for the service  instances. The only valid value is HTTP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: HTTP
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<ServiceTypeEnum>,
-
-
-    /// 
-    /// The description of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "HealthCheckCustomConfig")]
+    pub health_check_custom_config: Option<HealthCheckCustomConfig>,
 
 
     /// 
@@ -92,6 +76,22 @@ pub struct CfnService {
 
 
     /// 
+    /// The ID of the namespace that was used to create the service.
+    /// 
+    /// ImportantYou must specify a value for NamespaceId either for the service properties or for DnsConfig.   Don't specify a value in both places.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NamespaceId")]
+    pub namespace_id: Option<String>,
+
+
+    /// 
     /// The tags for the service. Each tag consists of a key and an optional value, both of which you define. Tag keys  can have a maximum character length of 128 characters, and tag values can have a maximum length of 256  characters.
     /// 
     /// Required: No
@@ -106,17 +106,17 @@ pub struct CfnService {
 
 
     /// 
-    /// A complex type that contains information about an optional custom health check.
-    /// 
-    /// ImportantIf you specify a health check configuration, you can specify either   HealthCheckCustomConfig or HealthCheckConfig but not both.
+    /// If present, specifies that the service instances are only discoverable using the   DiscoverInstances API operation. No DNS records is registered for the service  instances. The only valid value is HTTP.
     /// 
     /// Required: No
     ///
-    /// Type: HealthCheckCustomConfig
+    /// Type: String
+    ///
+    /// Allowed values: HTTP
     ///
     /// Update requires: Replacement
-    #[serde(rename = "HealthCheckCustomConfig")]
-    pub health_check_custom_config: Option<HealthCheckCustomConfig>,
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<ServiceTypeEnum>,
 
 }
 
@@ -146,80 +146,6 @@ impl cfn_resources::CfnResource for CfnService {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// A complex type that contains information about the Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DnsRecord {
-
-
-    /// 
-    /// The type of the resource, which indicates the type of value that Route 53 returns in response to DNS queries.  You can specify values for Type in the following combinations:
-    /// 
-    /// A     AAAA     A and AAAA     SRV     CNAME
-    /// 
-    /// If you want AWS Cloud Map to create a Route 53 alias record when you register an instance, specify   A or AAAA for Type.
-    /// 
-    /// You specify other settings, such as the IP address for A and AAAA records, when you  register an instance. For more information, see RegisterInstance.
-    /// 
-    /// The following values are supported:
-    /// 
-    /// A      Route 53 returns the IP address of the resource in IPv4 format, such as 192.0.2.44.        AAAA      Route 53 returns the IP address of the resource in IPv6 format, such as    2001:0db8:85a3:0000:0000:abcd:0001:2345.        CNAME      Route 53 returns the domain name of the resource, such as www.example.com. Note the following:                      You specify the domain name that you want to route traffic to when you register an instance. For more     information, see Attributes in the topic RegisterInstance.        You must specify WEIGHTED for the value of RoutingPolicy.        You can't specify both CNAME for Type and settings for     HealthCheckConfig. If you do, the request will fail with an InvalidInput     error.           SRV      Route 53 returns the value for an SRV record. The value for an SRV record uses the    following values:   priority weight port service-hostname   Note the following about the values:                      The values of priority and weight are both set to 1 and can't be     changed.        The value of port comes from the value that you specify for the AWS_INSTANCE_PORT     attribute when you submit a RegisterInstance request.        The value of service-hostname is a concatenation of the following values:                            The value that you specify for InstanceId when you register an instance.          The name of the service.          The name of the namespace.         For example, if the value of InstanceId is test, the name of the service is     backend, and the name of the namespace is example.com, the value of     service-hostname is:    test.backend.example.com       If you specify settings for an SRV record and if you specify values for    AWS_INSTANCE_IPV4, AWS_INSTANCE_IPV6, or both in the RegisterInstance    request, AWS Cloud Map automatically creates A and/or AAAA records that have the    same name as the value of service-hostname in the SRV record. You can ignore these    records.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: A | AAAA | CNAME | SRV
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: DnsRecordTypeEnum,
-
-
-    /// 
-    /// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this  record.
-    /// 
-    /// NoteAlias records don't include a TTL because Route 53 uses the TTL for the AWS resource that an   alias record routes traffic to. If you include the AWS_ALIAS_DNS_NAME attribute   when you submit a RegisterInstance request, the   TTL value is ignored. Always specify a TTL for the service; you can use a service   to register instances that create either alias or non-alias records.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TTL")]
-    pub ttl: f64,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum DnsRecordTypeEnum {
-
-    /// A
-    #[serde(rename = "A")]
-    A,
-
-    /// AAAA
-    #[serde(rename = "AAAA")]
-    Aaaa,
-
-    /// CNAME
-    #[serde(rename = "CNAME")]
-    Cname,
-
-    /// SRV
-    #[serde(rename = "SRV")]
-    Srv,
-
-}
-
-impl Default for DnsRecordTypeEnum {
-    fn default() -> Self {
-        DnsRecordTypeEnum::A
-    }
-}
-
 
 
 /// A complex type that contains information about the Amazon Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
@@ -298,40 +224,167 @@ impl Default for DnsConfigRoutingPolicyEnum {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// A complex type that contains information about the Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct DnsRecord {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this  record.
+    /// 
+    /// NoteAlias records don't include a TTL because Route 53 uses the TTL for the AWS resource that an   alias record routes traffic to. If you include the AWS_ALIAS_DNS_NAME attribute   when you submit a RegisterInstance request, the   TTL value is ignored. Always specify a TTL for the service; you can use a service   to register instances that create either alias or non-alias records.
     /// 
     /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TTL")]
+    pub ttl: f64,
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The type of the resource, which indicates the type of value that Route 53 returns in response to DNS queries.  You can specify values for Type in the following combinations:
+    /// 
+    /// A     AAAA     A and AAAA     SRV     CNAME
+    /// 
+    /// If you want AWS Cloud Map to create a Route 53 alias record when you register an instance, specify   A or AAAA for Type.
+    /// 
+    /// You specify other settings, such as the IP address for A and AAAA records, when you  register an instance. For more information, see RegisterInstance.
+    /// 
+    /// The following values are supported:
+    /// 
+    /// A      Route 53 returns the IP address of the resource in IPv4 format, such as 192.0.2.44.        AAAA      Route 53 returns the IP address of the resource in IPv6 format, such as    2001:0db8:85a3:0000:0000:abcd:0001:2345.        CNAME      Route 53 returns the domain name of the resource, such as www.example.com. Note the following:                      You specify the domain name that you want to route traffic to when you register an instance. For more     information, see Attributes in the topic RegisterInstance.        You must specify WEIGHTED for the value of RoutingPolicy.        You can't specify both CNAME for Type and settings for     HealthCheckConfig. If you do, the request will fail with an InvalidInput     error.           SRV      Route 53 returns the value for an SRV record. The value for an SRV record uses the    following values:   priority weight port service-hostname   Note the following about the values:                      The values of priority and weight are both set to 1 and can't be     changed.        The value of port comes from the value that you specify for the AWS_INSTANCE_PORT     attribute when you submit a RegisterInstance request.        The value of service-hostname is a concatenation of the following values:                            The value that you specify for InstanceId when you register an instance.          The name of the service.          The name of the namespace.         For example, if the value of InstanceId is test, the name of the service is     backend, and the name of the namespace is example.com, the value of     service-hostname is:    test.backend.example.com       If you specify settings for an SRV record and if you specify values for    AWS_INSTANCE_IPV4, AWS_INSTANCE_IPV6, or both in the RegisterInstance    request, AWS Cloud Map automatically creates A and/or AAAA records that have the    same name as the value of service-hostname in the SRV record. You can ignore these    records.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Allowed values: A | AAAA | CNAME | SRV
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: DnsRecordTypeEnum,
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum DnsRecordTypeEnum {
+
+    /// A
+    #[serde(rename = "A")]
+    A,
+
+    /// AAAA
+    #[serde(rename = "AAAA")]
+    Aaaa,
+
+    /// CNAME
+    #[serde(rename = "CNAME")]
+    Cname,
+
+    /// SRV
+    #[serde(rename = "SRV")]
+    Srv,
+
+}
+
+impl Default for DnsRecordTypeEnum {
+    fn default() -> Self {
+        DnsRecordTypeEnum::A
+    }
+}
+
+
+
+/// Public DNS and HTTP namespaces only. A complex type that contains  settings for an optional health check. If you specify settings for a health check, AWS Cloud Map  associates the health check with the records that you specify in DnsConfig.
+///
+/// Health checks are basic Route 53 health checks that monitor an AWS endpoint. For  information about pricing for health checks, see Amazon Route 53 Pricing.
+///
+/// Note the following about configuring health checks.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HealthCheckConfig {
+
+
+    /// 
+    /// The number of consecutive health checks that an endpoint must pass or fail for Route 53 to  change the current status of the endpoint from unhealthy to healthy or the other way around. For  more information, see How Route 53   Determines Whether an Endpoint Is Healthy in the  Route 53 Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FailureThreshold")]
+    pub failure_threshold: Option<f64>,
+
+
+    /// 
+    /// The path that you want Route 53 to request when performing health checks. The path can be any  value that your endpoint returns an HTTP status code of a 2xx or 3xx format for when the endpoint  is healthy. An example file is /docs/route53-health-check.html. Route 53 automatically  adds the DNS name for the service. If you don't specify a value for ResourcePath,  the default value is /.
+    /// 
+    /// If you specify TCP for Type, you must not  specify a value for ResourcePath.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourcePath")]
+    pub resource_path: Option<String>,
+
+
+    /// 
+    /// The type of health check that you want to create, which indicates how Route 53 determines  whether an endpoint is healthy.
+    /// 
+    /// ImportantYou can't change the value of Type after you create a health check.
+    /// 
+    /// You can create the following types of health checks:
+    /// 
+    /// HTTP: Route 53 tries to establish a TCP connection. If   successful, Route 53 submits an HTTP request and waits for an HTTP status code of 200 or greater   and less than 400.                        HTTPS: Route 53 tries to establish a TCP connection. If   successful, Route 53 submits an HTTPS request and waits for an HTTP status code of 200 or greater   and less than 400.        ImportantIf you specify HTTPS for the value of Type, the endpoint must support TLS    v1.0 or later.                        TCP: Route 53 tries to establish a TCP connection.        If you specify TCP for Type, don't specify a value for    ResourcePath.
+    /// 
+    /// For more information, see How Route 53   Determines Whether an Endpoint Is Healthy in the  Route 53 Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: HTTP | HTTPS | TCP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: HealthCheckConfigTypeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HealthCheckConfigTypeEnum {
+
+    /// HTTP
+    #[serde(rename = "HTTP")]
+    Http,
+
+    /// HTTPS
+    #[serde(rename = "HTTPS")]
+    Https,
+
+    /// TCP
+    #[serde(rename = "TCP")]
+    Tcp,
+
+}
+
+impl Default for HealthCheckConfigTypeEnum {
+    fn default() -> Self {
+        HealthCheckConfigTypeEnum::Http
+    }
+}
 
 
 
@@ -368,91 +421,38 @@ pub struct HealthCheckCustomConfig {
 
 
 
-/// Public DNS and HTTP namespaces only. A complex type that contains  settings for an optional health check. If you specify settings for a health check, AWS Cloud Map  associates the health check with the records that you specify in DnsConfig.
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
-/// Health checks are basic Route 53 health checks that monitor an AWS endpoint. For  information about pricing for health checks, see Amazon Route 53 Pricing.
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
 ///
-/// Note the following about configuring health checks.
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HealthCheckConfig {
+pub struct Tag {
 
 
     /// 
-    /// The number of consecutive health checks that an endpoint must pass or fail for Route 53 to  change the current status of the endpoint from unhealthy to healthy or the other way around. For  more information, see How Route 53   Determines Whether an Endpoint Is Healthy in the  Route 53 Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FailureThreshold")]
-    pub failure_threshold: Option<f64>,
-
-
-    /// 
-    /// The type of health check that you want to create, which indicates how Route 53 determines  whether an endpoint is healthy.
-    /// 
-    /// ImportantYou can't change the value of Type after you create a health check.
-    /// 
-    /// You can create the following types of health checks:
-    /// 
-    /// HTTP: Route 53 tries to establish a TCP connection. If   successful, Route 53 submits an HTTP request and waits for an HTTP status code of 200 or greater   and less than 400.                        HTTPS: Route 53 tries to establish a TCP connection. If   successful, Route 53 submits an HTTPS request and waits for an HTTP status code of 200 or greater   and less than 400.        ImportantIf you specify HTTPS for the value of Type, the endpoint must support TLS    v1.0 or later.                        TCP: Route 53 tries to establish a TCP connection.        If you specify TCP for Type, don't specify a value for    ResourcePath.
-    /// 
-    /// For more information, see How Route 53   Determines Whether an Endpoint Is Healthy in the  Route 53 Developer Guide.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Allowed values: HTTP | HTTPS | TCP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: HealthCheckConfigTypeEnum,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
-    /// The path that you want Route 53 to request when performing health checks. The path can be any  value that your endpoint returns an HTTP status code of a 2xx or 3xx format for when the endpoint  is healthy. An example file is /docs/route53-health-check.html. Route 53 automatically  adds the DNS name for the service. If you don't specify a value for ResourcePath,  the default value is /.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// If you specify TCP for Type, you must not  specify a value for ResourcePath.
+    /// Required: Yes
     /// 
-    /// Required: No
-    ///
     /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourcePath")]
-    pub resource_path: Option<String>,
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum HealthCheckConfigTypeEnum {
-
-    /// HTTP
-    #[serde(rename = "HTTP")]
-    Http,
-
-    /// HTTPS
-    #[serde(rename = "HTTPS")]
-    Https,
-
-    /// TCP
-    #[serde(rename = "TCP")]
-    Tcp,
-
-}
-
-impl Default for HealthCheckConfigTypeEnum {
-    fn default() -> Self {
-        HealthCheckConfigTypeEnum::Http
-    }
-}
 

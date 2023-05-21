@@ -10,32 +10,6 @@ pub struct CfnPlacementGroup {
 
 
     /// 
-    /// The tags to apply to the new placement group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The placement strategy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: cluster | partition | spread
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Strategy")]
-    pub strategy: Option<PlacementGroupStrategyEnum>,
-
-
-    /// 
     /// The number of partitions. Valid only when Strategy is       set to partition.
     /// 
     /// Required: No
@@ -62,8 +36,53 @@ pub struct CfnPlacementGroup {
     #[serde(rename = "SpreadLevel")]
     pub spread_level: Option<PlacementGroupSpreadLevelEnum>,
 
+
+    /// 
+    /// The placement strategy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: cluster | partition | spread
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Strategy")]
+    pub strategy: Option<PlacementGroupStrategyEnum>,
+
+
+    /// 
+    /// The tags to apply to the new placement group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum PlacementGroupSpreadLevelEnum {
+
+    /// host
+    #[serde(rename = "host")]
+    Host,
+
+    /// rack
+    #[serde(rename = "rack")]
+    Rack,
+
+}
+
+impl Default for PlacementGroupSpreadLevelEnum {
+    fn default() -> Self {
+        PlacementGroupSpreadLevelEnum::Host
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PlacementGroupStrategyEnum {
@@ -85,25 +104,6 @@ pub enum PlacementGroupStrategyEnum {
 impl Default for PlacementGroupStrategyEnum {
     fn default() -> Self {
         PlacementGroupStrategyEnum::Cluster
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum PlacementGroupSpreadLevelEnum {
-
-    /// host
-    #[serde(rename = "host")]
-    Host,
-
-    /// rack
-    #[serde(rename = "rack")]
-    Rack,
-
-}
-
-impl Default for PlacementGroupSpreadLevelEnum {
-    fn default() -> Self {
-        PlacementGroupSpreadLevelEnum::Host
     }
 }
 

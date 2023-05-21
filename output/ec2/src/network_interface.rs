@@ -6,6 +6,44 @@ pub struct CfnNetworkInterface {
 
 
     /// 
+    /// A description for the network interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The security group IDs associated with this network interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GroupSet")]
+    pub group_set: Option<Vec<String>>,
+
+
+    /// 
+    /// The type of network interface. The default is interface. The supported values       are efa and trunk.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: branch | efa | trunk
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InterfaceType")]
+    pub interface_type: Option<NetworkInterfaceInterfaceTypeEnum>,
+
+
+    /// 
     /// The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically       selects the IPv6 addresses from the subnet range. To specify specific IPv6 addresses, use       the Ipv6Addresses property and don't specify this property.
     /// 
     /// Required: No
@@ -27,44 +65,6 @@ pub struct CfnNetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Addresses")]
     pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
-
-
-    /// 
-    /// The type of network interface. The default is interface. The supported values       are efa and trunk.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: branch | efa | trunk
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InterfaceType")]
-    pub interface_type: Option<NetworkInterfaceInterfaceTypeEnum>,
-
-
-    /// 
-    /// The ID of the subnet to associate with the network interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
-
-
-    /// 
-    /// Enable or disable source/destination checks, which ensure that the instance       is either the source or the destination of any traffic that it receives.       If the value is true, source/destination checks are enabled;       otherwise, they are disabled. The default value is true.       You must disable source/destination checks if the instance runs services       such as network address translation, routing, or firewalls.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceDestCheck")]
-    pub source_dest_check: Option<bool>,
 
 
     /// 
@@ -106,27 +106,27 @@ pub struct CfnNetworkInterface {
 
 
     /// 
-    /// The security group IDs associated with this network interface.
+    /// Enable or disable source/destination checks, which ensure that the instance       is either the source or the destination of any traffic that it receives.       If the value is true, source/destination checks are enabled;       otherwise, they are disabled. The default value is true.       You must disable source/destination checks if the instance runs services       such as network address translation, routing, or firewalls.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GroupSet")]
-    pub group_set: Option<Vec<String>>,
+    #[serde(rename = "SourceDestCheck")]
+    pub source_dest_check: Option<bool>,
 
 
     /// 
-    /// A description for the network interface.
+    /// The ID of the subnet to associate with the network interface.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
 
 
     /// 
@@ -178,6 +178,27 @@ impl cfn_resources::CfnResource for CfnNetworkInterface {
 }
 
 
+/// Describes the IPv6 addresses to associate with the network interface.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceIpv6Address {
+
+
+    /// 
+    /// An IPv6 address to associate with the network interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ipv6Address")]
+    pub ipv6_address: String,
+
+}
+
+
+
+
 /// Describes a secondary private IPv4 address for a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PrivateIpAddressSpecification {
@@ -223,17 +244,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -243,26 +253,16 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-
-
-/// Describes the IPv6 addresses to associate with the network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct InstanceIpv6Address {
-
 
     /// 
-    /// An IPv6 address to associate with the network interface.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6Address")]
-    pub ipv6_address: String,
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

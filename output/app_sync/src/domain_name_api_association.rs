@@ -6,18 +6,6 @@ pub struct CfnDomainNameApiAssociation {
 
 
     /// 
-    /// The domain name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainName")]
-    pub domain_name: String,
-
-
-    /// 
     /// The API ID.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnDomainNameApiAssociation {
     /// Update requires: No interruption
     #[serde(rename = "ApiId")]
     pub api_id: String,
+
+
+    /// 
+    /// The domain name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainName")]
+    pub domain_name: String,
 
 }
 

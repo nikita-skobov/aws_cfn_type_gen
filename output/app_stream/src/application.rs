@@ -5,15 +5,104 @@
 pub struct CfnApplication {
 
 
-    /// The tags of the application.
+    /// The app block ARN with which the application should be associated.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.\\-]{0,1023}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppBlockArn")]
+    pub app_block_arn: String,
+
+
+    /// A list of attributes to delete from an application.
     ///
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "AttributesToDelete")]
+    pub attributes_to_delete: Option<Vec<String>>,
+
+
+    /// The description of the application.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// The display name of the application. This name is visible to users in the application catalog.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
+
+
+    /// The icon S3 location of the application.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: S3Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IconS3Location")]
+    pub icon_s3_location: S3Location,
+
+
+    /// The instance families the application supports.
+    ///
+    /// Allowed Values: GENERAL_PURPOSE | GRAPHICS_G4
+    ///
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceFamilies")]
+    pub instance_families: Vec<String>,
+
+
+    /// The launch parameters of the application.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchParameters")]
+    pub launch_parameters: Option<String>,
+
+
+    /// The launch path of the application.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchPath")]
+    pub launch_path: String,
 
 
     /// The name of the application. This name is visible to users when a name is not specified in the     DisplayName property.
@@ -31,82 +120,6 @@ pub struct CfnApplication {
     pub name: String,
 
 
-    /// The display name of the application. This name is visible to users in the application catalog.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
-
-
-    /// The description of the application.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// The icon S3 location of the application.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: S3Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IconS3Location")]
-    pub icon_s3_location: S3Location,
-
-
-    /// The launch path of the application.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchPath")]
-    pub launch_path: String,
-
-
-    /// The launch parameters of the application.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchParameters")]
-    pub launch_parameters: Option<String>,
-
-
-    /// The app block ARN with which the application should be associated.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^arn:aws(?:\-cn|\-iso\-b|\-iso|\-us\-gov)?:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.\\-]{0,1023}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppBlockArn")]
-    pub app_block_arn: String,
-
-
     /// The platforms the application supports.
     /// 
     /// Allowed Values: WINDOWS_SERVER_2019 | AMAZON_LINUX2
@@ -122,28 +135,15 @@ pub struct CfnApplication {
     pub platforms: Vec<String>,
 
 
-    /// The instance families the application supports.
-    ///
-    /// Allowed Values: GENERAL_PURPOSE | GRAPHICS_G4
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceFamilies")]
-    pub instance_families: Vec<String>,
-
-
-    /// A list of attributes to delete from an application.
+    /// The tags of the application.
     ///
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AttributesToDelete")]
-    pub attributes_to_delete: Option<Vec<String>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// The working directory of the application.

@@ -8,6 +8,34 @@ pub struct CfnRuleGroup {
 
 
     /// 
+    /// The labels that one or more rules in this rule group add to matching web requests. These labels are defined in the RuleLabels for a Rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of LabelSummary
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AvailableLabels")]
+    pub available_labels: Option<Vec<LabelSummary>>,
+
+
+    /// 
+    /// The web ACL capacity units (WCUs) required for this rule group.
+    /// 
+    /// When you create your own rule group, you define this, and you cannot change it after creation.      When you add or modify the rules in a rule group, AWS WAF enforces this limit.
+    /// 
+    /// AWS WAF uses WCUs to calculate and control the operating     resources that are used to run your rules, rule groups, and web ACLs. AWS WAF     calculates capacity differently for each rule type, to reflect the relative cost of each rule.      Simple rules that cost little to run use fewer WCUs than more complex rules 				that use more processing power. 				Rule group capacity is fixed at creation, which helps users plan their      web ACL WCU usage when they use a rule group.      The WCU limit for web ACLs is 1,500.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Capacity")]
+    pub capacity: i64,
+
+
+    /// 
     /// The labels that one or more rules in this rule group match against in label match statements. These labels are defined in a LabelMatchStatement specification, in the Statement definition of a rule.
     /// 
     /// Required: No
@@ -20,29 +48,19 @@ pub struct CfnRuleGroup {
 
 
     /// 
-    /// Defines and enables Amazon CloudWatch metrics and web request sample collection.
+    /// A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the rule group, and then use them in the rules that you define in the rule group.
     /// 
-    /// Required: Yes
+    /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
+    /// 
+    /// For information about the limits on count and size for custom request and response settings, see AWS WAF quotas    in the         AWS WAF Developer Guide.
+    /// 
+    /// Required: No
     ///
-    /// Type: VisibilityConfig
+    /// Type: Map of CustomResponseBody
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VisibilityConfig")]
-    pub visibility_config: VisibilityConfig,
-
-
-    /// 
-    /// Specifies whether this is for an Amazon CloudFront distribution or for a regional application. A regional    application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AWS AppSync GraphQL API,    an Amazon Cognito user pool, or an AWS App Runner service. Valid Values are CLOUDFRONT and REGIONAL.
-    /// 
-    /// NoteFor CLOUDFRONT, you must create your WAFv2 resources in the US East (N. Virginia) Region, us-east-1.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Scope")]
-    pub scope: String,
+    #[serde(rename = "CustomResponseBodies")]
+    pub custom_response_bodies: Option<std::collections::HashMap<String, CustomResponseBody>>,
 
 
     /// 
@@ -82,22 +100,6 @@ pub struct CfnRuleGroup {
 
 
     /// 
-    /// The web ACL capacity units (WCUs) required for this rule group.
-    /// 
-    /// When you create your own rule group, you define this, and you cannot change it after creation.      When you add or modify the rules in a rule group, AWS WAF enforces this limit.
-    /// 
-    /// AWS WAF uses WCUs to calculate and control the operating     resources that are used to run your rules, rule groups, and web ACLs. AWS WAF     calculates capacity differently for each rule type, to reflect the relative cost of each rule.      Simple rules that cost little to run use fewer WCUs than more complex rules 				that use more processing power. 				Rule group capacity is fixed at creation, which helps users plan their      web ACL WCU usage when they use a rule group.      The WCU limit for web ACLs is 1,500.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Capacity")]
-    pub capacity: i64,
-
-
-    /// 
     /// The rule statements used to identify the web requests that you      want to allow, block, or count. Each rule includes one top-level statement that AWS WAF uses to identify matching      web requests, and parameters that govern how AWS WAF handles them.
     /// 
     /// Required: No
@@ -107,6 +109,20 @@ pub struct CfnRuleGroup {
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
     pub rules: Option<Vec<Rule>>,
+
+
+    /// 
+    /// Specifies whether this is for an Amazon CloudFront distribution or for a regional application. A regional    application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AWS AppSync GraphQL API,    an Amazon Cognito user pool, or an AWS App Runner service. Valid Values are CLOUDFRONT and REGIONAL.
+    /// 
+    /// NoteFor CLOUDFRONT, you must create your WAFv2 resources in the US East (N. Virginia) Region, us-east-1.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Scope")]
+    pub scope: String,
 
 
     /// 
@@ -124,31 +140,15 @@ pub struct CfnRuleGroup {
 
 
     /// 
-    /// The labels that one or more rules in this rule group add to matching web requests. These labels are defined in the RuleLabels for a Rule.
+    /// Defines and enables Amazon CloudWatch metrics and web request sample collection.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of LabelSummary
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AvailableLabels")]
-    pub available_labels: Option<Vec<LabelSummary>>,
-
-
-    /// 
-    /// A map of custom response keys and content bodies. When you create a rule with a block action, you can send a custom response to the web request. You define these for the rule group, and then use them in the rules that you define in the rule group.
-    /// 
-    /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
-    /// 
-    /// For information about the limits on count and size for custom request and response settings, see AWS WAF quotas    in the         AWS WAF Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of CustomResponseBody
+    /// Type: VisibilityConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CustomResponseBodies")]
-    pub custom_response_bodies: Option<std::collections::HashMap<String, CustomResponseBody>>,
+    #[serde(rename = "VisibilityConfig")]
+    pub visibility_config: VisibilityConfig,
 
 }
 
@@ -165,334 +165,46 @@ impl cfn_resources::CfnResource for CfnRuleGroup {
 }
 
 
-/// A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (>) or less than (<). For example, you can use a size constraint statement to look for query strings that are longer than 100 bytes.
+/// Specifies that AWS WAF should allow the request and optionally defines additional     custom handling for the request.
 ///
-/// If you configure AWS WAF to inspect the request body, AWS WAF inspects only the number of bytes of the body up to the limit for the web ACL. By default, for regional web ACLs, this limit is 8 KB (8,192 kilobytes) and for CloudFront web ACLs, this limit is 16 KB (16,384 kilobytes). For CloudFront web ACLs, you can increase the limit in the web ACL AssociationConfig, for additional fees. If you know that the request body for your web requests should never exceed the inspection limit, you could use a size constraint statement to block requests that have a larger request body size.
-///
-/// If you choose URI for the value of Part of the request to filter on, the slash (/) in the URI counts as one character. For example, the URI /logo.jpg is nine characters long.
+/// This is used in the context of other settings, for example to specify values for RuleAction and web ACL DefaultAction.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SizeConstraintStatement {
+pub struct AllowAction {
 
 
     /// 
-    /// The operator to use to compare the request part to the size setting.
+    /// Defines custom handling for the web request.
     /// 
-    /// Required: Yes
+    /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: EQ | GE | GT | LE | LT | NE
+    /// Type: CustomRequestHandling
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ComparisonOperator")]
-    pub comparison_operator: SizeConstraintStatementComparisonOperatorEnum,
-
-
-    /// 
-    /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. Text transformations are used in rule match statements, to transform the FieldToMatch request component before inspecting it, and they're used in rate-based rule statements, to transform request components before using them as custom aggregation keys. If you specify one or more transformations to apply, AWS WAF performs all transformations on the specified content, starting from the lowest priority setting, and then uses the component contents.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of TextTransformation
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TextTransformations")]
-    pub text_transformations: Vec<TextTransformation>,
-
-
-    /// 
-    /// The part of the web request that you want AWS WAF to inspect.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
-
-
-    /// 
-    /// The size, in byte, to compare to the request part, after any transformations.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Size")]
-    pub size: f64,
+    #[serde(rename = "CustomRequestHandling")]
+    pub custom_request_handling: Option<CustomRequestHandling>,
 
 }
 
 
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum SizeConstraintStatementComparisonOperatorEnum {
-
-    /// EQ
-    #[serde(rename = "EQ")]
-    Eq,
-
-    /// GE
-    #[serde(rename = "GE")]
-    Ge,
-
-    /// GT
-    #[serde(rename = "GT")]
-    Gt,
-
-    /// LE
-    #[serde(rename = "LE")]
-    Le,
-
-    /// LT
-    #[serde(rename = "LT")]
-    Lt,
-
-    /// NE
-    #[serde(rename = "NE")]
-    Ne,
-
-}
-
-impl Default for SizeConstraintStatementComparisonOperatorEnum {
-    fn default() -> Self {
-        SizeConstraintStatementComparisonOperatorEnum::Eq
-    }
-}
 
 
-
-/// A single label container. This is used as an element of a label array in RuleLabels inside a rule.
+/// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Label {
+pub struct AndStatement {
 
 
     /// 
-    /// The label string.
+    /// The statements to combine with AND logic. You can use any statements that can be nested.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^[0-9A-Za-z_\-:]+$
+    /// Type: List of Statement
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}
-
-
-
-
-/// The processing guidance for a rule, used by AWS WAF to determine whether a web request matches the rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Statement {
-
-
-    /// 
-    /// A rule statement that defines a string match search for AWS WAF to apply to web requests. The byte match statement provides the bytes to search for, the location in requests that you want AWS WAF to search, and other settings. The bytes to search for are typically a string that corresponds with ASCII characters. In the AWS WAF console and the developer guide, this is called a string match statement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ByteMatchStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ByteMatchStatement")]
-    pub byte_match_statement: Option<ByteMatchStatement>,
-
-
-    /// 
-    /// A rule statement used to detect web requests coming from particular IP addresses or address ranges. To use this, create an AWS::WAFv2::IPSet that specifies the addresses you want to detect, then use the ARN of that set in this statement.
-    /// 
-    /// Each IP set rule statement references an IP set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: IPSetReferenceStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IPSetReferenceStatement")]
-    pub ipset_reference_statement: Option<IPSetReferenceStatement>,
-
-
-    /// 
-    /// A rate-based rule counts incoming requests and rate limits requests when they are coming at too fast a rate. The rule categorizes requests according to your aggregation criteria, collects them into aggregation instances, and counts and rate limits the requests for each instance.
-    /// 
-    /// You can specify individual aggregation keys, like IP address or HTTP method. You can also specify aggregation key combinations, like IP address and HTTP method, or HTTP method, query argument, and cookie.
-    /// 
-    /// Each unique set of values for the aggregation keys that you specify is a separate aggregation instance, with the value from each key contributing to the aggregation instance definition.
-    /// 
-    /// For example, assume the rule evaluates web requests with the following IP address and HTTP method values:
-    /// 
-    /// IP address 10.1.1.1, HTTP method POST               IP address 10.1.1.1, HTTP method GET               IP address 127.0.0.0, HTTP method POST               IP address 10.1.1.1, HTTP method GET
-    /// 
-    /// The rule would create different aggregation instances according to your aggregation criteria, for example:
-    /// 
-    /// If the aggregation criteria is just the IP address, then each individual address is an aggregation instance, and AWS WAF counts requests separately for each. The aggregation instances and request counts for our example would be the following:                                                IP address 10.1.1.1: count 3                     IP address 127.0.0.0: count 1                        If the aggregation criteria is HTTP method, then each individual HTTP method is an aggregation instance. The aggregation instances and request counts for our example would be the following:                                                HTTP method POST: count 2                     HTTP method GET: count 2                        If the aggregation criteria is IP address and HTTP method, then each IP address and each HTTP method would contribute to the combined aggregation instance. The aggregation instances and request counts for our example would be the following:                                                          IP address 10.1.1.1, HTTP method POST: count 1                     IP address 10.1.1.1, HTTP method GET: count 2                     IP address 127.0.0.0, HTTP method POST: count 1
-    /// 
-    /// For any n-tuple of aggregation keys, each unique combination of values for the keys defines a separate aggregation instance, which AWS WAF counts and rate-limits individually.
-    /// 
-    /// You can optionally nest another statement inside the rate-based statement, to narrow the scope of the rule so that it only counts and rate limits requests that match the nested statement. You can use this nested scope-down statement in conjunction with your aggregation key specifications or you can just count and rate limit all requests that match the scope-down statement, without additional aggregation. When you choose to just manage all requests that match a scope-down statement, the aggregation instance is singular for the rule.
-    /// 
-    /// You cannot nest a RateBasedStatement inside another statement, for example inside a NotStatement or OrStatement. You can define a RateBasedStatement inside a web ACL and inside a rule group.
-    /// 
-    /// For additional information about the options, see Rate limiting web requests using rate-based rules   in the         AWS WAF Developer Guide.
-    /// 
-    /// If you only aggregate on the individual IP address or forwarded IP address, you can retrieve the list of IP addresses that AWS WAF      is currently rate limiting for a rule through the API call GetRateBasedStatementManagedKeys. This option is not available    for other aggregation configurations.
-    /// 
-    /// AWS WAF tracks and manages web requests separately for each instance of a rate-based rule that you use. For example, if you provide the same rate-based rule settings in two web ACLs, each of the two rule statements represents a separate instance of the rate-based rule and gets its own tracking and management by AWS WAF. If you define a rate-based rule inside a rule group, and then use that rule group in multiple places, each use creates a separate instance of the rate-based rule that gets its own tracking and management by AWS WAF.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RateBasedStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RateBasedStatement")]
-    pub rate_based_statement: Option<RateBasedStatement>,
-
-
-    /// 
-    /// A logical rule statement used to negate the results of another rule statement. You provide one Statement within the NotStatement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NotStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotStatement")]
-    pub not_statement: Option<NotStatement>,
-
-
-    /// 
-    /// A rule statement used to search web request components for a match against a single regular expression.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RegexMatchStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegexMatchStatement")]
-    pub regex_match_statement: Option<RegexMatchStatement>,
-
-
-    /// 
-    /// A logical rule statement used to combine other rule statements with OR logic. You provide more than one Statement within the OrStatement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OrStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OrStatement")]
-    pub or_statement: Option<OrStatement>,
-
-
-    /// 
-    /// A rule statement that inspects for malicious SQL code. Attackers insert malicious SQL code into web requests to do things like modify your database or extract data from it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SqliMatchStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SqliMatchStatement")]
-    pub sqli_match_statement: Option<SqliMatchStatement>,
-
-
-    /// 
-    /// A rule statement that labels web requests by country and region and that matches against web requests based on country code. A geo match rule labels every request that it inspects regardless of whether it finds a match.
-    /// 
-    /// To manage requests only by country, you can use this statement by itself and specify the countries that you want to match against in the CountryCodes array.               Otherwise, configure your geo match rule with Count action so that it only labels requests. Then, add one or more label match rules to run after the geo match rule and configure them to match against the geographic labels and handle the requests as needed.
-    /// 
-    /// AWS WAF labels requests using the alpha-2 country and region codes from the International Organization for Standardization (ISO) 3166 standard. AWS WAF determines the codes using either the IP address in the web request origin or, if you specify it, the address in the geo match ForwardedIPConfig.
-    /// 
-    /// If you use the web request origin, the label formats are awswaf:clientip:geo:region:<ISO country code>-<ISO region code> and awswaf:clientip:geo:country:<ISO country code>.
-    /// 
-    /// If you use a forwarded IP address, the label formats are awswaf:forwardedip:geo:region:<ISO country code>-<ISO region code> and awswaf:forwardedip:geo:country:<ISO country code>.
-    /// 
-    /// For additional details, see Geographic match rule statement in the AWS WAF Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: GeoMatchStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GeoMatchStatement")]
-    pub geo_match_statement: Option<GeoMatchStatement>,
-
-
-    /// 
-    /// A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (>) or less than (<). For example, you can use a size constraint statement to look for query strings that are longer than 100 bytes.
-    /// 
-    /// If you configure AWS WAF to inspect the request body, AWS WAF inspects only the number of bytes of the body up to the limit for the web ACL. By default, for regional web ACLs, this limit is 8 KB (8,192 kilobytes) and for CloudFront web ACLs, this limit is 16 KB (16,384 kilobytes). For CloudFront web ACLs, you can increase the limit in the web ACL AssociationConfig, for additional fees. If you know that the request body for your web requests should never exceed the inspection limit, you could use a size constraint statement to block requests that have a larger request body size.
-    /// 
-    /// If you choose URI for the value of Part of the request to filter on, the slash (/) in the URI counts as one character. For example, the URI /logo.jpg is nine characters long.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SizeConstraintStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SizeConstraintStatement")]
-    pub size_constraint_statement: Option<SizeConstraintStatement>,
-
-
-    /// 
-    /// A rule statement to match against labels that have been added to the web request by rules that have already run in the web ACL.
-    /// 
-    /// The label match statement provides the label or namespace string to search for. The label string can represent a part or all of the fully qualified label name that had been added to the web request. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label. If you do not provide the fully qualified name in your label match string, AWS WAF performs the search for labels that were added in the same context as the label match statement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LabelMatchStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LabelMatchStatement")]
-    pub label_match_statement: Option<LabelMatchStatement>,
-
-
-    /// 
-    /// A rule statement used to search web request components for matches with regular expressions. To use this, create a AWS::WAFv2::RegexPatternSet that specifies the expressions that you want to detect, then use the ARN of that set in this statement. A web request matches the pattern set rule statement if the request component matches any of the patterns in the set.
-    /// 
-    /// Each regex pattern set rule statement references a regex pattern set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RegexPatternSetReferenceStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegexPatternSetReferenceStatement")]
-    pub regex_pattern_set_reference_statement: Option<RegexPatternSetReferenceStatement>,
-
-
-    /// 
-    /// A rule statement that inspects for cross-site scripting (XSS) attacks. In XSS attacks, the attacker uses vulnerabilities in a benign website as a vehicle to inject malicious client-site scripts into other legitimate web browsers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: XssMatchStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "XssMatchStatement")]
-    pub xss_match_statement: Option<XssMatchStatement>,
-
-
-    /// 
-    /// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AndStatement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AndStatement")]
-    pub and_statement: Option<AndStatement>,
+    #[serde(rename = "Statements")]
+    pub statements: Vec<Statement>,
 
 }
 
@@ -524,9 +236,67 @@ pub struct BlockAction {
 
 
 
-/// A rule statement that inspects for cross-site scripting (XSS) attacks. In XSS attacks, the attacker uses vulnerabilities in a benign website as a vehicle to inject malicious client-site scripts into other legitimate web browsers.
+/// Inspect the body of the web request. The body immediately follows the request     headers.
+///
+/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct XssMatchStatement {
+pub struct Body {
+
+
+    /// 
+    /// What AWS WAF should do if the body is larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of the web request body if the body   exceeds the limit for the resource type. If the body is larger than the limit, the underlying host service   only forwards the contents that are below the limit to AWS WAF for inspection.
+    /// 
+    /// The default limit is 8 KB (8,192 kilobytes) for regional resources and 16 KB (16,384 kilobytes) for CloudFront distributions. For CloudFront distributions,   you can increase the limit in the web ACL AssociationConfig, for additional processing fees.
+    /// 
+    /// The options for oversize handling are the following:
+    /// 
+    /// CONTINUE - Inspect the body normally, according to the rule inspection criteria.                         MATCH - Treat the web request as matching the rule statement. AWS WAF        applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
+    /// 
+    /// You can combine the MATCH or NO_MATCH    settings for oversize handling with your rule and web ACL action settings, so that you block any request whose body is over the limit.
+    /// 
+    /// Default: CONTINUE
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CONTINUE | MATCH | NO_MATCH
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OversizeHandling")]
+    pub oversize_handling: Option<BodyOversizeHandlingEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum BodyOversizeHandlingEnum {
+
+    /// CONTINUE
+    #[serde(rename = "CONTINUE")]
+    Continue,
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for BodyOversizeHandlingEnum {
+    fn default() -> Self {
+        BodyOversizeHandlingEnum::Continue
+    }
+}
+
+
+
+/// A rule statement that defines a string match search for AWS WAF to apply to web requests. The byte match statement provides the bytes to search for, the location in requests that you want AWS WAF to search, and other settings. The bytes to search for are typically a string that corresponds with ASCII characters. In the AWS WAF console and the developer guide, this is called a string match statement.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ByteMatchStatement {
 
 
     /// 
@@ -539,6 +309,74 @@ pub struct XssMatchStatement {
     /// Update requires: No interruption
     #[serde(rename = "FieldToMatch")]
     pub field_to_match: FieldToMatch,
+
+
+    /// 
+    /// The area within the portion of the web request that you want AWS WAF to search for       SearchString. Valid values include the following:
+    /// 
+    /// CONTAINS
+    /// 
+    /// The specified part of the web request must include the value of       SearchString, but the location doesn't matter.
+    /// 
+    /// CONTAINS_WORD
+    /// 
+    /// The specified part of the web request must include the value of       SearchString, and SearchString must contain only alphanumeric     characters or underscore (A-Z, a-z, 0-9, or _). In addition, SearchString must     be a word, which means that both of the following are true:
+    /// 
+    /// SearchString is at the beginning of the specified part of the web        request or is preceded by a character other than an alphanumeric character or        underscore (_). Examples include the value of a header and        ;BadBot.                        SearchString is at the end of the specified part of the web request or        is followed by a character other than an alphanumeric character or underscore (_),        for example, BadBot; and -BadBot;.
+    /// 
+    /// EXACTLY
+    /// 
+    /// The value of the specified part of the web request must exactly match the value of       SearchString.
+    /// 
+    /// STARTS_WITH
+    /// 
+    /// The value of SearchString must appear at the beginning of the specified     part of the web request.
+    /// 
+    /// ENDS_WITH
+    /// 
+    /// The value of SearchString must appear at the end of the specified part of     the web request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CONTAINS | CONTAINS_WORD | ENDS_WITH | EXACTLY | STARTS_WITH
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PositionalConstraint")]
+    pub positional_constraint: ByteMatchStatementPositionalConstraintEnum,
+
+
+    /// 
+    /// A string value that you want AWS WAF to search for. AWS WAF searches only in        the part of web requests that you designate for inspection in FieldToMatch. The maximum length of the        value is 200 bytes. For alphabetic characters A-Z and a-z, the value is case sensitive.
+    /// 
+    /// Don't encode this string. Provide the value that you want AWS WAF to search for.        AWS CloudFormation automatically base64 encodes the value for you.
+    /// 
+    /// For example, suppose the value of Type is HEADER and the       value of Data is User-Agent. If you want to search the       User-Agent header for the value BadBot, you provide the string       BadBot in the value of SearchString.
+    /// 
+    /// You must specify either SearchString or SearchStringBase64 in a ByteMatchStatement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SearchString")]
+    pub search_string: Option<String>,
+
+
+    /// 
+    /// String to search for in a web request component, base64-encoded. If you don't want to encode the string, specify the unencoded value in SearchString instead.
+    /// 
+    /// You must specify either SearchString or SearchStringBase64 in a ByteMatchStatement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SearchStringBase64")]
+    pub search_string_base64: Option<String>,
 
 
     /// 
@@ -555,157 +393,81 @@ pub struct XssMatchStatement {
 }
 
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ByteMatchStatementPositionalConstraintEnum {
+
+    /// CONTAINS
+    #[serde(rename = "CONTAINS")]
+    Contains,
+
+    /// CONTAINS_WORD
+    #[serde(rename = "CONTAINS_WORD")]
+    Containsword,
+
+    /// ENDS_WITH
+    #[serde(rename = "ENDS_WITH")]
+    Endswith,
+
+    /// EXACTLY
+    #[serde(rename = "EXACTLY")]
+    Exactly,
+
+    /// STARTS_WITH
+    #[serde(rename = "STARTS_WITH")]
+    Startswith,
+
+}
+
+impl Default for ByteMatchStatementPositionalConstraintEnum {
+    fn default() -> Self {
+        ByteMatchStatementPositionalConstraintEnum::Contains
+    }
+}
 
 
-/// The part of the web request that you want AWS WAF to inspect. Include the single       FieldToMatch type that you want to inspect, with additional specifications     as needed, according to the type. You specify a single request component in       FieldToMatch for each rule statement that requires it. To inspect more than     one component of the web request, create a separate rule statement for each     component.
+
+/// Specifies that AWS WAF should run a CAPTCHA check against the request:
 ///
-/// Example JSON for a QueryString field to match:
+/// You can configure the expiration time         in the CaptchaConfig       ImmunityTimeProperty setting at the rule and web ACL level. The rule setting overrides the web ACL setting.
 ///
-/// "FieldToMatch": { "QueryString": {} }
-///
-/// Example JSON for a Method field to match specification:
-///
-/// "FieldToMatch": { "Method": { "Name": "DELETE" } }
+/// This action option is available for rules. It isn't available for web ACL default actions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FieldToMatch {
+pub struct CaptchaAction {
 
 
     /// 
-    /// Inspect all query arguments.
+    /// Defines custom handling for the web request, used when the CAPTCHA inspection determines that the request's token is valid and unexpired.
+    /// 
+    /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: CustomRequestHandling
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllQueryArguments")]
-    pub all_query_arguments: Option<serde_json::Value>,
+    #[serde(rename = "CustomRequestHandling")]
+    pub custom_request_handling: Option<CustomRequestHandling>,
+
+}
+
+
+
+
+/// Specifies how AWS WAF should handle CAPTCHA evaluations. This is     available at the web ACL level and in each rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CaptchaConfig {
 
 
     /// 
-    /// Inspect a single query argument. Provide the name of the query argument to inspect, such     as UserName or SalesRegion. The name can be up to     30 characters long and isn't case sensitive.
-    /// 
-    /// Example JSON: "SingleQueryArgument": { "Name": "myArgument" }
+    /// Determines how long a CAPTCHA timestamp in the token remains valid after the client     successfully solves a CAPTCHA puzzle.
     /// 
     /// Required: No
     ///
-    /// Type: SingleQueryArgument
+    /// Type: ImmunityTimeProperty
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SingleQueryArgument")]
-    pub single_query_argument: Option<SingleQueryArgument>,
-
-
-    /// 
-    /// Inspect the query string. This is the part of a URL that appears after a ?     character, if any.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryString")]
-    pub query_string: Option<serde_json::Value>,
-
-
-    /// 
-    /// Inspect the request cookies. You must configure scope and pattern matching filters in     the Cookies object, to define the set of cookies and the parts of the cookies     that AWS WAF inspects.
-    /// 
-    /// Only the first 8 KB (8192 bytes) of a request's cookies and only the first 200 cookies     are forwarded to AWS WAF for inspection by the underlying host service. You must     configure how to handle any oversize cookie content in the Cookies object.     AWS WAF applies the pattern matching filters to the cookies that it receives from the     underlying host service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Cookies
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Cookies")]
-    pub cookies: Option<Cookies>,
-
-
-    /// 
-    /// Inspect the HTTP method. The method indicates the type of operation that the request is     asking the origin to perform.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Method")]
-    pub method: Option<serde_json::Value>,
-
-
-    /// 
-    /// Inspect a single header. Provide the name of the header to inspect, for example,       User-Agent or Referer. This setting isn't case     sensitive.
-    /// 
-    /// Example JSON: "SingleHeader": { "Name": "haystack" }
-    /// 
-    /// Alternately, you can filter and inspect all headers with the Headers       FieldToMatch setting.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SingleHeader
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SingleHeader")]
-    pub single_header: Option<SingleHeader>,
-
-
-    /// 
-    /// Inspect the request body as JSON. The request body immediately follows the request     headers. This is the part of a request that contains any additional data that you want to     send to your web server as the HTTP request body, such as data from a form.
-    /// 
-    /// A limited amount of the request body is forwarded to AWS WAF for    inspection by the underlying host service. For regional resources, the limit is 8 KB (8,192 kilobytes) and for CloudFront distributions, the limit is 16 KB (16,384 kilobytes). For CloudFront distributions,   you can increase the limit in the web ACL's AssociationConfig, for additional processing fees.
-    /// 
-    /// For information about how to handle oversized     request bodies, see the JsonBody object configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: JsonBody
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JsonBody")]
-    pub json_body: Option<JsonBody>,
-
-
-    /// 
-    /// Inspect the request body as plain text. The request body immediately follows the request     headers. This is the part of a request that contains any additional data that you want to     send to your web server as the HTTP request body, such as data from a form.
-    /// 
-    /// A limited amount of the request body is forwarded to AWS WAF for    inspection by the underlying host service. For regional resources, the limit is 8 KB (8,192 kilobytes) and for CloudFront distributions, the limit is 16 KB (16,384 kilobytes). For CloudFront distributions,   you can increase the limit in the web ACL's AssociationConfig, for additional processing fees.
-    /// 
-    /// For information about how to handle oversized     request bodies, see the Body object configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Body
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Body")]
-    pub body: Option<Body>,
-
-
-    /// 
-    /// Inspect the request URI path. This is the part of the web request that identifies a     resource, for example, /images/daily-ad.jpg.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UriPath")]
-    pub uri_path: Option<serde_json::Value>,
-
-
-    /// 
-    /// Inspect the request headers. You must configure scope and pattern matching filters in     the Headers object, to define the set of headers to and the parts of the     headers that AWS WAF inspects.
-    /// 
-    /// Only the first 8 KB (8192 bytes) of a request's headers and only the first 200 headers     are forwarded to AWS WAF for inspection by the underlying host service. You must     configure how to handle any oversize header content in the Headers object.     AWS WAF applies the pattern matching filters to the headers that it receives from the     underlying host service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Headers
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Headers")]
-    pub headers: Option<Headers>,
+    #[serde(rename = "ImmunityTimeProperty")]
+    pub immunity_time_property: Option<ImmunityTimeProperty>,
 
 }
 
@@ -739,364 +501,21 @@ pub struct ChallengeAction {
 
 
 
-/// Inspect all headers in the web request. You can specify the parts of the headers to     inspect and you can narrow the set of headers to inspect by including or excluding specific     keys.
-///
-/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
-///
-/// If you want to inspect just the value of a single header, use the       SingleHeader       FieldToMatch setting instead.
-///
-/// Example JSON: "Headers": { "MatchPattern": { "All": {} }, "MatchScope": "KEY",       "OversizeHandling": "MATCH" }
+/// Specifies how AWS WAF should handle Challenge evaluations. This is     available at the web ACL level and in each rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Headers {
+pub struct ChallengeConfig {
 
 
     /// 
-    /// What AWS WAF should do if the headers of the request are larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of request headers    when they exceed 8 KB (8192 bytes) or 200 total headers. The underlying host service forwards a maximum of 200 headers    and at most 8 KB of header contents to AWS WAF.
-    /// 
-    /// The options for oversize handling are the following:
-    /// 
-    /// CONTINUE - Inspect the headers normally, according to the rule inspection criteria.                         MATCH - Treat the web request as matching the rule statement. AWS WAF        applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CONTINUE | MATCH | NO_MATCH
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OversizeHandling")]
-    pub oversize_handling: HeadersOversizeHandlingEnum,
-
-
-    /// 
-    /// The filter to use to identify the subset of headers to inspect in a web request.
-    /// 
-    /// You must specify exactly one setting: either All, IncludedHeaders, or ExcludedHeaders.
-    /// 
-    /// Example JSON: "MatchPattern": { "ExcludedHeaders": {"KeyToExclude1", "KeyToExclude2"} }
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: HeaderMatchPattern
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MatchPattern")]
-    pub match_pattern: HeaderMatchPattern,
-
-
-    /// 
-    /// The parts of the headers to match with the rule inspection criteria. If you specify       All, AWS WAF inspects both keys and values.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALL | KEY | VALUE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MatchScope")]
-    pub match_scope: HeadersMatchScopeEnum,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum HeadersOversizeHandlingEnum {
-
-    /// CONTINUE
-    #[serde(rename = "CONTINUE")]
-    Continue,
-
-    /// MATCH
-    #[serde(rename = "MATCH")]
-    Match,
-
-    /// NO_MATCH
-    #[serde(rename = "NO_MATCH")]
-    Nomatch,
-
-}
-
-impl Default for HeadersOversizeHandlingEnum {
-    fn default() -> Self {
-        HeadersOversizeHandlingEnum::Continue
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum HeadersMatchScopeEnum {
-
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
-
-    /// KEY
-    #[serde(rename = "KEY")]
-    Key,
-
-    /// VALUE
-    #[serde(rename = "VALUE")]
-    Value,
-
-}
-
-impl Default for HeadersMatchScopeEnum {
-    fn default() -> Self {
-        HeadersMatchScopeEnum::All
-    }
-}
-
-
-
-/// Specifies that AWS WAF should run a CAPTCHA check against the request:
-///
-/// You can configure the expiration time         in the CaptchaConfig       ImmunityTimeProperty setting at the rule and web ACL level. The rule setting overrides the web ACL setting.
-///
-/// This action option is available for rules. It isn't available for web ACL default actions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CaptchaAction {
-
-
-    /// 
-    /// Defines custom handling for the web request, used when the CAPTCHA inspection determines that the request's token is valid and unexpired.
-    /// 
-    /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
+    /// Determines how long a challenge timestamp in the token remains valid after the client     successfully responds to a challenge.
     /// 
     /// Required: No
     ///
-    /// Type: CustomRequestHandling
+    /// Type: ImmunityTimeProperty
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CustomRequestHandling")]
-    pub custom_request_handling: Option<CustomRequestHandling>,
-
-}
-
-
-
-
-/// Defines and enables Amazon CloudWatch metrics and web request sample collection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VisibilityConfig {
-
-
-    /// 
-    /// A name of the Amazon CloudWatch metric dimension. The name can contain only the characters: A-Z, a-z, 0-9,     - (hyphen), and _ (underscore). The name can be from one to 128 characters long. It can't    contain whitespace or metric names that are reserved for AWS WAF, for example All and    Default_Action.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[\w#:\.\-/]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
-
-
-    /// 
-    /// A boolean indicating whether the associated resource sends metrics to Amazon CloudWatch. For the     list of available metrics, see AWS WAF       Metrics in the         AWS WAF Developer Guide.
-    /// 
-    /// For web ACLs, the metrics are for web requests that have the web ACL default action applied.     AWS WAF applies the default action to web requests that pass the inspection of all rules     in the web ACL without being either allowed or blocked. For more information, see The web ACL default action in the         AWS WAF Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchMetricsEnabled")]
-    pub cloud_watch_metrics_enabled: bool,
-
-
-    /// 
-    /// A boolean indicating whether AWS WAF should store a sampling of the web requests that     match the rules. You can view the sampled requests through the AWS WAF console.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SampledRequestsEnabled")]
-    pub sampled_requests_enabled: bool,
-
-}
-
-
-
-
-/// Specifies that AWS WAF should allow the request and optionally defines additional     custom handling for the request.
-///
-/// This is used in the context of other settings, for example to specify values for RuleAction and web ACL DefaultAction.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AllowAction {
-
-
-    /// 
-    /// Defines custom handling for the web request.
-    /// 
-    /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CustomRequestHandling
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomRequestHandling")]
-    pub custom_request_handling: Option<CustomRequestHandling>,
-
-}
-
-
-
-
-/// A rule statement to match against labels that have been added to the web request by rules that have already run in the web ACL.
-///
-/// The label match statement provides the label or namespace string to search for. The label string can represent a part or all of the fully qualified label name that had been added to the web request. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label. If you do not provide the fully qualified name in your label match string, AWS WAF performs the search for labels that were added in the same context as the label match statement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LabelMatchStatement {
-
-
-    /// 
-    /// The string to match against. The setting you provide for this depends on the match     statement's Scope setting:
-    /// 
-    /// If the Scope indicates LABEL, then this specification        must include the name and can include any number of preceding namespace        specifications and prefix up to providing the fully qualified label name.               If the Scope indicates NAMESPACE, then this        specification can include any number of contiguous namespace strings, and can include        the entire label namespace prefix from the rule group or web ACL where the label        originates.
-    /// 
-    /// Labels are case sensitive and components of a label must be separated by colon, for     example NS1:NS2:name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^[0-9A-Za-z_\-:]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// Specify whether you want to match using the label name or just the namespace.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: LABEL | NAMESPACE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: LabelMatchStatementScopeEnum,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum LabelMatchStatementScopeEnum {
-
-    /// LABEL
-    #[serde(rename = "LABEL")]
-    Label,
-
-    /// NAMESPACE
-    #[serde(rename = "NAMESPACE")]
-    Namespace,
-
-}
-
-impl Default for LabelMatchStatementScopeEnum {
-    fn default() -> Self {
-        LabelMatchStatementScopeEnum::Label
-    }
-}
-
-
-
-/// The filter to use to identify the subset of headers to inspect in a web request.
-///
-/// You must specify exactly one setting: either All, IncludedHeaders, or ExcludedHeaders.
-///
-/// Example JSON: "MatchPattern": { "ExcludedHeaders": {"KeyToExclude1", "KeyToExclude2"} }
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HeaderMatchPattern {
-
-
-    /// 
-    /// Inspect all headers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "All")]
-    pub all: Option<serde_json::Value>,
-
-
-    /// 
-    /// Inspect only the headers that have a key that matches one of the strings specified here.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 199
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludedHeaders")]
-    pub included_headers: Option<Vec<String>>,
-
-
-    /// 
-    /// Inspect only the headers whose keys don't match any of the strings specified here.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 199
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludedHeaders")]
-    pub excluded_headers: Option<Vec<String>>,
-
-}
-
-
-
-
-/// Inspect one query argument in the web request, identified by name, for example       UserName or SalesRegion. The name isn't case     sensitive.
-///
-/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
-///
-/// Example JSON: "SingleQueryArgument": { "Name": "myArgument" }
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SingleQueryArgument {
-
-
-    /// 
-    /// The name of the query argument to inspect.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "ImmunityTimeProperty")]
+    pub immunity_time_property: Option<ImmunityTimeProperty>,
 
 }
 
@@ -1156,64 +575,147 @@ pub struct CookieMatchPattern {
 
 
 
-/// A rule statement that labels web requests by country and region and that matches against web requests based on country code. A geo match rule labels every request that it inspects regardless of whether it finds a match.
+/// Inspect the cookies in the web request. You can specify the parts of the cookies to     inspect and you can narrow the set of cookies to inspect by including or excluding specific     keys.
 ///
-/// AWS WAF labels requests using the alpha-2 country and region codes from the International Organization for Standardization (ISO) 3166 standard. AWS WAF determines the codes using either the IP address in the web request origin or, if you specify it, the address in the geo match ForwardedIPConfig.
+/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
 ///
-/// If you use the web request origin, the label formats are awswaf:clientip:geo:region:<ISO country code>-<ISO region code> and awswaf:clientip:geo:country:<ISO country code>.
-///
-/// If you use a forwarded IP address, the label formats are awswaf:forwardedip:geo:region:<ISO country code>-<ISO region code> and awswaf:forwardedip:geo:country:<ISO country code>.
-///
-/// For additional details, see Geographic match rule statement in the AWS WAF Developer Guide.
+/// Example JSON: "Cookies": { "MatchPattern": { "All": {} }, "MatchScope": "KEY",       "OversizeHandling": "MATCH" }
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GeoMatchStatement {
+pub struct Cookies {
 
 
     /// 
-    /// An array of two-character country codes that you want to match against, for example, [ "US", "CN" ], from     the alpha-2 country ISO codes of the ISO 3166 international standard.
+    /// The filter to use to identify the subset of cookies to inspect in a web request.
     /// 
-    /// When you use a geo match statement just for the region and country labels that it adds to requests, you still have to supply a country code for the rule to evaluate. In this case, you configure the rule to only count matching requests, but it will still generate logging and count metrics for any matches. You can reduce the logging and metrics that the rule produces by specifying a country that's unlikely to be a source of traffic to your site.
+    /// You must specify exactly one setting: either All, IncludedCookies, or ExcludedCookies.
+    /// 
+    /// Example JSON: "MatchPattern": { "IncludedCookies": {"KeyToInclude1", "KeyToInclude2", "KeyToInclude3"} }
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: CookieMatchPattern
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchPattern")]
+    pub match_pattern: CookieMatchPattern,
+
+
+    /// 
+    /// The parts of the cookies to inspect with the rule inspection criteria. If you specify       All, AWS WAF inspects both keys and values.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALL | KEY | VALUE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchScope")]
+    pub match_scope: CookiesMatchScopeEnum,
+
+
+    /// 
+    /// What AWS WAF should do if the cookies of the request are larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of request cookies    when they exceed 8 KB (8192 bytes) or 200 total cookies. The underlying host service forwards a maximum of 200 cookies    and at most 8 KB of cookie contents to AWS WAF.
+    /// 
+    /// The options for oversize handling are the following:
+    /// 
+    /// CONTINUE - Inspect the cookies normally, according to the rule inspection criteria.                         MATCH - Treat the web request as matching the rule statement. AWS WAF        applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CONTINUE | MATCH | NO_MATCH
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OversizeHandling")]
+    pub oversize_handling: CookiesOversizeHandlingEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CookiesMatchScopeEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// KEY
+    #[serde(rename = "KEY")]
+    Key,
+
+    /// VALUE
+    #[serde(rename = "VALUE")]
+    Value,
+
+}
+
+impl Default for CookiesMatchScopeEnum {
+    fn default() -> Self {
+        CookiesMatchScopeEnum::All
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CookiesOversizeHandlingEnum {
+
+    /// CONTINUE
+    #[serde(rename = "CONTINUE")]
+    Continue,
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for CookiesOversizeHandlingEnum {
+    fn default() -> Self {
+        CookiesOversizeHandlingEnum::Continue
+    }
+}
+
+
+
+/// Specifies that AWS WAF should count the request. Optionally defines additional custom     handling for the request.
+///
+/// This is used in the context of other settings, for example to specify values for RuleAction and web ACL DefaultAction.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CountAction {
+
+
+    /// 
+    /// Defines custom handling for the web request.
+    /// 
+    /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: CustomRequestHandling
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CountryCodes")]
-    pub country_codes: Option<Vec<String>>,
-
-
-    /// 
-    /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
-    /// 
-    /// NoteIf the specified header isn't present in the request, AWS WAF doesn't apply the rule to the web request at all.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ForwardedIPConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ForwardedIPConfig")]
-    pub forwarded_ipconfig: Option<ForwardedIPConfiguration>,
+    #[serde(rename = "CustomRequestHandling")]
+    pub custom_request_handling: Option<CustomRequestHandling>,
 
 }
 
 
 
 
-/// Inspect one of the headers in the web request, identified by name, for example,       User-Agent or Referer. The name isn't case sensitive.
-///
-/// You can filter and inspect all headers with the FieldToMatch setting       Headers.
-///
-/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
-///
-/// Example JSON: "SingleHeader": { "Name": "haystack" }
+/// A custom header for custom request and response handling. This is used in CustomResponse and CustomRequestHandling
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SingleHeader {
+pub struct CustomHTTPHeader {
 
 
     /// 
-    /// The name of the query header to inspect.
+    /// The name of the custom header.
+    /// 
+    /// For custom request header insertion, when AWS WAF inserts the header into the request,     it prefixes this name x-amzn-waf-, to avoid confusion with the headers that     are already in the request. For example, for the header name sample, AWS WAF     inserts the header x-amzn-waf-sample.
     /// 
     /// Required: Yes
     ///
@@ -1223,170 +725,71 @@ pub struct SingleHeader {
     ///
     /// Maximum: 64
     ///
-    /// Pattern: .*\S.*
+    /// Pattern: ^[a-zA-Z0-9._$-]+$
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
 
-}
-
-
-
-
-/// The action that AWS WAF should take on a web request when it matches a rule's     statement. Settings at the web ACL level can override the rule action setting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RuleAction {
-
 
     /// 
-    /// Instructs AWS WAF to allow the web request.
+    /// The value of the custom header.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: AllowAction
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: .*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Allow")]
-    pub allow: Option<AllowAction>,
-
-
-    /// 
-    /// Instructs AWS WAF to count the web request and then continue evaluating the request using the remaining rules in the web ACL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CountAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Count")]
-    pub count: Option<CountAction>,
-
-
-    /// 
-    /// Instructs AWS WAF to block the web request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BlockAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Block")]
-    pub block: Option<BlockAction>,
-
-
-    /// 
-    /// Specifies that AWS WAF should run a CAPTCHA check against the request:
-    /// 
-    /// If the request includes a valid, unexpired CAPTCHA token,        AWS WAF allows the web request inspection to           proceed to the next rule, similar to a CountAction.               If the request doesn't include a valid, unexpired CAPTCHA token, AWS WAF           discontinues the web ACL evaluation of the request and blocks it from going to its intended destination.                  AWS WAF generates a response that it sends back to the client, which includes the following:                                                            The header x-amzn-waf-action with a value of captcha.                       The HTTP status code 405 Method Not Allowed.                       If the request contains an Accept header with a value of text/html, the response includes a CAPTCHA challenge.
-    /// 
-    /// You can configure the expiration time         in the CaptchaConfig       ImmunityTimeProperty setting at the rule and web ACL level. The rule setting overrides the web ACL setting.
-    /// 
-    /// This action option is available for rules. It isn't available for web ACL default actions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CaptchaAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Captcha")]
-    pub captcha: Option<CaptchaAction>,
-
-
-    /// 
-    /// Instructs AWS WAF to run a Challenge check against the web request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ChallengeAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Challenge")]
-    pub challenge: Option<ChallengeAction>,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
 
 
 
-/// Specifies how AWS WAF should handle CAPTCHA evaluations. This is     available at the web ACL level and in each rule.
+/// Custom request handling behavior that inserts custom headers into a web request. You can    add custom request handling for AWS WAF to use when the rule action doesn't block the request.      For example, CaptchaAction for requests with valid t okens, and AllowAction.
+///
+/// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CaptchaConfig {
+pub struct CustomRequestHandling {
 
 
     /// 
-    /// Determines how long a CAPTCHA timestamp in the token remains valid after the client     successfully solves a CAPTCHA puzzle.
+    /// The HTTP headers to insert into the request. Duplicate header names are not allowed.
     /// 
-    /// Required: No
+    /// For information about the limits on count and size for custom request and response settings, see AWS WAF quotas    in the         AWS WAF Developer Guide.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: ImmunityTimeProperty
+    /// Type: List of CustomHTTPHeader
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImmunityTimeProperty")]
-    pub immunity_time_property: Option<ImmunityTimeProperty>,
+    #[serde(rename = "InsertHeaders")]
+    pub insert_headers: Vec<CustomHTTPHeader>,
 
 }
 
 
 
 
-/// A single rule, which you can use in a AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup to identify web requests that you want to allow, block, or count.     Each rule includes one top-level Statement that AWS WAF uses to     identify matching web requests, and parameters that govern how AWS WAF handles them.
+/// A custom response to send to the client. You can define a custom response for rule       actions and default web ACL actions that are set to Block.
+///
+/// For information about customizing web requests and responses, see Customizing web requests and responses in AWS WAF in the      AWS WAF Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Rule {
+pub struct CustomResponse {
 
 
     /// 
-    /// Specifies how AWS WAF should handle CAPTCHA evaluations. If you don't specify this, AWS WAF uses the CAPTCHA configuration that's defined for the web ACL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CaptchaConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CaptchaConfig")]
-    pub captcha_config: Option<CaptchaConfig>,
-
-
-    /// 
-    /// The AWS WAF processing statement for the rule, for example ByteMatchStatement or SizeConstraintStatement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Statement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statement")]
-    pub statement: Statement,
-
-
-    /// 
-    /// Defines and enables Amazon CloudWatch metrics and web request sample collection.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: VisibilityConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VisibilityConfig")]
-    pub visibility_config: VisibilityConfig,
-
-
-    /// 
-    /// The action that AWS WAF should take on a web request when it matches the rule statement. Settings at the web ACL level can override the rule action setting.
+    /// References the response body that you want AWS WAF to return to the web request     client. You can define a custom response for a rule action or a default web ACL action that     is set to block. To do this, you first define the response body key and value in the       CustomResponseBodies setting for the AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup where you want to use it. Then, in the rule action or web ACL     default action BlockAction setting, you reference the response body using this     key.
     /// 
     /// Required: No
-    ///
-    /// Type: RuleAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: Option<RuleAction>,
-
-
-    /// 
-    /// The name of the rule. You can't change the name of a Rule after you create     it.
-    /// 
-    /// Required: Yes
     ///
     /// Type: String
     ///
@@ -1397,54 +800,40 @@ pub struct Rule {
     /// Pattern: ^[\w\-]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "CustomResponseBodyKey")]
+    pub custom_response_body_key: Option<String>,
 
 
     /// 
-    /// If you define more than one Rule in a WebACL, AWS WAF     evaluates each request against the Rules in order based on the value of       Priority. AWS WAF processes rules with lower priority first. The priorities     don't need to be consecutive, but they must all be different.
+    /// The HTTP status code to return to the client.
+    /// 
+    /// For a list of status codes that you can use in your custom responses, see Supported status codes for custom response    in the         AWS WAF Developer Guide.
     /// 
     /// Required: Yes
     ///
     /// Type: Integer
     ///
-    /// Minimum: 0
+    /// Minimum: 200
+    ///
+    /// Maximum: 599
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: i64,
+    #[serde(rename = "ResponseCode")]
+    pub response_code: i64,
 
 
     /// 
-    /// Labels to apply to web requests that match the rule match statement. AWS WAF applies     fully qualified labels to matching web requests. A fully qualified label is the     concatenation of a label namespace and a rule label. The rule's rule group or web ACL     defines the label namespace.
+    /// The HTTP headers to use in the response. Duplicate header names are not allowed.
     /// 
-    /// Rules that run after this rule in the web ACL can match against these labels using a       LabelMatchStatement.
-    /// 
-    /// For each label, provide a case-sensitive string containing optional namespaces and a     label name, according to the following guidelines:
-    /// 
-    /// Separate each component of the label with a colon.               Each namespace or name can have up to 128 characters.               You can specify up to 5 namespaces in a label.               Don't use the following reserved words in your label specification:          aws, waf, managed, rulegroup,          webacl, regexpatternset, or ipset.
-    /// 
-    /// For example, myLabelName or nameSpace1:nameSpace2:myLabelName.
+    /// For information about the limits on count and size for custom request and response settings, see AWS WAF quotas    in the         AWS WAF Developer Guide.
     /// 
     /// Required: No
     ///
-    /// Type: List of Label
+    /// Type: List of CustomHTTPHeader
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RuleLabels")]
-    pub rule_labels: Option<Vec<Label>>,
-
-
-    /// 
-    /// Specifies how AWS WAF should handle Challenge evaluations. If you don't specify this, AWS WAF uses the challenge configuration that's defined for the web ACL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ChallengeConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChallengeConfig")]
-    pub challenge_config: Option<ChallengeConfig>,
+    #[serde(rename = "ResponseHeaders")]
+    pub response_headers: Option<Vec<CustomHTTPHeader>>,
 
 }
 
@@ -1519,347 +908,155 @@ impl Default for CustomResponseBodyContentTypeEnum {
 
 
 
-/// Inspect the cookies in the web request. You can specify the parts of the cookies to     inspect and you can narrow the set of cookies to inspect by including or excluding specific     keys.
+/// The part of the web request that you want AWS WAF to inspect. Include the single       FieldToMatch type that you want to inspect, with additional specifications     as needed, according to the type. You specify a single request component in       FieldToMatch for each rule statement that requires it. To inspect more than     one component of the web request, create a separate rule statement for each     component.
 ///
-/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
+/// Example JSON for a QueryString field to match:
 ///
-/// Example JSON: "Cookies": { "MatchPattern": { "All": {} }, "MatchScope": "KEY",       "OversizeHandling": "MATCH" }
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Cookies {
-
-
-    /// 
-    /// The parts of the cookies to inspect with the rule inspection criteria. If you specify       All, AWS WAF inspects both keys and values.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALL | KEY | VALUE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MatchScope")]
-    pub match_scope: CookiesMatchScopeEnum,
-
-
-    /// 
-    /// The filter to use to identify the subset of cookies to inspect in a web request.
-    /// 
-    /// You must specify exactly one setting: either All, IncludedCookies, or ExcludedCookies.
-    /// 
-    /// Example JSON: "MatchPattern": { "IncludedCookies": {"KeyToInclude1", "KeyToInclude2", "KeyToInclude3"} }
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: CookieMatchPattern
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MatchPattern")]
-    pub match_pattern: CookieMatchPattern,
-
-
-    /// 
-    /// What AWS WAF should do if the cookies of the request are larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of request cookies    when they exceed 8 KB (8192 bytes) or 200 total cookies. The underlying host service forwards a maximum of 200 cookies    and at most 8 KB of cookie contents to AWS WAF.
-    /// 
-    /// The options for oversize handling are the following:
-    /// 
-    /// CONTINUE - Inspect the cookies normally, according to the rule inspection criteria.                         MATCH - Treat the web request as matching the rule statement. AWS WAF        applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CONTINUE | MATCH | NO_MATCH
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OversizeHandling")]
-    pub oversize_handling: CookiesOversizeHandlingEnum,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CookiesMatchScopeEnum {
-
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
-
-    /// KEY
-    #[serde(rename = "KEY")]
-    Key,
-
-    /// VALUE
-    #[serde(rename = "VALUE")]
-    Value,
-
-}
-
-impl Default for CookiesMatchScopeEnum {
-    fn default() -> Self {
-        CookiesMatchScopeEnum::All
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CookiesOversizeHandlingEnum {
-
-    /// CONTINUE
-    #[serde(rename = "CONTINUE")]
-    Continue,
-
-    /// MATCH
-    #[serde(rename = "MATCH")]
-    Match,
-
-    /// NO_MATCH
-    #[serde(rename = "NO_MATCH")]
-    Nomatch,
-
-}
-
-impl Default for CookiesOversizeHandlingEnum {
-    fn default() -> Self {
-        CookiesOversizeHandlingEnum::Continue
-    }
-}
-
-
-
-/// Custom request handling behavior that inserts custom headers into a web request. You can    add custom request handling for AWS WAF to use when the rule action doesn't block the request.      For example, CaptchaAction for requests with valid t okens, and AllowAction.
+/// "FieldToMatch": { "QueryString": {} }
 ///
-/// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
+/// Example JSON for a Method field to match specification:
+///
+/// "FieldToMatch": { "Method": { "Name": "DELETE" } }
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CustomRequestHandling {
+pub struct FieldToMatch {
 
 
     /// 
-    /// The HTTP headers to insert into the request. Duplicate header names are not allowed.
-    /// 
-    /// For information about the limits on count and size for custom request and response settings, see AWS WAF quotas    in the         AWS WAF Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of CustomHTTPHeader
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InsertHeaders")]
-    pub insert_headers: Vec<CustomHTTPHeader>,
-
-}
-
-
-
-
-/// List of labels used by one or more of the rules of a AWS::WAFv2::RuleGroup. This     summary object is used for the following rule group lists:
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LabelSummary {
-
-
-    /// 
-    /// An individual label specification.
+    /// Inspect all query arguments.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^[0-9A-Za-z_\-:]+$
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-
-
-/// Specifies how AWS WAF should handle Challenge evaluations. This is     available at the web ACL level and in each rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ChallengeConfig {
+    #[serde(rename = "AllQueryArguments")]
+    pub all_query_arguments: Option<serde_json::Value>,
 
 
     /// 
-    /// Determines how long a challenge timestamp in the token remains valid after the client     successfully responds to a challenge.
+    /// Inspect the request body as plain text. The request body immediately follows the request     headers. This is the part of a request that contains any additional data that you want to     send to your web server as the HTTP request body, such as data from a form.
+    /// 
+    /// A limited amount of the request body is forwarded to AWS WAF for    inspection by the underlying host service. For regional resources, the limit is 8 KB (8,192 kilobytes) and for CloudFront distributions, the limit is 16 KB (16,384 kilobytes). For CloudFront distributions,   you can increase the limit in the web ACL's AssociationConfig, for additional processing fees.
+    /// 
+    /// For information about how to handle oversized     request bodies, see the Body object configuration.
     /// 
     /// Required: No
     ///
-    /// Type: ImmunityTimeProperty
+    /// Type: Body
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImmunityTimeProperty")]
-    pub immunity_time_property: Option<ImmunityTimeProperty>,
-
-}
-
-
-
-
-/// Inspect the body of the web request. The body immediately follows the request     headers.
-///
-/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Body {
+    #[serde(rename = "Body")]
+    pub body: Option<Body>,
 
 
     /// 
-    /// What AWS WAF should do if the body is larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of the web request body if the body   exceeds the limit for the resource type. If the body is larger than the limit, the underlying host service   only forwards the contents that are below the limit to AWS WAF for inspection.
+    /// Inspect the request cookies. You must configure scope and pattern matching filters in     the Cookies object, to define the set of cookies and the parts of the cookies     that AWS WAF inspects.
     /// 
-    /// The default limit is 8 KB (8,192 kilobytes) for regional resources and 16 KB (16,384 kilobytes) for CloudFront distributions. For CloudFront distributions,   you can increase the limit in the web ACL AssociationConfig, for additional processing fees.
-    /// 
-    /// The options for oversize handling are the following:
-    /// 
-    /// CONTINUE - Inspect the body normally, according to the rule inspection criteria.                         MATCH - Treat the web request as matching the rule statement. AWS WAF        applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
-    /// 
-    /// You can combine the MATCH or NO_MATCH    settings for oversize handling with your rule and web ACL action settings, so that you block any request whose body is over the limit.
-    /// 
-    /// Default: CONTINUE
+    /// Only the first 8 KB (8192 bytes) of a request's cookies and only the first 200 cookies     are forwarded to AWS WAF for inspection by the underlying host service. You must     configure how to handle any oversize cookie content in the Cookies object.     AWS WAF applies the pattern matching filters to the cookies that it receives from the     underlying host service.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: CONTINUE | MATCH | NO_MATCH
+    /// Type: Cookies
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OversizeHandling")]
-    pub oversize_handling: Option<BodyOversizeHandlingEnum>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum BodyOversizeHandlingEnum {
-
-    /// CONTINUE
-    #[serde(rename = "CONTINUE")]
-    Continue,
-
-    /// MATCH
-    #[serde(rename = "MATCH")]
-    Match,
-
-    /// NO_MATCH
-    #[serde(rename = "NO_MATCH")]
-    Nomatch,
-
-}
-
-impl Default for BodyOversizeHandlingEnum {
-    fn default() -> Self {
-        BodyOversizeHandlingEnum::Continue
-    }
-}
-
-
-
-/// A logical rule statement used to combine other rule statements with OR logic. You provide more than one Statement within the OrStatement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OrStatement {
+    #[serde(rename = "Cookies")]
+    pub cookies: Option<Cookies>,
 
 
     /// 
-    /// The statements to combine with OR logic. You can use any statements that can be     nested.
+    /// Inspect the request headers. You must configure scope and pattern matching filters in     the Headers object, to define the set of headers to and the parts of the     headers that AWS WAF inspects.
     /// 
-    /// Required: Yes
+    /// Only the first 8 KB (8192 bytes) of a request's headers and only the first 200 headers     are forwarded to AWS WAF for inspection by the underlying host service. You must     configure how to handle any oversize header content in the Headers object.     AWS WAF applies the pattern matching filters to the headers that it receives from the     underlying host service.
+    /// 
+    /// Required: No
     ///
-    /// Type: List of Statement
+    /// Type: Headers
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Statements")]
-    pub statements: Vec<Statement>,
-
-}
-
-
-
-
-/// A rule statement used to search web request components for a match against a single regular expression.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RegexMatchStatement {
+    #[serde(rename = "Headers")]
+    pub headers: Option<Headers>,
 
 
     /// 
-    /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. Text transformations are used in rule match statements, to transform the FieldToMatch request component before inspecting it, and they're used in rate-based rule statements, to transform request components before using them as custom aggregation keys. If you specify one or more transformations to apply, AWS WAF performs all transformations on the specified content, starting from the lowest priority setting, and then uses the component contents.
+    /// Inspect the request body as JSON. The request body immediately follows the request     headers. This is the part of a request that contains any additional data that you want to     send to your web server as the HTTP request body, such as data from a form.
     /// 
-    /// Required: Yes
+    /// A limited amount of the request body is forwarded to AWS WAF for    inspection by the underlying host service. For regional resources, the limit is 8 KB (8,192 kilobytes) and for CloudFront distributions, the limit is 16 KB (16,384 kilobytes). For CloudFront distributions,   you can increase the limit in the web ACL's AssociationConfig, for additional processing fees.
+    /// 
+    /// For information about how to handle oversized     request bodies, see the JsonBody object configuration.
+    /// 
+    /// Required: No
     ///
-    /// Type: List of TextTransformation
+    /// Type: JsonBody
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TextTransformations")]
-    pub text_transformations: Vec<TextTransformation>,
+    #[serde(rename = "JsonBody")]
+    pub json_body: Option<JsonBody>,
 
 
     /// 
-    /// The string representing the regular expression.
+    /// Inspect the HTTP method. The method indicates the type of operation that the request is     asking the origin to perform.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: .*
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RegexString")]
-    pub regex_string: String,
+    #[serde(rename = "Method")]
+    pub method: Option<serde_json::Value>,
 
 
     /// 
-    /// The part of the web request that you want AWS WAF to inspect.
+    /// Inspect the query string. This is the part of a URL that appears after a ?     character, if any.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: FieldToMatch
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
-
-}
-
-
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+    #[serde(rename = "QueryString")]
+    pub query_string: Option<serde_json::Value>,
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// Inspect a single header. Provide the name of the header to inspect, for example,       User-Agent or Referer. This setting isn't case     sensitive.
     /// 
-    /// Required: Yes
+    /// Example JSON: "SingleHeader": { "Name": "haystack" }
     /// 
-    /// Type: String
+    /// Alternately, you can filter and inspect all headers with the Headers       FieldToMatch setting.
     /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// Required: No
+    ///
+    /// Type: SingleHeader
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SingleHeader")]
+    pub single_header: Option<SingleHeader>,
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// Inspect a single query argument. Provide the name of the query argument to inspect, such     as UserName or SalesRegion. The name can be up to     30 characters long and isn't case sensitive.
     /// 
-    /// Required: Yes
+    /// Example JSON: "SingleQueryArgument": { "Name": "myArgument" }
     /// 
-    /// Type: String
+    /// Required: No
+    ///
+    /// Type: SingleQueryArgument
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SingleQueryArgument")]
+    pub single_query_argument: Option<SingleQueryArgument>,
+
+
     /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    /// Inspect the request URI path. This is the part of the web request that identifies a     resource, for example, /images/daily-ad.jpg.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UriPath")]
+    pub uri_path: Option<serde_json::Value>,
 
 }
 
@@ -1938,170 +1135,62 @@ impl Default for ForwardedIPConfigurationFallbackBehaviorEnum {
 
 
 
-/// A logical rule statement used to negate the results of another rule statement. You provide one Statement within the NotStatement.
+/// A rule statement that labels web requests by country and region and that matches against web requests based on country code. A geo match rule labels every request that it inspects regardless of whether it finds a match.
+///
+/// AWS WAF labels requests using the alpha-2 country and region codes from the International Organization for Standardization (ISO) 3166 standard. AWS WAF determines the codes using either the IP address in the web request origin or, if you specify it, the address in the geo match ForwardedIPConfig.
+///
+/// If you use the web request origin, the label formats are awswaf:clientip:geo:region:<ISO country code>-<ISO region code> and awswaf:clientip:geo:country:<ISO country code>.
+///
+/// If you use a forwarded IP address, the label formats are awswaf:forwardedip:geo:region:<ISO country code>-<ISO region code> and awswaf:forwardedip:geo:country:<ISO country code>.
+///
+/// For additional details, see Geographic match rule statement in the AWS WAF Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NotStatement {
+pub struct GeoMatchStatement {
 
 
     /// 
-    /// The statement to negate. You can use any statement that can be nested.
+    /// An array of two-character country codes that you want to match against, for example, [ "US", "CN" ], from     the alpha-2 country ISO codes of the ISO 3166 international standard.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: Statement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statement")]
-    pub statement: Box<Statement>,
-
-}
-
-
-
-
-/// A rule statement that inspects for malicious SQL code. Attackers insert malicious SQL code into web requests to do things like modify your database or extract data from it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SqliMatchStatement {
-
-
-    /// 
-    /// The part of the web request that you want AWS WAF to inspect.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
-
-
-    /// 
-    /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. Text transformations are used in rule match statements, to transform the FieldToMatch request component before inspecting it, and they're used in rate-based rule statements, to transform request components before using them as custom aggregation keys. If you specify one or more transformations to apply, AWS WAF performs all transformations on the specified content, starting from the lowest priority setting, and then uses the component contents.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of TextTransformation
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TextTransformations")]
-    pub text_transformations: Vec<TextTransformation>,
-
-
-    /// 
-    /// The sensitivity that you want AWS WAF to use to inspect for SQL injection attacks.
-    /// 
-    /// HIGH detects more attacks, but might generate more false positives,     especially if your web requests frequently contain unusual strings.     For information about identifying and mitigating false positives, see       Testing and tuning in the                                                     AWS WAF Developer Guide.
-    /// 
-    /// LOW is generally a better choice for resources that already have other       protections against SQL injection attacks or that have a low tolerance for false positives.
-    /// 
-    /// Default: LOW
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: HIGH | LOW
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SensitivityLevel")]
-    pub sensitivity_level: Option<SqliMatchStatementSensitivityLevelEnum>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum SqliMatchStatementSensitivityLevelEnum {
-
-    /// HIGH
-    #[serde(rename = "HIGH")]
-    High,
-
-    /// LOW
-    #[serde(rename = "LOW")]
-    Low,
-
-}
-
-impl Default for SqliMatchStatementSensitivityLevelEnum {
-    fn default() -> Self {
-        SqliMatchStatementSensitivityLevelEnum::High
-    }
-}
-
-
-
-/// Used for CAPTCHA and challenge token settings. Determines     how long a CAPTCHA or challenge timestamp remains valid after AWS WAF updates it for a successful CAPTCHA or challenge response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ImmunityTimeProperty {
-
-
-    /// 
-    /// The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default      setting is 300.
-    /// 
-    /// For the Challenge action, the minimum setting is 300.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImmunityTime")]
-    pub immunity_time: i64,
-
-}
-
-
-
-
-/// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AndStatement {
-
-
-    /// 
-    /// The statements to combine with AND logic. You can use any statements that can be nested.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Statement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statements")]
-    pub statements: Vec<Statement>,
-
-}
-
-
-
-
-/// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria. This is used with the FieldToMatch option JsonBody.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct JsonMatchPattern {
-
-
-    /// 
-    /// Match only the specified include paths. See also     MatchScope in the JsonBody FieldToMatch specification.
-    /// 
-    /// Provide the include paths using JSON Pointer syntax. For example, "IncludedPaths":       ["/dogs/0/name", "/dogs/1/name"]. For information about this syntax, see the     Internet Engineering Task Force (IETF) documentation JavaScript Object Notation (JSON)       Pointer.
-    /// 
-    /// You must specify either this setting or the All setting, but not     both.
-    /// 
-    /// NoteDon't use this option to include all paths. Instead, use the All       setting.
+    /// When you use a geo match statement just for the region and country labels that it adds to requests, you still have to supply a country code for the rule to evaluate. In this case, you configure the rule to only count matching requests, but it will still generate logging and count metrics for any matches. You can reduce the logging and metrics that the rule produces by specifying a country that's unlikely to be a source of traffic to your site.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IncludedPaths")]
-    pub included_paths: Option<Vec<String>>,
+    #[serde(rename = "CountryCodes")]
+    pub country_codes: Option<Vec<String>>,
 
 
     /// 
-    /// Match all of the elements. See also     MatchScope in the JsonBody FieldToMatch specification.
+    /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
     /// 
-    /// You must specify either this setting or the IncludedPaths setting, but not     both.
+    /// NoteIf the specified header isn't present in the request, AWS WAF doesn't apply the rule to the web request at all.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ForwardedIPConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ForwardedIPConfig")]
+    pub forwarded_ipconfig: Option<ForwardedIPConfiguration>,
+
+}
+
+
+
+
+/// The filter to use to identify the subset of headers to inspect in a web request.
+///
+/// You must specify exactly one setting: either All, IncludedHeaders, or ExcludedHeaders.
+///
+/// Example JSON: "MatchPattern": { "ExcludedHeaders": {"KeyToExclude1", "KeyToExclude2"} }
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HeaderMatchPattern {
+
+
+    /// 
+    /// Inspect all headers.
     /// 
     /// Required: No
     ///
@@ -2111,8 +1200,145 @@ pub struct JsonMatchPattern {
     #[serde(rename = "All")]
     pub all: Option<serde_json::Value>,
 
+
+    /// 
+    /// Inspect only the headers whose keys don't match any of the strings specified here.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 199
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExcludedHeaders")]
+    pub excluded_headers: Option<Vec<String>>,
+
+
+    /// 
+    /// Inspect only the headers that have a key that matches one of the strings specified here.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 199
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludedHeaders")]
+    pub included_headers: Option<Vec<String>>,
+
 }
 
+
+
+
+/// Inspect all headers in the web request. You can specify the parts of the headers to     inspect and you can narrow the set of headers to inspect by including or excluding specific     keys.
+///
+/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
+///
+/// If you want to inspect just the value of a single header, use the       SingleHeader       FieldToMatch setting instead.
+///
+/// Example JSON: "Headers": { "MatchPattern": { "All": {} }, "MatchScope": "KEY",       "OversizeHandling": "MATCH" }
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Headers {
+
+
+    /// 
+    /// The filter to use to identify the subset of headers to inspect in a web request.
+    /// 
+    /// You must specify exactly one setting: either All, IncludedHeaders, or ExcludedHeaders.
+    /// 
+    /// Example JSON: "MatchPattern": { "ExcludedHeaders": {"KeyToExclude1", "KeyToExclude2"} }
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: HeaderMatchPattern
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchPattern")]
+    pub match_pattern: HeaderMatchPattern,
+
+
+    /// 
+    /// The parts of the headers to match with the rule inspection criteria. If you specify       All, AWS WAF inspects both keys and values.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALL | KEY | VALUE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchScope")]
+    pub match_scope: HeadersMatchScopeEnum,
+
+
+    /// 
+    /// What AWS WAF should do if the headers of the request are larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of request headers    when they exceed 8 KB (8192 bytes) or 200 total headers. The underlying host service forwards a maximum of 200 headers    and at most 8 KB of header contents to AWS WAF.
+    /// 
+    /// The options for oversize handling are the following:
+    /// 
+    /// CONTINUE - Inspect the headers normally, according to the rule inspection criteria.                         MATCH - Treat the web request as matching the rule statement. AWS WAF        applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CONTINUE | MATCH | NO_MATCH
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OversizeHandling")]
+    pub oversize_handling: HeadersOversizeHandlingEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HeadersMatchScopeEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// KEY
+    #[serde(rename = "KEY")]
+    Key,
+
+    /// VALUE
+    #[serde(rename = "VALUE")]
+    Value,
+
+}
+
+impl Default for HeadersMatchScopeEnum {
+    fn default() -> Self {
+        HeadersMatchScopeEnum::All
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HeadersOversizeHandlingEnum {
+
+    /// CONTINUE
+    #[serde(rename = "CONTINUE")]
+    Continue,
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for HeadersOversizeHandlingEnum {
+    fn default() -> Self {
+        HeadersOversizeHandlingEnum::Continue
+    }
+}
 
 
 
@@ -2121,24 +1347,6 @@ pub struct JsonMatchPattern {
 /// This configuration is used only for IPSetReferenceStatement. For GeoMatchStatement and RateBasedStatement, use ForwardedIPConfig instead.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IPSetForwardedIPConfiguration {
-
-
-    /// 
-    /// The position in the header to search for the IP address. The header can contain IP     addresses of the original client and also of proxies. For example, the header value could     be 10.1.1.1, 127.0.0.0, 10.10.10.10 where the first IP address identifies the     original client and the rest identify proxies that the request went through.
-    /// 
-    /// The options for this setting are the following:
-    /// 
-    /// FIRST - Inspect the first IP address in the list of IP addresses in the        header. This is usually the client's original IP.               LAST - Inspect the last IP address in the list of IP addresses in the        header.               ANY - Inspect all IP addresses in the header for a match. If the header        contains more than 10 IP addresses, AWS WAF inspects the last 10.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ANY | FIRST | LAST
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Position")]
-    pub position: IPSetForwardedIPConfigurationPositionEnum,
 
 
     /// 
@@ -2179,6 +1387,24 @@ pub struct IPSetForwardedIPConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "HeaderName")]
     pub header_name: String,
+
+
+    /// 
+    /// The position in the header to search for the IP address. The header can contain IP     addresses of the original client and also of proxies. For example, the header value could     be 10.1.1.1, 127.0.0.0, 10.10.10.10 where the first IP address identifies the     original client and the rest identify proxies that the request went through.
+    /// 
+    /// The options for this setting are the following:
+    /// 
+    /// FIRST - Inspect the first IP address in the list of IP addresses in the        header. This is usually the client's original IP.               LAST - Inspect the last IP address in the list of IP addresses in the        header.               ANY - Inspect all IP addresses in the header for a match. If the header        contains more than 10 IP addresses, AWS WAF inspects the last 10.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ANY | FIRST | LAST
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Position")]
+    pub position: IPSetForwardedIPConfigurationPositionEnum,
 
 }
 
@@ -2224,6 +1450,602 @@ impl Default for IPSetForwardedIPConfigurationPositionEnum {
         IPSetForwardedIPConfigurationPositionEnum::Any
     }
 }
+
+
+
+/// A rule statement used to detect web requests coming from particular IP addresses or address ranges. To use this, create an AWS::WAFv2::IPSet that specifies the addresses you want to detect, then use the ARN of that set in this statement.
+///
+/// Each IP set rule statement references an IP set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IPSetReferenceStatement {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the AWS::WAFv2::IPSet that this statement     references.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: String,
+
+
+    /// 
+    /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
+    /// 
+    /// NoteIf the specified header isn't present in the request, AWS WAF doesn't apply the rule to the web request at all.
+    /// 
+    /// Required: No
+    ///
+    /// Type: IPSetForwardedIPConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IPSetForwardedIPConfig")]
+    pub ipset_forwarded_ipconfig: Option<IPSetForwardedIPConfiguration>,
+
+}
+
+
+
+
+/// Used for CAPTCHA and challenge token settings. Determines     how long a CAPTCHA or challenge timestamp remains valid after AWS WAF updates it for a successful CAPTCHA or challenge response.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ImmunityTimeProperty {
+
+
+    /// 
+    /// The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default      setting is 300.
+    /// 
+    /// For the Challenge action, the minimum setting is 300.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImmunityTime")]
+    pub immunity_time: i64,
+
+}
+
+
+
+
+/// Inspect the body of the web request as JSON. The body immediately follows the request     headers.
+///
+/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
+///
+/// Use the specifications in this object to indicate which parts of the JSON body to     inspect using the rule's inspection criteria. AWS WAF inspects only the parts of the JSON     that result from the matches that you indicate.
+///
+/// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct JsonBody {
+
+
+    /// 
+    /// What AWS WAF should do if it fails to completely parse the JSON body. The options are     the following:
+    /// 
+    /// EVALUATE_AS_STRING - Inspect the body as plain text. AWS WAF        applies the text transformations and inspection criteria that you defined for the        JSON inspection to the body text string.                        MATCH - Treat the web request as matching the rule statement.        AWS WAF applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
+    /// 
+    /// If you don't provide this setting, AWS WAF parses and evaluates the content only up to the     first parsing failure that it encounters.
+    /// 
+    /// AWS WAF does its best to parse the entire JSON body, but might be forced to stop for     reasons such as invalid characters, duplicate keys, truncation, and any content whose root     node isn't an object or an array.
+    /// 
+    /// AWS WAF parses the JSON in the following examples as two valid key, value pairs:
+    /// 
+    /// Missing comma: {"key1":"value1""key2":"value2"}                       Missing colon: {"key1":"value1","key2""value2"}                       Extra colons: {"key1"::"value1","key2""value2"}
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: EVALUATE_AS_STRING | MATCH | NO_MATCH
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InvalidFallbackBehavior")]
+    pub invalid_fallback_behavior: Option<JsonBodyInvalidFallbackBehaviorEnum>,
+
+
+    /// 
+    /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: JsonMatchPattern
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchPattern")]
+    pub match_pattern: JsonMatchPattern,
+
+
+    /// 
+    /// The parts of the JSON to match against using the MatchPattern. If you     specify All, AWS WAF matches against keys and values.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALL | KEY | VALUE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchScope")]
+    pub match_scope: JsonBodyMatchScopeEnum,
+
+
+    /// 
+    /// What AWS WAF should do if the body is larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of the web request body if the body   exceeds the limit for the resource type. If the body is larger than the limit, the underlying host service   only forwards the contents that are below the limit to AWS WAF for inspection.
+    /// 
+    /// The default limit is 8 KB (8,192 kilobytes) for regional resources and 16 KB (16,384 kilobytes) for CloudFront distributions. For CloudFront distributions,   you can increase the limit in the web ACL AssociationConfig, for additional processing fees.
+    /// 
+    /// The options for oversize handling are the following:
+    /// 
+    /// CONTINUE - Inspect the body normally, according to the rule inspection criteria.                         MATCH - Treat the web request as matching the rule statement. AWS WAF        applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
+    /// 
+    /// You can combine the MATCH or NO_MATCH    settings for oversize handling with your rule and web ACL action settings, so that you block any request whose body is over the limit.
+    /// 
+    /// Default: CONTINUE
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CONTINUE | MATCH | NO_MATCH
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OversizeHandling")]
+    pub oversize_handling: Option<JsonBodyOversizeHandlingEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JsonBodyMatchScopeEnum {
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// KEY
+    #[serde(rename = "KEY")]
+    Key,
+
+    /// VALUE
+    #[serde(rename = "VALUE")]
+    Value,
+
+}
+
+impl Default for JsonBodyMatchScopeEnum {
+    fn default() -> Self {
+        JsonBodyMatchScopeEnum::All
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JsonBodyInvalidFallbackBehaviorEnum {
+
+    /// EVALUATE_AS_STRING
+    #[serde(rename = "EVALUATE_AS_STRING")]
+    Evaluateasstring,
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for JsonBodyInvalidFallbackBehaviorEnum {
+    fn default() -> Self {
+        JsonBodyInvalidFallbackBehaviorEnum::Evaluateasstring
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum JsonBodyOversizeHandlingEnum {
+
+    /// CONTINUE
+    #[serde(rename = "CONTINUE")]
+    Continue,
+
+    /// MATCH
+    #[serde(rename = "MATCH")]
+    Match,
+
+    /// NO_MATCH
+    #[serde(rename = "NO_MATCH")]
+    Nomatch,
+
+}
+
+impl Default for JsonBodyOversizeHandlingEnum {
+    fn default() -> Self {
+        JsonBodyOversizeHandlingEnum::Continue
+    }
+}
+
+
+
+/// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria. This is used with the FieldToMatch option JsonBody.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct JsonMatchPattern {
+
+
+    /// 
+    /// Match all of the elements. See also     MatchScope in the JsonBody FieldToMatch specification.
+    /// 
+    /// You must specify either this setting or the IncludedPaths setting, but not     both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "All")]
+    pub all: Option<serde_json::Value>,
+
+
+    /// 
+    /// Match only the specified include paths. See also     MatchScope in the JsonBody FieldToMatch specification.
+    /// 
+    /// Provide the include paths using JSON Pointer syntax. For example, "IncludedPaths":       ["/dogs/0/name", "/dogs/1/name"]. For information about this syntax, see the     Internet Engineering Task Force (IETF) documentation JavaScript Object Notation (JSON)       Pointer.
+    /// 
+    /// You must specify either this setting or the All setting, but not     both.
+    /// 
+    /// NoteDon't use this option to include all paths. Instead, use the All       setting.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludedPaths")]
+    pub included_paths: Option<Vec<String>>,
+
+}
+
+
+
+
+/// A single label container. This is used as an element of a label array in RuleLabels inside a rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Label {
+
+
+    /// 
+    /// The label string.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^[0-9A-Za-z_\-:]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+
+
+/// A rule statement to match against labels that have been added to the web request by rules that have already run in the web ACL.
+///
+/// The label match statement provides the label or namespace string to search for. The label string can represent a part or all of the fully qualified label name that had been added to the web request. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label. If you do not provide the fully qualified name in your label match string, AWS WAF performs the search for labels that were added in the same context as the label match statement.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LabelMatchStatement {
+
+
+    /// 
+    /// The string to match against. The setting you provide for this depends on the match     statement's Scope setting:
+    /// 
+    /// If the Scope indicates LABEL, then this specification        must include the name and can include any number of preceding namespace        specifications and prefix up to providing the fully qualified label name.               If the Scope indicates NAMESPACE, then this        specification can include any number of contiguous namespace strings, and can include        the entire label namespace prefix from the rule group or web ACL where the label        originates.
+    /// 
+    /// Labels are case sensitive and components of a label must be separated by colon, for     example NS1:NS2:name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^[0-9A-Za-z_\-:]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// Specify whether you want to match using the label name or just the namespace.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: LABEL | NAMESPACE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scope")]
+    pub scope: LabelMatchStatementScopeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LabelMatchStatementScopeEnum {
+
+    /// LABEL
+    #[serde(rename = "LABEL")]
+    Label,
+
+    /// NAMESPACE
+    #[serde(rename = "NAMESPACE")]
+    Namespace,
+
+}
+
+impl Default for LabelMatchStatementScopeEnum {
+    fn default() -> Self {
+        LabelMatchStatementScopeEnum::Label
+    }
+}
+
+
+
+/// List of labels used by one or more of the rules of a AWS::WAFv2::RuleGroup. This     summary object is used for the following rule group lists:
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LabelSummary {
+
+
+    /// 
+    /// An individual label specification.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^[0-9A-Za-z_\-:]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+
+
+/// A logical rule statement used to negate the results of another rule statement. You provide one Statement within the NotStatement.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NotStatement {
+
+
+    /// 
+    /// The statement to negate. You can use any statement that can be nested.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Statement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statement")]
+    pub statement: Statement,
+
+}
+
+
+
+
+/// A logical rule statement used to combine other rule statements with OR logic. You provide more than one Statement within the OrStatement.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OrStatement {
+
+
+    /// 
+    /// The statements to combine with OR logic. You can use any statements that can be     nested.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Statement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statements")]
+    pub statements: Vec<Statement>,
+
+}
+
+
+
+
+/// A rate-based rule counts incoming requests and rate limits requests when they are coming at too fast a rate. The rule categorizes requests according to your aggregation criteria, collects them into aggregation instances, and counts and rate limits the requests for each instance.
+///
+/// You can specify individual aggregation keys, like IP address or HTTP method. You can also specify aggregation key combinations, like IP address and HTTP method, or HTTP method, query argument, and cookie.
+///
+/// Each unique set of values for the aggregation keys that you specify is a separate aggregation instance, with the value from each key contributing to the aggregation instance definition.
+///
+/// For example, assume the rule evaluates web requests with the following IP address and HTTP method values:
+///
+/// The rule would create different aggregation instances according to your aggregation criteria, for example:
+///
+/// For any n-tuple of aggregation keys, each unique combination of values for the keys defines a separate aggregation instance, which AWS WAF counts and rate-limits individually.
+///
+/// You can optionally nest another statement inside the rate-based statement, to narrow the scope of the rule so that it only counts and rate limits requests that match the nested statement. You can use this nested scope-down statement in conjunction with your aggregation key specifications or you can just count and rate limit all requests that match the scope-down statement, without additional aggregation. When you choose to just manage all requests that match a scope-down statement, the aggregation instance is singular for the rule.
+///
+/// You cannot nest a RateBasedStatement inside another statement, for example inside a NotStatement or OrStatement. You can define a RateBasedStatement inside a web ACL and inside a rule group.
+///
+/// For additional information about the options, see Rate limiting web requests using rate-based rules   in the         AWS WAF Developer Guide.
+///
+/// If you only aggregate on the individual IP address or forwarded IP address, you can retrieve the list of IP addresses that AWS WAF      is currently rate limiting for a rule through the API call GetRateBasedStatementManagedKeys. This option is not available    for other aggregation configurations.
+///
+/// AWS WAF tracks and manages web requests separately for each instance of a rate-based rule that you use. For example, if you provide the same rate-based rule settings in two web ACLs, each of the two rule statements represents a separate instance of the rate-based rule and gets its own tracking and management by AWS WAF. If you define a rate-based rule inside a rule group, and then use that rule group in multiple places, each use creates a separate instance of the rate-based rule that gets its own tracking and management by AWS WAF.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RateBasedStatement {
+
+
+    /// 
+    /// Setting that indicates how to aggregate the request counts.
+    /// 
+    /// NoteWeb requests that are missing any of the components specified in the aggregation keys         are omitted from the rate-based rule evaluation and handling.
+    /// 
+    /// CONSTANT - Count and limit the requests that match the rate-based rule's scope-down        statement. With this option, the counted requests aren't further aggregated. The scope-down statement          is the only specification used. When the count of all requests that satisfy the scope-down statement         goes over the limit, AWS WAF applies the rule action to all requests that satisfy the scope-down statement.         With this option, you must configure the ScopeDownStatement property.                         CUSTOM_KEYS - Aggregate the request counts using one or more web request components as the aggregate keys.        With this option, you must specify the aggregate keys in the CustomKeys property.         To aggregate on only the IP address or only the forwarded IP address, don't use custom keys. Instead, set the aggregate         key type to IP or FORWARDED_IP.                        FORWARDED_IP - Aggregate the request counts on the first IP address in an HTTP header.         With this option, you must specify the header to use in the ForwardedIPConfig property.         To aggregate on a combination of the forwarded IP address with other aggregate keys, use CUSTOM_KEYS.                         IP - Aggregate the request counts on the IP address from the web request        origin.        To aggregate on a combination of the IP address with other aggregate keys, use CUSTOM_KEYS.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CONSTANT | CUSTOM_KEYS | FORWARDED_IP | IP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AggregateKeyType")]
+    pub aggregate_key_type: RateBasedStatementAggregateKeyTypeEnum,
+
+
+    /// 
+    /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
+    /// 
+    /// NoteIf the specified header isn't present in the request, AWS WAF doesn't apply the rule to the web request at all.
+    /// 
+    /// This is required if you specify a forwarded IP in the rule's aggregate key settings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ForwardedIPConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ForwardedIPConfig")]
+    pub forwarded_ipconfig: Option<ForwardedIPConfiguration>,
+
+
+    /// 
+    /// The limit on requests per 5-minute period for a single aggregation instance for the rate-based rule.     If the rate-based statement includes a ScopeDownStatement, this limit is applied only to the     requests that match the statement.
+    /// 
+    /// Examples:
+    /// 
+    /// If you aggregate on just the IP address, this is the limit on requests from any single IP address.               If you aggregate on the HTTP method and the query argument name "city", then this is the limit on       requests for any single method, city pair.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Limit")]
+    pub limit: i64,
+
+
+    /// 
+    /// An optional nested statement that narrows the scope of the web requests that are     evaluated by the rate-based statement. Requests are only tracked by the rate-based     statement if they match the scope-down statement. You can use any nestable statement in the scope-down statement, and you can nest statements at any     level, the same as you can for a rule statement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Statement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScopeDownStatement")]
+    pub scope_down_statement: Option<Statement>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RateBasedStatementAggregateKeyTypeEnum {
+
+    /// CONSTANT
+    #[serde(rename = "CONSTANT")]
+    Constant,
+
+    /// CUSTOM_KEYS
+    #[serde(rename = "CUSTOM_KEYS")]
+    Customkeys,
+
+    /// FORWARDED_IP
+    #[serde(rename = "FORWARDED_IP")]
+    Forwardedip,
+
+    /// IP
+    #[serde(rename = "IP")]
+    Ip,
+
+}
+
+impl Default for RateBasedStatementAggregateKeyTypeEnum {
+    fn default() -> Self {
+        RateBasedStatementAggregateKeyTypeEnum::Constant
+    }
+}
+
+
+
+/// A rule statement used to search web request components for a match against a single regular expression.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RegexMatchStatement {
+
+
+    /// 
+    /// The part of the web request that you want AWS WAF to inspect.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FieldToMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
+
+
+    /// 
+    /// The string representing the regular expression.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegexString")]
+    pub regex_string: String,
+
+
+    /// 
+    /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. Text transformations are used in rule match statements, to transform the FieldToMatch request component before inspecting it, and they're used in rate-based rule statements, to transform request components before using them as custom aggregation keys. If you specify one or more transformations to apply, AWS WAF performs all transformations on the specified content, starting from the lowest priority setting, and then uses the component contents.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of TextTransformation
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TextTransformations")]
+    pub text_transformations: Vec<TextTransformation>,
+
+}
+
 
 
 
@@ -2280,120 +2102,287 @@ pub struct RegexPatternSetReferenceStatement {
 
 
 
-/// A rule statement used to detect web requests coming from particular IP addresses or address ranges. To use this, create an AWS::WAFv2::IPSet that specifies the addresses you want to detect, then use the ARN of that set in this statement.
-///
-/// Each IP set rule statement references an IP set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
+/// A single rule, which you can use in a AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup to identify web requests that you want to allow, block, or count.     Each rule includes one top-level Statement that AWS WAF uses to     identify matching web requests, and parameters that govern how AWS WAF handles them.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct IPSetReferenceStatement {
+pub struct Rule {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the AWS::WAFv2::IPSet that this statement     references.
+    /// The action that AWS WAF should take on a web request when it matches the rule statement. Settings at the web ACL level can override the rule action setting.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RuleAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: Option<RuleAction>,
+
+
+    /// 
+    /// Specifies how AWS WAF should handle CAPTCHA evaluations. If you don't specify this, AWS WAF uses the CAPTCHA configuration that's defined for the web ACL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CaptchaConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CaptchaConfig")]
+    pub captcha_config: Option<CaptchaConfig>,
+
+
+    /// 
+    /// Specifies how AWS WAF should handle Challenge evaluations. If you don't specify this, AWS WAF uses the challenge configuration that's defined for the web ACL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ChallengeConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChallengeConfig")]
+    pub challenge_config: Option<ChallengeConfig>,
+
+
+    /// 
+    /// The name of the rule. You can't change the name of a Rule after you create     it.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 20
+    /// Minimum: 1
     ///
-    /// Maximum: 2048
+    /// Maximum: 128
     ///
-    /// Pattern: .*\S.*
+    /// Pattern: ^[\w\-]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: String,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
-    /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
+    /// If you define more than one Rule in a WebACL, AWS WAF     evaluates each request against the Rules in order based on the value of       Priority. AWS WAF processes rules with lower priority first. The priorities     don't need to be consecutive, but they must all be different.
     /// 
-    /// NoteIf the specified header isn't present in the request, AWS WAF doesn't apply the rule to the web request at all.
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Priority")]
+    pub priority: i64,
+
+
+    /// 
+    /// Labels to apply to web requests that match the rule match statement. AWS WAF applies     fully qualified labels to matching web requests. A fully qualified label is the     concatenation of a label namespace and a rule label. The rule's rule group or web ACL     defines the label namespace.
+    /// 
+    /// Rules that run after this rule in the web ACL can match against these labels using a       LabelMatchStatement.
+    /// 
+    /// For each label, provide a case-sensitive string containing optional namespaces and a     label name, according to the following guidelines:
+    /// 
+    /// Separate each component of the label with a colon.               Each namespace or name can have up to 128 characters.               You can specify up to 5 namespaces in a label.               Don't use the following reserved words in your label specification:          aws, waf, managed, rulegroup,          webacl, regexpatternset, or ipset.
+    /// 
+    /// For example, myLabelName or nameSpace1:nameSpace2:myLabelName.
     /// 
     /// Required: No
     ///
-    /// Type: IPSetForwardedIPConfiguration
+    /// Type: List of Label
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IPSetForwardedIPConfig")]
-    pub ipset_forwarded_ipconfig: Option<IPSetForwardedIPConfiguration>,
+    #[serde(rename = "RuleLabels")]
+    pub rule_labels: Option<Vec<Label>>,
+
+
+    /// 
+    /// The AWS WAF processing statement for the rule, for example ByteMatchStatement or SizeConstraintStatement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Statement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statement")]
+    pub statement: Statement,
+
+
+    /// 
+    /// Defines and enables Amazon CloudWatch metrics and web request sample collection.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: VisibilityConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VisibilityConfig")]
+    pub visibility_config: VisibilityConfig,
 
 }
 
 
 
 
-/// A rule statement that defines a string match search for AWS WAF to apply to web requests. The byte match statement provides the bytes to search for, the location in requests that you want AWS WAF to search, and other settings. The bytes to search for are typically a string that corresponds with ASCII characters. In the AWS WAF console and the developer guide, this is called a string match statement.
+/// The action that AWS WAF should take on a web request when it matches a rule's     statement. Settings at the web ACL level can override the rule action setting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ByteMatchStatement {
+pub struct RuleAction {
 
 
     /// 
-    /// A string value that you want AWS WAF to search for. AWS WAF searches only in        the part of web requests that you designate for inspection in FieldToMatch. The maximum length of the        value is 200 bytes. For alphabetic characters A-Z and a-z, the value is case sensitive.
-    /// 
-    /// Don't encode this string. Provide the value that you want AWS WAF to search for.        AWS CloudFormation automatically base64 encodes the value for you.
-    /// 
-    /// For example, suppose the value of Type is HEADER and the       value of Data is User-Agent. If you want to search the       User-Agent header for the value BadBot, you provide the string       BadBot in the value of SearchString.
-    /// 
-    /// You must specify either SearchString or SearchStringBase64 in a ByteMatchStatement.
+    /// Instructs AWS WAF to allow the web request.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: AllowAction
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SearchString")]
-    pub search_string: Option<String>,
+    #[serde(rename = "Allow")]
+    pub allow: Option<AllowAction>,
 
 
     /// 
-    /// String to search for in a web request component, base64-encoded. If you don't want to encode the string, specify the unencoded value in SearchString instead.
-    /// 
-    /// You must specify either SearchString or SearchStringBase64 in a ByteMatchStatement.
+    /// Instructs AWS WAF to block the web request.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: BlockAction
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SearchStringBase64")]
-    pub search_string_base64: Option<String>,
+    #[serde(rename = "Block")]
+    pub block: Option<BlockAction>,
 
 
     /// 
-    /// The area within the portion of the web request that you want AWS WAF to search for       SearchString. Valid values include the following:
+    /// Specifies that AWS WAF should run a CAPTCHA check against the request:
     /// 
-    /// CONTAINS
+    /// If the request includes a valid, unexpired CAPTCHA token,        AWS WAF allows the web request inspection to           proceed to the next rule, similar to a CountAction.               If the request doesn't include a valid, unexpired CAPTCHA token, AWS WAF           discontinues the web ACL evaluation of the request and blocks it from going to its intended destination.                  AWS WAF generates a response that it sends back to the client, which includes the following:                                                            The header x-amzn-waf-action with a value of captcha.                       The HTTP status code 405 Method Not Allowed.                       If the request contains an Accept header with a value of text/html, the response includes a CAPTCHA challenge.
     /// 
-    /// The specified part of the web request must include the value of       SearchString, but the location doesn't matter.
+    /// You can configure the expiration time         in the CaptchaConfig       ImmunityTimeProperty setting at the rule and web ACL level. The rule setting overrides the web ACL setting.
     /// 
-    /// CONTAINS_WORD
+    /// This action option is available for rules. It isn't available for web ACL default actions.
     /// 
-    /// The specified part of the web request must include the value of       SearchString, and SearchString must contain only alphanumeric     characters or underscore (A-Z, a-z, 0-9, or _). In addition, SearchString must     be a word, which means that both of the following are true:
+    /// Required: No
+    ///
+    /// Type: CaptchaAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Captcha")]
+    pub captcha: Option<CaptchaAction>,
+
+
     /// 
-    /// SearchString is at the beginning of the specified part of the web        request or is preceded by a character other than an alphanumeric character or        underscore (_). Examples include the value of a header and        ;BadBot.                        SearchString is at the end of the specified part of the web request or        is followed by a character other than an alphanumeric character or underscore (_),        for example, BadBot; and -BadBot;.
+    /// Instructs AWS WAF to run a Challenge check against the web request.
     /// 
-    /// EXACTLY
+    /// Required: No
+    ///
+    /// Type: ChallengeAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Challenge")]
+    pub challenge: Option<ChallengeAction>,
+
+
     /// 
-    /// The value of the specified part of the web request must exactly match the value of       SearchString.
+    /// Instructs AWS WAF to count the web request and then continue evaluating the request using the remaining rules in the web ACL.
     /// 
-    /// STARTS_WITH
+    /// Required: No
+    ///
+    /// Type: CountAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Count")]
+    pub count: Option<CountAction>,
+
+}
+
+
+
+
+/// Inspect one of the headers in the web request, identified by name, for example,       User-Agent or Referer. The name isn't case sensitive.
+///
+/// You can filter and inspect all headers with the FieldToMatch setting       Headers.
+///
+/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
+///
+/// Example JSON: "SingleHeader": { "Name": "haystack" }
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SingleHeader {
+
+
     /// 
-    /// The value of SearchString must appear at the beginning of the specified     part of the web request.
-    /// 
-    /// ENDS_WITH
-    /// 
-    /// The value of SearchString must appear at the end of the specified part of     the web request.
+    /// The name of the query header to inspect.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: CONTAINS | CONTAINS_WORD | ENDS_WITH | EXACTLY | STARTS_WITH
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: .*\S.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PositionalConstraint")]
-    pub positional_constraint: ByteMatchStatementPositionalConstraintEnum,
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+
+
+/// Inspect one query argument in the web request, identified by name, for example       UserName or SalesRegion. The name isn't case     sensitive.
+///
+/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
+///
+/// Example JSON: "SingleQueryArgument": { "Name": "myArgument" }
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SingleQueryArgument {
+
+
+    /// 
+    /// The name of the query argument to inspect.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+
+
+/// A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (>) or less than (<). For example, you can use a size constraint statement to look for query strings that are longer than 100 bytes.
+///
+/// If you configure AWS WAF to inspect the request body, AWS WAF inspects only the number of bytes of the body up to the limit for the web ACL. By default, for regional web ACLs, this limit is 8 KB (8,192 kilobytes) and for CloudFront web ACLs, this limit is 16 KB (16,384 kilobytes). For CloudFront web ACLs, you can increase the limit in the web ACL AssociationConfig, for additional fees. If you know that the request body for your web requests should never exceed the inspection limit, you could use a size constraint statement to block requests that have a larger request body size.
+///
+/// If you choose URI for the value of Part of the request to filter on, the slash (/) in the URI counts as one character. For example, the URI /logo.jpg is nine characters long.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SizeConstraintStatement {
+
+
+    /// 
+    /// The operator to use to compare the request part to the size setting.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: EQ | GE | GT | LE | LT | NE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComparisonOperator")]
+    pub comparison_operator: SizeConstraintStatementComparisonOperatorEnum,
 
 
     /// 
@@ -2406,6 +2395,18 @@ pub struct ByteMatchStatement {
     /// Update requires: No interruption
     #[serde(rename = "FieldToMatch")]
     pub field_to_match: FieldToMatch,
+
+
+    /// 
+    /// The size, in byte, to compare to the request part, after any transformations.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Size")]
+    pub size: f64,
 
 
     /// 
@@ -2423,35 +2424,357 @@ pub struct ByteMatchStatement {
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum ByteMatchStatementPositionalConstraintEnum {
+pub enum SizeConstraintStatementComparisonOperatorEnum {
 
-    /// CONTAINS
-    #[serde(rename = "CONTAINS")]
-    Contains,
+    /// EQ
+    #[serde(rename = "EQ")]
+    Eq,
 
-    /// CONTAINS_WORD
-    #[serde(rename = "CONTAINS_WORD")]
-    Containsword,
+    /// GE
+    #[serde(rename = "GE")]
+    Ge,
 
-    /// ENDS_WITH
-    #[serde(rename = "ENDS_WITH")]
-    Endswith,
+    /// GT
+    #[serde(rename = "GT")]
+    Gt,
 
-    /// EXACTLY
-    #[serde(rename = "EXACTLY")]
-    Exactly,
+    /// LE
+    #[serde(rename = "LE")]
+    Le,
 
-    /// STARTS_WITH
-    #[serde(rename = "STARTS_WITH")]
-    Startswith,
+    /// LT
+    #[serde(rename = "LT")]
+    Lt,
+
+    /// NE
+    #[serde(rename = "NE")]
+    Ne,
 
 }
 
-impl Default for ByteMatchStatementPositionalConstraintEnum {
+impl Default for SizeConstraintStatementComparisonOperatorEnum {
     fn default() -> Self {
-        ByteMatchStatementPositionalConstraintEnum::Contains
+        SizeConstraintStatementComparisonOperatorEnum::Eq
     }
 }
+
+
+
+/// A rule statement that inspects for malicious SQL code. Attackers insert malicious SQL code into web requests to do things like modify your database or extract data from it.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SqliMatchStatement {
+
+
+    /// 
+    /// The part of the web request that you want AWS WAF to inspect.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FieldToMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
+
+
+    /// 
+    /// The sensitivity that you want AWS WAF to use to inspect for SQL injection attacks.
+    /// 
+    /// HIGH detects more attacks, but might generate more false positives,     especially if your web requests frequently contain unusual strings.     For information about identifying and mitigating false positives, see       Testing and tuning in the                                                     AWS WAF Developer Guide.
+    /// 
+    /// LOW is generally a better choice for resources that already have other       protections against SQL injection attacks or that have a low tolerance for false positives.
+    /// 
+    /// Default: LOW
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: HIGH | LOW
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SensitivityLevel")]
+    pub sensitivity_level: Option<SqliMatchStatementSensitivityLevelEnum>,
+
+
+    /// 
+    /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. Text transformations are used in rule match statements, to transform the FieldToMatch request component before inspecting it, and they're used in rate-based rule statements, to transform request components before using them as custom aggregation keys. If you specify one or more transformations to apply, AWS WAF performs all transformations on the specified content, starting from the lowest priority setting, and then uses the component contents.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of TextTransformation
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TextTransformations")]
+    pub text_transformations: Vec<TextTransformation>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SqliMatchStatementSensitivityLevelEnum {
+
+    /// HIGH
+    #[serde(rename = "HIGH")]
+    High,
+
+    /// LOW
+    #[serde(rename = "LOW")]
+    Low,
+
+}
+
+impl Default for SqliMatchStatementSensitivityLevelEnum {
+    fn default() -> Self {
+        SqliMatchStatementSensitivityLevelEnum::High
+    }
+}
+
+
+
+/// The processing guidance for a rule, used by AWS WAF to determine whether a web request matches the rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Statement {
+
+
+    /// 
+    /// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AndStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AndStatement")]
+    pub and_statement: Option<AndStatement>,
+
+
+    /// 
+    /// A rule statement that defines a string match search for AWS WAF to apply to web requests. The byte match statement provides the bytes to search for, the location in requests that you want AWS WAF to search, and other settings. The bytes to search for are typically a string that corresponds with ASCII characters. In the AWS WAF console and the developer guide, this is called a string match statement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ByteMatchStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ByteMatchStatement")]
+    pub byte_match_statement: Option<ByteMatchStatement>,
+
+
+    /// 
+    /// A rule statement that labels web requests by country and region and that matches against web requests based on country code. A geo match rule labels every request that it inspects regardless of whether it finds a match.
+    /// 
+    /// To manage requests only by country, you can use this statement by itself and specify the countries that you want to match against in the CountryCodes array.               Otherwise, configure your geo match rule with Count action so that it only labels requests. Then, add one or more label match rules to run after the geo match rule and configure them to match against the geographic labels and handle the requests as needed.
+    /// 
+    /// AWS WAF labels requests using the alpha-2 country and region codes from the International Organization for Standardization (ISO) 3166 standard. AWS WAF determines the codes using either the IP address in the web request origin or, if you specify it, the address in the geo match ForwardedIPConfig.
+    /// 
+    /// If you use the web request origin, the label formats are awswaf:clientip:geo:region:<ISO country code>-<ISO region code> and awswaf:clientip:geo:country:<ISO country code>.
+    /// 
+    /// If you use a forwarded IP address, the label formats are awswaf:forwardedip:geo:region:<ISO country code>-<ISO region code> and awswaf:forwardedip:geo:country:<ISO country code>.
+    /// 
+    /// For additional details, see Geographic match rule statement in the AWS WAF Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: GeoMatchStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GeoMatchStatement")]
+    pub geo_match_statement: Option<GeoMatchStatement>,
+
+
+    /// 
+    /// A rule statement used to detect web requests coming from particular IP addresses or address ranges. To use this, create an AWS::WAFv2::IPSet that specifies the addresses you want to detect, then use the ARN of that set in this statement.
+    /// 
+    /// Each IP set rule statement references an IP set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: IPSetReferenceStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IPSetReferenceStatement")]
+    pub ipset_reference_statement: Option<IPSetReferenceStatement>,
+
+
+    /// 
+    /// A rule statement to match against labels that have been added to the web request by rules that have already run in the web ACL.
+    /// 
+    /// The label match statement provides the label or namespace string to search for. The label string can represent a part or all of the fully qualified label name that had been added to the web request. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label. If you do not provide the fully qualified name in your label match string, AWS WAF performs the search for labels that were added in the same context as the label match statement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LabelMatchStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LabelMatchStatement")]
+    pub label_match_statement: Option<LabelMatchStatement>,
+
+
+    /// 
+    /// A logical rule statement used to negate the results of another rule statement. You provide one Statement within the NotStatement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NotStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotStatement")]
+    pub not_statement: Option<Box<NotStatement>>,
+
+
+    /// 
+    /// A logical rule statement used to combine other rule statements with OR logic. You provide more than one Statement within the OrStatement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OrStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OrStatement")]
+    pub or_statement: Option<OrStatement>,
+
+
+    /// 
+    /// A rate-based rule counts incoming requests and rate limits requests when they are coming at too fast a rate. The rule categorizes requests according to your aggregation criteria, collects them into aggregation instances, and counts and rate limits the requests for each instance.
+    /// 
+    /// You can specify individual aggregation keys, like IP address or HTTP method. You can also specify aggregation key combinations, like IP address and HTTP method, or HTTP method, query argument, and cookie.
+    /// 
+    /// Each unique set of values for the aggregation keys that you specify is a separate aggregation instance, with the value from each key contributing to the aggregation instance definition.
+    /// 
+    /// For example, assume the rule evaluates web requests with the following IP address and HTTP method values:
+    /// 
+    /// IP address 10.1.1.1, HTTP method POST               IP address 10.1.1.1, HTTP method GET               IP address 127.0.0.0, HTTP method POST               IP address 10.1.1.1, HTTP method GET
+    /// 
+    /// The rule would create different aggregation instances according to your aggregation criteria, for example:
+    /// 
+    /// If the aggregation criteria is just the IP address, then each individual address is an aggregation instance, and AWS WAF counts requests separately for each. The aggregation instances and request counts for our example would be the following:                                                IP address 10.1.1.1: count 3                     IP address 127.0.0.0: count 1                        If the aggregation criteria is HTTP method, then each individual HTTP method is an aggregation instance. The aggregation instances and request counts for our example would be the following:                                                HTTP method POST: count 2                     HTTP method GET: count 2                        If the aggregation criteria is IP address and HTTP method, then each IP address and each HTTP method would contribute to the combined aggregation instance. The aggregation instances and request counts for our example would be the following:                                                          IP address 10.1.1.1, HTTP method POST: count 1                     IP address 10.1.1.1, HTTP method GET: count 2                     IP address 127.0.0.0, HTTP method POST: count 1
+    /// 
+    /// For any n-tuple of aggregation keys, each unique combination of values for the keys defines a separate aggregation instance, which AWS WAF counts and rate-limits individually.
+    /// 
+    /// You can optionally nest another statement inside the rate-based statement, to narrow the scope of the rule so that it only counts and rate limits requests that match the nested statement. You can use this nested scope-down statement in conjunction with your aggregation key specifications or you can just count and rate limit all requests that match the scope-down statement, without additional aggregation. When you choose to just manage all requests that match a scope-down statement, the aggregation instance is singular for the rule.
+    /// 
+    /// You cannot nest a RateBasedStatement inside another statement, for example inside a NotStatement or OrStatement. You can define a RateBasedStatement inside a web ACL and inside a rule group.
+    /// 
+    /// For additional information about the options, see Rate limiting web requests using rate-based rules   in the         AWS WAF Developer Guide.
+    /// 
+    /// If you only aggregate on the individual IP address or forwarded IP address, you can retrieve the list of IP addresses that AWS WAF      is currently rate limiting for a rule through the API call GetRateBasedStatementManagedKeys. This option is not available    for other aggregation configurations.
+    /// 
+    /// AWS WAF tracks and manages web requests separately for each instance of a rate-based rule that you use. For example, if you provide the same rate-based rule settings in two web ACLs, each of the two rule statements represents a separate instance of the rate-based rule and gets its own tracking and management by AWS WAF. If you define a rate-based rule inside a rule group, and then use that rule group in multiple places, each use creates a separate instance of the rate-based rule that gets its own tracking and management by AWS WAF.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RateBasedStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RateBasedStatement")]
+    pub rate_based_statement: Option<Box<RateBasedStatement>>,
+
+
+    /// 
+    /// A rule statement used to search web request components for a match against a single regular expression.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RegexMatchStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegexMatchStatement")]
+    pub regex_match_statement: Option<RegexMatchStatement>,
+
+
+    /// 
+    /// A rule statement used to search web request components for matches with regular expressions. To use this, create a AWS::WAFv2::RegexPatternSet that specifies the expressions that you want to detect, then use the ARN of that set in this statement. A web request matches the pattern set rule statement if the request component matches any of the patterns in the set.
+    /// 
+    /// Each regex pattern set rule statement references a regex pattern set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RegexPatternSetReferenceStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegexPatternSetReferenceStatement")]
+    pub regex_pattern_set_reference_statement: Option<RegexPatternSetReferenceStatement>,
+
+
+    /// 
+    /// A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (>) or less than (<). For example, you can use a size constraint statement to look for query strings that are longer than 100 bytes.
+    /// 
+    /// If you configure AWS WAF to inspect the request body, AWS WAF inspects only the number of bytes of the body up to the limit for the web ACL. By default, for regional web ACLs, this limit is 8 KB (8,192 kilobytes) and for CloudFront web ACLs, this limit is 16 KB (16,384 kilobytes). For CloudFront web ACLs, you can increase the limit in the web ACL AssociationConfig, for additional fees. If you know that the request body for your web requests should never exceed the inspection limit, you could use a size constraint statement to block requests that have a larger request body size.
+    /// 
+    /// If you choose URI for the value of Part of the request to filter on, the slash (/) in the URI counts as one character. For example, the URI /logo.jpg is nine characters long.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SizeConstraintStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SizeConstraintStatement")]
+    pub size_constraint_statement: Option<SizeConstraintStatement>,
+
+
+    /// 
+    /// A rule statement that inspects for malicious SQL code. Attackers insert malicious SQL code into web requests to do things like modify your database or extract data from it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SqliMatchStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SqliMatchStatement")]
+    pub sqli_match_statement: Option<SqliMatchStatement>,
+
+
+    /// 
+    /// A rule statement that inspects for cross-site scripting (XSS) attacks. In XSS attacks, the attacker uses vulnerabilities in a benign website as a vehicle to inject malicious client-site scripts into other legitimate web browsers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: XssMatchStatement
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "XssMatchStatement")]
+    pub xss_match_statement: Option<XssMatchStatement>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
 
 
 
@@ -2637,191 +2960,27 @@ impl Default for TextTransformationTypeEnum {
 
 
 
-/// Inspect the body of the web request as JSON. The body immediately follows the request     headers.
-///
-/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
-///
-/// Use the specifications in this object to indicate which parts of the JSON body to     inspect using the rule's inspection criteria. AWS WAF inspects only the parts of the JSON     that result from the matches that you indicate.
-///
-/// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
+/// Defines and enables Amazon CloudWatch metrics and web request sample collection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct JsonBody {
+pub struct VisibilityConfig {
 
 
     /// 
-    /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
+    /// A boolean indicating whether the associated resource sends metrics to Amazon CloudWatch. For the     list of available metrics, see AWS WAF       Metrics in the         AWS WAF Developer Guide.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: JsonMatchPattern
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MatchPattern")]
-    pub match_pattern: JsonMatchPattern,
-
-
-    /// 
-    /// What AWS WAF should do if the body is larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of the web request body if the body   exceeds the limit for the resource type. If the body is larger than the limit, the underlying host service   only forwards the contents that are below the limit to AWS WAF for inspection.
-    /// 
-    /// The default limit is 8 KB (8,192 kilobytes) for regional resources and 16 KB (16,384 kilobytes) for CloudFront distributions. For CloudFront distributions,   you can increase the limit in the web ACL AssociationConfig, for additional processing fees.
-    /// 
-    /// The options for oversize handling are the following:
-    /// 
-    /// CONTINUE - Inspect the body normally, according to the rule inspection criteria.                         MATCH - Treat the web request as matching the rule statement. AWS WAF        applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
-    /// 
-    /// You can combine the MATCH or NO_MATCH    settings for oversize handling with your rule and web ACL action settings, so that you block any request whose body is over the limit.
-    /// 
-    /// Default: CONTINUE
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CONTINUE | MATCH | NO_MATCH
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OversizeHandling")]
-    pub oversize_handling: Option<JsonBodyOversizeHandlingEnum>,
-
-
-    /// 
-    /// The parts of the JSON to match against using the MatchPattern. If you     specify All, AWS WAF matches against keys and values.
+    /// For web ACLs, the metrics are for web requests that have the web ACL default action applied.     AWS WAF applies the default action to web requests that pass the inspection of all rules     in the web ACL without being either allowed or blocked. For more information, see The web ACL default action in the         AWS WAF Developer Guide.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: ALL | KEY | VALUE
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MatchScope")]
-    pub match_scope: JsonBodyMatchScopeEnum,
+    #[serde(rename = "CloudWatchMetricsEnabled")]
+    pub cloud_watch_metrics_enabled: bool,
 
 
     /// 
-    /// What AWS WAF should do if it fails to completely parse the JSON body. The options are     the following:
-    /// 
-    /// EVALUATE_AS_STRING - Inspect the body as plain text. AWS WAF        applies the text transformations and inspection criteria that you defined for the        JSON inspection to the body text string.                        MATCH - Treat the web request as matching the rule statement.        AWS WAF applies the rule action to the request.                        NO_MATCH - Treat the web request as not matching the rule        statement.
-    /// 
-    /// If you don't provide this setting, AWS WAF parses and evaluates the content only up to the     first parsing failure that it encounters.
-    /// 
-    /// AWS WAF does its best to parse the entire JSON body, but might be forced to stop for     reasons such as invalid characters, duplicate keys, truncation, and any content whose root     node isn't an object or an array.
-    /// 
-    /// AWS WAF parses the JSON in the following examples as two valid key, value pairs:
-    /// 
-    /// Missing comma: {"key1":"value1""key2":"value2"}                       Missing colon: {"key1":"value1","key2""value2"}                       Extra colons: {"key1"::"value1","key2""value2"}
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: EVALUATE_AS_STRING | MATCH | NO_MATCH
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InvalidFallbackBehavior")]
-    pub invalid_fallback_behavior: Option<JsonBodyInvalidFallbackBehaviorEnum>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum JsonBodyOversizeHandlingEnum {
-
-    /// CONTINUE
-    #[serde(rename = "CONTINUE")]
-    Continue,
-
-    /// MATCH
-    #[serde(rename = "MATCH")]
-    Match,
-
-    /// NO_MATCH
-    #[serde(rename = "NO_MATCH")]
-    Nomatch,
-
-}
-
-impl Default for JsonBodyOversizeHandlingEnum {
-    fn default() -> Self {
-        JsonBodyOversizeHandlingEnum::Continue
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum JsonBodyMatchScopeEnum {
-
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
-
-    /// KEY
-    #[serde(rename = "KEY")]
-    Key,
-
-    /// VALUE
-    #[serde(rename = "VALUE")]
-    Value,
-
-}
-
-impl Default for JsonBodyMatchScopeEnum {
-    fn default() -> Self {
-        JsonBodyMatchScopeEnum::All
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum JsonBodyInvalidFallbackBehaviorEnum {
-
-    /// EVALUATE_AS_STRING
-    #[serde(rename = "EVALUATE_AS_STRING")]
-    Evaluateasstring,
-
-    /// MATCH
-    #[serde(rename = "MATCH")]
-    Match,
-
-    /// NO_MATCH
-    #[serde(rename = "NO_MATCH")]
-    Nomatch,
-
-}
-
-impl Default for JsonBodyInvalidFallbackBehaviorEnum {
-    fn default() -> Self {
-        JsonBodyInvalidFallbackBehaviorEnum::Evaluateasstring
-    }
-}
-
-
-
-/// A custom header for custom request and response handling. This is used in CustomResponse and CustomRequestHandling
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CustomHTTPHeader {
-
-
-    /// 
-    /// The name of the custom header.
-    /// 
-    /// For custom request header insertion, when AWS WAF inserts the header into the request,     it prefixes this name x-amzn-waf-, to avoid confusion with the headers that     are already in the request. For example, for the header name sample, AWS WAF     inserts the header x-amzn-waf-sample.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^[a-zA-Z0-9._$-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The value of the custom header.
+    /// A name of the Amazon CloudWatch metric dimension. The name can contain only the characters: A-Z, a-z, 0-9,     - (hyphen), and _ (underscore). The name can be from one to 128 characters long. It can't    contain whitespace or metric names that are reserved for AWS WAF, for example All and    Default_Action.
     /// 
     /// Required: Yes
     ///
@@ -2831,215 +2990,56 @@ pub struct CustomHTTPHeader {
     ///
     /// Maximum: 255
     ///
-    /// Pattern: .*
+    /// Pattern: ^[\w#:\.\-/]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-
-
-/// A custom response to send to the client. You can define a custom response for rule       actions and default web ACL actions that are set to Block.
-///
-/// For information about customizing web requests and responses, see Customizing web requests and responses in AWS WAF in the      AWS WAF Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CustomResponse {
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
 
 
     /// 
-    /// References the response body that you want AWS WAF to return to the web request     client. You can define a custom response for a rule action or a default web ACL action that     is set to block. To do this, you first define the response body key and value in the       CustomResponseBodies setting for the AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup where you want to use it. Then, in the rule action or web ACL     default action BlockAction setting, you reference the response body using this     key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[\w\-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomResponseBodyKey")]
-    pub custom_response_body_key: Option<String>,
-
-
-    /// 
-    /// The HTTP headers to use in the response. Duplicate header names are not allowed.
-    /// 
-    /// For information about the limits on count and size for custom request and response settings, see AWS WAF quotas    in the         AWS WAF Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of CustomHTTPHeader
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResponseHeaders")]
-    pub response_headers: Option<Vec<CustomHTTPHeader>>,
-
-
-    /// 
-    /// The HTTP status code to return to the client.
-    /// 
-    /// For a list of status codes that you can use in your custom responses, see Supported status codes for custom response    in the         AWS WAF Developer Guide.
+    /// A boolean indicating whether AWS WAF should store a sampling of the web requests that     match the rules. You can view the sampled requests through the AWS WAF console.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 200
-    ///
-    /// Maximum: 599
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResponseCode")]
-    pub response_code: i64,
+    #[serde(rename = "SampledRequestsEnabled")]
+    pub sampled_requests_enabled: bool,
 
 }
 
 
 
 
-/// A rate-based rule counts incoming requests and rate limits requests when they are coming at too fast a rate. The rule categorizes requests according to your aggregation criteria, collects them into aggregation instances, and counts and rate limits the requests for each instance.
-///
-/// You can specify individual aggregation keys, like IP address or HTTP method. You can also specify aggregation key combinations, like IP address and HTTP method, or HTTP method, query argument, and cookie.
-///
-/// Each unique set of values for the aggregation keys that you specify is a separate aggregation instance, with the value from each key contributing to the aggregation instance definition.
-///
-/// For example, assume the rule evaluates web requests with the following IP address and HTTP method values:
-///
-/// The rule would create different aggregation instances according to your aggregation criteria, for example:
-///
-/// For any n-tuple of aggregation keys, each unique combination of values for the keys defines a separate aggregation instance, which AWS WAF counts and rate-limits individually.
-///
-/// You can optionally nest another statement inside the rate-based statement, to narrow the scope of the rule so that it only counts and rate limits requests that match the nested statement. You can use this nested scope-down statement in conjunction with your aggregation key specifications or you can just count and rate limit all requests that match the scope-down statement, without additional aggregation. When you choose to just manage all requests that match a scope-down statement, the aggregation instance is singular for the rule.
-///
-/// You cannot nest a RateBasedStatement inside another statement, for example inside a NotStatement or OrStatement. You can define a RateBasedStatement inside a web ACL and inside a rule group.
-///
-/// For additional information about the options, see Rate limiting web requests using rate-based rules   in the         AWS WAF Developer Guide.
-///
-/// If you only aggregate on the individual IP address or forwarded IP address, you can retrieve the list of IP addresses that AWS WAF      is currently rate limiting for a rule through the API call GetRateBasedStatementManagedKeys. This option is not available    for other aggregation configurations.
-///
-/// AWS WAF tracks and manages web requests separately for each instance of a rate-based rule that you use. For example, if you provide the same rate-based rule settings in two web ACLs, each of the two rule statements represents a separate instance of the rate-based rule and gets its own tracking and management by AWS WAF. If you define a rate-based rule inside a rule group, and then use that rule group in multiple places, each use creates a separate instance of the rate-based rule that gets its own tracking and management by AWS WAF.
+/// A rule statement that inspects for cross-site scripting (XSS) attacks. In XSS attacks, the attacker uses vulnerabilities in a benign website as a vehicle to inject malicious client-site scripts into other legitimate web browsers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RateBasedStatement {
+pub struct XssMatchStatement {
 
 
     /// 
-    /// An optional nested statement that narrows the scope of the web requests that are     evaluated by the rate-based statement. Requests are only tracked by the rate-based     statement if they match the scope-down statement. You can use any nestable statement in the scope-down statement, and you can nest statements at any     level, the same as you can for a rule statement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Statement
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScopeDownStatement")]
-    pub scope_down_statement: Option<Box<Statement>>,
-
-
-    /// 
-    /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
-    /// 
-    /// NoteIf the specified header isn't present in the request, AWS WAF doesn't apply the rule to the web request at all.
-    /// 
-    /// This is required if you specify a forwarded IP in the rule's aggregate key settings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ForwardedIPConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ForwardedIPConfig")]
-    pub forwarded_ipconfig: Option<ForwardedIPConfiguration>,
-
-
-    /// 
-    /// Setting that indicates how to aggregate the request counts.
-    /// 
-    /// NoteWeb requests that are missing any of the components specified in the aggregation keys         are omitted from the rate-based rule evaluation and handling.
-    /// 
-    /// CONSTANT - Count and limit the requests that match the rate-based rule's scope-down        statement. With this option, the counted requests aren't further aggregated. The scope-down statement          is the only specification used. When the count of all requests that satisfy the scope-down statement         goes over the limit, AWS WAF applies the rule action to all requests that satisfy the scope-down statement.         With this option, you must configure the ScopeDownStatement property.                         CUSTOM_KEYS - Aggregate the request counts using one or more web request components as the aggregate keys.        With this option, you must specify the aggregate keys in the CustomKeys property.         To aggregate on only the IP address or only the forwarded IP address, don't use custom keys. Instead, set the aggregate         key type to IP or FORWARDED_IP.                        FORWARDED_IP - Aggregate the request counts on the first IP address in an HTTP header.         With this option, you must specify the header to use in the ForwardedIPConfig property.         To aggregate on a combination of the forwarded IP address with other aggregate keys, use CUSTOM_KEYS.                         IP - Aggregate the request counts on the IP address from the web request        origin.        To aggregate on a combination of the IP address with other aggregate keys, use CUSTOM_KEYS.
+    /// The part of the web request that you want AWS WAF to inspect.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: CONSTANT | CUSTOM_KEYS | FORWARDED_IP | IP
+    /// Type: FieldToMatch
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AggregateKeyType")]
-    pub aggregate_key_type: RateBasedStatementAggregateKeyTypeEnum,
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
 
 
     /// 
-    /// The limit on requests per 5-minute period for a single aggregation instance for the rate-based rule.     If the rate-based statement includes a ScopeDownStatement, this limit is applied only to the     requests that match the statement.
-    /// 
-    /// Examples:
-    /// 
-    /// If you aggregate on just the IP address, this is the limit on requests from any single IP address.               If you aggregate on the HTTP method and the query argument name "city", then this is the limit on       requests for any single method, city pair.
+    /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. Text transformations are used in rule match statements, to transform the FieldToMatch request component before inspecting it, and they're used in rate-based rule statements, to transform request components before using them as custom aggregation keys. If you specify one or more transformations to apply, AWS WAF performs all transformations on the specified content, starting from the lowest priority setting, and then uses the component contents.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: List of TextTransformation
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Limit")]
-    pub limit: i64,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RateBasedStatementAggregateKeyTypeEnum {
-
-    /// CONSTANT
-    #[serde(rename = "CONSTANT")]
-    Constant,
-
-    /// CUSTOM_KEYS
-    #[serde(rename = "CUSTOM_KEYS")]
-    Customkeys,
-
-    /// FORWARDED_IP
-    #[serde(rename = "FORWARDED_IP")]
-    Forwardedip,
-
-    /// IP
-    #[serde(rename = "IP")]
-    Ip,
-
-}
-
-impl Default for RateBasedStatementAggregateKeyTypeEnum {
-    fn default() -> Self {
-        RateBasedStatementAggregateKeyTypeEnum::Constant
-    }
-}
-
-
-
-/// Specifies that AWS WAF should count the request. Optionally defines additional custom     handling for the request.
-///
-/// This is used in the context of other settings, for example to specify values for RuleAction and web ACL DefaultAction.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CountAction {
-
-
-    /// 
-    /// Defines custom handling for the web request.
-    /// 
-    /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CustomRequestHandling
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomRequestHandling")]
-    pub custom_request_handling: Option<CustomRequestHandling>,
+    #[serde(rename = "TextTransformations")]
+    pub text_transformations: Vec<TextTransformation>,
 
 }
 

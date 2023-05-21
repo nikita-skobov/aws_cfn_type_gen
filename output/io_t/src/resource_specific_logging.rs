@@ -6,15 +6,15 @@ pub struct CfnResourceSpecificLogging {
 
 
     /// 
-    /// The target type. Valid Values: DEFAULT | THING_GROUP
+    /// The default log level.Valid Values: DEBUG | INFO | ERROR | WARN | DISABLED
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetType")]
-    pub target_type: ResourceSpecificLoggingTargetTypeEnum,
+    /// Update requires: No interruption
+    #[serde(rename = "LogLevel")]
+    pub log_level: ResourceSpecificLoggingLogLevelEnum,
 
 
     /// 
@@ -30,15 +30,15 @@ pub struct CfnResourceSpecificLogging {
 
 
     /// 
-    /// The default log level.Valid Values: DEBUG | INFO | ERROR | WARN | DISABLED
+    /// The target type. Valid Values: DEFAULT | THING_GROUP
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogLevel")]
-    pub log_level: ResourceSpecificLoggingLogLevelEnum,
+    /// Update requires: Replacement
+    #[serde(rename = "TargetType")]
+    pub target_type: ResourceSpecificLoggingTargetTypeEnum,
 
 }
 

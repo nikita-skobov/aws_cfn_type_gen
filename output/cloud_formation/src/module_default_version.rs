@@ -10,6 +10,24 @@ pub struct CfnModuleDefaultVersion {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the module version to set as the default version.
+    /// 
+    /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+
+    /// 
     /// The name of the module.
     /// 
     /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
@@ -47,24 +65,6 @@ pub struct CfnModuleDefaultVersion {
     /// Update requires: Replacement
     #[serde(rename = "VersionId")]
     pub version_id: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the module version to set as the default version.
-    /// 
-    /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
 
 }
 

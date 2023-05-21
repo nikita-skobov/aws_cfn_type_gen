@@ -8,15 +8,15 @@ pub struct CfnDomainName {
 
 
     /// 
-    /// The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway    performs two-way authentication between the client and the server. Clients must present a    trusted certificate to access your API.
+    /// The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
     /// 
     /// Required: No
     ///
-    /// Type: MutualTlsAuthentication
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MutualTlsAuthentication")]
-    pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
+    #[serde(rename = "CertificateArn")]
+    pub certificate_arn: Option<String>,
 
 
     /// 
@@ -32,18 +32,6 @@ pub struct CfnDomainName {
 
 
     /// 
-    /// The reference to an AWS-managed certificate that will be used for validating the regional domain name. AWS Certificate Manager is the only supported source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegionalCertificateArn")]
-    pub regional_certificate_arn: Option<String>,
-
-
-    /// 
     /// The endpoint configuration of this DomainName showing the endpoint types of the domain name.
     /// 
     /// Required: No
@@ -53,6 +41,18 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfiguration")]
     pub endpoint_configuration: Option<EndpointConfiguration>,
+
+
+    /// 
+    /// The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway    performs two-way authentication between the client and the server. Clients must present a    trusted certificate to access your API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MutualTlsAuthentication
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MutualTlsAuthentication")]
+    pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
 
 
     /// The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the RegionalCertificateArn.
@@ -67,6 +67,18 @@ pub struct CfnDomainName {
 
 
     /// 
+    /// The reference to an AWS-managed certificate that will be used for validating the regional domain name. AWS Certificate Manager is the only supported source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegionalCertificateArn")]
+    pub regional_certificate_arn: Option<String>,
+
+
+    /// 
     /// The Transport Layer Security (TLS) version + cipher suite for this DomainName. The valid values are TLS_1_0 and TLS_1_2.
     /// 
     /// Required: No
@@ -78,18 +90,6 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
     pub security_policy: Option<DomainNameSecurityPolicyEnum>,
-
-
-    /// 
-    /// The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CertificateArn")]
-    pub certificate_arn: Option<String>,
 
 
     /// 
@@ -137,6 +137,29 @@ impl cfn_resources::CfnResource for CfnDomainName {
 }
 
 
+/// The EndpointConfiguration property type specifies the endpoint types of an Amazon API Gateway domain name.
+///
+/// EndpointConfiguration is a property of the AWS::ApiGateway::DomainName resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EndpointConfiguration {
+
+
+    /// 
+    /// A list of endpoint types of an API (RestApi) or its custom domain name (DomainName). For an edge-optimized API and its custom domain name, the endpoint type is "EDGE". For a regional API and its custom domain name, the endpoint type is REGIONAL. For a private API, the endpoint type is PRIVATE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Types")]
+    pub types: Option<Vec<String>>,
+
+}
+
+
+
+
 /// The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway    performs two-way authentication between the client and the server. Clients must present a    trusted certificate to access your API.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MutualTlsAuthentication {
@@ -164,29 +187,6 @@ pub struct MutualTlsAuthentication {
     /// Update requires: No interruption
     #[serde(rename = "TruststoreVersion")]
     pub truststore_version: Option<String>,
-
-}
-
-
-
-
-/// The EndpointConfiguration property type specifies the endpoint types of an Amazon API Gateway domain name.
-///
-/// EndpointConfiguration is a property of the AWS::ApiGateway::DomainName resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EndpointConfiguration {
-
-
-    /// 
-    /// A list of endpoint types of an API (RestApi) or its custom domain name (DomainName). For an edge-optimized API and its custom domain name, the endpoint type is "EDGE". For a regional API and its custom domain name, the endpoint type is REGIONAL. For a private API, the endpoint type is PRIVATE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Types")]
-    pub types: Option<Vec<String>>,
 
 }
 

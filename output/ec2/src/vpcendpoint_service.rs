@@ -10,6 +10,18 @@ pub struct CfnVPCEndpointService {
 
 
     /// 
+    /// Indicates whether requests from service consumers to create an endpoint to your service     must be accepted.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AcceptanceRequired")]
+    pub acceptance_required: Option<bool>,
+
+
+    /// 
     /// Indicates whether to enable the built-in Contributor Insights rules.
     /// 
     /// Required: No
@@ -22,15 +34,15 @@ pub struct CfnVPCEndpointService {
 
 
     /// 
-    /// Indicates whether requests from service consumers to create an endpoint to your service     must be accepted.
+    /// The Amazon Resource Names (ARNs) of the Gateway Load Balancers.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AcceptanceRequired")]
-    pub acceptance_required: Option<bool>,
+    #[serde(rename = "GatewayLoadBalancerArns")]
+    pub gateway_load_balancer_arns: Option<Vec<String>>,
 
 
     /// 
@@ -57,18 +69,6 @@ pub struct CfnVPCEndpointService {
     /// Update requires: No interruption
     #[serde(rename = "PayerResponsibility")]
     pub payer_responsibility: Option<VPCEndpointServicePayerResponsibilityEnum>,
-
-
-    /// 
-    /// The Amazon Resource Names (ARNs) of the Gateway Load Balancers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GatewayLoadBalancerArns")]
-    pub gateway_load_balancer_arns: Option<Vec<String>>,
 
 }
 

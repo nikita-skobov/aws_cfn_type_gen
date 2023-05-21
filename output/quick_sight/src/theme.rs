@@ -8,50 +8,6 @@ pub struct CfnTheme {
 
 
     /// 
-    /// A display name for the theme.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The theme configuration, which contains the theme display properties.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ThemeConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Configuration")]
-    pub configuration: Option<ThemeConfiguration>,
-
-
-    /// 
-    /// A description of the first version of the theme that you're creating. Every time 				UpdateTheme is called, a new version is created. Each version of the 			theme has a description of the version in the VersionDescription 			field.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VersionDescription")]
-    pub version_description: Option<String>,
-
-
-    /// 
     /// The ID of the AWS account where you want to store the new theme.
     /// 
     /// Required: Yes
@@ -67,34 +23,6 @@ pub struct CfnTheme {
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
     pub aws_account_id: String,
-
-
-    /// 
-    /// A map of the key-value pairs for the resource tag or tags that you want to add to the 			resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A valid grouping of resource permissions to apply to the new theme.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ResourcePermission
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Permissions")]
-    pub permissions: Option<Vec<ResourcePermission>>,
 
 
     /// 
@@ -116,6 +44,62 @@ pub struct CfnTheme {
 
 
     /// 
+    /// The theme configuration, which contains the theme display properties.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ThemeConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Configuration")]
+    pub configuration: Option<ThemeConfiguration>,
+
+
+    /// 
+    /// A display name for the theme.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// A valid grouping of resource permissions to apply to the new theme.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ResourcePermission
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Permissions")]
+    pub permissions: Option<Vec<ResourcePermission>>,
+
+
+    /// 
+    /// A map of the key-value pairs for the resource tag or tags that you want to add to the 			resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// An ID for the theme that you want to create. The theme ID is unique per AWS Region in 			each AWS account.
     /// 
     /// Required: Yes
@@ -132,6 +116,22 @@ pub struct CfnTheme {
     #[serde(rename = "ThemeId")]
     pub theme_id: String,
 
+
+    /// 
+    /// A description of the first version of the theme that you're creating. Every time 				UpdateTheme is called, a new version is created. Each version of the 			theme has a description of the version in the VersionDescription 			field.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VersionDescription")]
+    pub version_description: Option<String>,
+
 }
 
 
@@ -145,27 +145,6 @@ impl cfn_resources::CfnResource for CfnTheme {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// The display options for gutter spacing between tiles on a sheet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GutterStyle {
-
-
-    /// 
-    /// This Boolean value controls whether to display a gutter space between sheet tiles.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Show")]
-    pub show: Option<bool>,
-
-}
-
-
 
 
 /// The display options for tile borders for visuals.
@@ -189,76 +168,51 @@ pub struct BorderStyle {
 
 
 
-/// The Typography property type specifies Property description not available. for an AWS::QuickSight::Theme.
+/// The theme colors that are used for data colors in charts. The colors description is a       hexadecimal color code that consists of six alphanumerical characters, prefixed with         #, for example #37BFF5.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Typography {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of Font
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FontFamilies")]
-    pub font_families: Option<Vec<Font>>,
-
-}
-
-
-
-
-/// The theme configuration. This configuration contains all of the display properties for       a theme.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ThemeConfiguration {
+pub struct DataColorPalette {
 
 
     /// 
-    /// Color properties that apply to the UI and to charts, excluding the colors that apply       to data.
+    /// The hexadecimal codes for the colors.
     /// 
     /// Required: No
     ///
-    /// Type: UIColorPalette
+    /// Type: List of String
+    ///
+    /// Maximum: 100
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UIColorPalette")]
-    pub uicolor_palette: Option<UIColorPalette>,
+    #[serde(rename = "Colors")]
+    pub colors: Option<Vec<String>>,
 
 
     /// 
-    /// Color properties that apply to chart data colors.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataColorPalette
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataColorPalette")]
-    pub data_color_palette: Option<DataColorPalette>,
-
-
-    /// 
-    /// Display options related to sheets.
+    /// The hexadecimal code of a color that applies to charts where a lack of data is       highlighted.
     /// 
     /// Required: No
     ///
-    /// Type: SheetStyle
+    /// Type: String
+    ///
+    /// Pattern: ^#[A-F0-9]{6}$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Sheet")]
-    pub sheet: Option<SheetStyle>,
+    #[serde(rename = "EmptyFillColor")]
+    pub empty_fill_color: Option<String>,
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// The minimum and maximum hexadecimal codes that describe a color gradient.
+    /// 
     /// Required: No
     ///
-    /// Type: Typography
+    /// Type: List of String
+    ///
+    /// Maximum: 100
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Typography")]
-    pub typography: Option<Typography>,
+    #[serde(rename = "MinMaxGradient")]
+    pub min_max_gradient: Option<Vec<String>>,
 
 }
 
@@ -285,21 +239,110 @@ pub struct Font {
 
 
 
-/// Display options related to tiles on a sheet.
+/// The display options for gutter spacing between tiles on a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TileStyle {
+pub struct GutterStyle {
 
 
     /// 
-    /// The border around a tile.
+    /// This Boolean value controls whether to display a gutter space between sheet tiles.
     /// 
     /// Required: No
     ///
-    /// Type: BorderStyle
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Border")]
-    pub border: Option<BorderStyle>,
+    #[serde(rename = "Show")]
+    pub show: Option<bool>,
+
+}
+
+
+
+
+/// The display options for margins around the outside edge of sheets.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MarginStyle {
+
+
+    /// 
+    /// This Boolean value controls whether to display sheet margins.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Show")]
+    pub show: Option<bool>,
+
+}
+
+
+
+
+/// Permission for the resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ResourcePermission {
+
+
+    /// 
+    /// The IAM action to grant or revoke permissions on.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Actions")]
+    pub actions: Vec<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the principal. This can be one of the following:
+    /// 
+    /// The ARN of an Amazon QuickSight user or group associated with a data source or dataset. (This is   common.)     The ARN of an Amazon QuickSight user, group, or namespace associated with an analysis, dashboard,   template, or theme. (This is common.)     The ARN of an AWS account root: This is an IAM ARN rather than a Amazon QuickSight ARN. Use this option only to share resources (templates) across AWS accounts. (This is   less common.)
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Principal")]
+    pub principal: String,
+
+}
+
+
+
+
+/// The theme display options for sheets.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SheetStyle {
+
+
+    /// 
+    /// The display options for tiles.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TileStyle
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tile")]
+    pub tile: Option<TileStyle>,
+
+
+    /// 
+    /// The layout options for tiles.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TileLayoutStyle
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TileLayout")]
+    pub tile_layout: Option<TileLayoutStyle>,
 
 }
 
@@ -343,78 +386,117 @@ pub struct Tag {
 
 
 
-/// The theme display options for sheets.
+/// The theme configuration. This configuration contains all of the display properties for       a theme.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SheetStyle {
+pub struct ThemeConfiguration {
 
 
     /// 
-    /// The display options for tiles.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TileStyle
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tile")]
-    pub tile: Option<TileStyle>,
-
-
-    /// 
-    /// The layout options for tiles.
+    /// Color properties that apply to chart data colors.
     /// 
     /// Required: No
     ///
-    /// Type: TileLayoutStyle
+    /// Type: DataColorPalette
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TileLayout")]
-    pub tile_layout: Option<TileLayoutStyle>,
+    #[serde(rename = "DataColorPalette")]
+    pub data_color_palette: Option<DataColorPalette>,
+
+
+    /// 
+    /// Display options related to sheets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SheetStyle
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Sheet")]
+    pub sheet: Option<SheetStyle>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Typography
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Typography")]
+    pub typography: Option<Typography>,
+
+
+    /// 
+    /// Color properties that apply to the UI and to charts, excluding the colors that apply       to data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: UIColorPalette
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UIColorPalette")]
+    pub uicolor_palette: Option<UIColorPalette>,
 
 }
 
 
 
 
-/// A version of a theme.
+/// Theme error.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ThemeVersion {
+pub struct ThemeError {
 
 
     /// 
-    /// The version number of the theme.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VersionNumber")]
-    pub version_number: Option<f64>,
-
-
-    /// 
-    /// Errors associated with the theme.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ThemeError
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Errors")]
-    pub errors: Option<Vec<ThemeError>>,
-
-
-    /// 
-    /// The date and time that this theme version was created.
+    /// The error message.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Pattern: .*\S.*
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "CreatedTime")]
-    pub created_time: Option<String>,
+    #[serde(rename = "Message")]
+    pub message: Option<String>,
+
+
+    /// 
+    /// The type of error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: INTERNAL_FAILURE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<ThemeErrorTypeEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum ThemeErrorTypeEnum {
+
+    /// INTERNAL_FAILURE
+    #[serde(rename = "INTERNAL_FAILURE")]
+    Internalfailure,
+
+}
+
+impl Default for ThemeErrorTypeEnum {
+    fn default() -> Self {
+        ThemeErrorTypeEnum::Internalfailure
+    }
+}
+
+
+
+/// A version of a theme.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ThemeVersion {
 
 
     /// 
@@ -427,22 +509,6 @@ pub struct ThemeVersion {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
-
-
-    /// 
-    /// The description of the theme.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -464,6 +530,58 @@ pub struct ThemeVersion {
 
 
     /// 
+    /// The theme configuration, which contains all the theme display properties.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ThemeConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Configuration")]
+    pub configuration: Option<ThemeConfiguration>,
+
+
+    /// 
+    /// The date and time that this theme version was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreatedTime")]
+    pub created_time: Option<String>,
+
+
+    /// 
+    /// The description of the theme.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Errors associated with the theme.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ThemeError
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Errors")]
+    pub errors: Option<Vec<ThemeError>>,
+
+
+    /// 
     /// The status of the theme version.
     /// 
     /// Required: No
@@ -478,15 +596,15 @@ pub struct ThemeVersion {
 
 
     /// 
-    /// The theme configuration, which contains all the theme display properties.
+    /// The version number of the theme.
     /// 
     /// Required: No
     ///
-    /// Type: ThemeConfiguration
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Configuration")]
-    pub configuration: Option<ThemeConfiguration>,
+    #[serde(rename = "VersionNumber")]
+    pub version_number: Option<f64>,
 
 }
 
@@ -532,108 +650,9 @@ impl Default for ThemeVersionStatusEnum {
 
 
 
-/// Permission for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ResourcePermission {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the principal. This can be one of the following:
-    /// 
-    /// The ARN of an Amazon QuickSight user or group associated with a data source or dataset. (This is   common.)     The ARN of an Amazon QuickSight user, group, or namespace associated with an analysis, dashboard,   template, or theme. (This is common.)     The ARN of an AWS account root: This is an IAM ARN rather than a Amazon QuickSight ARN. Use this option only to share resources (templates) across AWS accounts. (This is   less common.)
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Principal")]
-    pub principal: String,
-
-
-    /// 
-    /// The IAM action to grant or revoke permissions on.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Actions")]
-    pub actions: Vec<String>,
-
-}
-
-
-
-
-/// Theme error.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ThemeError {
-
-
-    /// 
-    /// The type of error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: INTERNAL_FAILURE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<ThemeErrorTypeEnum>,
-
-
-    /// 
-    /// The error message.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Message")]
-    pub message: Option<String>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum ThemeErrorTypeEnum {
-
-    /// INTERNAL_FAILURE
-    #[serde(rename = "INTERNAL_FAILURE")]
-    Internalfailure,
-
-}
-
-impl Default for ThemeErrorTypeEnum {
-    fn default() -> Self {
-        ThemeErrorTypeEnum::Internalfailure
-    }
-}
-
-
-
 /// The display options for the layout of tiles on a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TileLayoutStyle {
-
-
-    /// 
-    /// The margin settings that apply around the outside edge of sheets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MarginStyle
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Margin")]
-    pub margin: Option<MarginStyle>,
 
 
     /// 
@@ -647,6 +666,59 @@ pub struct TileLayoutStyle {
     #[serde(rename = "Gutter")]
     pub gutter: Option<GutterStyle>,
 
+
+    /// 
+    /// The margin settings that apply around the outside edge of sheets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MarginStyle
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Margin")]
+    pub margin: Option<MarginStyle>,
+
+}
+
+
+
+
+/// Display options related to tiles on a sheet.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TileStyle {
+
+
+    /// 
+    /// The border around a tile.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BorderStyle
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Border")]
+    pub border: Option<BorderStyle>,
+
+}
+
+
+
+
+/// The Typography property type specifies Property description not available. for an AWS::QuickSight::Theme.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Typography {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of Font
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FontFamilies")]
+    pub font_families: Option<Vec<Font>>,
+
 }
 
 
@@ -658,7 +730,7 @@ pub struct UIColorPalette {
 
 
     /// 
-    /// The color of text and other foreground elements that appear over the primary       background regions, such as grid lines, borders, table banding, icons, and so on.
+    /// This color is that applies to selected states and buttons.
     /// 
     /// Required: No
     ///
@@ -667,8 +739,8 @@ pub struct UIColorPalette {
     /// Pattern: ^#[A-F0-9]{6}$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PrimaryForeground")]
-    pub primary_foreground: Option<String>,
+    #[serde(rename = "Accent")]
+    pub accent: Option<String>,
 
 
     /// 
@@ -700,20 +772,6 @@ pub struct UIColorPalette {
 
 
     /// 
-    /// The foreground color that applies to any text or other elements that appear over the       success color.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^#[A-F0-9]{6}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SuccessForeground")]
-    pub success_foreground: Option<String>,
-
-
-    /// 
     /// The foreground color that applies to any text or other elements that appear over the       error color.
     /// 
     /// Required: No
@@ -725,20 +783,6 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "DangerForeground")]
     pub danger_foreground: Option<String>,
-
-
-    /// 
-    /// The background color that applies to visuals and other high emphasis UI.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^#[A-F0-9]{6}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PrimaryBackground")]
-    pub primary_background: Option<String>,
 
 
     /// 
@@ -756,7 +800,7 @@ pub struct UIColorPalette {
 
 
     /// 
-    /// The background color that applies to the sheet background and sheet controls.
+    /// The foreground color that applies to any text or other elements that appear over the       dimension color.
     /// 
     /// Required: No
     ///
@@ -765,22 +809,8 @@ pub struct UIColorPalette {
     /// Pattern: ^#[A-F0-9]{6}$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecondaryBackground")]
-    pub secondary_background: Option<String>,
-
-
-    /// 
-    /// The color that applies to success messages, for example the check mark for a       successful download.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^#[A-F0-9]{6}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Success")]
-    pub success: Option<String>,
+    #[serde(rename = "DimensionForeground")]
+    pub dimension_foreground: Option<String>,
 
 
     /// 
@@ -798,34 +828,6 @@ pub struct UIColorPalette {
 
 
     /// 
-    /// The foreground color that applies to any text or other elements that appear over the       dimension color.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^#[A-F0-9]{6}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DimensionForeground")]
-    pub dimension_foreground: Option<String>,
-
-
-    /// 
-    /// This color that applies to warning and informational messages.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^#[A-F0-9]{6}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Warning")]
-    pub warning: Option<String>,
-
-
-    /// 
     /// The foreground color that applies to any text or other elements that appear over the       measure color.
     /// 
     /// Required: No
@@ -837,6 +839,48 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "MeasureForeground")]
     pub measure_foreground: Option<String>,
+
+
+    /// 
+    /// The background color that applies to visuals and other high emphasis UI.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^#[A-F0-9]{6}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PrimaryBackground")]
+    pub primary_background: Option<String>,
+
+
+    /// 
+    /// The color of text and other foreground elements that appear over the primary       background regions, such as grid lines, borders, table banding, icons, and so on.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^#[A-F0-9]{6}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PrimaryForeground")]
+    pub primary_foreground: Option<String>,
+
+
+    /// 
+    /// The background color that applies to the sheet background and sheet controls.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^#[A-F0-9]{6}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecondaryBackground")]
+    pub secondary_background: Option<String>,
 
 
     /// 
@@ -854,7 +898,7 @@ pub struct UIColorPalette {
 
 
     /// 
-    /// This color is that applies to selected states and buttons.
+    /// The color that applies to success messages, for example the check mark for a       successful download.
     /// 
     /// Required: No
     ///
@@ -863,8 +907,36 @@ pub struct UIColorPalette {
     /// Pattern: ^#[A-F0-9]{6}$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Accent")]
-    pub accent: Option<String>,
+    #[serde(rename = "Success")]
+    pub success: Option<String>,
+
+
+    /// 
+    /// The foreground color that applies to any text or other elements that appear over the       success color.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^#[A-F0-9]{6}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SuccessForeground")]
+    pub success_foreground: Option<String>,
+
+
+    /// 
+    /// This color that applies to warning and informational messages.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^#[A-F0-9]{6}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Warning")]
+    pub warning: Option<String>,
 
 
     /// 
@@ -879,78 +951,6 @@ pub struct UIColorPalette {
     /// Update requires: No interruption
     #[serde(rename = "WarningForeground")]
     pub warning_foreground: Option<String>,
-
-}
-
-
-
-
-/// The theme colors that are used for data colors in charts. The colors description is a       hexadecimal color code that consists of six alphanumerical characters, prefixed with         #, for example #37BFF5.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataColorPalette {
-
-
-    /// 
-    /// The hexadecimal codes for the colors.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Colors")]
-    pub colors: Option<Vec<String>>,
-
-
-    /// 
-    /// The minimum and maximum hexadecimal codes that describe a color gradient.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinMaxGradient")]
-    pub min_max_gradient: Option<Vec<String>>,
-
-
-    /// 
-    /// The hexadecimal code of a color that applies to charts where a lack of data is       highlighted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^#[A-F0-9]{6}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EmptyFillColor")]
-    pub empty_fill_color: Option<String>,
-
-}
-
-
-
-
-/// The display options for margins around the outside edge of sheets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MarginStyle {
-
-
-    /// 
-    /// This Boolean value controls whether to display sheet margins.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Show")]
-    pub show: Option<bool>,
 
 }
 

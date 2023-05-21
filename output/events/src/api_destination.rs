@@ -30,6 +30,36 @@ pub struct CfnApiDestination {
 
 
     /// 
+    /// A description for the API destination to create.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The method to use for the request to the HTTP invocation endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DELETE | GET | HEAD | OPTIONS | PATCH | POST | PUT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpMethod")]
+    pub http_method: ApiDestinationHttpMethodEnum,
+
+
+    /// 
     /// The URL to the HTTP invocation endpoint for the API destination.
     /// 
     /// Required: Yes
@@ -45,22 +75,6 @@ pub struct CfnApiDestination {
     /// Update requires: No interruption
     #[serde(rename = "InvocationEndpoint")]
     pub invocation_endpoint: String,
-
-
-    /// 
-    /// A description for the API destination to create.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -93,20 +107,6 @@ pub struct CfnApiDestination {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
-
-    /// 
-    /// The method to use for the request to the HTTP invocation endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DELETE | GET | HEAD | OPTIONS | PATCH | POST | PUT
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpMethod")]
-    pub http_method: ApiDestinationHttpMethodEnum,
 
 }
 

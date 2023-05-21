@@ -6,42 +6,6 @@ pub struct CfnHost {
 
 
     /// 
-    /// The Availability Zone in which to allocate the Dedicated Host.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: String,
-
-
-    /// 
-    /// The instance family supported by the Dedicated Host. For example,       m5.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceFamily")]
-    pub instance_family: Option<String>,
-
-
-    /// 
-    /// Specifies the instance type to be supported by the Dedicated Hosts. If you specify an     instance type, the Dedicated Hosts support instances of the specified instance type     only.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceType")]
-    pub instance_type: Option<String>,
-
-
-    /// 
     /// Indicates whether the host accepts any untargeted instance launches that match its       instance type configuration, or if it only accepts Host tenancy instance launches that       specify its unique host ID. For more information, see Understanding auto-placement and affinity in the         Amazon EC2 User Guide.
     /// 
     /// Default: on
@@ -55,6 +19,18 @@ pub struct CfnHost {
     /// Update requires: No interruption
     #[serde(rename = "AutoPlacement")]
     pub auto_placement: Option<HostAutoPlacementEnum>,
+
+
+    /// 
+    /// The Availability Zone in which to allocate the Dedicated Host.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: String,
 
 
     /// 
@@ -85,6 +61,30 @@ pub struct CfnHost {
     /// Update requires: No interruption
     #[serde(rename = "HostRecovery")]
     pub host_recovery: Option<HostHostRecoveryEnum>,
+
+
+    /// 
+    /// The instance family supported by the Dedicated Host. For example,       m5.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceFamily")]
+    pub instance_family: Option<String>,
+
+
+    /// 
+    /// Specifies the instance type to be supported by the Dedicated Hosts. If you specify an     instance type, the Dedicated Hosts support instances of the specified instance type     only.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceType")]
+    pub instance_type: Option<String>,
 
 
     /// 
@@ -121,25 +121,6 @@ impl Default for HostHostMaintenanceEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum HostHostRecoveryEnum {
-
-    /// off
-    #[serde(rename = "off")]
-    Off,
-
-    /// on
-    #[serde(rename = "on")]
-    On,
-
-}
-
-impl Default for HostHostRecoveryEnum {
-    fn default() -> Self {
-        HostHostRecoveryEnum::Off
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum HostAutoPlacementEnum {
 
     /// off
@@ -155,6 +136,25 @@ pub enum HostAutoPlacementEnum {
 impl Default for HostAutoPlacementEnum {
     fn default() -> Self {
         HostAutoPlacementEnum::Off
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum HostHostRecoveryEnum {
+
+    /// off
+    #[serde(rename = "off")]
+    Off,
+
+    /// on
+    #[serde(rename = "on")]
+    On,
+
+}
+
+impl Default for HostHostRecoveryEnum {
+    fn default() -> Self {
+        HostHostRecoveryEnum::Off
     }
 }
 

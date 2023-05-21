@@ -6,6 +6,38 @@ pub struct CfnNamedQuery {
 
 
     /// 
+    /// The database to which the query belongs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Database")]
+    pub database: String,
+
+
+    /// 
+    /// The query description.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The query name.
     /// 
     /// Required: No
@@ -35,38 +67,6 @@ pub struct CfnNamedQuery {
     /// Update requires: Replacement
     #[serde(rename = "QueryString")]
     pub query_string: String,
-
-
-    /// 
-    /// The query description.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The database to which the query belongs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Database")]
-    pub database: String,
 
 
     /// 

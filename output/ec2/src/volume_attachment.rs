@@ -12,18 +12,6 @@ pub struct CfnVolumeAttachment {
 
 
     /// 
-    /// The ID of the instance to which the volume attaches. This value can be a reference to an       AWS::EC2::Instance resource, or it can be the physical ID of an     existing EC2 instance.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceId")]
-    pub instance_id: String,
-
-
-    /// 
     /// The device name (for example, /dev/sdh or xvdh).
     /// 
     /// Required: Yes
@@ -33,6 +21,18 @@ pub struct CfnVolumeAttachment {
     /// Update requires: Replacement
     #[serde(rename = "Device")]
     pub device: String,
+
+
+    /// 
+    /// The ID of the instance to which the volume attaches. This value can be a reference to an       AWS::EC2::Instance resource, or it can be the physical ID of an     existing EC2 instance.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceId")]
+    pub instance_id: String,
 
 
     /// 

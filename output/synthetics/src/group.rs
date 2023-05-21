@@ -9,17 +9,6 @@
 pub struct CfnGroup {
 
 
-    /// The ARNs of the canaries that   you want to associate with this group.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceArns")]
-    pub resource_arns: Option<Vec<String>>,
-
-
     /// A name for the group. It can include any Unicode characters.
     /// 
     /// The names for all groups in your account, across all Regions, must be unique.
@@ -31,6 +20,17 @@ pub struct CfnGroup {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// The ARNs of the canaries that   you want to associate with this group.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceArns")]
+    pub resource_arns: Option<Vec<String>>,
 
 
     /// The list of key-value pairs that are associated with the    group.

@@ -8,39 +8,15 @@ pub struct CfnAsset {
 
 
     /// 
-    /// The ARN for the IAM role that provides AWS Elemental MediaPackage access to the Amazon S3 bucket where the source content is stored. Valid format: arn:aws:iam::{accountID}:role/{name}
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceRoleArn")]
-    pub source_role_arn: String,
-
-
-    /// 
-    /// The ARN for the source content in Amazon S3.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceArn")]
-    pub source_arn: String,
-
-
-    /// 
-    /// Unique identifier for this asset, as it's configured in the key provider service.
+    /// List of playback endpoints that are available for this asset.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of EgressEndpoint
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourceId")]
-    pub resource_id: Option<String>,
+    #[serde(rename = "EgressEndpoints")]
+    pub egress_endpoints: Option<Vec<EgressEndpoint>>,
 
 
     /// 
@@ -56,18 +32,6 @@ pub struct CfnAsset {
 
 
     /// 
-    /// The tags to assign to the asset.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The ID of the packaging group associated with this asset.
     /// 
     /// Required: Yes
@@ -80,15 +44,51 @@ pub struct CfnAsset {
 
 
     /// 
-    /// List of playback endpoints that are available for this asset.
+    /// Unique identifier for this asset, as it's configured in the key provider service.
     /// 
     /// Required: No
     ///
-    /// Type: List of EgressEndpoint
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EgressEndpoints")]
-    pub egress_endpoints: Option<Vec<EgressEndpoint>>,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: Option<String>,
+
+
+    /// 
+    /// The ARN for the source content in Amazon S3.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceArn")]
+    pub source_arn: String,
+
+
+    /// 
+    /// The ARN for the IAM role that provides AWS Elemental MediaPackage access to the Amazon S3 bucket where the source content is stored. Valid format: arn:aws:iam::{accountID}:role/{name}
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceRoleArn")]
+    pub source_role_arn: String,
+
+
+    /// 
+    /// The tags to assign to the asset.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -111,18 +111,6 @@ pub struct EgressEndpoint {
 
 
     /// 
-    /// The URL that's used to request content from this endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Url")]
-    pub url: String,
-
-
-    /// 
     /// The ID of a packaging configuration that's applied to this asset.
     /// 
     /// Required: Yes
@@ -132,6 +120,18 @@ pub struct EgressEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "PackagingConfigurationId")]
     pub packaging_configuration_id: String,
+
+
+    /// 
+    /// The URL that's used to request content from this endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Url")]
+    pub url: String,
 
 }
 

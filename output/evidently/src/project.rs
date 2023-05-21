@@ -6,6 +6,22 @@ pub struct CfnProject {
 
 
     /// 
+    /// Use this parameter if the project will use client-side evaluation powered by AWS AppConfig. Client-side       evaluation allows your application to assign variations to user       sessions locally instead of by calling the EvaluateFeature operation. This       mitigates the latency and availability risks that come with an API call. For more information,       see         Use client-side evaluation - powered by AWS AppConfig.
+    /// 
+    /// This parameter is a structure that       contains information about the AWS AppConfig application that will be used as for client-side evaluation.
+    /// 
+    /// To create a project that uses client-side evaluation, you must have the       evidently:ExportProjectAsConfiguration permission.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AppConfigResourceObject
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppConfigResource")]
+    pub app_config_resource: Option<AppConfigResourceObject>,
+
+
+    /// 
     /// A structure that contains information about where Evidently is to store       evaluation events for longer term storage, if you choose to do so. If you choose       not to store these events, Evidently deletes them after using them to produce metrics and other experiment       results that you can view.
     /// 
     /// You can't specify both CloudWatchLogs and S3Destination in the same operation.
@@ -41,22 +57,6 @@ pub struct CfnProject {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// Use this parameter if the project will use client-side evaluation powered by AWS AppConfig. Client-side       evaluation allows your application to assign variations to user       sessions locally instead of by calling the EvaluateFeature operation. This       mitigates the latency and availability risks that come with an API call. For more information,       see         Use client-side evaluation - powered by AWS AppConfig.
-    /// 
-    /// This parameter is a structure that       contains information about the AWS AppConfig application that will be used as for client-side evaluation.
-    /// 
-    /// To create a project that uses client-side evaluation, you must have the       evidently:ExportProjectAsConfiguration permission.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AppConfigResourceObject
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppConfigResource")]
-    pub app_config_resource: Option<AppConfigResourceObject>,
 
 
     /// 
@@ -99,18 +99,6 @@ pub struct AppConfigResourceObject {
 
 
     /// 
-    /// The ID of the AWS AppConfig environment to use for client-side evaluation.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnvironmentId")]
-    pub environment_id: String,
-
-
-    /// 
     /// The ID of the AWS AppConfig application to use for client-side evaluation.
     /// 
     /// Required: Yes
@@ -121,42 +109,50 @@ pub struct AppConfigResourceObject {
     #[serde(rename = "ApplicationId")]
     pub application_id: String,
 
+
+    /// 
+    /// The ID of the AWS AppConfig environment to use for client-side evaluation.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnvironmentId")]
+    pub environment_id: String,
+
 }
 
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// A structure that contains information about where Evidently is to store       evaluation events for longer term storage.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct DataDeliveryObject {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
+    /// If the project stores evaluation events in CloudWatch Logs, this structure       stores the log group name.
+    ///
+    /// Required: No
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogGroup")]
+    pub log_group: Option<String>,
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
+    ///
+    /// Required: No
+    ///
+    /// Type: S3Destination
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3")]
+    pub s3: Option<S3Destination>,
 
 }
 
@@ -196,33 +192,37 @@ pub struct S3Destination {
 
 
 
-/// A structure that contains information about where Evidently is to store       evaluation events for longer term storage.
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataDeliveryObject {
+pub struct Tag {
 
 
     /// 
-    /// If the project stores evaluation events in CloudWatch Logs, this structure       stores the log group name.
-    ///
-    /// Required: No
-    ///
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogGroup")]
-    pub log_group: Option<String>,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
-    /// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
-    ///
-    /// Required: No
-    ///
-    /// Type: S3Destination
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3")]
-    pub s3: Option<S3Destination>,
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

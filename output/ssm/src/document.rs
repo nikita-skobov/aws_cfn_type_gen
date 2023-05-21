@@ -6,22 +6,6 @@ pub struct CfnDocument {
 
 
     /// 
-    /// A name for the SSM document.
-    /// 
-    /// ImportantYou can't use the following strings as document name prefixes. These are reserved by AWS   for use as document name prefixes:                                                     aws                                      amazon                                      amzn
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// A list of key-value pairs that describe attachments to a version of a document.
     /// 
     /// Required: No
@@ -36,17 +20,19 @@ pub struct CfnDocument {
 
 
     /// 
-    /// The type of document to create.
+    /// The content for the new SSM document in JSON or YAML. For more information about the schemas for SSM document content, see SSM document schema features and examples in the AWS Systems Manager User Guide.
     /// 
-    /// Allowed Values: ApplicationConfigurationSchema |     Automation | Automation.ChangeTemplate | Command |       DeploymentStrategy | Package | Policy |       Session
+    /// NoteThis parameter also supports String data types.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Json
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DocumentType")]
-    pub document_type: Option<DocumentDocumentTypeEnum>,
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Content")]
+    pub content: serde_json::Value,
 
 
     /// 
@@ -64,6 +50,48 @@ pub struct CfnDocument {
 
 
     /// 
+    /// The type of document to create.
+    /// 
+    /// Allowed Values: ApplicationConfigurationSchema |     Automation | Automation.ChangeTemplate | Command |       DeploymentStrategy | Package | Policy |       Session
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DocumentType")]
+    pub document_type: Option<DocumentDocumentTypeEnum>,
+
+
+    /// 
+    /// A name for the SSM document.
+    /// 
+    /// ImportantYou can't use the following strings as document name prefixes. These are reserved by AWS   for use as document name prefixes:                                                     aws                                      amazon                                      amzn
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// A list of SSM documents required by a document. This parameter is used exclusively by  AWS AppConfig. When a user creates an AWS AppConfig configuration in an SSM document, the user must also  specify a required document for validation purposes. In this case, an   ApplicationConfiguration document requires an   ApplicationConfigurationSchema document for validation purposes. For more  information, see What is AWS AppConfig? in the           AWS AppConfig User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of DocumentRequires
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Requires")]
+    pub requires: Option<Vec<DocumentRequires>>,
+
+
+    /// 
     /// AWS CloudFormation resource tags to apply to the document. Use tags to help you identify     and categorize resources.
     /// 
     /// Required: No
@@ -75,18 +103,6 @@ pub struct CfnDocument {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// If the document resource you specify in your template already exists, this parameter determines whether a new version of the existing document is created, or the existing document is replaced. Replace is the default method. If you specify NewVersion for the UpdateMethod parameter, and the Name of the document does not match an existing resource, a new document is created. When you specify NewVersion, the default version of the document is changed to the newly created version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UpdateMethod")]
-    pub update_method: Option<String>,
 
 
     /// 
@@ -106,31 +122,15 @@ pub struct CfnDocument {
 
 
     /// 
-    /// A list of SSM documents required by a document. This parameter is used exclusively by  AWS AppConfig. When a user creates an AWS AppConfig configuration in an SSM document, the user must also  specify a required document for validation purposes. In this case, an   ApplicationConfiguration document requires an   ApplicationConfigurationSchema document for validation purposes. For more  information, see What is AWS AppConfig? in the           AWS AppConfig User Guide.
+    /// If the document resource you specify in your template already exists, this parameter determines whether a new version of the existing document is created, or the existing document is replaced. Replace is the default method. If you specify NewVersion for the UpdateMethod parameter, and the Name of the document does not match an existing resource, a new document is created. When you specify NewVersion, the default version of the document is changed to the newly created version.
     /// 
     /// Required: No
     ///
-    /// Type: List of DocumentRequires
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Requires")]
-    pub requires: Option<Vec<DocumentRequires>>,
-
-
-    /// 
-    /// The content for the new SSM document in JSON or YAML. For more information about the schemas for SSM document content, see SSM document schema features and examples in the AWS Systems Manager User Guide.
-    /// 
-    /// NoteThis parameter also supports String data types.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Content")]
-    pub content: serde_json::Value,
+    #[serde(rename = "UpdateMethod")]
+    pub update_method: Option<String>,
 
 
     /// 
@@ -227,60 +227,9 @@ impl cfn_resources::CfnResource for CfnDocument {
 }
 
 
-/// An SSM document required by the current document.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DocumentRequires {
-
-
-    /// 
-    /// The document version required by the current document.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
-
-
-    /// 
-    /// The name of the required SSM document. The name can be an Amazon Resource Name (ARN).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-.:/]{3,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-
-
 /// Identifying information about a document attachment, including the file name and a key-value  pair that identifies the location of an attachment to a document.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AttachmentsSource {
-
-
-    /// 
-    /// The name of the document attachment file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
 
 
     /// 
@@ -295,6 +244,20 @@ pub struct AttachmentsSource {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<AttachmentsSourceKeyEnum>,
+
+
+    /// 
+    /// The name of the document attachment file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -337,6 +300,43 @@ impl Default for AttachmentsSourceKeyEnum {
         AttachmentsSourceKeyEnum::Attachmentreference
     }
 }
+
+
+
+/// An SSM document required by the current document.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DocumentRequires {
+
+
+    /// 
+    /// The name of the required SSM document. The name can be an Amazon Resource Name (ARN).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.:/]{3,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The document version required by the current document.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
+
+}
+
 
 
 

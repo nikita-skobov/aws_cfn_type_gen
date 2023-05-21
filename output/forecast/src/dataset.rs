@@ -12,6 +12,48 @@ pub struct CfnDataset {
 
 
     /// 
+    /// The frequency of data collection. This parameter is required for RELATED_TIME_SERIES    datasets.
+    /// 
+    /// Valid intervals are an integer followed by Y (Year), M (Month), W (Week), D (Day), H (Hour), and min (Minute). For example,    "1D" indicates every day and "15min" indicates every 15 minutes. You cannot specify a value that would overlap with the next larger frequency. That means, for example, you cannot specify a frequency of 60 minutes, because that is equivalent to 1 hour. The valid values for each frequency are the following:
+    /// 
+    /// Minute - 1-59               Hour - 1-23               Day - 1-6               Week - 1-4               Month - 1-11               Year - 1
+    /// 
+    /// Thus, if you want every other week forecasts, specify "2W". Or, if you want quarterly forecasts, you specify "3M".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 5
+    ///
+    /// Pattern: ^Y|M|W|D|H|30min|15min|10min|5min|1min$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataFrequency")]
+    pub data_frequency: Option<String>,
+
+
+    /// 
+    /// The name of the dataset.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z][a-zA-Z0-9_]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatasetName")]
+    pub dataset_name: String,
+
+
+    /// 
     /// The dataset type.
     /// 
     /// Required: Yes
@@ -40,30 +82,6 @@ pub struct CfnDataset {
 
 
     /// 
-    /// The frequency of data collection. This parameter is required for RELATED_TIME_SERIES    datasets.
-    /// 
-    /// Valid intervals are an integer followed by Y (Year), M (Month), W (Week), D (Day), H (Hour), and min (Minute). For example,    "1D" indicates every day and "15min" indicates every 15 minutes. You cannot specify a value that would overlap with the next larger frequency. That means, for example, you cannot specify a frequency of 60 minutes, because that is equivalent to 1 hour. The valid values for each frequency are the following:
-    /// 
-    /// Minute - 1-59               Hour - 1-23               Day - 1-6               Week - 1-4               Month - 1-11               Year - 1
-    /// 
-    /// Thus, if you want every other week forecasts, specify "2W". Or, if you want quarterly forecasts, you specify "3M".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 5
-    ///
-    /// Pattern: ^Y|M|W|D|H|30min|15min|10min|5min|1min$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataFrequency")]
-    pub data_frequency: Option<String>,
-
-
-    /// 
     /// A Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon Forecast can assume to access    the key.
     /// 
     /// Required: No
@@ -85,24 +103,6 @@ pub struct CfnDataset {
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
     pub schema: Schema,
-
-
-    /// 
-    /// The name of the dataset.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z][a-zA-Z0-9_]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatasetName")]
-    pub dataset_name: String,
 
 
     /// 
@@ -195,80 +195,6 @@ impl cfn_resources::CfnResource for CfnDataset {
 }
 
 
-/// An AWS Key Management Service (KMS) key and an AWS Identity and Access Management (IAM) role that Amazon Forecast can assume to    access the key. You can specify this optional object in the    CreateDataset and CreatePredictor requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EncryptionConfig {
-
-
-    /// 
-    /// The ARN of the IAM role that Amazon Forecast can assume to access the AWS KMS key.
-    /// 
-    /// Passing a role across AWS accounts is not allowed. If you pass a role that isn't in your    account, you get an InvalidInputException error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:([a-z\d-]+):forecast:.*:.*:.+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the KMS key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:aws:kms:.*:key/.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyArn")]
-    pub kms_key_arn: Option<String>,
-
-}
-
-
-
-
-/// The TagsItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TagsItems {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-
-
 /// The AttributesItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AttributesItems {
@@ -300,6 +226,49 @@ pub struct AttributesItems {
 
 
 
+/// An AWS Key Management Service (KMS) key and an AWS Identity and Access Management (IAM) role that Amazon Forecast can assume to    access the key. You can specify this optional object in the    CreateDataset and CreatePredictor requests.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EncryptionConfig {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the KMS key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:aws:kms:.*:key/.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyArn")]
+    pub kms_key_arn: Option<String>,
+
+
+    /// 
+    /// The ARN of the IAM role that Amazon Forecast can assume to access the AWS KMS key.
+    /// 
+    /// Passing a role across AWS accounts is not allowed. If you pass a role that isn't in your    account, you get an InvalidInputException error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):forecast:.*:.*:.+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+}
+
+
+
+
 /// Defines the fields of a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Schema {
@@ -317,6 +286,37 @@ pub struct Schema {
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
     pub attributes: Option<Vec<AttributesItems>>,
+
+}
+
+
+
+
+/// The TagsItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TagsItems {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

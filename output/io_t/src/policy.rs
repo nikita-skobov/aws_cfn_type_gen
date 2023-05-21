@@ -6,18 +6,6 @@ pub struct CfnPolicy {
 
 
     /// 
-    /// The policy name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PolicyName")]
-    pub policy_name: Option<String>,
-
-
-    /// 
     /// The JSON document that describes the policy.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnPolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
     pub policy_document: serde_json::Value,
+
+
+    /// 
+    /// The policy name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyName")]
+    pub policy_name: Option<String>,
 
 }
 

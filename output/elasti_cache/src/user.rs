@@ -6,17 +6,31 @@ pub struct CfnUser {
 
 
     /// 
-    /// The username of the user.
+    /// Access permissions string used for this user.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Pattern: .*\S.*
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserName")]
-    pub user_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "AccessString")]
+    pub access_string: Option<String>,
+
+
+    /// 
+    /// Specifies the authentication mode to use. Below is an example of the possible JSON values:
+    /// 
+    /// { Type: <iam | no-password-required | password> Passwords: ["*****", "******"] // If Type is password. }
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthenticationMode
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationMode")]
+    pub authentication_mode: Option<AuthenticationMode>,
 
 
     /// 
@@ -46,50 +60,6 @@ pub struct CfnUser {
 
 
     /// 
-    /// The ID of the user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Pattern: [a-zA-Z][a-zA-Z0-9\-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserId")]
-    pub user_id: String,
-
-
-    /// 
-    /// Access permissions string used for this user.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessString")]
-    pub access_string: Option<String>,
-
-
-    /// 
-    /// Specifies the authentication mode to use. Below is an example of the possible JSON values:
-    /// 
-    /// { Type: <iam | no-password-required | password> Passwords: ["*****", "******"] // If Type is password. }
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuthenticationMode
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationMode")]
-    pub authentication_mode: Option<AuthenticationMode>,
-
-
-    /// 
     /// Passwords used for this user. You can create up to two passwords for each user.
     /// 
     /// Required: No
@@ -110,6 +80,36 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Pattern: [a-zA-Z][a-zA-Z0-9\-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserId")]
+    pub user_id: String,
+
+
+    /// 
+    /// The username of the user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserName")]
+    pub user_name: String,
 
 }
 
@@ -132,6 +132,18 @@ pub struct AuthenticationMode {
 
 
     /// 
+    /// Specifies the passwords to use for authentication if Type is set to password.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Passwords")]
+    pub passwords: Option<Vec<String>>,
+
+
+    /// 
     /// Specifies the authentication type. Possible options are IAM authentication, password and no password.
     /// 
     /// Required: Yes
@@ -143,18 +155,6 @@ pub struct AuthenticationMode {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: AuthenticationModeTypeEnum,
-
-
-    /// 
-    /// Specifies the passwords to use for authentication if Type is set to password.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Passwords")]
-    pub passwords: Option<Vec<String>>,
 
 }
 

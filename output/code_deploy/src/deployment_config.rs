@@ -20,6 +20,24 @@ pub struct CfnDeploymentConfig {
 
 
     /// 
+    /// A name for the deployment configuration. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the deployment configuration name. For    more information, see Name Type.
+    /// 
+    /// Important If you specify a name, you cannot perform updates that require replacement of this     resource. You can perform updates that require no or some interruption. If you must replace     the resource, specify a new name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeploymentConfigName")]
+    pub deployment_config_name: Option<String>,
+
+
+    /// 
     /// The minimum number of healthy instances that should be available at any time during the    deployment. There are two parameters expected in the input: type and value.
     /// 
     /// The type parameter takes either of the following values:
@@ -39,24 +57,6 @@ pub struct CfnDeploymentConfig {
     /// Update requires: Replacement
     #[serde(rename = "MinimumHealthyHosts")]
     pub minimum_healthy_hosts: Option<MinimumHealthyHosts>,
-
-
-    /// 
-    /// A name for the deployment configuration. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the deployment configuration name. For    more information, see Name Type.
-    /// 
-    /// Important If you specify a name, you cannot perform updates that require replacement of this     resource. You can perform updates that require no or some interruption. If you must replace     the resource, specify a new name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeploymentConfigName")]
-    pub deployment_config_name: Option<String>,
 
 
     /// 
@@ -114,18 +114,6 @@ pub struct MinimumHealthyHosts {
 
 
     /// 
-    /// The minimum healthy instance value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: i64,
-
-
-    /// 
     /// The minimum healthy instance type:
     /// 
     /// HOST_COUNT: The minimum number of healthy instance as an absolute value.        FLEET_PERCENT: The minimum number of healthy instance as a percentage of the total      number of instance in the deployment.
@@ -145,6 +133,18 @@ pub struct MinimumHealthyHosts {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: MinimumHealthyHostsTypeEnum,
+
+
+    /// 
+    /// The minimum healthy instance value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: i64,
 
 }
 
@@ -170,21 +170,75 @@ impl Default for MinimumHealthyHostsTypeEnum {
 
 
 
+/// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in two increments. The original and target         Lambda function versions or ECS task sets are specified in the       deployment's AppSpec file.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TimeBasedCanary {
+
+
+    /// 
+    /// The number of minutes between the first and second traffic shifts of a         TimeBasedCanary deployment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CanaryInterval")]
+    pub canary_interval: i64,
+
+
+    /// 
+    /// The percentage of traffic to shift in the first increment of a         TimeBasedCanary deployment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CanaryPercentage")]
+    pub canary_percentage: i64,
+
+}
+
+
+
+
+/// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in equal increments, with an equal number of minutes between       each increment. The original and target Lambda function versions or ECS task       sets are specified in the deployment's AppSpec file.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TimeBasedLinear {
+
+
+    /// 
+    /// The number of minutes between each incremental traffic shift of a         TimeBasedLinear deployment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LinearInterval")]
+    pub linear_interval: i64,
+
+
+    /// 
+    /// The percentage of traffic that is shifted at the start of each increment of a         TimeBasedLinear deployment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LinearPercentage")]
+    pub linear_percentage: i64,
+
+}
+
+
+
+
 /// The configuration that specifies how traffic is shifted from one version of a Lambda function to another version during an AWS Lambda deployment,       or from one Amazon ECS task set to another during an Amazon ECS       deployment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TrafficRoutingConfig {
-
-
-    /// 
-    /// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in equal increments, with an equal number of       minutes between each increment. The original and target Lambda function       versions or Amazon ECS task sets are specified in the deployment's AppSpec       file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TimeBasedLinear
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TimeBasedLinear")]
-    pub time_based_linear: Option<TimeBasedLinear>,
 
 
     /// 
@@ -197,6 +251,18 @@ pub struct TrafficRoutingConfig {
     /// Update requires: Replacement
     #[serde(rename = "TimeBasedCanary")]
     pub time_based_canary: Option<TimeBasedCanary>,
+
+
+    /// 
+    /// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in equal increments, with an equal number of       minutes between each increment. The original and target Lambda function       versions or Amazon ECS task sets are specified in the deployment's AppSpec       file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TimeBasedLinear
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TimeBasedLinear")]
+    pub time_based_linear: Option<TimeBasedLinear>,
 
 
     /// 
@@ -237,70 +303,4 @@ impl Default for TrafficRoutingConfigTypeEnum {
         TrafficRoutingConfigTypeEnum::Allatonce
     }
 }
-
-
-
-/// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in equal increments, with an equal number of minutes between       each increment. The original and target Lambda function versions or ECS task       sets are specified in the deployment's AppSpec file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TimeBasedLinear {
-
-
-    /// 
-    /// The number of minutes between each incremental traffic shift of a         TimeBasedLinear deployment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LinearInterval")]
-    pub linear_interval: i64,
-
-
-    /// 
-    /// The percentage of traffic that is shifted at the start of each increment of a         TimeBasedLinear deployment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LinearPercentage")]
-    pub linear_percentage: i64,
-
-}
-
-
-
-
-/// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in two increments. The original and target         Lambda function versions or ECS task sets are specified in the       deployment's AppSpec file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TimeBasedCanary {
-
-
-    /// 
-    /// The number of minutes between the first and second traffic shifts of a         TimeBasedCanary deployment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CanaryInterval")]
-    pub canary_interval: i64,
-
-
-    /// 
-    /// The percentage of traffic to shift in the first increment of a         TimeBasedCanary deployment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CanaryPercentage")]
-    pub canary_percentage: i64,
-
-}
-
 

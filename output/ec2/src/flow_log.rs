@@ -6,48 +6,6 @@ pub struct CfnFlowLog {
 
 
     /// 
-    /// The name of a new or existing CloudWatch Logs log group where Amazon EC2 publishes your flow logs.
-    /// 
-    /// This parameter is valid only if the destination type is cloud-watch-logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: Option<String>,
-
-
-    /// 
-    /// The fields to include in the flow log record, in the order in which they should appear.      If you omit this parameter, the flow log is created using the default format. If you specify      this parameter, you must include at least one field. For more information about the available fields,      see Flow log       records in the Amazon VPC User Guide or Transit Gateway         Flow Log records in the AWS Transit Gateway Guide.
-    /// 
-    /// Specify the fields using the ${field-id} format, separated by     spaces.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogFormat")]
-    pub log_format: Option<String>,
-
-
-    /// 
-    /// The destination options. The following options are supported:
-    /// 
-    /// FileFormat - The format for the flow log (plain-text |       parquet). The default is plain-text.HiveCompatiblePartitions - Indicates whether to use Hive-compatible prefixes for       flow logs stored in Amazon S3 (true | false). The default       is false.PerHourPartition - Indicates whether to partition the flow log per hour       (true | false). The default is       false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DestinationOptions
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationOptions")]
-    pub destination_options: Option<DestinationOptions>,
-
-
-    /// 
     /// The ARN of the IAM role that allows Amazon EC2 to publish flow logs to a CloudWatch Logs log group in       your account.
     /// 
     /// This parameter is required if the destination type is cloud-watch-logs       and unsupported otherwise.
@@ -62,55 +20,17 @@ pub struct CfnFlowLog {
 
 
     /// 
-    /// The ID of the resource to monitor. For example, if the resource type is     VPC, specify the ID of the VPC.
+    /// The destination options. The following options are supported:
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String,
-
-
-    /// 
-    /// The tags to apply to the flow logs.
+    /// FileFormat - The format for the flow log (plain-text |       parquet). The default is plain-text.HiveCompatiblePartitions - Indicates whether to use Hive-compatible prefixes for       flow logs stored in Amazon S3 (true | false). The default       is false.PerHourPartition - Indicates whether to partition the flow log per hour       (true | false). The default is       false.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The type of traffic to monitor (accepted traffic, rejected traffic, or all traffic).       This parameter is not supported for transit gateway resource types. It is required for       the other resource types.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ACCEPT | ALL | REJECT
+    /// Type: DestinationOptions
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TrafficType")]
-    pub traffic_type: Option<FlowLogTrafficTypeEnum>,
-
-
-    /// 
-    /// The type of resource to monitor.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NetworkInterface | Subnet | TransitGateway | TransitGatewayAttachment | VPC
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceType")]
-    pub resource_type: FlowLogResourceTypeEnum,
+    #[serde(rename = "DestinationOptions")]
+    pub destination_options: Option<DestinationOptions>,
 
 
     /// 
@@ -144,6 +64,34 @@ pub struct CfnFlowLog {
 
 
     /// 
+    /// The fields to include in the flow log record, in the order in which they should appear.      If you omit this parameter, the flow log is created using the default format. If you specify      this parameter, you must include at least one field. For more information about the available fields,      see Flow log       records in the Amazon VPC User Guide or Transit Gateway         Flow Log records in the AWS Transit Gateway Guide.
+    /// 
+    /// Specify the fields using the ${field-id} format, separated by     spaces.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogFormat")]
+    pub log_format: Option<String>,
+
+
+    /// 
+    /// The name of a new or existing CloudWatch Logs log group where Amazon EC2 publishes your flow logs.
+    /// 
+    /// This parameter is valid only if the destination type is cloud-watch-logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: Option<String>,
+
+
+    /// 
     /// The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.       The possible values are 60 seconds (1 minute) or 600 seconds (10 minutes).       This parameter must be 60 seconds for transit gateway resource types.
     /// 
     /// When a network interface is attached to a Nitro-based         instance, the aggregation interval is always 60 seconds or less, regardless       of the value that you specify.
@@ -158,8 +106,106 @@ pub struct CfnFlowLog {
     #[serde(rename = "MaxAggregationInterval")]
     pub max_aggregation_interval: Option<i64>,
 
+
+    /// 
+    /// The ID of the resource to monitor. For example, if the resource type is     VPC, specify the ID of the VPC.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String,
+
+
+    /// 
+    /// The type of resource to monitor.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: NetworkInterface | Subnet | TransitGateway | TransitGatewayAttachment | VPC
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceType")]
+    pub resource_type: FlowLogResourceTypeEnum,
+
+
+    /// 
+    /// The tags to apply to the flow logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The type of traffic to monitor (accepted traffic, rejected traffic, or all traffic).       This parameter is not supported for transit gateway resource types. It is required for       the other resource types.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ACCEPT | ALL | REJECT
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TrafficType")]
+    pub traffic_type: Option<FlowLogTrafficTypeEnum>,
+
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FlowLogLogDestinationTypeEnum {
+
+    /// cloud-watch-logs
+    #[serde(rename = "cloud-watch-logs")]
+    Cloudwatchlogs,
+
+    /// kinesis-data-firehose
+    #[serde(rename = "kinesis-data-firehose")]
+    Kinesisdatafirehose,
+
+    /// s3
+    #[serde(rename = "s3")]
+    S3,
+
+}
+
+impl Default for FlowLogLogDestinationTypeEnum {
+    fn default() -> Self {
+        FlowLogLogDestinationTypeEnum::Cloudwatchlogs
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FlowLogTrafficTypeEnum {
+
+    /// ACCEPT
+    #[serde(rename = "ACCEPT")]
+    Accept,
+
+    /// ALL
+    #[serde(rename = "ALL")]
+    All,
+
+    /// REJECT
+    #[serde(rename = "REJECT")]
+    Reject,
+
+}
+
+impl Default for FlowLogTrafficTypeEnum {
+    fn default() -> Self {
+        FlowLogTrafficTypeEnum::Accept
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum FlowLogResourceTypeEnum {
@@ -189,52 +235,6 @@ pub enum FlowLogResourceTypeEnum {
 impl Default for FlowLogResourceTypeEnum {
     fn default() -> Self {
         FlowLogResourceTypeEnum::Networkinterface
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum FlowLogTrafficTypeEnum {
-
-    /// ACCEPT
-    #[serde(rename = "ACCEPT")]
-    Accept,
-
-    /// ALL
-    #[serde(rename = "ALL")]
-    All,
-
-    /// REJECT
-    #[serde(rename = "REJECT")]
-    Reject,
-
-}
-
-impl Default for FlowLogTrafficTypeEnum {
-    fn default() -> Self {
-        FlowLogTrafficTypeEnum::Accept
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum FlowLogLogDestinationTypeEnum {
-
-    /// cloud-watch-logs
-    #[serde(rename = "cloud-watch-logs")]
-    Cloudwatchlogs,
-
-    /// kinesis-data-firehose
-    #[serde(rename = "kinesis-data-firehose")]
-    Kinesisdatafirehose,
-
-    /// s3
-    #[serde(rename = "s3")]
-    S3,
-
-}
-
-impl Default for FlowLogLogDestinationTypeEnum {
-    fn default() -> Self {
-        FlowLogLogDestinationTypeEnum::Cloudwatchlogs
     }
 }
 
@@ -270,18 +270,6 @@ pub struct DestinationOptions {
 
 
     /// 
-    /// Indicates whether to partition the flow log per hour. This reduces the cost and response       time for queries. The default is false.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PerHourPartition")]
-    pub per_hour_partition: bool,
-
-
-    /// 
     /// Indicates whether to use Hive-compatible prefixes for flow logs stored in Amazon S3.       The default is false.
     /// 
     /// Required: Yes
@@ -291,6 +279,18 @@ pub struct DestinationOptions {
     /// Update requires: Replacement
     #[serde(rename = "HiveCompatiblePartitions")]
     pub hive_compatible_partitions: bool,
+
+
+    /// 
+    /// Indicates whether to partition the flow log per hour. This reduces the cost and response       time for queries. The default is false.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PerHourPartition")]
+    pub per_hour_partition: bool,
 
 }
 

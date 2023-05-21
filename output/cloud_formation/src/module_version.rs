@@ -10,24 +10,6 @@ pub struct CfnModuleVersion {
 
 
     /// 
-    /// A URL to the S3 bucket containing the package that contains the template fragment and schema files for the  module version to register.
-    /// 
-    /// NoteThe user registering the module version must be able to access the module package in the S3 bucket. That's, the   user needs to have GetObject   permissions for the package. For more information, see Actions, Resources, and Condition Keys for Amazon S3 in the    AWS Identity and Access Management User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 4096
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ModulePackage")]
-    pub module_package: String,
-
-
-    /// 
     /// The name of the module being registered.
     /// 
     /// Required: Yes
@@ -43,6 +25,24 @@ pub struct CfnModuleVersion {
     /// Update requires: Replacement
     #[serde(rename = "ModuleName")]
     pub module_name: String,
+
+
+    /// 
+    /// A URL to the S3 bucket containing the package that contains the template fragment and schema files for the  module version to register.
+    /// 
+    /// NoteThe user registering the module version must be able to access the module package in the S3 bucket. That's, the   user needs to have GetObject   permissions for the package. For more information, see Actions, Resources, and Condition Keys for Amazon S3 in the    AWS Identity and Access Management User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 4096
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ModulePackage")]
+    pub module_package: String,
 
 }
 

@@ -14,24 +14,6 @@ pub struct CfnDataset {
 
 
     /// 
-    /// The name of the dataset.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9\-_]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of the dataset group.
     /// 
     /// Required: Yes
@@ -48,19 +30,15 @@ pub struct CfnDataset {
 
 
     /// 
-    /// The ARN of the associated schema.
-    /// 
-    /// Required: Yes
+    /// Describes a job that imports training data from a data source (Amazon S3 bucket) to an       Amazon Personalize dataset.
     ///
-    /// Type: String
+    /// Required: No
     ///
-    /// Maximum: 256
+    /// Type: DatasetImportJob
     ///
-    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaArn")]
-    pub schema_arn: String,
+    /// Update requires: No interruption
+    #[serde(rename = "DatasetImportJob")]
+    pub dataset_import_job: Option<DatasetImportJob>,
 
 
     /// 
@@ -80,15 +58,37 @@ pub struct CfnDataset {
 
 
     /// 
-    /// Describes a job that imports training data from a data source (Amazon S3 bucket) to an       Amazon Personalize dataset.
+    /// The name of the dataset.
+    /// 
+    /// Required: Yes
     ///
-    /// Required: No
+    /// Type: String
     ///
-    /// Type: DatasetImportJob
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatasetImportJob")]
-    pub dataset_import_job: Option<DatasetImportJob>,
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9\-_]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The ARN of the associated schema.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaArn")]
+    pub schema_arn: String,
 
 }
 
@@ -133,19 +133,15 @@ pub struct DatasetImportJob {
 
 
     /// 
-    /// The ARN of the IAM role that has permissions to read from the Amazon S3    data source.
+    /// The Amazon S3 bucket that contains the training data to import.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
+    /// Type: DataSource
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
+    #[serde(rename = "DataSource")]
+    pub data_source: Option<DataSource>,
 
 
     /// 
@@ -165,15 +161,19 @@ pub struct DatasetImportJob {
 
 
     /// 
-    /// The Amazon S3 bucket that contains the training data to import.
+    /// The ARN of the dataset import job.
     /// 
     /// Required: No
     ///
-    /// Type: DataSource
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DataSource")]
-    pub data_source: Option<DataSource>,
+    #[serde(rename = "DatasetImportJobArn")]
+    pub dataset_import_job_arn: Option<String>,
 
 
     /// 
@@ -195,7 +195,7 @@ pub struct DatasetImportJob {
 
 
     /// 
-    /// The ARN of the dataset import job.
+    /// The ARN of the IAM role that has permissions to read from the Amazon S3    data source.
     /// 
     /// Required: No
     ///
@@ -206,8 +206,8 @@ pub struct DatasetImportJob {
     /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DatasetImportJobArn")]
-    pub dataset_import_job_arn: Option<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 }
 

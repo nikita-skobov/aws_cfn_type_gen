@@ -8,6 +8,30 @@ pub struct CfnClientVpnRoute {
 
 
     /// 
+    /// The ID of the Client VPN endpoint to which to add the route.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClientVpnEndpointId")]
+    pub client_vpn_endpoint_id: String,
+
+
+    /// 
+    /// A brief description of the route.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The IPv4 address range, in CIDR notation, of the route destination. For example:
     /// 
     /// To add a route for Internet access, enter 0.0.0.0/0                       To add a route for a peered VPC, enter the peered VPC's IPv4 CIDR range               To add a route for an on-premises network, enter the AWS Site-to-Site VPN connection's IPv4 CIDR range               To add a route for the local network, enter the client CIDR range
@@ -22,18 +46,6 @@ pub struct CfnClientVpnRoute {
 
 
     /// 
-    /// The ID of the Client VPN endpoint to which to add the route.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClientVpnEndpointId")]
-    pub client_vpn_endpoint_id: String,
-
-
-    /// 
     /// The ID of the subnet through which you want to route traffic. The specified subnet must be 			an existing target network of the Client VPN endpoint.
     /// 
     /// Alternatively, if you're adding a route for the local network, specify local.
@@ -45,18 +57,6 @@ pub struct CfnClientVpnRoute {
     /// Update requires: Replacement
     #[serde(rename = "TargetVpcSubnetId")]
     pub target_vpc_subnet_id: String,
-
-
-    /// 
-    /// A brief description of the route.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 }
 

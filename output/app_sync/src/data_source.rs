@@ -6,65 +6,15 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// An EventBridge configuration that contains a valid ARN of an event bus.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EventBridgeConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventBridgeConfig")]
-    pub event_bridge_config: Option<EventBridgeConfig>,
-
-
-    /// 
-    /// AWS Region and TableName for an Amazon DynamoDB table in your account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DynamoDBConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DynamoDBConfig")]
-    pub dynamo_dbconfig: Option<DynamoDBConfig>,
-
-
-    /// 
-    /// Relational Database configuration of the relational database data source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RelationalDatabaseConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RelationalDatabaseConfig")]
-    pub relational_database_config: Option<RelationalDatabaseConfig>,
-
-
-    /// 
-    /// The type of the data source.
-    /// 
-    /// AWS_LAMBDA: The data source is an AWS Lambda        function.                    AMAZON_DYNAMODB: The data source is an Amazon DynamoDB        table.                    AMAZON_ELASTICSEARCH: The data source is an Amazon OpenSearch Service        domain.                    AMAZON_EVENTBRIDGE: The data source is an Amazon EventBridge event        bus.                    AMAZON_OPENSEARCH_SERVICE: The data source is an Amazon OpenSearch Service        domain.                    NONE: There is no data source. This type is used when you wish to invoke        a GraphQL operation without connecting to a data source, such as performing data transformation with        resolvers or triggering a subscription to be invoked from a mutation.                    HTTP: The data source is an HTTP endpoint.                    RELATIONAL_DATABASE: The data source is a relational database.
+    /// Unique AWS AppSync GraphQL API identifier where this data source will be created.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// An ARN of a Lambda function in valid ARN format. This can be the ARN of a Lambda function that exists in the     current account or in another account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LambdaConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LambdaConfig")]
-    pub lambda_config: Option<LambdaConfig>,
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
 
 
     /// 
@@ -80,15 +30,15 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// AWS Region and Endpoints for an Amazon OpenSearch Service domain in your account.
+    /// AWS Region and TableName for an Amazon DynamoDB table in your account.
     /// 
     /// Required: No
     ///
-    /// Type: OpenSearchServiceConfig
+    /// Type: DynamoDBConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OpenSearchServiceConfig")]
-    pub open_search_service_config: Option<OpenSearchServiceConfig>,
+    #[serde(rename = "DynamoDBConfig")]
+    pub dynamo_dbconfig: Option<DynamoDBConfig>,
 
 
     /// 
@@ -106,6 +56,42 @@ pub struct CfnDataSource {
 
 
     /// 
+    /// An EventBridge configuration that contains a valid ARN of an event bus.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EventBridgeConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventBridgeConfig")]
+    pub event_bridge_config: Option<EventBridgeConfig>,
+
+
+    /// 
+    /// Endpoints for an HTTP data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: HttpConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpConfig")]
+    pub http_config: Option<HttpConfig>,
+
+
+    /// 
+    /// An ARN of a Lambda function in valid ARN format. This can be the ARN of a Lambda function that exists in the     current account or in another account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LambdaConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LambdaConfig")]
+    pub lambda_config: Option<LambdaConfig>,
+
+
+    /// 
     /// Friendly name for you to identify your AppSync data source after creation.
     /// 
     /// Required: Yes
@@ -115,6 +101,30 @@ pub struct CfnDataSource {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// AWS Region and Endpoints for an Amazon OpenSearch Service domain in your account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OpenSearchServiceConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OpenSearchServiceConfig")]
+    pub open_search_service_config: Option<OpenSearchServiceConfig>,
+
+
+    /// 
+    /// Relational Database configuration of the relational database data source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RelationalDatabaseConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RelationalDatabaseConfig")]
+    pub relational_database_config: Option<RelationalDatabaseConfig>,
 
 
     /// 
@@ -132,27 +142,17 @@ pub struct CfnDataSource {
 
 
     /// 
-    /// Endpoints for an HTTP data source.
+    /// The type of the data source.
     /// 
-    /// Required: No
-    ///
-    /// Type: HttpConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpConfig")]
-    pub http_config: Option<HttpConfig>,
-
-
-    /// 
-    /// Unique AWS AppSync GraphQL API identifier where this data source will be created.
+    /// AWS_LAMBDA: The data source is an AWS Lambda        function.                    AMAZON_DYNAMODB: The data source is an Amazon DynamoDB        table.                    AMAZON_ELASTICSEARCH: The data source is an Amazon OpenSearch Service        domain.                    AMAZON_EVENTBRIDGE: The data source is an Amazon EventBridge event        bus.                    AMAZON_OPENSEARCH_SERVICE: The data source is an Amazon OpenSearch Service        domain.                    NONE: There is no data source. This type is used when you wish to invoke        a GraphQL operation without connecting to a data source, such as performing data transformation with        resolvers or triggering a subscription to be invoked from a mutation.                    HTTP: The data source is an HTTP endpoint.                    RELATIONAL_DATABASE: The data source is a relational database.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }
 
@@ -206,58 +206,11 @@ pub struct AuthorizationConfig {
 
 
 
-/// Use the RelationalDatabaseConfig property type to specify RelationalDatabaseConfig     for an AWS AppSync data source.
-///
-/// RelationalDatabaseConfig is a property of the AWS::AppSync::DataSource property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RelationalDatabaseConfig {
-
-
-    /// 
-    /// The type of relational data source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RelationalDatabaseSourceType")]
-    pub relational_database_source_type: String,
-
-
-    /// 
-    /// Information about the Amazon RDS resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: RdsHttpEndpointConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RdsHttpEndpointConfig")]
-    pub rds_http_endpoint_config: Option<RdsHttpEndpointConfig>,
-
-}
-
-
-
-
 /// Use the AwsIamConfig property type to specify AwsIamConfig for a AWS AppSync authorizaton.
 ///
 /// AwsIamConfig is a property of the AWS AppSync DataSource AuthorizationConfig resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AwsIamConfig {
-
-
-    /// 
-    /// The signing service name for AWS Identity and Access Management authorization.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SigningServiceName")]
-    pub signing_service_name: Option<String>,
 
 
     /// 
@@ -271,40 +224,62 @@ pub struct AwsIamConfig {
     #[serde(rename = "SigningRegion")]
     pub signing_region: Option<String>,
 
+
+    /// 
+    /// The signing service name for AWS Identity and Access Management authorization.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SigningServiceName")]
+    pub signing_service_name: Option<String>,
+
 }
 
 
 
 
-/// Use the HttpConfig property type to specify HttpConfig for an AWS AppSync data source.
-///
-/// HttpConfig is a property of the AWS::AppSync::DataSource resource.
+/// Describes a Delta Sync configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct HttpConfig {
+pub struct DeltaSyncConfig {
 
 
     /// 
-    /// The endpoint.
+    /// The number of minutes that an Item is stored in the data source.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Endpoint")]
-    pub endpoint: String,
+    #[serde(rename = "BaseTableTTL")]
+    pub base_table_ttl: String,
 
 
     /// 
-    /// The authorization configuration.
+    /// The Delta Sync table name.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: AuthorizationConfig
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizationConfig")]
-    pub authorization_config: Option<AuthorizationConfig>,
+    #[serde(rename = "DeltaSyncTableName")]
+    pub delta_sync_table_name: String,
+
+
+    /// 
+    /// The number of minutes that a Delta Sync log entry is stored in the Delta Sync     table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeltaSyncTableTTL")]
+    pub delta_sync_table_ttl: String,
 
 }
 
@@ -319,18 +294,6 @@ pub struct DynamoDBConfig {
 
 
     /// 
-    /// The DeltaSyncConfig for a versioned datasource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeltaSyncConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeltaSyncConfig")]
-    pub delta_sync_config: Option<DeltaSyncConfig>,
-
-
-    /// 
     /// The AWS Region.
     /// 
     /// Required: Yes
@@ -340,6 +303,18 @@ pub struct DynamoDBConfig {
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
     pub aws_region: String,
+
+
+    /// 
+    /// The DeltaSyncConfig for a versioned datasource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeltaSyncConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeltaSyncConfig")]
+    pub delta_sync_config: Option<DeltaSyncConfig>,
 
 
     /// 
@@ -376,27 +351,6 @@ pub struct DynamoDBConfig {
     /// Update requires: No interruption
     #[serde(rename = "Versioned")]
     pub versioned: Option<bool>,
-
-}
-
-
-
-
-/// The data source. This can be an API destination, resource, or AWS service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EventBridgeConfig {
-
-
-    /// 
-    /// The event bus pipeline's ARN. For more information about event buses, see EventBridge event buses.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventBusArn")]
-    pub event_bus_arn: String,
 
 }
 
@@ -440,6 +394,62 @@ pub struct ElasticsearchConfig {
 
 
 
+/// The data source. This can be an API destination, resource, or AWS service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EventBridgeConfig {
+
+
+    /// 
+    /// The event bus pipeline's ARN. For more information about event buses, see EventBridge event buses.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventBusArn")]
+    pub event_bus_arn: String,
+
+}
+
+
+
+
+/// Use the HttpConfig property type to specify HttpConfig for an AWS AppSync data source.
+///
+/// HttpConfig is a property of the AWS::AppSync::DataSource resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HttpConfig {
+
+
+    /// 
+    /// The authorization configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthorizationConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizationConfig")]
+    pub authorization_config: Option<AuthorizationConfig>,
+
+
+    /// 
+    /// The endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Endpoint")]
+    pub endpoint: String,
+
+}
+
+
+
+
 /// The LambdaConfig property type specifies the Lambda function ARN for an AWS AppSync data source.
 ///
 /// LambdaConfig is a property of the AWS::AppSync::DataSource property type.
@@ -463,11 +473,70 @@ pub struct LambdaConfig {
 
 
 
+/// The OpenSearchServiceConfig property type specifies the AwsRegion and       Endpoints for an Amazon OpenSearch Service domain in your account for an AWS AppSync data source.
+///
+/// OpenSearchServiceConfig is a property of the AWS::AppSync::DataSource property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OpenSearchServiceConfig {
+
+
+    /// 
+    /// The AWS Region.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsRegion")]
+    pub aws_region: String,
+
+
+    /// 
+    /// The endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Endpoint")]
+    pub endpoint: String,
+
+}
+
+
+
+
 /// Use the RdsHttpEndpointConfig property type to specify the RdsHttpEndpoint for an       AWS AppSync relational database.
 ///
 /// RdsHttpEndpointConfig is a property of the AWS AppSync DataSource RelationalDatabaseConfig resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RdsHttpEndpointConfig {
+
+
+    /// 
+    /// AWS Region for RDS HTTP endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsRegion")]
+    pub aws_region: String,
+
+
+    /// 
+    /// The ARN for database credentials stored in AWS Secrets Manager.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsSecretStoreArn")]
+    pub aws_secret_store_arn: String,
 
 
     /// 
@@ -495,18 +564,6 @@ pub struct RdsHttpEndpointConfig {
 
 
     /// 
-    /// The ARN for database credentials stored in AWS Secrets Manager.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsSecretStoreArn")]
-    pub aws_secret_store_arn: String,
-
-
-    /// 
     /// Logical schema name.
     /// 
     /// Required: No
@@ -517,97 +574,40 @@ pub struct RdsHttpEndpointConfig {
     #[serde(rename = "Schema")]
     pub schema: Option<String>,
 
-
-    /// 
-    /// AWS Region for RDS HTTP endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsRegion")]
-    pub aws_region: String,
-
 }
 
 
 
 
-/// The OpenSearchServiceConfig property type specifies the AwsRegion and       Endpoints for an Amazon OpenSearch Service domain in your account for an AWS AppSync data source.
+/// Use the RelationalDatabaseConfig property type to specify RelationalDatabaseConfig     for an AWS AppSync data source.
 ///
-/// OpenSearchServiceConfig is a property of the AWS::AppSync::DataSource property type.
+/// RelationalDatabaseConfig is a property of the AWS::AppSync::DataSource property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OpenSearchServiceConfig {
+pub struct RelationalDatabaseConfig {
 
 
     /// 
-    /// The endpoint.
+    /// Information about the Amazon RDS resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: RdsHttpEndpointConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RdsHttpEndpointConfig")]
+    pub rds_http_endpoint_config: Option<RdsHttpEndpointConfig>,
+
+
+    /// 
+    /// The type of relational data source.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Endpoint")]
-    pub endpoint: String,
-
-
-    /// 
-    /// The AWS Region.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsRegion")]
-    pub aws_region: String,
-
-}
-
-
-
-
-/// Describes a Delta Sync configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeltaSyncConfig {
-
-
-    /// 
-    /// The number of minutes that a Delta Sync log entry is stored in the Delta Sync     table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeltaSyncTableTTL")]
-    pub delta_sync_table_ttl: String,
-
-
-    /// 
-    /// The number of minutes that an Item is stored in the data source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BaseTableTTL")]
-    pub base_table_ttl: String,
-
-
-    /// 
-    /// The Delta Sync table name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeltaSyncTableName")]
-    pub delta_sync_table_name: String,
+    #[serde(rename = "RelationalDatabaseSourceType")]
+    pub relational_database_source_type: String,
 
 }
 

@@ -6,6 +6,18 @@ pub struct CfnLocalGatewayRoute {
 
 
     /// 
+    /// The CIDR block used for destination matches.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationCidrBlock")]
+    pub destination_cidr_block: String,
+
+
+    /// 
     /// The ID of the local gateway route table.
     /// 
     /// Required: Yes
@@ -39,18 +51,6 @@ pub struct CfnLocalGatewayRoute {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: Option<String>,
-
-
-    /// 
-    /// The CIDR block used for destination matches.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationCidrBlock")]
-    pub destination_cidr_block: String,
 
 }
 

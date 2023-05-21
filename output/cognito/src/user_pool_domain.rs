@@ -6,6 +6,18 @@ pub struct CfnUserPoolDomain {
 
 
     /// 
+    /// The configuration for a custom domain that hosts the sign-up and sign-in pages for       your application. Use this object to specify an SSL certificate that is managed by       ACM.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CustomDomainConfigType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomDomainConfig")]
+    pub custom_domain_config: Option<CustomDomainConfigType>,
+
+
+    /// 
     /// The domain name for the domain that hosts the sign-up and sign-in pages for your    application. For example: auth.example.com. If you're using a prefix domain, this    field denotes the first part of the domain before     .auth.[region].amazoncognito.com.
     /// 
     /// This string can include only lowercase letters, numbers, and hyphens. Don't use a hyphen    for the first or last character. Use periods to separate subdomain names.
@@ -23,18 +35,6 @@ pub struct CfnUserPoolDomain {
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
     pub domain: String,
-
-
-    /// 
-    /// The configuration for a custom domain that hosts the sign-up and sign-in pages for       your application. Use this object to specify an SSL certificate that is managed by       ACM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CustomDomainConfigType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomDomainConfig")]
-    pub custom_domain_config: Option<CustomDomainConfigType>,
 
 
     /// 

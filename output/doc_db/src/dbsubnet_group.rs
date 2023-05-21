@@ -18,6 +18,22 @@ pub struct CfnDBSubnetGroup {
 
 
     /// 
+    /// The name for the subnet group. This value is stored as a lowercase string.
+    /// 
+    /// Constraints: Must contain no more than 255 letters, numbers, periods, underscores,       spaces, or hyphens. Must not be default.
+    /// 
+    /// Example: mySubnetgroup
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBSubnetGroupName")]
+    pub dbsubnet_group_name: Option<String>,
+
+
+    /// 
     /// The Amazon EC2 subnet IDs for the subnet group.
     /// 
     /// Required: Yes
@@ -39,22 +55,6 @@ pub struct CfnDBSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The name for the subnet group. This value is stored as a lowercase string.
-    /// 
-    /// Constraints: Must contain no more than 255 letters, numbers, periods, underscores,       spaces, or hyphens. Must not be default.
-    /// 
-    /// Example: mySubnetgroup
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBSubnetGroupName")]
-    pub dbsubnet_group_name: Option<String>,
 
 }
 

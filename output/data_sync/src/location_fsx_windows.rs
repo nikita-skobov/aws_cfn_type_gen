@@ -22,67 +22,19 @@ pub struct CfnLocationFSxWindows {
 
 
     /// 
-    /// The user who has the permissions to access files and folders in the FSx for Windows File    Server file system.
-    /// 
-    /// For information about choosing a user name that ensures sufficient permissions to files,       folders, and metadata, see user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 104
-    ///
-    /// Pattern: ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "User")]
-    pub user: String,
-
-
-    /// 
-    /// Specifies a mount path for your file system using forward slashes. This is where DataSync reads or writes data (depending on if this is a source or destination    location).
+    /// Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server file    system.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 4096
+    /// Maximum: 128
     ///
-    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subdirectory")]
-    pub subdirectory: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Names (ARNs) of the security groups that are used to configure the     FSx for Windows File Server file system.
-    /// 
-    /// Pattern:       ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
-    /// 
-    /// Length constraints: Maximum length of 128.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupArns")]
-    pub security_group_arns: Vec<String>,
-
-
-    /// 
-    /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "FsxFilesystemArn")]
+    pub fsx_filesystem_arn: Option<String>,
 
 
     /// 
@@ -102,19 +54,67 @@ pub struct CfnLocationFSxWindows {
 
 
     /// 
-    /// Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server file    system.
+    /// The Amazon Resource Names (ARNs) of the security groups that are used to configure the     FSx for Windows File Server file system.
+    /// 
+    /// Pattern:       ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
+    /// 
+    /// Length constraints: Maximum length of 128.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupArns")]
+    pub security_group_arns: Vec<String>,
+
+
+    /// 
+    /// Specifies a mount path for your file system using forward slashes. This is where DataSync reads or writes data (depending on if this is a source or destination    location).
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 128
+    /// Maximum: 4096
     ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$
+    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FsxFilesystemArn")]
-    pub fsx_filesystem_arn: Option<String>,
+    #[serde(rename = "Subdirectory")]
+    pub subdirectory: Option<String>,
+
+
+    /// 
+    /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The user who has the permissions to access files and folders in the FSx for Windows File    Server file system.
+    /// 
+    /// For information about choosing a user name that ensures sufficient permissions to files,       folders, and metadata, see user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 104
+    ///
+    /// Pattern: ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "User")]
+    pub user: String,
 
 }
 

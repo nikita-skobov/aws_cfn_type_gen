@@ -6,17 +6,21 @@ pub struct CfnUserPoolResourceServer {
 
 
     /// 
-    /// A list of scopes. Each scope is a map with keys ScopeName and     ScopeDescription.
+    /// A unique resource server identifier for the resource server. This could be an HTTPS    endpoint where the resource server is located. For example:     https://my-weather-api.example.com.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of ResourceServerScopeType
+    /// Type: String
     ///
-    /// Maximum: 100
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scopes")]
-    pub scopes: Option<Vec<ResourceServerScopeType>>,
+    /// Maximum: 256
+    ///
+    /// Pattern: [\x21\x23-\x5B\x5D-\x7E]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Identifier")]
+    pub identifier: String,
 
 
     /// 
@@ -38,21 +42,17 @@ pub struct CfnUserPoolResourceServer {
 
 
     /// 
-    /// A unique resource server identifier for the resource server. This could be an HTTPS    endpoint where the resource server is located. For example:     https://my-weather-api.example.com.
+    /// A list of scopes. Each scope is a map with keys ScopeName and     ScopeDescription.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of ResourceServerScopeType
     ///
-    /// Minimum: 1
+    /// Maximum: 100
     ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\x21\x23-\x5B\x5D-\x7E]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Identifier")]
-    pub identifier: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Scopes")]
+    pub scopes: Option<Vec<ResourceServerScopeType>>,
 
 
     /// 
@@ -93,6 +93,22 @@ pub struct ResourceServerScopeType {
 
 
     /// 
+    /// A description of the scope.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScopeDescription")]
+    pub scope_description: String,
+
+
+    /// 
     /// The name of the scope.
     /// 
     /// Required: Yes
@@ -108,22 +124,6 @@ pub struct ResourceServerScopeType {
     /// Update requires: No interruption
     #[serde(rename = "ScopeName")]
     pub scope_name: String,
-
-
-    /// 
-    /// A description of the scope.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScopeDescription")]
-    pub scope_description: String,
 
 }
 

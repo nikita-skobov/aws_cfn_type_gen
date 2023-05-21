@@ -83,6 +83,22 @@ pub struct S3Location {
 
 
     /// 
+    /// An Amazon S3 bucket identifier. Thename of the S3 bucket.
+    /// 
+    /// NoteAmazon GameLift doesn't support uploading from Amazon S3 buckets with names that contain a dot         (.).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+
+
+    /// 
     /// The name of the zip file that contains the build files or script files.
     /// 
     /// Required: Yes
@@ -108,22 +124,6 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersion")]
     pub object_version: Option<String>,
-
-
-    /// 
-    /// An Amazon S3 bucket identifier. Thename of the S3 bucket.
-    /// 
-    /// NoteAmazon GameLift doesn't support uploading from Amazon S3 buckets with names that contain a dot         (.).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
 
 
     /// 

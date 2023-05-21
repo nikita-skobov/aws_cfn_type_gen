@@ -6,27 +6,27 @@ pub struct CfnStage {
 
 
     /// 
-    /// The collection of tags. Each tag element is associated with a given resource.
+    /// Settings for logging access in this stage.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: AccessLogSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+    #[serde(rename = "AccessLogSettings")]
+    pub access_log_settings: Option<AccessLogSettings>,
 
 
     /// 
-    /// The default route settings for the stage.
+    /// This parameter is not currently supported.
     /// 
     /// Required: No
     ///
-    /// Type: RouteSettings
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultRouteSettings")]
-    pub default_route_settings: Option<RouteSettings>,
+    #[serde(rename = "AccessPolicyId")]
+    pub access_policy_id: Option<String>,
 
 
     /// 
@@ -54,30 +54,6 @@ pub struct CfnStage {
 
 
     /// 
-    /// A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StageVariables")]
-    pub stage_variables: Option<serde_json::Value>,
-
-
-    /// 
-    /// This parameter is not currently supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessPolicyId")]
-    pub access_policy_id: Option<String>,
-
-
-    /// 
     /// The identifier of a client certificate for a Stage. Supported only for WebSocket APIs.
     ///
     /// Required: No
@@ -90,15 +66,15 @@ pub struct CfnStage {
 
 
     /// 
-    /// The description for the API stage.
+    /// The default route settings for the stage.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: RouteSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "DefaultRouteSettings")]
+    pub default_route_settings: Option<RouteSettings>,
 
 
     /// 
@@ -114,15 +90,15 @@ pub struct CfnStage {
 
 
     /// 
-    /// Settings for logging access in this stage.
+    /// The description for the API stage.
     /// 
     /// Required: No
     ///
-    /// Type: AccessLogSettings
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AccessLogSettings")]
-    pub access_log_settings: Option<AccessLogSettings>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -148,6 +124,30 @@ pub struct CfnStage {
     #[serde(rename = "StageName")]
     pub stage_name: String,
 
+
+    /// 
+    /// A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StageVariables")]
+    pub stage_variables: Option<serde_json::Value>,
+
+
+    /// 
+    /// The collection of tags. Each tag element is associated with a given resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
 }
 
 
@@ -161,75 +161,6 @@ impl cfn_resources::CfnResource for CfnStage {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// Represents a collection of route settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RouteSettings {
-
-
-    /// 
-    /// Specifies the logging level for this route: INFO, ERROR, or OFF. This property affects the log entries pushed to Amazon CloudWatch Logs. Supported only for WebSocket APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingLevel")]
-    pub logging_level: Option<String>,
-
-
-    /// 
-    /// Specifies whether (true) or not (false) data trace logging is enabled for this route. This property affects the log entries pushed to Amazon CloudWatch Logs. Supported only for WebSocket APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataTraceEnabled")]
-    pub data_trace_enabled: Option<bool>,
-
-
-    /// 
-    /// Specifies the throttling rate limit.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThrottlingRateLimit")]
-    pub throttling_rate_limit: Option<f64>,
-
-
-    /// 
-    /// Specifies whether detailed metrics are enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DetailedMetricsEnabled")]
-    pub detailed_metrics_enabled: Option<bool>,
-
-
-    /// 
-    /// Specifies the throttling burst limit.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThrottlingBurstLimit")]
-    pub throttling_burst_limit: Option<i64>,
-
-}
-
-
 
 
 /// Settings for logging access in a stage.
@@ -259,6 +190,75 @@ pub struct AccessLogSettings {
     /// Update requires: No interruption
     #[serde(rename = "Format")]
     pub format: Option<String>,
+
+}
+
+
+
+
+/// Represents a collection of route settings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RouteSettings {
+
+
+    /// 
+    /// Specifies whether (true) or not (false) data trace logging is enabled for this route. This property affects the log entries pushed to Amazon CloudWatch Logs. Supported only for WebSocket APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataTraceEnabled")]
+    pub data_trace_enabled: Option<bool>,
+
+
+    /// 
+    /// Specifies whether detailed metrics are enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DetailedMetricsEnabled")]
+    pub detailed_metrics_enabled: Option<bool>,
+
+
+    /// 
+    /// Specifies the logging level for this route: INFO, ERROR, or OFF. This property affects the log entries pushed to Amazon CloudWatch Logs. Supported only for WebSocket APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingLevel")]
+    pub logging_level: Option<String>,
+
+
+    /// 
+    /// Specifies the throttling burst limit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThrottlingBurstLimit")]
+    pub throttling_burst_limit: Option<i64>,
+
+
+    /// 
+    /// Specifies the throttling rate limit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThrottlingRateLimit")]
+    pub throttling_rate_limit: Option<f64>,
 
 }
 

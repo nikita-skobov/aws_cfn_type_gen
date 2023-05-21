@@ -6,18 +6,6 @@ pub struct CfnIdentityPoolRoleAttachment {
 
 
     /// 
-    /// The map of the roles associated with this pool. For a given role, the key is either    "authenticated" or "unauthenticated". The value is the role ARN.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Roles")]
-    pub roles: Option<serde_json::Value>,
-
-
-    /// 
     /// An identity pool ID in the format REGION:GUID.
     /// 
     /// Required: Yes
@@ -44,6 +32,18 @@ pub struct CfnIdentityPoolRoleAttachment {
     #[serde(rename = "RoleMappings")]
     pub role_mappings: Option<serde_json::Value>,
 
+
+    /// 
+    /// The map of the roles associated with this pool. For a given role, the key is either    "authenticated" or "unauthenticated". The value is the role ARN.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Roles")]
+    pub roles: Option<serde_json::Value>,
+
 }
 
 
@@ -59,42 +59,9 @@ impl cfn_resources::CfnResource for CfnIdentityPoolRoleAttachment {
 }
 
 
-/// RulesConfigurationType is a subproperty of the RoleMapping property that defines the rules to be used for mapping users to    roles.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RulesConfigurationType {
-
-
-    /// 
-    /// The rules. You can specify up to 25 rules per identity provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of MappingRule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Rules")]
-    pub rules: Vec<MappingRule>,
-
-}
-
-
-
-
 /// Defines how to map a claim to a role ARN.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MappingRule {
-
-
-    /// 
-    /// A brief string that the claim must match. For example, "paid" or "yes".
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -110,6 +77,20 @@ pub struct MappingRule {
 
 
     /// 
+    /// The match condition that specifies how closely the claim value in the IdP token must match     Value.
+    /// 
+    /// Valid values are: Equals, Contains, StartsWith, and     NotEqual.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchType")]
+    pub match_type: String,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the role.
     /// 
     /// Required: Yes
@@ -122,17 +103,15 @@ pub struct MappingRule {
 
 
     /// 
-    /// The match condition that specifies how closely the claim value in the IdP token must match     Value.
-    /// 
-    /// Valid values are: Equals, Contains, StartsWith, and     NotEqual.
+    /// A brief string that the claim must match. For example, "paid" or "yes".
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MatchType")]
-    pub match_type: String,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
@@ -159,17 +138,17 @@ pub struct RoleMapping {
 
 
     /// 
-    /// The role-mapping type. Token uses cognito:roles and     cognito:preferred_role claims from the Amazon Cognito identity provider token    to map groups to roles. Rules attempts to match claims from the token to map to a    role.
+    /// Identifier for the identity provider for which the role is mapped. For example:     graph.facebook.com or     cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id     (http://cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id). This    is the identity provider that is used by the user for authentication.
     /// 
-    /// Valid values are Token or Rules.
+    /// If the identity provider property isn't provided, the key of the entry in the     RoleMappings map is used as the identity provider.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    #[serde(rename = "IdentityProvider")]
+    pub identity_provider: Option<String>,
 
 
     /// 
@@ -185,17 +164,38 @@ pub struct RoleMapping {
 
 
     /// 
-    /// Identifier for the identity provider for which the role is mapped. For example:     graph.facebook.com or     cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id     (http://cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id). This    is the identity provider that is used by the user for authentication.
+    /// The role-mapping type. Token uses cognito:roles and     cognito:preferred_role claims from the Amazon Cognito identity provider token    to map groups to roles. Rules attempts to match claims from the token to map to a    role.
     /// 
-    /// If the identity provider property isn't provided, the key of the entry in the     RoleMappings map is used as the identity provider.
+    /// Valid values are Token or Rules.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IdentityProvider")]
-    pub identity_provider: Option<String>,
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+}
+
+
+
+
+/// RulesConfigurationType is a subproperty of the RoleMapping property that defines the rules to be used for mapping users to    roles.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RulesConfigurationType {
+
+
+    /// 
+    /// The rules. You can specify up to 25 rules per identity provider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of MappingRule
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Rules")]
+    pub rules: Vec<MappingRule>,
 
 }
 

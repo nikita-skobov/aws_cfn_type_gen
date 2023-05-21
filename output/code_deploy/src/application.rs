@@ -6,18 +6,6 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The metadata that you apply to CodeDeploy applications to help you organize and       categorize them. Each tag consists of a key and an optional value, both of which you       define.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// A name for the application. If you don't specify a name, AWS CloudFormation generates a    unique physical ID and uses that ID for the application name. For more information, see Name     Type.
     /// 
     /// Note Updates to ApplicationName are not supported.
@@ -47,6 +35,18 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
     pub compute_platform: Option<ApplicationComputePlatformEnum>,
+
+
+    /// 
+    /// The metadata that you apply to CodeDeploy applications to help you organize and       categorize them. Each tag consists of a key and an optional value, both of which you       define.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

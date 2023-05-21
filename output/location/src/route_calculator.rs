@@ -8,19 +8,25 @@ pub struct CfnRouteCalculator {
 
 
     /// 
-    /// The optional description for the route calculator resource.
+    /// The name of the route calculator resource.
     /// 
-    /// Required: No
+    /// Requirements:
+    /// 
+    /// Can use alphanumeric characters (A–Z, a–z, 0–9) , hyphens (-), periods (.),           and underscores (_).               Must be a unique Route calculator resource name.               No spaces allowed. For example, ExampleRouteCalculator.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 1
     ///
-    /// Maximum: 1000
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[-._\w]+$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "CalculatorName")]
+    pub calculator_name: String,
 
 
     /// 
@@ -44,6 +50,22 @@ pub struct CfnRouteCalculator {
 
 
     /// 
+    /// The optional description for the route calculator resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// No longer used. If included, the only allowed value is       RequestBasedUsage.
     /// 
     /// Allowed Values: RequestBasedUsage
@@ -55,28 +77,6 @@ pub struct CfnRouteCalculator {
     /// Update requires: Replacement
     #[serde(rename = "PricingPlan")]
     pub pricing_plan: Option<RouteCalculatorPricingPlanEnum>,
-
-
-    /// 
-    /// The name of the route calculator resource.
-    /// 
-    /// Requirements:
-    /// 
-    /// Can use alphanumeric characters (A–Z, a–z, 0–9) , hyphens (-), periods (.),           and underscores (_).               Must be a unique Route calculator resource name.               No spaces allowed. For example, ExampleRouteCalculator.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[-._\w]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CalculatorName")]
-    pub calculator_name: String,
 
 }
 

@@ -6,18 +6,6 @@ pub struct CfnListener {
 
 
     /// 
-    /// The ID or Amazon Resource Name (ARN) of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceIdentifier")]
-    pub service_identifier: Option<String>,
-
-
-    /// 
     /// The action for the default rule. Each listener has a default rule. Each rule consists of a  priority, one or more actions, and one or more conditions. The default rule is the rule that's  used if no other rules match. Each rule must include exactly one of the following types of  actions: forward or fixed-response, and it must be the last action to  be performed.
     /// 
     /// Required: Yes
@@ -30,15 +18,17 @@ pub struct CfnListener {
 
 
     /// 
-    /// The tags for the listener.
+    /// The name of the listener. A listener name must be unique within a service. The valid    characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last    character, or immediately after another hyphen.
+    /// 
+    /// If you don't specify a name, CloudFormation generates one. However, if    you specify a name, and later want to replace the resource, you must specify a new    name.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -66,17 +56,27 @@ pub struct CfnListener {
 
 
     /// 
-    /// The name of the listener. A listener name must be unique within a service. The valid    characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last    character, or immediately after another hyphen.
-    /// 
-    /// If you don't specify a name, CloudFormation generates one. However, if    you specify a name, and later want to replace the resource, you must specify a new    name.
+    /// The ID or Amazon Resource Name (ARN) of the service.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "ServiceIdentifier")]
+    pub service_identifier: Option<String>,
+
+
+    /// 
+    /// The tags for the listener.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -99,18 +99,6 @@ pub struct DefaultAction {
 
 
     /// 
-    /// Describes a forward action. You can use forward actions to route requests to one or more  target groups.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Forward
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Forward")]
-    pub forward: Option<Forward>,
-
-
-    /// 
     /// Information about an action that returns a custom HTTP response.
     /// 
     /// Required: No
@@ -121,38 +109,38 @@ pub struct DefaultAction {
     #[serde(rename = "FixedResponse")]
     pub fixed_response: Option<FixedResponse>,
 
+
+    /// 
+    /// Describes a forward action. You can use forward actions to route requests to one or more  target groups.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Forward
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Forward")]
+    pub forward: Option<Forward>,
+
 }
 
 
 
 
-/// Describes the weight of a target group.
+/// Information about an action that returns a custom HTTP response.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct WeightedTargetGroup {
+pub struct FixedResponse {
 
 
     /// 
-    /// The ID of the target group.
+    /// The HTTP response code.
     /// 
     /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroupIdentifier")]
-    pub target_group_identifier: String,
-
-
-    /// 
-    /// Only required if you specify multiple target groups for a forward action. The "weight"  determines how requests are distributed to the target group. For example, if you specify two  target groups, each with a weight of 10, each target group receives half the requests. If you  specify two target groups, one with a weight of 10 and the other with a weight of 20, the target  group with a weight of 20 receives twice as many requests as the other target group. If there's  only one target group specified, then the default value is 100.
-    /// 
-    /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
+    #[serde(rename = "StatusCode")]
+    pub status_code: i64,
 
 }
 
@@ -176,27 +164,6 @@ pub struct Forward {
     /// Update requires: No interruption
     #[serde(rename = "TargetGroups")]
     pub target_groups: Vec<WeightedTargetGroup>,
-
-}
-
-
-
-
-/// Information about an action that returns a custom HTTP response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FixedResponse {
-
-
-    /// 
-    /// The HTTP response code.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StatusCode")]
-    pub status_code: i64,
 
 }
 
@@ -234,6 +201,39 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+}
+
+
+
+
+/// Describes the weight of a target group.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct WeightedTargetGroup {
+
+
+    /// 
+    /// The ID of the target group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupIdentifier")]
+    pub target_group_identifier: String,
+
+
+    /// 
+    /// Only required if you specify multiple target groups for a forward action. The "weight"  determines how requests are distributed to the target group. For example, if you specify two  target groups, each with a weight of 10, each target group receives half the requests. If you  specify two target groups, one with a weight of 10 and the other with a weight of 20, the target  group with a weight of 20 receives twice as many requests as the other target group. If there's  only one target group specified, then the default value is 100.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
 
 }
 

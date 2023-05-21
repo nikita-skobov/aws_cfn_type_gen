@@ -6,32 +6,6 @@ pub struct CfnServiceTemplate {
 
 
     /// 
-    /// An object that includes the template bundle S3 bucket path and name for the new version of    a service template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// If pipelineProvisioning is true, a service pipeline is included    in the service template. Otherwise, a service pipeline isn't included in    the service template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CUSTOMER_MANAGED
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PipelineProvisioning")]
-    pub pipeline_provisioning: Option<ServiceTemplatePipelineProvisioningEnum>,
-
-
-    /// 
     /// A description of the service template.
     /// 
     /// Required: No
@@ -64,6 +38,24 @@ pub struct CfnServiceTemplate {
 
 
     /// 
+    /// The customer provided service template encryption key that's used to encrypt data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 200
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:\d{12}:([\w+=,.@-]+[/:])*[\w+=,.@-]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EncryptionKey")]
+    pub encryption_key: Option<String>,
+
+
+    /// 
     /// The name of the service template.
     /// 
     /// Required: No
@@ -82,21 +74,29 @@ pub struct CfnServiceTemplate {
 
 
     /// 
-    /// The customer provided service template encryption key that's used to encrypt data.
+    /// If pipelineProvisioning is true, a service pipeline is included    in the service template. Otherwise, a service pipeline isn't included in    the service template.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 200
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:\d{12}:([\w+=,.@-]+[/:])*[\w+=,.@-]+$
+    /// Allowed values: CUSTOMER_MANAGED
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EncryptionKey")]
-    pub encryption_key: Option<String>,
+    #[serde(rename = "PipelineProvisioning")]
+    pub pipeline_provisioning: Option<ServiceTemplatePipelineProvisioningEnum>,
+
+
+    /// 
+    /// An object that includes the template bundle S3 bucket path and name for the new version of    a service template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 

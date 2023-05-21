@@ -18,6 +18,18 @@ pub struct CfnKeySigningKey {
 
 
     /// 
+    /// The Amazon resource name (ARN) for a customer managed customer master key (CMK) in AWS Key Management Service (AWS KMS ). The KeyManagementServiceArn must be unique for each key-signing key (KSK) in a single hosted zone. For example: arn:aws:kms:us-east-1:111122223333:key/111a2222-a11b-1ab1-2ab2-1ab21a2b3a111.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyManagementServiceArn")]
+    pub key_management_service_arn: String,
+
+
+    /// 
     /// A string used to identify a key-signing key (KSK). Name can include 			numbers, letters, and underscores (_). Name must be unique for each 			key-signing key in the same hosted zone.
     /// 
     /// Required: Yes
@@ -31,18 +43,6 @@ pub struct CfnKeySigningKey {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// The Amazon resource name (ARN) for a customer managed customer master key (CMK) in AWS Key Management Service (AWS KMS ). The KeyManagementServiceArn must be unique for each key-signing key (KSK) in a single hosted zone. For example: arn:aws:kms:us-east-1:111122223333:key/111a2222-a11b-1ab1-2ab2-1ab21a2b3a111.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyManagementServiceArn")]
-    pub key_management_service_arn: String,
 
 
     /// 

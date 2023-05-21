@@ -6,24 +6,6 @@ pub struct CfnTransitGatewayRegistration {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the transit gateway.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 500
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayArn")]
-    pub transit_gateway_arn: String,
-
-
-    /// 
     /// The ID of the global network.
     /// 
     /// Required: Yes
@@ -39,6 +21,24 @@ pub struct CfnTransitGatewayRegistration {
     /// Update requires: Replacement
     #[serde(rename = "GlobalNetworkId")]
     pub global_network_id: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the transit gateway.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 500
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TransitGatewayArn")]
+    pub transit_gateway_arn: String,
 
 }
 

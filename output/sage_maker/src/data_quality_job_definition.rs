@@ -6,6 +6,113 @@ pub struct CfnDataQualityJobDefinition {
 
 
     /// 
+    /// Specifies the container that runs the monitoring job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: DataQualityAppSpecification
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataQualityAppSpecification")]
+    pub data_quality_app_specification: DataQualityAppSpecification,
+
+
+    /// 
+    /// Configures the constraints and baselines for the monitoring job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DataQualityBaselineConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataQualityBaselineConfig")]
+    pub data_quality_baseline_config: Option<DataQualityBaselineConfig>,
+
+
+    /// 
+    /// A list of inputs for the monitoring job. Currently endpoints are supported as       monitoring inputs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: DataQualityJobInput
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataQualityJobInput")]
+    pub data_quality_job_input: DataQualityJobInput,
+
+
+    /// 
+    /// The output configuration for monitoring jobs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MonitoringOutputConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataQualityJobOutputConfig")]
+    pub data_quality_job_output_config: MonitoringOutputConfig,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EndpointName")]
+    pub endpoint_name: Option<String>,
+
+
+    /// 
+    /// The name for the monitoring job definition.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "JobDefinitionName")]
+    pub job_definition_name: Option<String>,
+
+
+    /// 
+    /// Identifies the resources to deploy for a monitoring job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MonitoringResources
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "JobResources")]
+    pub job_resources: MonitoringResources,
+
+
+    /// 
+    /// Specifies networking configuration for the monitoring job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NetworkConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkConfig")]
+    pub network_config: Option<NetworkConfig>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can assume to       perform tasks on your behalf.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+
+    /// 
     /// A time limit for how long the monitoring job is allowed to run before stopping.
     /// 
     /// Required: No
@@ -30,113 +137,6 @@ pub struct CfnDataQualityJobDefinition {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
-    /// Specifies the container that runs the monitoring job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: DataQualityAppSpecification
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataQualityAppSpecification")]
-    pub data_quality_app_specification: DataQualityAppSpecification,
-
-
-    /// 
-    /// Identifies the resources to deploy for a monitoring job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MonitoringResources
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "JobResources")]
-    pub job_resources: MonitoringResources,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndpointName")]
-    pub endpoint_name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can assume to       perform tasks on your behalf.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
-    /// Specifies networking configuration for the monitoring job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NetworkConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkConfig")]
-    pub network_config: Option<NetworkConfig>,
-
-
-    /// 
-    /// The output configuration for monitoring jobs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MonitoringOutputConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataQualityJobOutputConfig")]
-    pub data_quality_job_output_config: MonitoringOutputConfig,
-
-
-    /// 
-    /// A list of inputs for the monitoring job. Currently endpoints are supported as       monitoring inputs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: DataQualityJobInput
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataQualityJobInput")]
-    pub data_quality_job_input: DataQualityJobInput,
-
-
-    /// 
-    /// The name for the monitoring job definition.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "JobDefinitionName")]
-    pub job_definition_name: Option<String>,
-
-
-    /// 
-    /// Configures the constraints and baselines for the monitoring job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataQualityBaselineConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataQualityBaselineConfig")]
-    pub data_quality_baseline_config: Option<DataQualityBaselineConfig>,
-
 }
 
 
@@ -152,225 +152,20 @@ impl cfn_resources::CfnResource for CfnDataQualityJobDefinition {
 }
 
 
-/// Configuration for monitoring constraints and monitoring statistics. These baseline     resources are compared against the results of the current job from the series of jobs     scheduled to collect data periodically.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataQualityBaselineConfig {
-
-
-    /// 
-    /// The constraints resource for a monitoring job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConstraintsResource
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConstraintsResource")]
-    pub constraints_resource: Option<ConstraintsResource>,
-
-
-    /// 
-    /// The name of the job that performs baselining for the data quality monitoring job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BaseliningJobName")]
-    pub baselining_job_name: Option<String>,
-
-
-    /// 
-    /// Configuration for monitoring constraints and monitoring statistics. These baseline       resources are compared against the results of the current job from the series of jobs       scheduled to collect data periodically.
-    /// 
-    /// Required: No
-    ///
-    /// Type: StatisticsResource
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StatisticsResource")]
-    pub statistics_resource: Option<StatisticsResource>,
-
-}
-
-
-
-
-/// Input object for the endpoint
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EndpointInput {
-
-
-    /// 
-    /// Whether the Pipe or File is used as the input mode for     transferring data for the monitoring job. Pipe mode is recommended for large     datasets. File mode is useful for small files that fit in memory. Defaults to       File.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: File | Pipe
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3InputMode")]
-    pub s3_input_mode: Option<EndpointInputS3InputModeEnum>,
-
-
-    /// 
-    /// An endpoint in customer's account which has enabled DataCaptureConfig     enabled.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EndpointName")]
-    pub endpoint_name: String,
-
-
-    /// 
-    /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key.     Defaults to FullyReplicated
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: FullyReplicated | ShardedByS3Key
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3DataDistributionType")]
-    pub s3_data_distribution_type: Option<EndpointInputS3DataDistributionTypeEnum>,
-
-
-    /// 
-    /// Path to the filesystem where the endpoint data is available to the container.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LocalPath")]
-    pub local_path: String,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum EndpointInputS3InputModeEnum {
-
-    /// File
-    #[serde(rename = "File")]
-    File,
-
-    /// Pipe
-    #[serde(rename = "Pipe")]
-    Pipe,
-
-}
-
-impl Default for EndpointInputS3InputModeEnum {
-    fn default() -> Self {
-        EndpointInputS3InputModeEnum::File
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum EndpointInputS3DataDistributionTypeEnum {
-
-    /// FullyReplicated
-    #[serde(rename = "FullyReplicated")]
-    Fullyreplicated,
-
-    /// ShardedByS3Key
-    #[serde(rename = "ShardedByS3Key")]
-    Shardedbys3key,
-
-}
-
-impl Default for EndpointInputS3DataDistributionTypeEnum {
-    fn default() -> Self {
-        EndpointInputS3DataDistributionTypeEnum::Fullyreplicated
-    }
-}
-
-
-
-/// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConfig {
-
-
-    /// 
-    /// The ID of the subnets in the VPC to which you want to connect your training job or       model. For information about the availability of specific instance types, see Supported         Instance Types and Availability Zones.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 16
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subnets")]
-    pub subnets: Vec<String>,
-
-
-    /// 
-    /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 5
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
-
-}
-
-
-
-
-/// The output object for a monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MonitoringOutput {
-
-
-    /// 
-    /// The Amazon S3 storage location where the results of a monitoring job are saved.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: S3Output
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Output")]
-    pub s3_output: S3Output,
-
-}
-
-
-
-
 /// The BatchTransformInput property type specifies Property description not available. for an AWS::SageMaker::DataQualityJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BatchTransformInput {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataCapturedDestinationS3Uri")]
+    pub data_captured_destination_s3_uri: String,
 
 
     /// Property description not available.
@@ -386,17 +181,6 @@ pub struct BatchTransformInput {
 
     /// Property description not available.
     ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3DataDistributionType")]
-    pub s3_data_distribution_type: Option<String>,
-
-
-    /// Property description not available.
-    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -408,13 +192,13 @@ pub struct BatchTransformInput {
 
     /// Property description not available.
     ///
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DataCapturedDestinationS3Uri")]
-    pub data_captured_destination_s3_uri: String,
+    #[serde(rename = "S3DataDistributionType")]
+    pub s3_data_distribution_type: Option<String>,
 
 
     /// Property description not available.
@@ -438,18 +222,6 @@ pub struct ClusterConfig {
 
 
     /// 
-    /// The ML compute instance type for the processing job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
-
-
-    /// 
     /// The number of ML compute instances to use in the model monitoring job. For distributed       processing jobs, specify a value greater than 1. The default value is 1.
     /// 
     /// Required: Yes
@@ -462,15 +234,15 @@ pub struct ClusterConfig {
 
 
     /// 
-    /// The size of the ML storage volume, in gigabytes, that you want to provision. You must       specify sufficient ML storage for your scenario.
+    /// The ML compute instance type for the processing job.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VolumeSizeInGB")]
-    pub volume_size_in_gb: i64,
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
 
 
     /// 
@@ -484,58 +256,38 @@ pub struct ClusterConfig {
     #[serde(rename = "VolumeKmsKeyId")]
     pub volume_kms_key_id: Option<String>,
 
-}
-
-
-
-
-/// Identifies the resources to deploy for a monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct MonitoringResources {
-
 
     /// 
-    /// The configuration for the cluster resources used to run the processing job.
+    /// The size of the ML storage volume, in gigabytes, that you want to provision. You must       specify sufficient ML storage for your scenario.
     /// 
     /// Required: Yes
     ///
-    /// Type: ClusterConfig
+    /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ClusterConfig")]
-    pub cluster_config: ClusterConfig,
+    #[serde(rename = "VolumeSizeInGB")]
+    pub volume_size_in_gb: i64,
 
 }
 
 
 
 
-/// The input for the data quality monitoring job. Currently endpoints are supported for     input.
+/// The constraints resource for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataQualityJobInput {
+pub struct ConstraintsResource {
 
 
     /// 
-    /// Input object for the endpoint
+    /// The Amazon S3 URI for the constraints resource.
     /// 
     /// Required: No
     ///
-    /// Type: EndpointInput
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EndpointInput")]
-    pub endpoint_input: Option<EndpointInput>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: BatchTransformInput
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BatchTransformInput")]
-    pub batch_transform_input: Option<BatchTransformInput>,
+    #[serde(rename = "S3Uri")]
+    pub s3_uri: Option<String>,
 
 }
 
@@ -562,6 +314,186 @@ pub struct Csv {
 
 
 
+/// Information about the container that a data quality monitoring job runs.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataQualityAppSpecification {
+
+
+    /// 
+    /// The arguments to send to the container that the monitoring job runs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContainerArguments")]
+    pub container_arguments: Option<Vec<String>>,
+
+
+    /// 
+    /// The entrypoint for a container used to run a monitoring job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ContainerEntrypoint")]
+    pub container_entrypoint: Option<Vec<String>>,
+
+
+    /// 
+    /// Sets the environment variables in the container that the monitoring job runs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Environment")]
+    pub environment: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The container image that the data quality monitoring job runs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ImageUri")]
+    pub image_uri: String,
+
+
+    /// 
+    /// An Amazon S3 URI to a script that is called after analysis has been performed.     Applicable only for the built-in (first party) containers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PostAnalyticsProcessorSourceUri")]
+    pub post_analytics_processor_source_uri: Option<String>,
+
+
+    /// 
+    /// An Amazon S3 URI to a script that is called per row prior to running analysis. It can     base64 decode the payload and convert it into a flatted json so that the built-in container     can use the converted data. Applicable only for the built-in (first party)     containers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RecordPreprocessorSourceUri")]
+    pub record_preprocessor_source_uri: Option<String>,
+
+}
+
+
+
+
+/// Configuration for monitoring constraints and monitoring statistics. These baseline     resources are compared against the results of the current job from the series of jobs     scheduled to collect data periodically.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataQualityBaselineConfig {
+
+
+    /// 
+    /// The name of the job that performs baselining for the data quality monitoring job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BaseliningJobName")]
+    pub baselining_job_name: Option<String>,
+
+
+    /// 
+    /// The constraints resource for a monitoring job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ConstraintsResource
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConstraintsResource")]
+    pub constraints_resource: Option<ConstraintsResource>,
+
+
+    /// 
+    /// Configuration for monitoring constraints and monitoring statistics. These baseline       resources are compared against the results of the current job from the series of jobs       scheduled to collect data periodically.
+    /// 
+    /// Required: No
+    ///
+    /// Type: StatisticsResource
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StatisticsResource")]
+    pub statistics_resource: Option<StatisticsResource>,
+
+}
+
+
+
+
+/// The input for the data quality monitoring job. Currently endpoints are supported for     input.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataQualityJobInput {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: BatchTransformInput
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BatchTransformInput")]
+    pub batch_transform_input: Option<BatchTransformInput>,
+
+
+    /// 
+    /// Input object for the endpoint
+    /// 
+    /// Required: No
+    ///
+    /// Type: EndpointInput
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EndpointInput")]
+    pub endpoint_input: Option<EndpointInput>,
+
+}
+
+
+
+
 /// The DatasetFormat property type specifies Property description not available. for an AWS::SageMaker::DataQualityJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatasetFormat {
@@ -571,11 +503,11 @@ pub struct DatasetFormat {
     ///
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Csv
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Parquet")]
-    pub parquet: Option<bool>,
+    #[serde(rename = "Csv")]
+    pub csv: Option<Csv>,
 
 
     /// Property description not available.
@@ -593,44 +525,159 @@ pub struct DatasetFormat {
     ///
     /// Required: No
     ///
-    /// Type: Csv
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Csv")]
-    pub csv: Option<Csv>,
+    #[serde(rename = "Parquet")]
+    pub parquet: Option<bool>,
 
 }
 
 
 
 
-/// Specifies a limit to how long a model training job or model compilation job can run.       It also specifies how long a managed spot training job has to complete. When the job       reaches the time limit, SageMaker ends the training or compilation job. Use this API to cap       model training costs.
-///
-/// To stop a training job, SageMaker sends the algorithm the SIGTERM signal,       which delays job termination for 120 seconds. Algorithms can use this 120-second window       to save the model artifacts, so the results of training are not lost.
-///
-/// The training algorithms provided by SageMaker automatically save the intermediate results       of a model training job when possible. This attempt to save artifacts is only a best       effort case as model might not be in a state from which it can be saved. For example, if       training has just started, the model might not be ready to save. When saved, this       intermediate data is a valid model artifact. You can use it to create a model with         CreateModel.
+/// Input object for the endpoint
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StoppingCondition {
+pub struct EndpointInput {
 
 
     /// 
-    /// The maximum length of time, in seconds, that a training or compilation job can run       before it is stopped.
-    /// 
-    /// For compilation jobs, if the job does not complete during this time, a         TimeOut error is generated. We recommend starting with 900 seconds and       increasing as necessary based on your model.
-    /// 
-    /// For all other jobs, if the job does not complete during this time, SageMaker ends the job.       When RetryStrategy is specified in the job request,         MaxRuntimeInSeconds specifies the maximum time for all of the attempts       in total, not each individual attempt. The default value is 1 day. The maximum value is       28 days.
-    /// 
-    /// The maximum time that a TrainingJob can run in total, including any time       spent publishing metrics or archiving and uploading models after it has been stopped, is       30 days.
+    /// An endpoint in customer's account which has enabled DataCaptureConfig     enabled.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
     ///
-    /// Minimum: 1
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "MaxRuntimeInSeconds")]
-    pub max_runtime_in_seconds: i64,
+    #[serde(rename = "EndpointName")]
+    pub endpoint_name: String,
+
+
+    /// 
+    /// Path to the filesystem where the endpoint data is available to the container.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LocalPath")]
+    pub local_path: String,
+
+
+    /// 
+    /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key.     Defaults to FullyReplicated
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: FullyReplicated | ShardedByS3Key
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3DataDistributionType")]
+    pub s3_data_distribution_type: Option<EndpointInputS3DataDistributionTypeEnum>,
+
+
+    /// 
+    /// Whether the Pipe or File is used as the input mode for     transferring data for the monitoring job. Pipe mode is recommended for large     datasets. File mode is useful for small files that fit in memory. Defaults to       File.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: File | Pipe
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3InputMode")]
+    pub s3_input_mode: Option<EndpointInputS3InputModeEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EndpointInputS3DataDistributionTypeEnum {
+
+    /// FullyReplicated
+    #[serde(rename = "FullyReplicated")]
+    Fullyreplicated,
+
+    /// ShardedByS3Key
+    #[serde(rename = "ShardedByS3Key")]
+    Shardedbys3key,
+
+}
+
+impl Default for EndpointInputS3DataDistributionTypeEnum {
+    fn default() -> Self {
+        EndpointInputS3DataDistributionTypeEnum::Fullyreplicated
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum EndpointInputS3InputModeEnum {
+
+    /// File
+    #[serde(rename = "File")]
+    File,
+
+    /// Pipe
+    #[serde(rename = "Pipe")]
+    Pipe,
+
+}
+
+impl Default for EndpointInputS3InputModeEnum {
+    fn default() -> Self {
+        EndpointInputS3InputModeEnum::File
+    }
+}
+
+
+
+/// The Json property type specifies Property description not available. for an AWS::SageMaker::DataQualityJobDefinition.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Json {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Line")]
+    pub line: Option<bool>,
+
+}
+
+
+
+
+/// The output object for a monitoring job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MonitoringOutput {
+
+
+    /// 
+    /// The Amazon S3 storage location where the results of a monitoring job are saved.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: S3Output
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Output")]
+    pub s3_output: S3Output,
 
 }
 
@@ -676,41 +723,21 @@ pub struct MonitoringOutputConfig {
 
 
 
-/// The Json property type specifies Property description not available. for an AWS::SageMaker::DataQualityJobDefinition.
+/// Identifies the resources to deploy for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Json {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Line")]
-    pub line: Option<bool>,
-
-}
-
-
-
-
-/// The constraints resource for a monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConstraintsResource {
+pub struct MonitoringResources {
 
 
     /// 
-    /// The Amazon S3 URI for the constraints resource.
+    /// The configuration for the cluster resources used to run the processing job.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: ClusterConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "S3Uri")]
-    pub s3_uri: Option<String>,
+    #[serde(rename = "ClusterConfig")]
+    pub cluster_config: ClusterConfig,
 
 }
 
@@ -735,6 +762,18 @@ pub struct NetworkConfig {
 
 
     /// 
+    /// Whether to allow inbound and outbound network calls to and from the containers used for     the processing job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EnableNetworkIsolation")]
+    pub enable_network_isolation: Option<bool>,
+
+
+    /// 
     /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC.
     /// 
     /// Required: No
@@ -745,17 +784,50 @@ pub struct NetworkConfig {
     #[serde(rename = "VpcConfig")]
     pub vpc_config: Option<VpcConfig>,
 
+}
+
+
+
+
+/// The Amazon S3 storage location where the results of a monitoring job are saved.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Output {
+
 
     /// 
-    /// Whether to allow inbound and outbound network calls to and from the containers used for     the processing job.
+    /// The local path to the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job. LocalPath is an absolute path for the output data.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LocalPath")]
+    pub local_path: String,
+
+
+    /// 
+    /// Whether to upload the results of the monitoring job continuously or after the job       completes.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EnableNetworkIsolation")]
-    pub enable_network_isolation: Option<bool>,
+    #[serde(rename = "S3UploadMode")]
+    pub s3_upload_mode: Option<String>,
+
+
+    /// 
+    /// A URI that identifies the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Uri")]
+    pub s3_uri: String,
 
 }
 
@@ -783,142 +855,33 @@ pub struct StatisticsResource {
 
 
 
-/// Information about the container that a data quality monitoring job runs.
+/// Specifies a limit to how long a model training job or model compilation job can run.       It also specifies how long a managed spot training job has to complete. When the job       reaches the time limit, SageMaker ends the training or compilation job. Use this API to cap       model training costs.
+///
+/// To stop a training job, SageMaker sends the algorithm the SIGTERM signal,       which delays job termination for 120 seconds. Algorithms can use this 120-second window       to save the model artifacts, so the results of training are not lost.
+///
+/// The training algorithms provided by SageMaker automatically save the intermediate results       of a model training job when possible. This attempt to save artifacts is only a best       effort case as model might not be in a state from which it can be saved. For example, if       training has just started, the model might not be ready to save. When saved, this       intermediate data is a valid model artifact. You can use it to create a model with         CreateModel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DataQualityAppSpecification {
+pub struct StoppingCondition {
 
 
     /// 
-    /// The entrypoint for a container used to run a monitoring job.
+    /// The maximum length of time, in seconds, that a training or compilation job can run       before it is stopped.
     /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContainerEntrypoint")]
-    pub container_entrypoint: Option<Vec<String>>,
-
-
+    /// For compilation jobs, if the job does not complete during this time, a         TimeOut error is generated. We recommend starting with 900 seconds and       increasing as necessary based on your model.
     /// 
-    /// An Amazon S3 URI to a script that is called per row prior to running analysis. It can     base64 decode the payload and convert it into a flatted json so that the built-in container     can use the converted data. Applicable only for the built-in (first party)     containers.
+    /// For all other jobs, if the job does not complete during this time, SageMaker ends the job.       When RetryStrategy is specified in the job request,         MaxRuntimeInSeconds specifies the maximum time for all of the attempts       in total, not each individual attempt. The default value is 1 day. The maximum value is       28 days.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RecordPreprocessorSourceUri")]
-    pub record_preprocessor_source_uri: Option<String>,
-
-
-    /// 
-    /// The container image that the data quality monitoring job runs.
+    /// The maximum time that a TrainingJob can run in total, including any time       spent publishing metrics or archiving and uploading models after it has been stopped, is       30 days.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Integer
     ///
-    /// Maximum: 255
-    ///
-    /// Pattern: .*
+    /// Minimum: 1
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ImageUri")]
-    pub image_uri: String,
-
-
-    /// 
-    /// The arguments to send to the container that the monitoring job runs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ContainerArguments")]
-    pub container_arguments: Option<Vec<String>>,
-
-
-    /// 
-    /// An Amazon S3 URI to a script that is called after analysis has been performed.     Applicable only for the built-in (first party) containers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^(https|s3)://([^/]+)/?(.*)$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PostAnalyticsProcessorSourceUri")]
-    pub post_analytics_processor_source_uri: Option<String>,
-
-
-    /// 
-    /// Sets the environment variables in the container that the monitoring job runs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Environment")]
-    pub environment: Option<std::collections::HashMap<String, String>>,
-
-}
-
-
-
-
-/// The Amazon S3 storage location where the results of a monitoring job are saved.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Output {
-
-
-    /// 
-    /// A URI that identifies the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
-
-
-    /// 
-    /// Whether to upload the results of the monitoring job continuously or after the job       completes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3UploadMode")]
-    pub s3_upload_mode: Option<String>,
-
-
-    /// 
-    /// The local path to the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job. LocalPath is an absolute path for the output data.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LocalPath")]
-    pub local_path: String,
+    #[serde(rename = "MaxRuntimeInSeconds")]
+    pub max_runtime_in_seconds: i64,
 
 }
 
@@ -956,6 +919,43 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+}
+
+
+
+
+/// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConfig {
+
+
+    /// 
+    /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 5
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Vec<String>,
+
+
+    /// 
+    /// The ID of the subnets in the VPC to which you want to connect your training job or       model. For information about the availability of specific instance types, see Supported         Instance Types and Availability Zones.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 16
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subnets")]
+    pub subnets: Vec<String>,
 
 }
 

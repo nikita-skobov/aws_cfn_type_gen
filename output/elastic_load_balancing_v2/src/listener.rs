@@ -6,34 +6,6 @@ pub struct CfnListener {
 
 
     /// 
-    /// [HTTPS and TLS listeners] The security policy that defines which protocols and ciphers are    supported.
-    /// 
-    /// For more information, see Security policies in the Application Load Balancers Guide and     Security policies in the Network Load Balancers Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SslPolicy")]
-    pub ssl_policy: Option<String>,
-
-
-    /// 
-    /// The protocol for connections from clients to the load balancer. For Application Load    Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the    supported protocols are TCP, TLS, UDP, and TCP_UDP. You can’t specify the UDP or TCP_UDP    protocol if dual-stack mode is enabled. You cannot specify a protocol for a Gateway Load    Balancer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<ListenerProtocolEnum>,
-
-
-    /// 
     /// [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)    policy.
     /// 
     /// Required: No
@@ -100,6 +72,34 @@ pub struct CfnListener {
     #[serde(rename = "Port")]
     pub port: Option<i64>,
 
+
+    /// 
+    /// The protocol for connections from clients to the load balancer. For Application Load    Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the    supported protocols are TCP, TLS, UDP, and TCP_UDP. You can’t specify the UDP or TCP_UDP    protocol if dual-stack mode is enabled. You cannot specify a protocol for a Gateway Load    Balancer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<ListenerProtocolEnum>,
+
+
+    /// 
+    /// [HTTPS and TLS listeners] The security policy that defines which protocols and ciphers are    supported.
+    /// 
+    /// For more information, see Security policies in the Application Load Balancers Guide and     Security policies in the Network Load Balancers Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SslPolicy")]
+    pub ssl_policy: Option<String>,
+
 }
 
 
@@ -154,176 +154,57 @@ impl cfn_resources::CfnResource for CfnListener {
 }
 
 
-/// Information about the target group stickiness for a rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TargetGroupStickinessConfig {
-
-
-    /// 
-    /// The time period, in seconds, during which requests from a client should be routed to the    same target group. The range is 1-604800 seconds (7 days).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DurationSeconds")]
-    pub duration_seconds: Option<i64>,
-
-
-    /// 
-    /// Indicates whether target group stickiness is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-}
-
-
-
-
-/// Specifies information required when integrating with Amazon Cognito to authenticate     users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthenticateCognitoConfig {
-
-
-    /// 
-    /// The set of user claims to be requested from the IdP. The default is    openid.
-    /// 
-    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: Option<String>,
-
-
-    /// 
-    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionTimeout")]
-    pub session_timeout: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon Cognito user pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolArn")]
-    pub user_pool_arn: String,
-
-
-    /// 
-    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationRequestExtraParams")]
-    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The behavior if the user is not authenticated. The following are possible values:
-    /// 
-    /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: allow | authenticate | deny
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnUnauthenticatedRequest")]
-    pub on_unauthenticated_request: Option<AuthenticateCognitoConfigOnUnauthenticatedRequestEnum>,
-
-
-    /// 
-    /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionCookieName")]
-    pub session_cookie_name: Option<String>,
-
-
-    /// 
-    /// The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolDomain")]
-    pub user_pool_domain: String,
-
-
-    /// 
-    /// The ID of the Amazon Cognito user pool client.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolClientId")]
-    pub user_pool_client_id: String,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
-
-    /// allow
-    #[serde(rename = "allow")]
-    Allow,
-
-    /// authenticate
-    #[serde(rename = "authenticate")]
-    Authenticate,
-
-    /// deny
-    #[serde(rename = "deny")]
-    Deny,
-
-}
-
-impl Default for AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
-    fn default() -> Self {
-        AuthenticateCognitoConfigOnUnauthenticatedRequestEnum::Allow
-    }
-}
-
-
-
 /// Specifies an action for a listener rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Action {
+
+
+    /// 
+    /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthenticateCognitoConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticateCognitoConfig")]
+    pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
+
+
+    /// 
+    /// [HTTPS listeners] Information about an identity provider that is compliant with OpenID    Connect (OIDC). Specify only when Type is authenticate-oidc.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AuthenticateOidcConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticateOidcConfig")]
+    pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
+
+
+    /// 
+    /// [Application Load Balancer] Information for creating an action that returns a custom HTTP    response. Specify only when Type is fixed-response.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FixedResponseConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FixedResponseConfig")]
+    pub fixed_response_config: Option<FixedResponseConfig>,
+
+
+    /// 
+    /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ForwardConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ForwardConfig")]
+    pub forward_config: Option<ForwardConfig>,
 
 
     /// 
@@ -355,6 +236,18 @@ pub struct Action {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the target group. Specify only when Type is     forward and you want to route to a single target group. To route to one or more    target groups, use ForwardConfig instead.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupArn")]
+    pub target_group_arn: Option<String>,
+
+
+    /// 
     /// The type of action.
     /// 
     /// Required: Yes
@@ -366,66 +259,6 @@ pub struct Action {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: ActionTypeEnum,
-
-
-    /// 
-    /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ForwardConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ForwardConfig")]
-    pub forward_config: Option<ForwardConfig>,
-
-
-    /// 
-    /// [Application Load Balancer] Information for creating an action that returns a custom HTTP    response. Specify only when Type is fixed-response.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FixedResponseConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FixedResponseConfig")]
-    pub fixed_response_config: Option<FixedResponseConfig>,
-
-
-    /// 
-    /// [HTTPS listeners] Information about an identity provider that is compliant with OpenID    Connect (OIDC). Specify only when Type is authenticate-oidc.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuthenticateOidcConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticateOidcConfig")]
-    pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
-
-
-    /// 
-    /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AuthenticateCognitoConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticateCognitoConfig")]
-    pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the target group. Specify only when Type is     forward and you want to route to a single target group. To route to one or more    target groups, use ForwardConfig instead.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroupArn")]
-    pub target_group_arn: Option<String>,
 
 }
 
@@ -463,156 +296,317 @@ impl Default for ActionTypeEnum {
 
 
 
-/// Information about how traffic will be distributed between multiple target groups in a    forward rule.
+/// Specifies information required when integrating with Amazon Cognito to authenticate     users.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct TargetGroupTuple {
+pub struct AuthenticateCognitoConfig {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the target group.
+    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationRequestExtraParams")]
+    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The behavior if the user is not authenticated. The following are possible values:
+    /// 
+    /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: allow | authenticate | deny
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OnUnauthenticatedRequest")]
+    pub on_unauthenticated_request: Option<AuthenticateCognitoConfigOnUnauthenticatedRequestEnum>,
+
+
+    /// 
+    /// The set of user claims to be requested from the IdP. The default is    openid.
+    /// 
+    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetGroupArn")]
-    pub target_group_arn: Option<String>,
+    #[serde(rename = "Scope")]
+    pub scope: Option<String>,
 
 
     /// 
-    /// The weight. The range is 0 to 999.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
-
-}
-
-
-
-
-/// Information about a redirect action.
-///
-/// A URI consists of the following components: protocol://hostname:port/path?query. You must    modify at least one of the following components to avoid a redirect loop: protocol, hostname,    port, or path. Any components that you do not modify retain their original values.
-///
-/// You can reuse URI components using the following reserved keywords:
-///
-/// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RedirectConfig {
-
-
-    /// 
-    /// The port. You can specify a value from 1 to 65535 or #{port}.
+    /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<String>,
+    #[serde(rename = "SessionCookieName")]
+    pub session_cookie_name: Option<String>,
 
 
     /// 
-    /// The absolute path, starting with the leading "/". This component is not percent-encoded.    The path can contain #{host}, #{path}, and #{port}.
+    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
+    #[serde(rename = "SessionTimeout")]
+    pub session_timeout: Option<String>,
 
 
     /// 
-    /// The HTTP redirect code. The redirect is either permanent (HTTP 301) or temporary (HTTP    302).
+    /// The Amazon Resource Name (ARN) of the Amazon Cognito user pool.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: HTTP_301 | HTTP_302
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "StatusCode")]
-    pub status_code: RedirectConfigStatusCodeEnum,
+    #[serde(rename = "UserPoolArn")]
+    pub user_pool_arn: String,
 
 
     /// 
-    /// The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP,    HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.
+    /// The ID of the Amazon Cognito user pool client.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: ^(HTTPS?|#\{protocol\})$
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
+    #[serde(rename = "UserPoolClientId")]
+    pub user_pool_client_id: String,
 
 
     /// 
-    /// The hostname. This component is not percent-encoded. The hostname can contain    #{host}.
+    /// The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: Option<String>,
-
-
-    /// 
-    /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include    the leading "?", as it is automatically added. You can specify any of the reserved    keywords.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Query")]
-    pub query: Option<String>,
+    #[serde(rename = "UserPoolDomain")]
+    pub user_pool_domain: String,
 
 }
 
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum RedirectConfigStatusCodeEnum {
+pub enum AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
 
-    /// HTTP_301
-    #[serde(rename = "HTTP_301")]
-    Http301,
+    /// allow
+    #[serde(rename = "allow")]
+    Allow,
 
-    /// HTTP_302
-    #[serde(rename = "HTTP_302")]
-    Http302,
+    /// authenticate
+    #[serde(rename = "authenticate")]
+    Authenticate,
+
+    /// deny
+    #[serde(rename = "deny")]
+    Deny,
 
 }
 
-impl Default for RedirectConfigStatusCodeEnum {
+impl Default for AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
     fn default() -> Self {
-        RedirectConfigStatusCodeEnum::Http301
+        AuthenticateCognitoConfigOnUnauthenticatedRequestEnum::Allow
+    }
+}
+
+
+
+/// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AuthenticateOidcConfig {
+
+
+    /// 
+    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationRequestExtraParams")]
+    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The authorization endpoint of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizationEndpoint")]
+    pub authorization_endpoint: String,
+
+
+    /// 
+    /// The OAuth 2.0 client identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientId")]
+    pub client_id: String,
+
+
+    /// 
+    /// The OAuth 2.0 client secret. This parameter is required if you are creating a rule. If you    are modifying a rule, you can omit this parameter if you set     UseExistingClientSecret to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientSecret")]
+    pub client_secret: Option<String>,
+
+
+    /// 
+    /// The OIDC issuer identifier of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Issuer")]
+    pub issuer: String,
+
+
+    /// 
+    /// The behavior if the user is not authenticated. The following are possible values:
+    /// 
+    /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: allow | authenticate | deny
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OnUnauthenticatedRequest")]
+    pub on_unauthenticated_request: Option<AuthenticateOidcConfigOnUnauthenticatedRequestEnum>,
+
+
+    /// 
+    /// The set of user claims to be requested from the IdP. The default is    openid.
+    /// 
+    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scope")]
+    pub scope: Option<String>,
+
+
+    /// 
+    /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionCookieName")]
+    pub session_cookie_name: Option<String>,
+
+
+    /// 
+    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionTimeout")]
+    pub session_timeout: Option<String>,
+
+
+    /// 
+    /// The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the    domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TokenEndpoint")]
+    pub token_endpoint: String,
+
+
+    /// 
+    /// Indicates whether to use the existing client secret when modifying a rule. If you are    creating a rule, you can omit this parameter or set it to false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseExistingClientSecret")]
+    pub use_existing_client_secret: Option<bool>,
+
+
+    /// 
+    /// The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol,    the domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserInfoEndpoint")]
+    pub user_info_endpoint: String,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
+
+    /// allow
+    #[serde(rename = "allow")]
+    Allow,
+
+    /// authenticate
+    #[serde(rename = "authenticate")]
+    Authenticate,
+
+    /// deny
+    #[serde(rename = "deny")]
+    Deny,
+
+}
+
+impl Default for AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
+    fn default() -> Self {
+        AuthenticateOidcConfigOnUnauthenticatedRequestEnum::Allow
     }
 }
 
@@ -636,6 +630,94 @@ pub struct Certificate {
 
 }
 
+
+
+
+/// Specifies information required when returning a custom HTTP response.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FixedResponseConfig {
+
+
+    /// 
+    /// The content type.
+    /// 
+    /// Valid Values: text/plain | text/css | text/html | application/javascript |    application/json
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContentType")]
+    pub content_type: Option<FixedResponseConfigContentTypeEnum>,
+
+
+    /// 
+    /// The message.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MessageBody")]
+    pub message_body: Option<String>,
+
+
+    /// 
+    /// The HTTP response code (2XX, 4XX, or 5XX).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^(2|4|5)\d\d$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StatusCode")]
+    pub status_code: String,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum FixedResponseConfigContentTypeEnum {
+
+    /// text/plain
+    #[serde(rename = "text/plain")]
+    Textplain,
+
+    /// text/css
+    #[serde(rename = "text/css")]
+    Textcss,
+
+    /// text/html
+    #[serde(rename = "text/html")]
+    Texthtml,
+
+    /// application/javascript
+    #[serde(rename = "application/javascript")]
+    Applicationjavascript,
+
+    /// application/json
+    #[serde(rename = "application/json")]
+    Applicationjson,
+
+}
+
+impl Default for FixedResponseConfigContentTypeEnum {
+    fn default() -> Self {
+        FixedResponseConfigContentTypeEnum::Textplain
+    }
+}
 
 
 
@@ -672,271 +754,189 @@ pub struct ForwardConfig {
 
 
 
-/// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
+/// Information about a redirect action.
+///
+/// A URI consists of the following components: protocol://hostname:port/path?query. You must    modify at least one of the following components to avoid a redirect loop: protocol, hostname,    port, or path. Any components that you do not modify retain their original values.
+///
+/// You can reuse URI components using the following reserved keywords:
+///
+/// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AuthenticateOidcConfig {
+pub struct RedirectConfig {
 
 
     /// 
-    /// The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol,    the domain, and the path.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserInfoEndpoint")]
-    pub user_info_endpoint: String,
-
-
-    /// 
-    /// The behavior if the user is not authenticated. The following are possible values:
-    /// 
-    /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
+    /// The hostname. This component is not percent-encoded. The hostname can contain    #{host}.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: allow | authenticate | deny
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OnUnauthenticatedRequest")]
-    pub on_unauthenticated_request: Option<AuthenticateOidcConfigOnUnauthenticatedRequestEnum>,
+    #[serde(rename = "Host")]
+    pub host: Option<String>,
 
 
     /// 
-    /// The OAuth 2.0 client secret. This parameter is required if you are creating a rule. If you    are modifying a rule, you can omit this parameter if you set     UseExistingClientSecret to true.
+    /// The absolute path, starting with the leading "/". This component is not percent-encoded.    The path can contain #{host}, #{path}, and #{port}.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "ClientSecret")]
-    pub client_secret: Option<String>,
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
 
 
     /// 
-    /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
+    /// The port. You can specify a value from 1 to 65535 or #{port}.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SessionCookieName")]
-    pub session_cookie_name: Option<String>,
+    #[serde(rename = "Port")]
+    pub port: Option<String>,
 
 
     /// 
-    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
+    /// The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP,    HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: String
+    ///
+    /// Pattern: ^(HTTPS?|#\{protocol\})$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthenticationRequestExtraParams")]
-    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<String>,
 
 
     /// 
-    /// The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the    domain, and the path.
+    /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include    the leading "?", as it is automatically added. You can specify any of the reserved    keywords.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Query")]
+    pub query: Option<String>,
+
+
+    /// 
+    /// The HTTP redirect code. The redirect is either permanent (HTTP 301) or temporary (HTTP    302).
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "TokenEndpoint")]
-    pub token_endpoint: String,
-
-
-    /// 
-    /// The authorization endpoint of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
+    /// Allowed values: HTTP_301 | HTTP_302
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizationEndpoint")]
-    pub authorization_endpoint: String,
+    #[serde(rename = "StatusCode")]
+    pub status_code: RedirectConfigStatusCodeEnum,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RedirectConfigStatusCodeEnum {
+
+    /// HTTP_301
+    #[serde(rename = "HTTP_301")]
+    Http301,
+
+    /// HTTP_302
+    #[serde(rename = "HTTP_302")]
+    Http302,
+
+}
+
+impl Default for RedirectConfigStatusCodeEnum {
+    fn default() -> Self {
+        RedirectConfigStatusCodeEnum::Http301
+    }
+}
+
+
+
+/// Information about the target group stickiness for a rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetGroupStickinessConfig {
 
 
     /// 
-    /// The OAuth 2.0 client identifier.
+    /// The time period, in seconds, during which requests from a client should be routed to the    same target group. The range is 1-604800 seconds (7 days).
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ClientId")]
-    pub client_id: String,
+    #[serde(rename = "DurationSeconds")]
+    pub duration_seconds: Option<i64>,
 
 
     /// 
-    /// Indicates whether to use the existing client secret when modifying a rule. If you are    creating a rule, you can omit this parameter or set it to false.
+    /// Indicates whether target group stickiness is enabled.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UseExistingClientSecret")]
-    pub use_existing_client_secret: Option<bool>,
-
-
-    /// 
-    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionTimeout")]
-    pub session_timeout: Option<String>,
-
-
-    /// 
-    /// The set of user claims to be requested from the IdP. The default is    openid.
-    /// 
-    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: Option<String>,
-
-
-    /// 
-    /// The OIDC issuer identifier of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Issuer")]
-    pub issuer: String,
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
 
 }
 
 
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
-
-    /// allow
-    #[serde(rename = "allow")]
-    Allow,
-
-    /// authenticate
-    #[serde(rename = "authenticate")]
-    Authenticate,
-
-    /// deny
-    #[serde(rename = "deny")]
-    Deny,
-
-}
-
-impl Default for AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
-    fn default() -> Self {
-        AuthenticateOidcConfigOnUnauthenticatedRequestEnum::Allow
-    }
-}
 
 
-
-/// Specifies information required when returning a custom HTTP response.
+/// Information about how traffic will be distributed between multiple target groups in a    forward rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FixedResponseConfig {
+pub struct TargetGroupTuple {
 
 
     /// 
-    /// The HTTP response code (2XX, 4XX, or 5XX).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^(2|4|5)\d\d$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StatusCode")]
-    pub status_code: String,
-
-
-    /// 
-    /// The content type.
-    /// 
-    /// Valid Values: text/plain | text/css | text/html | application/javascript |    application/json
+    /// The Amazon Resource Name (ARN) of the target group.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 32
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "ContentType")]
-    pub content_type: Option<FixedResponseConfigContentTypeEnum>,
+    #[serde(rename = "TargetGroupArn")]
+    pub target_group_arn: Option<String>,
 
 
     /// 
-    /// The message.
+    /// The weight. The range is 0 to 999.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MessageBody")]
-    pub message_body: Option<String>,
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum FixedResponseConfigContentTypeEnum {
-
-    /// text/plain
-    #[serde(rename = "text/plain")]
-    Textplain,
-
-    /// text/css
-    #[serde(rename = "text/css")]
-    Textcss,
-
-    /// text/html
-    #[serde(rename = "text/html")]
-    Texthtml,
-
-    /// application/javascript
-    #[serde(rename = "application/javascript")]
-    Applicationjavascript,
-
-    /// application/json
-    #[serde(rename = "application/json")]
-    Applicationjson,
-
-}
-
-impl Default for FixedResponseConfigContentTypeEnum {
-    fn default() -> Self {
-        FixedResponseConfigContentTypeEnum::Textplain
-    }
-}
 

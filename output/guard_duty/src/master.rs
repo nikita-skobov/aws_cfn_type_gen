@@ -6,18 +6,6 @@ pub struct CfnMaster {
 
 
     /// 
-    /// The ID of the invitation that is sent to the account designated as a member          account. You can find the invitation ID by using the ListInvitation action of the             API.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InvitationId")]
-    pub invitation_id: Option<String>,
-
-
-    /// 
     /// The unique ID of the detector of the GuardDuty member account.
     /// 
     /// Required: Yes
@@ -31,6 +19,18 @@ pub struct CfnMaster {
     /// Update requires: Replacement
     #[serde(rename = "DetectorId")]
     pub detector_id: String,
+
+
+    /// 
+    /// The ID of the invitation that is sent to the account designated as a member          account. You can find the invitation ID by using the ListInvitation action of the             API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InvitationId")]
+    pub invitation_id: Option<String>,
 
 
     /// 

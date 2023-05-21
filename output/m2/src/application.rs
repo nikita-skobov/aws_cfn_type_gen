@@ -8,6 +8,36 @@ pub struct CfnApplication {
 
 
     /// 
+    /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
+    /// 
+    /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Definition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Definition")]
+    pub definition: Definition,
+
+
+    /// 
+    /// The description of the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 500
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The type of the target platform for this application.
     /// 
     /// Required: Yes
@@ -31,20 +61,6 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
-    /// 
-    /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Definition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Definition")]
-    pub definition: Definition,
 
 
     /// 
@@ -73,22 +89,6 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The description of the application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 500
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 }
 
@@ -130,20 +130,6 @@ pub struct Definition {
 
 
     /// 
-    /// The S3 bucket that contains the application definition.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: \S{1,2000}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Location")]
-    pub s3_location: Option<String>,
-
-
-    /// 
     /// The content of the application definition. This is a JSON object that contains the     resource configuration/definitions that identify an application.
     /// 
     /// Required: No
@@ -157,6 +143,20 @@ pub struct Definition {
     /// Update requires: No interruption
     #[serde(rename = "Content")]
     pub content: Option<String>,
+
+
+    /// 
+    /// The S3 bucket that contains the application definition.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: \S{1,2000}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Location")]
+    pub s3_location: Option<String>,
 
 }
 

@@ -12,15 +12,41 @@ pub struct CfnTrafficMirrorSession {
 
 
     /// 
-    /// The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN     protocol, see RFC 7348. If you do     not specify a VirtualNetworkId, an account-wide unique id is chosen at     random.
+    /// The description of the Traffic Mirror session.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The ID of the source network interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkInterfaceId")]
+    pub network_interface_id: String,
+
+
+    /// 
+    /// The number of bytes in each packet to mirror. These are bytes after the VXLAN header. Do     not specify this parameter when you want to mirror the entire packet. To mirror a subset of     the packet, set this to the length (in bytes) that you want to mirror. For example, if you     set this value to 100, then the first 100 bytes that meet the filter criteria are copied to     the target.
+    /// 
+    /// If you do not want to mirror the entire packet, use the PacketLength parameter to specify the number of bytes in each packet to mirror.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VirtualNetworkId")]
-    pub virtual_network_id: Option<i64>,
+    #[serde(rename = "PacketLength")]
+    pub packet_length: Option<i64>,
 
 
     /// 
@@ -50,18 +76,6 @@ pub struct CfnTrafficMirrorSession {
 
 
     /// 
-    /// The ID of the source network interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: String,
-
-
-    /// 
     /// The ID of the Traffic Mirror filter.
     /// 
     /// Required: Yes
@@ -71,18 +85,6 @@ pub struct CfnTrafficMirrorSession {
     /// Update requires: No interruption
     #[serde(rename = "TrafficMirrorFilterId")]
     pub traffic_mirror_filter_id: String,
-
-
-    /// 
-    /// The description of the Traffic Mirror session.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -98,17 +100,15 @@ pub struct CfnTrafficMirrorSession {
 
 
     /// 
-    /// The number of bytes in each packet to mirror. These are bytes after the VXLAN header. Do     not specify this parameter when you want to mirror the entire packet. To mirror a subset of     the packet, set this to the length (in bytes) that you want to mirror. For example, if you     set this value to 100, then the first 100 bytes that meet the filter criteria are copied to     the target.
-    /// 
-    /// If you do not want to mirror the entire packet, use the PacketLength parameter to specify the number of bytes in each packet to mirror.
+    /// The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN     protocol, see RFC 7348. If you do     not specify a VirtualNetworkId, an account-wide unique id is chosen at     random.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PacketLength")]
-    pub packet_length: Option<i64>,
+    #[serde(rename = "VirtualNetworkId")]
+    pub virtual_network_id: Option<i64>,
 
 }
 
@@ -137,17 +137,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -156,6 +145,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

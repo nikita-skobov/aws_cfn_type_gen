@@ -12,48 +12,6 @@ pub struct CfnNatGateway {
 
 
     /// 
-    /// [Private NAT gateway only] The number of secondary private IPv4 addresses you want to assign to the NAT gateway. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
-    /// 
-    /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 31
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecondaryPrivateIpAddressCount")]
-    pub secondary_private_ip_address_count: Option<i64>,
-
-
-    /// 
-    /// Secondary EIP allocation IDs. For more information, see Create a NAT gateway       in the Amazon VPC User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecondaryAllocationIds")]
-    pub secondary_allocation_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The ID of the subnet in which the NAT gateway is located.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
-
-
-    /// 
     /// [Public NAT gateway only] The allocation ID of the Elastic IP address that's associated with the NAT gateway.      This property is required for a public NAT gateway and cannot be specified with a private NAT gateway.
     /// 
     /// Required: Conditional
@@ -66,15 +24,17 @@ pub struct CfnNatGateway {
 
 
     /// 
-    /// The private IPv4 address to assign to the NAT gateway. If you don't provide an address, a private IPv4 address will be automatically assigned.
+    /// Indicates whether the NAT gateway supports public or private connectivity.      The default is public connectivity.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Allowed values: private | public
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "PrivateIpAddress")]
-    pub private_ip_address: Option<String>,
+    #[serde(rename = "ConnectivityType")]
+    pub connectivity_type: Option<NatGatewayConnectivityTypeEnum>,
 
 
     /// 
@@ -94,6 +54,48 @@ pub struct CfnNatGateway {
 
 
     /// 
+    /// The private IPv4 address to assign to the NAT gateway. If you don't provide an address, a private IPv4 address will be automatically assigned.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrivateIpAddress")]
+    pub private_ip_address: Option<String>,
+
+
+    /// 
+    /// Secondary EIP allocation IDs. For more information, see Create a NAT gateway       in the Amazon VPC User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecondaryAllocationIds")]
+    pub secondary_allocation_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// [Private NAT gateway only] The number of secondary private IPv4 addresses you want to assign to the NAT gateway. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
+    /// 
+    /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 31
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecondaryPrivateIpAddressCount")]
+    pub secondary_private_ip_address_count: Option<i64>,
+
+
+    /// 
     /// Secondary private IPv4 addresses. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
     /// 
     /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
@@ -108,6 +110,18 @@ pub struct CfnNatGateway {
 
 
     /// 
+    /// The ID of the subnet in which the NAT gateway is located.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
+
+
+    /// 
     /// The tags for the NAT gateway.
     /// 
     /// Required: No
@@ -117,20 +131,6 @@ pub struct CfnNatGateway {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Indicates whether the NAT gateway supports public or private connectivity.      The default is public connectivity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: private | public
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConnectivityType")]
-    pub connectivity_type: Option<NatGatewayConnectivityTypeEnum>,
 
 }
 

@@ -6,18 +6,6 @@ pub struct CfnCustomerGateway {
 
 
     /// 
-    /// One or more tags for the customer gateway.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// For devices that support BGP, the customer gateway's BGP ASN.
     /// 
     /// Default: 65000
@@ -44,6 +32,30 @@ pub struct CfnCustomerGateway {
 
 
     /// 
+    /// IPv4 address for the customer gateway device's outside interface. The address must be static.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpAddress")]
+    pub ip_address: String,
+
+
+    /// 
+    /// One or more tags for the customer gateway.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The type of VPN connection that this customer gateway supports       (ipsec.1).
     /// 
     /// Required: Yes
@@ -55,18 +67,6 @@ pub struct CfnCustomerGateway {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: CustomerGatewayTypeEnum,
-
-
-    /// 
-    /// IPv4 address for the customer gateway device's outside interface. The address must be static.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpAddress")]
-    pub ip_address: String,
 
 }
 

@@ -8,15 +8,15 @@ pub struct CfnApp {
 
 
     /// 
-    /// The name for the application.
+    /// Assessment execution schedule with 'Daily' or 'Disabled' values.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "AppAssessmentSchedule")]
+    pub app_assessment_schedule: Option<String>,
 
 
     /// 
@@ -48,6 +48,30 @@ pub struct CfnApp {
 
 
     /// 
+    /// The name for the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the resiliency policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResiliencyPolicyArn")]
+    pub resiliency_policy_arn: Option<String>,
+
+
+    /// 
     /// An array of ResourceMapping objects.
     /// 
     /// Required: Yes
@@ -70,30 +94,6 @@ pub struct CfnApp {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the resiliency policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResiliencyPolicyArn")]
-    pub resiliency_policy_arn: Option<String>,
-
-
-    /// 
-    /// Assessment execution schedule with 'Daily' or 'Disabled' values.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppAssessmentSchedule")]
-    pub app_assessment_schedule: Option<String>,
-
 }
 
 
@@ -109,21 +109,68 @@ impl cfn_resources::CfnResource for CfnApp {
 }
 
 
-/// Defines a resource mapping.
+/// Defines a physical resource identifier.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ResourceMapping {
+pub struct PhysicalResourceId {
 
 
     /// 
-    /// The short name of the Terraform source.
+    /// The AWS account that owns the physical resource.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TerraformSourceName")]
-    pub terraform_source_name: Option<String>,
+    #[serde(rename = "AwsAccountId")]
+    pub aws_account_id: Option<String>,
+
+
+    /// 
+    /// The AWS Region that the physical resource is located in.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsRegion")]
+    pub aws_region: Option<String>,
+
+
+    /// 
+    /// The identifier of the physical resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Identifier")]
+    pub identifier: String,
+
+
+    /// 
+    /// Specifies the type of physical resource identifier.
+    /// 
+    /// Arn          The resource identifier is an Amazon Resource Name (ARN) .             Native          The resource identifier is an AWS Resilience Hub-native identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+}
+
+
+
+
+/// Defines a resource mapping.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ResourceMapping {
 
 
     /// 
@@ -177,6 +224,18 @@ pub struct ResourceMapping {
     #[serde(rename = "ResourceName")]
     pub resource_name: Option<String>,
 
+
+    /// 
+    /// The short name of the Terraform source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TerraformSourceName")]
+    pub terraform_source_name: Option<String>,
+
 }
 
 
@@ -210,63 +269,4 @@ impl Default for ResourceMappingMappingTypeEnum {
         ResourceMappingMappingTypeEnum::Cfnstack
     }
 }
-
-
-
-/// Defines a physical resource identifier.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PhysicalResourceId {
-
-
-    /// 
-    /// The identifier of the physical resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Identifier")]
-    pub identifier: String,
-
-
-    /// 
-    /// Specifies the type of physical resource identifier.
-    /// 
-    /// Arn          The resource identifier is an Amazon Resource Name (ARN) .             Native          The resource identifier is an AWS Resilience Hub-native identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// The AWS Region that the physical resource is located in.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsRegion")]
-    pub aws_region: Option<String>,
-
-
-    /// 
-    /// The AWS account that owns the physical resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsAccountId")]
-    pub aws_account_id: Option<String>,
-
-}
-
 

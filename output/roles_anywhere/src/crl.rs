@@ -8,35 +8,27 @@ pub struct CfnCRL {
 
 
     /// 
-    /// The ARN of the TrustAnchor the certificate revocation list (CRL) will provide revocation for.
+    /// The x509 v3 specified certificate revocation list (CRL).
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1011
-    ///
-    /// Pattern: ^arn:aws(-[^:]+)?:rolesanywhere(:.*){2}(:trust-anchor.*)$
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "TrustAnchorArn")]
-    pub trust_anchor_arn: Option<String>,
+    #[serde(rename = "CrlData")]
+    pub crl_data: String,
 
 
     /// 
-    /// A list of tags to attach to the certificate revocation list (CRL).
+    /// Specifies whether the certificate revocation list (CRL) is enabled.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
 
 
     /// 
@@ -58,27 +50,35 @@ pub struct CfnCRL {
 
 
     /// 
-    /// Specifies whether the certificate revocation list (CRL) is enabled.
+    /// A list of tags to attach to the certificate revocation list (CRL).
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
-    /// The x509 v3 specified certificate revocation list (CRL).
+    /// The ARN of the TrustAnchor the certificate revocation list (CRL) will provide revocation for.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1011
+    ///
+    /// Pattern: ^arn:aws(-[^:]+)?:rolesanywhere(:.*){2}(:trust-anchor.*)$
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "CrlData")]
-    pub crl_data: String,
+    #[serde(rename = "TrustAnchorArn")]
+    pub trust_anchor_arn: Option<String>,
 
 }
 
@@ -107,17 +107,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -126,6 +115,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

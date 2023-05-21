@@ -6,45 +6,15 @@ pub struct CfnCertificateAuthority {
 
 
     /// 
-    /// Certificate revocation information used by the CreateCertificateAuthority and UpdateCertificateAuthority actions. Your private certificate authority (CA)       can configure Online Certificate Status Protocol (OCSP) support and/or maintain a       certificate revocation list (CRL). OCSP returns validation information about       certificates as requested by clients, and a CRL contains an updated list of certificates       revoked by your CA. For more information, see RevokeCertificate in the AWS Private CA API         Reference and Setting up a certificate         revocation method in the AWS Private CA User         Guide.
-    /// 
-    /// NoteThe following requirements apply to revocation configurations.                                                     A configuration disabling CRLs or OCSP must contain only the               Enabled=False parameter, and will fail if other parameters             such as CustomCname or ExpirationInDays are             included.                   In a CRL configuration, the S3BucketName parameter must             conform to the Amazon S3 bucket               naming rules.                   A configuration containing a custom Canonical Name (CNAME) parameter for             CRLs or OCSP must conform to RFC2396 restrictions             on the use of special characters in a CNAME.                    In a CRL or OCSP configuration, the value of a CNAME parameter must not             include a protocol prefix such as "http://" or "https://".
+    /// Specifies information to be added to the extension section of the certificate signing 			request (CSR).
     /// 
     /// Required: No
     ///
-    /// Type: RevocationConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RevocationConfiguration")]
-    pub revocation_configuration: Option<RevocationConfiguration>,
-
-
-    /// 
-    /// Specifies whether the CA issues general-purpose certificates that typically require a 			revocation mechanism, or short-lived certificates that may optionally omit revocation 			because they expire quickly. Short-lived certificate validity is limited to seven 			days.
-    /// 
-    /// The default value is GENERAL_PURPOSE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GENERAL_PURPOSE | SHORT_LIVED_CERTIFICATE
+    /// Type: CsrExtensions
     ///
     /// Update requires: Replacement
-    #[serde(rename = "UsageMode")]
-    pub usage_mode: Option<CertificateAuthorityUsageModeEnum>,
-
-
-    /// 
-    /// Structure that contains X.500 distinguished name information for your private 			CA.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Subject
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subject")]
-    pub subject: Subject,
+    #[serde(rename = "CsrExtensions")]
+    pub csr_extensions: Option<CsrExtensions>,
 
 
     /// 
@@ -59,60 +29,6 @@ pub struct CfnCertificateAuthority {
     /// Update requires: Replacement
     #[serde(rename = "KeyAlgorithm")]
     pub key_algorithm: CertificateAuthorityKeyAlgorithmEnum,
-
-
-    /// 
-    /// Name of the algorithm your private CA uses to sign certificate requests.
-    /// 
-    /// This parameter should not be confused with the SigningAlgorithm parameter 			used to sign certificates when they are issued.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: SHA256WITHECDSA | SHA256WITHRSA | SHA384WITHECDSA | SHA384WITHRSA | SHA512WITHECDSA | SHA512WITHRSA
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SigningAlgorithm")]
-    pub signing_algorithm: CertificateAuthoritySigningAlgorithmEnum,
-
-
-    /// 
-    /// Type of your private CA.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ROOT | SUBORDINATE
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: CertificateAuthorityTypeEnum,
-
-
-    /// 
-    /// Specifies information to be added to the extension section of the certificate signing 			request (CSR).
-    /// 
-    /// Required: No
-    ///
-    /// Type: CsrExtensions
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CsrExtensions")]
-    pub csr_extensions: Option<CsrExtensions>,
-
-
-    /// 
-    /// Key-value pairs that will be attached to the new private CA. You can associate up to       50 tags with a private CA. For information using tags with IAM to manage permissions,       see Controlling Access Using IAM Tags.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -132,8 +48,111 @@ pub struct CfnCertificateAuthority {
     #[serde(rename = "KeyStorageSecurityStandard")]
     pub key_storage_security_standard: Option<CertificateAuthorityKeyStorageSecurityStandardEnum>,
 
+
+    /// 
+    /// Certificate revocation information used by the CreateCertificateAuthority and UpdateCertificateAuthority actions. Your private certificate authority (CA)       can configure Online Certificate Status Protocol (OCSP) support and/or maintain a       certificate revocation list (CRL). OCSP returns validation information about       certificates as requested by clients, and a CRL contains an updated list of certificates       revoked by your CA. For more information, see RevokeCertificate in the AWS Private CA API         Reference and Setting up a certificate         revocation method in the AWS Private CA User         Guide.
+    /// 
+    /// NoteThe following requirements apply to revocation configurations.                                                     A configuration disabling CRLs or OCSP must contain only the               Enabled=False parameter, and will fail if other parameters             such as CustomCname or ExpirationInDays are             included.                   In a CRL configuration, the S3BucketName parameter must             conform to the Amazon S3 bucket               naming rules.                   A configuration containing a custom Canonical Name (CNAME) parameter for             CRLs or OCSP must conform to RFC2396 restrictions             on the use of special characters in a CNAME.                    In a CRL or OCSP configuration, the value of a CNAME parameter must not             include a protocol prefix such as "http://" or "https://".
+    /// 
+    /// Required: No
+    ///
+    /// Type: RevocationConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RevocationConfiguration")]
+    pub revocation_configuration: Option<RevocationConfiguration>,
+
+
+    /// 
+    /// Name of the algorithm your private CA uses to sign certificate requests.
+    /// 
+    /// This parameter should not be confused with the SigningAlgorithm parameter 			used to sign certificates when they are issued.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SHA256WITHECDSA | SHA256WITHRSA | SHA384WITHECDSA | SHA384WITHRSA | SHA512WITHECDSA | SHA512WITHRSA
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SigningAlgorithm")]
+    pub signing_algorithm: CertificateAuthoritySigningAlgorithmEnum,
+
+
+    /// 
+    /// Structure that contains X.500 distinguished name information for your private 			CA.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Subject
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subject")]
+    pub subject: Subject,
+
+
+    /// 
+    /// Key-value pairs that will be attached to the new private CA. You can associate up to       50 tags with a private CA. For information using tags with IAM to manage permissions,       see Controlling Access Using IAM Tags.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Type of your private CA.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ROOT | SUBORDINATE
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: CertificateAuthorityTypeEnum,
+
+
+    /// 
+    /// Specifies whether the CA issues general-purpose certificates that typically require a 			revocation mechanism, or short-lived certificates that may optionally omit revocation 			because they expire quickly. Short-lived certificate validity is limited to seven 			days.
+    /// 
+    /// The default value is GENERAL_PURPOSE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GENERAL_PURPOSE | SHORT_LIVED_CERTIFICATE
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UsageMode")]
+    pub usage_mode: Option<CertificateAuthorityUsageModeEnum>,
+
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum CertificateAuthorityKeyStorageSecurityStandardEnum {
+
+    /// FIPS_140_2_LEVEL_2_OR_HIGHER
+    #[serde(rename = "FIPS_140_2_LEVEL_2_OR_HIGHER")]
+    Fips1402level2orhigher,
+
+    /// FIPS_140_2_LEVEL_3_OR_HIGHER
+    #[serde(rename = "FIPS_140_2_LEVEL_3_OR_HIGHER")]
+    Fips1402level3orhigher,
+
+}
+
+impl Default for CertificateAuthorityKeyStorageSecurityStandardEnum {
+    fn default() -> Self {
+        CertificateAuthorityKeyStorageSecurityStandardEnum::Fips1402level2orhigher
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CertificateAuthoritySigningAlgorithmEnum {
@@ -171,21 +190,21 @@ impl Default for CertificateAuthoritySigningAlgorithmEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum CertificateAuthorityKeyStorageSecurityStandardEnum {
+pub enum CertificateAuthorityTypeEnum {
 
-    /// FIPS_140_2_LEVEL_2_OR_HIGHER
-    #[serde(rename = "FIPS_140_2_LEVEL_2_OR_HIGHER")]
-    Fips1402level2orhigher,
+    /// ROOT
+    #[serde(rename = "ROOT")]
+    Root,
 
-    /// FIPS_140_2_LEVEL_3_OR_HIGHER
-    #[serde(rename = "FIPS_140_2_LEVEL_3_OR_HIGHER")]
-    Fips1402level3orhigher,
+    /// SUBORDINATE
+    #[serde(rename = "SUBORDINATE")]
+    Subordinate,
 
 }
 
-impl Default for CertificateAuthorityKeyStorageSecurityStandardEnum {
+impl Default for CertificateAuthorityTypeEnum {
     fn default() -> Self {
-        CertificateAuthorityKeyStorageSecurityStandardEnum::Fips1402level2orhigher
+        CertificateAuthorityTypeEnum::Root
     }
 }
 
@@ -205,25 +224,6 @@ pub enum CertificateAuthorityUsageModeEnum {
 impl Default for CertificateAuthorityUsageModeEnum {
     fn default() -> Self {
         CertificateAuthorityUsageModeEnum::Generalpurpose
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum CertificateAuthorityTypeEnum {
-
-    /// ROOT
-    #[serde(rename = "ROOT")]
-    Root,
-
-    /// SUBORDINATE
-    #[serde(rename = "SUBORDINATE")]
-    Subordinate,
-
-}
-
-impl Default for CertificateAuthorityTypeEnum {
-    fn default() -> Self {
-        CertificateAuthorityTypeEnum::Root
     }
 }
 
@@ -266,41 +266,33 @@ impl cfn_resources::CfnResource for CfnCertificateAuthority {
 }
 
 
-/// Contains information to enable and configure Online Certificate Status Protocol (OCSP)       for validating certificate revocation status.
+/// Provides access information used by the authorityInfoAccess and 				subjectInfoAccess extensions described in RFC 5280.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OcspConfiguration {
+pub struct AccessDescription {
 
 
     /// 
-    /// By default, AWS Private CA injects an Amazon domain into certificates being       validated by the Online Certificate Status Protocol (OCSP). A customer can alternatively       use this object to define a CNAME specifying a customized OCSP domain.
+    /// The location of AccessDescription information.
     /// 
-    /// NoteThe content of a Canonical Name (CNAME) record must conform to RFC2396 restrictions on the         use of special characters in URIs. Additionally, the value of the CNAME must not         include a protocol prefix such as "http://" or "https://".
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: GeneralName
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 253
-    ///
-    /// Pattern: ^[-a-zA-Z0-9;/?:@&=+$,%_.!~*()']*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OcspCustomCname")]
-    pub ocsp_custom_cname: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "AccessLocation")]
+    pub access_location: GeneralName,
 
 
     /// 
-    /// Flag enabling use of the Online Certificate Status Protocol (OCSP) for validating       certificate revocation status.
+    /// The type and format of AccessDescription information.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: AccessMethod
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "AccessMethod")]
+    pub access_method: AccessMethod,
 
 }
 
@@ -371,43 +363,109 @@ impl Default for AccessMethodAccessMethodTypeEnum {
 
 
 
-/// Defines a custom ASN.1 X.400 GeneralName using an object identifier (OID) 			and value. The OID must satisfy the regular expression shown below. For more 			information, see NIST's definition of Object Identifier 				(OID).
+/// Contains configuration information for a certificate revocation list (CRL). Your 			private certificate authority (CA) creates base CRLs. Delta CRLs are not supported. You 			can enable CRLs for your new or an existing private CA by setting the Enabled parameter to true. Your private CA 			writes CRLs to an S3 bucket that you specify in the S3BucketName parameter. You can hide the name of your bucket by 			specifying a value for the CustomCname parameter. Your 			private CA copies the CNAME or the S3 bucket name to the CRL 				Distribution Points extension of each certificate it issues. Your S3 			bucket policy must give write permission to AWS Private CA.
+///
+/// AWS Private CA assets that are stored in Amazon S3 can be protected with encryption.  For more information, see Encrypting Your 			CRLs.
+///
+/// Your private CA uses the value in the ExpirationInDays parameter to calculate the nextUpdate field in the CRL. The CRL is refreshed prior to a 			certificate's expiration date or when a certificate is revoked. When a certificate is 			revoked, it appears in the CRL until the certificate expires, and then in one additional 			CRL after expiration, and it always appears in the audit report.
+///
+/// A CRL is typically updated approximately 30 minutes after a certificate 	is revoked. If for any reason a CRL update fails, AWS Private CA makes further attempts 	every 15 minutes.
+///
+/// CRLs contain the following fields:
+///
+/// Certificate revocation lists created by AWS Private CA are DER-encoded. You can use the 			following OpenSSL command to list a CRL.
+///
+/// openssl crl -inform DER -text -in crl_path 			-noout
+///
+/// For more information, see Planning a certificate revocation list 				(CRL) in the         AWS Private Certificate Authority User Guide
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OtherName {
+pub struct CrlConfiguration {
 
 
     /// 
-    /// Specifies an OID.
+    /// Name inserted into the certificate CRL Distribution         Points extension that enables the use of an alias for the CRL       distribution point. Use this value if you don't want the name of your S3 bucket to be       public.
     /// 
-    /// Required: Yes
+    /// NoteThe content of a Canonical Name (CNAME) record must conform to RFC2396 restrictions on the         use of special characters in URIs. Additionally, the value of the CNAME must not         include a protocol prefix such as "http://" or "https://".
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 64
+    /// Maximum: 253
     ///
-    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
+    /// Pattern: ^[-a-zA-Z0-9;/?:@&=+$,%_.!~*()']*$
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "TypeId")]
-    pub type_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "CustomCname")]
+    pub custom_cname: Option<String>,
 
 
     /// 
-    /// Specifies an OID value.
+    /// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled.       You can use this value to enable certificate revocation for a new CA when you call the         CreateCertificateAuthority operation or for an existing CA when you       call the UpdateCertificateAuthority operation.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// Validity period of the CRL in days.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 5000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExpirationInDays")]
+    pub expiration_in_days: Option<i64>,
+
+
+    /// 
+    /// Name of the S3 bucket that contains the CRL. If you do not provide a value for the 				CustomCname argument, the name of your S3 bucket 			is placed into the CRL Distribution Points extension of 			the issued certificate. You can change the name of your bucket by calling the UpdateCertificateAuthority operation. You must specify a bucket 				policy that allows AWS Private CA to write the CRL to your bucket.
+    /// 
+    /// NoteThe S3BucketName parameter must conform to the S3 					bucket naming rules.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 3
     ///
-    /// Maximum: 256
+    /// Maximum: 255
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// Pattern: ^[-a-zA-Z0-9._/]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3BucketName")]
+    pub s3_bucket_name: Option<String>,
+
+
+    /// 
+    /// Determines whether the CRL will be publicly readable or privately held in the CRL       Amazon S3 bucket. If you choose PUBLIC_READ, the CRL will be accessible over the public       internet. If you choose BUCKET_OWNER_FULL_CONTROL, only the owner of the CRL S3 bucket       can access the CRL, and your PKI clients may need an alternative method of       access.
+    /// 
+    /// If no value is specified, the default is PUBLIC_READ.
+    /// 
+    /// Note: This default can cause CA creation to fail in some       circumstances. If you have have enabled the Block Public Access (BPA) feature in your S3       account, then you must specify the value of this parameter as         BUCKET_OWNER_FULL_CONTROL, and not doing so results in an error. If you       have disabled BPA in S3, then you can specify either         BUCKET_OWNER_FULL_CONTROL or PUBLIC_READ as the       value.
+    /// 
+    /// For more information, see Blocking public access to         the S3 bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3ObjectAcl")]
+    pub s3_object_acl: Option<String>,
 
 }
 
@@ -447,33 +505,45 @@ pub struct CsrExtensions {
 
 
 
-/// Certificate revocation information used by the CreateCertificateAuthority and UpdateCertificateAuthority actions. Your private certificate authority (CA)       can configure Online Certificate Status Protocol (OCSP) support and/or maintain a       certificate revocation list (CRL). OCSP returns validation information about       certificates as requested by clients, and a CRL contains an updated list of certificates       revoked by your CA. For more information, see RevokeCertificate in the AWS Private CA API         Reference and Setting up a certificate         revocation method in the AWS Private CA User         Guide.
+/// Defines the X.500 relative distinguished name (RDN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RevocationConfiguration {
+pub struct CustomAttribute {
 
 
     /// 
-    /// Configuration of the certificate revocation list (CRL), if any, maintained by your       private CA.
+    /// Specifies the object identifier (OID) of the attribute type of the relative 			distinguished name (RDN).
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: CrlConfiguration
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "CrlConfiguration")]
-    pub crl_configuration: Option<CrlConfiguration>,
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ObjectIdentifier")]
+    pub object_identifier: String,
 
 
     /// 
-    /// Configuration of Online Certificate Status Protocol (OCSP) support, if any, maintained       by your private CA.
     /// 
-    /// Required: No
+    /// 
+    /// Specifies the attribute value of relative distinguished name (RDN).
+    /// 
+    /// Required: Yes
     ///
-    /// Type: OcspConfiguration
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "OcspConfiguration")]
-    pub ocsp_configuration: Option<OcspConfiguration>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
@@ -521,347 +591,6 @@ pub struct EdiPartyName {
 
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-
-
-/// Contains configuration information for a certificate revocation list (CRL). Your 			private certificate authority (CA) creates base CRLs. Delta CRLs are not supported. You 			can enable CRLs for your new or an existing private CA by setting the Enabled parameter to true. Your private CA 			writes CRLs to an S3 bucket that you specify in the S3BucketName parameter. You can hide the name of your bucket by 			specifying a value for the CustomCname parameter. Your 			private CA copies the CNAME or the S3 bucket name to the CRL 				Distribution Points extension of each certificate it issues. Your S3 			bucket policy must give write permission to AWS Private CA.
-///
-/// AWS Private CA assets that are stored in Amazon S3 can be protected with encryption.  For more information, see Encrypting Your 			CRLs.
-///
-/// Your private CA uses the value in the ExpirationInDays parameter to calculate the nextUpdate field in the CRL. The CRL is refreshed prior to a 			certificate's expiration date or when a certificate is revoked. When a certificate is 			revoked, it appears in the CRL until the certificate expires, and then in one additional 			CRL after expiration, and it always appears in the audit report.
-///
-/// A CRL is typically updated approximately 30 minutes after a certificate 	is revoked. If for any reason a CRL update fails, AWS Private CA makes further attempts 	every 15 minutes.
-///
-/// CRLs contain the following fields:
-///
-/// Certificate revocation lists created by AWS Private CA are DER-encoded. You can use the 			following OpenSSL command to list a CRL.
-///
-/// openssl crl -inform DER -text -in crl_path 			-noout
-///
-/// For more information, see Planning a certificate revocation list 				(CRL) in the         AWS Private Certificate Authority User Guide
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CrlConfiguration {
-
-
-    /// 
-    /// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled.       You can use this value to enable certificate revocation for a new CA when you call the         CreateCertificateAuthority operation or for an existing CA when you       call the UpdateCertificateAuthority operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// Name of the S3 bucket that contains the CRL. If you do not provide a value for the 				CustomCname argument, the name of your S3 bucket 			is placed into the CRL Distribution Points extension of 			the issued certificate. You can change the name of your bucket by calling the UpdateCertificateAuthority operation. You must specify a bucket 				policy that allows AWS Private CA to write the CRL to your bucket.
-    /// 
-    /// NoteThe S3BucketName parameter must conform to the S3 					bucket naming rules.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[-a-zA-Z0-9._/]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3BucketName")]
-    pub s3_bucket_name: Option<String>,
-
-
-    /// 
-    /// Name inserted into the certificate CRL Distribution         Points extension that enables the use of an alias for the CRL       distribution point. Use this value if you don't want the name of your S3 bucket to be       public.
-    /// 
-    /// NoteThe content of a Canonical Name (CNAME) record must conform to RFC2396 restrictions on the         use of special characters in URIs. Additionally, the value of the CNAME must not         include a protocol prefix such as "http://" or "https://".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 253
-    ///
-    /// Pattern: ^[-a-zA-Z0-9;/?:@&=+$,%_.!~*()']*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomCname")]
-    pub custom_cname: Option<String>,
-
-
-    /// 
-    /// Determines whether the CRL will be publicly readable or privately held in the CRL       Amazon S3 bucket. If you choose PUBLIC_READ, the CRL will be accessible over the public       internet. If you choose BUCKET_OWNER_FULL_CONTROL, only the owner of the CRL S3 bucket       can access the CRL, and your PKI clients may need an alternative method of       access.
-    /// 
-    /// If no value is specified, the default is PUBLIC_READ.
-    /// 
-    /// Note: This default can cause CA creation to fail in some       circumstances. If you have have enabled the Block Public Access (BPA) feature in your S3       account, then you must specify the value of this parameter as         BUCKET_OWNER_FULL_CONTROL, and not doing so results in an error. If you       have disabled BPA in S3, then you can specify either         BUCKET_OWNER_FULL_CONTROL or PUBLIC_READ as the       value.
-    /// 
-    /// For more information, see Blocking public access to         the S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3ObjectAcl")]
-    pub s3_object_acl: Option<String>,
-
-
-    /// 
-    /// Validity period of the CRL in days.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 5000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExpirationInDays")]
-    pub expiration_in_days: Option<i64>,
-
-}
-
-
-
-
-/// Provides access information used by the authorityInfoAccess and 				subjectInfoAccess extensions described in RFC 5280.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct AccessDescription {
-
-
-    /// 
-    /// The location of AccessDescription information.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: GeneralName
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccessLocation")]
-    pub access_location: GeneralName,
-
-
-    /// 
-    /// The type and format of AccessDescription information.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: AccessMethod
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccessMethod")]
-    pub access_method: AccessMethod,
-
-}
-
-
-
-
-/// Defines one or more purposes for which the key contained in the certificate can be 			used. Default value for each option is false.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KeyUsage {
-
-
-    /// 
-    /// Key can be used for digital signing.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DigitalSignature")]
-    pub digital_signature: Option<bool>,
-
-
-    /// 
-    /// Key can be used for non-repudiation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NonRepudiation")]
-    pub non_repudiation: Option<bool>,
-
-
-    /// 
-    /// Key can be used to sign certificates.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyCertSign")]
-    pub key_cert_sign: Option<bool>,
-
-
-    /// 
-    /// Key can be used to encipher data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyEncipherment")]
-    pub key_encipherment: Option<bool>,
-
-
-    /// 
-    /// Key can be used in a key-agreement protocol.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyAgreement")]
-    pub key_agreement: Option<bool>,
-
-
-    /// 
-    /// Key can be used only to decipher data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DecipherOnly")]
-    pub decipher_only: Option<bool>,
-
-
-    /// 
-    /// Key can be used to decipher data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataEncipherment")]
-    pub data_encipherment: Option<bool>,
-
-
-    /// 
-    /// Key can be used only to encipher data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EncipherOnly")]
-    pub encipher_only: Option<bool>,
-
-
-    /// 
-    /// Key can be used to sign CRLs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CRLSign")]
-    pub crlsign: Option<bool>,
-
-}
-
-
-
-
-/// Defines the X.500 relative distinguished name (RDN).
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CustomAttribute {
-
-
-    /// 
-    /// 
-    /// 
-    /// Specifies the attribute value of relative distinguished name (RDN).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// Specifies the object identifier (OID) of the attribute type of the relative 			distinguished name (RDN).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ObjectIdentifier")]
-    pub object_identifier: String,
-
-}
-
-
-
-
 /// Describes an ASN.1 X.400 GeneralName as defined in RFC 5280. Only one of 			the following naming options should be provided. Providing more than one option results 			in an InvalidArgsException error.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GeneralName {
@@ -877,24 +606,6 @@ pub struct GeneralName {
     /// Update requires: Replacement
     #[serde(rename = "DirectoryName")]
     pub directory_name: Option<Subject>,
-
-
-    /// 
-    /// Represents GeneralName as an object identifier (OID).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RegisteredId")]
-    pub registered_id: Option<String>,
 
 
     /// 
@@ -914,6 +625,34 @@ pub struct GeneralName {
 
 
     /// 
+    /// Represents GeneralName as an EdiPartyName object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EdiPartyName
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EdiPartyName")]
+    pub edi_party_name: Option<EdiPartyName>,
+
+
+    /// 
+    /// Represents GeneralName as an IPv4 or IPv6 address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 39
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpAddress")]
+    pub ip_address: Option<String>,
+
+
+    /// 
     /// Represents GeneralName using an OtherName object.
     /// 
     /// Required: No
@@ -923,6 +662,24 @@ pub struct GeneralName {
     /// Update requires: Replacement
     #[serde(rename = "OtherName")]
     pub other_name: Option<OtherName>,
+
+
+    /// 
+    /// Represents GeneralName as an object identifier (OID).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RegisteredId")]
+    pub registered_id: Option<String>,
 
 
     /// 
@@ -956,21 +713,149 @@ pub struct GeneralName {
     #[serde(rename = "UniformResourceIdentifier")]
     pub uniform_resource_identifier: Option<String>,
 
+}
+
+
+
+
+/// Defines one or more purposes for which the key contained in the certificate can be 			used. Default value for each option is false.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KeyUsage {
+
 
     /// 
-    /// Represents GeneralName as an EdiPartyName object.
+    /// Key can be used to sign CRLs.
     /// 
     /// Required: No
     ///
-    /// Type: EdiPartyName
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EdiPartyName")]
-    pub edi_party_name: Option<EdiPartyName>,
+    #[serde(rename = "CRLSign")]
+    pub crlsign: Option<bool>,
 
 
     /// 
-    /// Represents GeneralName as an IPv4 or IPv6 address.
+    /// Key can be used to decipher data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataEncipherment")]
+    pub data_encipherment: Option<bool>,
+
+
+    /// 
+    /// Key can be used only to decipher data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DecipherOnly")]
+    pub decipher_only: Option<bool>,
+
+
+    /// 
+    /// Key can be used for digital signing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DigitalSignature")]
+    pub digital_signature: Option<bool>,
+
+
+    /// 
+    /// Key can be used only to encipher data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EncipherOnly")]
+    pub encipher_only: Option<bool>,
+
+
+    /// 
+    /// Key can be used in a key-agreement protocol.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyAgreement")]
+    pub key_agreement: Option<bool>,
+
+
+    /// 
+    /// Key can be used to sign certificates.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyCertSign")]
+    pub key_cert_sign: Option<bool>,
+
+
+    /// 
+    /// Key can be used to encipher data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyEncipherment")]
+    pub key_encipherment: Option<bool>,
+
+
+    /// 
+    /// Key can be used for non-repudiation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NonRepudiation")]
+    pub non_repudiation: Option<bool>,
+
+}
+
+
+
+
+/// Contains information to enable and configure Online Certificate Status Protocol (OCSP)       for validating certificate revocation status.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OcspConfiguration {
+
+
+    /// 
+    /// Flag enabling use of the Online Certificate Status Protocol (OCSP) for validating       certificate revocation status.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// By default, AWS Private CA injects an Amazon domain into certificates being       validated by the Online Certificate Status Protocol (OCSP). A customer can alternatively       use this object to define a CNAME specifying a customized OCSP domain.
+    /// 
+    /// NoteThe content of a Canonical Name (CNAME) record must conform to RFC2396 restrictions on the         use of special characters in URIs. Additionally, the value of the CNAME must not         include a protocol prefix such as "http://" or "https://".
     /// 
     /// Required: No
     ///
@@ -978,11 +863,89 @@ pub struct GeneralName {
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 39
+    /// Maximum: 253
+    ///
+    /// Pattern: ^[-a-zA-Z0-9;/?:@&=+$,%_.!~*()']*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OcspCustomCname")]
+    pub ocsp_custom_cname: Option<String>,
+
+}
+
+
+
+
+/// Defines a custom ASN.1 X.400 GeneralName using an object identifier (OID) 			and value. The OID must satisfy the regular expression shown below. For more 			information, see NIST's definition of Object Identifier 				(OID).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OtherName {
+
+
+    /// 
+    /// Specifies an OID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: ^([0-2])\.([0-9]|([0-3][0-9]))((\.([0-9]+)){0,126})$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "IpAddress")]
-    pub ip_address: Option<String>,
+    #[serde(rename = "TypeId")]
+    pub type_id: String,
+
+
+    /// 
+    /// Specifies an OID value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+
+
+/// Certificate revocation information used by the CreateCertificateAuthority and UpdateCertificateAuthority actions. Your private certificate authority (CA)       can configure Online Certificate Status Protocol (OCSP) support and/or maintain a       certificate revocation list (CRL). OCSP returns validation information about       certificates as requested by clients, and a CRL contains an updated list of certificates       revoked by your CA. For more information, see RevokeCertificate in the AWS Private CA API         Reference and Setting up a certificate         revocation method in the AWS Private CA User         Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RevocationConfiguration {
+
+
+    /// 
+    /// Configuration of the certificate revocation list (CRL), if any, maintained by your       private CA.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CrlConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CrlConfiguration")]
+    pub crl_configuration: Option<CrlConfiguration>,
+
+
+    /// 
+    /// Configuration of Online Certificate Status Protocol (OCSP) support, if any, maintained       by your private CA.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OcspConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OcspConfiguration")]
+    pub ocsp_configuration: Option<OcspConfiguration>,
 
 }
 
@@ -992,18 +955,6 @@ pub struct GeneralName {
 /// ASN1 subject for the certificate authority.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Subject {
-
-
-    /// 
-    /// Two-digit code that specifies the country in which the certificate subject       located.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Country")]
-    pub country: Option<String>,
 
 
     /// 
@@ -1019,75 +970,15 @@ pub struct Subject {
 
 
     /// 
-    /// Family name.
+    /// Two-digit code that specifies the country in which the certificate subject       located.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Surname")]
-    pub surname: Option<String>,
-
-
-    /// 
-    /// Legal name of the organization with which the certificate subject is       affiliated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Organization")]
-    pub organization: Option<String>,
-
-
-    /// 
-    /// Typically a qualifier appended to the name of an individual. Examples include Jr. for       junior, Sr. for senior, and III for third.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GenerationQualifier")]
-    pub generation_qualifier: Option<String>,
-
-
-    /// 
-    /// Concatenation that typically contains the first letter of the GivenName, the first       letter of the middle name if one exists, and the first letter of the SurName.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Initials")]
-    pub initials: Option<String>,
-
-
-    /// 
-    /// A subdivision or unit of the organization (such as sales or finance) with which the       certificate subject is affiliated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OrganizationalUnit")]
-    pub organizational_unit: Option<String>,
-
-
-    /// 
-    /// State in which the subject of the certificate is located.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "State")]
-    pub state: Option<String>,
+    #[serde(rename = "Country")]
+    pub country: Option<String>,
 
 
     /// 
@@ -1109,15 +1000,27 @@ pub struct Subject {
 
 
     /// 
-    /// A personal title such as Mr.
+    /// Disambiguating information for the certificate subject.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Title")]
-    pub title: Option<String>,
+    #[serde(rename = "DistinguishedNameQualifier")]
+    pub distinguished_name_qualifier: Option<String>,
+
+
+    /// 
+    /// Typically a qualifier appended to the name of an individual. Examples include Jr. for       junior, Sr. for senior, and III for third.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GenerationQualifier")]
+    pub generation_qualifier: Option<String>,
 
 
     /// 
@@ -1133,6 +1036,18 @@ pub struct Subject {
 
 
     /// 
+    /// Concatenation that typically contains the first letter of the GivenName, the first       letter of the middle name if one exists, and the first letter of the SurName.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Initials")]
+    pub initials: Option<String>,
+
+
+    /// 
     /// The locality (such as a city or town) in which the certificate subject is       located.
     /// 
     /// Required: No
@@ -1145,15 +1060,27 @@ pub struct Subject {
 
 
     /// 
-    /// Disambiguating information for the certificate subject.
+    /// Legal name of the organization with which the certificate subject is       affiliated.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DistinguishedNameQualifier")]
-    pub distinguished_name_qualifier: Option<String>,
+    #[serde(rename = "Organization")]
+    pub organization: Option<String>,
+
+
+    /// 
+    /// A subdivision or unit of the organization (such as sales or finance) with which the       certificate subject is affiliated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OrganizationalUnit")]
+    pub organizational_unit: Option<String>,
 
 
     /// 
@@ -1178,6 +1105,79 @@ pub struct Subject {
     /// Update requires: Replacement
     #[serde(rename = "SerialNumber")]
     pub serial_number: Option<String>,
+
+
+    /// 
+    /// State in which the subject of the certificate is located.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "State")]
+    pub state: Option<String>,
+
+
+    /// 
+    /// Family name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Surname")]
+    pub surname: Option<String>,
+
+
+    /// 
+    /// A personal title such as Mr.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Title")]
+    pub title: Option<String>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

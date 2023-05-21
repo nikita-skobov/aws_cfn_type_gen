@@ -6,18 +6,6 @@ pub struct CfnVpcAttachment {
 
 
     /// 
-    /// Options for creating the VPC attachment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Options")]
-    pub options: Option<VpcOptions>,
-
-
-    /// 
     /// The core network ID.
     /// 
     /// Required: Yes
@@ -30,15 +18,27 @@ pub struct CfnVpcAttachment {
 
 
     /// 
-    /// The ARN of the VPC attachment.
+    /// Options for creating the VPC attachment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Options")]
+    pub options: Option<VpcOptions>,
+
+
+    /// 
+    /// The subnet ARNs.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcArn")]
-    pub vpc_arn: String,
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetArns")]
+    pub subnet_arns: Vec<String>,
 
 
     /// 
@@ -54,15 +54,15 @@ pub struct CfnVpcAttachment {
 
 
     /// 
-    /// The subnet ARNs.
+    /// The ARN of the VPC attachment.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetArns")]
-    pub subnet_arns: Vec<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "VpcArn")]
+    pub vpc_arn: String,
 
 }
 
@@ -82,18 +82,6 @@ impl cfn_resources::CfnResource for CfnVpcAttachment {
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProposedSegmentChange {
-
-
-    /// 
-    /// The list of key-value tags that changed for the segment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -124,6 +112,18 @@ pub struct ProposedSegmentChange {
     /// Update requires: No interruption
     #[serde(rename = "SegmentName")]
     pub segment_name: Option<String>,
+
+
+    /// 
+    /// The list of key-value tags that changed for the segment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -173,18 +173,6 @@ pub struct VpcOptions {
 
 
     /// 
-    /// Indicates whether IPv6 is supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6Support")]
-    pub ipv6_support: Option<bool>,
-
-
-    /// 
     /// Indicates whether appliance mode is supported. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. The default value is false.
     /// 
     /// Required: No
@@ -194,6 +182,18 @@ pub struct VpcOptions {
     /// Update requires: No interruption
     #[serde(rename = "ApplianceModeSupport")]
     pub appliance_mode_support: Option<bool>,
+
+
+    /// 
+    /// Indicates whether IPv6 is supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ipv6Support")]
+    pub ipv6_support: Option<bool>,
 
 }
 

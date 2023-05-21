@@ -10,20 +10,6 @@ pub struct CfnCustomDataIdentifier {
 
 
     /// 
-    /// A custom name for the custom data identifier. The name can contain 1-128       characters.
-    /// 
-    /// Avoid including sensitive data in the name of a custom data identifier. Users of the       account might be able to see the name, depending on the actions that they're allowed to       perform in Amazon Macie.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
     /// A custom description of the custom data identifier. The description can contain 1-512       characters.
     /// 
     /// Avoid including sensitive data in the description. Users of the account might be able       to see the description, depending on the actions that they're allowed to perform in         Amazon Macie.
@@ -35,6 +21,20 @@ pub struct CfnCustomDataIdentifier {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// An array of character sequences (ignore words) to exclude from       the results. If text matches the regular expression (Regex) but it contains       a string in this array, Amazon Macie ignores the text and doesn't include it       in the results.
+    /// 
+    /// The array can contain 1-10 ignore words. Each ignore word can contain 4-90 UTF-8       characters. Ignore words are case sensitive.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IgnoreWords")]
+    pub ignore_words: Option<Vec<String>>,
 
 
     /// 
@@ -66,17 +66,17 @@ pub struct CfnCustomDataIdentifier {
 
 
     /// 
-    /// An array of character sequences (ignore words) to exclude from       the results. If text matches the regular expression (Regex) but it contains       a string in this array, Amazon Macie ignores the text and doesn't include it       in the results.
+    /// A custom name for the custom data identifier. The name can contain 1-128       characters.
     /// 
-    /// The array can contain 1-10 ignore words. Each ignore word can contain 4-90 UTF-8       characters. Ignore words are case sensitive.
+    /// Avoid including sensitive data in the name of a custom data identifier. Users of the       account might be able to see the name, depending on the actions that they're allowed to       perform in Amazon Macie.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "IgnoreWords")]
-    pub ignore_words: Option<Vec<String>>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 

@@ -73,54 +73,21 @@ impl cfn_resources::CfnResource for CfnStep {
 }
 
 
-/// KeyValue is a subproperty of the HadoopJarStepConfig property type. KeyValue is used to pass parameters to a step.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KeyValue {
-
-
-    /// 
-    /// The unique identifier of a key-value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10280
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
-
-
-    /// 
-    /// The value part of the identified key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10280
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-}
-
-
-
-
 /// A job flow step consisting of a JAR file whose main function will be executed. The main     function submits a job for Hadoop to execute and waits for the job to finish or     fail.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HadoopJarStepConfig {
+
+
+    /// 
+    /// A list of command line arguments passed to the JAR file's main function when     executed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Args")]
+    pub args: Option<Vec<String>>,
 
 
     /// 
@@ -160,18 +127,6 @@ pub struct HadoopJarStepConfig {
 
 
     /// 
-    /// A list of command line arguments passed to the JAR file's main function when     executed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Args")]
-    pub args: Option<Vec<String>>,
-
-
-    /// 
     /// A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
     /// 
     /// Required: No
@@ -181,6 +136,51 @@ pub struct HadoopJarStepConfig {
     /// Update requires: Replacement
     #[serde(rename = "StepProperties")]
     pub step_properties: Option<Vec<KeyValue>>,
+
+}
+
+
+
+
+/// KeyValue is a subproperty of the HadoopJarStepConfig property type. KeyValue is used to pass parameters to a step.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KeyValue {
+
+
+    /// 
+    /// The unique identifier of a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
+
+
+    /// 
+    /// The value part of the identified key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }
 

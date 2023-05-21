@@ -6,6 +6,18 @@ pub struct CfnSchema {
 
 
     /// 
+    /// Specify the VersionNumber or the IsLatest for setting the checkpoint for the schema. This is only required for updating a checkpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SchemaVersion
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CheckpointVersion")]
+    pub checkpoint_version: Option<SchemaVersion>,
+
+
+    /// 
     /// The compatibility mode of the schema.
     /// 
     /// Required: Yes
@@ -18,42 +30,6 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The registry where a schema is stored.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Registry
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Registry")]
-    pub registry: Option<Registry>,
-
-
-    /// 
-    /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The schema definition using the DataFormat setting for SchemaName.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaDefinition")]
-    pub schema_definition: String,
-
-
-    /// 
     /// The data format of the schema definition. Currently only AVRO is supported.
     /// 
     /// Required: Yes
@@ -63,6 +39,18 @@ pub struct CfnSchema {
     /// Update requires: Replacement
     #[serde(rename = "DataFormat")]
     pub data_format: String,
+
+
+    /// 
+    /// A description of the schema if specified when created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -84,27 +72,39 @@ pub struct CfnSchema {
 
 
     /// 
-    /// Specify the VersionNumber or the IsLatest for setting the checkpoint for the schema. This is only required for updating a checkpoint.
+    /// The registry where a schema is stored.
     /// 
     /// Required: No
     ///
-    /// Type: SchemaVersion
+    /// Type: Registry
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "CheckpointVersion")]
-    pub checkpoint_version: Option<SchemaVersion>,
+    /// Update requires: Replacement
+    #[serde(rename = "Registry")]
+    pub registry: Option<Registry>,
 
 
     /// 
-    /// A description of the schema if specified when created.
+    /// The schema definition using the DataFormat setting for SchemaName.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaDefinition")]
+    pub schema_definition: String,
+
+
+    /// 
+    /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -121,21 +121,42 @@ impl cfn_resources::CfnResource for CfnSchema {
 }
 
 
-/// Specifies the version of a schema.
+/// Specifies a registry in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SchemaVersion {
+pub struct Registry {
 
 
     /// 
-    /// The version number of the schema.
+    /// The Amazon Resource Name (ARN) of the registry.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "VersionNumber")]
-    pub version_number: Option<i64>,
+    /// Update requires: Replacement
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
+
+
+    /// 
+    /// The name of the registry.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+
+
+/// Specifies the version of a schema.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SchemaVersion {
 
 
     /// 
@@ -148,6 +169,18 @@ pub struct SchemaVersion {
     /// Update requires: No interruption
     #[serde(rename = "IsLatest")]
     pub is_latest: Option<bool>,
+
+
+    /// 
+    /// The version number of the schema.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VersionNumber")]
+    pub version_number: Option<i64>,
 
 }
 
@@ -185,39 +218,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Specifies a registry in the AWS Glue Schema Registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Registry {
-
-
-    /// 
-    /// The name of the registry.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the registry.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
 
 }
 

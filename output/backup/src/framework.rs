@@ -8,6 +8,18 @@ pub struct CfnFramework {
 
 
     /// 
+    /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of FrameworkControl
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FrameworkControls")]
+    pub framework_controls: Vec<FrameworkControl>,
+
+
+    /// 
     /// An optional description of the framework with a maximum 1,024 characters.
     /// 
     /// Required: No
@@ -23,18 +35,6 @@ pub struct CfnFramework {
     /// Update requires: No interruption
     #[serde(rename = "FrameworkDescription")]
     pub framework_description: Option<String>,
-
-
-    /// 
-    /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of FrameworkControl
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FrameworkControls")]
-    pub framework_controls: Vec<FrameworkControl>,
 
 
     /// 
@@ -81,66 +81,9 @@ impl cfn_resources::CfnResource for CfnFramework {
 }
 
 
-/// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct FrameworkControl {
-
-
-    /// 
-    /// The name of a control. This name is between 1 and 256 characters.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ControlName")]
-    pub control_name: String,
-
-
-    /// 
-    /// A list of ParameterName and ParameterValue pairs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ControlInputParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ControlInputParameters")]
-    pub control_input_parameters: Option<Vec<ControlInputParameter>>,
-
-
-    /// 
-    /// The scope of a control. The control scope defines what the control will evaluate. Three     examples of control scopes are: a specific backup plan, all backup plans with a specific     tag, or all backup plans. For more information, see ControlScope.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ControlScope
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ControlScope")]
-    pub control_scope: Option<ControlScope>,
-
-}
-
-
-
-
 /// A list of parameters for a control. A control can have zero, one, or more than one     parameter. An example of a control with two parameters is: "backup plan frequency is at     least daily and the retention period is at least 1 year". The     first parameter is daily. The second parameter is 1 year.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ControlInputParameter {
-
-
-    /// 
-    /// The value of parameter, for example, hourly.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterValue")]
-    pub parameter_value: String,
 
 
     /// 
@@ -154,6 +97,18 @@ pub struct ControlInputParameter {
     #[serde(rename = "ParameterName")]
     pub parameter_name: String,
 
+
+    /// 
+    /// The value of parameter, for example, hourly.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ParameterValue")]
+    pub parameter_value: String,
+
 }
 
 
@@ -162,6 +117,20 @@ pub struct ControlInputParameter {
 /// A framework consists of one or more controls. Each control has its own control scope.     The control scope can include one or more resource types, a combination of a tag key and     value, or a combination of one resource type and one resource ID. If no scope is specified,     evaluations for the rule are triggered when any resource in your recording group changes in     configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ControlScope {
+
+
+    /// 
+    /// The ID of the only AWS resource that you want your control scope to     contain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComplianceResourceIds")]
+    pub compliance_resource_ids: Option<Vec<String>>,
 
 
     /// 
@@ -187,19 +156,50 @@ pub struct ControlScope {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+}
+
+
+
+
+/// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FrameworkControl {
+
 
     /// 
-    /// The ID of the only AWS resource that you want your control scope to     contain.
+    /// A list of ParameterName and ParameterValue pairs.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
+    /// Type: List of ControlInputParameter
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ComplianceResourceIds")]
-    pub compliance_resource_ids: Option<Vec<String>>,
+    #[serde(rename = "ControlInputParameters")]
+    pub control_input_parameters: Option<Vec<ControlInputParameter>>,
+
+
+    /// 
+    /// The name of a control. This name is between 1 and 256 characters.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ControlName")]
+    pub control_name: String,
+
+
+    /// 
+    /// The scope of a control. The control scope defines what the control will evaluate. Three     examples of control scopes are: a specific backup plan, all backup plans with a specific     tag, or all backup plans. For more information, see ControlScope.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ControlScope
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ControlScope")]
+    pub control_scope: Option<ControlScope>,
 
 }
 
@@ -218,17 +218,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -237,6 +226,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

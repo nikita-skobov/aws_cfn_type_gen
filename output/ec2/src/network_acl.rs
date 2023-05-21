@@ -6,18 +6,6 @@ pub struct CfnNetworkAcl {
 
 
     /// 
-    /// The ID of the VPC for the network ACL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
-
-
-    /// 
     /// The tags for the network ACL.
     /// 
     /// Required: No
@@ -27,6 +15,18 @@ pub struct CfnNetworkAcl {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the VPC for the network ACL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
 
 }
 

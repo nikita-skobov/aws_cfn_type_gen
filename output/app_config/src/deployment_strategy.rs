@@ -26,6 +26,22 @@ pub struct CfnDeploymentStrategy {
 
 
     /// 
+    /// A description of the deployment strategy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// Specifies the amount of time AWS AppConfig monitors for Amazon CloudWatch alarms after the     configuration has been deployed to 100% of its targets, before considering the deployment     to be complete. If an alarm is triggered during this time, AWS AppConfig rolls back     the deployment. You must configure permissions for AWS AppConfig to roll back based     on CloudWatch alarms. For more information, see Configuring permissions for rollback based on Amazon CloudWatch alarms in the               AWS AppConfig User Guide.
     /// 
     /// Required: No
@@ -42,33 +58,15 @@ pub struct CfnDeploymentStrategy {
 
 
     /// 
-    /// Save the deployment strategy to a Systems Manager (SSM) document.
+    /// The percentage of targets to receive a deployed configuration during each     interval.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | SSM_DOCUMENT
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ReplicateTo")]
-    pub replicate_to: DeploymentStrategyReplicateToEnum,
-
-
-    /// 
-    /// A description of the deployment strategy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "GrowthFactor")]
+    pub growth_factor: f64,
 
 
     /// 
@@ -98,18 +96,6 @@ pub struct CfnDeploymentStrategy {
 
 
     /// 
-    /// Assigns metadata to an AWS AppConfig resource. Tags help organize and categorize     your AWS AppConfig resources. Each tag consists of a key and an optional value, both     of which you define. You can specify a maximum of 50 tags for a resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tags
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tags>>,
-
-
-    /// 
     /// A name for the deployment strategy.
     /// 
     /// Required: Yes
@@ -126,15 +112,29 @@ pub struct CfnDeploymentStrategy {
 
 
     /// 
-    /// The percentage of targets to receive a deployed configuration during each     interval.
+    /// Save the deployment strategy to a Systems Manager (SSM) document.
     /// 
     /// Required: Yes
     ///
-    /// Type: Double
+    /// Type: String
+    ///
+    /// Allowed values: NONE | SSM_DOCUMENT
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ReplicateTo")]
+    pub replicate_to: DeploymentStrategyReplicateToEnum,
+
+
+    /// 
+    /// Assigns metadata to an AWS AppConfig resource. Tags help organize and categorize     your AWS AppConfig resources. Each tag consists of a key and an optional value, both     of which you define. You can specify a maximum of 50 tags for a resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tags
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GrowthFactor")]
-    pub growth_factor: f64,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tags>>,
 
 }
 

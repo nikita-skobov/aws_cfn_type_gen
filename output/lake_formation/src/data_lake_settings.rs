@@ -6,29 +6,33 @@ pub struct CfnDataLakeSettings {
 
 
     /// 
-    /// A key-value map that provides an additional configuration on your data lake. CrossAccountVersion is the key you can configure in the Parameters field. Accepted values for the CrossAccountVersion key are 1, 2, and 3.
+    /// A list of AWS Lake Formation principals.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: Admins
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
+    #[serde(rename = "Admins")]
+    pub admins: Option<Admins>,
 
 
     /// 
-    /// An array of UTF-8 strings.
+    /// Whether to allow Amazon EMR clusters or other third-party query engines to access data managed by Lake Formation.
     /// 
-    /// A list of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs). The user ARNs can be logged in the resource owner's CloudTrail log. 	     	    You may want to specify this property when you are in a high-trust boundary, such as the same team or company.
+    /// If set to true, you allow Amazon EMR clusters or other third-party engines to access data in Amazon S3 locations that are registered with Lake Formation.
+    /// 
+    /// If false or null, no third-party query engines will be able to access data in Amazon S3 locations that are registered with Lake Formation.
+    /// 
+    /// For more information, see External data filtering setting.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TrustedResourceOwners")]
-    pub trusted_resource_owners: Option<Vec<String>>,
+    #[serde(rename = "AllowExternalDataFiltering")]
+    pub allow_external_data_filtering: Option<bool>,
 
 
     /// 
@@ -62,48 +66,6 @@ pub struct CfnDataLakeSettings {
 
 
     /// 
-    /// A list of AWS Lake Formation principals.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Admins
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Admins")]
-    pub admins: Option<Admins>,
-
-
-    /// 
-    /// Whether to allow Amazon EMR clusters or other third-party query engines to access data managed by Lake Formation.
-    /// 
-    /// If set to true, you allow Amazon EMR clusters or other third-party engines to access data in Amazon S3 locations that are registered with Lake Formation.
-    /// 
-    /// If false or null, no third-party query engines will be able to access data in Amazon S3 locations that are registered with Lake Formation.
-    /// 
-    /// For more information, see External data filtering setting.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowExternalDataFiltering")]
-    pub allow_external_data_filtering: Option<bool>,
-
-
-    /// 
-    /// A list of the account IDs of AWS accounts with Amazon EMR clusters or third-party engines that are allwed to perform data filtering.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ExternalDataFilteringAllowList
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExternalDataFilteringAllowList")]
-    pub external_data_filtering_allow_list: Option<ExternalDataFilteringAllowList>,
-
-
-    /// 
     /// Specifies whether access control on a newly created table is managed by Lake Formation permissions or exclusively by IAM permissions.
     /// 
     /// A null value indicates that the access is controlled by Lake Formation permissions.       ALL permissions assigned to IAM_ALLOWED_PRINCIPALS group     indicate that the user's IAM permissions determine the access to the     table. This is referred to as the setting "Use only IAM access control," and is to support     the backward compatibility with the AWS Glue permission model implemented by IAM     permissions.
@@ -119,6 +81,44 @@ pub struct CfnDataLakeSettings {
     /// Update requires: No interruption
     #[serde(rename = "CreateTableDefaultPermissions")]
     pub create_table_default_permissions: Option<CreateTableDefaultPermissions>,
+
+
+    /// 
+    /// A list of the account IDs of AWS accounts with Amazon EMR clusters or third-party engines that are allwed to perform data filtering.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ExternalDataFilteringAllowList
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExternalDataFilteringAllowList")]
+    pub external_data_filtering_allow_list: Option<ExternalDataFilteringAllowList>,
+
+
+    /// 
+    /// A key-value map that provides an additional configuration on your data lake. CrossAccountVersion is the key you can configure in the Parameters field. Accepted values for the CrossAccountVersion key are 1, 2, and 3.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
+
+
+    /// 
+    /// An array of UTF-8 strings.
+    /// 
+    /// A list of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs). The user ARNs can be logged in the resource owner's CloudTrail log. 	     	    You may want to specify this property when you are in a high-trust boundary, such as the same team or company.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TrustedResourceOwners")]
+    pub trusted_resource_owners: Option<Vec<String>>,
 
 }
 
@@ -138,39 +138,6 @@ impl cfn_resources::CfnResource for CfnDataLakeSettings {
 /// A list of AWS Lake Formation principals.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Admins {
-
-}
-
-
-
-
-/// Permissions granted to a principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PrincipalPermissions {
-
-
-    /// 
-    /// The principal who is granted permissions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DataLakePrincipal
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Principal")]
-    pub principal: Option<DataLakePrincipal>,
-
-
-    /// 
-    /// The permissions that are granted to the principal.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Permissions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Permissions")]
-    pub permissions: Option<Permissions>,
 
 }
 
@@ -240,6 +207,39 @@ pub struct ExternalDataFilteringAllowList {
 /// Permissions granted to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Permissions {
+
+}
+
+
+
+
+/// Permissions granted to a principal.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PrincipalPermissions {
+
+
+    /// 
+    /// The permissions that are granted to the principal.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Permissions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Permissions")]
+    pub permissions: Option<Permissions>,
+
+
+    /// 
+    /// The principal who is granted permissions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DataLakePrincipal
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Principal")]
+    pub principal: Option<DataLakePrincipal>,
 
 }
 

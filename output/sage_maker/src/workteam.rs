@@ -26,35 +26,6 @@ pub struct CfnWorkteam {
 
 
     /// 
-    /// The name of the work team.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WorkteamName")]
-    pub workteam_name: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WorkforceName")]
-    pub workforce_name: Option<String>,
-
-
-    /// 
     /// A list of MemberDefinition objects that contains objects that identify       the workers that make up the work team.
     /// 
     /// Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP).       For private workforces created using Amazon Cognito use       CognitoMemberDefinition. For workforces created using your own OIDC identity       provider (IdP) use OidcMemberDefinition.
@@ -71,6 +42,18 @@ pub struct CfnWorkteam {
 
 
     /// 
+    /// Configures SNS notifications of available or expiring work items for work       teams.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NotificationConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationConfiguration")]
+    pub notification_configuration: Option<NotificationConfiguration>,
+
+
+    /// 
     /// An array of key-value pairs.
     /// 
     /// Required: No
@@ -82,16 +65,33 @@ pub struct CfnWorkteam {
     pub tags: Option<Vec<Tag>>,
 
 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WorkforceName")]
+    pub workforce_name: Option<String>,
+
+
     /// 
-    /// Configures SNS notifications of available or expiring work items for work       teams.
+    /// The name of the work team.
     /// 
     /// Required: No
     ///
-    /// Type: NotificationConfiguration
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationConfiguration")]
-    pub notification_configuration: Option<NotificationConfiguration>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WorkteamName")]
+    pub workteam_name: Option<String>,
 
 }
 
@@ -108,80 +108,45 @@ impl cfn_resources::CfnResource for CfnWorkteam {
 }
 
 
-/// A list of user groups that exist in your OIDC Identity Provider (IdP).       One to ten groups can be used to create a single private work team.       When you add a user group to the list of Groups, you can add that user group to one or more       private work teams. If you add a user group to a private work team, all workers in that user group       are added to the work team.
+/// Identifies a Amazon Cognito user group. A user group can be used in on or more work       teams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OidcMemberDefinition {
+pub struct CognitoMemberDefinition {
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// An identifier for an application client. You must create the app client ID using       Amazon Cognito.
+    /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OidcGroups")]
-    pub oidc_groups: Vec<String>,
-
-}
-
-
-
-
-/// Configures Amazon SNS notifications of available or expiring work items for work       teams.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NotificationConfiguration {
+    #[serde(rename = "CognitoClientId")]
+    pub cognito_client_id: String,
 
 
     /// 
-    /// The ARN for the Amazon SNS topic to which notifications should be published.
+    /// An identifier for a user group.
     /// 
     /// Required: Yes
     ///
     /// Type: String
-    ///
-    /// Pattern: arn:aws[a-z\-]*:sns:[a-z0-9\-]*:[0-9]{12}:[a-zA-Z0-9_.-]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotificationTopicArn")]
-    pub notification_topic_arn: String,
-
-}
-
-
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+    #[serde(rename = "CognitoUserGroup")]
+    pub cognito_user_group: String,
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// An identifier for a user pool. The user pool must be in the same region as the service       that you are calling.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CognitoUserPool")]
+    pub cognito_user_pool: String,
 
 }
 
@@ -221,45 +186,80 @@ pub struct MemberDefinition {
 
 
 
-/// Identifies a Amazon Cognito user group. A user group can be used in on or more work       teams.
+/// Configures Amazon SNS notifications of available or expiring work items for work       teams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CognitoMemberDefinition {
+pub struct NotificationConfiguration {
 
 
     /// 
-    /// An identifier for an application client. You must create the app client ID using       Amazon Cognito.
+    /// The ARN for the Amazon SNS topic to which notifications should be published.
     /// 
     /// Required: Yes
     ///
     /// Type: String
+    ///
+    /// Pattern: arn:aws[a-z\-]*:sns:[a-z0-9\-]*:[0-9]{12}:[a-zA-Z0-9_.-]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CognitoClientId")]
-    pub cognito_client_id: String,
+    #[serde(rename = "NotificationTopicArn")]
+    pub notification_topic_arn: String,
+
+}
 
 
-    /// 
-    /// An identifier for a user pool. The user pool must be in the same region as the service       that you are calling.
-    /// 
+
+
+/// A list of user groups that exist in your OIDC Identity Provider (IdP).       One to ten groups can be used to create a single private work team.       When you add a user group to the list of Groups, you can add that user group to one or more       private work teams. If you add a user group to a private work team, all workers in that user group       are added to the work team.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OidcMemberDefinition {
+
+
+    /// Property description not available.
+    ///
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CognitoUserPool")]
-    pub cognito_user_pool: String,
-
-
-    /// 
-    /// An identifier for a user group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CognitoUserGroup")]
-    pub cognito_user_group: String,
+    #[serde(rename = "OidcGroups")]
+    pub oidc_groups: Vec<String>,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

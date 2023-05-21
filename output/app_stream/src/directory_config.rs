@@ -30,18 +30,6 @@ pub struct CfnDirectoryConfig {
 
 
     /// 
-    /// The credentials for the service account used by the streaming instance to connect to    the directory. Do not use this parameter directly. Use ServiceAccountCredentials as an input parameter with noEcho as shown in     the Parameters. For best practices information, see Do Not Embed Credentials in Your Templates.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ServiceAccountCredentials
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceAccountCredentials")]
-    pub service_account_credentials: ServiceAccountCredentials,
-
-
-    /// 
     /// The distinguished names of the organizational units for computer accounts.
     /// 
     /// Required: Yes
@@ -51,6 +39,18 @@ pub struct CfnDirectoryConfig {
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitDistinguishedNames")]
     pub organizational_unit_distinguished_names: Vec<String>,
+
+
+    /// 
+    /// The credentials for the service account used by the streaming instance to connect to    the directory. Do not use this parameter directly. Use ServiceAccountCredentials as an input parameter with noEcho as shown in     the Parameters. For best practices information, see Do Not Embed Credentials in Your Templates.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ServiceAccountCredentials
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceAccountCredentials")]
+    pub service_account_credentials: ServiceAccountCredentials,
 
 }
 
@@ -65,45 +65,6 @@ impl cfn_resources::CfnResource for CfnDirectoryConfig {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// The credentials for the service account used by the streaming instance to connect to the directory.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ServiceAccountCredentials {
-
-
-    /// 
-    /// The password for the account.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 127
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccountPassword")]
-    pub account_password: String,
-
-
-    /// 
-    /// The user name of the account. This account must have the following privileges: create computer objects,       join computers to the domain, and change/reset the password on descendant computer objects for the       organizational units specified.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccountName")]
-    pub account_name: String,
-
-}
-
-
 
 
 /// The certificate-based authentication properties used to authenticate SAML 2.0 Identity       Provider (IdP) user identities to Active Directory domain-joined streaming instances.
@@ -163,4 +124,43 @@ impl Default for CertificateBasedAuthPropertiesStatusEnum {
         CertificateBasedAuthPropertiesStatusEnum::Disabled
     }
 }
+
+
+
+/// The credentials for the service account used by the streaming instance to connect to the directory.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ServiceAccountCredentials {
+
+
+    /// 
+    /// The user name of the account. This account must have the following privileges: create computer objects,       join computers to the domain, and change/reset the password on descendant computer objects for the       organizational units specified.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccountName")]
+    pub account_name: String,
+
+
+    /// 
+    /// The password for the account.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 127
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccountPassword")]
+    pub account_password: String,
+
+}
+
 

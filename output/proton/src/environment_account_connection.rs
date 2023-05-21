@@ -6,38 +6,6 @@ pub struct CfnEnvironmentAccountConnection {
 
 
     /// 
-    /// The name of the environment that's associated with the environment account connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[0-9A-Za-z]+[0-9A-Za-z_\-]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnvironmentName")]
-    pub environment_name: Option<String>,
-
-
-    /// 
-    /// The ID of the management account that's connected to the environment account connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^\d{12}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManagementAccountId")]
-    pub management_account_id: Option<String>,
-
-
-    /// 
     /// The Amazon Resource Name (ARN) of an IAM service role in the environment account. AWS Proton uses this role to provision infrastructure resources    using CodeBuild-based provisioning in the associated environment account.
     /// 
     /// Required: No
@@ -92,19 +60,35 @@ pub struct CfnEnvironmentAccountConnection {
 
 
     /// 
-    /// An optional list of metadata items that you can associate with the AWS Proton environment account connection. A tag is a key-value pair.
-    /// 
-    /// For more information, see AWS Proton resources and tagging in the     AWS Proton User Guide.
+    /// The name of the environment that's associated with the environment account connection.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[0-9A-Za-z]+[0-9A-Za-z_\-]*$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "EnvironmentName")]
+    pub environment_name: Option<String>,
+
+
+    /// 
+    /// The ID of the management account that's connected to the environment account connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^\d{12}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManagementAccountId")]
+    pub management_account_id: Option<String>,
 
 
     /// 
@@ -123,6 +107,22 @@ pub struct CfnEnvironmentAccountConnection {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
+
+
+    /// 
+    /// An optional list of metadata items that you can associate with the AWS Proton environment account connection. A tag is a key-value pair.
+    /// 
+    /// For more information, see AWS Proton resources and tagging in the     AWS Proton User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -151,17 +151,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -170,6 +159,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

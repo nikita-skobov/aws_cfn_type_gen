@@ -6,18 +6,6 @@ pub struct CfnClassifier {
 
 
     /// 
-    /// A classifier for JSON content.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: JsonClassifier
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JsonClassifier")]
-    pub json_classifier: Option<JsonClassifier>,
-
-
-    /// 
     /// A classifier for comma-separated values (CSV).
     /// 
     /// Required: Conditional
@@ -30,18 +18,6 @@ pub struct CfnClassifier {
 
 
     /// 
-    /// A classifier for XML content.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: XMLClassifier
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "XMLClassifier")]
-    pub xmlclassifier: Option<XMLClassifier>,
-
-
-    /// 
     /// A classifier that uses grok.
     /// 
     /// Required: Conditional
@@ -51,6 +27,30 @@ pub struct CfnClassifier {
     /// Update requires: No interruption
     #[serde(rename = "GrokClassifier")]
     pub grok_classifier: Option<GrokClassifier>,
+
+
+    /// 
+    /// A classifier for JSON content.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: JsonClassifier
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JsonClassifier")]
+    pub json_classifier: Option<JsonClassifier>,
+
+
+    /// 
+    /// A classifier for XML content.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: XMLClassifier
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "XMLClassifier")]
+    pub xmlclassifier: Option<XMLClassifier>,
 
 }
 
@@ -70,6 +70,18 @@ impl cfn_resources::CfnResource for CfnClassifier {
 /// A classifier for custom CSV content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CsvClassifier {
+
+
+    /// 
+    /// Enables the processing of files that contain only one column.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowSingleColumn")]
+    pub allow_single_column: Option<bool>,
 
 
     /// 
@@ -93,7 +105,7 @@ pub struct CsvClassifier {
 
 
     /// 
-    /// A custom symbol to denote what combines content into a single column value. It must be    different from the column delimiter.
+    /// A custom symbol to denote what separates each column entry in the row.
     /// 
     /// Required: No
     ///
@@ -106,8 +118,8 @@ pub struct CsvClassifier {
     /// Pattern: [^\r\n]
     ///
     /// Update requires: No interruption
-    #[serde(rename = "QuoteSymbol")]
-    pub quote_symbol: Option<String>,
+    #[serde(rename = "Delimiter")]
+    pub delimiter: Option<String>,
 
 
     /// 
@@ -123,15 +135,15 @@ pub struct CsvClassifier {
 
 
     /// 
-    /// Enables the processing of files that contain only one column.
+    /// A list of strings representing column names.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllowSingleColumn")]
-    pub allow_single_column: Option<bool>,
+    #[serde(rename = "Header")]
+    pub header: Option<Vec<String>>,
 
 
     /// 
@@ -153,19 +165,7 @@ pub struct CsvClassifier {
 
 
     /// 
-    /// A list of strings representing column names.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Header")]
-    pub header: Option<Vec<String>>,
-
-
-    /// 
-    /// A custom symbol to denote what separates each column entry in the row.
+    /// A custom symbol to denote what combines content into a single column value. It must be    different from the column delimiter.
     /// 
     /// Required: No
     ///
@@ -178,8 +178,8 @@ pub struct CsvClassifier {
     /// Pattern: [^\r\n]
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Delimiter")]
-    pub delimiter: Option<String>,
+    #[serde(rename = "QuoteSymbol")]
+    pub quote_symbol: Option<String>,
 
 }
 
@@ -212,6 +212,18 @@ impl Default for CsvClassifierContainsHeaderEnum {
 /// A classifier that uses grok patterns.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GrokClassifier {
+
+
+    /// 
+    /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, and    so on.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Classification")]
+    pub classification: String,
 
 
     /// 
@@ -251,15 +263,42 @@ pub struct GrokClassifier {
 
 
     /// 
-    /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, and    so on.
+    /// The name of the classifier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+
+
+/// A classifier for JSON content.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct JsonClassifier {
+
+
+    /// 
+    /// A JsonPath string defining the JSON data for the classifier to classify.       AWS Glue supports a subset of JsonPath, as described in Writing JsonPath         Custom Classifiers.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Classification")]
-    pub classification: String,
+    #[serde(rename = "JsonPath")]
+    pub json_path: String,
 
 
     /// 
@@ -290,36 +329,6 @@ pub struct XMLClassifier {
 
 
     /// 
-    /// The XML tag designating the element that contains each record in an XML document being    parsed. This can't identify a self-closing element (closed by />). An empty    row element that contains only attributes can be parsed as long as it ends with a closing tag    (for example, <row item_a="A" item_b="B"></row> is okay, but     <row item_a="A" item_b="B" /> is not).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RowTag")]
-    pub row_tag: String,
-
-
-    /// 
-    /// The name of the classifier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// An identifier of the data format that the classifier matches.
     /// 
     /// Required: Yes
@@ -330,15 +339,6 @@ pub struct XMLClassifier {
     #[serde(rename = "Classification")]
     pub classification: String,
 
-}
-
-
-
-
-/// A classifier for JSON content.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct JsonClassifier {
-
 
     /// 
     /// The name of the classifier.
@@ -359,15 +359,15 @@ pub struct JsonClassifier {
 
 
     /// 
-    /// A JsonPath string defining the JSON data for the classifier to classify.       AWS Glue supports a subset of JsonPath, as described in Writing JsonPath         Custom Classifiers.
+    /// The XML tag designating the element that contains each record in an XML document being    parsed. This can't identify a self-closing element (closed by />). An empty    row element that contains only attributes can be parsed as long as it ends with a closing tag    (for example, <row item_a="A" item_b="B"></row> is okay, but     <row item_a="A" item_b="B" /> is not).
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "JsonPath")]
-    pub json_path: String,
+    #[serde(rename = "RowTag")]
+    pub row_tag: String,
 
 }
 

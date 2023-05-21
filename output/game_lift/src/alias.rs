@@ -22,18 +22,6 @@ pub struct CfnAlias {
 
 
     /// 
-    /// The routing configuration, including routing type and fleet target, for the alias.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: RoutingStrategy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoutingStrategy")]
-    pub routing_strategy: RoutingStrategy,
-
-
-    /// 
     /// A descriptive label that is associated with an alias. Alias names do not need to be unique.
     /// 
     /// Required: Yes
@@ -49,6 +37,18 @@ pub struct CfnAlias {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// The routing configuration, including routing type and fleet target, for the alias.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: RoutingStrategy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoutingStrategy")]
+    pub routing_strategy: RoutingStrategy,
 
 }
 
@@ -85,6 +85,18 @@ pub struct RoutingStrategy {
 
 
     /// 
+    /// The message text to be used with a terminal routing strategy. If you specify    TERMINAL for the Type property, you must specify this    property.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Message")]
+    pub message: Option<String>,
+
+
+    /// 
     /// A type of routing strategy.
     /// 
     /// Possible routing types include the following:
@@ -100,18 +112,6 @@ pub struct RoutingStrategy {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: RoutingStrategyTypeEnum,
-
-
-    /// 
-    /// The message text to be used with a terminal routing strategy. If you specify    TERMINAL for the Type property, you must specify this    property.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Message")]
-    pub message: Option<String>,
 
 }
 

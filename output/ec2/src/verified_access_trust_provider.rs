@@ -6,58 +6,6 @@ pub struct CfnVerifiedAccessTrustProvider {
 
 
     /// 
-    /// The type of user-based trust provider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: iam-identity-center | oidc
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserTrustProviderType")]
-    pub user_trust_provider_type: Option<VerifiedAccessTrustProviderUserTrustProviderTypeEnum>,
-
-
-    /// 
-    /// The options for an OpenID Connect-compatible user-identity trust provider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OidcOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OidcOptions")]
-    pub oidc_options: Option<OidcOptions>,
-
-
-    /// 
-    /// The type of Verified Access trust provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: device | user
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TrustProviderType")]
-    pub trust_provider_type: VerifiedAccessTrustProviderTrustProviderTypeEnum,
-
-
-    /// 
-    /// The options for device-identity trust provider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeviceOptions
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceOptions")]
-    pub device_options: Option<DeviceOptions>,
-
-
-    /// 
     /// A description for the AWS Verified Access trust provider.
     /// 
     /// Required: No
@@ -70,15 +18,15 @@ pub struct CfnVerifiedAccessTrustProvider {
 
 
     /// 
-    /// The tags.
+    /// The options for device-identity trust provider.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: DeviceOptions
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceOptions")]
+    pub device_options: Option<DeviceOptions>,
 
 
     /// 
@@ -96,6 +44,18 @@ pub struct CfnVerifiedAccessTrustProvider {
 
 
     /// 
+    /// The options for an OpenID Connect-compatible user-identity trust provider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OidcOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OidcOptions")]
+    pub oidc_options: Option<OidcOptions>,
+
+
+    /// 
     /// The identifier to be used when working with policy rules.
     /// 
     /// Required: Yes
@@ -105,6 +65,46 @@ pub struct CfnVerifiedAccessTrustProvider {
     /// Update requires: Replacement
     #[serde(rename = "PolicyReferenceName")]
     pub policy_reference_name: String,
+
+
+    /// 
+    /// The tags.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The type of Verified Access trust provider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: device | user
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TrustProviderType")]
+    pub trust_provider_type: VerifiedAccessTrustProviderTrustProviderTypeEnum,
+
+
+    /// 
+    /// The type of user-based trust provider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: iam-identity-center | oidc
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserTrustProviderType")]
+    pub user_trust_provider_type: Option<VerifiedAccessTrustProviderUserTrustProviderTypeEnum>,
 
 }
 
@@ -129,25 +129,6 @@ impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
-pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
-
-    /// device
-    #[serde(rename = "device")]
-    Device,
-
-    /// user
-    #[serde(rename = "user")]
-    User,
-
-}
-
-impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
-    fn default() -> Self {
-        VerifiedAccessTrustProviderTrustProviderTypeEnum::Device
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
 
     /// crowdstrike
@@ -166,6 +147,25 @@ impl Default for VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
     }
 }
 
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
+
+    /// device
+    #[serde(rename = "device")]
+    Device,
+
+    /// user
+    #[serde(rename = "user")]
+    User,
+
+}
+
+impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
+    fn default() -> Self {
+        VerifiedAccessTrustProviderTrustProviderTypeEnum::Device
+    }
+}
+
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessTrustProvider {
     fn type_string() -> &'static str {
@@ -178,33 +178,66 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessTrustProvider {
 }
 
 
+/// Describes the options for an AWS Verified Access device-identity based trust provider.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeviceOptions {
+
+
+    /// 
+    /// The ID of the tenant application with the device-identity provider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TenantId")]
+    pub tenant_id: Option<String>,
+
+}
+
+
+
+
 /// Describes the options for an OpenID Connect-compatible user-identity trust     provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OidcOptions {
 
 
     /// 
-    /// The OIDC token endpoint.
+    /// The OIDC authorization endpoint.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TokenEndpoint")]
-    pub token_endpoint: Option<String>,
+    #[serde(rename = "AuthorizationEndpoint")]
+    pub authorization_endpoint: Option<String>,
 
 
     /// 
-    /// The OIDC user info endpoint.
+    /// The client identifier.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UserInfoEndpoint")]
-    pub user_info_endpoint: Option<String>,
+    #[serde(rename = "ClientId")]
+    pub client_id: Option<String>,
+
+
+    /// 
+    /// The client secret.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientSecret")]
+    pub client_secret: Option<String>,
 
 
     /// 
@@ -232,39 +265,27 @@ pub struct OidcOptions {
 
 
     /// 
-    /// The client secret.
+    /// The OIDC token endpoint.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ClientSecret")]
-    pub client_secret: Option<String>,
+    #[serde(rename = "TokenEndpoint")]
+    pub token_endpoint: Option<String>,
 
 
     /// 
-    /// The OIDC authorization endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizationEndpoint")]
-    pub authorization_endpoint: Option<String>,
-
-
-    /// 
-    /// The client identifier.
+    /// The OIDC user info endpoint.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ClientId")]
-    pub client_id: Option<String>,
+    #[serde(rename = "UserInfoEndpoint")]
+    pub user_info_endpoint: Option<String>,
 
 }
 
@@ -302,27 +323,6 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-
-
-/// Describes the options for an AWS Verified Access device-identity based trust provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct DeviceOptions {
-
-
-    /// 
-    /// The ID of the tenant application with the device-identity provider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TenantId")]
-    pub tenant_id: Option<String>,
 
 }
 

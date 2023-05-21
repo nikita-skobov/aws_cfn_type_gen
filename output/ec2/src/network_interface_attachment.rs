@@ -6,15 +6,15 @@ pub struct CfnNetworkInterfaceAttachment {
 
 
     /// 
-    /// The ID of the instance to which you will attach the ENI.
+    /// Whether to delete the network interface when the instance terminates. By default, this       value is set to true.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    #[serde(rename = "DeleteOnTermination")]
+    pub delete_on_termination: Option<bool>,
 
 
     /// 
@@ -30,15 +30,15 @@ pub struct CfnNetworkInterfaceAttachment {
 
 
     /// 
-    /// Whether to delete the network interface when the instance terminates. By default, this       value is set to true.
+    /// The ID of the instance to which you will attach the ENI.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeleteOnTermination")]
-    pub delete_on_termination: Option<bool>,
+    #[serde(rename = "InstanceId")]
+    pub instance_id: String,
 
 
     /// 

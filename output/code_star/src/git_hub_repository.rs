@@ -6,6 +6,53 @@ pub struct CfnGitHubRepository {
 
 
     /// 
+    /// Information about code to be committed to a repository after it is created in an       AWS CloudFormation stack.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Code
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "Code")]
+    pub code: Option<Code>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionArn")]
+    pub connection_arn: Option<String>,
+
+
+    /// 
+    /// Indicates whether to enable issues for the GitHub repository. You can use GitHub       issues to track information and bugs for your repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "EnableIssues")]
+    pub enable_issues: Option<bool>,
+
+
+    /// 
+    /// Indicates whether the GitHub repository is a private repository. If so, you choose       who can see and commit to this repository.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "IsPrivate")]
+    pub is_private: Option<bool>,
+
+
+    /// 
     /// The GitHub user's personal access token for the GitHub repository.
     /// 
     /// Required: No
@@ -15,6 +62,18 @@ pub struct CfnGitHubRepository {
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryAccessToken")]
     pub repository_access_token: Option<String>,
+
+
+    /// 
+    /// A comment or description about the new repository. This description is displayed in       GitHub after the repository is created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "RepositoryDescription")]
+    pub repository_description: Option<String>,
 
 
     /// 
@@ -39,65 +98,6 @@ pub struct CfnGitHubRepository {
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryOwner")]
     pub repository_owner: String,
-
-
-    /// 
-    /// A comment or description about the new repository. This description is displayed in       GitHub after the repository is created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "RepositoryDescription")]
-    pub repository_description: Option<String>,
-
-
-    /// 
-    /// Indicates whether the GitHub repository is a private repository. If so, you choose       who can see and commit to this repository.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "IsPrivate")]
-    pub is_private: Option<bool>,
-
-
-    /// 
-    /// Indicates whether to enable issues for the GitHub repository. You can use GitHub       issues to track information and bugs for your repository.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "EnableIssues")]
-    pub enable_issues: Option<bool>,
-
-
-    /// 
-    /// Information about code to be committed to a repository after it is created in an       AWS CloudFormation stack.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Code
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "Code")]
-    pub code: Option<Code>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectionArn")]
-    pub connection_arn: Option<String>,
 
 }
 
@@ -145,15 +145,15 @@ pub struct S3 {
 
 
     /// 
-    /// The object version of the ZIP file, if versioning is enabled for the Amazon S3       bucket.
+    /// The name of the Amazon S3 bucket that contains the ZIP file with the content to be       committed to the new repository.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Updates are not supported.
-    #[serde(rename = "ObjectVersion")]
-    pub object_version: Option<String>,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
 
 
     /// 
@@ -169,15 +169,15 @@ pub struct S3 {
 
 
     /// 
-    /// The name of the Amazon S3 bucket that contains the ZIP file with the content to be       committed to the new repository.
+    /// The object version of the ZIP file, if versioning is enabled for the Amazon S3       bucket.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Updates are not supported.
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
+    #[serde(rename = "ObjectVersion")]
+    pub object_version: Option<String>,
 
 }
 

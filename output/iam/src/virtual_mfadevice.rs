@@ -8,22 +8,6 @@ pub struct CfnVirtualMFADevice {
 
 
     /// 
-    /// A list of tags that you want to attach to the new IAM virtual MFA device.    Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
-    /// 
-    /// NoteIf any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request   fails and the resource is not created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The path for the virtual MFA device. For more information about paths, see IAM         identifiers in the IAM User Guide.
     /// 
     /// This parameter is optional. If it is not included, it defaults to a slash (/).
@@ -43,6 +27,22 @@ pub struct CfnVirtualMFADevice {
     /// Update requires: Replacement
     #[serde(rename = "Path")]
     pub path: Option<String>,
+
+
+    /// 
+    /// A list of tags that you want to attach to the new IAM virtual MFA device.    Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
+    /// 
+    /// NoteIf any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request   fails and the resource is not created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 

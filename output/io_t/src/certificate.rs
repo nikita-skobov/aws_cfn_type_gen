@@ -6,31 +6,15 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The certificate data in PEM format. Requires SNI_ONLY for the certificate mode or the accompanying CACertificatePem for registration.
+    /// The CA certificate used to sign the device certificate being registered, not available when CertificateMode is SNI_ONLY.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CertificatePem")]
-    pub certificate_pem: Option<String>,
-
-
-    /// 
-    /// The status of the certificate.
-    /// 
-    /// Valid values are ACTIVE, INACTIVE, REVOKED, PENDING_TRANSFER, and     PENDING_ACTIVATION.
-    /// 
-    /// The status value REGISTER_INACTIVE is deprecated and should not be used.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: String,
+    #[serde(rename = "CACertificatePem")]
+    pub cacertificate_pem: Option<String>,
 
 
     /// 
@@ -50,6 +34,18 @@ pub struct CfnCertificate {
 
 
     /// 
+    /// The certificate data in PEM format. Requires SNI_ONLY for the certificate mode or the accompanying CACertificatePem for registration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificatePem")]
+    pub certificate_pem: Option<String>,
+
+
+    /// 
     /// The certificate signing request (CSR).
     /// 
     /// Required: No
@@ -62,15 +58,19 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The CA certificate used to sign the device certificate being registered, not available when CertificateMode is SNI_ONLY.
+    /// The status of the certificate.
     /// 
-    /// Required: No
+    /// Valid values are ACTIVE, INACTIVE, REVOKED, PENDING_TRANSFER, and     PENDING_ACTIVATION.
+    /// 
+    /// The status value REGISTER_INACTIVE is deprecated and should not be used.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "CACertificatePem")]
-    pub cacertificate_pem: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: String,
 
 }
 

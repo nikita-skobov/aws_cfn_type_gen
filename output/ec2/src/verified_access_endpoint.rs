@@ -6,6 +6,18 @@ pub struct CfnVerifiedAccessEndpoint {
 
 
     /// 
+    /// The DNS name for users to reach your application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApplicationDomain")]
+    pub application_domain: String,
+
+
+    /// 
     /// The type of attachment used to provide connectivity between the AWS Verified Access endpoint and the     application.
     /// 
     /// Required: Yes
@@ -17,30 +29,6 @@ pub struct CfnVerifiedAccessEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "AttachmentType")]
     pub attachment_type: VerifiedAccessEndpointAttachmentTypeEnum,
-
-
-    /// 
-    /// A custom identifier that is prepended to the DNS name that is generated for the     endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EndpointDomainPrefix")]
-    pub endpoint_domain_prefix: String,
-
-
-    /// 
-    /// The ARN of a public TLS/SSL certificate imported into or created with ACM.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainCertificateArn")]
-    pub domain_certificate_arn: String,
 
 
     /// 
@@ -56,51 +44,41 @@ pub struct CfnVerifiedAccessEndpoint {
 
 
     /// 
-    /// The status of the Verified Access policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyEnabled")]
-    pub policy_enabled: Option<bool>,
-
-
-    /// 
-    /// The tags.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The ID of the AWS Verified Access group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VerifiedAccessGroupId")]
-    pub verified_access_group_id: String,
-
-
-    /// 
-    /// The DNS name for users to reach your application.
+    /// The ARN of a public TLS/SSL certificate imported into or created with ACM.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ApplicationDomain")]
-    pub application_domain: String,
+    #[serde(rename = "DomainCertificateArn")]
+    pub domain_certificate_arn: String,
+
+
+    /// 
+    /// A custom identifier that is prepended to the DNS name that is generated for the     endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EndpointDomainPrefix")]
+    pub endpoint_domain_prefix: String,
+
+
+    /// 
+    /// The type of AWS Verified Access endpoint. Incoming application requests will be sent to an IP     address, load balancer or a network interface depending on the endpoint type     specified.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: load-balancer | network-interface
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EndpointType")]
+    pub endpoint_type: VerifiedAccessEndpointEndpointTypeEnum,
 
 
     /// 
@@ -140,6 +118,18 @@ pub struct CfnVerifiedAccessEndpoint {
 
 
     /// 
+    /// The status of the Verified Access policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyEnabled")]
+    pub policy_enabled: Option<bool>,
+
+
+    /// 
     /// The IDs of the security groups for the endpoint.
     /// 
     /// Required: No
@@ -152,20 +142,45 @@ pub struct CfnVerifiedAccessEndpoint {
 
 
     /// 
-    /// The type of AWS Verified Access endpoint. Incoming application requests will be sent to an IP     address, load balancer or a network interface depending on the endpoint type     specified.
+    /// The tags.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the AWS Verified Access group.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: load-balancer | network-interface
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EndpointType")]
-    pub endpoint_type: VerifiedAccessEndpointEndpointTypeEnum,
+    /// Update requires: No interruption
+    #[serde(rename = "VerifiedAccessGroupId")]
+    pub verified_access_group_id: String,
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum VerifiedAccessEndpointAttachmentTypeEnum {
+
+    /// vpc
+    #[serde(rename = "vpc")]
+    Vpc,
+
+}
+
+impl Default for VerifiedAccessEndpointAttachmentTypeEnum {
+    fn default() -> Self {
+        VerifiedAccessEndpointAttachmentTypeEnum::Vpc
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessEndpointEndpointTypeEnum {
@@ -186,21 +201,6 @@ impl Default for VerifiedAccessEndpointEndpointTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum VerifiedAccessEndpointAttachmentTypeEnum {
-
-    /// vpc
-    #[serde(rename = "vpc")]
-    Vpc,
-
-}
-
-impl Default for VerifiedAccessEndpointAttachmentTypeEnum {
-    fn default() -> Self {
-        VerifiedAccessEndpointAttachmentTypeEnum::Vpc
-    }
-}
-
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessEndpoint {
     fn type_string() -> &'static str {
@@ -211,6 +211,158 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessEndpoint {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// Describes the load balancer options when creating an AWS Verified Access endpoint using the       load-balancer type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LoadBalancerOptions {
+
+
+    /// 
+    /// The ARN of the load balancer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LoadBalancerArn")]
+    pub load_balancer_arn: Option<String>,
+
+
+    /// 
+    /// The IP port number.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// The IP protocol.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: http | https
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<LoadBalancerOptionsProtocolEnum>,
+
+
+    /// 
+    /// The IDs of the subnets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum LoadBalancerOptionsProtocolEnum {
+
+    /// http
+    #[serde(rename = "http")]
+    Http,
+
+    /// https
+    #[serde(rename = "https")]
+    Https,
+
+}
+
+impl Default for LoadBalancerOptionsProtocolEnum {
+    fn default() -> Self {
+        LoadBalancerOptionsProtocolEnum::Http
+    }
+}
+
+
+
+/// Describes the network interface options when creating an AWS Verified Access endpoint using the       network-interface type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NetworkInterfaceOptions {
+
+
+    /// 
+    /// The ID of the network interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkInterfaceId")]
+    pub network_interface_id: Option<String>,
+
+
+    /// 
+    /// The IP port number.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// The IP protocol.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: http | https
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<NetworkInterfaceOptionsProtocolEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum NetworkInterfaceOptionsProtocolEnum {
+
+    /// http
+    #[serde(rename = "http")]
+    Http,
+
+    /// https
+    #[serde(rename = "https")]
+    Https,
+
+}
+
+impl Default for NetworkInterfaceOptionsProtocolEnum {
+    fn default() -> Self {
+        NetworkInterfaceOptionsProtocolEnum::Http
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -247,156 +399,4 @@ pub struct Tag {
 
 }
 
-
-
-
-/// Describes the network interface options when creating an AWS Verified Access endpoint using the       network-interface type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NetworkInterfaceOptions {
-
-
-    /// 
-    /// The ID of the network interface.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: Option<String>,
-
-
-    /// 
-    /// The IP protocol.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: http | https
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<NetworkInterfaceOptionsProtocolEnum>,
-
-
-    /// 
-    /// The IP port number.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum NetworkInterfaceOptionsProtocolEnum {
-
-    /// http
-    #[serde(rename = "http")]
-    Http,
-
-    /// https
-    #[serde(rename = "https")]
-    Https,
-
-}
-
-impl Default for NetworkInterfaceOptionsProtocolEnum {
-    fn default() -> Self {
-        NetworkInterfaceOptionsProtocolEnum::Http
-    }
-}
-
-
-
-/// Describes the load balancer options when creating an AWS Verified Access endpoint using the       load-balancer type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LoadBalancerOptions {
-
-
-    /// 
-    /// The IP port number.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The IP protocol.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: http | https
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<LoadBalancerOptionsProtocolEnum>,
-
-
-    /// 
-    /// The ARN of the load balancer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LoadBalancerArn")]
-    pub load_balancer_arn: Option<String>,
-
-
-    /// 
-    /// The IDs of the subnets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum LoadBalancerOptionsProtocolEnum {
-
-    /// http
-    #[serde(rename = "http")]
-    Http,
-
-    /// https
-    #[serde(rename = "https")]
-    Https,
-
-}
-
-impl Default for LoadBalancerOptionsProtocolEnum {
-    fn default() -> Self {
-        LoadBalancerOptionsProtocolEnum::Http
-    }
-}
 

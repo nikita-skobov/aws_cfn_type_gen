@@ -6,24 +6,6 @@ pub struct CfnResourceDefaultVersion {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the resource version.
-    /// 
-    /// Conditional: You must specify either TypeVersionArn, or TypeName and   VersionId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TypeVersionArn")]
-    pub type_version_arn: Option<String>,
-
-
-    /// 
     /// The name of the resource.
     /// 
     /// Conditional: You must specify either TypeVersionArn, or TypeName and   VersionId.
@@ -41,6 +23,24 @@ pub struct CfnResourceDefaultVersion {
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
     pub type_name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the resource version.
+    /// 
+    /// Conditional: You must specify either TypeVersionArn, or TypeName and   VersionId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TypeVersionArn")]
+    pub type_version_arn: Option<String>,
 
 
     /// 

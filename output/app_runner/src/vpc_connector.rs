@@ -20,6 +20,20 @@ pub struct CfnVpcConnector {
 
 
     /// 
+    /// A list of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single     Amazon VPC. App Runner determines the Amazon VPC from the subnets you specify.
+    /// 
+    /// Note     App Runner currently only provides support for IPv4.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subnets")]
+    pub subnets: Vec<String>,
+
+
+    /// 
     /// A list of metadata items that you can associate with your VPC connector resource. A tag is a key-value pair.
     /// 
     /// Required: No
@@ -50,20 +64,6 @@ pub struct CfnVpcConnector {
     #[serde(rename = "VpcConnectorName")]
     pub vpc_connector_name: Option<String>,
 
-
-    /// 
-    /// A list of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single     Amazon VPC. App Runner determines the Amazon VPC from the subnets you specify.
-    /// 
-    /// Note     App Runner currently only provides support for IPv4.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subnets")]
-    pub subnets: Vec<String>,
-
 }
 
 
@@ -91,17 +91,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -110,6 +99,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

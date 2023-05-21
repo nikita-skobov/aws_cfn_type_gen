@@ -8,34 +8,6 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
 
 
     /// 
-    /// The ID of the Microsoft Team authorized with AWS Chatbot.
-    /// 
-    /// To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.       For more details, see steps 1-4 in Get started with Microsoft Teams in the AWS Chatbot Administrator Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TeamId")]
-    pub team_id: String,
-
-
-    /// 
-    /// The ARN of the IAM role that defines the permissions for AWS Chatbot.
-    /// 
-    /// This is a user-defined role that AWS Chatbot will assume. This is not the service-linked role. For more information, see IAM Policies for AWS Chatbot.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IamRoleArn")]
-    pub iam_role_arn: String,
-
-
-    /// 
     /// The name of the configuration.
     /// 
     /// Required: Yes
@@ -60,15 +32,17 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
 
 
     /// 
-    /// The ARNs of the SNS topics that deliver notifications to AWS Chatbot.
+    /// The ARN of the IAM role that defines the permissions for AWS Chatbot.
     /// 
-    /// Required: No
+    /// This is a user-defined role that AWS Chatbot will assume. This is not the service-linked role. For more information, see IAM Policies for AWS Chatbot.
+    /// 
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SnsTopicArns")]
-    pub sns_topic_arns: Option<Vec<String>>,
+    #[serde(rename = "IamRoleArn")]
+    pub iam_role_arn: String,
 
 
     /// 
@@ -86,17 +60,29 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
 
 
     /// 
-    /// The ID of the Microsoft Teams tenant.
+    /// The ARNs of the SNS topics that deliver notifications to AWS Chatbot.
     /// 
-    /// To get the tenant ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the tenant ID from the console.       For more details, see steps 1-4 in Get started with Microsoft Teams in the AWS Chatbot Administrator Guide.
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnsTopicArns")]
+    pub sns_topic_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// The ID of the Microsoft Team authorized with AWS Chatbot.
+    /// 
+    /// To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.       For more details, see steps 1-4 in Get started with Microsoft Teams in the AWS Chatbot Administrator Guide.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TeamsTenantId")]
-    pub teams_tenant_id: String,
+    #[serde(rename = "TeamId")]
+    pub team_id: String,
 
 
     /// 
@@ -111,6 +97,20 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TeamsChannelId")]
     pub teams_channel_id: String,
+
+
+    /// 
+    /// The ID of the Microsoft Teams tenant.
+    /// 
+    /// To get the tenant ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the tenant ID from the console.       For more details, see steps 1-4 in Get started with Microsoft Teams in the AWS Chatbot Administrator Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TeamsTenantId")]
+    pub teams_tenant_id: String,
 
 
     /// 

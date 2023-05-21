@@ -6,114 +6,15 @@ pub struct CfnImagePipeline {
 
 
     /// 
-    /// The schedule of the image pipeline. A schedule configures how often and when a pipeline 			automatically creates a new image.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Schedule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Schedule")]
-    pub schedule: Option<Schedule>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: ImageScanningConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageScanningConfiguration")]
-    pub image_scanning_configuration: Option<ImageScanningConfiguration>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the image recipe associated with this image 			pipeline.
+    /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageRecipeArn")]
-    pub image_recipe_arn: Option<String>,
-
-
-    /// 
-    /// The tags of this image pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the distribution configuration associated with this 			image pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DistributionConfigurationArn")]
-    pub distribution_configuration_arn: Option<String>,
-
-
-    /// 
-    /// The name of the image pipeline.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[-_A-Za-z-0-9][-_A-Za-z0-9 ]{1,126}[-_A-Za-z-0-9]$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The status of the image pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<ImagePipelineStatusEnum>,
-
-
-    /// 
-    /// The configuration of the image tests that run after image creation to ensure the  			quality of the image that was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ImageTestsConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageTestsConfiguration")]
-    pub image_tests_configuration: Option<ImageTestsConfiguration>,
-
-
-    /// 
-    /// Collects additional information about the image being created, including the operating 			system (OS) version and package list. This information is used to enhance the overall 			experience of using EC2 Image Builder. Enabled by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnhancedImageMetadataEnabled")]
-    pub enhanced_image_metadata_enabled: Option<bool>,
+    #[serde(rename = "ContainerRecipeArn")]
+    pub container_recipe_arn: Option<String>,
 
 
     /// 
@@ -133,15 +34,62 @@ pub struct CfnImagePipeline {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
+    /// The Amazon Resource Name (ARN) of the distribution configuration associated with this 			image pipeline.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ContainerRecipeArn")]
-    pub container_recipe_arn: Option<String>,
+    #[serde(rename = "DistributionConfigurationArn")]
+    pub distribution_configuration_arn: Option<String>,
+
+
+    /// 
+    /// Collects additional information about the image being created, including the operating 			system (OS) version and package list. This information is used to enhance the overall 			experience of using EC2 Image Builder. Enabled by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnhancedImageMetadataEnabled")]
+    pub enhanced_image_metadata_enabled: Option<bool>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the image recipe associated with this image 			pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageRecipeArn")]
+    pub image_recipe_arn: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: ImageScanningConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageScanningConfiguration")]
+    pub image_scanning_configuration: Option<ImageScanningConfiguration>,
+
+
+    /// 
+    /// The configuration of the image tests that run after image creation to ensure the  			quality of the image that was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ImageTestsConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageTestsConfiguration")]
+    pub image_tests_configuration: Option<ImageTestsConfiguration>,
 
 
     /// 
@@ -154,6 +102,58 @@ pub struct CfnImagePipeline {
     /// Update requires: No interruption
     #[serde(rename = "InfrastructureConfigurationArn")]
     pub infrastructure_configuration_arn: String,
+
+
+    /// 
+    /// The name of the image pipeline.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[-_A-Za-z-0-9][-_A-Za-z0-9 ]{1,126}[-_A-Za-z-0-9]$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The schedule of the image pipeline. A schedule configures how often and when a pipeline 			automatically creates a new image.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Schedule
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Schedule")]
+    pub schedule: Option<Schedule>,
+
+
+    /// 
+    /// The status of the image pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<ImagePipelineStatusEnum>,
+
+
+    /// 
+    /// The tags of this image pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
 
@@ -189,63 +189,34 @@ impl cfn_resources::CfnResource for CfnImagePipeline {
 }
 
 
-/// A schedule configures how often and when a pipeline will automatically create a new 			image.
+/// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::ImagePipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Schedule {
+pub struct EcrConfiguration {
 
 
-    /// 
-    /// The cron expression determines how often EC2 Image Builder evaluates your 				pipelineExecutionStartCondition.
-    /// 
-    /// For information on how to format a cron expression in Image Builder, see Use 				cron expressions in EC2 Image Builder.
-    /// 
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContainerTags")]
+    pub container_tags: Option<Vec<String>>,
+
+
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "ScheduleExpression")]
-    pub schedule_expression: Option<String>,
-
-
-    /// 
-    /// The condition configures when the pipeline should trigger a new image build. When the 	    pipelineExecutionStartCondition is set to 	    EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE, and you use semantic version 			filters on the base image or components in your image recipe, Image Builder will build a 			new image only when there are new versions of the image or components in your recipe that 			match the semantic version filter. When it is set to EXPRESSION_MATCH_ONLY, it 			will build a new image every time the CRON expression matches the current time. For semantic 			version syntax, see CreateComponent      	in the Image Builder API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE | EXPRESSION_MATCH_ONLY
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineExecutionStartCondition")]
-    pub pipeline_execution_start_condition: Option<SchedulePipelineExecutionStartConditionEnum>,
+    #[serde(rename = "RepositoryName")]
+    pub repository_name: Option<String>,
 
 }
 
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum SchedulePipelineExecutionStartConditionEnum {
-
-    /// EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE
-    #[serde(rename = "EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE")]
-    Expressionmatchanddependencyupdatesavailable,
-
-    /// EXPRESSION_MATCH_ONLY
-    #[serde(rename = "EXPRESSION_MATCH_ONLY")]
-    Expressionmatchonly,
-
-}
-
-impl Default for SchedulePipelineExecutionStartConditionEnum {
-    fn default() -> Self {
-        SchedulePipelineExecutionStartConditionEnum::Expressionmatchanddependencyupdatesavailable
-    }
-}
 
 
 
@@ -258,22 +229,22 @@ pub struct ImageScanningConfiguration {
     ///
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: EcrConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageScanningEnabled")]
-    pub image_scanning_enabled: Option<bool>,
+    #[serde(rename = "EcrConfiguration")]
+    pub ecr_configuration: Option<EcrConfiguration>,
 
 
     /// Property description not available.
     ///
     /// Required: No
     ///
-    /// Type: EcrConfiguration
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EcrConfiguration")]
-    pub ecr_configuration: Option<EcrConfiguration>,
+    #[serde(rename = "ImageScanningEnabled")]
+    pub image_scanning_enabled: Option<bool>,
 
 }
 
@@ -319,32 +290,61 @@ pub struct ImageTestsConfiguration {
 
 
 
-/// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::ImagePipeline.
+/// A schedule configures how often and when a pipeline will automatically create a new 			image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EcrConfiguration {
+pub struct Schedule {
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// The condition configures when the pipeline should trigger a new image build. When the 	    pipelineExecutionStartCondition is set to 	    EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE, and you use semantic version 			filters on the base image or components in your image recipe, Image Builder will build a 			new image only when there are new versions of the image or components in your recipe that 			match the semantic version filter. When it is set to EXPRESSION_MATCH_ONLY, it 			will build a new image every time the CRON expression matches the current time. For semantic 			version syntax, see CreateComponent      	in the Image Builder API Reference.
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RepositoryName")]
-    pub repository_name: Option<String>,
-
-
-    /// Property description not available.
+    /// Allowed values: EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE | EXPRESSION_MATCH_ONLY
     ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineExecutionStartCondition")]
+    pub pipeline_execution_start_condition: Option<SchedulePipelineExecutionStartConditionEnum>,
+
+
+    /// 
+    /// The cron expression determines how often EC2 Image Builder evaluates your 				pipelineExecutionStartCondition.
+    /// 
+    /// For information on how to format a cron expression in Image Builder, see Use 				cron expressions in EC2 Image Builder.
+    /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ContainerTags")]
-    pub container_tags: Option<Vec<String>>,
+    #[serde(rename = "ScheduleExpression")]
+    pub schedule_expression: Option<String>,
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SchedulePipelineExecutionStartConditionEnum {
+
+    /// EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE
+    #[serde(rename = "EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE")]
+    Expressionmatchanddependencyupdatesavailable,
+
+    /// EXPRESSION_MATCH_ONLY
+    #[serde(rename = "EXPRESSION_MATCH_ONLY")]
+    Expressionmatchonly,
+
+}
+
+impl Default for SchedulePipelineExecutionStartConditionEnum {
+    fn default() -> Self {
+        SchedulePipelineExecutionStartConditionEnum::Expressionmatchanddependencyupdatesavailable
+    }
+}
 

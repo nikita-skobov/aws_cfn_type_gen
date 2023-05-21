@@ -6,6 +6,44 @@ pub struct CfnUserProfile {
 
 
     /// 
+    /// The domain ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 63
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainId")]
+    pub domain_id: String,
+
+
+    /// 
+    /// A specifier for the type of value specified in SingleSignOnUserValue. Currently, the       only supported value is "UserName". If the Domain's AuthMode is IAM Identity Center, this       field is required. If the Domain's AuthMode is not IAM Identity Center, this field cannot       be specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SingleSignOnUserIdentifier")]
+    pub single_sign_on_user_identifier: Option<String>,
+
+
+    /// 
+    /// The username of the associated AWS Single Sign-On User for this       UserProfile. If the Domain's AuthMode is IAM Identity Center, this field is required, and       must match a valid username of a user in your directory. If the Domain's AuthMode is not         IAM Identity Center, this field cannot be specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SingleSignOnUserValue")]
+    pub single_sign_on_user_value: Option<String>,
+
+
+    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// Tags that you specify for the User Profile are also added to all apps that the User       Profile launches.
@@ -38,32 +76,6 @@ pub struct CfnUserProfile {
 
 
     /// 
-    /// The domain ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 63
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainId")]
-    pub domain_id: String,
-
-
-    /// 
-    /// A specifier for the type of value specified in SingleSignOnUserValue. Currently, the       only supported value is "UserName". If the Domain's AuthMode is IAM Identity Center, this       field is required. If the Domain's AuthMode is not IAM Identity Center, this field cannot       be specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SingleSignOnUserIdentifier")]
-    pub single_sign_on_user_identifier: Option<String>,
-
-
-    /// 
     /// A collection of settings that apply to users of Amazon SageMaker Studio.
     /// 
     /// Required: No
@@ -73,18 +85,6 @@ pub struct CfnUserProfile {
     /// Update requires: No interruption
     #[serde(rename = "UserSettings")]
     pub user_settings: Option<UserSettings>,
-
-
-    /// 
-    /// The username of the associated AWS Single Sign-On User for this       UserProfile. If the Domain's AuthMode is IAM Identity Center, this field is required, and       must match a valid username of a user in your directory. If the Domain's AuthMode is not         IAM Identity Center, this field cannot be specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SingleSignOnUserValue")]
-    pub single_sign_on_user_value: Option<String>,
 
 }
 
@@ -101,62 +101,199 @@ impl cfn_resources::CfnResource for CfnUserProfile {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+/// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
+pub struct CustomImage {
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The name of the AppImageConfig.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppImageConfigName")]
+    pub app_image_config_name: String,
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The name of the CustomImage. Must be unique to your account.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9]([-.]?[a-zA-Z0-9]){0,62}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageName")]
+    pub image_name: String,
+
+
     /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// The version number of the CustomImage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageVersionNumber")]
+    pub image_version_number: Option<i64>,
 
 }
 
 
 
 
-/// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
+/// The JupyterServer app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ResourceSpec {
+pub struct JupyterServerAppSettings {
 
 
     /// 
-    /// The ARN of the SageMaker image that the image version belongs to.
+    /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker       image used by the JupyterServer app.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ResourceSpec
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultResourceSpec")]
+    pub default_resource_spec: Option<ResourceSpec>,
+
+}
+
+
+
+
+/// The KernelGateway app settings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KernelGatewayAppSettings {
+
+
+    /// 
+    /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of CustomImage
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomImages")]
+    pub custom_images: Option<Vec<CustomImage>>,
+
+
+    /// 
+    /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the KernelGateway app.
+    /// 
+    /// NoteThe Amazon SageMaker Studio UI does not use the default instance type value set here. The default      instance type set here is used when Apps are created using the AWS Command Line Interface or AWS CloudFormation       and the instance type parameter value is not passed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ResourceSpec
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultResourceSpec")]
+    pub default_resource_spec: Option<ResourceSpec>,
+
+}
+
+
+
+
+/// A collection of settings that configure user interaction with the         RStudioServerPro app. RStudioServerProAppSettings cannot       be updated. The RStudioServerPro app must be deleted and a new one created       to make any changes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RStudioServerProAppSettings {
+
+
+    /// 
+    /// Indicates whether the current user has access to the RStudioServerPro       app.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 256
+    /// Allowed values: DISABLED | ENABLED
     ///
-    /// Pattern: ^arn:aws(-[\w]+)*:sagemaker:.+:[0-9]{12}:image/[a-z0-9]([-.]?[a-z0-9])*$
+    /// Update requires: Replacement
+    #[serde(rename = "AccessStatus")]
+    pub access_status: Option<RStudioServerProAppSettingsAccessStatusEnum>,
+
+
+    /// 
+    /// The level of permissions that the user has within the RStudioServerPro       app. This value defaults to `User`. The `Admin` value allows the user access to the       RStudio Administrative Dashboard.
+    /// 
+    /// Required: No
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "SageMakerImageArn")]
-    pub sage_maker_image_arn: Option<String>,
+    /// Type: String
+    ///
+    /// Allowed values: R_STUDIO_ADMIN | R_STUDIO_USER
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserGroup")]
+    pub user_group: Option<RStudioServerProAppSettingsUserGroupEnum>,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RStudioServerProAppSettingsAccessStatusEnum {
+
+    /// DISABLED
+    #[serde(rename = "DISABLED")]
+    Disabled,
+
+    /// ENABLED
+    #[serde(rename = "ENABLED")]
+    Enabled,
+
+}
+
+impl Default for RStudioServerProAppSettingsAccessStatusEnum {
+    fn default() -> Self {
+        RStudioServerProAppSettingsAccessStatusEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RStudioServerProAppSettingsUserGroupEnum {
+
+    /// R_STUDIO_ADMIN
+    #[serde(rename = "R_STUDIO_ADMIN")]
+    Rstudioadmin,
+
+    /// R_STUDIO_USER
+    #[serde(rename = "R_STUDIO_USER")]
+    Rstudiouser,
+
+}
+
+impl Default for RStudioServerProAppSettingsUserGroupEnum {
+    fn default() -> Self {
+        RStudioServerProAppSettingsUserGroupEnum::Rstudioadmin
+    }
+}
+
+
+
+/// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ResourceSpec {
 
 
     /// 
@@ -173,6 +310,22 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
+
+
+    /// 
+    /// The ARN of the SageMaker image that the image version belongs to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^arn:aws(-[\w]+)*:sagemaker:.+:[0-9]{12}:image/[a-z0-9]([-.]?[a-z0-9])*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SageMakerImageArn")]
+    pub sage_maker_image_arn: Option<String>,
 
 
     /// 
@@ -446,67 +599,23 @@ impl Default for ResourceSpecInstanceTypeEnum {
 
 
 
-/// The JupyterServer app settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct JupyterServerAppSettings {
-
-
-    /// 
-    /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker       image used by the JupyterServer app.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ResourceSpec
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultResourceSpec")]
-    pub default_resource_spec: Option<ResourceSpec>,
-
-}
-
-
-
-
-/// The KernelGateway app settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct KernelGatewayAppSettings {
-
-
-    /// 
-    /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of CustomImage
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomImages")]
-    pub custom_images: Option<Vec<CustomImage>>,
-
-
-    /// 
-    /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the KernelGateway app.
-    /// 
-    /// NoteThe Amazon SageMaker Studio UI does not use the default instance type value set here. The default      instance type set here is used when Apps are created using the AWS Command Line Interface or AWS CloudFormation       and the instance type parameter value is not passed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ResourceSpec
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultResourceSpec")]
-    pub default_resource_spec: Option<ResourceSpec>,
-
-}
-
-
-
-
 /// Specifies options when sharing an Amazon SageMaker Studio notebook. These settings are       specified as part of DefaultUserSettings when the CreateDomain API is called, and as part of UserSettings when       the CreateUserProfile API is called.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SharingSettings {
+
+
+    /// 
+    /// Whether to include the notebook cell output when sharing the notebook. The default     is Disabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Allowed | Disabled
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotebookOutputOption")]
+    pub notebook_output_option: Option<SharingSettingsNotebookOutputOptionEnum>,
 
 
     /// 
@@ -540,20 +649,6 @@ pub struct SharingSettings {
     #[serde(rename = "S3OutputPath")]
     pub s3_output_path: Option<String>,
 
-
-    /// 
-    /// Whether to include the notebook cell output when sharing the notebook. The default     is Disabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Allowed | Disabled
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotebookOutputOption")]
-    pub notebook_output_option: Option<SharingSettingsNotebookOutputOptionEnum>,
-
 }
 
 
@@ -575,6 +670,43 @@ impl Default for SharingSettingsNotebookOutputOptionEnum {
         SharingSettingsNotebookOutputOptionEnum::Allowed
     }
 }
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
 
 
 
@@ -604,27 +736,15 @@ pub struct UserSettings {
 
 
     /// 
-    /// A collection of settings that configure user interaction with the         RStudioServerPro app.
+    /// The Jupyter server's app settings.
     /// 
     /// Required: No
     ///
-    /// Type: RStudioServerProAppSettings
+    /// Type: JupyterServerAppSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RStudioServerProAppSettings")]
-    pub rstudio_server_pro_app_settings: Option<RStudioServerProAppSettings>,
-
-
-    /// 
-    /// Specifies options for sharing SageMaker Studio notebooks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SharingSettings
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SharingSettings")]
-    pub sharing_settings: Option<SharingSettings>,
+    #[serde(rename = "JupyterServerAppSettings")]
+    pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
 
     /// 
@@ -640,15 +760,15 @@ pub struct UserSettings {
 
 
     /// 
-    /// The Jupyter server's app settings.
+    /// A collection of settings that configure user interaction with the         RStudioServerPro app.
     /// 
     /// Required: No
     ///
-    /// Type: JupyterServerAppSettings
+    /// Type: RStudioServerProAppSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "JupyterServerAppSettings")]
-    pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
+    #[serde(rename = "RStudioServerProAppSettings")]
+    pub rstudio_server_pro_app_settings: Option<RStudioServerProAppSettings>,
 
 
     /// 
@@ -670,138 +790,18 @@ pub struct UserSettings {
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Option<Vec<String>>,
 
-}
-
-
-
-
-/// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CustomImage {
-
 
     /// 
-    /// The name of the CustomImage. Must be unique to your account.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9]([-.]?[a-zA-Z0-9]){0,62}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ImageName")]
-    pub image_name: String,
-
-
-    /// 
-    /// The name of the AppImageConfig.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppImageConfigName")]
-    pub app_image_config_name: String,
-
-
-    /// 
-    /// The version number of the CustomImage.
+    /// Specifies options for sharing SageMaker Studio notebooks.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
+    /// Type: SharingSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageVersionNumber")]
-    pub image_version_number: Option<i64>,
+    #[serde(rename = "SharingSettings")]
+    pub sharing_settings: Option<SharingSettings>,
 
 }
 
-
-
-
-/// A collection of settings that configure user interaction with the         RStudioServerPro app. RStudioServerProAppSettings cannot       be updated. The RStudioServerPro app must be deleted and a new one created       to make any changes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct RStudioServerProAppSettings {
-
-
-    /// 
-    /// The level of permissions that the user has within the RStudioServerPro       app. This value defaults to `User`. The `Admin` value allows the user access to the       RStudio Administrative Dashboard.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: R_STUDIO_ADMIN | R_STUDIO_USER
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserGroup")]
-    pub user_group: Option<RStudioServerProAppSettingsUserGroupEnum>,
-
-
-    /// 
-    /// Indicates whether the current user has access to the RStudioServerPro       app.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AccessStatus")]
-    pub access_status: Option<RStudioServerProAppSettingsAccessStatusEnum>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RStudioServerProAppSettingsAccessStatusEnum {
-
-    /// DISABLED
-    #[serde(rename = "DISABLED")]
-    Disabled,
-
-    /// ENABLED
-    #[serde(rename = "ENABLED")]
-    Enabled,
-
-}
-
-impl Default for RStudioServerProAppSettingsAccessStatusEnum {
-    fn default() -> Self {
-        RStudioServerProAppSettingsAccessStatusEnum::Disabled
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RStudioServerProAppSettingsUserGroupEnum {
-
-    /// R_STUDIO_ADMIN
-    #[serde(rename = "R_STUDIO_ADMIN")]
-    Rstudioadmin,
-
-    /// R_STUDIO_USER
-    #[serde(rename = "R_STUDIO_USER")]
-    Rstudiouser,
-
-}
-
-impl Default for RStudioServerProAppSettingsUserGroupEnum {
-    fn default() -> Self {
-        RStudioServerProAppSettingsUserGroupEnum::Rstudioadmin
-    }
-}
 

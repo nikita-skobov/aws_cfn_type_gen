@@ -7,15 +7,15 @@ pub struct CfnAccessPoint {
 
 
     /// 
-    /// The virtual private cloud (VPC) configuration for this access point, if one exists.
+    /// The Amazon Resource Name (ARN) of the S3 on Outposts bucket that is associated with this    access point.
     /// 
     /// Required: Yes
     ///
-    /// Type: VpcConfiguration
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcConfiguration")]
-    pub vpc_configuration: VpcConfiguration,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
 
 
     /// 
@@ -31,18 +31,6 @@ pub struct CfnAccessPoint {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the S3 on Outposts bucket that is associated with this    access point.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-
-
-    /// 
     /// The access point policy associated with this access point.
     /// 
     /// Required: No
@@ -52,6 +40,18 @@ pub struct CfnAccessPoint {
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
     pub policy: Option<serde_json::Value>,
+
+
+    /// 
+    /// The virtual private cloud (VPC) configuration for this access point, if one exists.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: VpcConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcConfiguration")]
+    pub vpc_configuration: VpcConfiguration,
 
 }
 

@@ -6,6 +6,20 @@ pub struct CfnPermission {
 
 
     /// 
+    /// The private CA actions that can be performed by the designated AWS       service. Supported actions are IssueCertificate,         GetCertificate, and ListPermissions.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 3
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Actions")]
+    pub actions: Vec<String>,
+
+
+    /// 
     /// The Amazon Resource Number (ARN) of the private CA from which the permission was 			issued.
     /// 
     /// Required: Yes
@@ -24,38 +38,6 @@ pub struct CfnPermission {
 
 
     /// 
-    /// The ID of the account that assigned the permission.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 12
-    ///
-    /// Maximum: 12
-    ///
-    /// Pattern: [0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceAccount")]
-    pub source_account: Option<String>,
-
-
-    /// 
-    /// The private CA actions that can be performed by the designated AWS       service. Supported actions are IssueCertificate,         GetCertificate, and ListPermissions.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 3
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Actions")]
-    pub actions: Vec<String>,
-
-
-    /// 
     /// The AWS service or entity that holds the permission. At this time, the only valid 			principal is acm.amazonaws.com.
     /// 
     /// Required: Yes
@@ -71,6 +53,24 @@ pub struct CfnPermission {
     /// Update requires: Replacement
     #[serde(rename = "Principal")]
     pub principal: String,
+
+
+    /// 
+    /// The ID of the account that assigned the permission.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 12
+    ///
+    /// Maximum: 12
+    ///
+    /// Pattern: [0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceAccount")]
+    pub source_account: Option<String>,
 
 }
 

@@ -6,77 +6,15 @@ pub struct CfnDatabase {
 
 
     /// 
-    /// The weekly time range during which system maintenance can occur for the database,     formatted as follows: ddd:hh24:mi-ddd:hh24:mi. For example,       Tue:17:00-Tue:17:30.
+    /// The Availability Zone for the database.
     /// 
     /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreferredMaintenanceWindow")]
-    pub preferred_maintenance_window: Option<String>,
-
-
-    /// 
-    /// An array of parameters for the database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of RelationalDatabaseParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RelationalDatabaseParameters")]
-    pub relational_database_parameters: Option<Vec<RelationalDatabaseParameter>>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag     in the AWS CloudFormation User Guide.
-    /// 
-    /// NoteThe Value of Tags is optional for Lightsail resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The password for the primary user of the database. The password can include any     printable ASCII character except the following: /, ", or @. It cannot contain     spaces.
-    /// 
-    /// NoteThe MasterUserPassword and RotateMasterUserPassword       parameters cannot be used together in the same template.
-    /// 
-    /// MySQL
-    /// 
-    /// Constraints: Must contain 8-41 characters.
-    /// 
-    /// PostgreSQL
-    /// 
-    /// Constraints: Must contain 8-128 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MasterUserPassword")]
-    pub master_user_password: Option<String>,
-
-
-    /// 
-    /// The blueprint ID for the database (for example, mysql_8_0).
-    /// 
-    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Updates are not supported.
-    #[serde(rename = "RelationalDatabaseBlueprintId")]
-    pub relational_database_blueprint_id: String,
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
 
 
     /// 
@@ -89,6 +27,18 @@ pub struct CfnDatabase {
     /// Update requires: Some interruptions
     #[serde(rename = "BackupRetention")]
     pub backup_retention: Option<bool>,
+
+
+    /// 
+    /// The certificate associated with the database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CaCertificateIdentifier")]
+    pub ca_certificate_identifier: Option<String>,
 
 
     /// 
@@ -120,77 +70,25 @@ pub struct CfnDatabase {
 
 
     /// 
-    /// A Boolean value indicating whether the database is accessible to anyone on the     internet.
+    /// The password for the primary user of the database. The password can include any     printable ASCII character except the following: /, ", or @. It cannot contain     spaces.
     /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PubliclyAccessible")]
-    pub publicly_accessible: Option<bool>,
-
-
+    /// NoteThe MasterUserPassword and RotateMasterUserPassword       parameters cannot be used together in the same template.
     /// 
-    /// The daily time range during which automated backups are created for the database (for     example, 16:00-16:30).
+    /// MySQL
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreferredBackupWindow")]
-    pub preferred_backup_window: Option<String>,
-
-
+    /// Constraints: Must contain 8-41 characters.
     /// 
-    /// The certificate associated with the database.
+    /// PostgreSQL
+    /// 
+    /// Constraints: Must contain 8-128 characters.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CaCertificateIdentifier")]
-    pub ca_certificate_identifier: Option<String>,
-
-
-    /// 
-    /// The name of the instance.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RelationalDatabaseName")]
-    pub relational_database_name: String,
-
-
-    /// 
-    /// The Availability Zone for the database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
-
-
-    /// 
-    /// A Boolean value indicating whether to change the primary user password to a new, strong     password generated by Lightsail.
-    /// 
-    /// NoteThe RotateMasterUserPassword and MasterUserPassword       parameters cannot be used together in the same template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RotateMasterUserPassword")]
-    pub rotate_master_user_password: Option<bool>,
+    #[serde(rename = "MasterUserPassword")]
+    pub master_user_password: Option<String>,
 
 
     /// 
@@ -218,6 +116,54 @@ pub struct CfnDatabase {
 
 
     /// 
+    /// The daily time range during which automated backups are created for the database (for     example, 16:00-16:30).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PreferredBackupWindow")]
+    pub preferred_backup_window: Option<String>,
+
+
+    /// 
+    /// The weekly time range during which system maintenance can occur for the database,     formatted as follows: ddd:hh24:mi-ddd:hh24:mi. For example,       Tue:17:00-Tue:17:30.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PreferredMaintenanceWindow")]
+    pub preferred_maintenance_window: Option<String>,
+
+
+    /// 
+    /// A Boolean value indicating whether the database is accessible to anyone on the     internet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PubliclyAccessible")]
+    pub publicly_accessible: Option<bool>,
+
+
+    /// 
+    /// The blueprint ID for the database (for example, mysql_8_0).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "RelationalDatabaseBlueprintId")]
+    pub relational_database_blueprint_id: String,
+
+
+    /// 
     /// The bundle ID for the database (for example, medium_1_0).
     /// 
     /// Required: Yes
@@ -227,6 +173,60 @@ pub struct CfnDatabase {
     /// Update requires: Updates are not supported.
     #[serde(rename = "RelationalDatabaseBundleId")]
     pub relational_database_bundle_id: String,
+
+
+    /// 
+    /// The name of the instance.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RelationalDatabaseName")]
+    pub relational_database_name: String,
+
+
+    /// 
+    /// An array of parameters for the database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of RelationalDatabaseParameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RelationalDatabaseParameters")]
+    pub relational_database_parameters: Option<Vec<RelationalDatabaseParameter>>,
+
+
+    /// 
+    /// A Boolean value indicating whether to change the primary user password to a new, strong     password generated by Lightsail.
+    /// 
+    /// NoteThe RotateMasterUserPassword and MasterUserPassword       parameters cannot be used together in the same template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RotateMasterUserPassword")]
+    pub rotate_master_user_password: Option<bool>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag     in the AWS CloudFormation User Guide.
+    /// 
+    /// NoteThe Value of Tags is optional for Lightsail resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -249,15 +249,15 @@ pub struct RelationalDatabaseParameter {
 
 
     /// 
-    /// A Boolean value indicating whether the parameter can be modified.
+    /// The valid range of values for the parameter.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IsModifiable")]
-    pub is_modifiable: Option<bool>,
+    #[serde(rename = "AllowedValues")]
+    pub allowed_values: Option<String>,
 
 
     /// 
@@ -275,18 +275,6 @@ pub struct RelationalDatabaseParameter {
 
 
     /// 
-    /// A description of the parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// Specifies the engine-specific parameter type.
     /// 
     /// Required: No
@@ -299,27 +287,39 @@ pub struct RelationalDatabaseParameter {
 
 
     /// 
-    /// The value for the parameter.
+    /// The valid data type of the parameter.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ParameterValue")]
-    pub parameter_value: Option<String>,
+    #[serde(rename = "DataType")]
+    pub data_type: Option<String>,
 
 
     /// 
-    /// The valid range of values for the parameter.
+    /// A description of the parameter.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllowedValues")]
-    pub allowed_values: Option<String>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// A Boolean value indicating whether the parameter can be modified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IsModifiable")]
+    pub is_modifiable: Option<bool>,
 
 
     /// 
@@ -335,15 +335,15 @@ pub struct RelationalDatabaseParameter {
 
 
     /// 
-    /// The valid data type of the parameter.
+    /// The value for the parameter.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DataType")]
-    pub data_type: Option<String>,
+    #[serde(rename = "ParameterValue")]
+    pub parameter_value: Option<String>,
 
 }
 

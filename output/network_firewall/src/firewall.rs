@@ -20,6 +20,40 @@ pub struct CfnFirewall {
 
 
     /// 
+    /// A description of the firewall.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: ^.*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The descriptive name of the firewall. You can't change the name of a firewall after you create it.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z0-9-]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FirewallName")]
+    pub firewall_name: String,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the firewall policy.
     /// 
     /// The relationship of firewall to firewall policy is many to one. Each firewall requires     one firewall policy association, and you can use the same firewall policy for multiple     firewalls.
@@ -37,6 +71,18 @@ pub struct CfnFirewall {
     /// Update requires: No interruption
     #[serde(rename = "FirewallPolicyArn")]
     pub firewall_policy_arn: String,
+
+
+    /// 
+    /// A setting indicating whether the firewall is protected against a change to the firewall policy association.     Use this setting to protect against     accidentally modifying the firewall policy for a firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FirewallPolicyChangeProtection")]
+    pub firewall_policy_change_protection: Option<bool>,
 
 
     /// 
@@ -78,52 +124,6 @@ pub struct CfnFirewall {
 
 
     /// 
-    /// A description of the firewall.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: ^.*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// A setting indicating whether the firewall is protected against a change to the firewall policy association.     Use this setting to protect against     accidentally modifying the firewall policy for a firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FirewallPolicyChangeProtection")]
-    pub firewall_policy_change_protection: Option<bool>,
-
-
-    /// 
-    /// The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z0-9-]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FirewallName")]
-    pub firewall_name: String,
-
-
-    /// 
     /// The unique identifier of the VPC where the firewall is in use. You can't change the VPC of a firewall after you create the firewall.
     /// 
     /// Required: Yes
@@ -153,6 +153,64 @@ impl cfn_resources::CfnResource for CfnFirewall {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
+
+
+/// The ID for a subnet that you want to associate with the firewall. AWS Network Firewall     creates an instance of the associated firewall in each subnet that you specify, to filter     traffic in the subnet's Availability Zone.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SubnetMapping {
+
+
+    /// 
+    /// The subnet's IP address type. You can't change the IP address type after you create the subnet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DUALSTACK | IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IPAddressType")]
+    pub ipaddress_type: Option<SubnetMappingIPAddressTypeEnum>,
+
+
+    /// 
+    /// The unique identifier for the subnet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
+
+}
+
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum SubnetMappingIPAddressTypeEnum {
+
+    /// DUALSTACK
+    #[serde(rename = "DUALSTACK")]
+    Dualstack,
+
+    /// IPV4
+    #[serde(rename = "IPV4")]
+    Ipv4,
+
+    /// IPV6
+    #[serde(rename = "IPV6")]
+    Ipv6,
+
+}
+
+impl Default for SubnetMappingIPAddressTypeEnum {
+    fn default() -> Self {
+        SubnetMappingIPAddressTypeEnum::Dualstack
+    }
+}
+
 
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
@@ -189,62 +247,4 @@ pub struct Tag {
 
 }
 
-
-
-
-/// The ID for a subnet that you want to associate with the firewall. AWS Network Firewall     creates an instance of the associated firewall in each subnet that you specify, to filter     traffic in the subnet's Availability Zone.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SubnetMapping {
-
-
-    /// 
-    /// The unique identifier for the subnet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
-
-
-    /// 
-    /// The subnet's IP address type. You can't change the IP address type after you create the subnet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DUALSTACK | IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IPAddressType")]
-    pub ipaddress_type: Option<SubnetMappingIPAddressTypeEnum>,
-
-}
-
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum SubnetMappingIPAddressTypeEnum {
-
-    /// DUALSTACK
-    #[serde(rename = "DUALSTACK")]
-    Dualstack,
-
-    /// IPV4
-    #[serde(rename = "IPV4")]
-    Ipv4,
-
-    /// IPV6
-    #[serde(rename = "IPV6")]
-    Ipv6,
-
-}
-
-impl Default for SubnetMappingIPAddressTypeEnum {
-    fn default() -> Self {
-        SubnetMappingIPAddressTypeEnum::Dualstack
-    }
-}
 

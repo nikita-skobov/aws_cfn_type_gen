@@ -37,6 +37,30 @@ pub struct Template {
 
 
     /// 
+    /// The HTML body of the email.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HtmlPart")]
+    pub html_part: Option<String>,
+
+
+    /// 
+    /// The subject line of the email.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubjectPart")]
+    pub subject_part: String,
+
+
+    /// 
     /// The name of the template.
     /// 
     /// Required: No
@@ -58,30 +82,6 @@ pub struct Template {
     /// Update requires: No interruption
     #[serde(rename = "TextPart")]
     pub text_part: Option<String>,
-
-
-    /// 
-    /// The subject line of the email.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubjectPart")]
-    pub subject_part: String,
-
-
-    /// 
-    /// The HTML body of the email.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HtmlPart")]
-    pub html_part: Option<String>,
 
 }
 

@@ -6,18 +6,6 @@ pub struct CfnTagOptionAssociation {
 
 
     /// 
-    /// The TagOption identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TagOptionId")]
-    pub tag_option_id: String,
-
-
-    /// 
     /// The resource identifier.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnTagOptionAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
     pub resource_id: String,
+
+
+    /// 
+    /// The TagOption identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TagOptionId")]
+    pub tag_option_id: String,
 
 }
 

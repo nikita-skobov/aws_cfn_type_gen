@@ -6,22 +6,6 @@ pub struct CfnModelPackageGroup {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The description for the model group.
     /// 
     /// Required: No
@@ -35,18 +19,6 @@ pub struct CfnModelPackageGroup {
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageGroupDescription")]
     pub model_package_group_description: Option<String>,
-
-
-    /// 
-    /// A resouce policy to control access to a model group. For information about resoure       policies, see Identity-based         policies and resource-based policies in the AWS         Identity and Access Management User Guide..
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ModelPackageGroupPolicy")]
-    pub model_package_group_policy: Option<serde_json::Value>,
 
 
     /// 
@@ -65,6 +37,34 @@ pub struct CfnModelPackageGroup {
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageGroupName")]
     pub model_package_group_name: String,
+
+
+    /// 
+    /// A resouce policy to control access to a model group. For information about resoure       policies, see Identity-based         policies and resource-based policies in the AWS         Identity and Access Management User Guide..
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ModelPackageGroupPolicy")]
+    pub model_package_group_policy: Option<serde_json::Value>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -93,17 +93,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -112,6 +101,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

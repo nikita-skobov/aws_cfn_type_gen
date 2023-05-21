@@ -6,6 +6,20 @@ pub struct CfnAggregationAuthorization {
 
 
     /// 
+    /// The 12-digit account ID of the account authorized to aggregate 			data.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: \d{12}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthorizedAccountId")]
+    pub authorized_account_id: String,
+
+
+    /// 
     /// The region authorized to collect aggregated data.
     /// 
     /// Required: Yes
@@ -19,20 +33,6 @@ pub struct CfnAggregationAuthorization {
     /// Update requires: Replacement
     #[serde(rename = "AuthorizedAwsRegion")]
     pub authorized_aws_region: String,
-
-
-    /// 
-    /// The 12-digit account ID of the account authorized to aggregate 			data.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: \d{12}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AuthorizedAccountId")]
-    pub authorized_account_id: String,
 
 
     /// 

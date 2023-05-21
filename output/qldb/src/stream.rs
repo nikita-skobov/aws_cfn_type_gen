@@ -8,18 +8,6 @@ pub struct CfnStream {
 
 
     /// 
-    /// The configuration settings of the Kinesis Data Streams destination for your stream request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: KinesisConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KinesisConfiguration")]
-    pub kinesis_configuration: KinesisConfiguration,
-
-
-    /// 
     /// The exclusive date and time that specifies when the stream ends. If you don't define     this parameter, the stream runs indefinitely until you cancel it.
     /// 
     /// The ExclusiveEndTime must be in ISO 8601 date and time format     and in Universal Coordinated Time (UTC). For example:     2019-06-13T21:36:34Z.
@@ -50,9 +38,19 @@ pub struct CfnStream {
 
 
     /// 
-    /// The name that you want to assign to the QLDB journal stream. User-defined names can     help identify and indicate the purpose of a stream.
+    /// The configuration settings of the Kinesis Data Streams destination for your stream request.
     /// 
-    /// Your stream name must be unique among other active streams for a     given ledger. Stream names have the same naming constraints as ledger names, as defined in       Quotas in Amazon QLDB in the Amazon QLDB Developer     Guide.
+    /// Required: Yes
+    ///
+    /// Type: KinesisConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KinesisConfiguration")]
+    pub kinesis_configuration: KinesisConfiguration,
+
+
+    /// 
+    /// The name of the ledger.
     /// 
     /// Required: Yes
     ///
@@ -65,8 +63,8 @@ pub struct CfnStream {
     /// Pattern: (?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "StreamName")]
-    pub stream_name: String,
+    #[serde(rename = "LedgerName")]
+    pub ledger_name: String,
 
 
     /// 
@@ -88,7 +86,9 @@ pub struct CfnStream {
 
 
     /// 
-    /// The name of the ledger.
+    /// The name that you want to assign to the QLDB journal stream. User-defined names can     help identify and indicate the purpose of a stream.
+    /// 
+    /// Your stream name must be unique among other active streams for a     given ledger. Stream names have the same naming constraints as ledger names, as defined in       Quotas in Amazon QLDB in the Amazon QLDB Developer     Guide.
     /// 
     /// Required: Yes
     ///
@@ -101,8 +101,8 @@ pub struct CfnStream {
     /// Pattern: (?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "LedgerName")]
-    pub ledger_name: String,
+    #[serde(rename = "StreamName")]
+    pub stream_name: String,
 
 
     /// 
@@ -139,22 +139,6 @@ pub struct KinesisConfiguration {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the Kinesis Data Streams resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 1600
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StreamArn")]
-    pub stream_arn: Option<String>,
-
-
-    /// 
     /// Enables QLDB to publish multiple data records in a single Kinesis Data Streams record, increasing the     number of records sent per API call.
     /// 
     /// Default: True
@@ -168,6 +152,22 @@ pub struct KinesisConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "AggregationEnabled")]
     pub aggregation_enabled: Option<bool>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Kinesis Data Streams resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 1600
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StreamArn")]
+    pub stream_arn: Option<String>,
 
 }
 
@@ -186,17 +186,6 @@ pub struct Tag {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
@@ -205,6 +194,17 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

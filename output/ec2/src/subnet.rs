@@ -10,17 +10,31 @@ pub struct CfnSubnet {
 
 
     /// 
-    /// The ID of the VPC the subnet is in.
+    /// Indicates whether a network interface created in this subnet receives an IPv6 address.     The default value is false.
+    /// 
+    /// If you specify AssignIpv6AddressOnCreation, you must also specify     Ipv6CidrBlock.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssignIpv6AddressOnCreation")]
+    pub assign_ipv6_address_on_creation: Option<bool>,
+
+
+    /// 
+    /// The Availability Zone of the subnet.
     /// 
     /// If you update this property, you must also update the CidrBlock     property.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
 
 
     /// 
@@ -33,6 +47,32 @@ pub struct CfnSubnet {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneId")]
     pub availability_zone_id: Option<String>,
+
+
+    /// 
+    /// The IPv4 CIDR block assigned to the subnet.
+    /// 
+    /// If you update this property, we create a new subnet, and then delete the existing     one.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CidrBlock")]
+    pub cidr_block: Option<String>,
+
+
+    /// 
+    /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet      should return synthetic IPv6 addresses for IPv4-only destinations. For more information, see DNS64 and NAT64 in the Amazon Virtual Private Cloud User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableDns64")]
+    pub enable_dns64: Option<bool>,
 
 
     /// 
@@ -62,15 +102,15 @@ pub struct CfnSubnet {
 
 
     /// 
-    /// Any tags assigned to the subnet.
+    /// Indicates whether instances launched in this subnet receive a public IPv4 address. The     default value is false.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "MapPublicIpOnLaunch")]
+    pub map_public_ip_on_launch: Option<bool>,
 
 
     /// 
@@ -83,32 +123,6 @@ pub struct CfnSubnet {
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
     pub outpost_arn: Option<String>,
-
-
-    /// 
-    /// Indicates whether a network interface created in this subnet receives an IPv6 address.     The default value is false.
-    /// 
-    /// If you specify AssignIpv6AddressOnCreation, you must also specify     Ipv6CidrBlock.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssignIpv6AddressOnCreation")]
-    pub assign_ipv6_address_on_creation: Option<bool>,
-
-
-    /// 
-    /// Indicates whether instances launched in this subnet receive a public IPv4 address. The     default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MapPublicIpOnLaunch")]
-    pub map_public_ip_on_launch: Option<bool>,
 
 
     /// 
@@ -128,43 +142,29 @@ pub struct CfnSubnet {
 
 
     /// 
-    /// The Availability Zone of the subnet.
+    /// Any tags assigned to the subnet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the VPC the subnet is in.
     /// 
     /// If you update this property, you must also update the CidrBlock     property.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
-
-
-    /// 
-    /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet      should return synthetic IPv6 addresses for IPv4-only destinations. For more information, see DNS64 and NAT64 in the Amazon Virtual Private Cloud User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableDns64")]
-    pub enable_dns64: Option<bool>,
-
-
-    /// 
-    /// The IPv4 CIDR block assigned to the subnet.
-    /// 
-    /// If you update this property, we create a new subnet, and then delete the existing     one.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CidrBlock")]
-    pub cidr_block: Option<String>,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
 
 }
 
@@ -184,6 +184,18 @@ impl cfn_resources::CfnResource for CfnSubnet {
 /// Describes the options for instance hostnames.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PrivateDnsNameOptionsOnLaunch {
+
+
+    /// 
+    /// Indicates whether to respond to DNS queries for instance hostname with DNS AAAA       records.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableResourceNameDnsAAAARecord")]
+    pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
 
     /// 
@@ -210,18 +222,6 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     /// Update requires: No interruption
     #[serde(rename = "HostnameType")]
     pub hostname_type: Option<PrivateDnsNameOptionsOnLaunchHostnameTypeEnum>,
-
-
-    /// 
-    /// Indicates whether to respond to DNS queries for instance hostname with DNS AAAA       records.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableResourceNameDnsAAAARecord")]
-    pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
 }
 

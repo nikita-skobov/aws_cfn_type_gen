@@ -12,6 +12,18 @@ pub struct CfnAllowList {
 
 
     /// 
+    /// The criteria that specify the text or text pattern to ignore. The criteria can be the       location and name of an Amazon S3 object that lists specific text to ignore         (S3WordsList), or a regular expression (Regex) that       defines a text pattern to ignore.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Criteria
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Criteria")]
+    pub criteria: Criteria,
+
+
+    /// 
     /// A custom description of the allow list. The description can contain 1-512       characters.
     /// 
     /// Required: No
@@ -21,20 +33,6 @@ pub struct CfnAllowList {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to the allow list.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -50,15 +48,17 @@ pub struct CfnAllowList {
 
 
     /// 
-    /// The criteria that specify the text or text pattern to ignore. The criteria can be the       location and name of an Amazon S3 object that lists specific text to ignore         (S3WordsList), or a regular expression (Regex) that       defines a text pattern to ignore.
+    /// An array of key-value pairs to apply to the allow list.
     /// 
-    /// Required: Yes
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
     ///
-    /// Type: Criteria
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Criteria")]
-    pub criteria: Criteria,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 }
 
@@ -83,18 +83,6 @@ pub struct Criteria {
 
 
     /// 
-    /// The location and name of an Amazon S3 object that lists specific text to       ignore.
-    /// 
-    /// Required: No
-    ///
-    /// Type: S3WordsList
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3WordsList")]
-    pub s3_words_list: Option<S3WordsList>,
-
-
-    /// 
     /// The regular expression (regex) that defines the text pattern to       ignore. The expression can contain 1-512 characters.
     /// 
     /// Required: No
@@ -105,42 +93,17 @@ pub struct Criteria {
     #[serde(rename = "Regex")]
     pub regex: Option<String>,
 
-}
-
-
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tag {
-
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The location and name of an Amazon S3 object that lists specific text to       ignore.
     /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    /// Required: No
+    ///
+    /// Type: S3WordsList
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3WordsList")]
+    pub s3_words_list: Option<S3WordsList>,
 
 }
 
@@ -178,6 +141,43 @@ pub struct S3WordsList {
     /// Update requires: No interruption
     #[serde(rename = "ObjectKey")]
     pub object_key: String,
+
+}
+
+
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 

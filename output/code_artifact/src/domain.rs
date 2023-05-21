@@ -6,6 +6,24 @@ pub struct CfnDomain {
 
 
     /// 
+    /// A string that specifies the name of the requested domain.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 2
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: [a-z][a-z0-9\-]{0,48}[a-z0-9]
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DomainName")]
+    pub domain_name: String,
+
+
+    /// 
     /// The key used to encrypt the domain.
     /// 
     /// Required: No
@@ -33,24 +51,6 @@ pub struct CfnDomain {
     /// Update requires: No interruption
     #[serde(rename = "PermissionsPolicyDocument")]
     pub permissions_policy_document: Option<serde_json::Value>,
-
-
-    /// 
-    /// A string that specifies the name of the requested domain.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 2
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [a-z][a-z0-9\-]{0,48}[a-z0-9]
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainName")]
-    pub domain_name: String,
 
 
     /// 

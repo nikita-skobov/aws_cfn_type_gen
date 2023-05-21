@@ -6,18 +6,6 @@ pub struct CfnResourceSet {
 
 
     /// 
-    /// Determines the resources that can be associated to the resource set. Depending on     your setting for max results and the number of resource sets, a single call might not     return the full list.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceTypeList")]
-    pub resource_type_list: Vec<String>,
-
-
-    /// 
     /// A description of the resource set.
     /// 
     /// Required: No
@@ -49,6 +37,18 @@ pub struct CfnResourceSet {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// Determines the resources that can be associated to the resource set. Depending on     your setting for max results and the number of resource sets, a single call might not     return the full list.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceTypeList")]
+    pub resource_type_list: Vec<String>,
 
 
     /// 

@@ -6,18 +6,6 @@ pub struct CfnVersion {
 
 
     /// 
-    /// Specifies a provisioned concurrency configuration for a function's version. Updates are not supported for this    property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ProvisionedConcurrencyConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisionedConcurrencyConfig")]
-    pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
-
-
-    /// 
     /// Only publish a version if the hash value matches the value that's specified. Use this option to avoid    publishing a version if the function code has changed since you last updated it. Updates are not supported for    this property.
     /// 
     /// Required: No
@@ -65,6 +53,18 @@ pub struct CfnVersion {
     /// Update requires: Replacement
     #[serde(rename = "FunctionName")]
     pub function_name: String,
+
+
+    /// 
+    /// Specifies a provisioned concurrency configuration for a function's version. Updates are not supported for this    property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ProvisionedConcurrencyConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisionedConcurrencyConfig")]
+    pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 
 }
 

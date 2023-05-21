@@ -6,63 +6,15 @@ pub struct CfnCluster {
 
 
     /// 
-    /// Represents the configuration that you want MSK to use for the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConfigurationInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigurationInfo")]
-    pub configuration_info: Option<ConfigurationInfo>,
-
-
-    /// 
-    /// The name of the cluster.
+    /// Information about the broker nodes in the cluster.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
-
-
-    /// 
-    /// Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
+    /// Type: BrokerNodeGroupInfo
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnhancedMonitoring")]
-    pub enhanced_monitoring: Option<String>,
-
-
-    /// 
-    /// The settings for open monitoring.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OpenMonitoring
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OpenMonitoring")]
-    pub open_monitoring: Option<OpenMonitoring>,
-
-
-    /// 
-    /// The number of broker nodes in the cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfBrokerNodes")]
-    pub number_of_broker_nodes: i64,
+    #[serde(rename = "BrokerNodeGroupInfo")]
+    pub broker_node_group_info: BrokerNodeGroupInfo,
 
 
     /// 
@@ -78,51 +30,39 @@ pub struct CfnCluster {
 
 
     /// 
-    /// Logging Info details.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LoggingInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingInfo")]
-    pub logging_info: Option<LoggingInfo>,
-
-
-    /// 
-    /// Create tags when creating the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// Information about the broker nodes in the cluster.
+    /// The name of the cluster.
     /// 
     /// Required: Yes
     ///
-    /// Type: BrokerNodeGroupInfo
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "BrokerNodeGroupInfo")]
-    pub broker_node_group_info: BrokerNodeGroupInfo,
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: String,
 
 
     /// 
-    /// This controls storage mode for supported storage tiers.
+    /// Represents the configuration that you want MSK to use for the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ConfigurationInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConfigurationInfo")]
+    pub configuration_info: Option<ConfigurationInfo>,
+
+
+    /// 
+    /// The version of the cluster that you want to update.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StorageMode")]
-    pub storage_mode: Option<String>,
+    #[serde(rename = "CurrentVersion")]
+    pub current_version: Option<String>,
 
 
     /// 
@@ -138,6 +78,18 @@ pub struct CfnCluster {
 
 
     /// 
+    /// Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnhancedMonitoring")]
+    pub enhanced_monitoring: Option<String>,
+
+
+    /// 
     /// The version of Apache Kafka. You can use Amazon MSK to create clusters that use Apache Kafka versions 1.1.1 and 2.2.1.
     /// 
     /// Required: Yes
@@ -150,15 +102,63 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The version of the cluster that you want to update.
+    /// Logging Info details.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LoggingInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingInfo")]
+    pub logging_info: Option<LoggingInfo>,
+
+
+    /// 
+    /// The number of broker nodes in the cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfBrokerNodes")]
+    pub number_of_broker_nodes: i64,
+
+
+    /// 
+    /// The settings for open monitoring.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OpenMonitoring
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OpenMonitoring")]
+    pub open_monitoring: Option<OpenMonitoring>,
+
+
+    /// 
+    /// This controls storage mode for supported storage tiers.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CurrentVersion")]
-    pub current_version: Option<String>,
+    #[serde(rename = "StorageMode")]
+    pub storage_mode: Option<String>,
+
+
+    /// 
+    /// Create tags when creating the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 }
 
@@ -175,87 +175,21 @@ impl cfn_resources::CfnResource for CfnCluster {
 }
 
 
-/// The details of the Amazon S3 destination for broker logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3 {
-
-
-    /// 
-    /// The S3 prefix that is the destination for broker logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Prefix")]
-    pub prefix: Option<String>,
-
-
-    /// 
-    /// Specifies whether broker logs get sent to the specified Amazon S3 destination.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-
-    /// 
-    /// The name of the S3 bucket that is the destination for broker logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Bucket")]
-    pub bucket: Option<String>,
-
-}
-
-
-
-
-/// Details for client authentication using TLS.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tls {
-
-
-    /// 
-    /// TLS authentication is enabled or not.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// List of AWS Private CA ARNs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CertificateAuthorityArnList")]
-    pub certificate_authority_arn_list: Option<Vec<String>>,
-
-}
-
-
-
-
 /// The broker logs configuration for this MSK cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BrokerLogs {
+
+
+    /// 
+    /// Details of the CloudWatch Logs destination for broker logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CloudWatchLogs
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLogs")]
+    pub cloud_watch_logs: Option<CloudWatchLogs>,
 
 
     /// 
@@ -281,450 +215,6 @@ pub struct BrokerLogs {
     #[serde(rename = "S3")]
     pub s3: Option<S3>,
 
-
-    /// 
-    /// Details of the CloudWatch Logs destination for broker logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CloudWatchLogs
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLogs")]
-    pub cloud_watch_logs: Option<CloudWatchLogs>,
-
-}
-
-
-
-
-/// Details for client authentication using TLS for vpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConnectivityTls {
-
-
-    /// 
-    /// TLS authentication is enabled or not.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-}
-
-
-
-
-/// Includes encryption-related information, such as the Amazon KMS key used for encrypting data at rest and whether you want MSK to encrypt your data in transit.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EncryptionInfo {
-
-
-    /// 
-    /// The data-volume encryption details.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EncryptionAtRest
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EncryptionAtRest")]
-    pub encryption_at_rest: Option<EncryptionAtRest>,
-
-
-    /// 
-    /// The details for encryption in transit.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EncryptionInTransit
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionInTransit")]
-    pub encryption_in_transit: Option<EncryptionInTransit>,
-
-}
-
-
-
-
-/// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Sasl {
-
-
-    /// 
-    /// Details for ClientAuthentication using IAM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Iam
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Iam")]
-    pub iam: Option<Iam>,
-
-
-    /// 
-    /// Details for SASL/SCRAM client authentication.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Scram
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scram")]
-    pub scram: Option<Scram>,
-
-}
-
-
-
-
-/// Includes all client authentication information for VpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConnectivityClientAuthentication {
-
-
-    /// 
-    /// Details for VpcConnectivity ClientAuthentication using TLS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcConnectivityTls
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tls")]
-    pub tls: Option<VpcConnectivityTls>,
-
-
-    /// 
-    /// Details for VpcConnectivity ClientAuthentication using SASL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcConnectivitySasl
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Sasl")]
-    pub sasl: Option<VpcConnectivitySasl>,
-
-}
-
-
-
-
-/// Broker access controls.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConnectivityInfo {
-
-
-    /// 
-    /// VPC connection control settings for brokers
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcConnectivity
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcConnectivity")]
-    pub vpc_connectivity: Option<VpcConnectivity>,
-
-
-    /// 
-    /// Access control settings for the cluster's brokers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PublicAccess
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PublicAccess")]
-    pub public_access: Option<PublicAccess>,
-
-}
-
-
-
-
-/// Firehose details for BrokerLogs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Firehose {
-
-
-    /// 
-    /// The Kinesis Data Firehose delivery stream that is the destination for broker logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryStream")]
-    pub delivery_stream: Option<String>,
-
-
-    /// 
-    /// Specifies whether broker logs get send to the specified Kinesis Data Firehose delivery stream.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-}
-
-
-
-
-/// Contains information about provisioned throughput for EBS storage volumes attached to kafka broker nodes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ProvisionedThroughput {
-
-
-    /// 
-    /// Throughput value of the EBS volumes for the data drive on each kafka broker node in MiB per second.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VolumeThroughput")]
-    pub volume_throughput: Option<i64>,
-
-
-    /// 
-    /// Provisioned throughput is enabled or not.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-}
-
-
-
-
-/// VPC connection control settings for brokers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConnectivity {
-
-
-    /// 
-    /// VPC connection control settings for brokers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcConnectivityClientAuthentication
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientAuthentication")]
-    pub client_authentication: Option<VpcConnectivityClientAuthentication>,
-
-}
-
-
-
-
-/// Prometheus settings for open monitoring.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Prometheus {
-
-
-    /// 
-    /// Indicates whether you want to enable or disable the JMX Exporter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: JmxExporter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JmxExporter")]
-    pub jmx_exporter: Option<JmxExporter>,
-
-
-    /// 
-    /// Indicates whether you want to enable or disable the Node Exporter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NodeExporter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NodeExporter")]
-    pub node_exporter: Option<NodeExporter>,
-
-}
-
-
-
-
-/// Details for allowing no client authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Unauthenticated {
-
-
-    /// 
-    /// Unauthenticated is enabled or not.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-}
-
-
-
-
-/// Broker access controls
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PublicAccess {
-
-
-    /// 
-    /// DISABLED means that public access is turned off. SERVICE_PROVIDED_EIPS means that public access is turned on.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-}
-
-
-
-
-/// Indicates whether you want to enable or disable the Node Exporter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NodeExporter {
-
-
-    /// 
-    /// Indicates whether you want to enable or disable the Node Exporter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnabledInBroker")]
-    pub enabled_in_broker: bool,
-
-}
-
-
-
-
-/// You can configure your MSK cluster to send broker logs to different destination types. This is a container for the configuration details related to broker logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct LoggingInfo {
-
-
-    /// 
-    /// You can configure your MSK cluster to send broker logs to different destination types. This configuration specifies the details of these destinations.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: BrokerLogs
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BrokerLogs")]
-    pub broker_logs: BrokerLogs,
-
-}
-
-
-
-
-/// Indicates whether you want to enable or disable the JMX Exporter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct JmxExporter {
-
-
-    /// 
-    /// Indicates whether you want to enable or disable the JMX Exporter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnabledInBroker")]
-    pub enabled_in_broker: bool,
-
-}
-
-
-
-
-/// Details for client authentication using SASL for VpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConnectivitySasl {
-
-
-    /// 
-    /// Details for SASL/SCRAM client authentication for VpcConnectivity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcConnectivityScram
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scram")]
-    pub scram: Option<VpcConnectivityScram>,
-
-
-    /// 
-    /// Details for ClientAuthentication using IAM for VpcConnectivity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcConnectivityIam
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Iam")]
-    pub iam: Option<VpcConnectivityIam>,
-
-}
-
-
-
-
-/// The data-volume encryption details. You can't update encryption at rest settings for existing clusters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EncryptionAtRest {
-
-
-    /// 
-    /// The ARN of the Amazon KMS key for encrypting data at rest. If you don't specify a KMS key, MSK creates one for you and uses it.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataVolumeKMSKeyId")]
-    pub data_volume_kmskey_id: String,
-
 }
 
 
@@ -748,15 +238,19 @@ pub struct BrokerNodeGroupInfo {
 
 
     /// 
-    /// The type of Amazon EC2 instances to use for brokers. The following instance types are allowed: kafka.m5.large, kafka.m5.xlarge, kafka.m5.2xlarge,           kafka.m5.4xlarge, kafka.m5.8xlarge, kafka.m5.12xlarge, kafka.m5.16xlarge, and kafka.m5.24xlarge, and kafka.t3.small.
+    /// The list of subnets to connect to in the client virtual private cloud (VPC). Amazon creates elastic network interfaces inside these subnets.         Client applications use elastic network interfaces to produce and consume data.
+    /// 
+    /// If you use the US West (N. California) Region, specify exactly two subnets. For other Regions where        Amazon MSK is available, you can specify either two or three subnets.        The subnets that you specify must be in distinct Availability Zones.        When you create a cluster, Amazon MSK distributes the broker nodes        evenly across the subnets that you specify.
+    /// 
+    /// Client subnets can't occupy the Availability Zone with ID use1-az3.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    /// Update requires: Replacement
+    #[serde(rename = "ClientSubnets")]
+    pub client_subnets: Vec<String>,
 
 
     /// 
@@ -772,19 +266,15 @@ pub struct BrokerNodeGroupInfo {
 
 
     /// 
-    /// The list of subnets to connect to in the client virtual private cloud (VPC). Amazon creates elastic network interfaces inside these subnets.         Client applications use elastic network interfaces to produce and consume data.
-    /// 
-    /// If you use the US West (N. California) Region, specify exactly two subnets. For other Regions where        Amazon MSK is available, you can specify either two or three subnets.        The subnets that you specify must be in distinct Availability Zones.        When you create a cluster, Amazon MSK distributes the broker nodes        evenly across the subnets that you specify.
-    /// 
-    /// Client subnets can't occupy the Availability Zone with ID use1-az3.
+    /// The type of Amazon EC2 instances to use for brokers. The following instance types are allowed: kafka.m5.large, kafka.m5.xlarge, kafka.m5.2xlarge,           kafka.m5.4xlarge, kafka.m5.8xlarge, kafka.m5.12xlarge, kafka.m5.16xlarge, and kafka.m5.24xlarge, and kafka.t3.small.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClientSubnets")]
-    pub client_subnets: Vec<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
 
 
     /// 
@@ -809,199 +299,6 @@ pub struct BrokerNodeGroupInfo {
     /// Update requires: No interruption
     #[serde(rename = "StorageInfo")]
     pub storage_info: Option<StorageInfo>,
-
-}
-
-
-
-
-/// JMX and Node monitoring for the MSK cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct OpenMonitoring {
-
-
-    /// 
-    /// Prometheus exporter settings.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Prometheus
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Prometheus")]
-    pub prometheus: Prometheus,
-
-}
-
-
-
-
-/// Details for SASL/IAM client authentication for VpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct VpcConnectivityIam {
-
-
-    /// 
-    /// SASL/IAM authentication is enabled or not.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-}
-
-
-
-
-/// Contains information about the EBS storage volumes attached to the broker nodes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EBSStorageInfo {
-
-
-    /// 
-    /// The size in GiB of the EBS volume for the data drive on each broker node.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VolumeSize")]
-    pub volume_size: Option<i64>,
-
-
-    /// 
-    /// EBS volume provisioned throughput information.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ProvisionedThroughput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisionedThroughput")]
-    pub provisioned_throughput: Option<ProvisionedThroughput>,
-
-}
-
-
-
-
-/// Specifies the configuration to use for the brokers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ConfigurationInfo {
-
-
-    /// 
-    /// The revision of the configuration to use.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Revision")]
-    pub revision: i64,
-
-
-    /// 
-    /// ARN of the configuration to use.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Arn")]
-    pub arn: String,
-
-}
-
-
-
-
-/// Details for SASL/SCRAM client authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Scram {
-
-
-    /// 
-    /// SASL/SCRAM authentication is enabled or not.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-
-}
-
-
-
-
-/// The settings for encrypting data in transit.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct EncryptionInTransit {
-
-
-    /// 
-    /// When set to true, it indicates that data communication among the broker nodes of the cluster is encrypted. When set to false, the communication happens in plaintext.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InCluster")]
-    pub in_cluster: Option<bool>,
-
-
-    /// 
-    /// Indicates the encryption setting for data in transit between clients and brokers. You must set it to one of the following values.
-    /// 
-    /// TLS means that client-broker communication is enabled with TLS only.
-    /// 
-    /// TLS_PLAINTEXT means that client-broker communication is enabled for both TLS-encrypted, as well as plaintext data.
-    /// 
-    /// PLAINTEXT means that client-broker communication is enabled in plaintext only.
-    /// 
-    /// The default value is TLS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientBroker")]
-    pub client_broker: Option<String>,
-
-}
-
-
-
-
-/// Contains information about storage volumes attached to Amazon MSK broker nodes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct StorageInfo {
-
-
-    /// 
-    /// EBS volume information.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EBSStorageInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EBSStorageInfo")]
-    pub ebsstorage_info: Option<EBSStorageInfo>,
 
 }
 
@@ -1053,6 +350,268 @@ pub struct ClientAuthentication {
 
 
 
+/// Details of the CloudWatch Logs destination for broker logs.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CloudWatchLogs {
+
+
+    /// 
+    /// Specifies whether broker logs get sent to the specified CloudWatch Logs destination.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+
+    /// 
+    /// The CloudWatch log group that is the destination for broker logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogGroup")]
+    pub log_group: Option<String>,
+
+}
+
+
+
+
+/// Specifies the configuration to use for the brokers.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConfigurationInfo {
+
+
+    /// 
+    /// ARN of the configuration to use.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Arn")]
+    pub arn: String,
+
+
+    /// 
+    /// The revision of the configuration to use.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Revision")]
+    pub revision: i64,
+
+}
+
+
+
+
+/// Broker access controls.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConnectivityInfo {
+
+
+    /// 
+    /// Access control settings for the cluster's brokers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PublicAccess
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PublicAccess")]
+    pub public_access: Option<PublicAccess>,
+
+
+    /// 
+    /// VPC connection control settings for brokers
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConnectivity
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcConnectivity")]
+    pub vpc_connectivity: Option<VpcConnectivity>,
+
+}
+
+
+
+
+/// Contains information about the EBS storage volumes attached to the broker nodes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EBSStorageInfo {
+
+
+    /// 
+    /// EBS volume provisioned throughput information.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ProvisionedThroughput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisionedThroughput")]
+    pub provisioned_throughput: Option<ProvisionedThroughput>,
+
+
+    /// 
+    /// The size in GiB of the EBS volume for the data drive on each broker node.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumeSize")]
+    pub volume_size: Option<i64>,
+
+}
+
+
+
+
+/// The data-volume encryption details. You can't update encryption at rest settings for existing clusters.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EncryptionAtRest {
+
+
+    /// 
+    /// The ARN of the Amazon KMS key for encrypting data at rest. If you don't specify a KMS key, MSK creates one for you and uses it.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataVolumeKMSKeyId")]
+    pub data_volume_kmskey_id: String,
+
+}
+
+
+
+
+/// The settings for encrypting data in transit.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EncryptionInTransit {
+
+
+    /// 
+    /// Indicates the encryption setting for data in transit between clients and brokers. You must set it to one of the following values.
+    /// 
+    /// TLS means that client-broker communication is enabled with TLS only.
+    /// 
+    /// TLS_PLAINTEXT means that client-broker communication is enabled for both TLS-encrypted, as well as plaintext data.
+    /// 
+    /// PLAINTEXT means that client-broker communication is enabled in plaintext only.
+    /// 
+    /// The default value is TLS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientBroker")]
+    pub client_broker: Option<String>,
+
+
+    /// 
+    /// When set to true, it indicates that data communication among the broker nodes of the cluster is encrypted. When set to false, the communication happens in plaintext.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InCluster")]
+    pub in_cluster: Option<bool>,
+
+}
+
+
+
+
+/// Includes encryption-related information, such as the Amazon KMS key used for encrypting data at rest and whether you want MSK to encrypt your data in transit.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EncryptionInfo {
+
+
+    /// 
+    /// The data-volume encryption details.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EncryptionAtRest
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EncryptionAtRest")]
+    pub encryption_at_rest: Option<EncryptionAtRest>,
+
+
+    /// 
+    /// The details for encryption in transit.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EncryptionInTransit
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionInTransit")]
+    pub encryption_in_transit: Option<EncryptionInTransit>,
+
+}
+
+
+
+
+/// Firehose details for BrokerLogs.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Firehose {
+
+
+    /// 
+    /// The Kinesis Data Firehose delivery stream that is the destination for broker logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryStream")]
+    pub delivery_stream: Option<String>,
+
+
+    /// 
+    /// Specifies whether broker logs get send to the specified Kinesis Data Firehose delivery stream.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+}
+
+
+
+
 /// Details for SASL/IAM client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Iam {
@@ -1068,6 +627,459 @@ pub struct Iam {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: bool,
+
+}
+
+
+
+
+/// Indicates whether you want to enable or disable the JMX Exporter.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct JmxExporter {
+
+
+    /// 
+    /// Indicates whether you want to enable or disable the JMX Exporter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnabledInBroker")]
+    pub enabled_in_broker: bool,
+
+}
+
+
+
+
+/// You can configure your MSK cluster to send broker logs to different destination types. This is a container for the configuration details related to broker logs.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LoggingInfo {
+
+
+    /// 
+    /// You can configure your MSK cluster to send broker logs to different destination types. This configuration specifies the details of these destinations.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: BrokerLogs
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BrokerLogs")]
+    pub broker_logs: BrokerLogs,
+
+}
+
+
+
+
+/// Indicates whether you want to enable or disable the Node Exporter.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NodeExporter {
+
+
+    /// 
+    /// Indicates whether you want to enable or disable the Node Exporter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnabledInBroker")]
+    pub enabled_in_broker: bool,
+
+}
+
+
+
+
+/// JMX and Node monitoring for the MSK cluster.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OpenMonitoring {
+
+
+    /// 
+    /// Prometheus exporter settings.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Prometheus
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Prometheus")]
+    pub prometheus: Prometheus,
+
+}
+
+
+
+
+/// Prometheus settings for open monitoring.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Prometheus {
+
+
+    /// 
+    /// Indicates whether you want to enable or disable the JMX Exporter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: JmxExporter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JmxExporter")]
+    pub jmx_exporter: Option<JmxExporter>,
+
+
+    /// 
+    /// Indicates whether you want to enable or disable the Node Exporter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NodeExporter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NodeExporter")]
+    pub node_exporter: Option<NodeExporter>,
+
+}
+
+
+
+
+/// Contains information about provisioned throughput for EBS storage volumes attached to kafka broker nodes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ProvisionedThroughput {
+
+
+    /// 
+    /// Provisioned throughput is enabled or not.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// Throughput value of the EBS volumes for the data drive on each kafka broker node in MiB per second.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumeThroughput")]
+    pub volume_throughput: Option<i64>,
+
+}
+
+
+
+
+/// Broker access controls
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PublicAccess {
+
+
+    /// 
+    /// DISABLED means that public access is turned off. SERVICE_PROVIDED_EIPS means that public access is turned on.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
+}
+
+
+
+
+/// The details of the Amazon S3 destination for broker logs.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3 {
+
+
+    /// 
+    /// The name of the S3 bucket that is the destination for broker logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Bucket")]
+    pub bucket: Option<String>,
+
+
+    /// 
+    /// Specifies whether broker logs get sent to the specified Amazon S3 destination.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+
+    /// 
+    /// The S3 prefix that is the destination for broker logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Prefix")]
+    pub prefix: Option<String>,
+
+}
+
+
+
+
+/// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Sasl {
+
+
+    /// 
+    /// Details for ClientAuthentication using IAM.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Iam
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Iam")]
+    pub iam: Option<Iam>,
+
+
+    /// 
+    /// Details for SASL/SCRAM client authentication.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Scram
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scram")]
+    pub scram: Option<Scram>,
+
+}
+
+
+
+
+/// Details for SASL/SCRAM client authentication.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Scram {
+
+
+    /// 
+    /// SASL/SCRAM authentication is enabled or not.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+}
+
+
+
+
+/// Contains information about storage volumes attached to Amazon MSK broker nodes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StorageInfo {
+
+
+    /// 
+    /// EBS volume information.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EBSStorageInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EBSStorageInfo")]
+    pub ebsstorage_info: Option<EBSStorageInfo>,
+
+}
+
+
+
+
+/// Details for client authentication using TLS.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tls {
+
+
+    /// 
+    /// List of AWS Private CA ARNs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CertificateAuthorityArnList")]
+    pub certificate_authority_arn_list: Option<Vec<String>>,
+
+
+    /// 
+    /// TLS authentication is enabled or not.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+}
+
+
+
+
+/// Details for allowing no client authentication.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Unauthenticated {
+
+
+    /// 
+    /// Unauthenticated is enabled or not.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+}
+
+
+
+
+/// VPC connection control settings for brokers.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConnectivity {
+
+
+    /// 
+    /// VPC connection control settings for brokers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConnectivityClientAuthentication
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientAuthentication")]
+    pub client_authentication: Option<VpcConnectivityClientAuthentication>,
+
+}
+
+
+
+
+/// Includes all client authentication information for VpcConnectivity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConnectivityClientAuthentication {
+
+
+    /// 
+    /// Details for VpcConnectivity ClientAuthentication using SASL.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConnectivitySasl
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Sasl")]
+    pub sasl: Option<VpcConnectivitySasl>,
+
+
+    /// 
+    /// Details for VpcConnectivity ClientAuthentication using TLS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConnectivityTls
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tls")]
+    pub tls: Option<VpcConnectivityTls>,
+
+}
+
+
+
+
+/// Details for SASL/IAM client authentication for VpcConnectivity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConnectivityIam {
+
+
+    /// 
+    /// SASL/IAM authentication is enabled or not.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+
+}
+
+
+
+
+/// Details for client authentication using SASL for VpcConnectivity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcConnectivitySasl {
+
+
+    /// 
+    /// Details for ClientAuthentication using IAM for VpcConnectivity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConnectivityIam
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Iam")]
+    pub iam: Option<VpcConnectivityIam>,
+
+
+    /// 
+    /// Details for SASL/SCRAM client authentication for VpcConnectivity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcConnectivityScram
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scram")]
+    pub scram: Option<VpcConnectivityScram>,
 
 }
 
@@ -1095,25 +1107,13 @@ pub struct VpcConnectivityScram {
 
 
 
-/// Details of the CloudWatch Logs destination for broker logs.
+/// Details for client authentication using TLS for vpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CloudWatchLogs {
+pub struct VpcConnectivityTls {
 
 
     /// 
-    /// The CloudWatch log group that is the destination for broker logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogGroup")]
-    pub log_group: Option<String>,
-
-
-    /// 
-    /// Specifies whether broker logs get sent to the specified CloudWatch Logs destination.
+    /// TLS authentication is enabled or not.
     /// 
     /// Required: Yes
     ///

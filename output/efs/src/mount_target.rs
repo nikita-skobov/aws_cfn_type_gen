@@ -6,6 +6,40 @@ pub struct CfnMountTarget {
 
 
     /// 
+    /// The ID of the file system for which to create the mount target.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^(arn:aws[-a-z]*:elasticfilesystem:[0-9a-z-:]+:file-system/fs-[0-9a-f]{8,40}|fs-[0-9a-f]{8,40})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FileSystemId")]
+    pub file_system_id: String,
+
+
+    /// 
+    /// Valid IPv4 address within the address range of the specified subnet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 7
+    ///
+    /// Maximum: 15
+    ///
+    /// Pattern: ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpAddress")]
+    pub ip_address: Option<String>,
+
+
+    /// 
     /// Up to five VPC security group IDs, of the form sg-xxxxxxxx. These must be    for the same VPC as subnet specified.
     /// 
     /// Required: Yes
@@ -35,40 +69,6 @@ pub struct CfnMountTarget {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     pub subnet_id: String,
-
-
-    /// 
-    /// Valid IPv4 address within the address range of the specified subnet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 7
-    ///
-    /// Maximum: 15
-    ///
-    /// Pattern: ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpAddress")]
-    pub ip_address: Option<String>,
-
-
-    /// 
-    /// The ID of the file system for which to create the mount target.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^(arn:aws[-a-z]*:elasticfilesystem:[0-9a-z-:]+:file-system/fs-[0-9a-f]{8,40}|fs-[0-9a-f]{8,40})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FileSystemId")]
-    pub file_system_id: String,
 
 }
 

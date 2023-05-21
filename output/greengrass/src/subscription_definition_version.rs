@@ -6,18 +6,6 @@ pub struct CfnSubscriptionDefinitionVersion {
 
 
     /// 
-    /// The subscriptions in this version.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Subscription
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subscriptions")]
-    pub subscriptions: Vec<Subscription>,
-
-
-    /// 
     /// The ID of the subscription definition associated with this version. This value is a GUID.
     /// 
     /// Required: Yes
@@ -27,6 +15,18 @@ pub struct CfnSubscriptionDefinitionVersion {
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionDefinitionId")]
     pub subscription_definition_id: String,
+
+
+    /// 
+    /// The subscriptions in this version.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Subscription
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subscriptions")]
+    pub subscriptions: Vec<Subscription>,
 
 }
 
@@ -51,27 +51,15 @@ pub struct Subscription {
 
 
     /// 
-    /// The destination of the message. The value can be a thing ARN, the ARN of a Lambda function alias (recommended) or version, a connector ARN, cloud (which represents the AWS IoT cloud), or GGShadowService.
+    /// A descriptive or arbitrary ID for the subscription. This value must be unique within       the subscription definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Target")]
-    pub target: String,
-
-
-    /// 
-    /// The MQTT topic used to route the message.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Subject")]
-    pub subject: String,
+    #[serde(rename = "Id")]
+    pub id: String,
 
 
     /// 
@@ -87,15 +75,27 @@ pub struct Subscription {
 
 
     /// 
-    /// A descriptive or arbitrary ID for the subscription. This value must be unique within       the subscription definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// The MQTT topic used to route the message.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Id")]
-    pub id: String,
+    #[serde(rename = "Subject")]
+    pub subject: String,
+
+
+    /// 
+    /// The destination of the message. The value can be a thing ARN, the ARN of a Lambda function alias (recommended) or version, a connector ARN, cloud (which represents the AWS IoT cloud), or GGShadowService.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Target")]
+    pub target: String,
 
 }
 

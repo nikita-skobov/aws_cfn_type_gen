@@ -6,6 +6,20 @@ pub struct CfnRecordSetGroup {
 
 
     /// 
+    /// Optional: Any comments you want to include about a change batch 			request.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Comment")]
+    pub comment: Option<String>,
+
+
+    /// 
     /// The ID of the hosted zone that you want to create records in.
     /// 
     /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
@@ -50,20 +64,6 @@ pub struct CfnRecordSetGroup {
     #[serde(rename = "RecordSets")]
     pub record_sets: Option<Vec<RecordSet>>,
 
-
-    /// 
-    /// Optional: Any comments you want to include about a change batch 			request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Comment")]
-    pub comment: Option<String>,
-
 }
 
 
@@ -77,114 +77,6 @@ impl cfn_resources::CfnResource for CfnRecordSetGroup {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 }
-
-
-/// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
-///
-/// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CidrRoutingConfig {
-
-
-    /// 
-    /// The CIDR collection location name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 16
-    ///
-    /// Pattern: [0-9A-Za-z_\-\*]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LocationName")]
-    pub location_name: String,
-
-
-    /// 
-    /// The CIDR collection ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CollectionId")]
-    pub collection_id: String,
-
-}
-
-
-
-
-/// A complex type that contains information about a geographic location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GeoLocation {
-
-
-    /// 
-    /// For geolocation resource record sets, the two-letter code for a country.
-    /// 
-    /// Route 53 uses the two-letter country codes that are specified in 			ISO standard 3166-1 alpha-2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CountryCode")]
-    pub country_code: Option<String>,
-
-
-    /// 
-    /// For geolocation resource record sets, a two-letter abbreviation that identifies a continent. Route 53 supports the following continent codes:
-    /// 
-    /// AF: AfricaAN: AntarcticaAS: AsiaEU: EuropeOC: OceaniaNA: North AmericaSA: South America
-    /// 
-    /// Constraint: Specifying ContinentCode with either CountryCode or SubdivisionCode returns an 			InvalidInput error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 2
-    ///
-    /// Maximum: 2
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContinentCode")]
-    pub continent_code: Option<String>,
-
-
-    /// 
-    /// For geolocation resource record sets, the two-letter code for a state of the United States. 			Route 53 doesn't support any other values for SubdivisionCode. For a list of state abbreviations, see 			Appendix B: Two–Letter State and Possession Abbreviations 			on the United States Postal Service website.
-    /// 
-    /// If you specify subdivisioncode, you must also specify US for CountryCode.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubdivisionCode")]
-    pub subdivision_code: Option<String>,
-
-}
-
-
 
 
 /// Alias records only: Information about the AWS resource, such as a CloudFront distribution or 			an Amazon S3 bucket, that you want to route traffic to.
@@ -248,6 +140,114 @@ pub struct AliasTarget {
 
 
 
+/// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
+///
+/// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CidrRoutingConfig {
+
+
+    /// 
+    /// The CIDR collection ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CollectionId")]
+    pub collection_id: String,
+
+
+    /// 
+    /// The CIDR collection location name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 16
+    ///
+    /// Pattern: [0-9A-Za-z_\-\*]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LocationName")]
+    pub location_name: String,
+
+}
+
+
+
+
+/// A complex type that contains information about a geographic location.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GeoLocation {
+
+
+    /// 
+    /// For geolocation resource record sets, a two-letter abbreviation that identifies a continent. Route 53 supports the following continent codes:
+    /// 
+    /// AF: AfricaAN: AntarcticaAS: AsiaEU: EuropeOC: OceaniaNA: North AmericaSA: South America
+    /// 
+    /// Constraint: Specifying ContinentCode with either CountryCode or SubdivisionCode returns an 			InvalidInput error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 2
+    ///
+    /// Maximum: 2
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContinentCode")]
+    pub continent_code: Option<String>,
+
+
+    /// 
+    /// For geolocation resource record sets, the two-letter code for a country.
+    /// 
+    /// Route 53 uses the two-letter country codes that are specified in 			ISO standard 3166-1 alpha-2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CountryCode")]
+    pub country_code: Option<String>,
+
+
+    /// 
+    /// For geolocation resource record sets, the two-letter code for a state of the United States. 			Route 53 doesn't support any other values for SubdivisionCode. For a list of state abbreviations, see 			Appendix B: Two–Letter State and Possession Abbreviations 			on the United States Postal Service website.
+    /// 
+    /// If you specify subdivisioncode, you must also specify US for CountryCode.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubdivisionCode")]
+    pub subdivision_code: Option<String>,
+
+}
+
+
+
+
 /// Information about the record that you want to create.
 ///
 /// The AWS::Route53::RecordSet type can be used as a standalone resource or as an embedded property in the 			AWS::Route53::RecordSetGroup type. Note that some AWS::Route53::RecordSet properties are valid 			only when used within AWS::Route53::RecordSetGroup.
@@ -255,6 +255,86 @@ pub struct AliasTarget {
 /// For more information, see ChangeResourceRecordSets 			in the Amazon Route 53 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RecordSet {
+
+
+    /// 
+    /// Alias resource record sets only: Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that 			you want to route traffic to.
+    /// 
+    /// If you're creating resource records sets for a private hosted zone, note the 			following:
+    /// 
+    /// You can't create an alias resource record set in a private hosted zone to 					route traffic to a CloudFront distribution.               For information about creating failover resource record sets in a private 					hosted zone, see Configuring Failover in a Private Hosted Zone in the 						Amazon Route 53 Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AliasTarget
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AliasTarget")]
+    pub alias_target: Option<AliasTarget>,
+
+
+    /// 
+    /// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
+    /// 
+    /// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CidrRoutingConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CidrRoutingConfig")]
+    pub cidr_routing_config: Option<CidrRoutingConfig>,
+
+
+    /// 
+    /// Failover resource record sets only: To configure failover, you 			add the Failover element to two resource record sets. For one resource 			record set, you specify PRIMARY as the value for Failover; for 			the other resource record set, you specify SECONDARY. In addition, you 			include the HealthCheckId element and specify the health check that you 			want Amazon Route 53 to perform for each resource record set.
+    /// 
+    /// Except where noted, the following failover behaviors assume that you have included the 				HealthCheckId element in both resource record sets:
+    /// 
+    /// When the primary resource record set is healthy, Route 53 responds to DNS 					queries with the applicable value from the primary resource record set 					regardless of the health of the secondary resource record set.               When the primary resource record set is unhealthy and the secondary resource 					record set is healthy, Route 53 responds to DNS queries with the applicable 					value from the secondary resource record set.               When the secondary resource record set is unhealthy, Route 53 responds to DNS 					queries with the applicable value from the primary resource record set 					regardless of the health of the primary resource record set.               If you omit the HealthCheckId element for the secondary resource 					record set, and if the primary resource record set is unhealthy, Route 53 always 					responds to DNS queries with the applicable value from the secondary resource 					record set. This is true regardless of the health of the associated 					endpoint.
+    /// 
+    /// You can't create non-failover resource record sets that have the same values for the 				Name and Type elements as failover resource record 			sets.
+    /// 
+    /// For failover alias resource record sets, you must also include the 				EvaluateTargetHealth element and set the value to true.
+    /// 
+    /// For more information about configuring failover for Route 53, see the following topics 			in the Amazon Route 53 Developer Guide:
+    /// 
+    /// Route 53 Health Checks 						and DNS Failover                                Configuring Failover in a Private Hosted Zone
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: PRIMARY | SECONDARY
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Failover")]
+    pub failover: Option<RecordSetFailoverEnum>,
+
+
+    /// 
+    /// Geolocation resource record sets only: A complex type that lets 			you control how Amazon Route 53 responds to DNS queries based on the geographic origin 			of the query. For example, if you want all queries from Africa to be routed to a web 			server with an IP address of 192.0.2.111, create a resource record set with 			a Type of A and a ContinentCode of 				AF.
+    /// 
+    /// NoteAlthough creating geolocation and geolocation alias resource record sets in a 				private hosted zone is allowed, it's not supported.
+    /// 
+    /// If you create separate resource record sets for overlapping geographic regions (for 			example, one resource record set for a continent and one for a country on the same 			continent), priority goes to the smallest geographic region. This allows you to route 			most queries for a continent to one resource and to route queries for a country on that 			continent to a different resource.
+    /// 
+    /// You can't create two geolocation resource record sets that specify the same geographic 			location.
+    /// 
+    /// The value * in the CountryCode element matches all 			geographic locations that aren't specified in other geolocation resource record sets 			that have the same values for the Name and Type 			elements.
+    /// 
+    /// ImportantGeolocation works by mapping IP addresses to locations. However, some IP addresses 				aren't mapped to geographic locations, so even if you create geolocation resource 				record sets that cover all seven continents, Route 53 will receive some DNS queries 				from locations that it can't identify. We recommend that you create a resource 				record set for which the value of CountryCode is *. Two 				groups of queries are routed to the resource that you specify in this record: 				queries that come from locations for which you haven't created geolocation resource 				record sets and queries from IP addresses that aren't mapped to a location. If you 				don't create a * resource record set, Route 53 returns a "no answer" 				response for queries from those locations.
+    /// 
+    /// You can't create non-geolocation resource record sets that have the same values for 			the Name and Type elements as geolocation resource record 			sets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: GeoLocation
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GeoLocation")]
+    pub geo_location: Option<GeoLocation>,
 
 
     /// 
@@ -300,6 +380,40 @@ pub struct RecordSet {
 
 
     /// 
+    /// The ID of the hosted zone that you want to create records in.
+    /// 
+    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HostedZoneId")]
+    pub hosted_zone_id: Option<String>,
+
+
+    /// 
+    /// The name of the hosted zone that you want to create records in. You must include a trailing dot (for example, www.example.com.) as part of       the HostedZoneName.
+    /// 
+    /// When you create a stack using an AWS::Route53::RecordSet that specifies HostedZoneName, AWS CloudFormation attempts to find a hosted zone       whose name matches the HostedZoneName. If AWS CloudFormation cannot find a hosted zone with a matching domain name, or if there is more than one       hosted zone with the specified domain name, AWS CloudFormation will not create the stack.
+    /// 
+    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HostedZoneName")]
+    pub hosted_zone_name: Option<String>,
+
+
+    /// 
     /// Multivalue answer resource record sets only: To route traffic 			approximately randomly to multiple resources, such as web servers, create one multivalue 			answer record for each resource and specify true for 				MultiValueAnswer. Note the following:
     /// 
     /// If you associate a health check with a multivalue answer resource record set, 					Amazon Route 53 responds to DNS queries with the corresponding IP address only 					when the health check is healthy.               If you don't associate a health check with a multivalue answer record, Route 					53 always considers the record to be healthy.               Route 53 responds to DNS queries with up to eight healthy records; if you have 					eight or fewer healthy records, Route 53 responds to all DNS queries with all 					the healthy records.               If you have more than eight healthy records, Route 53 responds to different 					DNS resolvers with different combinations of healthy records.               When all records are unhealthy, Route 53 responds to DNS queries with up to 					eight unhealthy records.               If a resource becomes unavailable after a resolver caches a response, client 					software typically tries another of the IP addresses in the response.
@@ -342,50 +456,6 @@ pub struct RecordSet {
 
 
     /// 
-    /// Resource record sets that have a routing policy other than 				simple: An identifier that differentiates among multiple resource record 			sets that have the same combination of name and type, such as multiple weighted resource 			record sets named acme.example.com that have a type of A. In a group of resource record 			sets that have the same name and type, the value of SetIdentifier must be 			unique for each resource record set.
-    /// 
-    /// For information about routing policies, see Choosing a Routing 				Policy in the Amazon Route 53 Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SetIdentifier")]
-    pub set_identifier: Option<String>,
-
-
-    /// 
-    /// Failover resource record sets only: To configure failover, you 			add the Failover element to two resource record sets. For one resource 			record set, you specify PRIMARY as the value for Failover; for 			the other resource record set, you specify SECONDARY. In addition, you 			include the HealthCheckId element and specify the health check that you 			want Amazon Route 53 to perform for each resource record set.
-    /// 
-    /// Except where noted, the following failover behaviors assume that you have included the 				HealthCheckId element in both resource record sets:
-    /// 
-    /// When the primary resource record set is healthy, Route 53 responds to DNS 					queries with the applicable value from the primary resource record set 					regardless of the health of the secondary resource record set.               When the primary resource record set is unhealthy and the secondary resource 					record set is healthy, Route 53 responds to DNS queries with the applicable 					value from the secondary resource record set.               When the secondary resource record set is unhealthy, Route 53 responds to DNS 					queries with the applicable value from the primary resource record set 					regardless of the health of the primary resource record set.               If you omit the HealthCheckId element for the secondary resource 					record set, and if the primary resource record set is unhealthy, Route 53 always 					responds to DNS queries with the applicable value from the secondary resource 					record set. This is true regardless of the health of the associated 					endpoint.
-    /// 
-    /// You can't create non-failover resource record sets that have the same values for the 				Name and Type elements as failover resource record 			sets.
-    /// 
-    /// For failover alias resource record sets, you must also include the 				EvaluateTargetHealth element and set the value to true.
-    /// 
-    /// For more information about configuring failover for Route 53, see the following topics 			in the Amazon Route 53 Developer Guide:
-    /// 
-    /// Route 53 Health Checks 						and DNS Failover                                Configuring Failover in a Private Hosted Zone
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: PRIMARY | SECONDARY
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Failover")]
-    pub failover: Option<RecordSetFailoverEnum>,
-
-
-    /// 
     /// Latency-based resource record sets only: The Amazon EC2 Region 			where you created the resource that this resource record set refers to. The resource 			typically is an AWS resource, such as an EC2 instance or an ELB load 			balancer, and is referred to by an IP address or a DNS domain name, depending on the 			record type.
     /// 
     /// When Amazon Route 53 receives a DNS query for a domain name and type for which you 			have created latency resource record sets, Route 53 selects the latency resource record 			set that has the lowest latency between the end user and the associated Amazon EC2 			Region. Route 53 then returns the value that is associated with the selected resource 			record set.
@@ -422,33 +492,35 @@ pub struct RecordSet {
 
 
     /// 
-    /// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
+    /// Resource record sets that have a routing policy other than 				simple: An identifier that differentiates among multiple resource record 			sets that have the same combination of name and type, such as multiple weighted resource 			record sets named acme.example.com that have a type of A. In a group of resource record 			sets that have the same name and type, the value of SetIdentifier must be 			unique for each resource record set.
     /// 
-    /// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CidrRoutingConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CidrRoutingConfig")]
-    pub cidr_routing_config: Option<CidrRoutingConfig>,
-
-
-    /// 
-    /// Alias resource record sets only: Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that 			you want to route traffic to.
-    /// 
-    /// If you're creating resource records sets for a private hosted zone, note the 			following:
-    /// 
-    /// You can't create an alias resource record set in a private hosted zone to 					route traffic to a CloudFront distribution.               For information about creating failover resource record sets in a private 					hosted zone, see Configuring Failover in a Private Hosted Zone in the 						Amazon Route 53 Developer Guide.
+    /// For information about routing policies, see Choosing a Routing 				Policy in the Amazon Route 53 Developer Guide.
     /// 
     /// Required: No
     ///
-    /// Type: AliasTarget
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AliasTarget")]
-    pub alias_target: Option<AliasTarget>,
+    #[serde(rename = "SetIdentifier")]
+    pub set_identifier: Option<String>,
+
+
+    /// 
+    /// The resource record cache time to live (TTL), in seconds. Note the following:
+    /// 
+    /// If you're creating or updating an alias resource record set, omit 						TTL. Amazon Route 53 uses the value of TTL for the 					alias target.               If you're associating this resource record set with a health check (if you're 					adding a HealthCheckId element), we recommend that you specify a 						TTL of 60 seconds or less so clients respond quickly to changes 					in health status.               All of the resource record sets in a group of weighted resource record sets 					must have the same value for TTL.               If a group of weighted resource record sets includes one or more weighted 					alias resource record sets for which the alias target is an ELB load balancer, 					we recommend that you specify a TTL of 60 seconds for all of the 					non-alias weighted resource record sets that have the same name and type. Values 					other than 60 seconds (the TTL for load balancers) will change the effect of the 					values that you specify for Weight.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TTL")]
+    pub ttl: Option<String>,
 
 
     /// 
@@ -478,78 +550,6 @@ pub struct RecordSet {
 
 
     /// 
-    /// The resource record cache time to live (TTL), in seconds. Note the following:
-    /// 
-    /// If you're creating or updating an alias resource record set, omit 						TTL. Amazon Route 53 uses the value of TTL for the 					alias target.               If you're associating this resource record set with a health check (if you're 					adding a HealthCheckId element), we recommend that you specify a 						TTL of 60 seconds or less so clients respond quickly to changes 					in health status.               All of the resource record sets in a group of weighted resource record sets 					must have the same value for TTL.               If a group of weighted resource record sets includes one or more weighted 					alias resource record sets for which the alias target is an ELB load balancer, 					we recommend that you specify a TTL of 60 seconds for all of the 					non-alias weighted resource record sets that have the same name and type. Values 					other than 60 seconds (the TTL for load balancers) will change the effect of the 					values that you specify for Weight.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TTL")]
-    pub ttl: Option<String>,
-
-
-    /// 
-    /// Geolocation resource record sets only: A complex type that lets 			you control how Amazon Route 53 responds to DNS queries based on the geographic origin 			of the query. For example, if you want all queries from Africa to be routed to a web 			server with an IP address of 192.0.2.111, create a resource record set with 			a Type of A and a ContinentCode of 				AF.
-    /// 
-    /// NoteAlthough creating geolocation and geolocation alias resource record sets in a 				private hosted zone is allowed, it's not supported.
-    /// 
-    /// If you create separate resource record sets for overlapping geographic regions (for 			example, one resource record set for a continent and one for a country on the same 			continent), priority goes to the smallest geographic region. This allows you to route 			most queries for a continent to one resource and to route queries for a country on that 			continent to a different resource.
-    /// 
-    /// You can't create two geolocation resource record sets that specify the same geographic 			location.
-    /// 
-    /// The value * in the CountryCode element matches all 			geographic locations that aren't specified in other geolocation resource record sets 			that have the same values for the Name and Type 			elements.
-    /// 
-    /// ImportantGeolocation works by mapping IP addresses to locations. However, some IP addresses 				aren't mapped to geographic locations, so even if you create geolocation resource 				record sets that cover all seven continents, Route 53 will receive some DNS queries 				from locations that it can't identify. We recommend that you create a resource 				record set for which the value of CountryCode is *. Two 				groups of queries are routed to the resource that you specify in this record: 				queries that come from locations for which you haven't created geolocation resource 				record sets and queries from IP addresses that aren't mapped to a location. If you 				don't create a * resource record set, Route 53 returns a "no answer" 				response for queries from those locations.
-    /// 
-    /// You can't create non-geolocation resource record sets that have the same values for 			the Name and Type elements as geolocation resource record 			sets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: GeoLocation
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GeoLocation")]
-    pub geo_location: Option<GeoLocation>,
-
-
-    /// 
-    /// The ID of the hosted zone that you want to create records in.
-    /// 
-    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 32
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: Option<String>,
-
-
-    /// 
-    /// The name of the hosted zone that you want to create records in. You must include a trailing dot (for example, www.example.com.) as part of       the HostedZoneName.
-    /// 
-    /// When you create a stack using an AWS::Route53::RecordSet that specifies HostedZoneName, AWS CloudFormation attempts to find a hosted zone       whose name matches the HostedZoneName. If AWS CloudFormation cannot find a hosted zone with a matching domain name, or if there is more than one       hosted zone with the specified domain name, AWS CloudFormation will not create the stack.
-    /// 
-    /// Specify either HostedZoneName or HostedZoneId, but not both. If you have multiple hosted zones 			with the same domain name, you must specify the hosted zone using HostedZoneId.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 32
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HostedZoneName")]
-    pub hosted_zone_name: Option<String>,
-
-
-    /// 
     /// Weighted resource record sets only: Among resource record sets 			that have the same combination of DNS name and type, a value that determines the 			proportion of DNS queries that Amazon Route 53 responds to using the current resource 			record set. Route 53 calculates the sum of the weights for the resource record sets that 			have the same combination of DNS name and type. Route 53 then responds to queries based 			on the ratio of a resource's weight to the total. Note the following:
     /// 
     /// You must specify a value for the Weight element for every 					weighted resource record set.               You can only specify one ResourceRecord per weighted resource 					record set.               You can't create latency, failover, or geolocation resource record sets that 					have the same values for the Name and Type elements as 					weighted resource record sets.               You can create a maximum of 100 weighted resource record sets that have the 					same values for the Name and Type elements.               For weighted (but not weighted alias) resource record sets, if you set 						Weight to 0 for a resource record set, Route 53 					never responds to queries with the applicable value for that resource record 					set. However, if you set Weight to 0 for all resource 					record sets that have the same combination of DNS name and type, traffic is 					routed to all resources with equal probability.        The effect of setting Weight to 0 is different when 					you associate health checks with weighted resource record sets. For more 					information, see Options for Configuring Route 53 Active-Active and Active-Passive 						Failover in the Amazon Route 53 Developer 					Guide.
@@ -564,6 +564,69 @@ pub struct RecordSet {
 
 }
 
+
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum RecordSetTypeEnum {
+
+    /// A
+    #[serde(rename = "A")]
+    A,
+
+    /// AAAA
+    #[serde(rename = "AAAA")]
+    Aaaa,
+
+    /// CAA
+    #[serde(rename = "CAA")]
+    Caa,
+
+    /// CNAME
+    #[serde(rename = "CNAME")]
+    Cname,
+
+    /// DS
+    #[serde(rename = "DS")]
+    Ds,
+
+    /// MX
+    #[serde(rename = "MX")]
+    Mx,
+
+    /// NAPTR
+    #[serde(rename = "NAPTR")]
+    Naptr,
+
+    /// NS
+    #[serde(rename = "NS")]
+    Ns,
+
+    /// PTR
+    #[serde(rename = "PTR")]
+    Ptr,
+
+    /// SOA
+    #[serde(rename = "SOA")]
+    Soa,
+
+    /// SPF
+    #[serde(rename = "SPF")]
+    Spf,
+
+    /// SRV
+    #[serde(rename = "SRV")]
+    Srv,
+
+    /// TXT
+    #[serde(rename = "TXT")]
+    Txt,
+
+}
+
+impl Default for RecordSetTypeEnum {
+    fn default() -> Self {
+        RecordSetTypeEnum::A
+    }
+}
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RecordSetRegionEnum {
@@ -688,69 +751,6 @@ pub enum RecordSetFailoverEnum {
 impl Default for RecordSetFailoverEnum {
     fn default() -> Self {
         RecordSetFailoverEnum::Primary
-    }
-}
-
-#[derive(Clone, Debug, serde::Serialize)]
-pub enum RecordSetTypeEnum {
-
-    /// A
-    #[serde(rename = "A")]
-    A,
-
-    /// AAAA
-    #[serde(rename = "AAAA")]
-    Aaaa,
-
-    /// CAA
-    #[serde(rename = "CAA")]
-    Caa,
-
-    /// CNAME
-    #[serde(rename = "CNAME")]
-    Cname,
-
-    /// DS
-    #[serde(rename = "DS")]
-    Ds,
-
-    /// MX
-    #[serde(rename = "MX")]
-    Mx,
-
-    /// NAPTR
-    #[serde(rename = "NAPTR")]
-    Naptr,
-
-    /// NS
-    #[serde(rename = "NS")]
-    Ns,
-
-    /// PTR
-    #[serde(rename = "PTR")]
-    Ptr,
-
-    /// SOA
-    #[serde(rename = "SOA")]
-    Soa,
-
-    /// SPF
-    #[serde(rename = "SPF")]
-    Spf,
-
-    /// SRV
-    #[serde(rename = "SRV")]
-    Srv,
-
-    /// TXT
-    #[serde(rename = "TXT")]
-    Txt,
-
-}
-
-impl Default for RecordSetTypeEnum {
-    fn default() -> Self {
-        RecordSetTypeEnum::A
     }
 }
 
