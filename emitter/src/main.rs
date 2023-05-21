@@ -6,13 +6,6 @@ use parser::{get_schema, get_service_name, get_spec_schema, CfnResourceProviderS
 
 use rayon::prelude::*;
 
-pub trait CfnResource {
-    /// returns a string like 'AWS::CloudFront::Distribution'
-    fn type_string() -> &'static str;
-
-    fn properties(&self) -> serde_json::Value;
-}
-
 /// as we parse, we create a service crate for each
 /// resourec type. eg a resource type 'AWS::Cloudfront::Distribution'
 /// would have service crate name 'Cloudfront'.
@@ -172,11 +165,11 @@ pub fn emit_cfn_resource_impl(
 ) -> String {
     format!("
 impl cfn_resources::CfnResource for {} {{
-    fn type_string() -> &'static str {{
+    fn type_string(&self) -> &'static str {{
         \"{}\"
     }}
 
-    fn properties(self) -> serde_json::Value {{
+    fn properties(&self) -> serde_json::Value {{
         serde_json::to_value(self).expect(\"Failed to serialize cloudformation resource properties\")
     }}
 
