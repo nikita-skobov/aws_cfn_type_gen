@@ -5,11 +5,17 @@ pub use serde_json;
 /// should be represented by StrVal. This allows users to specify
 /// values as simple string values `"something".into()`
 /// as well as complex mappings for Fn::GetAtt, Ref, etc.
-#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(untagged)]
 pub enum StrVal {
     String(String),
     Val(serde_json::Value),
+}
+
+impl Default for StrVal {
+    fn default() -> Self {
+        Self::String(Default::default())
+    }
 }
 
 pub trait ToOptStrVal {
