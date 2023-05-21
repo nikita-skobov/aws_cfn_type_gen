@@ -3,24 +3,8 @@
 /// The     AWS::Greengrass::ConnectorDefinition resource represents a connector definition for AWS IoT Greengrass.   Connector definitions are used to organize your connector definition versions.
 ///
 /// Connector definitions can reference multiple connector definition versions. All connector definition versions      must be associated with a connector definition. Each connector definition version can contain one or more connectors.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConnectorDefinition {
-
-
-    /// 
-    /// Application-specific metadata to attach to the connector definition. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
-    /// 
-    /// This Json property type is processed as a map of key-value pairs. It uses the following format, which 		    is different from most Tags implementations in AWS CloudFormation templates.
-    /// 
-    /// "Tags": {   "KeyName0": "value",   "KeyName1": "value",   "KeyName2": "value" }
-    ///
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
 
 
     /// 
@@ -48,13 +32,60 @@ pub struct CfnConnectorDefinition {
     #[serde(rename = "InitialVersion")]
     pub initial_version: Option<ConnectorDefinitionVersion>,
 
+
+    /// 
+    /// Application-specific metadata to attach to the connector definition. 		  You can use tags in IAM policies to control access to AWS IoT Greengrass resources. 		  You can also use tags to categorize your resources. For more information, see 		  Tagging Your AWS IoT Greengrass 		  Resources in the AWS IoT Greengrass Version 1 Developer Guide.
+    /// 
+    /// This Json property type is processed as a map of key-value pairs. It uses the following format, which 		    is different from most Tags implementations in AWS CloudFormation templates.
+    /// 
+    /// "Tags": {   "KeyName0": "value",   "KeyName1": "value",   "KeyName2": "value" }
+    ///
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+}
+
+impl cfn_resources::CfnResource for CfnConnectorDefinition {
+    fn type_string() -> &'static str {
+        "AWS::Greengrass::ConnectorDefinition"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// A connector definition version contains a list of connectors.
+///
+/// In an AWS CloudFormation template, ConnectorDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::ConnectorDefinition resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConnectorDefinitionVersion {
+
+
+    /// 
+    /// The connectors in this version. Only one instance of a given connector can be added to           a connector definition version at a time.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Connector
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Connectors")]
+    pub connectors: Vec<Connector>,
+
 }
 
 
 /// Connectors are modules that provide       built-in integration with local infrastructure, device protocols, AWS, and other cloud services. 	For more information, 	see Integrate with Services and Protocols Using Greengrass Connectors in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Connectors 		 property of the ConnectorDefinitionVersion property type contains a list       of Connector property types.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Connector {
 
 
@@ -71,20 +102,6 @@ pub struct Connector {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the connector.
-    /// 
-    /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConnectorArn")]
-    pub connector_arn: String,
-
-
-    /// 
     /// The parameters or configuration used by the connector.
     /// 
     /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
@@ -97,25 +114,18 @@ pub struct Connector {
     #[serde(rename = "Parameters")]
     pub parameters: Option<serde_json::Value>,
 
-}
-
-
-/// A connector definition version contains a list of connectors.
-///
-/// In an AWS CloudFormation template, ConnectorDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::ConnectorDefinition resource.
-#[derive(Default, serde::Serialize)]
-pub struct ConnectorDefinitionVersion {
-
 
     /// 
-    /// The connectors in this version. Only one instance of a given connector can be added to           a connector definition version at a time.
+    /// The Amazon Resource Name (ARN) of the connector.
+    /// 
+    /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of Connector
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Connectors")]
-    pub connectors: Vec<Connector>,
+    #[serde(rename = "ConnectorArn")]
+    pub connector_arn: String,
 
 }

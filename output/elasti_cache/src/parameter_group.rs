@@ -1,7 +1,7 @@
 
 
 /// The AWS::ElastiCache::ParameterGroup type creates a new cache parameter group. Cache parameter groups control the parameters for a cache cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnParameterGroup {
 
 
@@ -35,17 +35,6 @@ pub struct CfnParameterGroup {
     pub properties: Option<std::collections::HashMap<String, String>>,
 
 
-    /// A tag that can be added to an ElastiCache parameter group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your parameter groups. A tag with a null Value is permitted.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
     /// 
     /// The description for this cache parameter group.
     /// 
@@ -57,6 +46,27 @@ pub struct CfnParameterGroup {
     #[serde(rename = "Description")]
     pub description: String,
 
+
+    /// A tag that can be added to an ElastiCache parameter group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your parameter groups. A tag with a null Value is permitted.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnParameterGroup {
+    fn type_string() -> &'static str {
+        "AWS::ElastiCache::ParameterGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -67,19 +77,8 @@ pub struct CfnParameterGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -91,5 +90,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

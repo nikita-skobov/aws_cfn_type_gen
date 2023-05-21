@@ -1,34 +1,20 @@
 
 
 /// A structure that represents a data cell filter with column-level, row-level, and/or cell-level security. Data cell filters belong to a specific table in a Data Catalog. During a stack operation,       AWS CloudFormation calls the AWS Lake Formation CreateDataCellsFilter API operation to create     a DataCellsFilter resource, and calls the DeleteDataCellsFilter API operation to delete it.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDataCellsFilter {
 
 
     /// 
-    /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
-    /// 
-    /// The name given by the user to the data filter cell.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// A wildcard with exclusions. You must specify either a ColumnNames list or the ColumnWildCard.
+    /// An array of UTF-8 strings. A list of column names.
     /// 
     /// Required: No
     ///
-    /// Type: ColumnWildcard
+    /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ColumnWildcard")]
-    pub column_wildcard: Option<ColumnWildcard>,
+    #[serde(rename = "ColumnNames")]
+    pub column_names: Option<Vec<String>>,
 
 
     /// 
@@ -46,15 +32,29 @@ pub struct CfnDataCellsFilter {
 
 
     /// 
-    /// An array of UTF-8 strings. A list of column names.
+    /// Catalog id string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
+    /// 
+    /// The ID of the catalog to which the table belongs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TableCatalogId")]
+    pub table_catalog_id: String,
+
+
+    /// 
+    /// A wildcard with exclusions. You must specify either a ColumnNames list or the ColumnWildCard.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: ColumnWildcard
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ColumnNames")]
-    pub column_names: Option<Vec<String>>,
+    #[serde(rename = "ColumnWildcard")]
+    pub column_wildcard: Option<ColumnWildcard>,
 
 
     /// 
@@ -70,20 +70,6 @@ pub struct CfnDataCellsFilter {
 
 
     /// 
-    /// Catalog id string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
-    /// 
-    /// The ID of the catalog to which the table belongs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TableCatalogId")]
-    pub table_catalog_id: String,
-
-
-    /// 
     /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
     /// 
     /// A table in the database.
@@ -96,11 +82,35 @@ pub struct CfnDataCellsFilter {
     #[serde(rename = "TableName")]
     pub table_name: String,
 
+
+    /// 
+    /// UTF-8 string, not less than 1 or more than 255 bytes long, matching the single-line string pattern.
+    /// 
+    /// The name given by the user to the data filter cell.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnDataCellsFilter {
+    fn type_string() -> &'static str {
+        "AWS::LakeFormation::DataCellsFilter"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A PartiQL predicate.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RowFilter {
 
 
@@ -131,7 +141,7 @@ pub struct RowFilter {
 
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ColumnWildcard {
 
 

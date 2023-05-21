@@ -1,44 +1,8 @@
 
 
 /// Use the AWS::IoT::CustomMetric resource to define a custom metric published by your devices to Device Defender. For API reference, see CreateCustomMetric and for general information, see Custom metrics.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCustomMetric {
-
-
-    /// 
-    /// The name of the custom metric. This will be used in the metric report submitted from     the device/thing. The name can't begin with aws:. You can’t change the name after you define it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricName")]
-    pub metric_name: Option<String>,
-
-
-    /// 
-    /// The friendly name in the console for the custom metric. This name doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. You can update the friendly name after you define it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
-
-
-    /// 
-    /// Metadata that can be used to manage the custom metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -54,6 +18,52 @@ pub struct CfnCustomMetric {
     #[serde(rename = "MetricType")]
     pub metric_type: String,
 
+
+    /// 
+    /// The friendly name in the console for the custom metric. This name doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. You can update the friendly name after you define it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
+
+
+    /// 
+    /// The name of the custom metric. This will be used in the metric report submitted from     the device/thing. The name can't begin with aws:. You can’t change the name after you define it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricName")]
+    pub metric_name: Option<String>,
+
+
+    /// 
+    /// Metadata that can be used to manage the custom metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnCustomMetric {
+    fn type_string() -> &'static str {
+        "AWS::IoT::CustomMetric"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -64,7 +74,7 @@ pub struct CfnCustomMetric {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

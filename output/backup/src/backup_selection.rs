@@ -3,8 +3,20 @@
 /// Specifies a set of resources to assign to a backup plan.
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBackupSelection {
+
+
+    /// 
+    /// Uniquely identifies a backup plan.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BackupPlanId")]
+    pub backup_plan_id: String,
 
 
     /// 
@@ -20,36 +32,22 @@ pub struct CfnBackupSelection {
     #[serde(rename = "BackupSelection")]
     pub backup_selection: BackupSelectionResourceType,
 
+}
 
-    /// 
-    /// Uniquely identifies a backup plan.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BackupPlanId")]
-    pub backup_plan_id: String,
+impl cfn_resources::CfnResource for CfnBackupSelection {
+    fn type_string() -> &'static str {
+        "AWS::Backup::BackupSelection"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Includes information about tags you define to assign tagged resources to a backup     plan.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConditionParameter {
-
-
-    /// 
-    /// The value in a key-value pair. For example, in the tag Department:       Accounting, Accounting is the value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConditionValue")]
-    pub condition_value: Option<String>,
 
 
     /// 
@@ -63,11 +61,155 @@ pub struct ConditionParameter {
     #[serde(rename = "ConditionKey")]
     pub condition_key: Option<String>,
 
+
+    /// 
+    /// The value in a key-value pair. For example, in the tag Department:       Accounting, Accounting is the value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConditionValue")]
+    pub condition_value: Option<String>,
+
+}
+
+
+/// Specifies an object containing properties used to assign a set of resources to a backup     plan.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BackupSelectionResourceType {
+
+
+    /// 
+    /// The display name of a resource selection document.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SelectionName")]
+    pub selection_name: String,
+
+
+    /// 
+    /// The ARN of the IAM role that AWS Backup uses to authenticate when backing up     the target resource; for example,     arn:aws:iam::123456789012:role/S3Access.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IamRoleArn")]
+    pub iam_role_arn: String,
+
+
+    /// 
+    /// An array of strings that contain Amazon Resource Names (ARNs) of resources to assign to     a backup plan.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Resources")]
+    pub resources: Option<Vec<String>>,
+
+
+    /// 
+    /// A list of conditions that you define to assign resources to your backup plans using     tags. For example, "StringEquals": { "ConditionKey": "aws:ResourceTag/CreatedByCryo",       "ConditionValue": "true" },. Condition operators are case sensitive.
+    /// 
+    /// Conditions differs from ListOfTags as follows:
+    /// 
+    /// When you specify more than one condition, you only assign the resources that match        ALL conditions (using AND logic).            Conditions supports StringEquals,          StringLike, StringNotEquals, and          StringNotLike. ListOfTags only supports          StringEquals.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Conditions
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Conditions")]
+    pub conditions: Option<Conditions>,
+
+
+    /// 
+    /// A list of conditions that you define to assign resources to your backup plans using     tags. For example, "StringEquals": { "ConditionKey": "aws:ResourceTag/CreatedByCryo",       "ConditionValue": "true" },. Condition operators are case sensitive.
+    /// 
+    /// ListOfTags differs from Conditions as follows:
+    /// 
+    /// When you specify more than one condition, you assign all resources that match AT        LEAST ONE condition (using OR logic).            ListOfTags only supports StringEquals.          Conditions supports StringEquals,          StringLike, StringNotEquals, and          StringNotLike.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ConditionResourceType
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ListOfTags")]
+    pub list_of_tags: Option<Vec<ConditionResourceType>>,
+
+
+    /// 
+    /// A list of Amazon Resource Names (ARNs) to exclude from a backup plan. The maximum number     of ARNs is 500 without wildcards, or 30 ARNs with wildcards.
+    /// 
+    /// If you need to exclude many resources from a backup plan, consider a different resource     selection strategy, such as assigning only one or a few resource types or refining your     resource selection using tags.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NotResources")]
+    pub not_resources: Option<Vec<String>>,
+
+}
+
+
+/// Specifies an object that contains an array of triplets made up of a condition type (such     as STRINGEQUALS), a key, and a value. Conditions are used to filter resources     in a selection that is assigned to a backup plan.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConditionResourceType {
+
+
+    /// 
+    /// The key in a key-value pair. For example, in "Department": "accounting",       "Department" is the key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConditionKey")]
+    pub condition_key: String,
+
+
+    /// 
+    /// The value in a key-value pair. For example, in "Department": "accounting",       "accounting" is the value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConditionValue")]
+    pub condition_value: String,
+
+
+    /// 
+    /// An operation, such as STRINGEQUALS, that is applied to a key-value pair     used to filter resources in a selection.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConditionType")]
+    pub condition_type: String,
+
 }
 
 
 /// Contains information about which resources to include or exclude from a backup plan     using their tags. Conditions are case sensitive.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Conditions {
 
 
@@ -117,137 +259,5 @@ pub struct Conditions {
     /// Update requires: Replacement
     #[serde(rename = "StringLike")]
     pub string_like: Option<Vec<ConditionParameter>>,
-
-}
-
-
-/// Specifies an object that contains an array of triplets made up of a condition type (such     as STRINGEQUALS), a key, and a value. Conditions are used to filter resources     in a selection that is assigned to a backup plan.
-#[derive(Default, serde::Serialize)]
-pub struct ConditionResourceType {
-
-
-    /// 
-    /// The value in a key-value pair. For example, in "Department": "accounting",       "accounting" is the value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConditionValue")]
-    pub condition_value: String,
-
-
-    /// 
-    /// An operation, such as STRINGEQUALS, that is applied to a key-value pair     used to filter resources in a selection.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConditionType")]
-    pub condition_type: String,
-
-
-    /// 
-    /// The key in a key-value pair. For example, in "Department": "accounting",       "Department" is the key.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConditionKey")]
-    pub condition_key: String,
-
-}
-
-
-/// Specifies an object containing properties used to assign a set of resources to a backup     plan.
-#[derive(Default, serde::Serialize)]
-pub struct BackupSelectionResourceType {
-
-
-    /// 
-    /// The ARN of the IAM role that AWS Backup uses to authenticate when backing up     the target resource; for example,     arn:aws:iam::123456789012:role/S3Access.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IamRoleArn")]
-    pub iam_role_arn: String,
-
-
-    /// 
-    /// A list of conditions that you define to assign resources to your backup plans using     tags. For example, "StringEquals": { "ConditionKey": "aws:ResourceTag/CreatedByCryo",       "ConditionValue": "true" },. Condition operators are case sensitive.
-    /// 
-    /// Conditions differs from ListOfTags as follows:
-    /// 
-    /// When you specify more than one condition, you only assign the resources that match        ALL conditions (using AND logic).            Conditions supports StringEquals,          StringLike, StringNotEquals, and          StringNotLike. ListOfTags only supports          StringEquals.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Conditions
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Conditions")]
-    pub conditions: Option<Conditions>,
-
-
-    /// 
-    /// A list of Amazon Resource Names (ARNs) to exclude from a backup plan. The maximum number     of ARNs is 500 without wildcards, or 30 ARNs with wildcards.
-    /// 
-    /// If you need to exclude many resources from a backup plan, consider a different resource     selection strategy, such as assigning only one or a few resource types or refining your     resource selection using tags.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NotResources")]
-    pub not_resources: Option<Vec<String>>,
-
-
-    /// 
-    /// An array of strings that contain Amazon Resource Names (ARNs) of resources to assign to     a backup plan.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Resources")]
-    pub resources: Option<Vec<String>>,
-
-
-    /// 
-    /// A list of conditions that you define to assign resources to your backup plans using     tags. For example, "StringEquals": { "ConditionKey": "aws:ResourceTag/CreatedByCryo",       "ConditionValue": "true" },. Condition operators are case sensitive.
-    /// 
-    /// ListOfTags differs from Conditions as follows:
-    /// 
-    /// When you specify more than one condition, you assign all resources that match AT        LEAST ONE condition (using OR logic).            ListOfTags only supports StringEquals.          Conditions supports StringEquals,          StringLike, StringNotEquals, and          StringNotLike.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ConditionResourceType
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ListOfTags")]
-    pub list_of_tags: Option<Vec<ConditionResourceType>>,
-
-
-    /// 
-    /// The display name of a resource selection document.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SelectionName")]
-    pub selection_name: String,
 
 }

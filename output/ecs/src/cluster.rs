@@ -1,20 +1,20 @@
 
 
 /// The AWS::ECS::Cluster resource creates an Amazon Elastic Container Service (Amazon ECS)  cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCluster {
 
 
     /// 
-    /// The execute command configuration for the cluster.
+    /// The settings to use when creating a cluster. This parameter is used to turn on CloudWatch 			Container Insights for a cluster.
     /// 
     /// Required: No
     ///
-    /// Type: ClusterConfiguration
+    /// Type: List of ClusterSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Configuration")]
-    pub configuration: Option<ClusterConfiguration>,
+    #[serde(rename = "ClusterSettings")]
+    pub cluster_settings: Option<Vec<ClusterSettings>>,
 
 
     /// 
@@ -74,18 +74,6 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The settings to use when creating a cluster. This parameter is used to turn on CloudWatch 			Container Insights for a cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ClusterSettings
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClusterSettings")]
-    pub cluster_settings: Option<Vec<ClusterSettings>>,
-
-
-    /// 
     /// The metadata that you apply to the cluster to help you categorize and organize them. 			Each tag consists of a key and an optional value. You define both.
     /// 
     /// The following basic restrictions apply to tags:
@@ -102,26 +90,81 @@ pub struct CfnCluster {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The execute command configuration for the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ClusterConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Configuration")]
+    pub configuration: Option<ClusterConfiguration>,
+
+}
+
+impl cfn_resources::CfnResource for CfnCluster {
+    fn type_string() -> &'static str {
+        "AWS::ECS::Cluster"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
-/// The settings to use when creating a cluster. This parameter is used to turn on CloudWatch 			Container Insights for a cluster.
-#[derive(Default, serde::Serialize)]
-pub struct ClusterSettings {
+/// The details of the execute command configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ExecuteCommandConfiguration {
 
 
     /// 
-    /// The name of the cluster setting. The value is containerInsights .
+    /// Specify an AWS Key Management Service key ID to encrypt the data between the local client 			and the container.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: containerInsights
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// The log setting to use for redirecting logs for your execute command results. The 			following log settings are available.
+    /// 
+    /// NONE: The execute command session is not logged.                        DEFAULT: The awslogs configuration in the task 					definition is used. If no logging parameter is specified, it defaults to this 					value. If no awslogs log driver is configured in the task 					definition, the output won't be logged.                        OVERRIDE: Specify the logging details as a part of 						logConfiguration. If the OVERRIDE logging option 					is specified, the logConfiguration is required.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DEFAULT | NONE | OVERRIDE
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "Logging")]
+    pub logging: Option<String>,
+
+
+    /// 
+    /// The log configuration for the results of the execute command actions. The logs can be 			sent to CloudWatch Logs or an Amazon S3 bucket. When logging=OVERRIDE is 			specified, a logConfiguration must be provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ExecuteCommandLogConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogConfiguration")]
+    pub log_configuration: Option<ExecuteCommandLogConfiguration>,
+
+}
+
+
+/// The settings to use when creating a cluster. This parameter is used to turn on CloudWatch 			Container Insights for a cluster.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ClusterSettings {
 
 
     /// 
@@ -137,13 +180,46 @@ pub struct ClusterSettings {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 
+
+    /// 
+    /// The name of the cluster setting. The value is containerInsights .
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: containerInsights
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+/// The execute command configuration for the cluster.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ClusterConfiguration {
+
+
+    /// 
+    /// The details of the execute command configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ExecuteCommandConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExecuteCommandConfiguration")]
+    pub execute_command_configuration: Option<ExecuteCommandConfiguration>,
+
 }
 
 
 /// Use this parameter to set a default Service Connect namespace. After you set a default 	Service Connect namespace, any new services with Service Connect turned on that are created in the cluster are added as 	client services in the namespace. This setting only applies to new services that set the enabled parameter to 	true in the ServiceConnectConfiguration. 	You can set the namespace of each service individually in the ServiceConnectConfiguration to override this default 	parameter.
 ///
 /// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServiceConnectDefaults {
 
 
@@ -169,25 +245,6 @@ pub struct ServiceConnectDefaults {
 }
 
 
-/// The execute command configuration for the cluster.
-#[derive(Default, serde::Serialize)]
-pub struct ClusterConfiguration {
-
-
-    /// 
-    /// The details of the execute command configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ExecuteCommandConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExecuteCommandConfiguration")]
-    pub execute_command_configuration: Option<ExecuteCommandConfiguration>,
-
-}
-
-
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -195,7 +252,7 @@ pub struct ClusterConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -224,32 +281,8 @@ pub struct Tag {
 
 
 /// The log configuration for the results of the execute command actions. The logs can be 			sent to CloudWatch Logs or an Amazon S3 bucket.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ExecuteCommandLogConfiguration {
-
-
-    /// 
-    /// Determines whether to use encryption on the S3 logs. If not specified, encryption is 			not used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3EncryptionEnabled")]
-    pub s3_encryption_enabled: Option<bool>,
-
-
-    /// 
-    /// An optional folder in the S3 bucket to place logs in.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3KeyPrefix")]
-    pub s3_key_prefix: Option<String>,
 
 
     /// 
@@ -267,6 +300,18 @@ pub struct ExecuteCommandLogConfiguration {
 
 
     /// 
+    /// An optional folder in the S3 bucket to place logs in.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3KeyPrefix")]
+    pub s3_key_prefix: Option<String>,
+
+
+    /// 
     /// Determines whether to use encryption on the CloudWatch logs. If not specified, encryption 			will be off.
     /// 
     /// Required: No
@@ -276,6 +321,18 @@ pub struct ExecuteCommandLogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchEncryptionEnabled")]
     pub cloud_watch_encryption_enabled: Option<bool>,
+
+
+    /// 
+    /// Determines whether to use encryption on the S3 logs. If not specified, encryption is 			not used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3EncryptionEnabled")]
+    pub s3_encryption_enabled: Option<bool>,
 
 
     /// 
@@ -295,7 +352,7 @@ pub struct ExecuteCommandLogConfiguration {
 
 
 /// The CapacityProviderStrategyItem property specifies the details of the default capacity provider  strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider  strategy specified, the default capacity provider strategy is used.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CapacityProviderStrategyItem {
 
 
@@ -345,52 +402,5 @@ pub struct CapacityProviderStrategyItem {
     /// Update requires: No interruption
     #[serde(rename = "CapacityProvider")]
     pub capacity_provider: Option<String>,
-
-}
-
-
-/// The details of the execute command configuration.
-#[derive(Default, serde::Serialize)]
-pub struct ExecuteCommandConfiguration {
-
-
-    /// 
-    /// The log configuration for the results of the execute command actions. The logs can be 			sent to CloudWatch Logs or an Amazon S3 bucket. When logging=OVERRIDE is 			specified, a logConfiguration must be provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ExecuteCommandLogConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogConfiguration")]
-    pub log_configuration: Option<ExecuteCommandLogConfiguration>,
-
-
-    /// 
-    /// The log setting to use for redirecting logs for your execute command results. The 			following log settings are available.
-    /// 
-    /// NONE: The execute command session is not logged.                        DEFAULT: The awslogs configuration in the task 					definition is used. If no logging parameter is specified, it defaults to this 					value. If no awslogs log driver is configured in the task 					definition, the output won't be logged.                        OVERRIDE: Specify the logging details as a part of 						logConfiguration. If the OVERRIDE logging option 					is specified, the logConfiguration is required.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DEFAULT | NONE | OVERRIDE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Logging")]
-    pub logging: Option<String>,
-
-
-    /// 
-    /// Specify an AWS Key Management Service key ID to encrypt the data between the local client 			and the container.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
 
 }

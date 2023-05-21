@@ -3,7 +3,7 @@
 /// A key group.
 ///
 /// A key group contains a list of public keys that you can use with CloudFront signed URLs and signed cookies.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnKeyGroup {
 
 
@@ -20,24 +20,22 @@ pub struct CfnKeyGroup {
 
 }
 
+impl cfn_resources::CfnResource for CfnKeyGroup {
+    fn type_string() -> &'static str {
+        "AWS::CloudFront::KeyGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// A key group configuration.
 ///
 /// A key group contains a list of public keys that you can use with CloudFront signed URLs and signed cookies.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KeyGroupConfig {
-
-
-    /// 
-    /// A name to identify the key group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -62,5 +60,17 @@ pub struct KeyGroupConfig {
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
     pub comment: Option<String>,
+
+
+    /// 
+    /// A name to identify the key group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }

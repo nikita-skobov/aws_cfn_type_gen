@@ -1,7 +1,7 @@
 
 
 /// Creates a fleet provisioning template.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProvisioningTemplate {
 
 
@@ -15,6 +15,18 @@ pub struct CfnProvisioningTemplate {
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
     pub template_name: Option<String>,
+
+
+    /// 
+    /// The description of the fleet provisioning template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -54,30 +66,6 @@ pub struct CfnProvisioningTemplate {
 
 
     /// 
-    /// Creates a pre-provisioning hook template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ProvisioningHook
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreProvisioningHook")]
-    pub pre_provisioning_hook: Option<ProvisioningHook>,
-
-
-    /// 
-    /// The description of the fleet provisioning template.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// The type of the provisioning template.
     /// 
     /// Required: No
@@ -87,6 +75,18 @@ pub struct CfnProvisioningTemplate {
     /// Update requires: Replacement
     #[serde(rename = "TemplateType")]
     pub template_type: Option<String>,
+
+
+    /// 
+    /// Creates a pre-provisioning hook template.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ProvisioningHook
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PreProvisioningHook")]
+    pub pre_provisioning_hook: Option<ProvisioningHook>,
 
 
     /// 
@@ -102,35 +102,14 @@ pub struct CfnProvisioningTemplate {
 
 }
 
+impl cfn_resources::CfnResource for CfnProvisioningTemplate {
+    fn type_string() -> &'static str {
+        "AWS::IoT::ProvisioningTemplate"
+    }
 
-/// Structure that contains payloadVersion and targetArn. Provisioning hooks can be used when fleet provisioning to validate device parameters before allowing the device to be provisioned.
-#[derive(Default, serde::Serialize)]
-pub struct ProvisioningHook {
-
-
-    /// 
-    /// The payload that was sent to the target function. The valid payload is "2020-04-01".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PayloadVersion")]
-    pub payload_version: Option<String>,
-
-
-    /// 
-    /// The ARN of the target function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetArn")]
-    pub target_arn: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -141,7 +120,7 @@ pub struct ProvisioningHook {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -165,5 +144,36 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+}
+
+
+/// Structure that contains payloadVersion and targetArn. Provisioning hooks can be used when fleet provisioning to validate device parameters before allowing the device to be provisioned.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ProvisioningHook {
+
+
+    /// 
+    /// The ARN of the target function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetArn")]
+    pub target_arn: Option<String>,
+
+
+    /// 
+    /// The payload that was sent to the target function. The valid payload is "2020-04-01".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PayloadVersion")]
+    pub payload_version: Option<String>,
 
 }

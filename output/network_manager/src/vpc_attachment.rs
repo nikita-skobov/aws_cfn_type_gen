@@ -1,7 +1,7 @@
 
 
 /// Creates a VPC attachment on an edge location of a core network.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVpcAttachment {
 
 
@@ -30,6 +30,18 @@ pub struct CfnVpcAttachment {
 
 
     /// 
+    /// The core network ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CoreNetworkId")]
+    pub core_network_id: String,
+
+
+    /// 
     /// The tags associated with the VPC attachment.
     /// 
     /// Required: No
@@ -52,18 +64,16 @@ pub struct CfnVpcAttachment {
     #[serde(rename = "VpcArn")]
     pub vpc_arn: String,
 
+}
 
-    /// 
-    /// The core network ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CoreNetworkId")]
-    pub core_network_id: String,
+impl cfn_resources::CfnResource for CfnVpcAttachment {
+    fn type_string() -> &'static str {
+        "AWS::NetworkManager::VpcAttachment"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -74,19 +84,8 @@ pub struct CfnVpcAttachment {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -99,12 +98,66 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+/// Describes the VPC options.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VpcOptions {
+
+
+    /// 
+    /// Indicates whether appliance mode is supported. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. The default value is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplianceModeSupport")]
+    pub appliance_mode_support: Option<bool>,
+
+
+    /// 
+    /// Indicates whether IPv6 is supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ipv6Support")]
+    pub ipv6_support: Option<bool>,
+
 }
 
 
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProposedSegmentChange {
+
+
+    /// 
+    /// The rule number in the policy document that applies to this change.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AttachmentPolicyRuleNumber")]
+    pub attachment_policy_rule_number: Option<i64>,
 
 
     /// 
@@ -135,48 +188,5 @@ pub struct ProposedSegmentChange {
     /// Update requires: No interruption
     #[serde(rename = "SegmentName")]
     pub segment_name: Option<String>,
-
-
-    /// 
-    /// The rule number in the policy document that applies to this change.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttachmentPolicyRuleNumber")]
-    pub attachment_policy_rule_number: Option<i64>,
-
-}
-
-
-/// Describes the VPC options.
-#[derive(Default, serde::Serialize)]
-pub struct VpcOptions {
-
-
-    /// 
-    /// Indicates whether appliance mode is supported. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. The default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplianceModeSupport")]
-    pub appliance_mode_support: Option<bool>,
-
-
-    /// 
-    /// Indicates whether IPv6 is supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6Support")]
-    pub ipv6_support: Option<bool>,
 
 }

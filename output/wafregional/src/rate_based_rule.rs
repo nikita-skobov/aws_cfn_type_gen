@@ -7,22 +7,32 @@
 /// Requests that meet both of these conditions and exceed 15,000 requests every five     minutes trigger the rule's action (block or count), which is defined in the web     ACL.
 ///
 /// Note you can only create rate-based rules using an AWS CloudFormation template. To add the rate-based rules created through AWS CloudFormation to a web ACL, use the AWS WAF console, API, or command line interface (CLI). For more information, see    UpdateWebACL.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRateBasedRule {
 
 
     /// 
-    /// The field that AWS WAF uses to determine if requests are likely arriving from single     source and thus subject to rate monitoring. The only valid value for RateKey     is IP. IP indicates that requests arriving from the same IP     address are subject to the RateLimit that is specified in the       RateBasedRule.
+    /// The maximum number of requests, which have an identical value in the field specified     by the RateKey, allowed in a five-minute period. If the number of requests     exceeds the RateLimit and the other predicates specified in the rule are also       met, AWS WAF triggers the action that is specified for this rule.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Integer
     ///
-    /// Allowed values: IP
+    /// Update requires: No interruption
+    #[serde(rename = "RateLimit")]
+    pub rate_limit: i64,
+
+
+    /// 
+    /// The Predicates object contains one Predicate element for      each ByteMatchSet, IPSet, or SqlInjectionMatchSet> object that you want to include in a       RateBasedRule.
+    /// 
+    /// Required: No
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "RateKey")]
-    pub rate_key: String,
+    /// Type: List of Predicate
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MatchPredicates")]
+    pub match_predicates: Option<Vec<Predicate>>,
 
 
     /// 
@@ -62,34 +72,48 @@ pub struct CfnRateBasedRule {
 
 
     /// 
-    /// The maximum number of requests, which have an identical value in the field specified     by the RateKey, allowed in a five-minute period. If the number of requests     exceeds the RateLimit and the other predicates specified in the rule are also       met, AWS WAF triggers the action that is specified for this rule.
+    /// The field that AWS WAF uses to determine if requests are likely arriving from single     source and thus subject to rate monitoring. The only valid value for RateKey     is IP. IP indicates that requests arriving from the same IP     address are subject to the RateLimit that is specified in the       RateBasedRule.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RateLimit")]
-    pub rate_limit: i64,
-
-
-    /// 
-    /// The Predicates object contains one Predicate element for      each ByteMatchSet, IPSet, or SqlInjectionMatchSet> object that you want to include in a       RateBasedRule.
-    /// 
-    /// Required: No
+    /// Allowed values: IP
     ///
-    /// Type: List of Predicate
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MatchPredicates")]
-    pub match_predicates: Option<Vec<Predicate>>,
+    /// Update requires: Replacement
+    #[serde(rename = "RateKey")]
+    pub rate_key: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnRateBasedRule {
+    fn type_string() -> &'static str {
+        "AWS::WAFRegional::RateBasedRule"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects 			that you want to add to a Rule and, for each object, indicates whether you want to negate the settings, for example, requests that do 			NOT originate from the IP address 192.0.2.44.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Predicate {
+
+
+    /// 
+    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 
     /// 
@@ -122,19 +146,5 @@ pub struct Predicate {
     /// Update requires: No interruption
     #[serde(rename = "DataId")]
     pub data_id: String,
-
-
-    /// 
-    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
 
 }

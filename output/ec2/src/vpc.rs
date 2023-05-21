@@ -5,60 +5,8 @@
 /// You can optionally request an IPv6 CIDR block for the VPC. You can request an Amazon-provided      IPv6 CIDR block from Amazon's pool of IPv6 addresses, or an IPv6 CIDR block from an IPv6 address      pool that you provisioned through bring your own IP addresses (BYOIP).
 ///
 /// For more information, see Virtual private clouds (VPC) in the Amazon VPC User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPC {
-
-
-    /// 
-    /// Indicates whether the DNS resolution is supported for the VPC. If enabled, queries to     the Amazon provided DNS server at the 169.254.169.253 IP address, or the reserved IP     address at the base of the VPC network range "plus two" succeed. If disabled, the Amazon     provided DNS service in the VPC that resolves public DNS hostnames to IP addresses is not     enabled. Enabled by default. For more information, see DNS attributes in your       VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableDnsSupport")]
-    pub enable_dns_support: Option<bool>,
-
-
-    /// 
-    /// The tags for the VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Indicates whether the instances launched in the VPC get DNS hostnames. If enabled,     instances in the VPC get DNS hostnames; otherwise, they do not. Disabled by default for     nondefault VPCs. For more information, see DNS attributes in your       VPC.
-    /// 
-    /// You can only enable DNS hostnames if you've enabled DNS support.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableDnsHostnames")]
-    pub enable_dns_hostnames: Option<bool>,
-
-
-    /// 
-    /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. For more information, see      What is IPAM? in the Amazon VPC IPAM User Guide.
-    /// 
-    /// You must specify eitherCidrBlock or Ipv4IpamPoolId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ipv4IpamPoolId")]
-    pub ipv4_ipam_pool_id: Option<String>,
 
 
     /// 
@@ -77,6 +25,18 @@ pub struct CfnVPC {
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceTenancy")]
     pub instance_tenancy: Option<String>,
+
+
+    /// 
+    /// The tags for the VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -104,6 +64,56 @@ pub struct CfnVPC {
     #[serde(rename = "CidrBlock")]
     pub cidr_block: Option<String>,
 
+
+    /// 
+    /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. For more information, see      What is IPAM? in the Amazon VPC IPAM User Guide.
+    /// 
+    /// You must specify eitherCidrBlock or Ipv4IpamPoolId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ipv4IpamPoolId")]
+    pub ipv4_ipam_pool_id: Option<String>,
+
+
+    /// 
+    /// Indicates whether the DNS resolution is supported for the VPC. If enabled, queries to     the Amazon provided DNS server at the 169.254.169.253 IP address, or the reserved IP     address at the base of the VPC network range "plus two" succeed. If disabled, the Amazon     provided DNS service in the VPC that resolves public DNS hostnames to IP addresses is not     enabled. Enabled by default. For more information, see DNS attributes in your       VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableDnsSupport")]
+    pub enable_dns_support: Option<bool>,
+
+
+    /// 
+    /// Indicates whether the instances launched in the VPC get DNS hostnames. If enabled,     instances in the VPC get DNS hostnames; otherwise, they do not. Disabled by default for     nondefault VPCs. For more information, see DNS attributes in your       VPC.
+    /// 
+    /// You can only enable DNS hostnames if you've enabled DNS support.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableDnsHostnames")]
+    pub enable_dns_hostnames: Option<bool>,
+
+}
+
+impl cfn_resources::CfnResource for CfnVPC {
+    fn type_string() -> &'static str {
+        "AWS::EC2::VPC"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -114,19 +124,8 @@ pub struct CfnVPC {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -138,5 +137,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

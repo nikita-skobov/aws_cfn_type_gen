@@ -1,8 +1,68 @@
 
 
 /// The AWS::DataSync::LocationHDFS resource specifies an endpoint for a Hadoop Distributed File System (HDFS).
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationHDFS {
+
+
+    /// 
+    /// The krb5.conf file that contains the Kerberos configuration information.     You can load the krb5.conf by providing a string of the file's contents or an       Amazon S3 presigned URL of the file. IfKERBEROS is specified for       AuthType, this value is required.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KerberosKrb5Conf")]
+    pub kerberos_krb5_conf: Option<String>,
+
+
+    /// 
+    /// The size of data blocks to write into the HDFS cluster. The block size must be a multiple    of 512 bytes. The default block size is 128 mebibytes (MiB).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1048576
+    ///
+    /// Maximum: 1073741824
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BlockSize")]
+    pub block_size: Option<i64>,
+
+
+    /// 
+    /// The NameNode that manages the HDFS namespace. The NameNode performs operations such as    opening, closing, and renaming files and directories. The NameNode contains the information to    map blocks of data to the DataNodes. You can use only one NameNode.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of NameNode
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NameNodes")]
+    pub name_nodes: Vec<NameNode>,
+
+
+    /// 
+    /// The user name used to identify the client on the host operating system.
+    /// 
+    /// NoteIf SIMPLE is specified for AuthenticationType, this parameter     is required.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[_.A-Za-z0-9][-_.A-Za-z0-9]*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SimpleUser")]
+    pub simple_user: Option<String>,
 
 
     /// 
@@ -40,75 +100,17 @@ pub struct CfnLocationHDFS {
 
 
     /// 
-    /// The Kerberos key table (keytab) that contains mappings between the defined Kerberos     principal and the encrypted keys. Provide the base64-encoded file text. If       KERBEROS is specified for AuthType, this value is required.
+    /// The key-value pair that represents the tag that you want to add to the location. The value    can be an empty string. We recommend using tags to name your resources.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KerberosKeytab")]
-    pub kerberos_keytab: Option<String>,
-
-
-    /// 
-    /// The krb5.conf file that contains the Kerberos configuration information.     You can load the krb5.conf by providing a string of the file's contents or an       Amazon S3 presigned URL of the file. IfKERBEROS is specified for       AuthType, this value is required.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KerberosKrb5Conf")]
-    pub kerberos_krb5_conf: Option<String>,
-
-
-    /// 
-    /// The NameNode that manages the HDFS namespace. The NameNode performs operations such as    opening, closing, and renaming files and directories. The NameNode contains the information to    map blocks of data to the DataNodes. You can use only one NameNode.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of NameNode
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NameNodes")]
-    pub name_nodes: Vec<NameNode>,
-
-
-    /// 
-    /// The user name used to identify the client on the host operating system.
-    /// 
-    /// NoteIf SIMPLE is specified for AuthenticationType, this parameter     is required.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[_.A-Za-z0-9][-_.A-Za-z0-9]*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SimpleUser")]
-    pub simple_user: Option<String>,
-
-
-    /// 
-    /// The size of data blocks to write into the HDFS cluster. The block size must be a multiple    of 512 bytes. The default block size is 128 mebibytes (MiB).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1048576
-    ///
-    /// Maximum: 1073741824
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockSize")]
-    pub block_size: Option<i64>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -146,6 +148,18 @@ pub struct CfnLocationHDFS {
 
 
     /// 
+    /// The Kerberos key table (keytab) that contains mappings between the defined Kerberos     principal and the encrypted keys. Provide the base64-encoded file text. If       KERBEROS is specified for AuthType, this value is required.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KerberosKeytab")]
+    pub kerberos_keytab: Option<String>,
+
+
+    /// 
     /// The Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC)    and data transfer protection settings configured on the Hadoop Distributed File System (HDFS)    cluster. If QopConfiguration isn't specified, RpcProtection and     DataTransferProtection default to PRIVACY. If you set     RpcProtection or DataTransferProtection, the other parameter    assumes the same value.
     /// 
     /// Required: No
@@ -155,20 +169,6 @@ pub struct CfnLocationHDFS {
     /// Update requires: No interruption
     #[serde(rename = "QopConfiguration")]
     pub qop_configuration: Option<QopConfiguration>,
-
-
-    /// 
-    /// The key-value pair that represents the tag that you want to add to the location. The value    can be an empty string. We recommend using tags to name your resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// Property description not available.
@@ -199,45 +199,14 @@ pub struct CfnLocationHDFS {
 
 }
 
+impl cfn_resources::CfnResource for CfnLocationHDFS {
+    fn type_string() -> &'static str {
+        "AWS::DataSync::LocationHDFS"
+    }
 
-/// The    NameNode of the Hadoop Distributed File System (HDFS). The NameNode manages the file system's    namespace and performs operations such as opening, closing, and renaming files and    directories. The NameNode also contains the information to map blocks of data to the    DataNodes.
-#[derive(Default, serde::Serialize)]
-pub struct NameNode {
-
-
-    /// 
-    /// The hostname of the NameNode in the HDFS cluster. This value is the IP address or Domain    Name Service (DNS) name of the NameNode. An agent that's installed on-premises uses this    hostname to communicate with the NameNode in the network.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Hostname")]
-    pub hostname: String,
-
-
-    /// 
-    /// The port that the NameNode uses to listen to client requests.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65536
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: i64,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -248,7 +217,7 @@ pub struct NameNode {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -276,9 +245,50 @@ pub struct Tag {
 }
 
 
+/// The    NameNode of the Hadoop Distributed File System (HDFS). The NameNode manages the file system's    namespace and performs operations such as opening, closing, and renaming files and    directories. The NameNode also contains the information to map blocks of data to the    DataNodes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NameNode {
+
+
+    /// 
+    /// The port that the NameNode uses to listen to client requests.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65536
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: i64,
+
+
+    /// 
+    /// The hostname of the NameNode in the HDFS cluster. This value is the IP address or Domain    Name Service (DNS) name of the NameNode. An agent that's installed on-premises uses this    hostname to communicate with the NameNode in the network.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Hostname")]
+    pub hostname: String,
+
+}
+
+
 /// The    Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer privacy settings    configured on the Hadoop Distributed File System (HDFS) cluster.
 /// 
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct QopConfiguration {
 
 

@@ -11,20 +11,8 @@
 /// Private Hosted Zones
 ///
 /// You can associate health checks with failover records in a private hosted zone. Note the following:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnHealthCheck {
-
-
-    /// 
-    /// The HealthCheckTags property describes key-value pairs that are associated with an AWS::Route53::HealthCheck resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of HealthCheckTag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckTags")]
-    pub health_check_tags: Option<Vec<HealthCheckTag>>,
 
 
     /// 
@@ -40,128 +28,102 @@ pub struct CfnHealthCheck {
     #[serde(rename = "HealthCheckConfig")]
     pub health_check_config: HealthCheckConfig,
 
-}
-
-
-/// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
-#[derive(Default, serde::Serialize)]
-pub struct AlarmIdentifier {
-
 
     /// 
-    /// The name of the CloudWatch alarm that you want Amazon Route 53 health checkers to use 			to determine whether this health check is healthy.
+    /// The HealthCheckTags property describes key-value pairs that are associated with an AWS::Route53::HealthCheck resource.
     /// 
-    /// NoteRoute 53 supports CloudWatch alarms with the following features:                                 Standard-resolution metrics. High-resolution metrics aren't supported. For 						more information, see High-Resolution Metrics in the Amazon CloudWatch User 							Guide.                  Statistics: Average, Minimum, Maximum, Sum, and SampleCount. Extended 						statistics aren't supported.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
+    /// Type: List of HealthCheckTag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// For the CloudWatch alarm that you want Route 53 health checkers to use to determine 			whether this health check is healthy, the region that the alarm was created in.
-    /// 
-    /// For the current list of CloudWatch regions, see Amazon CloudWatch endpoints and 				quotas in the Amazon Web Services General 			Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: af-south-1 | ap-east-1 | ap-northeast-1 | ap-northeast-2 | ap-northeast-3 | ap-south-1 | ap-southeast-1 | ap-southeast-2 | ap-southeast-3 | ca-central-1 | cn-north-1 | cn-northwest-1 | eu-central-1 | eu-north-1 | eu-south-1 | eu-west-1 | eu-west-2 | eu-west-3 | me-south-1 | sa-east-1 | us-east-1 | us-east-2 | us-gov-east-1 | us-gov-west-1 | us-iso-east-1 | us-iso-west-1 | us-isob-east-1 | us-west-1 | us-west-2
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Region")]
-    pub region: String,
+    #[serde(rename = "HealthCheckTags")]
+    pub health_check_tags: Option<Vec<HealthCheckTag>>,
 
 }
 
+impl cfn_resources::CfnResource for CfnHealthCheck {
+    fn type_string() -> &'static str {
+        "AWS::Route53::HealthCheck"
+    }
 
-/// The HealthCheckTag property describes one key-value pair that is associated with an AWS::Route53::HealthCheck resource.
-#[derive(Default, serde::Serialize)]
-pub struct HealthCheckTag {
-
-
-    /// 
-    /// The value of Key depends on the operation that you want to 			perform:
-    /// 
-    /// Add a tag to a health check or hosted zone: 						Key is the name that you want to give the new tag.                        Edit a tag: Key is the name of 					the tag that you want to change the Value for.                         Delete a key: Key is the name 					of the tag you want to remove.                        Give a name to a health check: Edit the 					default Name tag. In the Amazon Route 53 console, the list of your 					health checks includes a Name column that lets 					you see the name that you've given to each health check.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value of Value depends on the operation that you want to 			perform:
-    /// 
-    /// Add a tag to a health check or hosted zone: 						Value is the value that you want to give the new tag.                        Edit a tag: Value is the new 					value that you want to assign the tag.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A complex type that contains information about the health check.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HealthCheckConfig {
 
 
     /// 
-    /// The number of consecutive health checks that an endpoint must pass or fail for Amazon 			Route 53 to change the current status of the endpoint from unhealthy to healthy or vice 			versa. For more information, see How Amazon Route 53 Determines Whether an Endpoint Is Healthy in the 				Amazon Route 53 Developer Guide.
+    /// A complex type that contains one Region element for each region from 			which you want Amazon Route 53 health checkers to check the specified endpoint.
     /// 
-    /// If you don't specify a value for FailureThreshold, the default value is 			three health checks.
+    /// If you don't specify any regions, Route 53 health checkers automatically performs 			checks from all of the regions that are listed under Valid 				Values.
+    /// 
+    /// If you update a health check to remove a region that has been performing health 			checks, Route 53 will briefly continue to perform checks from that region to ensure that 			some health checkers are always checking the endpoint (for example, if you replace three 			regions with four different regions).
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Regions")]
+    pub regions: Option<Vec<String>>,
+
+
+    /// 
+    /// When CloudWatch has insufficient data about the metric to determine the alarm state, 			the status that you want Amazon Route 53 to assign to the health check:
+    /// 
+    /// Healthy: Route 53 considers the health check to be 					healthy.                        Unhealthy: Route 53 considers the health check to be 					unhealthy.                        LastKnownStatus: Route 53 uses the status of the health check 					from the last time that CloudWatch had sufficient data to determine the alarm 					state. For new health checks that have no last known status, the default status 					for the health check is healthy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Healthy | LastKnownStatus | Unhealthy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InsufficientDataHealthStatus")]
+    pub insufficient_data_health_status: Option<String>,
+
+
+    /// 
+    /// (CALCULATED Health Checks Only) A complex type that contains one 				ChildHealthCheck element for each health check that you want to 			associate with a CALCULATED health check.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChildHealthChecks")]
+    pub child_health_checks: Option<Vec<String>>,
+
+
+    /// 
+    /// The number of seconds between the time that Amazon Route 53 gets a response from your 			endpoint and the time that it sends the next health check request. Each Route 53 health 			checker makes requests at this interval.
+    /// 
+    /// ImportantYou can't change the value of RequestInterval after you create a 				health check.
+    /// 
+    /// If you don't specify a value for RequestInterval, the default value is 				30 seconds.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
-    /// Minimum: 1
+    /// Minimum: 10
     ///
-    /// Maximum: 10
+    /// Maximum: 30
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "FailureThreshold")]
-    pub failure_threshold: Option<i64>,
-
-
-    /// 
-    /// The port on the endpoint that you want Amazon Route 53 to perform health checks on.
-    /// 
-    /// NoteDon't specify a value for Port when you specify a value for 				Type 				of CLOUDWATCH_METRIC or CALCULATED.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
+    /// Update requires: Replacement
+    #[serde(rename = "RequestInterval")]
+    pub request_interval: Option<i64>,
 
 
     /// 
@@ -201,48 +163,6 @@ pub struct HealthCheckConfig {
 
 
     /// 
-    /// The type of health check that you want to create, which indicates how Amazon Route 53 			determines whether an endpoint is healthy.
-    /// 
-    /// ImportantYou can't change the value of Type after you create a health 				check.
-    /// 
-    /// You can create the following types of health checks:
-    /// 
-    /// HTTP: Route 53 tries to establish a TCP 					connection. If successful, Route 53 submits an HTTP request and waits for an 					HTTP status code of 200 or greater and less than 400.                        HTTPS: Route 53 tries to establish a TCP 					connection. If successful, Route 53 submits an HTTPS request and waits for an 					HTTP status code of 200 or greater and less than 400.        ImportantIf you specify HTTPS for the value of Type, the 						endpoint must support TLS v1.0 or later.                        HTTP_STR_MATCH: Route 53 tries to establish a 					TCP connection. If successful, Route 53 submits an HTTP request and searches the 					first 5,120 bytes of the response body for the string that you specify in 						SearchString.                        HTTPS_STR_MATCH: Route 53 tries to establish 					a TCP connection. If successful, Route 53 submits an HTTPS request 					and searches the first 5,120 bytes of the response body for the string that you 					specify in SearchString.                        TCP: Route 53 tries to establish a TCP 					connection.                        CLOUDWATCH_METRIC: The health check is 					associated with a CloudWatch alarm. If the state of the alarm is 					OK, the health check is considered healthy. If the state is 						ALARM, the health check is considered unhealthy. If CloudWatch 					doesn't have sufficient data to determine whether the state is OK 					or ALARM, the health check status depends on the setting for 						InsufficientDataHealthStatus: Healthy, 						Unhealthy, or LastKnownStatus.                         CALCULATED: For health checks that monitor 					the status of other health checks, Route 53 adds up the number of health checks 					that Route 53 health checkers consider to be healthy and compares that number 					with the value of HealthThreshold.                         RECOVERY_CONTROL: The health check is 					assocated with a Route53 Application Recovery Controller routing control. If the 					routing control state is ON, the health check is considered 					healthy. If the state is OFF, the health check is considered 					unhealthy.
-    /// 
-    /// For more information, see How Route 53 Determines Whether an Endpoint Is Healthy in the 				Amazon Route 53 Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CALCULATED | CLOUDWATCH_METRIC | HTTP | HTTP_STR_MATCH | HTTPS | HTTPS_STR_MATCH | RECOVERY_CONTROL | TCP
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// The number of child health checks that are associated with a CALCULATED 			health check that Amazon Route 53 must consider healthy for the CALCULATED 			health check to be considered healthy. To specify the child health checks that you want 			to associate with a CALCULATED health check, use the ChildHealthChecks element.
-    /// 
-    /// Note the following:
-    /// 
-    /// If you specify a number greater than the number of child health checks, Route 					53 always considers this health check to be unhealthy.               If you specify 0, Route 53 always considers this health check to 					be healthy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthThreshold")]
-    pub health_threshold: Option<i64>,
-
-
-    /// 
     /// Specify whether you want Amazon Route 53 to invert the status of a health check, for 			example, to consider a health check unhealthy when it otherwise would be considered 			healthy.
     /// 
     /// Required: No
@@ -252,89 +172,6 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "Inverted")]
     pub inverted: Option<bool>,
-
-
-    /// 
-    /// (CALCULATED Health Checks Only) A complex type that contains one 				ChildHealthCheck element for each health check that you want to 			associate with a CALCULATED health check.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChildHealthChecks")]
-    pub child_health_checks: Option<Vec<String>>,
-
-
-    /// 
-    /// When CloudWatch has insufficient data about the metric to determine the alarm state, 			the status that you want Amazon Route 53 to assign to the health check:
-    /// 
-    /// Healthy: Route 53 considers the health check to be 					healthy.                        Unhealthy: Route 53 considers the health check to be 					unhealthy.                        LastKnownStatus: Route 53 uses the status of the health check 					from the last time that CloudWatch had sufficient data to determine the alarm 					state. For new health checks that have no last known status, the default status 					for the health check is healthy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Healthy | LastKnownStatus | Unhealthy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InsufficientDataHealthStatus")]
-    pub insufficient_data_health_status: Option<String>,
-
-
-    /// 
-    /// If the value of Type is HTTP_STR_MATCH or HTTPS_STR_MATCH, 			the string that you want Amazon Route 53 to search for in the response body from the 			specified resource. If the string appears in the response body, Route 53 considers the 			resource healthy.
-    /// 
-    /// Route 53 considers case when searching for SearchString in the response 			body.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SearchString")]
-    pub search_string: Option<String>,
-
-
-    /// 
-    /// Specify whether you want Amazon Route 53 to measure the latency between health 			checkers in multiple AWS regions and your endpoint, and to display 			CloudWatch latency graphs on the Health Checks page in 			the Route 53 console.
-    /// 
-    /// ImportantYou can't change the value of MeasureLatency after you create a 				health check.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeasureLatency")]
-    pub measure_latency: Option<bool>,
-
-
-    /// 
-    /// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AlarmIdentifier
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlarmIdentifier")]
-    pub alarm_identifier: Option<AlarmIdentifier>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoutingControlArn")]
-    pub routing_control_arn: Option<String>,
 
 
     /// 
@@ -368,6 +205,28 @@ pub struct HealthCheckConfig {
 
 
     /// 
+    /// The type of health check that you want to create, which indicates how Amazon Route 53 			determines whether an endpoint is healthy.
+    /// 
+    /// ImportantYou can't change the value of Type after you create a health 				check.
+    /// 
+    /// You can create the following types of health checks:
+    /// 
+    /// HTTP: Route 53 tries to establish a TCP 					connection. If successful, Route 53 submits an HTTP request and waits for an 					HTTP status code of 200 or greater and less than 400.                        HTTPS: Route 53 tries to establish a TCP 					connection. If successful, Route 53 submits an HTTPS request and waits for an 					HTTP status code of 200 or greater and less than 400.        ImportantIf you specify HTTPS for the value of Type, the 						endpoint must support TLS v1.0 or later.                        HTTP_STR_MATCH: Route 53 tries to establish a 					TCP connection. If successful, Route 53 submits an HTTP request and searches the 					first 5,120 bytes of the response body for the string that you specify in 						SearchString.                        HTTPS_STR_MATCH: Route 53 tries to establish 					a TCP connection. If successful, Route 53 submits an HTTPS request 					and searches the first 5,120 bytes of the response body for the string that you 					specify in SearchString.                        TCP: Route 53 tries to establish a TCP 					connection.                        CLOUDWATCH_METRIC: The health check is 					associated with a CloudWatch alarm. If the state of the alarm is 					OK, the health check is considered healthy. If the state is 						ALARM, the health check is considered unhealthy. If CloudWatch 					doesn't have sufficient data to determine whether the state is OK 					or ALARM, the health check status depends on the setting for 						InsufficientDataHealthStatus: Healthy, 						Unhealthy, or LastKnownStatus.                         CALCULATED: For health checks that monitor 					the status of other health checks, Route 53 adds up the number of health checks 					that Route 53 health checkers consider to be healthy and compares that number 					with the value of HealthThreshold.                         RECOVERY_CONTROL: The health check is 					assocated with a Route53 Application Recovery Controller routing control. If the 					routing control state is ON, the health check is considered 					healthy. If the state is OFF, the health check is considered 					unhealthy.
+    /// 
+    /// For more information, see How Route 53 Determines Whether an Endpoint Is Healthy in the 				Amazon Route 53 Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CALCULATED | CLOUDWATCH_METRIC | HTTP | HTTP_STR_MATCH | HTTPS | HTTPS_STR_MATCH | RECOVERY_CONTROL | TCP
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+
+    /// 
     /// The path, if any, that you want Amazon Route 53 to request when performing health 			checks. The path can be any value for which your endpoint will return an HTTP status 			code of 2xx or 3xx when the endpoint is healthy, for example, the file 			/docs/route53-health-check.html. You can also include query string parameters, for 			example, /welcome.html?language=jp&login=y.
     /// 
     /// Required: No
@@ -381,42 +240,101 @@ pub struct HealthCheckConfig {
     pub resource_path: Option<String>,
 
 
-    /// 
-    /// A complex type that contains one Region element for each region from 			which you want Amazon Route 53 health checkers to check the specified endpoint.
-    /// 
-    /// If you don't specify any regions, Route 53 health checkers automatically performs 			checks from all of the regions that are listed under Valid 				Values.
-    /// 
-    /// If you update a health check to remove a region that has been performing health 			checks, Route 53 will briefly continue to perform checks from that region to ensure that 			some health checkers are always checking the endpoint (for example, if you replace three 			regions with four different regions).
-    /// 
+    /// Property description not available.
+    ///
     /// Required: No
     ///
-    /// Type: List of String
-    ///
-    /// Maximum: 64
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Regions")]
-    pub regions: Option<Vec<String>>,
+    #[serde(rename = "RoutingControlArn")]
+    pub routing_control_arn: Option<String>,
 
 
     /// 
-    /// The number of seconds between the time that Amazon Route 53 gets a response from your 			endpoint and the time that it sends the next health check request. Each Route 53 health 			checker makes requests at this interval.
+    /// The number of child health checks that are associated with a CALCULATED 			health check that Amazon Route 53 must consider healthy for the CALCULATED 			health check to be considered healthy. To specify the child health checks that you want 			to associate with a CALCULATED health check, use the ChildHealthChecks element.
     /// 
-    /// ImportantYou can't change the value of RequestInterval after you create a 				health check.
+    /// Note the following:
     /// 
-    /// If you don't specify a value for RequestInterval, the default value is 				30 seconds.
+    /// If you specify a number greater than the number of child health checks, Route 					53 always considers this health check to be unhealthy.               If you specify 0, Route 53 always considers this health check to 					be healthy.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
-    /// Minimum: 10
+    /// Minimum: 0
     ///
-    /// Maximum: 30
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthThreshold")]
+    pub health_threshold: Option<i64>,
+
+
+    /// 
+    /// Specify whether you want Amazon Route 53 to measure the latency between health 			checkers in multiple AWS regions and your endpoint, and to display 			CloudWatch latency graphs on the Health Checks page in 			the Route 53 console.
+    /// 
+    /// ImportantYou can't change the value of MeasureLatency after you create a 				health check.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "RequestInterval")]
-    pub request_interval: Option<i64>,
+    #[serde(rename = "MeasureLatency")]
+    pub measure_latency: Option<bool>,
+
+
+    /// 
+    /// The number of consecutive health checks that an endpoint must pass or fail for Amazon 			Route 53 to change the current status of the endpoint from unhealthy to healthy or vice 			versa. For more information, see How Amazon Route 53 Determines Whether an Endpoint Is Healthy in the 				Amazon Route 53 Developer Guide.
+    /// 
+    /// If you don't specify a value for FailureThreshold, the default value is 			three health checks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FailureThreshold")]
+    pub failure_threshold: Option<i64>,
+
+
+    /// 
+    /// The port on the endpoint that you want Amazon Route 53 to perform health checks on.
+    /// 
+    /// NoteDon't specify a value for Port when you specify a value for 				Type 				of CLOUDWATCH_METRIC or CALCULATED.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// If the value of Type is HTTP_STR_MATCH or HTTPS_STR_MATCH, 			the string that you want Amazon Route 53 to search for in the response body from the 			specified resource. If the string appears in the response body, Route 53 considers the 			resource healthy.
+    /// 
+    /// Route 53 considers case when searching for SearchString in the response 			body.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SearchString")]
+    pub search_string: Option<String>,
 
 
     /// 
@@ -433,5 +351,97 @@ pub struct HealthCheckConfig {
     /// Update requires: No interruption
     #[serde(rename = "EnableSNI")]
     pub enable_sni: Option<bool>,
+
+
+    /// 
+    /// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AlarmIdentifier
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmIdentifier")]
+    pub alarm_identifier: Option<AlarmIdentifier>,
+
+}
+
+
+/// The HealthCheckTag property describes one key-value pair that is associated with an AWS::Route53::HealthCheck resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HealthCheckTag {
+
+
+    /// 
+    /// The value of Key depends on the operation that you want to 			perform:
+    /// 
+    /// Add a tag to a health check or hosted zone: 						Key is the name that you want to give the new tag.                        Edit a tag: Key is the name of 					the tag that you want to change the Value for.                         Delete a key: Key is the name 					of the tag you want to remove.                        Give a name to a health check: Edit the 					default Name tag. In the Amazon Route 53 console, the list of your 					health checks includes a Name column that lets 					you see the name that you've given to each health check.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value of Value depends on the operation that you want to 			perform:
+    /// 
+    /// Add a tag to a health check or hosted zone: 						Value is the value that you want to give the new tag.                        Edit a tag: Value is the new 					value that you want to assign the tag.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+/// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AlarmIdentifier {
+
+
+    /// 
+    /// For the CloudWatch alarm that you want Route 53 health checkers to use to determine 			whether this health check is healthy, the region that the alarm was created in.
+    /// 
+    /// For the current list of CloudWatch regions, see Amazon CloudWatch endpoints and 				quotas in the Amazon Web Services General 			Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: af-south-1 | ap-east-1 | ap-northeast-1 | ap-northeast-2 | ap-northeast-3 | ap-south-1 | ap-southeast-1 | ap-southeast-2 | ap-southeast-3 | ca-central-1 | cn-north-1 | cn-northwest-1 | eu-central-1 | eu-north-1 | eu-south-1 | eu-west-1 | eu-west-2 | eu-west-3 | me-south-1 | sa-east-1 | us-east-1 | us-east-2 | us-gov-east-1 | us-gov-west-1 | us-iso-east-1 | us-iso-west-1 | us-isob-east-1 | us-west-1 | us-west-2
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Region")]
+    pub region: String,
+
+
+    /// 
+    /// The name of the CloudWatch alarm that you want Amazon Route 53 health checkers to use 			to determine whether this health check is healthy.
+    /// 
+    /// NoteRoute 53 supports CloudWatch alarms with the following features:                                 Standard-resolution metrics. High-resolution metrics aren't supported. For 						more information, see High-Resolution Metrics in the Amazon CloudWatch User 							Guide.                  Statistics: Average, Minimum, Maximum, Sum, and SampleCount. Extended 						statistics aren't supported.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }

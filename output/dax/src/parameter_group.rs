@@ -1,20 +1,8 @@
 
 
 /// A named set of parameters that are applied to all of the nodes in a DAX cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnParameterGroup {
-
-
-    /// 
-    /// A description of the parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -32,6 +20,18 @@ pub struct CfnParameterGroup {
 
 
     /// 
+    /// A description of the parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The name of the parameter group.
     /// 
     /// Required: No
@@ -42,4 +42,14 @@ pub struct CfnParameterGroup {
     #[serde(rename = "ParameterGroupName")]
     pub parameter_group_name: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnParameterGroup {
+    fn type_string() -> &'static str {
+        "AWS::DAX::ParameterGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

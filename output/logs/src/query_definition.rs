@@ -1,19 +1,19 @@
 
 
 /// Creates a query definition for    CloudWatch Logs Insights. For more information, see         Analyzing Log Data with CloudWatch Logs Insights.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnQueryDefinition {
 
 
-    /// A name for the query definition.
+    /// Use this parameter if  you want the query to query only certain log groups.
     ///
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "LogGroupNames")]
+    pub log_group_names: Option<Vec<String>>,
 
 
     /// The query string    to use for this query definition. For more information, see         CloudWatch Logs Insights Query Syntax.
@@ -27,14 +27,24 @@ pub struct CfnQueryDefinition {
     pub query_string: String,
 
 
-    /// Use this parameter if  you want the query to query only certain log groups.
+    /// A name for the query definition.
     ///
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LogGroupNames")]
-    pub log_group_names: Option<Vec<String>>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnQueryDefinition {
+    fn type_string() -> &'static str {
+        "AWS::Logs::QueryDefinition"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

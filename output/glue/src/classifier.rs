@@ -1,8 +1,20 @@
 
 
 /// The AWS::Glue::Classifier resource creates an AWS Glue classifier that       categorizes data sources and specifies schemas. For more information, see Adding Classifiers to         a Crawler and Classifier Structure in the AWS Glue Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClassifier {
+
+
+    /// 
+    /// A classifier for JSON content.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: JsonClassifier
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JsonClassifier")]
+    pub json_classifier: Option<JsonClassifier>,
 
 
     /// 
@@ -30,18 +42,6 @@ pub struct CfnClassifier {
 
 
     /// 
-    /// A classifier for JSON content.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: JsonClassifier
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JsonClassifier")]
-    pub json_classifier: Option<JsonClassifier>,
-
-
-    /// 
     /// A classifier for comma-separated values (CSV).
     /// 
     /// Required: Conditional
@@ -54,22 +54,93 @@ pub struct CfnClassifier {
 
 }
 
+impl cfn_resources::CfnResource for CfnClassifier {
+    fn type_string() -> &'static str {
+        "AWS::Glue::Classifier"
+    }
 
-/// A classifier for custom CSV content.
-#[derive(Default, serde::Serialize)]
-pub struct CsvClassifier {
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// A classifier that uses grok patterns.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GrokClassifier {
 
 
     /// 
-    /// Specifies not to trim values before identifying the type of column values. The default    value is true.
+    /// The name of the classifier.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Optional custom grok patterns defined by this classifier. For more information, see       custom patterns in Writing Custom       Classifiers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 16000
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DisableValueTrimming")]
-    pub disable_value_trimming: Option<bool>,
+    #[serde(rename = "CustomPatterns")]
+    pub custom_patterns: Option<String>,
+
+
+    /// 
+    /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, and    so on.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Classification")]
+    pub classification: String,
+
+
+    /// 
+    /// The grok pattern applied to a data store by this classifier. For more information, see       built-in patterns in Writing Custom       Classifiers.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GrokPattern")]
+    pub grok_pattern: String,
+
+}
+
+
+/// A classifier for custom CSV content.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CsvClassifier {
 
 
     /// 
@@ -103,21 +174,35 @@ pub struct CsvClassifier {
 
 
     /// 
-    /// The name of the classifier.
+    /// Indicates whether the CSV file contains a header.
+    /// 
+    /// A value of UNKNOWN specifies that the classifier will detect whether the CSV file contains headings.
+    /// 
+    /// A value of PRESENT specifies that the CSV file contains headings.
+    /// 
+    /// A value of ABSENT specifies that the CSV file does not contain headings.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Allowed values: ABSENT | PRESENT | UNKNOWN
     ///
-    /// Maximum: 255
+    /// Update requires: No interruption
+    #[serde(rename = "ContainsHeader")]
+    pub contains_header: Option<String>,
+
+
+    /// 
+    /// Specifies not to trim values before identifying the type of column values. The default    value is true.
+    /// 
+    /// Required: No
     ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "DisableValueTrimming")]
+    pub disable_value_trimming: Option<bool>,
 
 
     /// 
@@ -139,26 +224,6 @@ pub struct CsvClassifier {
 
 
     /// 
-    /// Indicates whether the CSV file contains a header.
-    /// 
-    /// A value of UNKNOWN specifies that the classifier will detect whether the CSV file contains headings.
-    /// 
-    /// A value of PRESENT specifies that the CSV file contains headings.
-    /// 
-    /// A value of ABSENT specifies that the CSV file does not contain headings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ABSENT | PRESENT | UNKNOWN
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContainsHeader")]
-    pub contains_header: Option<String>,
-
-
-    /// 
     /// Enables the processing of files that contain only one column.
     /// 
     /// Required: No
@@ -169,11 +234,29 @@ pub struct CsvClassifier {
     #[serde(rename = "AllowSingleColumn")]
     pub allow_single_column: Option<bool>,
 
+
+    /// 
+    /// The name of the classifier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
 }
 
 
 /// A classifier for JSON content.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JsonClassifier {
 
 
@@ -210,7 +293,7 @@ pub struct JsonClassifier {
 
 
 /// A classifier for XML content.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct XMLClassifier {
 
 
@@ -227,6 +310,24 @@ pub struct XMLClassifier {
 
 
     /// 
+    /// The name of the classifier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
     /// An identifier of the data format that the classifier matches.
     /// 
     /// Required: Yes
@@ -236,96 +337,5 @@ pub struct XMLClassifier {
     /// Update requires: No interruption
     #[serde(rename = "Classification")]
     pub classification: String,
-
-
-    /// 
-    /// The name of the classifier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-/// A classifier that uses grok patterns.
-#[derive(Default, serde::Serialize)]
-pub struct GrokClassifier {
-
-
-    /// 
-    /// Optional custom grok patterns defined by this classifier. For more information, see       custom patterns in Writing Custom       Classifiers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 16000
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomPatterns")]
-    pub custom_patterns: Option<String>,
-
-
-    /// 
-    /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, and    so on.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Classification")]
-    pub classification: String,
-
-
-    /// 
-    /// The name of the classifier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The grok pattern applied to a data store by this classifier. For more information, see       built-in patterns in Writing Custom       Classifiers.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GrokPattern")]
-    pub grok_pattern: String,
 
 }

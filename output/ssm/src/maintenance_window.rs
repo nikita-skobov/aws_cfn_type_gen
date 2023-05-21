@@ -3,36 +3,24 @@
 /// The AWS::SSM::MaintenanceWindow resource represents general information about    a maintenance window for AWS Systems Manager. Maintenance Windows let you define a schedule    for when to perform potentially disruptive actions on your instances, such as patching an    operating system (OS), updating drivers, or installing software. Each maintenance window has a    schedule, a duration, a set of registered targets, and a set of registered tasks.
 ///
 /// For more information, see Systems Manager     Maintenance Windows in the AWS Systems Manager User Guide and         CreateMaintenanceWindow in the AWS Systems Manager API     Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMaintenanceWindow {
 
 
     /// 
-    /// The time zone that the scheduled maintenance window executions are based on, in Internet  Assigned Numbers Authority (IANA) format.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduleTimezone")]
-    pub schedule_timezone: Option<String>,
-
-
-    /// 
-    /// The schedule of the maintenance window in the form of a cron or rate expression.
+    /// The duration of the maintenance window in hours.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 256
+    /// Maximum: 24
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Schedule")]
-    pub schedule: String,
+    #[serde(rename = "Duration")]
+    pub duration: i64,
 
 
     /// 
@@ -54,43 +42,47 @@ pub struct CfnMaintenanceWindow {
 
 
     /// 
-    /// Enables a maintenance window task to run on managed instances, even if you have not    registered those instances as targets. If enabled, then you must specify the unregistered    instances (by instance ID) when you register a task with the maintenance window.
+    /// The number of days to wait to run a maintenance window after the scheduled cron expression  date and time.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowUnassociatedTargets")]
-    pub allow_unassociated_targets: bool,
-
-
-    /// 
-    /// The duration of the maintenance window in hours.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: Integer
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 24
+    /// Maximum: 6
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Duration")]
-    pub duration: i64,
+    #[serde(rename = "ScheduleOffset")]
+    pub schedule_offset: Option<i64>,
 
 
     /// 
-    /// The date and time, in ISO-8601 Extended format, for when the maintenance window is    scheduled to become active. StartDate allows you to delay activation of the Maintenance Window    until the specified future date.
+    /// The schedule of the maintenance window in the form of a cron or rate expression.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Schedule")]
+    pub schedule: String,
+
+
+    /// 
+    /// The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled  to become inactive.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StartDate")]
-    pub start_date: Option<String>,
+    #[serde(rename = "EndDate")]
+    pub end_date: Option<String>,
 
 
     /// 
@@ -110,6 +102,30 @@ pub struct CfnMaintenanceWindow {
 
 
     /// 
+    /// The date and time, in ISO-8601 Extended format, for when the maintenance window is    scheduled to become active. StartDate allows you to delay activation of the Maintenance Window    until the specified future date.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StartDate")]
+    pub start_date: Option<String>,
+
+
+    /// 
+    /// Enables a maintenance window task to run on managed instances, even if you have not    registered those instances as targets. If enabled, then you must specify the unregistered    instances (by instance ID) when you register a task with the maintenance window.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowUnassociatedTargets")]
+    pub allow_unassociated_targets: bool,
+
+
+    /// 
     /// Optional metadata that you assign to a resource in the form of an arbitrary set of tags    (key-value pairs). Tags enable you to categorize a resource in different ways, such as by    purpose, owner, or environment. For example, you might want to tag a maintenance window to    identify the type of tasks it will run, the types of targets, and the environment it will run    in.
     /// 
     /// Required: No
@@ -121,6 +137,18 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The time zone that the scheduled maintenance window executions are based on, in Internet  Assigned Numbers Authority (IANA) format.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScheduleTimezone")]
+    pub schedule_timezone: Option<String>,
 
 
     /// 
@@ -138,34 +166,16 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "Cutoff")]
     pub cutoff: i64,
 
+}
 
-    /// 
-    /// The number of days to wait to run a maintenance window after the scheduled cron expression  date and time.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduleOffset")]
-    pub schedule_offset: Option<i64>,
+impl cfn_resources::CfnResource for CfnMaintenanceWindow {
+    fn type_string() -> &'static str {
+        "AWS::SSM::MaintenanceWindow"
+    }
 
-
-    /// 
-    /// The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled  to become inactive.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndDate")]
-    pub end_date: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -176,19 +186,8 @@ pub struct CfnMaintenanceWindow {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -200,5 +199,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

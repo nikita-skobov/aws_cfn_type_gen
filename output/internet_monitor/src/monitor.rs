@@ -5,8 +5,84 @@
 /// Internet Monitor also alerts you to internet issues that impact your application in the city-networks (geographies and networks) 			where your end users use it. With Internet Monitor, you can quickly pinpoint the locations and providers that are affected, so 			that you can address the issue.
 ///
 /// For more information, see 		Using Amazon CloudWatch Internet Monitor in the Amazon CloudWatch User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMonitor {
+
+
+    /// 
+    /// The tags for a monitor, listed as a set of key:value pairs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The status of a monitor. The accepted values that you can specify for Status are ACTIVE and INACTIVE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
+    /// The resources that have been added for the monitor, listed by their Amazon Resource Names (ARNs).
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Resources")]
+    pub resources: Option<Vec<String>>,
+
+
+    /// 
+    /// Publish internet measurements for a monitor for all city-networks (up to the 500,000 service limit) to another location, such as an Amazon S3 bucket. 			Measurements are also published to Amazon CloudWatch Logs for the first 500 (by traffic volume) city-networks (client locations and ASNs, typically 			internet service providers or ISPs).
+    ///
+    /// Required: No
+    ///
+    /// Type: InternetMeasurementsLogDelivery
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InternetMeasurementsLogDelivery")]
+    pub internet_measurements_log_delivery: Option<InternetMeasurementsLogDelivery>,
+
+
+    /// 
+    /// The resources to add to a monitor, which you provide as a set of Amazon Resource Names (ARNs).
+    /// 
+    /// You can add a combination of Virtual Private Clouds (VPCs) and Amazon CloudFront distributions, or you can add WorkSpaces directories. 		You can't add all three types of resources.
+    /// 
+    /// NoteIf you add only VPC resources, at least one VPC must have an Internet Gateway attached to it, to make sure that it has internet connectivity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourcesToAdd")]
+    pub resources_to_add: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the monitor. A monitor name can contain only alphanumeric characters, dashes (-), periods (.), 			and underscores (_).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MonitorName")]
+    pub monitor_name: String,
 
 
     /// 
@@ -46,81 +122,58 @@ pub struct CfnMonitor {
     #[serde(rename = "MaxCityNetworksToMonitor")]
     pub max_city_networks_to_monitor: Option<i64>,
 
+}
 
-    /// 
-    /// The tags for a monitor, listed as a set of key:value pairs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnMonitor {
+    fn type_string() -> &'static str {
+        "AWS::InternetMonitor::Monitor"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
 
 
-    /// 
-    /// The resources to add to a monitor, which you provide as a set of Amazon Resource Names (ARNs).
-    /// 
-    /// You can add a combination of Virtual Private Clouds (VPCs) and Amazon CloudFront distributions, or you can add WorkSpaces directories. 		You can't add all three types of resources.
-    /// 
-    /// NoteIf you add only VPC resources, at least one VPC must have an Internet Gateway attached to it, to make sure that it has internet connectivity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourcesToAdd")]
-    pub resources_to_add: Option<Vec<String>>,
+/// The configuration for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to S3 logs, and DISABLED otherwise.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Config {
 
 
     /// 
-    /// The name of the monitor. A monitor name can contain only alphanumeric characters, dashes (-), periods (.), 			and underscores (_).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MonitorName")]
-    pub monitor_name: String,
-
-
-    /// 
-    /// The resources that have been added for the monitor, listed by their Amazon Resource Names (ARNs).
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Resources")]
-    pub resources: Option<Vec<String>>,
-
-
-    /// 
-    /// The status of a monitor. The accepted values that you can specify for Status are ACTIVE and INACTIVE.
+    /// The status of publishing Internet Monitor internet measurements to an Amazon S3 bucket. The delivery status is ENABLED 			if you choose to deliver internet measurements to an S3 bucket, and DISABLED otherwise.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
+    #[serde(rename = "LogDeliveryStatus")]
+    pub log_delivery_status: Option<String>,
 
 
     /// 
-    /// Publish internet measurements for a monitor for all city-networks (up to the 500,000 service limit) to another location, such as an Amazon S3 bucket. 			Measurements are also published to Amazon CloudWatch Logs for the first 500 (by traffic volume) city-networks (client locations and ASNs, typically 			internet service providers or ISPs).
-    ///
+    /// The Amazon S3 bucket name for internet measurements publishing.
+    /// 
     /// Required: No
     ///
-    /// Type: InternetMeasurementsLogDelivery
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InternetMeasurementsLogDelivery")]
-    pub internet_measurements_log_delivery: Option<InternetMeasurementsLogDelivery>,
+    #[serde(rename = "BucketName")]
+    pub bucket_name: Option<String>,
+
+
+    /// 
+    /// An optional Amazon S3 bucket prefix for internet measurements publishing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketPrefix")]
+    pub bucket_prefix: Option<String>,
 
 }
 
@@ -132,7 +185,7 @@ pub struct CfnMonitor {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -160,51 +213,8 @@ pub struct Tag {
 }
 
 
-/// The configuration for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to S3 logs, and DISABLED otherwise.
-#[derive(Default, serde::Serialize)]
-pub struct S3Config {
-
-
-    /// 
-    /// An optional Amazon S3 bucket prefix for internet measurements publishing.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketPrefix")]
-    pub bucket_prefix: Option<String>,
-
-
-    /// 
-    /// The Amazon S3 bucket name for internet measurements publishing.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketName")]
-    pub bucket_name: Option<String>,
-
-
-    /// 
-    /// The status of publishing Internet Monitor internet measurements to an Amazon S3 bucket. The delivery status is ENABLED 			if you choose to deliver internet measurements to an S3 bucket, and DISABLED otherwise.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogDeliveryStatus")]
-    pub log_delivery_status: Option<String>,
-
-}
-
-
 /// The InternetMeasurementsLogDelivery property type specifies Property description not available. for an AWS::InternetMonitor::Monitor.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InternetMeasurementsLogDelivery {
 
 

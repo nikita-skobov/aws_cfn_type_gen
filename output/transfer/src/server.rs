@@ -1,48 +1,26 @@
 
 
 /// Instantiates an auto-scaling virtual server based on the selected file transfer protocol    in AWS. When you make updates to your file transfer protocol-enabled server or when you work    with users, use the service-generated ServerId property that is assigned to the    newly created server.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnServer {
 
 
     /// 
-    /// Key-value pairs that can be used to group and search for servers.
+    /// Specifies a string to display when users connect to a server. This string is displayed after the user authenticates.
+    /// 
+    /// NoteThe SFTP protocol does not support post-authentication display banners.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Maximum: 512
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow.
-    /// 
-    /// In addition to a workflow to execute when a file is uploaded completely, WorkflowDetails can also contain a   workflow ID (and execution role) for a workflow to execute on partial upload. A partial upload occurs when a file is open when   the session disconnects.
-    /// 
-    /// Required: No
-    ///
-    /// Type: WorkflowDetails
+    /// Pattern: [\x09-\x0D\x20-\x7E]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "WorkflowDetails")]
-    pub workflow_details: Option<WorkflowDetails>,
-
-
-    /// 
-    /// Required when IdentityProviderType is set to     AWS_DIRECTORY_SERVICE,         AWS_LAMBDA or API_GATEWAY. Accepts an array containing    all of the information required to use a directory in AWS_DIRECTORY_SERVICE or    invoke a customer-supplied authentication API, including the API Gateway URL. Not required    when IdentityProviderType is set to SERVICE_MANAGED.
-    /// 
-    /// Required: No
-    ///
-    /// Type: IdentityProviderDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IdentityProviderDetails")]
-    pub identity_provider_details: Option<IdentityProviderDetails>,
+    #[serde(rename = "PostAuthenticationLoginBanner")]
+    pub post_authentication_login_banner: Option<String>,
 
 
     /// 
@@ -62,29 +40,17 @@ pub struct CfnServer {
 
 
     /// 
-    /// Specifies the domain of the storage system that is used for file transfers.
+    /// Key-value pairs that can be used to group and search for servers.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Allowed values: EFS | S3
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Domain")]
-    pub domain: Option<String>,
-
-
-    /// 
-    /// The virtual private cloud (VPC) endpoint settings that are configured for your server.    When you host your endpoint within your VPC, you can make your endpoint accessible only to resources    within your VPC, or you can attach Elastic IP addresses and make your endpoint accessible to clients over    the internet. Your VPC's default security groups are automatically assigned to your    endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EndpointDetails
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EndpointDetails")]
-    pub endpoint_details: Option<EndpointDetails>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -108,39 +74,89 @@ pub struct CfnServer {
 
 
     /// 
-    /// Specifies a string to display when users connect to a server. This string is displayed before the user authenticates.   For example, the following banner displays details about using the system:
-    /// 
-    /// This system is for the use of authorized users only. Individuals using this computer system without authority,   or in excess of their authority, are subject to having all of their activities on this system monitored and recorded by   system personnel.
+    /// The type of endpoint that you want your server to use. You can choose to make your server's endpoint publicly accessible (PUBLIC)    or host it inside your VPC. With an endpoint that is hosted in a VPC, you can restrict access to your server and    resources only within your VPC or choose to make it internet facing by attaching Elastic IP addresses directly to it.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [\x09-\x0D\x20-\x7E]*
+    /// Allowed values: PUBLIC | VPC | VPC_ENDPOINT
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PreAuthenticationLoginBanner")]
-    pub pre_authentication_login_banner: Option<String>,
+    #[serde(rename = "EndpointType")]
+    pub endpoint_type: Option<String>,
 
 
     /// 
-    /// Specifies a string to display when users connect to a server. This string is displayed after the user authenticates.
-    /// 
-    /// NoteThe SFTP protocol does not support post-authentication display banners.
+    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that allows a server to turn    on Amazon CloudWatch logging for Amazon S3 or Amazon EFSevents. When set, you can view user activity in    your CloudWatch logs.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 512
+    /// Minimum: 20
     ///
-    /// Pattern: [\x09-\x0D\x20-\x7E]*
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*role/.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PostAuthenticationLoginBanner")]
-    pub post_authentication_login_banner: Option<String>,
+    #[serde(rename = "LoggingRole")]
+    pub logging_role: Option<String>,
+
+
+    /// 
+    /// Required when IdentityProviderType is set to     AWS_DIRECTORY_SERVICE,         AWS_LAMBDA or API_GATEWAY. Accepts an array containing    all of the information required to use a directory in AWS_DIRECTORY_SERVICE or    invoke a customer-supplied authentication API, including the API Gateway URL. Not required    when IdentityProviderType is set to SERVICE_MANAGED.
+    /// 
+    /// Required: No
+    ///
+    /// Type: IdentityProviderDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdentityProviderDetails")]
+    pub identity_provider_details: Option<IdentityProviderDetails>,
+
+
+    /// 
+    /// Specifies the domain of the storage system that is used for file transfers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: EFS | S3
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Domain")]
+    pub domain: Option<String>,
+
+
+    /// 
+    /// Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow.
+    /// 
+    /// In addition to a workflow to execute when a file is uploaded completely, WorkflowDetails can also contain a   workflow ID (and execution role) for a workflow to execute on partial upload. A partial upload occurs when a file is open when   the session disconnects.
+    /// 
+    /// Required: No
+    ///
+    /// Type: WorkflowDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WorkflowDetails")]
+    pub workflow_details: Option<WorkflowDetails>,
+
+
+    /// 
+    /// The protocol settings that are configured for your server.
+    /// 
+    /// To indicate passive mode (for FTP and FTPS protocols), use the PassiveIp parameter.      Enter a single dotted-quad IPv4 address, such as the external IP address of a firewall, router, or load balancer.                   To ignore the error that is generated when the client attempts to use the SETSTAT command on a file that you are     uploading to an Amazon S3 bucket, use the SetStatOption parameter. To have the AWS Transfer Family server ignore the     SETSTAT command and upload files without needing to make any changes to your SFTP client, set the value to     ENABLE_NO_OP. If you set the SetStatOption parameter to ENABLE_NO_OP, Transfer Family     generates a log entry to Amazon CloudWatch Logs, so that you can determine when the client is making a SETSTAT     call.               To determine whether your AWS Transfer Family server resumes recent, negotiated sessions through a unique session ID, use the     TlsSessionResumptionMode parameter.                        As2Transports indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ProtocolDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProtocolDetails")]
+    pub protocol_details: Option<ProtocolDetails>,
 
 
     /// 
@@ -162,17 +178,21 @@ pub struct CfnServer {
 
 
     /// 
-    /// The type of endpoint that you want your server to use. You can choose to make your server's endpoint publicly accessible (PUBLIC)    or host it inside your VPC. With an endpoint that is hosted in a VPC, you can restrict access to your server and    resources only within your VPC or choose to make it internet facing by attaching Elastic IP addresses directly to it.
+    /// Specifies a string to display when users connect to a server. This string is displayed before the user authenticates.   For example, the following banner displays details about using the system:
+    /// 
+    /// This system is for the use of authorized users only. Individuals using this computer system without authority,   or in excess of their authority, are subject to having all of their activities on this system monitored and recorded by   system personnel.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: PUBLIC | VPC | VPC_ENDPOINT
+    /// Maximum: 512
+    ///
+    /// Pattern: [\x09-\x0D\x20-\x7E]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EndpointType")]
-    pub endpoint_type: Option<String>,
+    #[serde(rename = "PreAuthenticationLoginBanner")]
+    pub pre_authentication_login_banner: Option<String>,
 
 
     /// 
@@ -202,48 +222,31 @@ pub struct CfnServer {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that allows a server to turn    on Amazon CloudWatch logging for Amazon S3 or Amazon EFSevents. When set, you can view user activity in    your CloudWatch logs.
+    /// The virtual private cloud (VPC) endpoint settings that are configured for your server.    When you host your endpoint within your VPC, you can make your endpoint accessible only to resources    within your VPC, or you can attach Elastic IP addresses and make your endpoint accessible to clients over    the internet. Your VPC's default security groups are automatically assigned to your    endpoint.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*role/.*
+    /// Type: EndpointDetails
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LoggingRole")]
-    pub logging_role: Option<String>,
-
-
-    /// 
-    /// The protocol settings that are configured for your server.
-    /// 
-    /// To indicate passive mode (for FTP and FTPS protocols), use the PassiveIp parameter.      Enter a single dotted-quad IPv4 address, such as the external IP address of a firewall, router, or load balancer.                   To ignore the error that is generated when the client attempts to use the SETSTAT command on a file that you are     uploading to an Amazon S3 bucket, use the SetStatOption parameter. To have the AWS Transfer Family server ignore the     SETSTAT command and upload files without needing to make any changes to your SFTP client, set the value to     ENABLE_NO_OP. If you set the SetStatOption parameter to ENABLE_NO_OP, Transfer Family     generates a log entry to Amazon CloudWatch Logs, so that you can determine when the client is making a SETSTAT     call.               To determine whether your AWS Transfer Family server resumes recent, negotiated sessions through a unique session ID, use the     TlsSessionResumptionMode parameter.                        As2Transports indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ProtocolDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProtocolDetails")]
-    pub protocol_details: Option<ProtocolDetails>,
+    #[serde(rename = "EndpointDetails")]
+    pub endpoint_details: Option<EndpointDetails>,
 
 }
 
+impl cfn_resources::CfnResource for CfnServer {
+    fn type_string() -> &'static str {
+        "AWS::Transfer::Server"
+    }
 
-/// Specifies the file transfer protocol or protocols over which your file transfer protocol    client can connect to your server's endpoint. The available protocols are:
-#[derive(Default, serde::Serialize)]
-pub struct Protocol {
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Required when IdentityProviderType is set to     AWS_DIRECTORY_SERVICE,         AWS_LAMBDA or API_GATEWAY. Accepts an array containing    all of the information required to use a directory in AWS_DIRECTORY_SERVICE or    invoke a customer-supplied authentication API, including the API Gateway URL. Not required    when IdentityProviderType is set to SERVICE_MANAGED.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IdentityProviderDetails {
 
 
@@ -262,21 +265,19 @@ pub struct IdentityProviderDetails {
 
 
     /// 
-    /// The identifier of the AWS Directory Service directory that you want to stop sharing.
+    /// For SFTP-enabled servers, and for custom identity providers only, you    can specify whether to authenticate using a password, SSH key pair, or both.
+    /// 
+    /// PASSWORD - users must provide their password to connect.                        PUBLIC_KEY - users must provide their private key to connect.                        PUBLIC_KEY_OR_PASSWORD - users can authenticate with either their password or their key. This is the default value.                        PUBLIC_KEY_AND_PASSWORD - users must provide both their private key and their password to connect.      The server checks the key first, and then if the key is valid, the system prompts for a password.      If the private key provided does not match the public key that is stored, authentication fails.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 12
-    ///
-    /// Maximum: 12
-    ///
-    /// Pattern: ^d-[0-9a-f]{10}$
+    /// Allowed values: PASSWORD | PUBLIC_KEY | PUBLIC_KEY_AND_PASSWORD | PUBLIC_KEY_OR_PASSWORD
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DirectoryId")]
-    pub directory_id: Option<String>,
+    #[serde(rename = "SftpAuthenticationMethods")]
+    pub sftp_authentication_methods: Option<String>,
 
 
     /// 
@@ -298,22 +299,6 @@ pub struct IdentityProviderDetails {
 
 
     /// 
-    /// For SFTP-enabled servers, and for custom identity providers only, you    can specify whether to authenticate using a password, SSH key pair, or both.
-    /// 
-    /// PASSWORD - users must provide their password to connect.                        PUBLIC_KEY - users must provide their private key to connect.                        PUBLIC_KEY_OR_PASSWORD - users can authenticate with either their password or their key. This is the default value.                        PUBLIC_KEY_AND_PASSWORD - users must provide both their private key and their password to connect.      The server checks the key first, and then if the key is valid, the system prompts for a password.      If the private key provided does not match the public key that is stored, authentication fails.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: PASSWORD | PUBLIC_KEY | PUBLIC_KEY_AND_PASSWORD | PUBLIC_KEY_OR_PASSWORD
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SftpAuthenticationMethods")]
-    pub sftp_authentication_methods: Option<String>,
-
-
-    /// 
     /// This parameter is only applicable if your IdentityProviderType is API_GATEWAY. Provides the type of InvocationRole used to authenticate the user    account.
     /// 
     /// Required: No
@@ -330,12 +315,106 @@ pub struct IdentityProviderDetails {
     #[serde(rename = "InvocationRole")]
     pub invocation_role: Option<String>,
 
+
+    /// 
+    /// The identifier of the AWS Directory Service directory that you want to stop sharing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 12
+    ///
+    /// Maximum: 12
+    ///
+    /// Pattern: ^d-[0-9a-f]{10}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DirectoryId")]
+    pub directory_id: Option<String>,
+
 }
 
 
-/// Indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
-#[derive(Default, serde::Serialize)]
-pub struct As2Transport {
+/// Container for the WorkflowDetail data type.    It is used by actions that trigger a workflow to begin execution.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct WorkflowDetails {
+
+
+    /// 
+    /// A trigger that starts a workflow: the workflow begins to execute after a file is uploaded.
+    /// 
+    /// To remove an associated workflow from a server, you can provide an empty OnUpload object, as in the following example.
+    /// 
+    /// aws transfer update-server --server-id s-01234567890abcdef --workflow-details '{"OnUpload":[]}'
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of WorkflowDetail
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OnUpload")]
+    pub on_upload: Option<Vec<WorkflowDetail>>,
+
+
+    /// 
+    /// A trigger that starts a workflow if a file is only partially uploaded. You can attach a workflow to a server  that executes whenever there is a partial upload.
+    /// 
+    /// A partial upload occurs when a file is open when the session disconnects.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of WorkflowDetail
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OnPartialUpload")]
+    pub on_partial_upload: Option<Vec<WorkflowDetail>>,
+
+}
+
+
+/// Specifies the file transfer protocol or protocols over which your file transfer protocol    client can connect to your server's endpoint. The available protocols are:
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Protocol {
+
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }
 
@@ -343,7 +422,7 @@ pub struct As2Transport {
 /// Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow.
 ///
 /// In addition to a workflow to execute when a file is uploaded completely, WorkflowDetails can also contain a   workflow ID (and execution role) for a workflow to execute on partial upload. A partial upload occurs when a file is open when   the session disconnects.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WorkflowDetail {
 
 
@@ -386,28 +465,8 @@ pub struct WorkflowDetail {
 
 
 /// The protocol settings that are configured for your server.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProtocolDetails {
-
-
-    /// 
-    /// Use the SetStatOption to ignore the error that is generated when the client attempts to use SETSTAT on a file you are uploading to an S3 bucket.
-    /// 
-    /// Some SFTP file transfer clients can attempt to change the attributes of remote files, including timestamp and permissions, using commands, such as SETSTAT when uploading the file.     However, these commands are not compatible with object storage systems, such as Amazon S3. Due to this incompatibility, file uploads from these clients can result in errors even when     the file is otherwise successfully uploaded.
-    /// 
-    /// Set the value to ENABLE_NO_OP to have the Transfer Family server ignore the SETSTAT command, and upload files without needing to make any changes to your SFTP client.     While the SetStatOption       ENABLE_NO_OP setting ignores the error, it does generate a log entry in Amazon CloudWatch Logs, so you can determine when the client is making a SETSTAT call.
-    /// 
-    /// NoteIf you want to preserve the original timestamp for your file, and modify other file attributes using SETSTAT, you can use Amazon EFS as backend storage with Transfer Family.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DEFAULT | ENABLE_NO_OP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SetStatOption")]
-    pub set_stat_option: Option<String>,
 
 
     /// 
@@ -463,61 +522,32 @@ pub struct ProtocolDetails {
     #[serde(rename = "TlsSessionResumptionMode")]
     pub tls_session_resumption_mode: Option<String>,
 
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// Use the SetStatOption to ignore the error that is generated when the client attempts to use SETSTAT on a file you are uploading to an S3 bucket.
     /// 
-    /// Required: Yes
+    /// Some SFTP file transfer clients can attempt to change the attributes of remote files, including timestamp and permissions, using commands, such as SETSTAT when uploading the file.     However, these commands are not compatible with object storage systems, such as Amazon S3. Due to this incompatibility, file uploads from these clients can result in errors even when     the file is otherwise successfully uploaded.
     /// 
+    /// Set the value to ENABLE_NO_OP to have the Transfer Family server ignore the SETSTAT command, and upload files without needing to make any changes to your SFTP client.     While the SetStatOption       ENABLE_NO_OP setting ignores the error, it does generate a log entry in Amazon CloudWatch Logs, so you can determine when the client is making a SETSTAT call.
+    /// 
+    /// NoteIf you want to preserve the original timestamp for your file, and modify other file attributes using SETSTAT, you can use Amazon EFS as backend storage with Transfer Family.
+    /// 
+    /// Required: No
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    ///
+    /// Allowed values: DEFAULT | ENABLE_NO_OP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SetStatOption")]
+    pub set_stat_option: Option<String>,
 
 }
 
 
 /// The virtual private cloud (VPC) endpoint settings that are configured for your server.    When you host your endpoint within your VPC, you can make your endpoint accessible only to resources    within your VPC, or you can attach Elastic IP addresses and make your endpoint accessible to clients over    the internet. Your VPC's default security groups are automatically assigned to your    endpoint.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EndpointDetails {
-
-
-    /// 
-    /// A list of subnet IDs that are required to host your server endpoint in your VPC.
-    /// 
-    /// NoteThis property can only be set when EndpointType is set to        VPC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
 
 
     /// 
@@ -532,6 +562,20 @@ pub struct EndpointDetails {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     pub vpc_id: Option<String>,
+
+
+    /// 
+    /// A list of address allocation IDs that are required to attach an Elastic IP address to your    server's endpoint.
+    /// 
+    /// NoteThis property can only be set when EndpointType is set to VPC     and it is only valid in the UpdateServer API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "AddressAllocationIds")]
+    pub address_allocation_ids: Option<Vec<String>>,
 
 
     /// 
@@ -555,17 +599,17 @@ pub struct EndpointDetails {
 
 
     /// 
-    /// A list of address allocation IDs that are required to attach an Elastic IP address to your    server's endpoint.
+    /// A list of subnet IDs that are required to host your server endpoint in your VPC.
     /// 
-    /// NoteThis property can only be set when EndpointType is set to VPC     and it is only valid in the UpdateServer API.
+    /// NoteThis property can only be set when EndpointType is set to        VPC.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "AddressAllocationIds")]
-    pub address_allocation_ids: Option<Vec<String>>,
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
 
 
     /// 
@@ -584,42 +628,8 @@ pub struct EndpointDetails {
 }
 
 
-/// Container for the WorkflowDetail data type.    It is used by actions that trigger a workflow to begin execution.
-#[derive(Default, serde::Serialize)]
-pub struct WorkflowDetails {
-
-
-    /// 
-    /// A trigger that starts a workflow if a file is only partially uploaded. You can attach a workflow to a server  that executes whenever there is a partial upload.
-    /// 
-    /// A partial upload occurs when a file is open when the session disconnects.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of WorkflowDetail
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnPartialUpload")]
-    pub on_partial_upload: Option<Vec<WorkflowDetail>>,
-
-
-    /// 
-    /// A trigger that starts a workflow: the workflow begins to execute after a file is uploaded.
-    /// 
-    /// To remove an associated workflow from a server, you can provide an empty OnUpload object, as in the following example.
-    /// 
-    /// aws transfer update-server --server-id s-01234567890abcdef --workflow-details '{"OnUpload":[]}'
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of WorkflowDetail
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnUpload")]
-    pub on_upload: Option<Vec<WorkflowDetail>>,
+/// Indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct As2Transport {
 
 }

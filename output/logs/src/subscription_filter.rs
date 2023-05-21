@@ -3,7 +3,7 @@
 /// The AWS::Logs::SubscriptionFilter resource specifies a subscription filter and associates it with the specified log    group. Subscription filters allow you to subscribe to a real-time stream of log events    and have them delivered to a specific    destination. Currently, the supported destinations are:
 ///
 /// There can be as many as two subscription filters associated with a log group.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubscriptionFilter {
 
 
@@ -26,15 +26,15 @@ pub struct CfnSubscriptionFilter {
 
 
     /// 
-    /// The filtering expressions that restrict what gets delivered to the destination AWS resource.      For more information about the filter pattern syntax, see      Filter and Pattern Syntax.
+    /// The method used to distribute log data to the destination, which can be either    random or grouped by log stream.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FilterPattern")]
-    pub filter_pattern: String,
+    #[serde(rename = "Distribution")]
+    pub distribution: Option<String>,
 
 
     /// 
@@ -56,15 +56,17 @@ pub struct CfnSubscriptionFilter {
 
 
     /// 
-    /// The method used to distribute log data to the destination, which can be either    random or grouped by log stream.
+    /// The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination      stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Minimum: 1
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Distribution")]
-    pub distribution: Option<String>,
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 
     /// 
@@ -82,16 +84,24 @@ pub struct CfnSubscriptionFilter {
 
 
     /// 
-    /// The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination      stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
+    /// The filtering expressions that restrict what gets delivered to the destination AWS resource.      For more information about the filter pattern syntax, see      Filter and Pattern Syntax.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
+    #[serde(rename = "FilterPattern")]
+    pub filter_pattern: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnSubscriptionFilter {
+    fn type_string() -> &'static str {
+        "AWS::Logs::SubscriptionFilter"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

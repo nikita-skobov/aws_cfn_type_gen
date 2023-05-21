@@ -3,7 +3,7 @@
 /// The AWS::RDS::DBClusterParameterGroup resource creates a new Amazon RDS       DB cluster parameter group.
 ///
 /// For information about configuring parameters for Amazon Aurora DB clusters, see       Working with parameter         groups in the Amazon Aurora User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBClusterParameterGroup {
 
 
@@ -17,50 +17,6 @@ pub struct CfnDBClusterParameterGroup {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     pub description: String,
-
-
-    /// 
-    /// Provides a list of parameters for the DB cluster parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: serde_json::Value,
-
-
-    /// 
-    /// The name of the DB cluster parameter group.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must not match the name of an existing DB cluster parameter group.
-    /// 
-    /// If you don't specify a value for DBClusterParameterGroupName property, a name is automatically created for the DB cluster parameter group.
-    /// 
-    /// NoteThis value is stored as a lowercase string.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBClusterParameterGroupName")]
-    pub dbcluster_parameter_group_name: Option<String>,
-
-
-    /// 
-    /// An optional array of key-value pairs to apply to this DB cluster parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -84,6 +40,60 @@ pub struct CfnDBClusterParameterGroup {
     #[serde(rename = "Family")]
     pub family: String,
 
+
+    /// 
+    /// Provides a list of parameters for the DB cluster parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: serde_json::Value,
+
+
+    /// 
+    /// An optional array of key-value pairs to apply to this DB cluster parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of the DB cluster parameter group.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must not match the name of an existing DB cluster parameter group.
+    /// 
+    /// If you don't specify a value for DBClusterParameterGroupName property, a name is automatically created for the DB cluster parameter group.
+    /// 
+    /// NoteThis value is stored as a lowercase string.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBClusterParameterGroupName")]
+    pub dbcluster_parameter_group_name: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDBClusterParameterGroup {
+    fn type_string() -> &'static str {
+        "AWS::RDS::DBClusterParameterGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -94,7 +104,7 @@ pub struct CfnDBClusterParameterGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

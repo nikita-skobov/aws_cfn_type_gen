@@ -1,7 +1,7 @@
 
 
 /// The AWS::Glue::DevEndpoint resource specifies a development endpoint       where a developer can remotely debug ETL scripts for AWS Glue. For more information, see         DevEndpoint Structure in the AWS Glue Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDevEndpoint {
 
 
@@ -22,15 +22,27 @@ pub struct CfnDevEndpoint {
 
 
     /// 
-    /// The tags to use with this DevEndpoint.
+    /// The name of the DevEndpoint.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EndpointName")]
+    pub endpoint_name: Option<String>,
+
+
+    /// 
+    /// A list of security group identifiers used in this DevEndpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -48,15 +60,35 @@ pub struct CfnDevEndpoint {
 
 
     /// 
-    /// The subnet ID for this DevEndpoint.
+    /// The path to one or more Java .jar files in an S3 bucket that should be       loaded in your DevEndpoint.
+    /// 
+    /// NoteYou can only use pure Java/Scala libraries with a DevEndpoint.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: Option<String>,
+    #[serde(rename = "ExtraJarsS3Path")]
+    pub extra_jars_s3_path: Option<String>,
+
+
+    /// 
+    /// The AWS Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version indicates the version supported for running your ETL scripts on development endpoints.
+    /// 
+    /// For more information about the available AWS Glue versions and corresponding Spark and Python versions, see Glue version in the developer guide.
+    /// 
+    /// Development endpoints that are created without specifying a Glue version default to Glue 0.9.
+    /// 
+    /// You can specify a version of Python support for development endpoints by using the Arguments parameter in the CreateDevEndpoint or UpdateDevEndpoint APIs. If no arguments are provided, the version defaults to Python 2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GlueVersion")]
+    pub glue_version: Option<String>,
 
 
     /// 
@@ -78,30 +110,6 @@ pub struct CfnDevEndpoint {
 
 
     /// 
-    /// The name of the DevEndpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EndpointName")]
-    pub endpoint_name: Option<String>,
-
-
-    /// 
-    /// The number of AWS Glue Data Processing Units (DPUs) allocated to this         DevEndpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfNodes")]
-    pub number_of_nodes: Option<i64>,
-
-
-    /// 
     /// The name of the SecurityConfiguration structure to be used with this     DevEndpoint.
     /// 
     /// Required: No
@@ -120,45 +128,29 @@ pub struct CfnDevEndpoint {
 
 
     /// 
-    /// A list of security group identifiers used in this DevEndpoint.
+    /// The number of workers of a defined workerType that are allocated to the development endpoint.
+    /// 
+    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
+    #[serde(rename = "NumberOfWorkers")]
+    pub number_of_workers: Option<i64>,
 
 
     /// 
-    /// The public key to be used by this DevEndpoint for authentication. This       attribute is provided for backward compatibility because the recommended attribute to       use is public keys.
+    /// The number of AWS Glue Data Processing Units (DPUs) allocated to this         DevEndpoint.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PublicKey")]
-    pub public_key: Option<String>,
-
-
-    /// 
-    /// The AWS Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version indicates the version supported for running your ETL scripts on development endpoints.
-    /// 
-    /// For more information about the available AWS Glue versions and corresponding Spark and Python versions, see Glue version in the developer guide.
-    /// 
-    /// Development endpoints that are created without specifying a Glue version default to Glue 0.9.
-    /// 
-    /// You can specify a version of Python support for development endpoints by using the Arguments parameter in the CreateDevEndpoint or UpdateDevEndpoint APIs. If no arguments are provided, the version defaults to Python 2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GlueVersion")]
-    pub glue_version: Option<String>,
+    #[serde(rename = "NumberOfNodes")]
+    pub number_of_nodes: Option<i64>,
 
 
     /// 
@@ -192,30 +184,48 @@ pub struct CfnDevEndpoint {
 
 
     /// 
-    /// The number of workers of a defined workerType that are allocated to the development endpoint.
-    /// 
-    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NumberOfWorkers")]
-    pub number_of_workers: Option<i64>,
-
-
-    /// 
-    /// The path to one or more Java .jar files in an S3 bucket that should be       loaded in your DevEndpoint.
-    /// 
-    /// NoteYou can only use pure Java/Scala libraries with a DevEndpoint.
+    /// The subnet ID for this DevEndpoint.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ExtraJarsS3Path")]
-    pub extra_jars_s3_path: Option<String>,
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: Option<String>,
 
+
+    /// 
+    /// The public key to be used by this DevEndpoint for authentication. This       attribute is provided for backward compatibility because the recommended attribute to       use is public keys.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PublicKey")]
+    pub public_key: Option<String>,
+
+
+    /// 
+    /// The tags to use with this DevEndpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDevEndpoint {
+    fn type_string() -> &'static str {
+        "AWS::Glue::DevEndpoint"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

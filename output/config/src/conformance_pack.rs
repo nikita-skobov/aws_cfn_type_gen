@@ -1,34 +1,8 @@
 
 
 /// A conformance pack is a collection of AWS Config rules and remediation actions         that can be easily deployed in an account and a region.         ConformancePack creates a service linked role in your account.         The service linked role is created only when the role does not exist in your account.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConformancePack {
-
-
-    /// 
-    /// The name of the Amazon S3 bucket where AWS Config stores conformance pack templates.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryS3Bucket")]
-    pub delivery_s3_bucket: Option<String>,
-
-
-    /// 
-    /// Location of file containing the template body (s3://bucketname/prefix). The uri must point to the conformance pack template (max size: 300 KB)       that is located in an Amazon S3 bucket.
-    /// 
-    /// NoteYou must have access to read Amazon S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateS3Uri")]
-    pub template_s3_uri: Option<String>,
 
 
     /// 
@@ -46,6 +20,30 @@ pub struct CfnConformancePack {
 
 
     /// 
+    /// The prefix for the Amazon S3 bucket.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryS3KeyPrefix")]
+    pub delivery_s3_key_prefix: Option<String>,
+
+
+    /// 
+    /// The name of the Amazon S3 bucket where AWS Config stores conformance pack templates.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryS3Bucket")]
+    pub delivery_s3_bucket: Option<String>,
+
+
+    /// 
     /// A list of ConformancePackInputParameter objects.
     /// 
     /// Required: No
@@ -57,15 +55,18 @@ pub struct CfnConformancePack {
     pub conformance_pack_input_parameters: Option<Vec<ConformancePackInputParameter>>,
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// Location of file containing the template body (s3://bucketname/prefix). The uri must point to the conformance pack template (max size: 300 KB)       that is located in an Amazon S3 bucket.
+    /// 
+    /// NoteYou must have access to read Amazon S3 bucket.
+    /// 
     /// Required: No
     ///
-    /// Type: TemplateSSMDocumentDetails
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TemplateSSMDocumentDetails")]
-    pub template_ssmdocument_details: Option<TemplateSSMDocumentDetails>,
+    #[serde(rename = "TemplateS3Uri")]
+    pub template_s3_uri: Option<String>,
 
 
     /// 
@@ -80,22 +81,31 @@ pub struct CfnConformancePack {
     pub conformance_pack_name: String,
 
 
-    /// 
-    /// The prefix for the Amazon S3 bucket.
+    /// Property description not available.
     ///
     /// Required: No
     ///
-    /// Type: String
+    /// Type: TemplateSSMDocumentDetails
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeliveryS3KeyPrefix")]
-    pub delivery_s3_key_prefix: Option<String>,
+    #[serde(rename = "TemplateSSMDocumentDetails")]
+    pub template_ssmdocument_details: Option<TemplateSSMDocumentDetails>,
 
+}
+
+impl cfn_resources::CfnResource for CfnConformancePack {
+    fn type_string() -> &'static str {
+        "AWS::Config::ConformancePack"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConformancePackInputParameter {
 
 
@@ -136,7 +146,7 @@ pub struct ConformancePackInputParameter {
 /// This API allows you to create a conformance pack template with an AWS Systems Manager document (SSM document). 			To deploy a conformance pack using an SSM document, first create an SSM document with conformance pack content, and then provide the DocumentName in the PutConformancePack API. You can also provide the DocumentVersion.
 ///
 /// The TemplateSSMDocumentDetails object contains the name of the SSM document and the version of the SSM document.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TemplateSSMDocumentDetails {
 
 

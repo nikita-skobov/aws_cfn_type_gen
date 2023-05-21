@@ -1,7 +1,7 @@
 
 
 /// Specifies a static route for a transit gateway route table.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayRoute {
 
 
@@ -52,4 +52,14 @@ pub struct CfnTransitGatewayRoute {
     #[serde(rename = "Blackhole")]
     pub blackhole: Option<bool>,
 
+}
+
+impl cfn_resources::CfnResource for CfnTransitGatewayRoute {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TransitGatewayRoute"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

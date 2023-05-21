@@ -1,126 +1,56 @@
 
 
 /// The AWS::ElastiCache::CacheCluster type creates an Amazon ElastiCache cache cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCacheCluster {
 
 
     /// 
-    /// Must be either ipv4 | ipv6 | dual_stack. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
+    /// One or more VPC security groups associated with the cluster.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: dual_stack | ipv4 | ipv6
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkType")]
-    pub network_type: Option<String>,
-
-
-    /// 
-    /// The number of cache nodes that the cache cluster should have.
-    /// 
-    /// NoteHowever, if the PreferredAvailabilityZone and PreferredAvailabilityZones properties were not previously specified and you don't specify any new values,     an update requires replacement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "NumCacheNodes")]
-    pub num_cache_nodes: i64,
-
-
-    /// 
-    /// A single-element string list containing an Amazon Resource Name (ARN) that uniquely identifies       a Redis RDB snapshot file stored in Amazon S3.       The snapshot file is used to populate the node group (shard).       The Amazon S3 object name in the ARN cannot contain any commas.
-    /// 
-    /// NoteThis parameter is only valid if the Engine parameter is redis.
-    /// 
-    /// Example of an Amazon S3 ARN: arn:aws:s3:::my_bucket/snapshot1.rdb
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotArns")]
-    pub snapshot_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of the cache engine to be used for this cluster.
-    /// 
-    /// Valid values for this parameter are: memcached | redis
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Engine")]
-    pub engine: String,
-
-
-    /// 
-    /// Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or       created across multiple Availability Zones in the cluster's region.
-    /// 
-    /// This parameter is only supported for Memcached clusters.
-    /// 
-    /// If the AZMode and PreferredAvailabilityZones are not specified,       ElastiCache assumes single-az mode.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: cross-az | single-az
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "AZMode")]
-    pub azmode: Option<String>,
-
-
-    /// 
-    /// A flag that enables in-transit encryption when set to true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TransitEncryptionEnabled")]
-    pub transit_encryption_enabled: Option<bool>,
-
-
-    /// 
-    /// A list of security group names to associate with this cluster.
-    /// 
-    /// Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).
+    /// Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CacheSecurityGroupNames")]
-    pub cache_security_group_names: Option<Vec<String>>,
+    #[serde(rename = "VpcSecurityGroupIds")]
+    pub vpc_security_group_ids: Option<Vec<String>>,
 
 
     /// 
-    /// The number of days for which ElastiCache retains automatic snapshots before deleting them.      For example, if you set SnapshotRetentionLimit to 5,      a snapshot taken today is retained for 5 days before being deleted.
+    /// The version number of the cache engine to be used for this cluster.       To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.
     /// 
-    /// NoteThis parameter is only valid if the Engine parameter is redis.
-    /// 
-    /// Default: 0 (i.e., automatic backups are disabled for this cache cluster).
+    /// Important: You can upgrade to a newer engine version (see Selecting a Cache Engine and Version), but you cannot downgrade to an earlier engine version.       If you want to use an earlier engine version,       you must delete the existing cluster or replication group and create it anew with the earlier engine version.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SnapshotRetentionLimit")]
-    pub snapshot_retention_limit: Option<i64>,
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
+
+
+    /// 
+    /// Specifies the weekly time range during which maintenance       on the cluster is performed. It is specified as a range in       the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum       maintenance window is a 60 minute period.       Valid values for ddd are:
+    /// 
+    /// Specifies the weekly time range during which maintenance  on the cluster is performed. It is specified as a range in  the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum  maintenance window is a 60 minute period.
+    /// 
+    /// Valid values for ddd are:
+    /// 
+    /// sun                                mon                                tue                                wed                                thu                                fri                                sat
+    /// 
+    /// Example: sun:23:00-mon:01:30
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PreferredMaintenanceWindow")]
+    pub preferred_maintenance_window: Option<String>,
 
 
     /// 
@@ -145,6 +75,50 @@ pub struct CfnCacheCluster {
     pub cache_node_type: String,
 
 
+    /// 
+    /// The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic      to which notifications are sent.
+    /// 
+    /// NoteThe Amazon SNS topic owner must be the same as the cluster owner.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationTopicArn")]
+    pub notification_topic_arn: Option<String>,
+
+
+    /// 
+    /// The network type you choose when modifying a cluster, either ipv4 | ipv6. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ipv4 | ipv6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IpDiscovery")]
+    pub ip_discovery: Option<String>,
+
+
+    /// 
+    /// The EC2 Availability Zone in which the cluster is created.
+    /// 
+    /// All nodes belonging to this cluster are placed in the preferred Availability Zone.       If you want to create your nodes across multiple Availability Zones, use PreferredAvailabilityZones.
+    /// 
+    /// Default: System chosen Availability Zone.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "PreferredAvailabilityZone")]
+    pub preferred_availability_zone: Option<String>,
+
+
     /// Specifies the destination, format and type of the logs.
     ///
     /// Required: No
@@ -154,6 +128,90 @@ pub struct CfnCacheCluster {
     /// Update requires: No interruption
     #[serde(rename = "LogDeliveryConfigurations")]
     pub log_delivery_configurations: Option<Vec<LogDeliveryConfigurationRequest>>,
+
+
+    /// 
+    /// The number of cache nodes that the cache cluster should have.
+    /// 
+    /// NoteHowever, if the PreferredAvailabilityZone and PreferredAvailabilityZones properties were not previously specified and you don't specify any new values,     an update requires replacement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "NumCacheNodes")]
+    pub num_cache_nodes: i64,
+
+
+    /// 
+    /// A name for the cache cluster. If you don't specify a name, AWSCloudFormation generates a     unique physical ID and uses that ID for the cache cluster. For more information,     see Name Type.
+    /// 
+    /// The name must contain 1 to 50 alphanumeric characters or hyphens. The name must     start with a letter and cannot end with a hyphen or contain two consecutive     hyphens.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: Option<String>,
+
+
+    /// 
+    /// A list of security group names to associate with this cluster.
+    /// 
+    /// Use this parameter only when you are creating a cluster outside of an Amazon Virtual Private Cloud (Amazon VPC).
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheSecurityGroupNames")]
+    pub cache_security_group_names: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the parameter group to associate with this cluster.       If this argument is omitted, the default parameter group for the specified engine is used.       You cannot use any parameter group which has cluster-enabled='yes' when creating a cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheParameterGroupName")]
+    pub cache_parameter_group_name: Option<String>,
+
+
+    /// 
+    /// A flag that enables in-transit encryption when set to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TransitEncryptionEnabled")]
+    pub transit_encryption_enabled: Option<bool>,
+
+
+    /// 
+    /// Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or       created across multiple Availability Zones in the cluster's region.
+    /// 
+    /// This parameter is only supported for Memcached clusters.
+    /// 
+    /// If the AZMode and PreferredAvailabilityZones are not specified,       ElastiCache assumes single-az mode.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: cross-az | single-az
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "AZMode")]
+    pub azmode: Option<String>,
 
 
     /// 
@@ -173,67 +231,61 @@ pub struct CfnCacheCluster {
 
 
     /// 
-    /// If you are running Redis engine version 6.0 or later, set this parameter to yes if you want to opt-in to the next minor version upgrade campaign. This parameter is disabled for previous versions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoMinorVersionUpgrade")]
-    pub auto_minor_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// The version number of the cache engine to be used for this cluster.       To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.
-    /// 
-    /// Important: You can upgrade to a newer engine version (see Selecting a Cache Engine and Version), but you cannot downgrade to an earlier engine version.       If you want to use an earlier engine version,       you must delete the existing cluster or replication group and create it anew with the earlier engine version.
+    /// Must be either ipv4 | ipv6 | dual_stack. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
+    /// Allowed values: dual_stack | ipv4 | ipv6
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkType")]
+    pub network_type: Option<String>,
 
 
     /// 
-    /// A list of tags to be added to this resource.
+    /// The number of days for which ElastiCache retains automatic snapshots before deleting them.      For example, if you set SnapshotRetentionLimit to 5,      a snapshot taken today is retained for 5 days before being deleted.
+    /// 
+    /// NoteThis parameter is only valid if the Engine parameter is redis.
+    /// 
+    /// Default: 0 (i.e., automatic backups are disabled for this cache cluster).
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "SnapshotRetentionLimit")]
+    pub snapshot_retention_limit: Option<i64>,
 
 
     /// 
-    /// The name of the parameter group to associate with this cluster.       If this argument is omitted, the default parameter group for the specified engine is used.       You cannot use any parameter group which has cluster-enabled='yes' when creating a cluster.
+    /// The name of a Redis snapshot from which to restore data into the new node group (shard).       The snapshot status changes to restoring while the new node group (shard) is being created.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheParameterGroupName")]
-    pub cache_parameter_group_name: Option<String>,
-
-
-    /// 
-    /// A name for the cache cluster. If you don't specify a name, AWSCloudFormation generates a     unique physical ID and uses that ID for the cache cluster. For more information,     see Name Type.
-    /// 
-    /// The name must contain 1 to 50 alphanumeric characters or hyphens. The name must     start with a letter and cannot end with a hyphen or contain two consecutive     hyphens.
+    /// NoteThis parameter is only valid if the Engine parameter is redis.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: Option<String>,
+    #[serde(rename = "SnapshotName")]
+    pub snapshot_name: Option<String>,
+
+
+    /// 
+    /// The name of the cache engine to be used for this cluster.
+    /// 
+    /// Valid values for this parameter are: memcached | redis
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Engine")]
+    pub engine: String,
 
 
     /// 
@@ -252,90 +304,6 @@ pub struct CfnCacheCluster {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotWindow")]
     pub snapshot_window: Option<String>,
-
-
-    /// 
-    /// The EC2 Availability Zone in which the cluster is created.
-    /// 
-    /// All nodes belonging to this cluster are placed in the preferred Availability Zone.       If you want to create your nodes across multiple Availability Zones, use PreferredAvailabilityZones.
-    /// 
-    /// Default: System chosen Availability Zone.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "PreferredAvailabilityZone")]
-    pub preferred_availability_zone: Option<String>,
-
-
-    /// 
-    /// The network type you choose when modifying a cluster, either ipv4 | ipv6. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ipv4 | ipv6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IpDiscovery")]
-    pub ip_discovery: Option<String>,
-
-
-    /// 
-    /// One or more VPC security groups associated with the cluster.
-    /// 
-    /// Use this parameter only when you are creating a cluster in an Amazon Virtual Private Cloud (Amazon VPC).
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSecurityGroupIds")]
-    pub vpc_security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of a Redis snapshot from which to restore data into the new node group (shard).       The snapshot status changes to restoring while the new node group (shard) is being created.
-    /// 
-    /// NoteThis parameter is only valid if the Engine parameter is redis.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotName")]
-    pub snapshot_name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic      to which notifications are sent.
-    /// 
-    /// NoteThe Amazon SNS topic owner must be the same as the cluster owner.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationTopicArn")]
-    pub notification_topic_arn: Option<String>,
-
-
-    /// 
-    /// The port number on which each of the cache nodes accepts connections.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
 
 
     /// 
@@ -359,65 +327,130 @@ pub struct CfnCacheCluster {
 
 
     /// 
-    /// Specifies the weekly time range during which maintenance       on the cluster is performed. It is specified as a range in       the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum       maintenance window is a 60 minute period.       Valid values for ddd are:
-    /// 
-    /// Specifies the weekly time range during which maintenance  on the cluster is performed. It is specified as a range in  the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum  maintenance window is a 60 minute period.
-    /// 
-    /// Valid values for ddd are:
-    /// 
-    /// sun                                mon                                tue                                wed                                thu                                fri                                sat
-    /// 
-    /// Example: sun:23:00-mon:01:30
+    /// A list of tags to be added to this resource.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PreferredMaintenanceWindow")]
-    pub preferred_maintenance_window: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// If you are running Redis engine version 6.0 or later, set this parameter to yes if you want to opt-in to the next minor version upgrade campaign. This parameter is disabled for previous versions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoMinorVersionUpgrade")]
+    pub auto_minor_version_upgrade: Option<bool>,
+
+
+    /// 
+    /// The port number on which each of the cache nodes accepts connections.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// A single-element string list containing an Amazon Resource Name (ARN) that uniquely identifies       a Redis RDB snapshot file stored in Amazon S3.       The snapshot file is used to populate the node group (shard).       The Amazon S3 object name in the ARN cannot contain any commas.
+    /// 
+    /// NoteThis parameter is only valid if the Engine parameter is redis.
+    /// 
+    /// Example of an Amazon S3 ARN: arn:aws:s3:::my_bucket/snapshot1.rdb
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotArns")]
+    pub snapshot_arns: Option<Vec<String>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnCacheCluster {
+    fn type_string() -> &'static str {
+        "AWS::ElastiCache::CacheCluster"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DestinationDetails {
+
+
+    /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
+    ///
+    /// Required: No
+    ///
+    /// Type: KinesisFirehoseDestinationDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisFirehoseDetails")]
+    pub kinesis_firehose_details: Option<KinesisFirehoseDestinationDetails>,
+
+
+    /// The configuration details of the CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
+    ///
+    /// Required: No
+    ///
+    /// Type: CloudWatchLogsDestinationDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLogsDetails")]
+    pub cloud_watch_logs_details: Option<CloudWatchLogsDestinationDetails>,
 
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
+/// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked   as required but only if Kinesis Data Firehose was chosen as the destination.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisFirehoseDestinationDetails {
 
 
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    /// The name of the Kinesis Data Firehose delivery stream.
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeliveryStream")]
+    pub delivery_stream: String,
 
 }
 
 
 /// Specifies the destination, format and type of the logs.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LogDeliveryConfigurationRequest {
+
+
+    /// Valid values are either json or text.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogFormat")]
+    pub log_format: String,
 
 
     /// Specify either CloudWatch Logs or Kinesis Data Firehose as the destination type. Valid values are either cloudwatch-logs or kinesis-firehose.
@@ -452,22 +485,11 @@ pub struct LogDeliveryConfigurationRequest {
     #[serde(rename = "LogType")]
     pub log_type: String,
 
-
-    /// Valid values are either json or text.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogFormat")]
-    pub log_format: String,
-
 }
 
 
 /// Configuration details of a CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchLogsDestinationDetails {
 
 
@@ -484,48 +506,36 @@ pub struct CloudWatchLogsDestinationDetails {
 }
 
 
-/// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked   as required but only if Kinesis Data Firehose was chosen as the destination.
-#[derive(Default, serde::Serialize)]
-pub struct KinesisFirehoseDestinationDetails {
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
 
 
-    /// The name of the Kinesis Data Firehose delivery stream.
-    ///
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryStream")]
-    pub delivery_stream: String,
-
-}
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 
-/// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
-#[derive(Default, serde::Serialize)]
-pub struct DestinationDetails {
-
-
-    /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
-    ///
-    /// Required: No
-    ///
-    /// Type: KinesisFirehoseDestinationDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisFirehoseDetails")]
-    pub kinesis_firehose_details: Option<KinesisFirehoseDestinationDetails>,
-
-
-    /// The configuration details of the CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
-    ///
-    /// Required: No
-    ///
-    /// Type: CloudWatchLogsDestinationDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLogsDetails")]
-    pub cloud_watch_logs_details: Option<CloudWatchLogsDestinationDetails>,
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

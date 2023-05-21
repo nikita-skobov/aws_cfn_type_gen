@@ -7,7 +7,7 @@
 /// You can use one of the output configurations to deliver data from your in-application       error stream to an external destination so that you can analyze the errors.
 ///
 /// Any configuration update, including adding a streaming source using this operation,       results in a new version of the application. You can use the DescribeApplication operation to find the current application       version.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationOutput {
 
 
@@ -44,9 +44,69 @@ pub struct CfnApplicationOutput {
 
 }
 
+impl cfn_resources::CfnResource for CfnApplicationOutput {
+    fn type_string() -> &'static str {
+        "AWS::KinesisAnalyticsV2::ApplicationOutput"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies a Kinesis data stream as the destination. You provide the stream Amazon Resource    Name (ARN).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisStreamsOutput {
+
+
+    /// 
+    /// The ARN of the destination Kinesis data stream to write to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceARN")]
+    pub resource_arn: String,
+
+}
+
+
+/// For a SQL-based Kinesis Data Analytics application, when configuring application    output, identifies a Kinesis Data Firehose delivery stream as the destination. You provide the    stream Amazon Resource Name (ARN) of the delivery stream.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisFirehoseOutput {
+
+
+    /// 
+    /// The ARN of the destination delivery stream to write to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceARN")]
+    pub resource_arn: String,
+
+}
+
 
 /// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies an Amazon Lambda function as the destination. You provide the function Amazon Resource    Name (ARN) of the Lambda function.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LambdaOutput {
 
 
@@ -72,9 +132,30 @@ pub struct LambdaOutput {
 }
 
 
+/// Describes the data format when records are written to the destination in a SQL-based Kinesis Data Analytics application.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DestinationSchema {
+
+
+    /// 
+    /// Specifies the format of the records on the output stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CSV | JSON
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecordFormatType")]
+    pub record_format_type: Option<String>,
+
+}
+
+
 /// Describes a SQL-based Kinesis Data Analytics application's output configuration,    in which you identify an in-application stream and a destination where you want the    in-application stream data to be written. The destination can be a Kinesis data stream or a    Kinesis Data Firehose delivery stream.
 /// 
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Output {
 
 
@@ -88,18 +169,6 @@ pub struct Output {
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseOutput")]
     pub kinesis_firehose_output: Option<KinesisFirehoseOutput>,
-
-
-    /// 
-    /// Describes the data format when records are written to the destination.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: DestinationSchema
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationSchema")]
-    pub destination_schema: DestinationSchema,
 
 
     /// 
@@ -127,6 +196,18 @@ pub struct Output {
 
 
     /// 
+    /// Describes the data format when records are written to the destination.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: DestinationSchema
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationSchema")]
+    pub destination_schema: DestinationSchema,
+
+
+    /// 
     /// The name of the in-application stream.
     /// 
     /// Required: No
@@ -142,76 +223,5 @@ pub struct Output {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
-}
-
-
-/// For a SQL-based Kinesis Data Analytics application, when configuring application    output, identifies a Kinesis Data Firehose delivery stream as the destination. You provide the    stream Amazon Resource Name (ARN) of the delivery stream.
-#[derive(Default, serde::Serialize)]
-pub struct KinesisFirehoseOutput {
-
-
-    /// 
-    /// The ARN of the destination delivery stream to write to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
-
-}
-
-
-/// Describes the data format when records are written to the destination in a SQL-based Kinesis Data Analytics application.
-#[derive(Default, serde::Serialize)]
-pub struct DestinationSchema {
-
-
-    /// 
-    /// Specifies the format of the records on the output stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CSV | JSON
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecordFormatType")]
-    pub record_format_type: Option<String>,
-
-}
-
-
-/// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies a Kinesis data stream as the destination. You provide the stream Amazon Resource    Name (ARN).
-#[derive(Default, serde::Serialize)]
-pub struct KinesisStreamsOutput {
-
-
-    /// 
-    /// The ARN of the destination Kinesis data stream to write to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
 
 }

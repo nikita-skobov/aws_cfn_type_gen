@@ -11,26 +11,8 @@
 /// For information about creating a secret in the console, see Create a    secret. For information about creating a secret using the CLI or SDK, see CreateSecret.
 ///
 /// For information about retrieving a secret in code, see Retrieve     secrets from Secrets Manager.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSecret {
-
-
-    /// 
-    /// The ARN, key ID, or alias of the AWS KMS key that Secrets Manager uses to    encrypt the secret value in the secret. An alias is always prefixed by alias/, for example alias/aws/secretsmanager.   For more information, see About aliases.
-    /// 
-    /// To use a AWS KMS key in a different account, use the key ARN or the alias ARN.
-    /// 
-    /// If you don't specify this value, then Secrets Manager uses the key aws/secretsmanager.    If that key doesn't yet exist, then Secrets Manager creates it for you automatically the first time it    encrypts the secret value.
-    /// 
-    /// If the secret is in a different AWS account from the credentials calling the API, then    you can't use aws/secretsmanager to encrypt the secret, and you must create    and use a customer managed AWS KMS key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
 
 
     /// 
@@ -43,6 +25,44 @@ pub struct CfnSecret {
     /// Update requires: No interruption
     #[serde(rename = "ReplicaRegions")]
     pub replica_regions: Option<Vec<ReplicaRegion>>,
+
+
+    /// 
+    /// The description of the secret.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The text to encrypt and store in the secret. We recommend you use a JSON structure of    key/value pairs for your secret value. To generate a random password, use GenerateSecretString instead.    If you omit both GenerateSecretString and SecretString, you create an empty secret. When you make a change to this property, a new secret version is created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretString")]
+    pub secret_string: Option<String>,
+
+
+    /// 
+    /// A structure that specifies how to generate a password to encrypt and store in the secret. To include a specific string    in the secret, use SecretString instead. If you omit both GenerateSecretString and SecretString, you create an empty secret. When you make a change to this property, a new secret version is created.
+    /// 
+    /// We recommend that you specify the maximum length and include every character type that the    system you are generating a password for can support.
+    /// 
+    /// Required: No
+    ///
+    /// Type: GenerateSecretString
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GenerateSecretString")]
+    pub generate_secret_string: Option<GenerateSecretString>,
 
 
     /// 
@@ -86,41 +106,62 @@ pub struct CfnSecret {
 
 
     /// 
-    /// The text to encrypt and store in the secret. We recommend you use a JSON structure of    key/value pairs for your secret value. To generate a random password, use GenerateSecretString instead.    If you omit both GenerateSecretString and SecretString, you create an empty secret. When you make a change to this property, a new secret version is created.
+    /// The ARN, key ID, or alias of the AWS KMS key that Secrets Manager uses to    encrypt the secret value in the secret. An alias is always prefixed by alias/, for example alias/aws/secretsmanager.   For more information, see About aliases.
+    /// 
+    /// To use a AWS KMS key in a different account, use the key ARN or the alias ARN.
+    /// 
+    /// If you don't specify this value, then Secrets Manager uses the key aws/secretsmanager.    If that key doesn't yet exist, then Secrets Manager creates it for you automatically the first time it    encrypts the secret value.
+    /// 
+    /// If the secret is in a different AWS account from the credentials calling the API, then    you can't use aws/secretsmanager to encrypt the secret, and you must create    and use a customer managed AWS KMS key.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SecretString")]
-    pub secret_string: Option<String>,
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnSecret {
+    fn type_string() -> &'static str {
+        "AWS::SecretsManager::Secret"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Specifies a Region and the KmsKeyId for a replica secret.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ReplicaRegion {
 
 
     /// 
-    /// The description of the secret.
+    /// The ARN, key ID, or alias of the KMS key to encrypt the secret. If you don't include this field, Secrets Manager uses aws/secretsmanager.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
-    /// A structure that specifies how to generate a password to encrypt and store in the secret. To include a specific string    in the secret, use SecretString instead. If you omit both GenerateSecretString and SecretString, you create an empty secret. When you make a change to this property, a new secret version is created.
+    /// (Optional) A string that represents a Region, for example "us-east-1".
     /// 
-    /// We recommend that you specify the maximum length and include every character type that the    system you are generating a password for can support.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: GenerateSecretString
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GenerateSecretString")]
-    pub generate_secret_string: Option<GenerateSecretString>,
+    #[serde(rename = "Region")]
+    pub region: String,
 
 }
 
@@ -132,19 +173,8 @@ pub struct CfnSecret {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -157,50 +187,25 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
 
 
 /// Generates a random password. We recommend that you specify the maximum length and include    every character type that the system you are generating a password for can support.
 ///
 /// Required permissions:    secretsmanager:GetRandomPassword. For more information, see IAM policy actions for Secrets Manager and Authentication and access control     in Secrets Manager.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GenerateSecretString {
-
-
-    /// 
-    /// Specifies whether to include the space character. If you    include this switch, the password can contain space characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeSpace")]
-    pub include_space: Option<bool>,
-
-
-    /// 
-    /// The JSON key name for the key/value pair, where the value is the generated password. This    pair is added to the JSON structure specified by the SecretStringTemplate    parameter. If you specify this parameter, then you must also specify     SecretStringTemplate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GenerateStringKey")]
-    pub generate_string_key: Option<String>,
-
-
-    /// 
-    /// Specifies whether to exclude lowercase letters from the password. If    you don't include this switch, the password can contain lowercase letters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludeLowercase")]
-    pub exclude_lowercase: Option<bool>,
 
 
     /// 
@@ -213,6 +218,42 @@ pub struct GenerateSecretString {
     /// Update requires: No interruption
     #[serde(rename = "SecretStringTemplate")]
     pub secret_string_template: Option<String>,
+
+
+    /// 
+    /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.    If you don't include this switch, the password contains at least one of every character type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequireEachIncludedType")]
+    pub require_each_included_type: Option<bool>,
+
+
+    /// 
+    /// The length of the password. If you don't include this parameter, the    default length is 32 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PasswordLength")]
+    pub password_length: Option<i64>,
+
+
+    /// 
+    /// The JSON key name for the key/value pair, where the value is the generated password. This    pair is added to the JSON structure specified by the SecretStringTemplate    parameter. If you specify this parameter, then you must also specify     SecretStringTemplate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GenerateStringKey")]
+    pub generate_string_key: Option<String>,
 
 
     /// 
@@ -240,15 +281,15 @@ pub struct GenerateSecretString {
 
 
     /// 
-    /// The length of the password. If you don't include this parameter, the    default length is 32 characters.
+    /// A string of the characters that you don't want in the password.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PasswordLength")]
-    pub password_length: Option<i64>,
+    #[serde(rename = "ExcludeCharacters")]
+    pub exclude_characters: Option<String>,
 
 
     /// 
@@ -264,57 +305,26 @@ pub struct GenerateSecretString {
 
 
     /// 
-    /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.    If you don't include this switch, the password contains at least one of every character type.
+    /// Specifies whether to exclude lowercase letters from the password. If    you don't include this switch, the password can contain lowercase letters.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RequireEachIncludedType")]
-    pub require_each_included_type: Option<bool>,
+    #[serde(rename = "ExcludeLowercase")]
+    pub exclude_lowercase: Option<bool>,
 
 
     /// 
-    /// A string of the characters that you don't want in the password.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExcludeCharacters")]
-    pub exclude_characters: Option<String>,
-
-}
-
-
-/// Specifies a Region and the KmsKeyId for a replica secret.
-#[derive(Default, serde::Serialize)]
-pub struct ReplicaRegion {
-
-
-    /// 
-    /// The ARN, key ID, or alias of the KMS key to encrypt the secret. If you don't include this field, Secrets Manager uses aws/secretsmanager.
+    /// Specifies whether to include the space character. If you    include this switch, the password can contain space characters.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// (Optional) A string that represents a Region, for example "us-east-1".
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Region")]
-    pub region: String,
+    #[serde(rename = "IncludeSpace")]
+    pub include_space: Option<bool>,
 
 }

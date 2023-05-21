@@ -1,26 +1,8 @@
 
 
 /// Assigns access to a Principal for a specified AWS account using a specified permission     set.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAssignment {
-
-
-    /// 
-    /// The ARN of the IAM Identity Center instance under which the operation will be executed. For more     information about ARNs, see Amazon Resource Names (ARNs) and       AWS Service Namespaces in the AWS General Reference.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 10
-    ///
-    /// Maximum: 1224
-    ///
-    /// Pattern: arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::instance/(sso)?ins-[a-zA-Z0-9-.]{16}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceArn")]
-    pub instance_arn: String,
 
 
     /// 
@@ -42,31 +24,21 @@ pub struct CfnAssignment {
 
 
     /// 
-    /// The entity type for which the assignment will be created.
+    /// TargetID is an AWS account identifier, (For example, 123456789012).
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: GROUP | USER
+    /// Minimum: 12
+    ///
+    /// Maximum: 12
+    ///
+    /// Pattern: \d{12}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PrincipalType")]
-    pub principal_type: String,
-
-
-    /// 
-    /// The entity type for which the assignment will be created.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AWS_ACCOUNT
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetType")]
-    pub target_type: String,
+    #[serde(rename = "TargetId")]
+    pub target_id: String,
 
 
     /// 
@@ -88,20 +60,58 @@ pub struct CfnAssignment {
 
 
     /// 
-    /// TargetID is an AWS account identifier, (For example, 123456789012).
+    /// The entity type for which the assignment will be created.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 12
-    ///
-    /// Maximum: 12
-    ///
-    /// Pattern: \d{12}
+    /// Allowed values: GROUP | USER
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TargetId")]
-    pub target_id: String,
+    #[serde(rename = "PrincipalType")]
+    pub principal_type: String,
 
+
+    /// 
+    /// The ARN of the IAM Identity Center instance under which the operation will be executed. For more     information about ARNs, see Amazon Resource Names (ARNs) and       AWS Service Namespaces in the AWS General Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 10
+    ///
+    /// Maximum: 1224
+    ///
+    /// Pattern: arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::instance/(sso)?ins-[a-zA-Z0-9-.]{16}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceArn")]
+    pub instance_arn: String,
+
+
+    /// 
+    /// The entity type for which the assignment will be created.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AWS_ACCOUNT
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetType")]
+    pub target_type: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnAssignment {
+    fn type_string() -> &'static str {
+        "AWS::SSO::Assignment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

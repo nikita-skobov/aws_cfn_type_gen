@@ -1,20 +1,8 @@
 
 
 /// Use the AWS::XRay::Group resource to specify a group with a name and a filter expression.      Groups enable the collection of traces that match the filter expression, can be used to filter service graphs and traces, and to supply Amazon CloudWatch metrics.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGroup {
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -30,17 +18,15 @@ pub struct CfnGroup {
 
 
     /// 
-    /// The structure containing configurations related to insights.
-    /// 
-    /// The InsightsEnabled boolean can be set to true to enable insights for the           group or false to disable insights for the group.               The NotificationsEnabled boolean can be set to true to enable insights           notifications through Amazon EventBridge for the group.
+    /// An array of key-value pairs to apply to this resource.
     /// 
     /// Required: No
     ///
-    /// Type: InsightsConfiguration
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InsightsConfiguration")]
-    pub insights_configuration: Option<InsightsConfiguration>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -54,11 +40,35 @@ pub struct CfnGroup {
     #[serde(rename = "GroupName")]
     pub group_name: String,
 
+
+    /// 
+    /// The structure containing configurations related to insights.
+    /// 
+    /// The InsightsEnabled boolean can be set to true to enable insights for the           group or false to disable insights for the group.               The NotificationsEnabled boolean can be set to true to enable insights           notifications through Amazon EventBridge for the group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InsightsConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InsightsConfiguration")]
+    pub insights_configuration: Option<InsightsConfiguration>,
+
+}
+
+impl cfn_resources::CfnResource for CfnGroup {
+    fn type_string() -> &'static str {
+        "AWS::XRay::Group"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The structure containing configurations related to insights.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InsightsConfiguration {
 
 
@@ -95,19 +105,8 @@ pub struct InsightsConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -119,5 +118,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

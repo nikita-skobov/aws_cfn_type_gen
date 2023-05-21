@@ -1,20 +1,20 @@
 
 
 /// Use Step to specify a cluster (job flow) step, which runs only on the master node. Steps are used to submit data processing jobs to a cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStep {
 
 
     /// 
-    /// This specifies what action to take when the cluster step fails. Possible values are CANCEL_AND_WAIT and CONTINUE.
+    /// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: HadoopJarStepConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ActionOnFailure")]
-    pub action_on_failure: String,
+    #[serde(rename = "HadoopJarStep")]
+    pub hadoop_jar_step: HadoopJarStepConfig,
 
 
     /// 
@@ -27,6 +27,18 @@ pub struct CfnStep {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// This specifies what action to take when the cluster step fails. Possible values are CANCEL_AND_WAIT and CONTINUE.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ActionOnFailure")]
+    pub action_on_failure: String,
 
 
     /// 
@@ -46,23 +58,21 @@ pub struct CfnStep {
     #[serde(rename = "JobFlowId")]
     pub job_flow_id: String,
 
+}
 
-    /// 
-    /// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: HadoopJarStepConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HadoopJarStep")]
-    pub hadoop_jar_step: HadoopJarStepConfig,
+impl cfn_resources::CfnResource for CfnStep {
+    fn type_string() -> &'static str {
+        "AWS::EMR::Step"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// KeyValue is a subproperty of the HadoopJarStepConfig property type. KeyValue is used to pass parameters to a step.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KeyValue {
 
 
@@ -105,20 +115,8 @@ pub struct KeyValue {
 
 
 /// A job flow step consisting of a JAR file whose main function will be executed. The main     function submits a job for Hadoop to execute and waits for the job to finish or     fail.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HadoopJarStepConfig {
-
-
-    /// 
-    /// A list of command line arguments passed to the JAR file's main function when     executed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Args")]
-    pub args: Option<Vec<String>>,
 
 
     /// 
@@ -149,6 +147,18 @@ pub struct HadoopJarStepConfig {
     /// Update requires: Replacement
     #[serde(rename = "StepProperties")]
     pub step_properties: Option<Vec<KeyValue>>,
+
+
+    /// 
+    /// A list of command line arguments passed to the JAR file's main function when     executed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Args")]
+    pub args: Option<Vec<String>>,
 
 
     /// 

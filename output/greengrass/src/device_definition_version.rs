@@ -1,7 +1,7 @@
 
 
 /// The     AWS::Greengrass::DeviceDefinitionVersion resource represents a device definition version for AWS IoT Greengrass.      A device definition version contains a list of devices.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeviceDefinitionVersion {
 
 
@@ -30,24 +30,22 @@ pub struct CfnDeviceDefinitionVersion {
 
 }
 
+impl cfn_resources::CfnResource for CfnDeviceDefinitionVersion {
+    fn type_string() -> &'static str {
+        "AWS::Greengrass::DeviceDefinitionVersion"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// A device is an AWS IoT device (thing) that's added to a Greengrass group. 	 Greengrass devices can communicate with the Greengrass core in the same group. 	 For more information, see What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Devices 		 property of the AWS::Greengrass::DeviceDefinitionVersion resource contains a      list of Device property types.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Device {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the device, which is an AWS IoT device (thing).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ThingArn")]
-    pub thing_arn: String,
 
 
     /// 
@@ -63,18 +61,6 @@ pub struct Device {
 
 
     /// 
-    /// Indicates whether the device's local shadow is synced       with the cloud automatically.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SyncShadow")]
-    pub sync_shadow: Option<bool>,
-
-
-    /// 
     /// The ARN of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
     /// 
     /// Required: Yes
@@ -84,5 +70,29 @@ pub struct Device {
     /// Update requires: Replacement
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the device, which is an AWS IoT device (thing).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ThingArn")]
+    pub thing_arn: String,
+
+
+    /// 
+    /// Indicates whether the device's local shadow is synced       with the cloud automatically.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SyncShadow")]
+    pub sync_shadow: Option<bool>,
 
 }

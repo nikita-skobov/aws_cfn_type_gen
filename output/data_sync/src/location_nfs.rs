@@ -1,20 +1,32 @@
 
 
 /// The AWS::DataSync::LocationNFS resource specifies a file system on a     Network File System (NFS) server that can be read from or written to.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationNFS {
 
 
     /// 
-    /// The NFS mount options that DataSync can use to mount your NFS share.
+    /// The subdirectory in the NFS file system that is used to read data from the NFS source    location or write data to the NFS destination. The NFS path should be a path that's    exported by the NFS server, or a subdirectory of that path. The path should be such that it    can be mounted by other NFS clients in your network.
+    /// 
+    /// To see all the paths exported by your NFS server, run "showmount -e     nfs-server-name" from an NFS client that has access to your server. You can specify    any directory that appears in the results, and any subdirectory of that directory. Ensure that    the NFS export is accessible without Kerberos authentication.
+    /// 
+    /// To transfer all the data in the folder you specified, DataSync needs to have    permissions to read all the data. To ensure this, either configure the NFS export with     no_root_squash, or ensure that the permissions for all of the files that you    want DataSync allow read access for all users. Doing either enables the agent to    read the files. For the agent to access directories, you must additionally enable all execute    access.
+    /// 
+    /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
+    /// 
+    /// For information about NFS export configuration, see 18.7. The /etc/exports Configuration File in the Red Hat Enterprise Linux    documentation.
     /// 
     /// Required: No
     ///
-    /// Type: MountOptions
+    /// Type: String
+    ///
+    /// Maximum: 4096
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\p{Zs}]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MountOptions")]
-    pub mount_options: Option<MountOptions>,
+    #[serde(rename = "Subdirectory")]
+    pub subdirectory: Option<String>,
 
 
     /// 
@@ -66,27 +78,46 @@ pub struct CfnLocationNFS {
 
 
     /// 
-    /// The subdirectory in the NFS file system that is used to read data from the NFS source    location or write data to the NFS destination. The NFS path should be a path that's    exported by the NFS server, or a subdirectory of that path. The path should be such that it    can be mounted by other NFS clients in your network.
-    /// 
-    /// To see all the paths exported by your NFS server, run "showmount -e     nfs-server-name" from an NFS client that has access to your server. You can specify    any directory that appears in the results, and any subdirectory of that directory. Ensure that    the NFS export is accessible without Kerberos authentication.
-    /// 
-    /// To transfer all the data in the folder you specified, DataSync needs to have    permissions to read all the data. To ensure this, either configure the NFS export with     no_root_squash, or ensure that the permissions for all of the files that you    want DataSync allow read access for all users. Doing either enables the agent to    read the files. For the agent to access directories, you must additionally enable all execute    access.
-    /// 
-    /// If you are copying data to or from your AWS Snowcone device, see NFS Server on      AWS Snowcone for more information.
-    /// 
-    /// For information about NFS export configuration, see 18.7. The /etc/exports Configuration File in the Red Hat Enterprise Linux    documentation.
+    /// The NFS mount options that DataSync can use to mount your NFS share.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 4096
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\p{Zs}]+$
+    /// Type: MountOptions
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Subdirectory")]
-    pub subdirectory: Option<String>,
+    #[serde(rename = "MountOptions")]
+    pub mount_options: Option<MountOptions>,
+
+}
+
+impl cfn_resources::CfnResource for CfnLocationNFS {
+    fn type_string() -> &'static str {
+        "AWS::DataSync::LocationNFS"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)    location.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OnPremConfig {
+
+
+    /// 
+    /// ARNs of the agents to use for an NFS location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
 
 }
 
@@ -98,7 +129,7 @@ pub struct CfnLocationNFS {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -127,7 +158,7 @@ pub struct Tag {
 
 
 /// The NFS mount options that DataSync can use to mount your NFS share.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MountOptions {
 
 
@@ -149,26 +180,5 @@ pub struct MountOptions {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: Option<String>,
-
-}
-
-
-/// A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)    location.
-#[derive(Default, serde::Serialize)]
-pub struct OnPremConfig {
-
-
-    /// 
-    /// ARNs of the agents to use for an NFS location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
 
 }

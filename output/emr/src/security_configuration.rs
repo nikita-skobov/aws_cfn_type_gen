@@ -1,7 +1,7 @@
 
 
 /// Use a SecurityConfiguration resource to configure data encryption, Kerberos authentication (available in Amazon EMR release version 5.10.0 and later), and Amazon S3 authorization for EMRFS (available in EMR 5.10.0 and later). You can re-use a security configuration for any number of clusters in your account. For more information and example security configuration JSON objects, see Create a Security Configuration in the Amazon EMR Management Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSecurityConfiguration {
 
 
@@ -34,4 +34,14 @@ pub struct CfnSecurityConfiguration {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnSecurityConfiguration {
+    fn type_string() -> &'static str {
+        "AWS::EMR::SecurityConfiguration"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

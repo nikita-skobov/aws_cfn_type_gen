@@ -1,8 +1,98 @@
 
 
 /// The infrastructure configuration allows you to specify the infrastructure within which     to build and test your image. In the infrastructure configuration, you can specify instance     types, subnets, and security groups to associate with your instance. You can also associate     an Amazon EC2 key pair with the instance used to build your image. This allows you to log     on to your instance to troubleshoot if your build fails and you set     terminateInstanceOnFailure to false.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInfrastructureConfiguration {
+
+
+    /// 
+    /// The tags attached to the resource created by Image Builder.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceTags")]
+    pub resource_tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The name of the infrastructure configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[-_A-Za-z-0-9][-_A-Za-z0-9 ]{1,126}[-_A-Za-z-0-9]$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The description of the infrastructure configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The instance metadata option settings for the infrastructure configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceMetadataOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceMetadataOptions")]
+    pub instance_metadata_options: Option<InstanceMetadataOptions>,
+
+
+    /// 
+    /// The instance types of the infrastructure configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceTypes")]
+    pub instance_types: Option<Vec<String>>,
+
+
+    /// 
+    /// The tags of the infrastructure configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The terminate instance on failure configuration of the infrastructure 			configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TerminateInstanceOnFailure")]
+    pub terminate_instance_on_failure: Option<bool>,
 
 
     /// 
@@ -15,6 +105,52 @@ pub struct CfnInfrastructureConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
     pub logging: Option<Logging>,
+
+
+    /// 
+    /// The security group IDs of the infrastructure configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The instance profile of the infrastructure configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[\w+=,.@-]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceProfileName")]
+    pub instance_profile_name: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the SNS topic for the infrastructure 			configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnsTopicArn")]
+    pub sns_topic_arn: Option<String>,
 
 
     /// 
@@ -48,147 +184,21 @@ pub struct CfnInfrastructureConfiguration {
     #[serde(rename = "SubnetId")]
     pub subnet_id: Option<String>,
 
+}
 
-    /// 
-    /// The name of the infrastructure configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^[-_A-Za-z-0-9][-_A-Za-z0-9 ]{1,126}[-_A-Za-z-0-9]$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+impl cfn_resources::CfnResource for CfnInfrastructureConfiguration {
+    fn type_string() -> &'static str {
+        "AWS::ImageBuilder::InfrastructureConfiguration"
+    }
 
-
-    /// 
-    /// The tags attached to the resource created by Image Builder.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceTags")]
-    pub resource_tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The description of the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The instance types of the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceTypes")]
-    pub instance_types: Option<Vec<String>>,
-
-
-    /// 
-    /// The instance metadata option settings for the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceMetadataOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceMetadataOptions")]
-    pub instance_metadata_options: Option<InstanceMetadataOptions>,
-
-
-    /// 
-    /// The terminate instance on failure configuration of the infrastructure 			configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TerminateInstanceOnFailure")]
-    pub terminate_instance_on_failure: Option<bool>,
-
-
-    /// 
-    /// The security group IDs of the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The tags of the infrastructure configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the SNS topic for the infrastructure 			configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnsTopicArn")]
-    pub sns_topic_arn: Option<String>,
-
-
-    /// 
-    /// The instance profile of the infrastructure configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[\w+=,.@-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceProfileName")]
-    pub instance_profile_name: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Amazon S3 logging configuration.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Logs {
 
 
@@ -226,25 +236,28 @@ pub struct S3Logs {
 }
 
 
-/// The instance metadata options that apply to the HTTP requests that pipeline builds use 			to launch EC2 build and test instances. For more information about instance metadata 			options, see Configure the instance metadata options in the 				        Amazon EC2 User Guide       for Linux instances, or Configure the instance metadata options in the 				        Amazon EC2 Windows Guide       for Windows instances.
-#[derive(Default, serde::Serialize)]
-pub struct InstanceMetadataOptions {
+/// Logging configuration defines where Image Builder uploads your logs.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Logging {
 
 
     /// 
-    /// Limit the number of hops that an instance metadata request can traverse to reach its 			destination. The default is one hop. However, if HTTP tokens are required, container 			image builds need a minimum of two hops.
+    /// The Amazon S3 logging configuration.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
+    /// Type: S3Logs
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HttpPutResponseHopLimit")]
-    pub http_put_response_hop_limit: Option<i64>,
+    #[serde(rename = "S3Logs")]
+    pub s3_logs: Option<S3Logs>,
+
+}
+
+
+/// The instance metadata options that apply to the HTTP requests that pipeline builds use 			to launch EC2 build and test instances. For more information about instance metadata 			options, see Configure the instance metadata options in the 				        Amazon EC2 User Guide       for Linux instances, or Configure the instance metadata options in the 				        Amazon EC2 Windows Guide       for Windows instances.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceMetadataOptions {
 
 
     /// 
@@ -264,23 +277,20 @@ pub struct InstanceMetadataOptions {
     #[serde(rename = "HttpTokens")]
     pub http_tokens: Option<String>,
 
-}
-
-
-/// Logging configuration defines where Image Builder uploads your logs.
-#[derive(Default, serde::Serialize)]
-pub struct Logging {
-
 
     /// 
-    /// The Amazon S3 logging configuration.
+    /// Limit the number of hops that an instance metadata request can traverse to reach its 			destination. The default is one hop. However, if HTTP tokens are required, container 			image builds need a minimum of two hops.
     /// 
     /// Required: No
     ///
-    /// Type: S3Logs
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3Logs")]
-    pub s3_logs: Option<S3Logs>,
+    #[serde(rename = "HttpPutResponseHopLimit")]
+    pub http_put_response_hop_limit: Option<i64>,
 
 }

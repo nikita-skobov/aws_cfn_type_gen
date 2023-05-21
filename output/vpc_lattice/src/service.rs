@@ -3,8 +3,31 @@
 /// Creates a service. A service is any software application that can run on instances  containers, or serverless functions within an account or virtual private cloud (VPC).
 ///
 /// For more information, see Services in the  Amazon VPC Lattice User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnService {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: DnsEntry
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DnsEntry")]
+    pub dns_entry: Option<DnsEntry>,
+
+
+    /// 
+    /// The custom domain name of the service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomDomainName")]
+    pub custom_domain_name: Option<String>,
 
 
     /// 
@@ -22,29 +45,6 @@ pub struct CfnService {
 
 
     /// 
-    /// The custom domain name of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomDomainName")]
-    pub custom_domain_name: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: DnsEntry
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsEntry")]
-    pub dns_entry: Option<DnsEntry>,
-
-
-    /// 
     /// The name of the service. The name must be unique within the account. The valid characters    are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or    immediately after another hyphen.
     /// 
     /// If you don't specify a name, CloudFormation generates one. However, if    you specify a name, and later want to replace the resource, you must specify a new    name.
@@ -59,6 +59,18 @@ pub struct CfnService {
 
 
     /// 
+    /// The tags for the service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the certificate.
     /// 
     /// Required: No
@@ -69,17 +81,46 @@ pub struct CfnService {
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnService {
+    fn type_string() -> &'static str {
+        "AWS::VpcLattice::Service"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Describes the DNS information of a service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DnsEntry {
+
 
     /// 
-    /// The tags for the service.
+    /// The domain name of the service.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "DomainName")]
+    pub domain_name: Option<String>,
+
+
+    /// 
+    /// The ID of the hosted zone.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostedZoneId")]
+    pub hosted_zone_id: Option<String>,
 
 }
 
@@ -91,7 +132,7 @@ pub struct CfnService {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -115,36 +156,5 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-/// Describes the DNS information of a service.
-#[derive(Default, serde::Serialize)]
-pub struct DnsEntry {
-
-
-    /// 
-    /// The ID of the hosted zone.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: Option<String>,
-
-
-    /// 
-    /// The domain name of the service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DomainName")]
-    pub domain_name: Option<String>,
 
 }

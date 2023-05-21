@@ -1,7 +1,7 @@
 
 
 /// Configure resource-specific logging.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceSpecificLogging {
 
 
@@ -40,4 +40,14 @@ pub struct CfnResourceSpecificLogging {
     #[serde(rename = "LogLevel")]
     pub log_level: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnResourceSpecificLogging {
+    fn type_string() -> &'static str {
+        "AWS::IoT::ResourceSpecificLogging"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

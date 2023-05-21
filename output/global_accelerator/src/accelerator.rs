@@ -1,22 +1,22 @@
 
 
 /// The AWS::GlobalAccelerator::Accelerator resource is a Global Accelerator resource type that contains information about 	   		how you create an accelerator. An accelerator includes one or more listeners that process inbound connections and direct traffic 	   		to one or more endpoint groups, each of which includes endpoints, such as Application Load Balancers, Network Load Balancers, 	   		and Amazon EC2 instances.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccelerator {
 
 
     /// 
-    /// The name of the accelerator. The name must contain only alphanumeric characters or 			hyphens (-), and must not begin or end with a hyphen.
+    /// Create tags for an accelerator.
     /// 
-    /// Required: Yes
+    /// For more information, see Tagging 				 in the AWS Global Accelerator Developer Guide.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 64
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -38,17 +38,31 @@ pub struct CfnAccelerator {
 
 
     /// 
-    /// Create tags for an accelerator.
-    /// 
-    /// For more information, see Tagging 				 in the AWS Global Accelerator Developer Guide.
+    /// The IP address type that an accelerator supports. For a standard accelerator, the value can be IPV4 or DUAL_STACK.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Allowed values: DUAL_STACK | IPV4
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "IpAddressType")]
+    pub ip_address_type: Option<String>,
+
+
+    /// 
+    /// The name of the accelerator. The name must contain only alphanumeric characters or 			hyphens (-), and must not begin or end with a hyphen.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -64,20 +78,16 @@ pub struct CfnAccelerator {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
+}
 
-    /// 
-    /// The IP address type that an accelerator supports. For a standard accelerator, the value can be IPV4 or DUAL_STACK.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DUAL_STACK | IPV4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IpAddressType")]
-    pub ip_address_type: Option<String>,
+impl cfn_resources::CfnResource for CfnAccelerator {
+    fn type_string() -> &'static str {
+        "AWS::GlobalAccelerator::Accelerator"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -88,7 +98,7 @@ pub struct CfnAccelerator {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

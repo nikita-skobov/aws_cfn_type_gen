@@ -1,24 +1,22 @@
 
 
 /// Creates a space used for real time collaboration in a Domain.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSpace {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
+    /// The ID of the associated Domain.
     /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Maximum: 63
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "DomainId")]
+    pub domain_id: String,
 
 
     /// 
@@ -38,6 +36,22 @@ pub struct CfnSpace {
 
 
     /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// A collection of space settings.
     /// 
     /// Required: No
@@ -48,60 +62,21 @@ pub struct CfnSpace {
     #[serde(rename = "SpaceSettings")]
     pub space_settings: Option<SpaceSettings>,
 
-
-    /// 
-    /// The ID of the associated Domain.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 63
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DomainId")]
-    pub domain_id: String,
-
 }
 
+impl cfn_resources::CfnResource for CfnSpace {
+    fn type_string() -> &'static str {
+        "AWS::SageMaker::Space"
+    }
 
-/// The KernelGateway app settings.
-#[derive(Default, serde::Serialize)]
-pub struct KernelGatewayAppSettings {
-
-
-    /// 
-    /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of CustomImage
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomImages")]
-    pub custom_images: Option<Vec<CustomImage>>,
-
-
-    /// 
-    /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the KernelGateway app.
-    /// 
-    /// NoteThe Amazon SageMaker Studio UI does not use the default instance type value set here. The default      instance type set here is used when Apps are created using the AWS Command Line Interface or AWS CloudFormation       and the instance type parameter value is not passed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ResourceSpec
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultResourceSpec")]
-    pub default_resource_spec: Option<ResourceSpec>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceSpec {
 
 
@@ -155,8 +130,43 @@ pub struct ResourceSpec {
 }
 
 
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
 /// The JupyterServer app settings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JupyterServerAppSettings {
 
 
@@ -175,7 +185,7 @@ pub struct JupyterServerAppSettings {
 
 
 /// A collection of space settings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SpaceSettings {
 
 
@@ -205,44 +215,23 @@ pub struct SpaceSettings {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
 /// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomImage {
+
+
+    /// 
+    /// The version number of the CustomImage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ImageVersionNumber")]
+    pub image_version_number: Option<i64>,
 
 
     /// 
@@ -278,18 +267,39 @@ pub struct CustomImage {
     #[serde(rename = "AppImageConfigName")]
     pub app_image_config_name: String,
 
+}
+
+
+/// The KernelGateway app settings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KernelGatewayAppSettings {
+
 
     /// 
-    /// The version number of the CustomImage.
+    /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of CustomImage
     ///
-    /// Minimum: 0
+    /// Maximum: 200
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ImageVersionNumber")]
-    pub image_version_number: Option<i64>,
+    #[serde(rename = "CustomImages")]
+    pub custom_images: Option<Vec<CustomImage>>,
+
+
+    /// 
+    /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the KernelGateway app.
+    /// 
+    /// NoteThe Amazon SageMaker Studio UI does not use the default instance type value set here. The default      instance type set here is used when Apps are created using the AWS Command Line Interface or AWS CloudFormation       and the instance type parameter value is not passed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ResourceSpec
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultResourceSpec")]
+    pub default_resource_spec: Option<ResourceSpec>,
 
 }

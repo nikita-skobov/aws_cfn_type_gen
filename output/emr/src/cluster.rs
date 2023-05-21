@@ -3,32 +3,99 @@
 /// The AWS::EMR::Cluster resource specifies an Amazon EMR cluster. This cluster is a collection of Amazon EC2 instances that run open source big data frameworks and applications to process and analyze vast amounts of data. For more information, see the Amazon EMR Management Guide.
 ///
 /// Amazon EMR now supports launching task instance groups and task instance     fleets as part of the AWS::EMR::Cluster resource. This can be done by using     the JobFlowInstancesConfig property type's TaskInstanceGroups and       TaskInstanceFleets subproperties. Using these subproperties reduces delays     in provisioning task nodes compared to specifying task nodes with the       AWS::EMR::InstanceGroupConfig and       AWS::EMR::InstanceFleetConfig resources. Please refer to the examples at     the bottom of this page to learn how to use these subproperties.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCluster {
 
 
     /// 
-    /// The path to the Amazon S3 location where logs for this cluster are     stored.
+    /// Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon     EBS-backed Linux AMI if the cluster uses a custom AMI.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomAmiId")]
+    pub custom_ami_id: Option<String>,
+
+
+    /// 
+    /// A specification of the number and type of Amazon EC2 instances.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: JobFlowInstancesConfig
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "Instances")]
+    pub instances: JobFlowInstancesConfig,
+
+
+    /// 
+    /// The Amazon EMR release label, which determines the version of open-source     application packages installed on the cluster. Release labels are in the form       emr-x.x.x, where x.x.x is an Amazon EMR release version such as       emr-5.14.0. For more information about Amazon EMR release versions     and included application versions and features, see https://docs.aws.amazon.com/emr/latest/ReleaseGuide/. The release label applies only to Amazon EMR     releases version 4.0 and later. Earlier versions use AmiVersion.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "LogUri")]
-    pub log_uri: Option<String>,
+    #[serde(rename = "ReleaseLabel")]
+    pub release_label: Option<String>,
 
 
     /// 
-    /// Applies only to Amazon EMR releases 4.x and later. The list of Configurations     supplied to the EMR cluster.
+    /// A list of steps to run.
     /// 
     /// Required: No
     ///
-    /// Type: List of Configuration
+    /// Type: List of StepConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Configurations")]
-    pub configurations: Option<Vec<Configuration>>,
+    #[serde(rename = "Steps")]
+    pub steps: Option<Vec<StepConfig>>,
+
+
+    /// 
+    /// The way that individual Amazon EC2 instances terminate when an automatic     scale-in activity occurs or an instance group is resized.       TERMINATE_AT_INSTANCE_HOUR indicates that Amazon EMR terminates     nodes at the instance-hour boundary, regardless of when the request to terminate the     instance was submitted. This option is only available with Amazon EMR 5.1.0 and     later and is the default for clusters created using that version.       TERMINATE_AT_TASK_COMPLETION indicates that Amazon EMR adds nodes     to a deny list and drains tasks from nodes before terminating the Amazon EC2     instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to     HDFS corruption. TERMINATE_AT_TASK_COMPLETION is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: TERMINATE_AT_INSTANCE_HOUR | TERMINATE_AT_TASK_COMPLETION
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ScaleDownBehavior")]
+    pub scale_down_behavior: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OSReleaseLabel")]
+    pub osrelease_label: Option<String>,
+
+
+    /// 
+    /// A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of BootstrapActionConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BootstrapActions")]
+    pub bootstrap_actions: Option<Vec<BootstrapActionConfig>>,
 
 
     /// 
@@ -47,18 +114,6 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "SecurityConfiguration")]
     pub security_configuration: Option<String>,
-
-
-    /// 
-    /// Attributes for Kerberos configuration when Kerberos authentication is enabled using a     security configuration. For more information see Use Kerberos Authentication     in the Amazon EMR Management Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KerberosAttributes
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KerberosAttributes")]
-    pub kerberos_attributes: Option<KerberosAttributes>,
 
 
     /// Property description not available.
@@ -85,125 +140,51 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The name of the cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// An IAM role for automatic scaling policies. The default role is       EMR_AutoScaling_DefaultRole. The IAM role provides permissions that the     automatic scaling feature requires to launch and terminate EC2 instances in an instance     group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10280
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AutoScalingRole")]
-    pub auto_scaling_role: Option<String>,
-
-
-    /// 
-    /// The Amazon EMR release label, which determines the version of open-source     application packages installed on the cluster. Release labels are in the form       emr-x.x.x, where x.x.x is an Amazon EMR release version such as       emr-5.14.0. For more information about Amazon EMR release versions     and included application versions and features, see https://docs.aws.amazon.com/emr/latest/ReleaseGuide/. The release label applies only to Amazon EMR     releases version 4.0 and later. Earlier versions use AmiVersion.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ReleaseLabel")]
-    pub release_label: Option<String>,
-
-
-    /// 
-    /// Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2     instances of the cluster assume this role. The default role is       EMR_EC2_DefaultRole. In order to use the default role, you must have     already created it using the CLI or console.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10280
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "JobFlowRole")]
-    pub job_flow_role: String,
-
-
-    /// 
-    /// The size, in GiB, of the Amazon EBS root device volume of the Linux AMI that is     used for each EC2 instance. Available in Amazon EMR version 4.x and later.
+    /// Specifies the number of steps that can be executed concurrently. The default value is       1. The maximum value is 256.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
+    /// Update requires: No interruption
+    #[serde(rename = "StepConcurrencyLevel")]
+    pub step_concurrency_level: Option<i64>,
+
+
+    /// 
+    /// Applies only to Amazon EMR releases 4.x and later. The list of Configurations     supplied to the EMR cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Configuration
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "EbsRootVolumeSize")]
-    pub ebs_root_volume_size: Option<i64>,
+    #[serde(rename = "Configurations")]
+    pub configurations: Option<Vec<Configuration>>,
 
 
     /// 
-    /// A specification of the number and type of Amazon EC2 instances.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: JobFlowInstancesConfig
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "Instances")]
-    pub instances: JobFlowInstancesConfig,
-
-
-    /// 
-    /// The way that individual Amazon EC2 instances terminate when an automatic     scale-in activity occurs or an instance group is resized.       TERMINATE_AT_INSTANCE_HOUR indicates that Amazon EMR terminates     nodes at the instance-hour boundary, regardless of when the request to terminate the     instance was submitted. This option is only available with Amazon EMR 5.1.0 and     later and is the default for clusters created using that version.       TERMINATE_AT_TASK_COMPLETION indicates that Amazon EMR adds nodes     to a deny list and drains tasks from nodes before terminating the Amazon EC2     instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to     HDFS corruption. TERMINATE_AT_TASK_COMPLETION is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.
+    /// The path to the Amazon S3 location where logs for this cluster are     stored.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: TERMINATE_AT_INSTANCE_HOUR | TERMINATE_AT_TASK_COMPLETION
+    /// Update requires: Replacement
+    #[serde(rename = "LogUri")]
+    pub log_uri: Option<String>,
+
+
+    /// 
+    /// The IAM role that Amazon EMR assumes in order to access AWS     resources on your behalf.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ScaleDownBehavior")]
-    pub scale_down_behavior: Option<String>,
-
-
-    /// 
-    /// A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of BootstrapActionConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BootstrapActions")]
-    pub bootstrap_actions: Option<Vec<BootstrapActionConfig>>,
-
-
-    /// 
-    /// A list of tags associated with a cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ServiceRole")]
+    pub service_role: String,
 
 
     /// 
@@ -219,28 +200,15 @@ pub struct CfnCluster {
 
 
     /// 
-    /// Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to true, all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set.      If this value is false, only the IAM user that created the cluster can view and manage it. This value can be changed using the SetVisibleToAllUsers action.
+    /// The name of the cluster.
     /// 
-    /// NoteWhen you create clusters directly through the EMR console or API, this value is set to true by default. However, for AWS::EMR::Cluster resources in CloudFormation, the default is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VisibleToAllUsers")]
-    pub visible_to_all_users: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "OSReleaseLabel")]
-    pub osrelease_label: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -262,45 +230,53 @@ pub struct CfnCluster {
 
 
     /// 
-    /// A list of steps to run.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of StepConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Steps")]
-    pub steps: Option<Vec<StepConfig>>,
-
-
-    /// 
-    /// Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon     EBS-backed Linux AMI if the cluster uses a custom AMI.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomAmiId")]
-    pub custom_ami_id: Option<String>,
-
-
-    /// 
-    /// Specifies the number of steps that can be executed concurrently. The default value is       1. The maximum value is 256.
+    /// The size, in GiB, of the Amazon EBS root device volume of the Linux AMI that is     used for each EC2 instance. Available in Amazon EMR version 4.x and later.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
+    /// Update requires: Replacement
+    #[serde(rename = "EbsRootVolumeSize")]
+    pub ebs_root_volume_size: Option<i64>,
+
+
+    /// 
+    /// Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to true, all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set.      If this value is false, only the IAM user that created the cluster can view and manage it. This value can be changed using the SetVisibleToAllUsers action.
+    /// 
+    /// NoteWhen you create clusters directly through the EMR console or API, this value is set to true by default. However, for AWS::EMR::Cluster resources in CloudFormation, the default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "StepConcurrencyLevel")]
-    pub step_concurrency_level: Option<i64>,
+    #[serde(rename = "VisibleToAllUsers")]
+    pub visible_to_all_users: Option<bool>,
+
+
+    /// 
+    /// Attributes for Kerberos configuration when Kerberos authentication is enabled using a     security configuration. For more information see Use Kerberos Authentication     in the Amazon EMR Management Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: KerberosAttributes
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KerberosAttributes")]
+    pub kerberos_attributes: Option<KerberosAttributes>,
+
+
+    /// 
+    /// A list of tags associated with a cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -316,175 +292,55 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The IAM role that Amazon EMR assumes in order to access AWS     resources on your behalf.
+    /// An IAM role for automatic scaling policies. The default role is       EMR_AutoScaling_DefaultRole. The IAM role provides permissions that the     automatic scaling feature requires to launch and terminate EC2 instances in an instance     group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AutoScalingRole")]
+    pub auto_scaling_role: Option<String>,
+
+
+    /// 
+    /// Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2     instances of the cluster assume this role. The default role is       EMR_EC2_DefaultRole. In order to use the default role, you must have     already created it using the CLI or console.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "ServiceRole")]
-    pub service_role: String,
+    #[serde(rename = "JobFlowRole")]
+    pub job_flow_role: String,
 
 }
 
+impl cfn_resources::CfnResource for CfnCluster {
+    fn type_string() -> &'static str {
+        "AWS::EMR::Cluster"
+    }
 
-/// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
-#[derive(Default, serde::Serialize)]
-pub struct VolumeSpecification {
-
-
-    /// 
-    /// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume     type is EBS-optimized, the minimum value is 10.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SizeInGB")]
-    pub size_in_gb: i64,
-
-
-    /// 
-    /// The number of I/O operations per second (IOPS) that the volume supports.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Iops")]
-    pub iops: Option<i64>,
-
-
-    /// 
-    /// The volume type. Volume types supported are gp3, gp2, io1, st1, sc1, and     standard.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VolumeType")]
-    pub volume_type: String,
-
-}
-
-
-/// InstanceTypeConfig is a sub-property of InstanceFleetConfig. InstanceTypeConfig determines the EC2 instances that Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
-#[derive(Default, serde::Serialize)]
-pub struct InstanceTypeConfig {
-
-
-    /// 
-    /// An EC2 instance type, such as m3.xlarge.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
-
-
-    /// 
-    /// The bid price, as a percentage of On-Demand price, for each EC2 Spot Instance as defined     by InstanceType. Expressed as a number (for example, 20 specifies 20%). If     neither BidPrice nor BidPriceAsPercentageOfOnDemandPrice is     provided, BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BidPriceAsPercentageOfOnDemandPrice")]
-    pub bid_price_as_percentage_of_on_demand_price: Option<f64>,
-
-
-    /// 
-    /// The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in InstanceFleetConfig. This value is 1 for a master instance fleet, and must be 1 or greater for core and task instance fleets. Defaults to 1 if not specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WeightedCapacity")]
-    pub weighted_capacity: Option<i64>,
-
-
-    /// 
-    /// The configuration of Amazon Elastic Block Store (Amazon EBS) attached to each     instance as defined by InstanceType.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EbsConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EbsConfiguration")]
-    pub ebs_configuration: Option<EbsConfiguration>,
-
-
-    /// 
-    /// The custom AMI ID to use for the instance type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomAmiId")]
-    pub custom_ami_id: Option<String>,
-
-
-    /// 
-    /// The bid price for each EC2 Spot Instance type as defined by InstanceType.     Expressed in USD. If neither BidPrice nor       BidPriceAsPercentageOfOnDemandPrice is provided,       BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BidPrice")]
-    pub bid_price: Option<String>,
-
-
-    /// 
-    /// A configuration classification that applies when provisioning cluster instances, which     can include configurations for applications and software that run on the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Configuration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Configurations")]
-    pub configurations: Option<Vec<Configuration>>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The AutoTerminationPolicy property type specifies Property description not available. for an AWS::EMR::Cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoTerminationPolicy {
 
 
@@ -501,636 +357,9 @@ pub struct AutoTerminationPolicy {
 }
 
 
-/// CloudWatchAlarmDefinition is a subproperty of the ScalingTrigger property, which determines when to trigger an automatic scaling activity. Scaling activity begins when you satisfy the defined alarm conditions.
-#[derive(Default, serde::Serialize)]
-pub struct CloudWatchAlarmDefinition {
-
-
-    /// 
-    /// The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are     emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified,     specify 300.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Period")]
-    pub period: i64,
-
-
-    /// 
-    /// The unit of measure associated with the CloudWatch metric being watched. The value     specified for Unit must correspond to the units specified in the CloudWatch     metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: BITS | BITS_PER_SECOND | BYTES | BYTES_PER_SECOND | COUNT | COUNT_PER_SECOND | GIGA_BITS | GIGA_BITS_PER_SECOND | GIGA_BYTES | GIGA_BYTES_PER_SECOND | KILO_BITS | KILO_BITS_PER_SECOND | KILO_BYTES | KILO_BYTES_PER_SECOND | MEGA_BITS | MEGA_BITS_PER_SECOND | MEGA_BYTES | MEGA_BYTES_PER_SECOND | MICRO_SECONDS | MILLI_SECONDS | NONE | PERCENT | SECONDS | TERA_BITS | TERA_BITS_PER_SECOND | TERA_BYTES | TERA_BYTES_PER_SECOND
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unit")]
-    pub unit: Option<String>,
-
-
-    /// 
-    /// A CloudWatch metric dimension.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of MetricDimension
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Dimensions")]
-    pub dimensions: Option<Vec<MetricDimension>>,
-
-
-    /// 
-    /// The namespace for the CloudWatch metric. The default is       AWS/ElasticMapReduce.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Namespace")]
-    pub namespace: Option<String>,
-
-
-    /// 
-    /// The value against which the specified statistic is compared.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Threshold")]
-    pub threshold: f64,
-
-
-    /// 
-    /// Determines how the metric specified by MetricName is compared to the value     specified by Threshold.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GREATER_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN | LESS_THAN_OR_EQUAL
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComparisonOperator")]
-    pub comparison_operator: String,
-
-
-    /// 
-    /// The number of periods, in five-minute increments, during which the alarm condition must     exist before the alarm triggers automatic scaling activity. The default value is       1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EvaluationPeriods")]
-    pub evaluation_periods: Option<i64>,
-
-
-    /// 
-    /// The name of the CloudWatch metric that is watched to determine an alarm     condition.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
-
-
-    /// 
-    /// The statistic to apply to the metric associated with the alarm. The default is       AVERAGE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AVERAGE | MAXIMUM | MINIMUM | SAMPLE_COUNT | SUM
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statistic")]
-    pub statistic: Option<String>,
-
-}
-
-
-/// AutoScalingPolicy is a subproperty of InstanceGroupConfig. AutoScalingPolicy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. For more information, see Using Automatic Scaling in Amazon EMR in the Amazon EMR Management Guide.
-#[derive(Default, serde::Serialize)]
-pub struct AutoScalingPolicy {
-
-
-    /// 
-    /// The scale-in and scale-out rules that comprise the automatic scaling policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of ScalingRule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Rules")]
-    pub rules: Vec<ScalingRule>,
-
-
-    /// 
-    /// The upper and lower EC2 instance limits for an automatic scaling policy. Automatic     scaling activity will not cause an instance group to grow above or below these     limits.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ScalingConstraints
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Constraints")]
-    pub constraints: ScalingConstraints,
-
-}
-
-
-/// InstanceFleetProvisioningSpecification is a subproperty of InstanceFleetConfig. InstanceFleetProvisioningSpecification defines the launch specification for Spot instances in an instance fleet, which determines the defined duration and provisioning timeout behavior for Spot instances.
-#[derive(Default, serde::Serialize)]
-pub struct InstanceFleetProvisioningSpecifications {
-
-
-    /// 
-    /// The launch specification for Spot instances in the fleet, which determines the defined     duration, provisioning timeout behavior, and allocation strategy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SpotProvisioningSpecification
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SpotSpecification")]
-    pub spot_specification: Option<SpotProvisioningSpecification>,
-
-
-    /// 
-    /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
-    /// 
-    /// NoteThe instance fleet configuration is available only in Amazon EMR versions       4.8.0 and later, excluding 5.0.x versions. On-Demand Instances allocation strategy is       available in Amazon EMR version 5.12.1 and later.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OnDemandProvisioningSpecification
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnDemandSpecification")]
-    pub on_demand_specification: Option<OnDemandProvisioningSpecification>,
-
-}
-
-
-/// ScalingConstraints is a subproperty of the AutoScalingPolicy property type. ScalingConstraints defines the upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or shrink below these limits.
-#[derive(Default, serde::Serialize)]
-pub struct ScalingConstraints {
-
-
-    /// 
-    /// The lower boundary of EC2 instances in an instance group below which scaling activities     are not allowed to shrink. Scale-in activities will not terminate instances below this     boundary.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinCapacity")]
-    pub min_capacity: i64,
-
-
-    /// 
-    /// The upper boundary of EC2 instances in an instance group beyond which scaling activities     are not allowed to grow. Scale-out activities will not add instances beyond this     boundary.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxCapacity")]
-    pub max_capacity: i64,
-
-}
-
-
-/// Configuration is a subproperty of InstanceFleetConfig or InstanceGroupConfig. Configuration specifies optional configurations for customizing open-source big data applications and environment parameters. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications in the Amazon EMR Release Guide.
-#[derive(Default, serde::Serialize)]
-pub struct Configuration {
-
-
-    /// 
-    /// A list of additional configurations to apply within a configuration object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Configuration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Configurations")]
-    pub configurations: Option<Vec<Configuration>>,
-
-
-    /// 
-    /// The classification within a configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Classification")]
-    pub classification: Option<String>,
-
-
-    /// 
-    /// A list of additional configurations to apply within a configuration object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigurationProperties")]
-    pub configuration_properties: Option<std::collections::HashMap<String, String>>,
-
-}
-
-
-/// Use InstanceFleetConfig to define instance fleets for an EMR cluster. A cluster can not use both instance fleets and instance groups. For more information, see Configure Instance Fleets in the Amazon EMR Management Guide.
-#[derive(Default, serde::Serialize)]
-pub struct InstanceFleetConfig {
-
-
-    /// 
-    /// The friendly name of the instance fleet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The instance type configurations that define the EC2 instances in the instance     fleet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of InstanceTypeConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceTypeConfigs")]
-    pub instance_type_configs: Option<Vec<InstanceTypeConfig>>,
-
-
-    /// 
-    /// The launch specification for the instance fleet.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceFleetProvisioningSpecifications
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LaunchSpecifications")]
-    pub launch_specifications: Option<InstanceFleetProvisioningSpecifications>,
-
-
-    /// 
-    /// The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by InstanceTypeConfig. Each instance configuration has a specified WeightedCapacity. When a Spot instance is provisioned, the WeightedCapacity units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a WeightedCapacity of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.
-    /// 
-    /// NoteIf not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of TargetSpotCapacity and TargetOnDemandCapacity should be greater than 0. For a master instance fleet, only one of TargetSpotCapacity and TargetOnDemandCapacity can be specified, and its value must be 1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetSpotCapacity")]
-    pub target_spot_capacity: Option<i64>,
-
-
-    /// 
-    /// The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by InstanceTypeConfig. Each instance configuration has a specified WeightedCapacity. When an On-Demand instance is provisioned, the WeightedCapacity units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a WeightedCapacity of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.
-    /// 
-    /// NoteIf not specified or set to 0, only Spot instances are provisioned for the instance fleet using TargetSpotCapacity. At least one of TargetSpotCapacity and TargetOnDemandCapacity should be greater than 0. For a master instance fleet, only one of TargetSpotCapacity and TargetOnDemandCapacity can be specified, and its value must be 1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetOnDemandCapacity")]
-    pub target_on_demand_capacity: Option<i64>,
-
-}
-
-
-/// JobFlowInstancesConfig is a property of the AWS::EMR::Cluster resource. JobFlowInstancesConfig defines the instance groups or instance fleets that comprise the cluster. JobFlowInstancesConfig must contain either InstanceFleetConfig or InstanceGroupConfig. They cannot be used together.
-///
-/// You can now define task instance groups or task instance fleets using the       TaskInstanceGroups and TaskInstanceFleets subproperties. Using     these subproperties reduces delays in provisioning task nodes compared to specifying task     nodes with the InstanceFleetConfig and InstanceGroupConfig     resources.
-#[derive(Default, serde::Serialize)]
-pub struct JobFlowInstancesConfig {
-
-
-    /// 
-    /// A list of additional Amazon EC2 security group IDs for the core and task     nodes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AdditionalSlaveSecurityGroups")]
-    pub additional_slave_security_groups: Option<Vec<String>>,
-
-
-    /// 
-    /// A list of additional Amazon EC2 security group IDs for the master node.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AdditionalMasterSecurityGroups")]
-    pub additional_master_security_groups: Option<Vec<String>>,
-
-
-    /// 
-    /// The identifier of the Amazon EC2 security group for the core and task nodes. If     you specify EmrManagedSlaveSecurityGroup, you must also specify       EmrManagedMasterSecurityGroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EmrManagedSlaveSecurityGroup")]
-    pub emr_managed_slave_security_group: Option<String>,
-
-
-    /// 
-    /// Describes the EC2 instances and instance configurations for the task instance fleets when using clusters with the instance fleet configuration. These task instance fleets are added to the cluster as part of the cluster launch. Each task instance fleet must have a unique name specified so that CloudFormation can differentiate between the task instance fleets.
-    /// 
-    /// NoteYou can currently specify only one task instance fleet for a cluster. After creating the cluster, you can only modify the mutable properties of InstanceFleetConfig, which are TargetOnDemandCapacity and TargetSpotCapacity. Modifying any other property results in cluster replacement.
-    /// 
-    /// ImportantTo allow a maximum of 30 Amazon EC2 instance types per fleet, include TaskInstanceFleets when you create your cluster.     If you create your cluster without TaskInstanceFleets, Amazon EMR uses its default allocation strategy, which allows for a maximum of five Amazon EC2 instance types.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of InstanceFleetConfig
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "TaskInstanceFleets")]
-    pub task_instance_fleets: Option<Vec<InstanceFleetConfig>>,
-
-
-    /// 
-    /// Specifies whether to lock the cluster to prevent the Amazon EC2 instances from     being terminated by API call, user intervention, or in the event of a job-flow     error.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TerminationProtected")]
-    pub termination_protected: Option<bool>,
-
-
-    /// 
-    /// Describes the EC2 instances and instance configurations for the core instance fleet when using clusters with the instance fleet configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceFleetConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CoreInstanceFleet")]
-    pub core_instance_fleet: Option<InstanceFleetConfig>,
-
-
-    /// 
-    /// Applies to clusters that use the instance fleet configuration. When multiple EC2 subnet     IDs are specified, Amazon EMR evaluates them and launches instances in the optimal     subnet.
-    /// 
-    /// NoteThe instance fleet configuration is available only in Amazon EMR versions       4.8.0 and later, excluding 5.0.x versions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ec2SubnetIds")]
-    pub ec2_subnet_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// Describes the EC2 instances and instance configurations for task instance groups when using clusters with the uniform instance group configuration. These task instance groups are added to the cluster as part of the cluster launch. Each task instance group must have a unique name specified so that CloudFormation can differentiate between the task instance groups.
-    /// 
-    /// NoteAfter creating the cluster, you can only modify the mutable properties of InstanceGroupConfig, which are AutoScalingPolicy and InstanceCount. Modifying any other property results in cluster replacement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of InstanceGroupConfig
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "TaskInstanceGroups")]
-    pub task_instance_groups: Option<Vec<InstanceGroupConfig>>,
-
-
-    /// 
-    /// The name of the EC2 key pair that can be used to connect to the master node using SSH as     the user called "hadoop."
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ec2KeyName")]
-    pub ec2_key_name: Option<String>,
-
-
-    /// 
-    /// The identifier of the Amazon EC2 security group for the Amazon EMR     service to access clusters in VPC private subnets.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceAccessSecurityGroup")]
-    pub service_access_security_group: Option<String>,
-
-
-    /// 
-    /// Applies to clusters that use the uniform instance group configuration. To launch the     cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the     identifier of the Amazon VPC subnet where you want the cluster to launch. If you do     not specify this value and your account supports EC2-Classic, the cluster launches in     EC2-Classic.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ec2SubnetId")]
-    pub ec2_subnet_id: Option<String>,
-
-
-    /// 
-    /// Describes the EC2 instances and instance configurations for the master instance fleet when using clusters with the instance fleet configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceFleetConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MasterInstanceFleet")]
-    pub master_instance_fleet: Option<InstanceFleetConfig>,
-
-
-    /// 
-    /// The identifier of the Amazon EC2 security group for the master node. If you     specify EmrManagedMasterSecurityGroup, you must also specify       EmrManagedSlaveSecurityGroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EmrManagedMasterSecurityGroup")]
-    pub emr_managed_master_security_group: Option<String>,
-
-
-    /// 
-    /// The Availability Zone in which the cluster runs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PlacementType
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Placement")]
-    pub placement: Option<PlacementType>,
-
-
-    /// 
-    /// Describes the EC2 instances and instance configurations for the master instance group when using clusters with the uniform instance group configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceGroupConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MasterInstanceGroup")]
-    pub master_instance_group: Option<InstanceGroupConfig>,
-
-
-    /// 
-    /// Specifies whether the cluster should remain available after completing all steps.     Defaults to true. For more information about configuring cluster termination,     see Control Cluster Termination in the EMR Management     Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeepJobFlowAliveWhenNoSteps")]
-    pub keep_job_flow_alive_when_no_steps: Option<bool>,
-
-
-    /// 
-    /// Describes the EC2 instances and instance configurations for core instance groups when using clusters with the uniform instance group configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceGroupConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CoreInstanceGroup")]
-    pub core_instance_group: Option<InstanceGroupConfig>,
-
-
-    /// 
-    /// Applies only to Amazon EMR release versions earlier than 4.0. The Hadoop version     for the cluster. Valid inputs are "0.18" (no longer maintained), "0.20" (no longer     maintained), "0.20.205" (no longer maintained), "1.0.3", "2.2.0", or "2.4.0". If you do not     set this value, the default of 0.18 is used, unless the AmiVersion parameter     is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI     version is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HadoopVersion")]
-    pub hadoop_version: Option<String>,
-
-}
-
-
 /// Use InstanceGroupConfig to define instance groups for an EMR cluster. A cluster can not use both instance groups and instance fleets. For more information, see Create a Cluster with Instance Fleets or Uniform Instance Groups in the Amazon EMR Management Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceGroupConfig {
-
-
-    /// 
-    /// Friendly name given to the instance group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
 
 
     /// 
@@ -1146,21 +375,17 @@ pub struct InstanceGroupConfig {
 
 
     /// 
-    /// If specified, indicates that the instance group uses Spot Instances. This is the maximum price you are willing to pay for Spot Instances. Specify OnDemandPrice to set the amount equal to the On-Demand price, or specify an amount in USD.
+    /// NoteAmazon EMR releases 4.x or later.
+    /// 
+    /// The list of configurations supplied for an EMR cluster instance group. You can specify a     separate configuration for each instance group (master, core, and task).
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    /// Type: List of Configuration
     ///
     /// Update requires: Replacement
-    #[serde(rename = "BidPrice")]
-    pub bid_price: Option<String>,
+    #[serde(rename = "Configurations")]
+    pub configurations: Option<Vec<Configuration>>,
 
 
     /// 
@@ -1208,6 +433,54 @@ pub struct InstanceGroupConfig {
 
 
     /// 
+    /// Friendly name given to the instance group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// If specified, indicates that the instance group uses Spot Instances. This is the maximum price you are willing to pay for Spot Instances. Specify OnDemandPrice to set the amount equal to the On-Demand price, or specify an amount in USD.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BidPrice")]
+    pub bid_price: Option<String>,
+
+
+    /// 
+    /// Target number of instances for the instance group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceCount")]
+    pub instance_count: i64,
+
+
+    /// 
     /// The EC2 instance type for all instances in the instance group.
     /// 
     /// Required: Yes
@@ -1224,134 +497,240 @@ pub struct InstanceGroupConfig {
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
 
+}
+
+
+/// InstanceFleetProvisioningSpecification is a subproperty of InstanceFleetConfig. InstanceFleetProvisioningSpecification defines the launch specification for Spot instances in an instance fleet, which determines the defined duration and provisioning timeout behavior for Spot instances.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceFleetProvisioningSpecifications {
+
 
     /// 
-    /// NoteAmazon EMR releases 4.x or later.
+    /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
     /// 
-    /// The list of configurations supplied for an EMR cluster instance group. You can specify a     separate configuration for each instance group (master, core, and task).
+    /// NoteThe instance fleet configuration is available only in Amazon EMR versions       4.8.0 and later, excluding 5.0.x versions. On-Demand Instances allocation strategy is       available in Amazon EMR version 5.12.1 and later.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OnDemandProvisioningSpecification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OnDemandSpecification")]
+    pub on_demand_specification: Option<OnDemandProvisioningSpecification>,
+
+
+    /// 
+    /// The launch specification for Spot instances in the fleet, which determines the defined     duration, provisioning timeout behavior, and allocation strategy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SpotProvisioningSpecification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SpotSpecification")]
+    pub spot_specification: Option<SpotProvisioningSpecification>,
+
+}
+
+
+/// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HadoopJarStepConfig {
+
+
+    /// 
+    /// The name of the main class in the specified Java file. If not specified, the JAR file     should specify a Main-Class in its manifest file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MainClass")]
+    pub main_class: Option<String>,
+
+
+    /// 
+    /// A list of command line arguments passed to the JAR file's main function when     executed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Args")]
+    pub args: Option<Vec<String>>,
+
+
+    /// 
+    /// A list of Java properties that are set when the step runs. You can use these properties     to pass key-value pairs to your main function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of KeyValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StepProperties")]
+    pub step_properties: Option<Vec<KeyValue>>,
+
+
+    /// 
+    /// A path to a JAR file run during the step.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Jar")]
+    pub jar: String,
+
+}
+
+
+/// Configuration is a subproperty of InstanceFleetConfig or InstanceGroupConfig. Configuration specifies optional configurations for customizing open-source big data applications and environment parameters. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications in the Amazon EMR Release Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Configuration {
+
+
+    /// 
+    /// A list of additional configurations to apply within a configuration object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConfigurationProperties")]
+    pub configuration_properties: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The classification within a configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Classification")]
+    pub classification: Option<String>,
+
+
+    /// 
+    /// A list of additional configurations to apply within a configuration object.
     /// 
     /// Required: No
     ///
     /// Type: List of Configuration
     ///
-    /// Update requires: Replacement
+    /// Update requires: No interruption
     #[serde(rename = "Configurations")]
     pub configurations: Option<Vec<Configuration>>,
 
+}
+
+
+/// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OnDemandProvisioningSpecification {
+
 
     /// 
-    /// Target number of instances for the instance group.
+    /// Specifies the strategy to use in launching On-Demand instance fleets. Currently, the     only option is lowest-price (the default), which launches the lowest price     first.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: lowest-price
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllocationStrategy")]
+    pub allocation_strategy: String,
+
+}
+
+
+/// SpotProvisioningSpecification is a subproperty of the InstanceFleetProvisioningSpecifications property type. SpotProvisioningSpecification determines the launch specification for Spot instances in the instance fleet, which includes the defined duration and provisioning timeout behavior.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SpotProvisioningSpecification {
+
+
+    /// 
+    /// The defined duration for Spot Instances (also known as Spot blocks) in minutes. When     specified, the Spot Instance does not terminate before the defined duration expires, and     defined duration pricing for Spot Instances applies. Valid values are 60, 120, 180, 240,     300, or 360. The duration period starts as soon as a Spot Instance receives its instance     ID. At the end of the duration, Amazon EC2 marks the Spot Instance for termination     and provides a Spot Instance termination notice, which gives the instance a two-minute     warning before it terminates.
+    /// 
+    /// NoteSpot Instances with a defined duration (also known as Spot blocks) are no longer       available to new customers from July 1, 2021. For customers who have previously used the       feature, we will continue to support Spot Instances with a defined duration until       December 31, 2022.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BlockDurationMinutes")]
+    pub block_duration_minutes: Option<i64>,
+
+
+    /// 
+    /// The action to take when TargetSpotCapacity has not been fulfilled when the       TimeoutDurationMinutes has expired; that is, when all Spot Instances could     not be provisioned within the Spot provisioning timeout. Valid values are       TERMINATE_CLUSTER and SWITCH_TO_ON_DEMAND. SWITCH_TO_ON_DEMAND     specifies that if no Spot Instances are available, On-Demand Instances should be     provisioned to fulfill any remaining Spot capacity.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SWITCH_TO_ON_DEMAND | TERMINATE_CLUSTER
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimeoutAction")]
+    pub timeout_action: String,
+
+
+    /// 
+    /// The Spot provisioning timeout period in minutes. If Spot Instances are not provisioned     within this time period, the TimeOutAction is taken. Minimum value is 5 and     maximum value is 1440. The timeout applies only during initial provisioning, when the     cluster is first created.
     /// 
     /// Required: Yes
     ///
     /// Type: Integer
     ///
+    /// Minimum: 0
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceCount")]
-    pub instance_count: i64,
-
-}
-
-
-/// KerberosAttributes is a property of the AWS::EMR::Cluster resource. KerberosAttributes define the cluster-specific Kerberos configuration when Kerberos authentication is enabled using a security configuration. The cluster-specific configuration must be compatible with the security configuration. For more information see Use Kerberos Authentication in the EMR Management Guide.
-#[derive(Default, serde::Serialize)]
-pub struct KerberosAttributes {
+    #[serde(rename = "TimeoutDurationMinutes")]
+    pub timeout_duration_minutes: i64,
 
 
     /// 
-    /// Required only when establishing a cross-realm trust with an Active Directory domain. A     user with sufficient privileges to join resources to the domain.
+    /// Specifies the strategy to use in launching Spot Instance fleets. Currently, the only     option is capacity-optimized (the default), which launches instances from Spot Instance     pools with optimal capacity for the number of instances that are launching.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    /// Allowed values: capacity-optimized
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ADDomainJoinUser")]
-    pub addomain_join_user: Option<String>,
-
-
-    /// 
-    /// The password used within the cluster for the kadmin service on the cluster-dedicated     KDC, which maintains Kerberos principals, password policies, and keytabs for the     cluster.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KdcAdminPassword")]
-    pub kdc_admin_password: String,
-
-
-    /// 
-    /// Required only when establishing a cross-realm trust with a KDC in a different realm. The     cross-realm principal password, which must be identical across realms.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CrossRealmTrustPrincipalPassword")]
-    pub cross_realm_trust_principal_password: Option<String>,
-
-
-    /// 
-    /// The Active Directory password for ADDomainJoinUser.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ADDomainJoinPassword")]
-    pub addomain_join_password: Option<String>,
-
-
-    /// 
-    /// The name of the Kerberos realm to which all nodes in a cluster belong. For example,       EC2.INTERNAL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Realm")]
-    pub realm: String,
+    #[serde(rename = "AllocationStrategy")]
+    pub allocation_strategy: Option<String>,
 
 }
 
 
 /// SimpleScalingPolicyConfiguration is a subproperty of the ScalingAction property type. SimpleScalingPolicyConfiguration determines how an automatic scaling action adds or removes instances, the cooldown period, and the number of EC2 instances that are added each time the CloudWatch metric alarm condition is satisfied.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SimpleScalingPolicyConfiguration {
 
 
@@ -1395,44 +774,25 @@ pub struct SimpleScalingPolicyConfiguration {
 }
 
 
-/// EbsBlockDeviceConfig is a subproperty of the EbsConfiguration property type. EbsBlockDeviceConfig defines the number and type of EBS volumes to associate with all EC2 instances in an EMR cluster.
-#[derive(Default, serde::Serialize)]
-pub struct EbsBlockDeviceConfig {
+/// BootstrapActionConfig is a property of AWS::EMR::Cluster that can be used to run bootstrap actions on EMR clusters. You can use a bootstrap action to install software and configure EC2 instances for all cluster nodes before EMR installs and configures open-source big data applications on cluster instances. For more information, see Create Bootstrap Actions to Install Additional Software in the Amazon EMR Management Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BootstrapActionConfig {
 
 
     /// 
-    /// Number of EBS volumes with a specific volume configuration that are associated with     every instance in the instance group
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VolumesPerInstance")]
-    pub volumes_per_instance: Option<i64>,
-
-
-    /// 
-    /// EBS volume specifications such as volume type, IOPS, size (GiB) and throughput (MiB/s)     that are requested for the EBS volume attached to an EC2 instance in the cluster.
+    /// The script run by the bootstrap action.
     /// 
     /// Required: Yes
     ///
-    /// Type: VolumeSpecification
+    /// Type: ScriptBootstrapActionConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VolumeSpecification")]
-    pub volume_specification: VolumeSpecification,
-
-}
-
-
-/// PlacementType is a property of the AWS::EMR::Cluster resource. PlacementType determines the Amazon EC2 Availability Zone configuration of the cluster (job flow).
-#[derive(Default, serde::Serialize)]
-pub struct PlacementType {
+    #[serde(rename = "ScriptBootstrapAction")]
+    pub script_bootstrap_action: ScriptBootstrapActionConfig,
 
 
     /// 
-    /// The Amazon EC2 Availability Zone for the cluster. AvailabilityZone     is used for uniform instance groups, while AvailabilityZones (plural) is used     for instance fleets.
+    /// The name of the bootstrap action.
     /// 
     /// Required: Yes
     ///
@@ -1440,32 +800,20 @@ pub struct PlacementType {
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 10280
+    /// Maximum: 256
     ///
     /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
 
 
 /// MetricDimension is a subproperty of the CloudWatchAlarmDefinition property type. MetricDimension specifies a CloudWatch dimension, which is specified with a Key Value pair. The key is known as a Name in CloudWatch. By default, Amazon EMR uses one dimension whose Key is JobFlowID and Value is a variable representing the cluster ID, which is ${emr.clusterId}. This enables the automatic scaling rule for EMR to bootstrap when the cluster ID becomes available during cluster creation.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetricDimension {
-
-
-    /// 
-    /// The dimension name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -1479,32 +827,631 @@ pub struct MetricDimension {
     #[serde(rename = "Value")]
     pub value: String,
 
-}
-
-
-/// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
-#[derive(Default, serde::Serialize)]
-pub struct OnDemandProvisioningSpecification {
-
 
     /// 
-    /// Specifies the strategy to use in launching On-Demand instance fleets. Currently, the     only option is lowest-price (the default), which launches the lowest price     first.
+    /// The dimension name.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: lowest-price
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
+/// JobFlowInstancesConfig is a property of the AWS::EMR::Cluster resource. JobFlowInstancesConfig defines the instance groups or instance fleets that comprise the cluster. JobFlowInstancesConfig must contain either InstanceFleetConfig or InstanceGroupConfig. They cannot be used together.
+///
+/// You can now define task instance groups or task instance fleets using the       TaskInstanceGroups and TaskInstanceFleets subproperties. Using     these subproperties reduces delays in provisioning task nodes compared to specifying task     nodes with the InstanceFleetConfig and InstanceGroupConfig     resources.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct JobFlowInstancesConfig {
+
+
+    /// 
+    /// Describes the EC2 instances and instance configurations for core instance groups when using clusters with the uniform instance group configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceGroupConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CoreInstanceGroup")]
+    pub core_instance_group: Option<InstanceGroupConfig>,
+
+
+    /// 
+    /// Describes the EC2 instances and instance configurations for the core instance fleet when using clusters with the instance fleet configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceFleetConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CoreInstanceFleet")]
+    pub core_instance_fleet: Option<InstanceFleetConfig>,
+
+
+    /// 
+    /// Applies only to Amazon EMR release versions earlier than 4.0. The Hadoop version     for the cluster. Valid inputs are "0.18" (no longer maintained), "0.20" (no longer     maintained), "0.20.205" (no longer maintained), "1.0.3", "2.2.0", or "2.4.0". If you do not     set this value, the default of 0.18 is used, unless the AmiVersion parameter     is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI     version is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HadoopVersion")]
+    pub hadoop_version: Option<String>,
+
+
+    /// 
+    /// Describes the EC2 instances and instance configurations for the task instance fleets when using clusters with the instance fleet configuration. These task instance fleets are added to the cluster as part of the cluster launch. Each task instance fleet must have a unique name specified so that CloudFormation can differentiate between the task instance fleets.
+    /// 
+    /// NoteYou can currently specify only one task instance fleet for a cluster. After creating the cluster, you can only modify the mutable properties of InstanceFleetConfig, which are TargetOnDemandCapacity and TargetSpotCapacity. Modifying any other property results in cluster replacement.
+    /// 
+    /// ImportantTo allow a maximum of 30 Amazon EC2 instance types per fleet, include TaskInstanceFleets when you create your cluster.     If you create your cluster without TaskInstanceFleets, Amazon EMR uses its default allocation strategy, which allows for a maximum of five Amazon EC2 instance types.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of InstanceFleetConfig
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "TaskInstanceFleets")]
+    pub task_instance_fleets: Option<Vec<InstanceFleetConfig>>,
+
+
+    /// 
+    /// A list of additional Amazon EC2 security group IDs for the master node.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AdditionalMasterSecurityGroups")]
+    pub additional_master_security_groups: Option<Vec<String>>,
+
+
+    /// 
+    /// Applies to clusters that use the uniform instance group configuration. To launch the     cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the     identifier of the Amazon VPC subnet where you want the cluster to launch. If you do     not specify this value and your account supports EC2-Classic, the cluster launches in     EC2-Classic.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ec2SubnetId")]
+    pub ec2_subnet_id: Option<String>,
+
+
+    /// 
+    /// The name of the EC2 key pair that can be used to connect to the master node using SSH as     the user called "hadoop."
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ec2KeyName")]
+    pub ec2_key_name: Option<String>,
+
+
+    /// 
+    /// Describes the EC2 instances and instance configurations for the master instance group when using clusters with the uniform instance group configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceGroupConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MasterInstanceGroup")]
+    pub master_instance_group: Option<InstanceGroupConfig>,
+
+
+    /// 
+    /// A list of additional Amazon EC2 security group IDs for the core and task     nodes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AdditionalSlaveSecurityGroups")]
+    pub additional_slave_security_groups: Option<Vec<String>>,
+
+
+    /// 
+    /// The identifier of the Amazon EC2 security group for the master node. If you     specify EmrManagedMasterSecurityGroup, you must also specify       EmrManagedSlaveSecurityGroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EmrManagedMasterSecurityGroup")]
+    pub emr_managed_master_security_group: Option<String>,
+
+
+    /// 
+    /// Specifies whether to lock the cluster to prevent the Amazon EC2 instances from     being terminated by API call, user intervention, or in the event of a job-flow     error.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AllocationStrategy")]
-    pub allocation_strategy: String,
+    #[serde(rename = "TerminationProtected")]
+    pub termination_protected: Option<bool>,
+
+
+    /// 
+    /// Describes the EC2 instances and instance configurations for task instance groups when using clusters with the uniform instance group configuration. These task instance groups are added to the cluster as part of the cluster launch. Each task instance group must have a unique name specified so that CloudFormation can differentiate between the task instance groups.
+    /// 
+    /// NoteAfter creating the cluster, you can only modify the mutable properties of InstanceGroupConfig, which are AutoScalingPolicy and InstanceCount. Modifying any other property results in cluster replacement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of InstanceGroupConfig
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "TaskInstanceGroups")]
+    pub task_instance_groups: Option<Vec<InstanceGroupConfig>>,
+
+
+    /// 
+    /// Describes the EC2 instances and instance configurations for the master instance fleet when using clusters with the instance fleet configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceFleetConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MasterInstanceFleet")]
+    pub master_instance_fleet: Option<InstanceFleetConfig>,
+
+
+    /// 
+    /// Applies to clusters that use the instance fleet configuration. When multiple EC2 subnet     IDs are specified, Amazon EMR evaluates them and launches instances in the optimal     subnet.
+    /// 
+    /// NoteThe instance fleet configuration is available only in Amazon EMR versions       4.8.0 and later, excluding 5.0.x versions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ec2SubnetIds")]
+    pub ec2_subnet_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The identifier of the Amazon EC2 security group for the Amazon EMR     service to access clusters in VPC private subnets.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceAccessSecurityGroup")]
+    pub service_access_security_group: Option<String>,
+
+
+    /// 
+    /// The identifier of the Amazon EC2 security group for the core and task nodes. If     you specify EmrManagedSlaveSecurityGroup, you must also specify       EmrManagedMasterSecurityGroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EmrManagedSlaveSecurityGroup")]
+    pub emr_managed_slave_security_group: Option<String>,
+
+
+    /// 
+    /// Specifies whether the cluster should remain available after completing all steps.     Defaults to true. For more information about configuring cluster termination,     see Control Cluster Termination in the EMR Management     Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeepJobFlowAliveWhenNoSteps")]
+    pub keep_job_flow_alive_when_no_steps: Option<bool>,
+
+
+    /// 
+    /// The Availability Zone in which the cluster runs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PlacementType
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Placement")]
+    pub placement: Option<PlacementType>,
+
+}
+
+
+/// Use InstanceFleetConfig to define instance fleets for an EMR cluster. A cluster can not use both instance fleets and instance groups. For more information, see Configure Instance Fleets in the Amazon EMR Management Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceFleetConfig {
+
+
+    /// 
+    /// The instance type configurations that define the EC2 instances in the instance     fleet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of InstanceTypeConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceTypeConfigs")]
+    pub instance_type_configs: Option<Vec<InstanceTypeConfig>>,
+
+
+    /// 
+    /// The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by InstanceTypeConfig. Each instance configuration has a specified WeightedCapacity. When a Spot instance is provisioned, the WeightedCapacity units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a WeightedCapacity of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.
+    /// 
+    /// NoteIf not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of TargetSpotCapacity and TargetOnDemandCapacity should be greater than 0. For a master instance fleet, only one of TargetSpotCapacity and TargetOnDemandCapacity can be specified, and its value must be 1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetSpotCapacity")]
+    pub target_spot_capacity: Option<i64>,
+
+
+    /// 
+    /// The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by InstanceTypeConfig. Each instance configuration has a specified WeightedCapacity. When an On-Demand instance is provisioned, the WeightedCapacity units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a WeightedCapacity of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.
+    /// 
+    /// NoteIf not specified or set to 0, only Spot instances are provisioned for the instance fleet using TargetSpotCapacity. At least one of TargetSpotCapacity and TargetOnDemandCapacity should be greater than 0. For a master instance fleet, only one of TargetSpotCapacity and TargetOnDemandCapacity can be specified, and its value must be 1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetOnDemandCapacity")]
+    pub target_on_demand_capacity: Option<i64>,
+
+
+    /// 
+    /// The launch specification for the instance fleet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceFleetProvisioningSpecifications
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LaunchSpecifications")]
+    pub launch_specifications: Option<InstanceFleetProvisioningSpecifications>,
+
+
+    /// 
+    /// The friendly name of the instance fleet.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+/// Application is a property of AWS::EMR::Cluster. The Application property type defines the open-source big data applications for EMR to install and configure when a cluster is created.
+///
+/// With Amazon EMR release version 4.0 and later, the only accepted parameter is the application Name. To pass arguments to these applications, you use configuration classifications specified using JSON objects in a Configuration property. For more information, see Configuring Applications.
+///
+/// With earlier Amazon EMR releases, the application is any AWS or third-party software that you can add to the cluster. You can specify the version of the application and arguments to pass to it. Amazon EMR accepts and forwards the argument list to the corresponding installation script as a bootstrap action argument.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Application {
+
+
+    /// 
+    /// Arguments for Amazon EMR to pass to the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Args")]
+    pub args: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// This option is for advanced users only. This is meta information about clusters and applications that are used for testing and troubleshooting.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdditionalInfo")]
+    pub additional_info: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The version of the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
+
+}
+
+
+/// EbsBlockDeviceConfig is a subproperty of the EbsConfiguration property type. EbsBlockDeviceConfig defines the number and type of EBS volumes to associate with all EC2 instances in an EMR cluster.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EbsBlockDeviceConfig {
+
+
+    /// 
+    /// EBS volume specifications such as volume type, IOPS, size (GiB) and throughput (MiB/s)     that are requested for the EBS volume attached to an EC2 instance in the cluster.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: VolumeSpecification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumeSpecification")]
+    pub volume_specification: VolumeSpecification,
+
+
+    /// 
+    /// Number of EBS volumes with a specific volume configuration that are associated with     every instance in the instance group
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumesPerInstance")]
+    pub volumes_per_instance: Option<i64>,
+
+}
+
+
+/// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VolumeSpecification {
+
+
+    /// 
+    /// The volume type. Volume types supported are gp3, gp2, io1, st1, sc1, and     standard.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumeType")]
+    pub volume_type: String,
+
+
+    /// 
+    /// The number of I/O operations per second (IOPS) that the volume supports.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Iops")]
+    pub iops: Option<i64>,
+
+
+    /// 
+    /// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume     type is EBS-optimized, the minimum value is 10.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SizeInGB")]
+    pub size_in_gb: i64,
+
+}
+
+
+/// ScriptBootstrapActionConfig is a subproperty of the BootstrapActionConfig property type. ScriptBootstrapActionConfig specifies the arguments and location of the bootstrap script for EMR to run on all cluster nodes before it installs open-source big data applications on them.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScriptBootstrapActionConfig {
+
+
+    /// 
+    /// A list of command line arguments to pass to the bootstrap action script.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Args")]
+    pub args: Option<Vec<String>>,
+
+
+    /// 
+    /// Location in Amazon S3 of the script to run during a bootstrap action.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Path")]
+    pub path: String,
+
+}
+
+
+/// The EC2 unit limits for a managed scaling policy. The managed scaling activity of a     cluster can not be above or below these limits. The limit only applies to the core and task     nodes. The master node cannot be scaled after initial configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ComputeLimits {
+
+
+    /// 
+    /// The lower boundary of EC2 units. It is measured through vCPU cores or instances for     instance groups and measured through units for instance fleets. Managed scaling activities     are not allowed beyond this boundary. The limit only applies to the core and task nodes.     The master node cannot be scaled after initial configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinimumCapacityUnits")]
+    pub minimum_capacity_units: i64,
+
+
+    /// 
+    /// The upper boundary of EC2 units. It is measured through vCPU cores or instances for     instance groups and measured through units for instance fleets. Managed scaling activities     are not allowed beyond this boundary. The limit only applies to the core and task nodes.     The master node cannot be scaled after initial configuration.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumCapacityUnits")]
+    pub maximum_capacity_units: i64,
+
+
+    /// 
+    /// The upper boundary of EC2 units for core node type in a cluster. It is measured through     vCPU cores or instances for instance groups and measured through units for instance fleets.     The core units are not allowed to scale beyond this boundary. The parameter is used to     split capacity allocation between core and task nodes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumCoreCapacityUnits")]
+    pub maximum_core_capacity_units: Option<i64>,
+
+
+    /// 
+    /// The unit type used for specifying a managed scaling policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: InstanceFleetUnits | Instances | VCPU
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UnitType")]
+    pub unit_type: String,
+
+
+    /// 
+    /// The upper boundary of On-Demand EC2 units. It is measured through vCPU cores or     instances for instance groups and measured through units for instance fleets. The On-Demand     units are not allowed to scale beyond this boundary. The parameter is used to split     capacity allocation between On-Demand and Spot Instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumOnDemandCapacityUnits")]
+    pub maximum_on_demand_capacity_units: Option<i64>,
+
+}
+
+
+/// ScalingTrigger is a subproperty of the ScalingRule property type. ScalingTrigger determines the conditions that trigger an automatic scaling activity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScalingTrigger {
+
+
+    /// 
+    /// The definition of a CloudWatch metric alarm. When the defined alarm conditions are met     along with other trigger parameters, scaling activity begins.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: CloudWatchAlarmDefinition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchAlarmDefinition")]
+    pub cloud_watch_alarm_definition: CloudWatchAlarmDefinition,
 
 }
 
 
 /// KeyValue is a subproperty of the HadoopJarStepConfig property type. KeyValue is used to pass parameters to a step.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KeyValue {
 
 
@@ -1546,161 +1493,6 @@ pub struct KeyValue {
 }
 
 
-/// StepConfig is a property of the AWS::EMR::Cluster resource. The StepConfig property type specifies a cluster (job flow) step, which runs only on the master node. Steps are used to submit data processing jobs to the cluster.
-#[derive(Default, serde::Serialize)]
-pub struct StepConfig {
-
-
-    /// 
-    /// The action to take when the cluster step fails. Possible values are CANCEL_AND_WAIT and CONTINUE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActionOnFailure")]
-    pub action_on_failure: Option<String>,
-
-
-    /// 
-    /// The JAR file used for the step.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: HadoopJarStepConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HadoopJarStep")]
-    pub hadoop_jar_step: HadoopJarStepConfig,
-
-
-    /// 
-    /// The name of the step.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}
-
-
-/// The EC2 unit limits for a managed scaling policy. The managed scaling activity of a     cluster can not be above or below these limits. The limit only applies to the core and task     nodes. The master node cannot be scaled after initial configuration.
-#[derive(Default, serde::Serialize)]
-pub struct ComputeLimits {
-
-
-    /// 
-    /// The unit type used for specifying a managed scaling policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: InstanceFleetUnits | Instances | VCPU
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UnitType")]
-    pub unit_type: String,
-
-
-    /// 
-    /// The upper boundary of EC2 units. It is measured through vCPU cores or instances for     instance groups and measured through units for instance fleets. Managed scaling activities     are not allowed beyond this boundary. The limit only applies to the core and task nodes.     The master node cannot be scaled after initial configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumCapacityUnits")]
-    pub maximum_capacity_units: i64,
-
-
-    /// 
-    /// The upper boundary of EC2 units for core node type in a cluster. It is measured through     vCPU cores or instances for instance groups and measured through units for instance fleets.     The core units are not allowed to scale beyond this boundary. The parameter is used to     split capacity allocation between core and task nodes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumCoreCapacityUnits")]
-    pub maximum_core_capacity_units: Option<i64>,
-
-
-    /// 
-    /// The upper boundary of On-Demand EC2 units. It is measured through vCPU cores or     instances for instance groups and measured through units for instance fleets. The On-Demand     units are not allowed to scale beyond this boundary. The parameter is used to split     capacity allocation between On-Demand and Spot Instances.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumOnDemandCapacityUnits")]
-    pub maximum_on_demand_capacity_units: Option<i64>,
-
-
-    /// 
-    /// The lower boundary of EC2 units. It is measured through vCPU cores or instances for     instance groups and measured through units for instance fleets. Managed scaling activities     are not allowed beyond this boundary. The limit only applies to the core and task nodes.     The master node cannot be scaled after initial configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinimumCapacityUnits")]
-    pub minimum_capacity_units: i64,
-
-}
-
-
-/// BootstrapActionConfig is a property of AWS::EMR::Cluster that can be used to run bootstrap actions on EMR clusters. You can use a bootstrap action to install software and configure EC2 instances for all cluster nodes before EMR installs and configures open-source big data applications on cluster instances. For more information, see Create Bootstrap Actions to Install Additional Software in the Amazon EMR Management Guide.
-#[derive(Default, serde::Serialize)]
-pub struct BootstrapActionConfig {
-
-
-    /// 
-    /// The script run by the bootstrap action.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ScriptBootstrapActionConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScriptBootstrapAction")]
-    pub script_bootstrap_action: ScriptBootstrapActionConfig,
-
-
-    /// 
-    /// The name of the bootstrap action.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-}
-
-
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -1708,19 +1500,8 @@ pub struct BootstrapActionConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -1733,70 +1514,384 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
-/// Application is a property of AWS::EMR::Cluster. The Application property type defines the open-source big data applications for EMR to install and configure when a cluster is created.
-///
-/// With Amazon EMR release version 4.0 and later, the only accepted parameter is the application Name. To pass arguments to these applications, you use configuration classifications specified using JSON objects in a Configuration property. For more information, see Configuring Applications.
-///
-/// With earlier Amazon EMR releases, the application is any AWS or third-party software that you can add to the cluster. You can specify the version of the application and arguments to pass to it. Amazon EMR accepts and forwards the argument list to the corresponding installation script as a bootstrap action argument.
-#[derive(Default, serde::Serialize)]
-pub struct Application {
+/// InstanceTypeConfig is a sub-property of InstanceFleetConfig. InstanceTypeConfig determines the EC2 instances that Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceTypeConfig {
 
 
     /// 
-    /// This option is for advanced users only. This is meta information about clusters and applications that are used for testing and troubleshooting.
+    /// The bid price for each EC2 Spot Instance type as defined by InstanceType.     Expressed in USD. If neither BidPrice nor       BidPriceAsPercentageOfOnDemandPrice is provided,       BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BidPrice")]
+    pub bid_price: Option<String>,
+
+
+    /// 
+    /// The configuration of Amazon Elastic Block Store (Amazon EBS) attached to each     instance as defined by InstanceType.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EbsConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EbsConfiguration")]
+    pub ebs_configuration: Option<EbsConfiguration>,
+
+
+    /// 
+    /// The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in InstanceFleetConfig. This value is 1 for a master instance fleet, and must be 1 or greater for core and task instance fleets. Defaults to 1 if not specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WeightedCapacity")]
+    pub weighted_capacity: Option<i64>,
+
+
+    /// 
+    /// The bid price, as a percentage of On-Demand price, for each EC2 Spot Instance as defined     by InstanceType. Expressed as a number (for example, 20 specifies 20%). If     neither BidPrice nor BidPriceAsPercentageOfOnDemandPrice is     provided, BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BidPriceAsPercentageOfOnDemandPrice")]
+    pub bid_price_as_percentage_of_on_demand_price: Option<f64>,
+
+
+    /// 
+    /// The custom AMI ID to use for the instance type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CustomAmiId")]
+    pub custom_ami_id: Option<String>,
+
+
+    /// 
+    /// An EC2 instance type, such as m3.xlarge.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
+
+
+    /// 
+    /// A configuration classification that applies when provisioning cluster instances, which     can include configurations for applications and software that run on the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Configuration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Configurations")]
+    pub configurations: Option<Vec<Configuration>>,
+
+}
+
+
+/// ScalingConstraints is a subproperty of the AutoScalingPolicy property type. ScalingConstraints defines the upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or shrink below these limits.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScalingConstraints {
+
+
+    /// 
+    /// The upper boundary of EC2 instances in an instance group beyond which scaling activities     are not allowed to grow. Scale-out activities will not add instances beyond this     boundary.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AdditionalInfo")]
-    pub additional_info: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "MaxCapacity")]
+    pub max_capacity: i64,
 
 
     /// 
-    /// Arguments for Amazon EMR to pass to the application.
+    /// The lower boundary of EC2 instances in an instance group below which scaling activities     are not allowed to shrink. Scale-in activities will not terminate instances below this     boundary.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Args")]
-    pub args: Option<Vec<String>>,
+    #[serde(rename = "MinCapacity")]
+    pub min_capacity: i64,
+
+}
+
+
+/// ScalingRule is a subproperty of the AutoScalingPolicy property type. ScalingRule defines the scale-in or scale-out rules for scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScalingRule {
 
 
     /// 
-    /// The name of the application.
+    /// The CloudWatch alarm definition that determines when automatic scaling activity is     triggered.
     /// 
-    /// Required: No
+    /// Required: Yes
+    ///
+    /// Type: ScalingTrigger
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Trigger")]
+    pub trigger: ScalingTrigger,
+
+
+    /// 
+    /// The name used to identify an automatic scaling rule. Rule names must be unique within a     scaling policy.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    pub name: Option<String>,
+    pub name: String,
 
 
     /// 
-    /// The version of the application.
+    /// The conditions that trigger an automatic scaling activity.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ScalingAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: ScalingAction,
+
+
+    /// 
+    /// A friendly, more verbose description of the automatic scaling rule.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+}
+
+
+/// PlacementType is a property of the AWS::EMR::Cluster resource. PlacementType determines the Amazon EC2 Availability Zone configuration of the cluster (job flow).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PlacementType {
+
+
+    /// 
+    /// The Amazon EC2 Availability Zone for the cluster. AvailabilityZone     is used for uniform instance groups, while AvailabilityZones (plural) is used     for instance fleets.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10280
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: String,
+
+}
+
+
+/// CloudWatchAlarmDefinition is a subproperty of the ScalingTrigger property, which determines when to trigger an automatic scaling activity. Scaling activity begins when you satisfy the defined alarm conditions.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CloudWatchAlarmDefinition {
+
+
+    /// 
+    /// The name of the CloudWatch metric that is watched to determine an alarm     condition.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
+
+
+    /// 
+    /// The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are     emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified,     specify 300.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Period")]
+    pub period: i64,
+
+
+    /// 
+    /// The statistic to apply to the metric associated with the alarm. The default is       AVERAGE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AVERAGE | MAXIMUM | MINIMUM | SAMPLE_COUNT | SUM
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statistic")]
+    pub statistic: Option<String>,
+
+
+    /// 
+    /// Determines how the metric specified by MetricName is compared to the value     specified by Threshold.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GREATER_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN | LESS_THAN_OR_EQUAL
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComparisonOperator")]
+    pub comparison_operator: String,
+
+
+    /// 
+    /// The unit of measure associated with the CloudWatch metric being watched. The value     specified for Unit must correspond to the units specified in the CloudWatch     metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BITS | BITS_PER_SECOND | BYTES | BYTES_PER_SECOND | COUNT | COUNT_PER_SECOND | GIGA_BITS | GIGA_BITS_PER_SECOND | GIGA_BYTES | GIGA_BYTES_PER_SECOND | KILO_BITS | KILO_BITS_PER_SECOND | KILO_BYTES | KILO_BYTES_PER_SECOND | MEGA_BITS | MEGA_BITS_PER_SECOND | MEGA_BYTES | MEGA_BYTES_PER_SECOND | MICRO_SECONDS | MILLI_SECONDS | NONE | PERCENT | SECONDS | TERA_BITS | TERA_BITS_PER_SECOND | TERA_BYTES | TERA_BYTES_PER_SECOND
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Unit")]
+    pub unit: Option<String>,
+
+
+    /// 
+    /// The number of periods, in five-minute increments, during which the alarm condition must     exist before the alarm triggers automatic scaling activity. The default value is       1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EvaluationPeriods")]
+    pub evaluation_periods: Option<i64>,
+
+
+    /// 
+    /// The namespace for the CloudWatch metric. The default is       AWS/ElasticMapReduce.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Namespace")]
+    pub namespace: Option<String>,
+
+
+    /// 
+    /// A CloudWatch metric dimension.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of MetricDimension
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Dimensions")]
+    pub dimensions: Option<Vec<MetricDimension>>,
+
+
+    /// 
+    /// The value against which the specified statistic is compared.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Threshold")]
+    pub threshold: f64,
+
+}
+
+
+/// Managed scaling policy for an Amazon EMR cluster. The policy specifies the     limits for resources that can be added or terminated from a cluster. The policy only     applies to the core and task nodes. The master node cannot be scaled after initial     configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ManagedScalingPolicy {
+
+
+    /// 
+    /// The EC2 unit limits for a managed scaling policy. The managed scaling activity of a     cluster is not allowed to go above or below these limits. The limit only applies to the     core and task nodes. The master node cannot be scaled after initial configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ComputeLimits
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComputeLimits")]
+    pub compute_limits: Option<ComputeLimits>,
 
 }
 
 
 /// EbsConfiguration is a subproperty of InstanceFleetConfig or InstanceGroupConfig. EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EbsConfiguration {
 
 
@@ -1826,197 +1921,9 @@ pub struct EbsConfiguration {
 }
 
 
-/// ScalingRule is a subproperty of the AutoScalingPolicy property type. ScalingRule defines the scale-in or scale-out rules for scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.
-#[derive(Default, serde::Serialize)]
-pub struct ScalingRule {
-
-
-    /// 
-    /// The conditions that trigger an automatic scaling activity.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ScalingAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: ScalingAction,
-
-
-    /// 
-    /// The name used to identify an automatic scaling rule. Rule names must be unique within a     scaling policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// A friendly, more verbose description of the automatic scaling rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The CloudWatch alarm definition that determines when automatic scaling activity is     triggered.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: ScalingTrigger
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Trigger")]
-    pub trigger: ScalingTrigger,
-
-}
-
-
-/// Managed scaling policy for an Amazon EMR cluster. The policy specifies the     limits for resources that can be added or terminated from a cluster. The policy only     applies to the core and task nodes. The master node cannot be scaled after initial     configuration.
-#[derive(Default, serde::Serialize)]
-pub struct ManagedScalingPolicy {
-
-
-    /// 
-    /// The EC2 unit limits for a managed scaling policy. The managed scaling activity of a     cluster is not allowed to go above or below these limits. The limit only applies to the     core and task nodes. The master node cannot be scaled after initial configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ComputeLimits
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComputeLimits")]
-    pub compute_limits: Option<ComputeLimits>,
-
-}
-
-
-/// SpotProvisioningSpecification is a subproperty of the InstanceFleetProvisioningSpecifications property type. SpotProvisioningSpecification determines the launch specification for Spot instances in the instance fleet, which includes the defined duration and provisioning timeout behavior.
-#[derive(Default, serde::Serialize)]
-pub struct SpotProvisioningSpecification {
-
-
-    /// 
-    /// Specifies the strategy to use in launching Spot Instance fleets. Currently, the only     option is capacity-optimized (the default), which launches instances from Spot Instance     pools with optimal capacity for the number of instances that are launching.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: capacity-optimized
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllocationStrategy")]
-    pub allocation_strategy: Option<String>,
-
-
-    /// 
-    /// The Spot provisioning timeout period in minutes. If Spot Instances are not provisioned     within this time period, the TimeOutAction is taken. Minimum value is 5 and     maximum value is 1440. The timeout applies only during initial provisioning, when the     cluster is first created.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimeoutDurationMinutes")]
-    pub timeout_duration_minutes: i64,
-
-
-    /// 
-    /// The action to take when TargetSpotCapacity has not been fulfilled when the       TimeoutDurationMinutes has expired; that is, when all Spot Instances could     not be provisioned within the Spot provisioning timeout. Valid values are       TERMINATE_CLUSTER and SWITCH_TO_ON_DEMAND. SWITCH_TO_ON_DEMAND     specifies that if no Spot Instances are available, On-Demand Instances should be     provisioned to fulfill any remaining Spot capacity.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: SWITCH_TO_ON_DEMAND | TERMINATE_CLUSTER
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimeoutAction")]
-    pub timeout_action: String,
-
-
-    /// 
-    /// The defined duration for Spot Instances (also known as Spot blocks) in minutes. When     specified, the Spot Instance does not terminate before the defined duration expires, and     defined duration pricing for Spot Instances applies. Valid values are 60, 120, 180, 240,     300, or 360. The duration period starts as soon as a Spot Instance receives its instance     ID. At the end of the duration, Amazon EC2 marks the Spot Instance for termination     and provides a Spot Instance termination notice, which gives the instance a two-minute     warning before it terminates.
-    /// 
-    /// NoteSpot Instances with a defined duration (also known as Spot blocks) are no longer       available to new customers from July 1, 2021. For customers who have previously used the       feature, we will continue to support Spot Instances with a defined duration until       December 31, 2022.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BlockDurationMinutes")]
-    pub block_duration_minutes: Option<i64>,
-
-}
-
-
-/// ScriptBootstrapActionConfig is a subproperty of the BootstrapActionConfig property type. ScriptBootstrapActionConfig specifies the arguments and location of the bootstrap script for EMR to run on all cluster nodes before it installs open-source big data applications on them.
-#[derive(Default, serde::Serialize)]
-pub struct ScriptBootstrapActionConfig {
-
-
-    /// 
-    /// A list of command line arguments to pass to the bootstrap action script.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Args")]
-    pub args: Option<Vec<String>>,
-
-
-    /// 
-    /// Location in Amazon S3 of the script to run during a bootstrap action.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10280
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Path")]
-    pub path: String,
-
-}
-
-
 /// ScalingAction is a subproperty of the ScalingRule property type. ScalingAction determines the type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ScalingAction {
-
-
-    /// 
-    /// The type of adjustment the automatic scaling activity makes when triggered, and the     periodicity of the adjustment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: SimpleScalingPolicyConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SimpleScalingPolicyConfiguration")]
-    pub simple_scaling_policy_configuration: SimpleScalingPolicyConfiguration,
 
 
     /// 
@@ -2032,28 +1939,59 @@ pub struct ScalingAction {
     #[serde(rename = "Market")]
     pub market: Option<String>,
 
+
+    /// 
+    /// The type of adjustment the automatic scaling activity makes when triggered, and the     periodicity of the adjustment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: SimpleScalingPolicyConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SimpleScalingPolicyConfiguration")]
+    pub simple_scaling_policy_configuration: SimpleScalingPolicyConfiguration,
+
 }
 
 
-/// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
-#[derive(Default, serde::Serialize)]
-pub struct HadoopJarStepConfig {
+/// AutoScalingPolicy is a subproperty of InstanceGroupConfig. AutoScalingPolicy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. For more information, see Using Automatic Scaling in Amazon EMR in the Amazon EMR Management Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AutoScalingPolicy {
 
 
     /// 
-    /// A list of Java properties that are set when the step runs. You can use these properties     to pass key-value pairs to your main function.
+    /// The scale-in and scale-out rules that comprise the automatic scaling policy.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of KeyValue
+    /// Type: List of ScalingRule
     ///
     /// Update requires: No interruption
-    #[serde(rename = "StepProperties")]
-    pub step_properties: Option<Vec<KeyValue>>,
+    #[serde(rename = "Rules")]
+    pub rules: Vec<ScalingRule>,
 
 
     /// 
-    /// A path to a JAR file run during the step.
+    /// The upper and lower EC2 instance limits for an automatic scaling policy. Automatic     scaling activity will not cause an instance group to grow above or below these     limits.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: ScalingConstraints
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Constraints")]
+    pub constraints: ScalingConstraints,
+
+}
+
+
+/// KerberosAttributes is a property of the AWS::EMR::Cluster resource. KerberosAttributes define the cluster-specific Kerberos configuration when Kerberos authentication is enabled using a security configuration. The cluster-specific configuration must be compatible with the security configuration. For more information see Use Kerberos Authentication in the EMR Management Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KerberosAttributes {
+
+
+    /// 
+    /// The password used within the cluster for the kadmin service on the cluster-dedicated     KDC, which maintains Kerberos principals, password policies, and keytabs for the     cluster.
     /// 
     /// Required: Yes
     ///
@@ -2061,29 +1999,17 @@ pub struct HadoopJarStepConfig {
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 10280
+    /// Maximum: 256
     ///
     /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Jar")]
-    pub jar: String,
+    #[serde(rename = "KdcAdminPassword")]
+    pub kdc_admin_password: String,
 
 
     /// 
-    /// A list of command line arguments passed to the JAR file's main function when     executed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Args")]
-    pub args: Option<Vec<String>>,
-
-
-    /// 
-    /// The name of the main class in the specified Java file. If not specified, the JAR file     should specify a Main-Class in its manifest file.
+    /// The Active Directory password for ADDomainJoinUser.
     /// 
     /// Required: No
     ///
@@ -2091,31 +2017,115 @@ pub struct HadoopJarStepConfig {
     ///
     /// Minimum: 0
     ///
-    /// Maximum: 10280
+    /// Maximum: 256
     ///
     /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MainClass")]
-    pub main_class: Option<String>,
+    #[serde(rename = "ADDomainJoinPassword")]
+    pub addomain_join_password: Option<String>,
+
+
+    /// 
+    /// The name of the Kerberos realm to which all nodes in a cluster belong. For example,       EC2.INTERNAL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Realm")]
+    pub realm: String,
+
+
+    /// 
+    /// Required only when establishing a cross-realm trust with an Active Directory domain. A     user with sufficient privileges to join resources to the domain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ADDomainJoinUser")]
+    pub addomain_join_user: Option<String>,
+
+
+    /// 
+    /// Required only when establishing a cross-realm trust with a KDC in a different realm. The     cross-realm principal password, which must be identical across realms.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CrossRealmTrustPrincipalPassword")]
+    pub cross_realm_trust_principal_password: Option<String>,
 
 }
 
 
-/// ScalingTrigger is a subproperty of the ScalingRule property type. ScalingTrigger determines the conditions that trigger an automatic scaling activity.
-#[derive(Default, serde::Serialize)]
-pub struct ScalingTrigger {
+/// StepConfig is a property of the AWS::EMR::Cluster resource. The StepConfig property type specifies a cluster (job flow) step, which runs only on the master node. Steps are used to submit data processing jobs to the cluster.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StepConfig {
 
 
     /// 
-    /// The definition of a CloudWatch metric alarm. When the defined alarm conditions are met     along with other trigger parameters, scaling activity begins.
+    /// The JAR file used for the step.
     /// 
     /// Required: Yes
     ///
-    /// Type: CloudWatchAlarmDefinition
+    /// Type: HadoopJarStepConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CloudWatchAlarmDefinition")]
-    pub cloud_watch_alarm_definition: CloudWatchAlarmDefinition,
+    #[serde(rename = "HadoopJarStep")]
+    pub hadoop_jar_step: HadoopJarStepConfig,
+
+
+    /// 
+    /// The action to take when the cluster step fails. Possible values are CANCEL_AND_WAIT and CONTINUE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ActionOnFailure")]
+    pub action_on_failure: Option<String>,
+
+
+    /// 
+    /// The name of the step.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }

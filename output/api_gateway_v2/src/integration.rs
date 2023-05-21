@@ -1,24 +1,8 @@
 
 
 /// The AWS::ApiGatewayV2::Integration resource creates an integration          for an API.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIntegration {
-
-
-    /// 
-    /// For a Lambda integration, specify the URI of a Lambda function.
-    /// 
-    /// For an HTTP integration, specify a fully-qualified URL.
-    /// 
-    /// For an HTTP API private integration, specify the ARN of an Application Load           Balancer listener, Network Load Balancer listener, or AWS Cloud Map service. If           you specify the ARN of an AWS Cloud Map service, API Gateway uses             DiscoverInstances to identify resources. You can use query           parameters to target specific resources. To learn more, see DiscoverInstances. For private integrations, all resources must be           owned by the same AWS account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IntegrationUri")]
-    pub integration_uri: Option<String>,
 
 
     /// 
@@ -44,75 +28,15 @@ pub struct CfnIntegration {
 
 
     /// 
-    /// The API identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
-
-
-    /// 
-    /// Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and           between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is 29           seconds for WebSocket APIs and 30 seconds for HTTP APIs.
+    /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. The value is of type ResponseParameterList. To learn more, see Transforming API requests and responses.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TimeoutInMillis")]
-    pub timeout_in_millis: Option<i64>,
-
-
-    /// 
-    /// The template selection expression for the integration. Supported only for WebSocket APIs.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateSelectionExpression")]
-    pub template_selection_expression: Option<String>,
-
-
-    /// 
-    /// The type of the network connection to the integration endpoint. Specify INTERNET for connections through the public routable internet or          VPC_LINK for private connections between API Gateway and resources in a VPC. The default value is INTERNET.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectionType")]
-    pub connection_type: Option<String>,
-
-
-    /// 
-    /// Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string arn:aws:iam::*:user/*. To use resource-based permissions on supported AWS services, don't specify this parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CredentialsArn")]
-    pub credentials_arn: Option<String>,
-
-
-    /// 
-    /// Specifies the integration's HTTP method type.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IntegrationMethod")]
-    pub integration_method: Option<String>,
+    #[serde(rename = "ResponseParameters")]
+    pub response_parameters: Option<serde_json::Value>,
 
 
     /// 
@@ -129,6 +53,72 @@ pub struct CfnIntegration {
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
     pub request_parameters: Option<serde_json::Value>,
+
+
+    /// 
+    /// The ID of the VPC link for a private integration. Supported only for HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionId")]
+    pub connection_id: Option<String>,
+
+
+    /// 
+    /// The description of the integration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The API identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
+
+
+    /// 
+    /// Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value. Supported only for WebSocket APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequestTemplates")]
+    pub request_templates: Option<serde_json::Value>,
+
+
+    /// 
+    /// Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the requestTemplates property on the Integration resource. There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and NEVER. Supported only for WebSocket APIs.
+    /// 
+    /// WHEN_NO_MATCH passes the request body for unmapped content types through to the integration backend without transformation.
+    /// 
+    /// NEVER rejects unmapped content types with an HTTP 415 Unsupported Media Type response.
+    /// 
+    /// WHEN_NO_TEMPLATES allows pass-through when the integration has no content types mapped to templates. However, if there is at least one content type defined, unmapped content types will be rejected with the same HTTP 415 Unsupported Media Type response.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PassthroughBehavior")]
+    pub passthrough_behavior: Option<String>,
 
 
     /// 
@@ -162,21 +152,55 @@ pub struct CfnIntegration {
 
 
     /// 
-    /// Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the requestTemplates property on the Integration resource. There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and NEVER. Supported only for WebSocket APIs.
-    /// 
-    /// WHEN_NO_MATCH passes the request body for unmapped content types through to the integration backend without transformation.
-    /// 
-    /// NEVER rejects unmapped content types with an HTTP 415 Unsupported Media Type response.
-    /// 
-    /// WHEN_NO_TEMPLATES allows pass-through when the integration has no content types mapped to templates. However, if there is at least one content type defined, unmapped content types will be rejected with the same HTTP 415 Unsupported Media Type response.
+    /// Supported only for HTTP API AWS_PROXY integrations. Specifies the AWS service action to invoke. To learn more, see Integration subtype reference.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PassthroughBehavior")]
-    pub passthrough_behavior: Option<String>,
+    #[serde(rename = "IntegrationSubtype")]
+    pub integration_subtype: Option<String>,
+
+
+    /// 
+    /// The template selection expression for the integration. Supported only for WebSocket APIs.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateSelectionExpression")]
+    pub template_selection_expression: Option<String>,
+
+
+    /// 
+    /// Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and           between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is 29           seconds for WebSocket APIs and 30 seconds for HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimeoutInMillis")]
+    pub timeout_in_millis: Option<i64>,
+
+
+    /// 
+    /// For a Lambda integration, specify the URI of a Lambda function.
+    /// 
+    /// For an HTTP integration, specify a fully-qualified URL.
+    /// 
+    /// For an HTTP API private integration, specify the ARN of an Application Load           Balancer listener, Network Load Balancer listener, or AWS Cloud Map service. If           you specify the ARN of an AWS Cloud Map service, API Gateway uses             DiscoverInstances to identify resources. You can use query           parameters to target specific resources. To learn more, see DiscoverInstances. For private integrations, all resources must be           owned by the same AWS account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IntegrationUri")]
+    pub integration_uri: Option<String>,
 
 
     /// 
@@ -192,69 +216,74 @@ pub struct CfnIntegration {
 
 
     /// 
-    /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. The value is of type ResponseParameterList. To learn more, see Transforming API requests and responses.
+    /// Specifies the integration's HTTP method type.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IntegrationMethod")]
+    pub integration_method: Option<String>,
+
+
+    /// 
+    /// The type of the network connection to the integration endpoint. Specify INTERNET for connections through the public routable internet or          VPC_LINK for private connections between API Gateway and resources in a VPC. The default value is INTERNET.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConnectionType")]
+    pub connection_type: Option<String>,
+
+
+    /// 
+    /// Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string arn:aws:iam::*:user/*. To use resource-based permissions on supported AWS services, don't specify this parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CredentialsArn")]
+    pub credentials_arn: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnIntegration {
+    fn type_string() -> &'static str {
+        "AWS::ApiGatewayV2::Integration"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Specifies a list of response parameters for an HTTP API.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ResponseParameterList {
+
+
+    /// 
+    /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key      must match the pattern <action>:<header>.<location> or       overwrite.statuscode. The action can be append, overwrite or       remove. The value can be a static value, or map to response data, stage variables, or context      variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ResponseParameter
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    pub response_parameters: Option<serde_json::Value>,
-
-
-    /// 
-    /// Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value. Supported only for WebSocket APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RequestTemplates")]
-    pub request_templates: Option<serde_json::Value>,
-
-
-    /// 
-    /// The description of the integration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// Supported only for HTTP API AWS_PROXY integrations. Specifies the AWS service action to invoke. To learn more, see Integration subtype reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IntegrationSubtype")]
-    pub integration_subtype: Option<String>,
-
-
-    /// 
-    /// The ID of the VPC link for a private integration. Supported only for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConnectionId")]
-    pub connection_id: Option<String>,
+    pub response_parameters: Option<Vec<ResponseParameter>>,
 
 }
 
 
 /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key      must match the pattern <action>:<header>.<location> or       overwrite.statuscode. The action can be append, overwrite or       remove. The value can be a static value, or map to response data, stage variables, or context      variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResponseParameter {
 
 
@@ -285,7 +314,7 @@ pub struct ResponseParameter {
 
 
 /// The TlsConfig property specifies the TLS configuration for a private       integration. If you specify a TLS configuration, private integration traffic uses the       HTTPS protocol. Supported only for HTTP APIs.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TlsConfig {
 
 
@@ -299,24 +328,5 @@ pub struct TlsConfig {
     /// Update requires: No interruption
     #[serde(rename = "ServerNameToVerify")]
     pub server_name_to_verify: Option<String>,
-
-}
-
-
-/// Specifies a list of response parameters for an HTTP API.
-#[derive(Default, serde::Serialize)]
-pub struct ResponseParameterList {
-
-
-    /// 
-    /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key      must match the pattern <action>:<header>.<location> or       overwrite.statuscode. The action can be append, overwrite or       remove. The value can be a static value, or map to response data, stage variables, or context      variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ResponseParameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResponseParameters")]
-    pub response_parameters: Option<Vec<ResponseParameter>>,
 
 }

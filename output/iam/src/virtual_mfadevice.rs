@@ -3,38 +3,8 @@
 /// Creates a new virtual MFA device for the AWS account. After creating     the virtual MFA, use EnableMFADevice to attach     the MFA device to an IAM user. For more information about creating and     working with virtual MFA devices, see Using a virtual MFA device in     the IAM User Guide.
 ///
 /// For information about the maximum number of MFA devices you can create, see IAM and AWS STS quotas in the IAM User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVirtualMFADevice {
-
-
-    /// 
-    /// The IAM user associated with this virtual MFA device.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Users")]
-    pub users: Vec<String>,
-
-
-    /// 
-    /// The name of the virtual MFA device, which must be unique. Use with path to uniquely       identify a virtual MFA device.
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Pattern: [\w+=,.@-]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VirtualMfaDeviceName")]
-    pub virtual_mfa_device_name: Option<String>,
 
 
     /// 
@@ -60,6 +30,18 @@ pub struct CfnVirtualMFADevice {
 
 
     /// 
+    /// The IAM user associated with this virtual MFA device.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Users")]
+    pub users: Vec<String>,
+
+
+    /// 
     /// A list of tags that you want to attach to the new IAM virtual MFA device.    Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
     /// 
     /// NoteIf any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request   fails and the resource is not created.
@@ -74,6 +56,34 @@ pub struct CfnVirtualMFADevice {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The name of the virtual MFA device, which must be unique. Use with path to uniquely       identify a virtual MFA device.
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Pattern: [\w+=,.@-]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VirtualMfaDeviceName")]
+    pub virtual_mfa_device_name: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnVirtualMFADevice {
+    fn type_string() -> &'static str {
+        "AWS::IAM::VirtualMFADevice"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -84,19 +94,8 @@ pub struct CfnVirtualMFADevice {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -108,5 +107,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

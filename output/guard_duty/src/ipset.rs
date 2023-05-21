@@ -1,8 +1,40 @@
 
 
 /// The AWS::GuardDuty::IPSet resource specifies a new          IPSet. An IPSet is a list of trusted IP addresses from          which secure communication is allowed with AWS infrastructure and          applications.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPSet {
+
+
+    /// 
+    /// The tags to be added to a new IP set resource. Each tag consists of a key and an          optional value, both of which you define.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The user-friendly name to identify the IPSet.
+    /// 
+    /// Allowed characters are alphanumeric, whitespace, dash (-), and underscores (_).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 300
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -38,20 +70,6 @@ pub struct CfnIPSet {
 
 
     /// 
-    /// The tags to be added to a new IP set resource. Each tag consists of a key and an          optional value, both of which you define.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The format of the file that contains the IPSet.
     /// 
     /// Required: Yes
@@ -76,24 +94,16 @@ pub struct CfnIPSet {
     #[serde(rename = "Activate")]
     pub activate: bool,
 
+}
 
-    /// 
-    /// The user-friendly name to identify the IPSet.
-    /// 
-    /// Allowed characters are alphanumeric, whitespace, dash (-), and underscores (_).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 300
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+impl cfn_resources::CfnResource for CfnIPSet {
+    fn type_string() -> &'static str {
+        "AWS::GuardDuty::IPSet"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -104,7 +114,7 @@ pub struct CfnIPSet {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

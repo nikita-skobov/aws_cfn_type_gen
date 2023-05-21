@@ -3,8 +3,26 @@
 /// Creates a rescore execution plan. A rescore execution       plan is an Amazon Kendra Intelligent Ranking resource       used for provisioning the Rescore API. You set       the number of capacity units that you require for       Amazon Kendra Intelligent Ranking to rescore or re-rank       a search service's results.
 ///
 /// For an example of using the       CreateRescoreExecutionPlan API, including using       the Python and Java SDKs, see Semantically         ranking a search service's results.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnExecutionPlan {
+
+
+    /// 
+    /// A description for the rescore execution plan.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: ^\P{C}*$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -50,24 +68,16 @@ pub struct CfnExecutionPlan {
     #[serde(rename = "CapacityUnits")]
     pub capacity_units: Option<CapacityUnitsConfiguration>,
 
+}
 
-    /// 
-    /// A description for the rescore execution plan.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: ^\P{C}*$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+impl cfn_resources::CfnResource for CfnExecutionPlan {
+    fn type_string() -> &'static str {
+        "AWS::KendraRanking::ExecutionPlan"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -78,7 +88,7 @@ pub struct CfnExecutionPlan {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -107,7 +117,7 @@ pub struct Tag {
 
 
 /// Sets additional capacity units configured for your       rescore execution plan. A rescore execution plan is an       Amazon Kendra Intelligent Ranking resource used for       provisioning the Rescore API. You can add and       remove capacity units to fit your usage requirements.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CapacityUnitsConfiguration {
 
 

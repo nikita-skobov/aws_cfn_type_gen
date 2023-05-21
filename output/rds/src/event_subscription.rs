@@ -1,20 +1,8 @@
 
 
 /// The AWS::RDS::EventSubscription resource allows you to receive       notifications for Amazon Relational Database Service events through the Amazon Simple       Notification Service (Amazon SNS). For more information, see Using Amazon RDS Event         Notification in the Amazon RDS User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEventSubscription {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnsTopicArn")]
-    pub sns_topic_arn: String,
 
 
     /// 
@@ -32,6 +20,30 @@ pub struct CfnEventSubscription {
 
 
     /// 
+    /// The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnsTopicArn")]
+    pub sns_topic_arn: String,
+
+
+    /// 
+    /// A value that indicates whether to activate the subscription. If the event notification subscription isn't activated, the subscription is created but not active.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
     /// An optional array of key-value pairs to apply to this subscription.
     /// 
     /// Required: No
@@ -41,6 +53,32 @@ pub struct CfnEventSubscription {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A list of event categories for a particular source type (SourceType)       that you want to subscribe to. You can see a list of the categories for a given source type in the "Amazon RDS event categories and event messages" section of the Amazon RDS User Guide or the         Amazon Aurora User Guide.         You can also see this list by using the DescribeEventCategories operation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventCategories")]
+    pub event_categories: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the subscription.
+    /// 
+    /// Constraints: The name must be less than 255 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubscriptionName")]
+    pub subscription_name: Option<String>,
 
 
     /// 
@@ -58,44 +96,16 @@ pub struct CfnEventSubscription {
     #[serde(rename = "SourceIds")]
     pub source_ids: Option<Vec<String>>,
 
+}
 
-    /// 
-    /// A list of event categories for a particular source type (SourceType)       that you want to subscribe to. You can see a list of the categories for a given source type in the "Amazon RDS event categories and event messages" section of the Amazon RDS User Guide or the         Amazon Aurora User Guide.         You can also see this list by using the DescribeEventCategories operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventCategories")]
-    pub event_categories: Option<Vec<String>>,
+impl cfn_resources::CfnResource for CfnEventSubscription {
+    fn type_string() -> &'static str {
+        "AWS::RDS::EventSubscription"
+    }
 
-
-    /// 
-    /// A value that indicates whether to activate the subscription. If the event notification subscription isn't activated, the subscription is created but not active.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// The name of the subscription.
-    /// 
-    /// Constraints: The name must be less than 255 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubscriptionName")]
-    pub subscription_name: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -106,7 +116,7 @@ pub struct CfnEventSubscription {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

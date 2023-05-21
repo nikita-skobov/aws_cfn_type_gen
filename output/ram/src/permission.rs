@@ -1,34 +1,8 @@
 
 
 /// Creates a customer managed permission for a specified resource type that you can attach to resource shares.       It is created in the AWS Region in which you call the operation.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPermission {
-
-
-    /// 
-    /// Specifies the name of the resource type that this customer managed permission applies       to.
-    /// 
-    /// The format is         <service-code>:<resource-type>       and is not case sensitive. For example, to specify an Amazon EC2 Subnet, you can       use the string ec2:subnet. To see the list of valid values for this       parameter, query the ListResourceTypes       operation.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceType")]
-    pub resource_type: String,
-
-
-    /// 
-    /// Specifies a list of one or more tag key and value pairs to attach to the       permission.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -64,6 +38,42 @@ pub struct CfnPermission {
     #[serde(rename = "PolicyTemplate")]
     pub policy_template: serde_json::Value,
 
+
+    /// 
+    /// Specifies a list of one or more tag key and value pairs to attach to the       permission.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Specifies the name of the resource type that this customer managed permission applies       to.
+    /// 
+    /// The format is         <service-code>:<resource-type>       and is not case sensitive. For example, to specify an Amazon EC2 Subnet, you can       use the string ec2:subnet. To see the list of valid values for this       parameter, query the ListResourceTypes       operation.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceType")]
+    pub resource_type: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnPermission {
+    fn type_string() -> &'static str {
+        "AWS::RAM::Permission"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -74,7 +84,7 @@ pub struct CfnPermission {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

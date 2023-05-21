@@ -1,20 +1,56 @@
 
 
 /// Describes a network interface in an Amazon EC2 instance for AWS CloudFormation.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNetworkInterface {
 
 
     /// 
-    /// The security group IDs associated with this network interface.
+    /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to       associate with the network interface. If you're specifying a number of IPv6 addresses, use       the Ipv6AddressCount property and don't specify this property.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: List of InstanceIpv6Address
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GroupSet")]
-    pub group_set: Option<Vec<String>>,
+    #[serde(rename = "Ipv6Addresses")]
+    pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
+
+
+    /// 
+    /// An arbitrary set of tags (key-value pairs) for this network interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Assigns a single private IP address to the network interface, which is used as the       primary private IP address. If you want to specify multiple private IP address, use the       PrivateIpAddresses property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrivateIpAddress")]
+    pub private_ip_address: Option<String>,
+
+
+    /// 
+    /// A description for the network interface.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -32,27 +68,15 @@ pub struct CfnNetworkInterface {
 
 
     /// 
-    /// A description for the network interface.
+    /// The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically       selects the IPv6 addresses from the subnet range. To specify specific IPv6 addresses, use       the Ipv6Addresses property and don't specify this property.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to       associate with the network interface. If you're specifying a number of IPv6 addresses, use       the Ipv6AddressCount property and don't specify this property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of InstanceIpv6Address
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6Addresses")]
-    pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
+    #[serde(rename = "Ipv6AddressCount")]
+    pub ipv6_address_count: Option<i64>,
 
 
     /// 
@@ -68,27 +92,17 @@ pub struct CfnNetworkInterface {
 
 
     /// 
-    /// The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically       selects the IPv6 addresses from the subnet range. To specify specific IPv6 addresses, use       the Ipv6Addresses property and don't specify this property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6AddressCount")]
-    pub ipv6_address_count: Option<i64>,
-
-
-    /// 
-    /// Assigns a single private IP address to the network interface, which is used as the       primary private IP address. If you want to specify multiple private IP address, use the       PrivateIpAddresses property.
+    /// The type of network interface. The default is interface. The supported values       are efa and trunk.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Allowed values: branch | efa | trunk
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "PrivateIpAddress")]
-    pub private_ip_address: Option<String>,
+    #[serde(rename = "InterfaceType")]
+    pub interface_type: Option<String>,
 
 
     /// 
@@ -116,29 +130,75 @@ pub struct CfnNetworkInterface {
 
 
     /// 
-    /// The type of network interface. The default is interface. The supported values       are efa and trunk.
+    /// The security group IDs associated with this network interface.
     /// 
     /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GroupSet")]
+    pub group_set: Option<Vec<String>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnNetworkInterface {
+    fn type_string() -> &'static str {
+        "AWS::EC2::NetworkInterface"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Describes a secondary private IPv4 address for a network interface.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PrivateIpAddressSpecification {
+
+
+    /// 
+    /// Sets the private IP address as the primary private address. You can set only one primary       private IP address. If you don't specify a primary private IP address, Amazon EC2       automatically assigns a primary private IP address.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "Primary")]
+    pub primary: bool,
+
+
+    /// 
+    /// The private IP address of the network interface.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: branch | efa | trunk
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InterfaceType")]
-    pub interface_type: Option<String>,
+    /// Update requires: Some interruptions
+    #[serde(rename = "PrivateIpAddress")]
+    pub private_ip_address: String,
+
+}
+
+
+/// Describes the IPv6 addresses to associate with the network interface.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceIpv6Address {
 
 
     /// 
-    /// An arbitrary set of tags (key-value pairs) for this network interface.
+    /// An IPv6 address to associate with the network interface.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Ipv6Address")]
+    pub ipv6_address: String,
 
 }
 
@@ -150,7 +210,7 @@ pub struct CfnNetworkInterface {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -174,55 +234,5 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
-
-}
-
-
-/// Describes the IPv6 addresses to associate with the network interface.
-#[derive(Default, serde::Serialize)]
-pub struct InstanceIpv6Address {
-
-
-    /// 
-    /// An IPv6 address to associate with the network interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ipv6Address")]
-    pub ipv6_address: String,
-
-}
-
-
-/// Describes a secondary private IPv4 address for a network interface.
-#[derive(Default, serde::Serialize)]
-pub struct PrivateIpAddressSpecification {
-
-
-    /// 
-    /// The private IP address of the network interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "PrivateIpAddress")]
-    pub private_ip_address: String,
-
-
-    /// 
-    /// Sets the private IP address as the primary private address. You can set only one primary       private IP address. If you don't specify a primary private IP address, Amazon EC2       automatically assigns a primary private IP address.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "Primary")]
-    pub primary: bool,
 
 }

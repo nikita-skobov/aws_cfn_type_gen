@@ -1,7 +1,7 @@
 
 
 /// The HookDefaultVersion resource specifies the default version of the hook. The default version of  the hook is used in CloudFormation operations for this AWS account and AWS Region.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnHookDefaultVersion {
 
 
@@ -62,4 +62,14 @@ pub struct CfnHookDefaultVersion {
     #[serde(rename = "TypeName")]
     pub type_name: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnHookDefaultVersion {
+    fn type_string() -> &'static str {
+        "AWS::CloudFormation::HookDefaultVersion"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

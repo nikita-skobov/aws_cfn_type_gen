@@ -1,19 +1,8 @@
 
 
 /// Creates an Amazon Web Services site-to-site VPN attachment on an edge location of a core network.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSiteToSiteVpnAttachment {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CoreNetworkId")]
-    pub core_network_id: String,
 
 
     /// 
@@ -36,6 +25,17 @@ pub struct CfnSiteToSiteVpnAttachment {
 
     /// Property description not available.
     ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CoreNetworkId")]
+    pub core_network_id: String,
+
+
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -46,28 +46,20 @@ pub struct CfnSiteToSiteVpnAttachment {
 
 }
 
+impl cfn_resources::CfnResource for CfnSiteToSiteVpnAttachment {
+    fn type_string() -> &'static str {
+        "AWS::NetworkManager::SiteToSiteVpnAttachment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProposedSegmentChange {
-
-
-    /// 
-    /// The name of the segment to change.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SegmentName")]
-    pub segment_name: Option<String>,
 
 
     /// 
@@ -93,6 +85,24 @@ pub struct ProposedSegmentChange {
     #[serde(rename = "AttachmentPolicyRuleNumber")]
     pub attachment_policy_rule_number: Option<i64>,
 
+
+    /// 
+    /// The name of the segment to change.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SegmentName")]
+    pub segment_name: Option<String>,
+
 }
 
 
@@ -103,19 +113,8 @@ pub struct ProposedSegmentChange {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -127,5 +126,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

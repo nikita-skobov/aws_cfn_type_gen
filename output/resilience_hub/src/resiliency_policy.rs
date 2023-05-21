@@ -1,44 +1,8 @@
 
 
 /// Defines a resiliency policy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResiliencyPolicy {
-
-
-    /// 
-    /// The name of the policy
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyName")]
-    pub policy_name: String,
-
-
-    /// 
-    /// The resiliency policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Map of FailurePolicy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: std::collections::HashMap<String, FailurePolicy>,
-
-
-    /// 
-    /// The tier for this resiliency policy, ranging from the highest severity     (MissionCritical) to lowest (NonCritical).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tier")]
-    pub tier: String,
 
 
     /// 
@@ -66,6 +30,18 @@ pub struct CfnResiliencyPolicy {
 
 
     /// 
+    /// The tier for this resiliency policy, ranging from the highest severity     (MissionCritical) to lowest (NonCritical).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tier")]
+    pub tier: String,
+
+
+    /// 
     /// Specifies a high-level geographical location constraint for where your resilience policy    data can be stored.
     /// 
     /// Required: No
@@ -76,11 +52,45 @@ pub struct CfnResiliencyPolicy {
     #[serde(rename = "DataLocationConstraint")]
     pub data_location_constraint: Option<String>,
 
+
+    /// 
+    /// The resiliency policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Map of FailurePolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Policy")]
+    pub policy: std::collections::HashMap<String, FailurePolicy>,
+
+
+    /// 
+    /// The name of the policy
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyName")]
+    pub policy_name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnResiliencyPolicy {
+    fn type_string() -> &'static str {
+        "AWS::ResilienceHub::ResiliencyPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Defines a failure policy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FailurePolicy {
 
 

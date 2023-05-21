@@ -1,8 +1,20 @@
 
 
 /// The AWS::ApiGatewayV2::Model resource updates data model for a          WebSocket API. For more information, see Model Selection Expressions in the API Gateway Developer             Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnModel {
+
+
+    /// 
+    /// The schema for the model. For application/json models, this should be JSON schema draft 4 model.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Schema")]
+    pub schema: serde_json::Value,
 
 
     /// 
@@ -42,18 +54,6 @@ pub struct CfnModel {
 
 
     /// 
-    /// The schema for the model. For application/json models, this should be JSON schema draft 4 model.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Schema")]
-    pub schema: serde_json::Value,
-
-
-    /// 
     /// The content-type for the model, for example, "application/json".
     /// 
     /// Required: No
@@ -64,4 +64,14 @@ pub struct CfnModel {
     #[serde(rename = "ContentType")]
     pub content_type: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnModel {
+    fn type_string() -> &'static str {
+        "AWS::ApiGatewayV2::Model"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -1,24 +1,8 @@
 
 
 /// The AWS::Route53Resolver::ResolverQueryLoggingConfig resource is a complex type that contains settings for one query logging configuration.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResolverQueryLoggingConfig {
-
-
-    /// 
-    /// The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group, or 			a Kinesis Data Firehose delivery stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 600
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationArn")]
-    pub destination_arn: Option<String>,
 
 
     /// 
@@ -38,4 +22,30 @@ pub struct CfnResolverQueryLoggingConfig {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group, or 			a Kinesis Data Firehose delivery stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 600
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationArn")]
+    pub destination_arn: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfig {
+    fn type_string() -> &'static str {
+        "AWS::Route53Resolver::ResolverQueryLoggingConfig"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

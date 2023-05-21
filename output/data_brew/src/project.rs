@@ -1,20 +1,8 @@
 
 
 /// Specifies a new AWS Glue DataBrew project.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProject {
-
-
-    /// 
-    /// The sample size and sampling type to apply to the data. If this parameter isn't       specified, then the sample consists of the first 500 rows from the dataset.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Sample
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Sample")]
-    pub sample: Option<Sample>,
 
 
     /// 
@@ -34,18 +22,6 @@ pub struct CfnProject {
 
 
     /// 
-    /// Metadata tags that have been applied to the project.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The dataset that the project is to act upon.
     /// 
     /// Required: Yes
@@ -59,6 +35,22 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "DatasetName")]
     pub dataset_name: String,
+
+
+    /// 
+    /// The unique name of a project.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -78,20 +70,38 @@ pub struct CfnProject {
 
 
     /// 
-    /// The unique name of a project.
+    /// Metadata tags that have been applied to the project.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
+    /// Type: List of Tag
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The sample size and sampling type to apply to the data. If this parameter isn't       specified, then the sample consists of the first 500 rows from the dataset.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Sample
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Sample")]
+    pub sample: Option<Sample>,
+
+}
+
+impl cfn_resources::CfnResource for CfnProject {
+    fn type_string() -> &'static str {
+        "AWS::DataBrew::Project"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -102,7 +112,7 @@ pub struct CfnProject {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -131,8 +141,22 @@ pub struct Tag {
 
 
 /// Represents the sample size and sampling type for DataBrew to use for interactive data       analysis.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Sample {
+
+
+    /// 
+    /// The way in which DataBrew obtains rows from a dataset.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: FIRST_N | LAST_N | RANDOM
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 
     /// 
@@ -149,19 +173,5 @@ pub struct Sample {
     /// Update requires: No interruption
     #[serde(rename = "Size")]
     pub size: Option<i64>,
-
-
-    /// 
-    /// The way in which DataBrew obtains rows from a dataset.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: FIRST_N | LAST_N | RANDOM
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
 
 }

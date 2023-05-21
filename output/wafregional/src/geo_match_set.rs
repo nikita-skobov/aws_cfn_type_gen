@@ -1,7 +1,7 @@
 
 
 /// Contains one or more countries that AWS WAF will search for.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGeoMatchSet {
 
 
@@ -36,24 +36,20 @@ pub struct CfnGeoMatchSet {
 
 }
 
+impl cfn_resources::CfnResource for CfnGeoMatchSet {
+    fn type_string() -> &'static str {
+        "AWS::WAFRegional::GeoMatchSet"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// The country from which web requests originate that you want AWS WAF to search for.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GeoMatchConstraint {
-
-
-    /// 
-    /// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Country
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
 
 
     /// 
@@ -68,5 +64,19 @@ pub struct GeoMatchConstraint {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Country
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }

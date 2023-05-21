@@ -7,36 +7,8 @@
 /// If your function has a function URL, you can specify the FunctionUrlAuthType parameter. This adds a condition to your    permission that only applies when your function URL's AuthType matches the specified FunctionUrlAuthType. For    more information about the AuthType parameter, see     Security and auth model for Lambda function URLs.
 ///
 /// This resource adds a statement to a resource-based permission policy for the function. For more information    about function policies, see Lambda Function Policies.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPermission {
-
-
-    /// 
-    /// The AWS service or AWS account that invokes the function. If you specify a    service, use SourceArn or SourceAccount to limit who can invoke the function through    that service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [^\s]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Principal")]
-    pub principal: String,
-
-
-    /// 
-    /// The action that the principal can use on the function. For example, lambda:InvokeFunction or     lambda:GetFunction.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: (lambda:[*]|lambda:[a-zA-Z]+|[*])
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Action")]
-    pub action: String,
 
 
     /// 
@@ -55,20 +27,6 @@ pub struct CfnPermission {
     /// Update requires: Replacement
     #[serde(rename = "PrincipalOrgID")]
     pub principal_org_id: Option<String>,
-
-
-    /// 
-    /// The type of authentication that your function URL uses. Set to AWS_IAM if you want to restrict access to authenticated  users only. Set to NONE if you want to bypass IAM authentication to create a public endpoint. For more information,  see Security and auth model for Lambda function URLs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AWS_IAM | NONE
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FunctionUrlAuthType")]
-    pub function_url_auth_type: Option<String>,
 
 
     /// 
@@ -94,22 +52,6 @@ pub struct CfnPermission {
 
 
     /// 
-    /// For AWS services, the ARN of the AWS resource that invokes the function. For    example, an Amazon S3 bucket or Amazon SNS topic.
-    /// 
-    /// Note that Lambda configures the comparison using the StringLike operator.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-])+:([a-z]{2}(-gov)?-[a-z]+-\d{1})?:(\d{12})?:(.*)
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceArn")]
-    pub source_arn: Option<String>,
-
-
-    /// 
     /// For Alexa Smart Home functions, a token that the invoker must supply.
     /// 
     /// Required: No
@@ -128,6 +70,20 @@ pub struct CfnPermission {
 
 
     /// 
+    /// The type of authentication that your function URL uses. Set to AWS_IAM if you want to restrict access to authenticated  users only. Set to NONE if you want to bypass IAM authentication to create a public endpoint. For more information,  see Security and auth model for Lambda function URLs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: AWS_IAM | NONE
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FunctionUrlAuthType")]
+    pub function_url_auth_type: Option<String>,
+
+
+    /// 
     /// For AWS service, the ID of the AWS account that owns the resource. Use this    together with SourceArn to ensure that the specified account owns the resource. It is possible for an     Amazon S3 bucket to be deleted by its owner and recreated by another account.
     /// 
     /// Required: No
@@ -142,4 +98,58 @@ pub struct CfnPermission {
     #[serde(rename = "SourceAccount")]
     pub source_account: Option<String>,
 
+
+    /// 
+    /// The AWS service or AWS account that invokes the function. If you specify a    service, use SourceArn or SourceAccount to limit who can invoke the function through    that service.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [^\s]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Principal")]
+    pub principal: String,
+
+
+    /// 
+    /// For AWS services, the ARN of the AWS resource that invokes the function. For    example, an Amazon S3 bucket or Amazon SNS topic.
+    /// 
+    /// Note that Lambda configures the comparison using the StringLike operator.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-])+:([a-z]{2}(-gov)?-[a-z]+-\d{1})?:(\d{12})?:(.*)
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceArn")]
+    pub source_arn: Option<String>,
+
+
+    /// 
+    /// The action that the principal can use on the function. For example, lambda:InvokeFunction or     lambda:GetFunction.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: (lambda:[*]|lambda:[a-zA-Z]+|[*])
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Action")]
+    pub action: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnPermission {
+    fn type_string() -> &'static str {
+        "AWS::Lambda::Permission"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

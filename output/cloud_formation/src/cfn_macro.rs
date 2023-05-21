@@ -1,20 +1,8 @@
 
 
 /// The AWS::CloudFormation::Macro resource is a CloudFormation resource type that creates a   CloudFormation macro to perform custom processing on CloudFormation templates. For more  information, see Using   AWS CloudFormation macros to perform custom processing on templates.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMacro {
-
-
-    /// 
-    /// The CloudWatch Logs group to which AWS CloudFormation sends error logging information when invoking the  macro's underlying AWS Lambda function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: Option<String>,
 
 
     /// 
@@ -27,6 +15,30 @@ pub struct CfnMacro {
     /// Update requires: No interruption
     #[serde(rename = "LogRoleARN")]
     pub log_role_arn: Option<String>,
+
+
+    /// 
+    /// A description of the macro.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The CloudWatch Logs group to which AWS CloudFormation sends error logging information when invoking the  macro's underlying AWS Lambda function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: Option<String>,
 
 
     /// 
@@ -52,16 +64,14 @@ pub struct CfnMacro {
     #[serde(rename = "FunctionName")]
     pub function_name: String,
 
+}
 
-    /// 
-    /// A description of the macro.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+impl cfn_resources::CfnResource for CfnMacro {
+    fn type_string() -> &'static str {
+        "AWS::CloudFormation::Macro"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

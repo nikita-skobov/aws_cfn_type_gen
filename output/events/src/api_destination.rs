@@ -7,12 +7,12 @@
 /// When the Connection resource is created the secret will be passed to EventBridge and stored in the customer account using “Service Linked Secrets,”    effectively creating two secrets. This will minimize the cost because the original secret is only accessed when a CloudFormation template is created or updated,    not every time an event is sent to the ApiDestination. The secret stored in the customer account by EventBridge is the one used for each event sent to the    ApiDestination and AWS is responsible for the fees.
 ///
 /// For examples of CloudFormation templates that use secrets, see Examples.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApiDestination {
 
 
     /// 
-    /// The ARN of the connection to use for the API destination. The destination endpoint must    support the authorization type specified for the connection.
+    /// The URL to the HTTP invocation endpoint for the API destination.
     /// 
     /// Required: Yes
     ///
@@ -20,31 +20,13 @@ pub struct CfnApiDestination {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 1600
+    /// Maximum: 2048
     ///
-    /// Pattern: ^arn:aws([a-z]|\-)*:events:([a-z]|\d|\-)*:([0-9]{12})?:connection\/[\.\-_A-Za-z0-9]+\/[\-A-Za-z0-9]+$
+    /// Pattern: ^((%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@\x26=+$,A-Za-z0-9])+)([).!';/?:,])?$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ConnectionArn")]
-    pub connection_arn: String,
-
-
-    /// 
-    /// The name for the API destination to create.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [\.\-_A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "InvocationEndpoint")]
+    pub invocation_endpoint: String,
 
 
     /// 
@@ -92,7 +74,7 @@ pub struct CfnApiDestination {
 
 
     /// 
-    /// The URL to the HTTP invocation endpoint for the API destination.
+    /// The ARN of the connection to use for the API destination. The destination endpoint must    support the authorization type specified for the connection.
     /// 
     /// Required: Yes
     ///
@@ -100,12 +82,40 @@ pub struct CfnApiDestination {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 2048
+    /// Maximum: 1600
     ///
-    /// Pattern: ^((%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@\x26=+$,A-Za-z0-9])+)([).!';/?:,])?$
+    /// Pattern: ^arn:aws([a-z]|\-)*:events:([a-z]|\d|\-)*:([0-9]{12})?:connection\/[\.\-_A-Za-z0-9]+\/[\-A-Za-z0-9]+$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InvocationEndpoint")]
-    pub invocation_endpoint: String,
+    #[serde(rename = "ConnectionArn")]
+    pub connection_arn: String,
 
+
+    /// 
+    /// The name for the API destination to create.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [\.\-_A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnApiDestination {
+    fn type_string() -> &'static str {
+        "AWS::Events::ApiDestination"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

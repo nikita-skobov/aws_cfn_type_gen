@@ -5,7 +5,7 @@
 /// There is no limit on the number of log streams that you can create for a log group.
 ///
 /// You must use the following guidelines when naming a log stream:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLogStream {
 
 
@@ -44,4 +44,14 @@ pub struct CfnLogStream {
     #[serde(rename = "LogStreamName")]
     pub log_stream_name: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnLogStream {
+    fn type_string() -> &'static str {
+        "AWS::Logs::LogStream"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

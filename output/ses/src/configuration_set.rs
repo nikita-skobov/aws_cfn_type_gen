@@ -1,8 +1,20 @@
 
 
 /// Configuration sets let you create groups of rules that you can apply to the emails you       send using Amazon SES. For more information about using configuration sets, see Using Amazon         SES Configuration Sets in the Amazon SES Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConfigurationSet {
+
+
+    /// 
+    /// The Virtual Deliverability Manager (VDM) options that apply to the configuration       set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VdmOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VdmOptions")]
+    pub vdm_options: Option<VdmOptions>,
 
 
     /// 
@@ -20,18 +32,6 @@ pub struct CfnConfigurationSet {
 
 
     /// 
-    /// An object that represents the reputation settings for the configuration set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ReputationOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReputationOptions")]
-    pub reputation_options: Option<ReputationOptions>,
-
-
-    /// 
     /// An object that defines whether or not Amazon SES can send email that you send using       the configuration set.
     /// 
     /// Required: No
@@ -41,30 +41,6 @@ pub struct CfnConfigurationSet {
     /// Update requires: No interruption
     #[serde(rename = "SendingOptions")]
     pub sending_options: Option<SendingOptions>,
-
-
-    /// 
-    /// The Virtual Deliverability Manager (VDM) options that apply to the configuration       set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VdmOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VdmOptions")]
-    pub vdm_options: Option<VdmOptions>,
-
-
-    /// 
-    /// The name of the custom open and click tracking domain associated with the       configuration set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TrackingOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TrackingOptions")]
-    pub tracking_options: Option<TrackingOptions>,
 
 
     /// 
@@ -80,6 +56,30 @@ pub struct CfnConfigurationSet {
 
 
     /// 
+    /// An object that represents the reputation settings for the configuration set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ReputationOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReputationOptions")]
+    pub reputation_options: Option<ReputationOptions>,
+
+
+    /// 
+    /// The name of the custom open and click tracking domain associated with the       configuration set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TrackingOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TrackingOptions")]
+    pub tracking_options: Option<TrackingOptions>,
+
+
+    /// 
     /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
     /// 
     /// Required: No
@@ -92,40 +92,101 @@ pub struct CfnConfigurationSet {
 
 }
 
+impl cfn_resources::CfnResource for CfnConfigurationSet {
+    fn type_string() -> &'static str {
+        "AWS::SES::ConfigurationSet"
+    }
 
-/// The Virtual Deliverability Manager (VDM) options that apply to a configuration       set.
-#[derive(Default, serde::Serialize)]
-pub struct VdmOptions {
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
 
 
-    /// 
-    /// Settings for your VDM configuration as applicable to the Dashboard.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DashboardOptions
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DashboardOptions")]
-    pub dashboard_options: Option<DashboardOptions>,
+/// Used to enable or disable email sending for messages that use this configuration set       in the current AWS Region.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SendingOptions {
 
 
     /// 
-    /// Settings for your VDM configuration as applicable to the Guardian.
+    /// If true, email sending is enabled for the configuration set. If         false, email sending is disabled for the configuration set.
     /// 
     /// Required: No
     ///
-    /// Type: GuardianOptions
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GuardianOptions")]
-    pub guardian_options: Option<GuardianOptions>,
+    #[serde(rename = "SendingEnabled")]
+    pub sending_enabled: Option<bool>,
+
+}
+
+
+/// Contains information about the reputation settings for a configuration set.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ReputationOptions {
+
+
+    /// 
+    /// Describes whether or not Amazon SES publishes reputation metrics for the configuration set,       such as bounce and complaint rates, to Amazon CloudWatch.
+    /// 
+    /// If the value is true, reputation metrics are published. If the value is         false, reputation metrics are not published. The default value is         false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReputationMetricsEnabled")]
+    pub reputation_metrics_enabled: Option<bool>,
+
+}
+
+
+/// Settings for your VDM configuration as applicable to the Guardian.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GuardianOptions {
+
+
+    /// 
+    /// Specifies the status of your VDM optimized shared delivery. Can be one of the       following:
+    /// 
+    /// ENABLED – Amazon SES enables optimized shared delivery           for the configuration set.               DISABLED – Amazon SES disables optimized shared           delivery for the configuration set.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OptimizedSharedDelivery")]
+    pub optimized_shared_delivery: String,
+
+}
+
+
+/// A domain that is used to redirect email recipients to an Amazon SES-operated domain. This       domain captures open and click events generated by Amazon SES emails.
+///
+/// For more information, see Configuring Custom         Domains to Handle Open and Click Tracking in the Amazon SES Developer         Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TrackingOptions {
+
+
+    /// 
+    /// The custom subdomain that is used to redirect email recipients to the Amazon SES event       tracking domain.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomRedirectDomain")]
+    pub custom_redirect_domain: Option<String>,
 
 }
 
 
 /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DeliveryOptions {
 
 
@@ -157,8 +218,39 @@ pub struct DeliveryOptions {
 }
 
 
+/// The Virtual Deliverability Manager (VDM) options that apply to a configuration       set.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VdmOptions {
+
+
+    /// 
+    /// Settings for your VDM configuration as applicable to the Guardian.
+    /// 
+    /// Required: No
+    ///
+    /// Type: GuardianOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GuardianOptions")]
+    pub guardian_options: Option<GuardianOptions>,
+
+
+    /// 
+    /// Settings for your VDM configuration as applicable to the Dashboard.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DashboardOptions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DashboardOptions")]
+    pub dashboard_options: Option<DashboardOptions>,
+
+}
+
+
 /// Settings for your VDM configuration as applicable to the Dashboard.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DashboardOptions {
 
 
@@ -179,7 +271,7 @@ pub struct DashboardOptions {
 
 
 /// An object that contains information about the suppression list preferences for your       account.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SuppressionOptions {
 
 
@@ -195,87 +287,5 @@ pub struct SuppressionOptions {
     /// Update requires: No interruption
     #[serde(rename = "SuppressedReasons")]
     pub suppressed_reasons: Option<Vec<String>>,
-
-}
-
-
-/// Settings for your VDM configuration as applicable to the Guardian.
-#[derive(Default, serde::Serialize)]
-pub struct GuardianOptions {
-
-
-    /// 
-    /// Specifies the status of your VDM optimized shared delivery. Can be one of the       following:
-    /// 
-    /// ENABLED – Amazon SES enables optimized shared delivery           for the configuration set.               DISABLED – Amazon SES disables optimized shared           delivery for the configuration set.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OptimizedSharedDelivery")]
-    pub optimized_shared_delivery: String,
-
-}
-
-
-/// Used to enable or disable email sending for messages that use this configuration set       in the current AWS Region.
-#[derive(Default, serde::Serialize)]
-pub struct SendingOptions {
-
-
-    /// 
-    /// If true, email sending is enabled for the configuration set. If         false, email sending is disabled for the configuration set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SendingEnabled")]
-    pub sending_enabled: Option<bool>,
-
-}
-
-
-/// Contains information about the reputation settings for a configuration set.
-#[derive(Default, serde::Serialize)]
-pub struct ReputationOptions {
-
-
-    /// 
-    /// Describes whether or not Amazon SES publishes reputation metrics for the configuration set,       such as bounce and complaint rates, to Amazon CloudWatch.
-    /// 
-    /// If the value is true, reputation metrics are published. If the value is         false, reputation metrics are not published. The default value is         false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReputationMetricsEnabled")]
-    pub reputation_metrics_enabled: Option<bool>,
-
-}
-
-
-/// A domain that is used to redirect email recipients to an Amazon SES-operated domain. This       domain captures open and click events generated by Amazon SES emails.
-///
-/// For more information, see Configuring Custom         Domains to Handle Open and Click Tracking in the Amazon SES Developer         Guide.
-#[derive(Default, serde::Serialize)]
-pub struct TrackingOptions {
-
-
-    /// 
-    /// The custom subdomain that is used to redirect email recipients to the Amazon SES event       tracking domain.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomRedirectDomain")]
-    pub custom_redirect_domain: Option<String>,
 
 }

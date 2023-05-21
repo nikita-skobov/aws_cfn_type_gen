@@ -5,36 +5,22 @@
 /// A virtual service is an abstraction of a real service that is provided by a virtual node     directly or indirectly by means of a virtual router. Dependent services call your virtual     service by its virtualServiceName, and those requests are routed to the     virtual node or virtual router that is specified as the provider for the virtual     service.
 ///
 /// For more information about virtual services, see Virtual services.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVirtualService {
 
 
     /// 
-    /// The name of the service mesh to create the virtual service in.
+    /// Optional metadata that you can apply to the virtual service to assist with     categorization and organization. Each tag consists of a key and an optional value, both of     which you define. Tag keys can have a maximum character length of 128 characters, and tag values can have       a maximum length of 256 characters.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeshName")]
-    pub mesh_name: String,
-
-
-    /// 
-    /// The virtual service specification to apply.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: VirtualServiceSpec
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Spec")]
-    pub spec: VirtualServiceSpec,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -66,23 +52,47 @@ pub struct CfnVirtualService {
 
 
     /// 
-    /// Optional metadata that you can apply to the virtual service to assist with     categorization and organization. Each tag consists of a key and an optional value, both of     which you define. Tag keys can have a maximum character length of 128 characters, and tag values can have       a maximum length of 256 characters.
+    /// The name of the service mesh to create the virtual service in.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MeshName")]
+    pub mesh_name: String,
+
+
+    /// 
+    /// The virtual service specification to apply.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: VirtualServiceSpec
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Spec")]
+    pub spec: VirtualServiceSpec,
 
+}
+
+impl cfn_resources::CfnResource for CfnVirtualService {
+    fn type_string() -> &'static str {
+        "AWS::AppMesh::VirtualService"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// An object that represents a virtual node service provider.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VirtualRouterServiceProvider {
 
 
@@ -111,19 +121,8 @@ pub struct VirtualRouterServiceProvider {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -136,11 +135,22 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
 
 
 /// An object that represents the provider for a virtual service.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VirtualServiceProvider {
 
 
@@ -171,7 +181,7 @@ pub struct VirtualServiceProvider {
 
 
 /// An object that represents the specification of a virtual service.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VirtualServiceSpec {
 
 
@@ -190,7 +200,7 @@ pub struct VirtualServiceSpec {
 
 
 /// An object that represents a virtual node service provider.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VirtualNodeServiceProvider {
 
 

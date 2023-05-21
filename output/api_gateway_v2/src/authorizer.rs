@@ -1,56 +1,32 @@
 
 
 /// The AWS::ApiGatewayV2::Authorizer resource creates an authorizer for a       WebSocket API or an HTTP API. To learn more, see Controlling and managing access to a WebSocket API in API Gateway and         Controlling and         managing access to an HTTP API in API Gateway in the API Gateway         Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAuthorizer {
 
 
     /// 
-    /// Specifies the format of the payload sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers. Supported values are 1.0 and 2.0. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
+    /// Specifies whether a Lambda authorizer returns a response in a simple format. By default, a Lambda authorizer must return an IAM policy. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizerPayloadFormatVersion")]
-    pub authorizer_payload_format_version: Option<String>,
+    #[serde(rename = "EnableSimpleResponses")]
+    pub enable_simple_responses: Option<bool>,
 
 
     /// 
-    /// The API identifier.
+    /// The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs).
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
-
-
-    /// 
-    /// The JWTConfiguration property specifies the configuration of a JWT          authorizer. Required for the JWT authorizer type. Supported only for          HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: JWTConfiguration
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "JwtConfiguration")]
-    pub jwt_configuration: Option<JWTConfiguration>,
-
-
-    /// 
-    /// This parameter is not used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IdentityValidationExpression")]
-    pub identity_validation_expression: Option<String>,
+    #[serde(rename = "AuthorizerType")]
+    pub authorizer_type: String,
 
 
     /// 
@@ -67,42 +43,6 @@ pub struct CfnAuthorizer {
     /// Update requires: No interruption
     #[serde(rename = "IdentitySource")]
     pub identity_source: Option<Vec<String>>,
-
-
-    /// 
-    /// Specifies whether a Lambda authorizer returns a response in a simple format. By default, a Lambda authorizer must return an IAM policy. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy. Supported only for HTTP APIs. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableSimpleResponses")]
-    pub enable_simple_responses: Option<bool>,
-
-
-    /// 
-    /// The time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization         caching is disabled. If it is greater than 0, API Gateway caches authorizer         responses. The maximum value is 3600, or 1 hour. Supported only for HTTP API Lambda authorizers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizerResultTtlInSeconds")]
-    pub authorizer_result_ttl_in_seconds: Option<i64>,
-
-
-    /// 
-    /// The name of the authorizer.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -130,21 +70,91 @@ pub struct CfnAuthorizer {
 
 
     /// 
-    /// The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs).
+    /// This parameter is not used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IdentityValidationExpression")]
+    pub identity_validation_expression: Option<String>,
+
+
+    /// 
+    /// The name of the authorizer.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthorizerType")]
-    pub authorizer_type: String,
+    #[serde(rename = "Name")]
+    pub name: String,
 
+
+    /// 
+    /// The JWTConfiguration property specifies the configuration of a JWT          authorizer. Required for the JWT authorizer type. Supported only for          HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: JWTConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JwtConfiguration")]
+    pub jwt_configuration: Option<JWTConfiguration>,
+
+
+    /// 
+    /// Specifies the format of the payload sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers. Supported values are 1.0 and 2.0. To learn more, see Working with AWS Lambda authorizers for HTTP APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerPayloadFormatVersion")]
+    pub authorizer_payload_format_version: Option<String>,
+
+
+    /// 
+    /// The time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization         caching is disabled. If it is greater than 0, API Gateway caches authorizer         responses. The maximum value is 3600, or 1 hour. Supported only for HTTP API Lambda authorizers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizerResultTtlInSeconds")]
+    pub authorizer_result_ttl_in_seconds: Option<i64>,
+
+
+    /// 
+    /// The API identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnAuthorizer {
+    fn type_string() -> &'static str {
+        "AWS::ApiGatewayV2::Authorizer"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The JWTConfiguration property specifies the configuration of a JWT          authorizer. Required for the JWT authorizer type. Supported only for          HTTP APIs.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JWTConfiguration {
 
 

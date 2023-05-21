@@ -1,7 +1,7 @@
 
 
 /// The AWS::ApiGateway::Account resource specifies the IAM role that Amazon API Gateway uses to write API logs to Amazon CloudWatch Logs. To avoid overwriting other roles, you should only have one AWS::ApiGateway::Account resource per region per account.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccount {
 
 
@@ -16,4 +16,14 @@ pub struct CfnAccount {
     #[serde(rename = "CloudWatchRoleArn")]
     pub cloud_watch_role_arn: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnAccount {
+    fn type_string() -> &'static str {
+        "AWS::ApiGateway::Account"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

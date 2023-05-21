@@ -3,32 +3,52 @@
 /// Creates an instance in a specified stack. For more information, see Adding an     Instance to a Layer.
 ///
 /// Required Permissions: To use this action, an IAM user must have a Manage permissions    level for the stack, or an attached policy that explicitly grants permissions. For more    information on user permissions, see Managing User     Permissions.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInstance {
 
 
     /// 
-    /// The instance's Amazon EC2 key-pair name.
+    /// Whether to create an Amazon EBS-optimized instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EbsOptimized")]
+    pub ebs_optimized: Option<bool>,
+
+
+    /// 
+    /// The instance's operating system, which must be set to one of the following.
+    /// 
+    /// A supported Linux operating system: An Amazon Linux version, such as Amazon Linux 2, Amazon Linux 2018.03, Amazon Linux 2017.09, Amazon Linux 2017.03, Amazon Linux 2016.09,        Amazon Linux 2016.03, Amazon Linux 2015.09, or Amazon Linux 2015.03.               A supported Ubuntu operating system, such as Ubuntu 18.04 LTS, Ubuntu 16.04 LTS, Ubuntu 14.04 LTS, or Ubuntu 12.04 LTS.                        CentOS Linux 7                                Red Hat Enterprise Linux 7                       A supported Windows operating system, such as Microsoft Windows Server 2012 R2 Base, Microsoft Windows Server 2012 R2 with SQL Server Express, 			  Microsoft Windows Server 2012 R2 with SQL Server Standard, or Microsoft Windows Server 2012 R2 with SQL Server Web.               A custom AMI: Custom.
+    /// 
+    /// Not all operating systems are supported with all versions of Chef. For more information about the supported operating systems,      see AWS OpsWorks Stacks Operating Systems.
+    /// 
+    /// The default option is the current Amazon Linux version. If you set this parameter to     Custom, you must use the CreateInstance action's AmiId parameter to    specify the custom AMI that you want to use. Block device mappings are not supported if the value is Custom.      For more information about how to use custom AMIs with AWS OpsWorks Stacks, see Using     Custom AMIs.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SshKeyName")]
-    pub ssh_key_name: Option<String>,
+    #[serde(rename = "Os")]
+    pub os: Option<String>,
 
 
     /// 
-    /// A list of AWS OpsWorks volume IDs to associate with the instance. For more     information, see AWS::OpsWorks::Volume.
+    /// The instance architecture. The default option is x86_64. Instance types do not    necessarily support both architectures. For a list of the architectures that are supported by    the different instance types, see Instance Families and     Types.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
+    ///
+    /// Allowed values: i386 | x86_64
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Volumes")]
-    pub volumes: Option<Vec<String>>,
+    #[serde(rename = "Architecture")]
+    pub architecture: Option<String>,
 
 
     /// 
@@ -48,81 +68,39 @@ pub struct CfnInstance {
 
 
     /// 
-    /// An array of BlockDeviceMapping objects that specify the instance's block    devices. For more information, see Block     Device Mapping. Note that block device mappings are not supported for custom AMIs.
+    /// The instance type, such as t2.micro. For a list of supported instance types,    open the stack in the console, choose Instances, and choose + Instance.    The Size list contains the currently supported types.      For more information, see Instance     Families and Types. The parameter values that you use to specify the various types are    in the API Name column of the Available Instance Types table.
     /// 
-    /// Required: No
-    ///
-    /// Type: List of BlockDeviceMapping
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BlockDeviceMappings")]
-    pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
-
-
-    /// 
-    /// The instance architecture. The default option is x86_64. Instance types do not    necessarily support both architectures. For a list of the architectures that are supported by    the different instance types, see Instance Families and     Types.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
-    ///
-    /// Allowed values: i386 | x86_64
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Architecture")]
-    pub architecture: Option<String>,
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
 
 
     /// 
-    /// The instance root device type. For more information, see Storage for the Root Device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ebs | instance-store
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RootDeviceType")]
-    pub root_device_type: Option<String>,
-
-
-    /// 
-    /// The Availability Zone of the AWS OpsWorks instance, such as     us-east-2a.
+    /// A list of Elastic IP addresses to associate with the instance.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "ElasticIps")]
+    pub elastic_ips: Option<Vec<String>>,
 
 
     /// 
-    /// The instance's virtualization type, paravirtual or hvm.
+    /// The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the stack's      default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VirtualizationType")]
-    pub virtualization_type: Option<String>,
-
-
-    /// 
-    /// For load-based or time-based instances, the type. Windows stacks can use only time-based instances.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: load | timer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AutoScalingType")]
-    pub auto_scaling_type: Option<String>,
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: Option<String>,
 
 
     /// 
@@ -140,15 +118,15 @@ pub struct CfnInstance {
 
 
     /// 
-    /// A list of Elastic IP addresses to associate with the instance.
+    /// The instance's virtualization type, paravirtual or hvm.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ElasticIps")]
-    pub elastic_ips: Option<Vec<String>>,
+    /// Update requires: Replacement
+    #[serde(rename = "VirtualizationType")]
+    pub virtualization_type: Option<String>,
 
 
     /// 
@@ -166,39 +144,79 @@ pub struct CfnInstance {
 
 
     /// 
-    /// The stack ID.
+    /// The instance root device type. For more information, see Storage for the Root Device.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ebs | instance-store
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RootDeviceType")]
+    pub root_device_type: Option<String>,
+
+
+    /// 
+    /// An array of BlockDeviceMapping objects that specify the instance's block    devices. For more information, see Block     Device Mapping. Note that block device mappings are not supported for custom AMIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of BlockDeviceMapping
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BlockDeviceMappings")]
+    pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
+
+
+    /// 
+    /// The Availability Zone of the AWS OpsWorks instance, such as     us-east-2a.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "StackId")]
-    pub stack_id: String,
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
 
 
     /// 
-    /// Whether to create an Amazon EBS-optimized instance.
+    /// The time-based scaling configuration for the instance.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: TimeBasedAutoScaling
+    ///
+    /// Allowed values: load | timer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EbsOptimized")]
-    pub ebs_optimized: Option<bool>,
+    #[serde(rename = "TimeBasedAutoScaling")]
+    pub time_based_auto_scaling: Option<TimeBasedAutoScaling>,
 
 
     /// 
-    /// The instance type, such as t2.micro. For a list of supported instance types,    open the stack in the console, choose Instances, and choose + Instance.    The Size list contains the currently supported types.      For more information, see Instance     Families and Types. The parameter values that you use to specify the various types are    in the API Name column of the Available Instance Types table.
+    /// A list of AWS OpsWorks volume IDs to associate with the instance. For more     information, see AWS::OpsWorks::Volume.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Volumes")]
+    pub volumes: Option<Vec<String>>,
+
+
+    /// 
+    /// The instance's Amazon EC2 key-pair name.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    #[serde(rename = "SshKeyName")]
+    pub ssh_key_name: Option<String>,
 
 
     /// 
@@ -228,47 +246,29 @@ pub struct CfnInstance {
 
 
     /// 
-    /// The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the stack's      default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.
+    /// The stack ID.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: Option<String>,
+    #[serde(rename = "StackId")]
+    pub stack_id: String,
 
 
     /// 
-    /// The time-based scaling configuration for the instance.
+    /// For load-based or time-based instances, the type. Windows stacks can use only time-based instances.
     /// 
     /// Required: No
     ///
-    /// Type: TimeBasedAutoScaling
+    /// Type: String
     ///
     /// Allowed values: load | timer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TimeBasedAutoScaling")]
-    pub time_based_auto_scaling: Option<TimeBasedAutoScaling>,
-
-
-    /// 
-    /// The instance's operating system, which must be set to one of the following.
-    /// 
-    /// A supported Linux operating system: An Amazon Linux version, such as Amazon Linux 2, Amazon Linux 2018.03, Amazon Linux 2017.09, Amazon Linux 2017.03, Amazon Linux 2016.09,        Amazon Linux 2016.03, Amazon Linux 2015.09, or Amazon Linux 2015.03.               A supported Ubuntu operating system, such as Ubuntu 18.04 LTS, Ubuntu 16.04 LTS, Ubuntu 14.04 LTS, or Ubuntu 12.04 LTS.                        CentOS Linux 7                                Red Hat Enterprise Linux 7                       A supported Windows operating system, such as Microsoft Windows Server 2012 R2 Base, Microsoft Windows Server 2012 R2 with SQL Server Express, 			  Microsoft Windows Server 2012 R2 with SQL Server Standard, or Microsoft Windows Server 2012 R2 with SQL Server Web.               A custom AMI: Custom.
-    /// 
-    /// Not all operating systems are supported with all versions of Chef. For more information about the supported operating systems,      see AWS OpsWorks Stacks Operating Systems.
-    /// 
-    /// The default option is the current Amazon Linux version. If you set this parameter to     Custom, you must use the CreateInstance action's AmiId parameter to    specify the custom AMI that you want to use. Block device mappings are not supported if the value is Custom.      For more information about how to use custom AMIs with AWS OpsWorks Stacks, see Using     Custom AMIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Os")]
-    pub os: Option<String>,
+    #[serde(rename = "AutoScalingType")]
+    pub auto_scaling_type: Option<String>,
 
 
     /// 
@@ -284,10 +284,32 @@ pub struct CfnInstance {
 
 }
 
+impl cfn_resources::CfnResource for CfnInstance {
+    fn type_string() -> &'static str {
+        "AWS::OpsWorks::Instance"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Describes a block device mapping. This data type maps directly to the Amazon EC2 BlockDeviceMapping data type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BlockDeviceMapping {
+
+
+    /// 
+    /// The virtual device name. For more information, see BlockDeviceMapping.       You can specify either the VirtualName or Ebs, but not both.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VirtualName")]
+    pub virtual_name: Option<String>,
 
 
     /// 
@@ -325,29 +347,12 @@ pub struct BlockDeviceMapping {
     #[serde(rename = "NoDevice")]
     pub no_device: Option<String>,
 
-
-    /// 
-    /// The virtual device name. For more information, see BlockDeviceMapping.       You can specify either the VirtualName or Ebs, but not both.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VirtualName")]
-    pub virtual_name: Option<String>,
-
 }
 
 
 /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EbsBlockDevice {
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-volumetype
-    #[serde(rename = "VolumeType")]
-    pub volume_type: Option<String>,
 
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-deleteontermination
@@ -355,9 +360,14 @@ pub struct EbsBlockDevice {
     pub delete_on_termination: Option<bool>,
 
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-snapshotid
-    #[serde(rename = "SnapshotId")]
-    pub snapshot_id: Option<String>,
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-volumesize
+    #[serde(rename = "VolumeSize")]
+    pub volume_size: Option<i64>,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-volumetype
+    #[serde(rename = "VolumeType")]
+    pub volume_type: Option<String>,
 
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-iops
@@ -365,16 +375,28 @@ pub struct EbsBlockDevice {
     pub iops: Option<i64>,
 
 
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-volumesize
-    #[serde(rename = "VolumeSize")]
-    pub volume_size: Option<i64>,
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-snapshotid
+    #[serde(rename = "SnapshotId")]
+    pub snapshot_id: Option<String>,
 
 }
 
 
 /// Describes an instance's time-based auto scaling configuration.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TimeBasedAutoScaling {
+
+
+    /// 
+    /// The schedule for Tuesday.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tuesday")]
+    pub tuesday: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -387,18 +409,6 @@ pub struct TimeBasedAutoScaling {
     /// Update requires: No interruption
     #[serde(rename = "Thursday")]
     pub thursday: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The schedule for Friday.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Friday")]
-    pub friday: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -438,18 +448,6 @@ pub struct TimeBasedAutoScaling {
 
 
     /// 
-    /// The schedule for Tuesday.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tuesday")]
-    pub tuesday: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
     /// The schedule for Monday.
     /// 
     /// Required: No
@@ -459,5 +457,17 @@ pub struct TimeBasedAutoScaling {
     /// Update requires: No interruption
     #[serde(rename = "Monday")]
     pub monday: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The schedule for Friday.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Friday")]
+    pub friday: Option<std::collections::HashMap<String, String>>,
 
 }

@@ -1,8 +1,68 @@
 
 
 /// The AWS::DataSync::LocationObjectStorage resource specifies an endpoint for     a self-managed object storage bucket. For more information about self-managed object     storage locations, see Creating a Location for       Object Storage.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationObjectStorage {
+
+
+    /// 
+    /// Specifies the domain name or IP address of the object storage server. A DataSync    agent uses this hostname to mount the object storage server in a network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServerHostname")]
+    pub server_hostname: Option<String>,
+
+
+    /// 
+    /// Specifies the port that your object storage server accepts inbound network traffic on (for    example, port 443).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65536
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerPort")]
+    pub server_port: Option<i64>,
+
+
+    /// 
+    /// Specifies the protocol that your object storage server uses to communicate.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: HTTP | HTTPS
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerProtocol")]
+    pub server_protocol: Option<String>,
+
+
+    /// 
+    /// Specifies the Amazon Resource Names (ARNs) of the DataSync agents that can    securely connect with your location.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
 
 
     /// 
@@ -24,33 +84,21 @@ pub struct CfnLocationObjectStorage {
 
 
     /// 
-    /// Specifies the key-value pair that represents a tag that you want to add to the resource.    Tags can help you manage, filter, and search for your resources. We recommend creating a name    tag for your location.
+    /// Specifies a file with the certificates that are used to sign the object storage server's    certificate (for example, file:///home/user/.ssh/storage_sys_certificate.pem).    The file you specify must include the following:
     /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
+    /// The certificate of the signing certificate authority (CA)               Any intermediate certificates               base64 encoding               A .pem extension
     /// 
-    /// Specifies the domain name or IP address of the object storage server. A DataSync    agent uses this hostname to mount the object storage server in a network.
+    /// The file can be up to 32768 bytes (before base64 encoding).
+    /// 
+    /// To use this parameter, configure ServerProtocol to HTTPS.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServerHostname")]
-    pub server_hostname: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "ServerCertificate")]
+    pub server_certificate: Option<String>,
 
 
     /// 
@@ -90,51 +138,17 @@ pub struct CfnLocationObjectStorage {
 
 
     /// 
-    /// Specifies the port that your object storage server accepts inbound network traffic on (for    example, port 443).
+    /// Specifies the key-value pair that represents a tag that you want to add to the resource.    Tags can help you manage, filter, and search for your resources. We recommend creating a name    tag for your location.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of Tag
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65536
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ServerPort")]
-    pub server_port: Option<i64>,
-
-
-    /// 
-    /// Specifies a file with the certificates that are used to sign the object storage server's    certificate (for example, file:///home/user/.ssh/storage_sys_certificate.pem).    The file you specify must include the following:
-    /// 
-    /// The certificate of the signing certificate authority (CA)               Any intermediate certificates               base64 encoding               A .pem extension
-    /// 
-    /// The file can be up to 32768 bytes (before base64 encoding).
-    /// 
-    /// To use this parameter, configure ServerProtocol to HTTPS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerCertificate")]
-    pub server_certificate: Option<String>,
-
-
-    /// 
-    /// Specifies the protocol that your object storage server uses to communicate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: HTTP | HTTPS
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerProtocol")]
-    pub server_protocol: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -152,20 +166,16 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "Subdirectory")]
     pub subdirectory: Option<String>,
 
+}
 
-    /// 
-    /// Specifies the Amazon Resource Names (ARNs) of the DataSync agents that can    securely connect with your location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
+impl cfn_resources::CfnResource for CfnLocationObjectStorage {
+    fn type_string() -> &'static str {
+        "AWS::DataSync::LocationObjectStorage"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -176,7 +186,7 @@ pub struct CfnLocationObjectStorage {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

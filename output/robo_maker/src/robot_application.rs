@@ -1,8 +1,20 @@
 
 
 /// The AWS::RoboMaker::RobotApplication resource creates an AWS     RoboMaker robot application.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRobotApplication {
+
+
+    /// 
+    /// The environment of the robot application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Environment")]
+    pub environment: Option<String>,
 
 
     /// 
@@ -18,18 +30,6 @@ pub struct CfnRobotApplication {
 
 
     /// 
-    /// The sources of the robot application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of SourceConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Sources")]
-    pub sources: Option<Vec<SourceConfig>>,
-
-
-    /// 
     /// The current revision id.
     /// 
     /// Required: No
@@ -42,15 +42,15 @@ pub struct CfnRobotApplication {
 
 
     /// 
-    /// The environment of the robot application.
+    /// The sources of the robot application.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of SourceConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Environment")]
-    pub environment: Option<String>,
+    #[serde(rename = "Sources")]
+    pub sources: Option<Vec<SourceConfig>>,
 
 
     /// 
@@ -84,63 +84,20 @@ pub struct CfnRobotApplication {
 
 }
 
+impl cfn_resources::CfnResource for CfnRobotApplication {
+    fn type_string() -> &'static str {
+        "AWS::RoboMaker::RobotApplication"
+    }
 
-/// Information about a robot software suite.
-#[derive(Default, serde::Serialize)]
-pub struct RobotSoftwareSuite {
-
-
-    /// 
-    /// The version of the robot software suite. Not applicable for General software suite.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Dashing | Foxy | Kinetic | Melodic
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
-
-
-    /// 
-    /// The name of the robot software suite. General is the only supported value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: General | ROS | ROS2
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Information about a source configuration.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SourceConfig {
-
-
-    /// 
-    /// The Amazon S3 bucket name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: [a-z0-9][a-z0-9.\-]*[a-z0-9]
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
 
 
     /// 
@@ -173,5 +130,58 @@ pub struct SourceConfig {
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
     pub s3_key: String,
+
+
+    /// 
+    /// The Amazon S3 bucket name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: [a-z0-9][a-z0-9.\-]*[a-z0-9]
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3Bucket")]
+    pub s3_bucket: String,
+
+}
+
+
+/// Information about a robot software suite.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RobotSoftwareSuite {
+
+
+    /// 
+    /// The version of the robot software suite. Not applicable for General software suite.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Dashing | Foxy | Kinetic | Melodic
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
+
+
+    /// 
+    /// The name of the robot software suite. General is the only supported value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: General | ROS | ROS2
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }

@@ -1,20 +1,32 @@
 
 
 /// The AWS::ApiGatewayV2::Route resource creates a route for an          API.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRoute {
 
 
     /// 
-    /// The route key for the route. For HTTP APIs, the route key can be either $default, or a combination of an HTTP method and resource path, for example, GET /pets.
+    /// Specifies whether an API key is required for the route. Supported only for WebSocket APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApiKeyRequired")]
+    pub api_key_required: Option<bool>,
+
+
+    /// 
+    /// The API identifier.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RouteKey")]
-    pub route_key: String,
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
 
 
     /// 
@@ -27,6 +39,54 @@ pub struct CfnRoute {
     /// Update requires: No interruption
     #[serde(rename = "OperationName")]
     pub operation_name: Option<String>,
+
+
+    /// 
+    /// The authorization type for the route. For WebSocket APIs, valid values are        NONE for open access, AWS_IAM for using AWS IAM        permissions, and CUSTOM for using a Lambda        authorizer. For HTTP APIs, valid values are NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using AWS IAM         permissions, and CUSTOM for using a Lambda authorizer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizationType")]
+    pub authorization_type: Option<String>,
+
+
+    /// 
+    /// The target for the route.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Target")]
+    pub target: Option<String>,
+
+
+    /// 
+    /// The model selection expression for the route. Supported only for WebSocket APIs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ModelSelectionExpression")]
+    pub model_selection_expression: Option<String>,
+
+
+    /// 
+    /// The route key for the route. For HTTP APIs, the route key can be either $default, or a combination of an HTTP method and resource path, for example, GET /pets.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RouteKey")]
+    pub route_key: String,
 
 
     /// 
@@ -54,30 +114,6 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The model selection expression for the route. Supported only for WebSocket APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ModelSelectionExpression")]
-    pub model_selection_expression: Option<String>,
-
-
-    /// 
-    /// Specifies whether an API key is required for the route. Supported only for WebSocket APIs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApiKeyRequired")]
-    pub api_key_required: Option<bool>,
-
-
-    /// 
     /// The authorization scopes supported by this route.
     /// 
     /// Required: No
@@ -102,18 +138,6 @@ pub struct CfnRoute {
 
 
     /// 
-    /// The target for the route.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Target")]
-    pub target: Option<String>,
-
-
-    /// 
     /// The request models for the route. Supported only for WebSocket APIs.
     /// 
     /// Required: No
@@ -124,28 +148,14 @@ pub struct CfnRoute {
     #[serde(rename = "RequestModels")]
     pub request_models: Option<serde_json::Value>,
 
+}
 
-    /// 
-    /// The authorization type for the route. For WebSocket APIs, valid values are        NONE for open access, AWS_IAM for using AWS IAM        permissions, and CUSTOM for using a Lambda        authorizer. For HTTP APIs, valid values are NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using AWS IAM         permissions, and CUSTOM for using a Lambda authorizer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizationType")]
-    pub authorization_type: Option<String>,
+impl cfn_resources::CfnResource for CfnRoute {
+    fn type_string() -> &'static str {
+        "AWS::ApiGatewayV2::Route"
+    }
 
-
-    /// 
-    /// The API identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

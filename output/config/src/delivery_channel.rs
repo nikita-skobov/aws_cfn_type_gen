@@ -9,8 +9,32 @@
 /// When you create the delivery channel, you can specify; how often AWS Config delivers configuration snapshots to your Amazon S3 bucket (for example, 24 hours),            the S3 bucket to which AWS Config sends configuration snapshots and configuration history files, and the       Amazon SNS topic to which AWS Config sends notifications about configuration changes, such as updated resources, AWS Config rule evaluations, and when AWS Config delivers the configuration snapshot to your S3 bucket.      For more information, see Deliver Configuration Items in the AWS Config Developer Guide.
 ///
 /// For more information, see Managing the Delivery Channel in the AWS Config Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeliveryChannel {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS ) AWS KMS key (KMS key) used to encrypt objects delivered by AWS Config. 			Must belong to the same Region as the destination S3 bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3KmsKeyArn")]
+    pub s3_kms_key_arn: Option<String>,
+
+
+    /// 
+    /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ConfigSnapshotDeliveryProperties
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ConfigSnapshotDeliveryProperties")]
+    pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
 
 
     /// 
@@ -29,32 +53,6 @@ pub struct CfnDeliveryChannel {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which 			AWS Config sends notifications about configuration 			changes.
-    /// 
-    /// If you choose a topic from another account, the topic must have 			policies that grant access permissions to AWS Config. For more 			information, see Permissions for the Amazon SNS Topic in the         AWS Config 			Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnsTopicARN")]
-    pub sns_topic_arn: Option<String>,
-
-
-    /// 
-    /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConfigSnapshotDeliveryProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigSnapshotDeliveryProperties")]
-    pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
 
 
     /// 
@@ -84,16 +82,28 @@ pub struct CfnDeliveryChannel {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS ) AWS KMS key (KMS key) used to encrypt objects delivered by AWS Config. 			Must belong to the same Region as the destination S3 bucket.
+    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which 			AWS Config sends notifications about configuration 			changes.
+    /// 
+    /// If you choose a topic from another account, the topic must have 			policies that grant access permissions to AWS Config. For more 			information, see Permissions for the Amazon SNS Topic in the         AWS Config 			Developer Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3KmsKeyArn")]
-    pub s3_kms_key_arn: Option<String>,
+    #[serde(rename = "SnsTopicARN")]
+    pub sns_topic_arn: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnDeliveryChannel {
+    fn type_string() -> &'static str {
+        "AWS::Config::DeliveryChannel"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -106,7 +116,7 @@ pub struct CfnDeliveryChannel {
 /// You should set the MaximumExecutionFrequency value 			to be at least as frequent as the deliveryFrequency 			value. You can view the deliveryFrequency value by 			using the DescribeDeliveryChannnels action.
 ///
 /// To update the deliveryFrequency with which AWS Config delivers your configuration snapshots, use the PutDeliveryChannel action.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfigSnapshotDeliveryProperties {
 
 

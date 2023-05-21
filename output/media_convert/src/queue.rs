@@ -1,32 +1,8 @@
 
 
 /// The AWS::MediaConvert::Queue resource is an AWS Elemental MediaConvert resource type       that you can use to manage the resources that are available to your account for parallel       processing of jobs. For more information about queues, see Working with AWS Elemental MediaConvert Queues in the AWS Elemental MediaConvert User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnQueue {
-
-
-    /// 
-    /// Optional. A description of the queue that you are creating.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// Initial state of the queue. Queues can be either ACTIVE or PAUSED. If you create a       paused queue, then jobs that you send to that queue won't begin.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
 
 
     /// 
@@ -58,6 +34,18 @@ pub struct CfnQueue {
 
 
     /// 
+    /// Optional. A description of the queue that you are creating.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The name of the queue that you are creating.
     /// 
     /// Required: No
@@ -68,4 +56,26 @@ pub struct CfnQueue {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// Initial state of the queue. Queues can be either ACTIVE or PAUSED. If you create a       paused queue, then jobs that you send to that queue won't begin.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnQueue {
+    fn type_string() -> &'static str {
+        "AWS::MediaConvert::Queue"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

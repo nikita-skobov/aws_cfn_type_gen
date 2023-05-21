@@ -1,20 +1,22 @@
 
 
 /// Describes an endpoint authorization for authorizing Redshift-managed VPC endpoint access to a cluster across AWS accounts.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEndpointAuthorization {
 
 
     /// 
-    /// The virtual private cloud (VPC) identifiers to grant access to.
+    /// The AWS account ID of either the cluster owner (grantor) or grantee.     If Grantee parameter is true, then the Account value is of the grantor.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcIds")]
-    pub vpc_ids: Option<Vec<String>>,
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Account")]
+    pub account: String,
 
 
     /// 
@@ -44,16 +46,24 @@ pub struct CfnEndpointAuthorization {
 
 
     /// 
-    /// The AWS account ID of either the cluster owner (grantor) or grantee.     If Grantee parameter is true, then the Account value is of the grantor.
+    /// The virtual private cloud (VPC) identifiers to grant access to.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Account")]
-    pub account: String,
+    /// Update requires: No interruption
+    #[serde(rename = "VpcIds")]
+    pub vpc_ids: Option<Vec<String>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnEndpointAuthorization {
+    fn type_string() -> &'static str {
+        "AWS::Redshift::EndpointAuthorization"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -1,8 +1,48 @@
 
 
 /// Creates a project, which is the logical object in Evidently that can contain features, launches, and       experiments. Use projects to group similar features together.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProject {
+
+
+    /// 
+    /// An optional description of the project.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Use this parameter if the project will use client-side evaluation powered by AWS AppConfig. Client-side       evaluation allows your application to assign variations to user       sessions locally instead of by calling the EvaluateFeature operation. This       mitigates the latency and availability risks that come with an API call. For more information,       see         Use client-side evaluation - powered by AWS AppConfig.
+    /// 
+    /// This parameter is a structure that       contains information about the AWS AppConfig application that will be used as for client-side evaluation.
+    /// 
+    /// To create a project that uses client-side evaluation, you must have the       evidently:ExportProjectAsConfiguration permission.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AppConfigResourceObject
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppConfigResource")]
+    pub app_config_resource: Option<AppConfigResourceObject>,
+
+
+    /// 
+    /// The name for the project. It can include up to 127 characters.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -26,46 +66,6 @@ pub struct CfnProject {
 
 
     /// 
-    /// The name for the project. It can include up to 127 characters.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// Use this parameter if the project will use client-side evaluation powered by AWS AppConfig. Client-side       evaluation allows your application to assign variations to user       sessions locally instead of by calling the EvaluateFeature operation. This       mitigates the latency and availability risks that come with an API call. For more information,       see         Use client-side evaluation - powered by AWS AppConfig.
-    /// 
-    /// This parameter is a structure that       contains information about the AWS AppConfig application that will be used as for client-side evaluation.
-    /// 
-    /// To create a project that uses client-side evaluation, you must have the       evidently:ExportProjectAsConfiguration permission.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AppConfigResourceObject
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppConfigResource")]
-    pub app_config_resource: Option<AppConfigResourceObject>,
-
-
-    /// 
-    /// An optional description of the project.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// A structure that contains information about where Evidently is to store       evaluation events for longer term storage, if you choose to do so. If you choose       not to store these events, Evidently deletes them after using them to produce metrics and other experiment       results that you can view.
     /// 
     /// You can't specify both CloudWatchLogs and S3Destination in the same operation.
@@ -80,6 +80,47 @@ pub struct CfnProject {
 
 }
 
+impl cfn_resources::CfnResource for CfnProject {
+    fn type_string() -> &'static str {
+        "AWS::Evidently::Project"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Destination {
+
+
+    /// 
+    /// The bucket prefix in which Evidently stores evaluation events.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Prefix")]
+    pub prefix: Option<String>,
+
+
+    /// 
+    /// The name of the bucket in which Evidently stores evaluation events.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketName")]
+    pub bucket_name: String,
+
+}
+
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -88,7 +129,7 @@ pub struct CfnProject {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -116,39 +157,39 @@ pub struct Tag {
 }
 
 
-/// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
-#[derive(Default, serde::Serialize)]
-pub struct S3Destination {
+/// This is a structure that defines the configuration of how your application       integrates with AWS AppConfig to run client-side evaluation.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AppConfigResourceObject {
 
 
     /// 
-    /// The name of the bucket in which Evidently stores evaluation events.
-    ///
+    /// The ID of the AWS AppConfig application to use for client-side evaluation.
+    /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "BucketName")]
-    pub bucket_name: String,
+    #[serde(rename = "ApplicationId")]
+    pub application_id: String,
 
 
     /// 
-    /// The bucket prefix in which Evidently stores evaluation events.
-    ///
-    /// Required: No
+    /// The ID of the AWS AppConfig environment to use for client-side evaluation.
+    /// 
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Prefix")]
-    pub prefix: Option<String>,
+    #[serde(rename = "EnvironmentId")]
+    pub environment_id: String,
 
 }
 
 
 /// A structure that contains information about where Evidently is to store       evaluation events for longer term storage.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataDeliveryObject {
 
 
@@ -174,36 +215,5 @@ pub struct DataDeliveryObject {
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
     pub log_group: Option<String>,
-
-}
-
-
-/// This is a structure that defines the configuration of how your application       integrates with AWS AppConfig to run client-side evaluation.
-#[derive(Default, serde::Serialize)]
-pub struct AppConfigResourceObject {
-
-
-    /// 
-    /// The ID of the AWS AppConfig environment to use for client-side evaluation.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnvironmentId")]
-    pub environment_id: String,
-
-
-    /// 
-    /// The ID of the AWS AppConfig application to use for client-side evaluation.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplicationId")]
-    pub application_id: String,
 
 }

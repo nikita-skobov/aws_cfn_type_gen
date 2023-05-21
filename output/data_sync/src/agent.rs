@@ -3,7 +3,7 @@
 /// The AWS::DataSync::Agent resource activates an AWS DataSync     agent that you've deployed for storage discovery or data transfers. The activation process     associates the agent with your AWS account.
 ///
 /// For more information, see the following topics in the AWS DataSync       User Guide:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAgent {
 
 
@@ -23,6 +23,36 @@ pub struct CfnAgent {
     /// Update requires: Replacement
     #[serde(rename = "VpcEndpointId")]
     pub vpc_endpoint_id: Option<String>,
+
+
+    /// 
+    /// Specifies your DataSync agent's activation key. If you don't have an    activation key, see Activate your agent.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 29
+    ///
+    /// Pattern: [A-Z0-9]{5}(-[A-Z0-9]{5}){4}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ActivationKey")]
+    pub activation_key: Option<String>,
+
+
+    /// 
+    /// Specifies labels that help you categorize, filter, and search for your AWS resources.    We recommend creating at least one tag for your agent.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -58,22 +88,6 @@ pub struct CfnAgent {
 
 
     /// 
-    /// Specifies your DataSync agent's activation key. If you don't have an    activation key, see Activate your agent.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 29
-    ///
-    /// Pattern: [A-Z0-9]{5}(-[A-Z0-9]{5}){4}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ActivationKey")]
-    pub activation_key: Option<String>,
-
-
-    /// 
     /// The Amazon Resource Names (ARNs) of the security groups used to protect your data     transfer task subnets. See SecurityGroupArns.
     /// 
     /// Pattern:       ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
@@ -88,20 +102,16 @@ pub struct CfnAgent {
     #[serde(rename = "SecurityGroupArns")]
     pub security_group_arns: Option<Vec<String>>,
 
+}
 
-    /// 
-    /// Specifies labels that help you categorize, filter, and search for your AWS resources.    We recommend creating at least one tag for your agent.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnAgent {
+    fn type_string() -> &'static str {
+        "AWS::DataSync::Agent"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -112,7 +122,7 @@ pub struct CfnAgent {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

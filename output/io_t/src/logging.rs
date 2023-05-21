@@ -1,7 +1,7 @@
 
 
 /// Configure logging.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLogging {
 
 
@@ -18,18 +18,6 @@ pub struct CfnLogging {
 
 
     /// 
-    /// The role ARN used for the log.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: String,
-
-
-    /// 
     /// The account ID.
     /// 
     /// Required: Yes
@@ -40,4 +28,26 @@ pub struct CfnLogging {
     #[serde(rename = "AccountId")]
     pub account_id: String,
 
+
+    /// 
+    /// The role ARN used for the log.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnLogging {
+    fn type_string() -> &'static str {
+        "AWS::IoT::Logging"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

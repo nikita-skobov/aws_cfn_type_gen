@@ -1,8 +1,20 @@
 
 
 /// The AWS::ApiGateway::RequestValidator resource sets up basic validation rules for incoming requests to your API. For more information, see Enable Basic Request Validation for an API in API Gateway in the API Gateway Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRequestValidator {
+
+
+    /// 
+    /// A Boolean flag to indicate whether to validate request parameters (true) or not (false).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ValidateRequestParameters")]
+    pub validate_request_parameters: Option<bool>,
 
 
     /// 
@@ -30,18 +42,6 @@ pub struct CfnRequestValidator {
 
 
     /// 
-    /// A Boolean flag to indicate whether to validate request parameters (true) or not (false).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ValidateRequestParameters")]
-    pub validate_request_parameters: Option<bool>,
-
-
-    /// 
     /// A Boolean flag to indicate whether to validate a request body according to the configured Model schema.
     /// 
     /// Required: No
@@ -52,4 +52,14 @@ pub struct CfnRequestValidator {
     #[serde(rename = "ValidateRequestBody")]
     pub validate_request_body: Option<bool>,
 
+}
+
+impl cfn_resources::CfnResource for CfnRequestValidator {
+    fn type_string() -> &'static str {
+        "AWS::ApiGateway::RequestValidator"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

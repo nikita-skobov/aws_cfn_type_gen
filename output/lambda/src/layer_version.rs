@@ -1,68 +1,8 @@
 
 
 /// The AWS::Lambda::LayerVersion resource creates a Lambda layer from a ZIP archive.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLayerVersion {
-
-
-    /// 
-    /// The layer's software license. It can be any of the following:
-    /// 
-    /// An SPDX license identifier. For example,      MIT.               The URL of a license hosted on the internet. For example,      https://opensource.org/licenses/MIT.               The full text of the license.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 512
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LicenseInfo")]
-    pub license_info: Option<String>,
-
-
-    /// 
-    /// The function layer archive.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Content
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Content")]
-    pub content: Content,
-
-
-    /// 
-    /// The name or Amazon Resource Name (ARN) of the layer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 140
-    ///
-    /// Pattern: (arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LayerName")]
-    pub layer_name: Option<String>,
-
-
-    /// 
-    /// A list of compatible  instruction set architectures.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 2
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CompatibleArchitectures")]
-    pub compatible_architectures: Option<Vec<String>>,
 
 
     /// 
@@ -94,11 +34,81 @@ pub struct CfnLayerVersion {
     #[serde(rename = "CompatibleRuntimes")]
     pub compatible_runtimes: Option<Vec<String>>,
 
+
+    /// 
+    /// A list of compatible  instruction set architectures.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 2
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CompatibleArchitectures")]
+    pub compatible_architectures: Option<Vec<String>>,
+
+
+    /// 
+    /// The layer's software license. It can be any of the following:
+    /// 
+    /// An SPDX license identifier. For example,      MIT.               The URL of a license hosted on the internet. For example,      https://opensource.org/licenses/MIT.               The full text of the license.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 512
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LicenseInfo")]
+    pub license_info: Option<String>,
+
+
+    /// 
+    /// The name or Amazon Resource Name (ARN) of the layer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 140
+    ///
+    /// Pattern: (arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LayerName")]
+    pub layer_name: Option<String>,
+
+
+    /// 
+    /// The function layer archive.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Content
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Content")]
+    pub content: Content,
+
+}
+
+impl cfn_resources::CfnResource for CfnLayerVersion {
+    fn type_string() -> &'static str {
+        "AWS::Lambda::LayerVersion"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A ZIP archive that contains the contents of an Lambda layer.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Content {
 
 
@@ -119,6 +129,22 @@ pub struct Content {
 
 
     /// 
+    /// The Amazon S3 key of the layer archive.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Key")]
+    pub s3_key: String,
+
+
+    /// 
     /// The Amazon S3 bucket of the layer archive.
     /// 
     /// Required: Yes
@@ -134,21 +160,5 @@ pub struct Content {
     /// Update requires: Replacement
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
-
-
-    /// 
-    /// The Amazon S3 key of the layer archive.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Key")]
-    pub s3_key: String,
 
 }

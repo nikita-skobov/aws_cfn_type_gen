@@ -1,8 +1,20 @@
 
 
 /// The AWS::ApiGatewayV2::IntegrationResponse resource updates an          integration response for an WebSocket API. For more information, see Set up WebSocket API Integration Responses in API Gateway in the             API Gateway Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIntegrationResponse {
+
+
+    /// 
+    /// The collection of response templates for the integration response as a string-to-string map of key-value pairs. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResponseTemplates")]
+    pub response_templates: Option<serde_json::Value>,
 
 
     /// 
@@ -18,27 +30,15 @@ pub struct CfnIntegrationResponse {
 
 
     /// 
-    /// The API identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ApiId")]
-    pub api_id: String,
-
-
-    /// 
-    /// The collection of response templates for the integration response as a string-to-string map of key-value pairs. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.
+    /// The template selection expression for the integration response. Supported only for WebSocket APIs.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResponseTemplates")]
-    pub response_templates: Option<serde_json::Value>,
+    #[serde(rename = "TemplateSelectionExpression")]
+    pub template_selection_expression: Option<String>,
 
 
     /// 
@@ -60,18 +60,6 @@ pub struct CfnIntegrationResponse {
 
 
     /// 
-    /// A key-value map specifying response parameters that are passed to the method          response from the backend. The key is a method response header parameter name and          the mapped value is an integration response header value, a static value enclosed          within a pair of single quotes, or a JSON expression from the integration response          body. The mapping key must match the pattern of                method.response.header.{name}          , where name is a valid and unique header name. The mapped non-static value          must match the pattern of                integration.response.header.{name}          or integration.response.body.{JSON-expression}          , where             {name}          is a valid and unique response header name and             {JSON-expression}          is a valid JSON expression without the $ prefix.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResponseParameters")]
-    pub response_parameters: Option<serde_json::Value>,
-
-
-    /// 
     /// The integration response key.
     /// 
     /// Required: Yes
@@ -84,14 +72,36 @@ pub struct CfnIntegrationResponse {
 
 
     /// 
-    /// The template selection expression for the integration response. Supported only for WebSocket APIs.
+    /// A key-value map specifying response parameters that are passed to the method          response from the backend. The key is a method response header parameter name and          the mapped value is an integration response header value, a static value enclosed          within a pair of single quotes, or a JSON expression from the integration response          body. The mapping key must match the pattern of                method.response.header.{name}          , where name is a valid and unique header name. The mapped non-static value          must match the pattern of                integration.response.header.{name}          or integration.response.body.{JSON-expression}          , where             {name}          is a valid and unique response header name and             {JSON-expression}          is a valid JSON expression without the $ prefix.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TemplateSelectionExpression")]
-    pub template_selection_expression: Option<String>,
+    #[serde(rename = "ResponseParameters")]
+    pub response_parameters: Option<serde_json::Value>,
 
+
+    /// 
+    /// The API identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ApiId")]
+    pub api_id: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnIntegrationResponse {
+    fn type_string() -> &'static str {
+        "AWS::ApiGatewayV2::IntegrationResponse"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -7,40 +7,8 @@
 /// For information about configuring parameters for Amazon RDS DB instances, see       Working with parameter groups       in the Amazon RDS User Guide.
 ///
 /// For information about configuring parameters for Amazon Aurora DB instances, see       Working with parameter         groups in the Amazon Aurora User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBParameterGroup {
-
-
-    /// 
-    /// An optional array of key-value pairs to apply to this DB parameter group.
-    /// 
-    /// NoteCurrently, this is the only property that supports drift detection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// An array of parameter names and values for the parameter update. At least one       parameter name and value must be supplied. Subsequent arguments are optional.
-    /// 
-    /// For more information about DB parameters and DB parameter groups for Amazon RDS DB       engines, see Working with DB         Parameter Groups in the Amazon RDS User Guide.
-    /// 
-    /// For more information about DB cluster and DB instance parameters and parameter groups       for Amazon Aurora DB engines, see Working         with DB Parameter Groups and DB Cluster Parameter Groups in the         Amazon Aurora User Guide.
-    /// 
-    /// NoteAWS CloudFormation doesn't support specifying an apply method for each individual parameter. The default         apply method for each parameter is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
 
 
     /// 
@@ -66,15 +34,21 @@ pub struct CfnDBParameterGroup {
 
 
     /// 
-    /// Provides the customer-specified description for this DB parameter group.
+    /// An array of parameter names and values for the parameter update. At least one       parameter name and value must be supplied. Subsequent arguments are optional.
     /// 
-    /// Required: Yes
+    /// For more information about DB parameters and DB parameter groups for Amazon RDS DB       engines, see Working with DB         Parameter Groups in the Amazon RDS User Guide.
+    /// 
+    /// For more information about DB cluster and DB instance parameters and parameter groups       for Amazon Aurora DB engines, see Working         with DB Parameter Groups and DB Cluster Parameter Groups in the         Amazon Aurora User Guide.
+    /// 
+    /// NoteAWS CloudFormation doesn't support specifying an apply method for each individual parameter. The default         apply method for each parameter is used.
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Json
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
 
 
     /// 
@@ -96,6 +70,42 @@ pub struct CfnDBParameterGroup {
     #[serde(rename = "DBParameterGroupName")]
     pub dbparameter_group_name: Option<String>,
 
+
+    /// 
+    /// Provides the customer-specified description for this DB parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: String,
+
+
+    /// 
+    /// An optional array of key-value pairs to apply to this DB parameter group.
+    /// 
+    /// NoteCurrently, this is the only property that supports drift detection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDBParameterGroup {
+    fn type_string() -> &'static str {
+        "AWS::RDS::DBParameterGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -106,7 +116,7 @@ pub struct CfnDBParameterGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

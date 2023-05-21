@@ -1,12 +1,12 @@
 
 
 /// The AWS::EMR::StudioSessionMapping resource is an Amazon EMR resource type that maps a user or group to the Amazon EMR Studio specified by StudioId, and     applies a session policy that defines Studio permissions for that user or group.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStudioSessionMapping {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) for the session policy that will be applied to the user     or group. Session policies refine Studio user permissions without the need to use multiple     IAM user roles. For more information, see Create an EMR Studio user role with session policies in the Amazon EMR Management Guide.
+    /// The name of the user or group. For more information, see UserName and DisplayName in the IAM Identity Center Identity Store API Reference.
     /// 
     /// Required: Yes
     ///
@@ -18,9 +18,9 @@ pub struct CfnStudioSessionMapping {
     ///
     /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionPolicyArn")]
-    pub session_policy_arn: String,
+    /// Update requires: Replacement
+    #[serde(rename = "IdentityName")]
+    pub identity_name: String,
 
 
     /// 
@@ -56,7 +56,7 @@ pub struct CfnStudioSessionMapping {
 
 
     /// 
-    /// The name of the user or group. For more information, see UserName and DisplayName in the IAM Identity Center Identity Store API Reference.
+    /// The Amazon Resource Name (ARN) for the session policy that will be applied to the user     or group. Session policies refine Studio user permissions without the need to use multiple     IAM user roles. For more information, see Create an EMR Studio user role with session policies in the Amazon EMR Management Guide.
     /// 
     /// Required: Yes
     ///
@@ -68,8 +68,18 @@ pub struct CfnStudioSessionMapping {
     ///
     /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "IdentityName")]
-    pub identity_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "SessionPolicyArn")]
+    pub session_policy_arn: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnStudioSessionMapping {
+    fn type_string() -> &'static str {
+        "AWS::EMR::StudioSessionMapping"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

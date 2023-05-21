@@ -5,22 +5,52 @@
 /// You can allocate an Elastic IP address from an address pool owned by AWS or from an address pool created from a public IPv4 address range that you have brought       to AWS for use with your AWS resources using bring your       own IP addresses (BYOIP). For more information, see Bring Your Own IP Addresses (BYOIP)       in the Amazon EC2 User Guide.
 ///
 /// For more information, see Elastic IP Addresses       in the Amazon EC2 User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEIP {
 
 
     /// 
-    /// The ID of the instance.
+    /// Any tags assigned to the Elastic IP address.
     /// 
-    /// ImportantUpdates to the InstanceId property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
+    /// ImportantUpdates to the Tags property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The network (vpc).
+    /// 
+    /// If you define an Elastic IP address and associate it with a VPC that is defined in the       same template, you must declare a dependency on the VPC-gateway attachment by using the       DependsOn         Attribute on this resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: standard | vpc
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Domain")]
+    pub domain: Option<String>,
+
+
+    /// 
+    /// The ID of an address pool that you own. Use this parameter to let Amazon EC2 select an       address from the address pool.
+    /// 
+    /// ImportantUpdates to the PublicIpv4Pool property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceId")]
-    pub instance_id: Option<String>,
+    #[serde(rename = "PublicIpv4Pool")]
+    pub public_ipv4_pool: Option<String>,
 
 
     /// 
@@ -52,48 +82,28 @@ pub struct CfnEIP {
 
 
     /// 
-    /// Any tags assigned to the Elastic IP address.
+    /// The ID of the instance.
     /// 
-    /// ImportantUpdates to the Tags property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The ID of an address pool that you own. Use this parameter to let Amazon EC2 select an       address from the address pool.
-    /// 
-    /// ImportantUpdates to the PublicIpv4Pool property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
+    /// ImportantUpdates to the InstanceId property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PublicIpv4Pool")]
-    pub public_ipv4_pool: Option<String>,
+    #[serde(rename = "InstanceId")]
+    pub instance_id: Option<String>,
 
+}
 
-    /// 
-    /// The network (vpc).
-    /// 
-    /// If you define an Elastic IP address and associate it with a VPC that is defined in the       same template, you must declare a dependency on the VPC-gateway attachment by using the       DependsOn         Attribute on this resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: standard | vpc
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Domain")]
-    pub domain: Option<String>,
+impl cfn_resources::CfnResource for CfnEIP {
+    fn type_string() -> &'static str {
+        "AWS::EC2::EIP"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -104,19 +114,8 @@ pub struct CfnEIP {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -128,5 +127,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

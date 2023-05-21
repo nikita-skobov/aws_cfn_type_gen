@@ -3,7 +3,7 @@
 /// In a CloudFormation template, you use the AWS::CloudFormation::CustomResource or   Custom::String   resource type to specify custom resources.
 ///
 /// Custom resources provide a way for you to write custom provisioning logic in CloudFormation template  and have CloudFormation run it during a stack operation, such as when you create, update or delete a stack.  For more information, see Custom resources.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCustomResource {
 
 
@@ -22,4 +22,14 @@ pub struct CfnCustomResource {
     #[serde(rename = "ServiceToken")]
     pub service_token: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnCustomResource {
+    fn type_string() -> &'static str {
+        "AWS::CloudFormation::CustomResource"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

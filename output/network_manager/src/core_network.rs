@@ -1,8 +1,38 @@
 
 
 /// Describes a core network.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCoreNetwork {
+
+
+    /// 
+    /// The list of key-value tags associated with a core network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the global network that your core network is a part of.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GlobalNetworkId")]
+    pub global_network_id: String,
 
 
     /// 
@@ -36,41 +66,21 @@ pub struct CfnCoreNetwork {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: Option<serde_json::Value>,
 
+}
 
-    /// 
-    /// The list of key-value tags associated with a core network.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnCoreNetwork {
+    fn type_string() -> &'static str {
+        "AWS::NetworkManager::CoreNetwork"
+    }
 
-
-    /// 
-    /// The ID of the global network that your core network is a part of.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GlobalNetworkId")]
-    pub global_network_id: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Describes a core network edge.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CoreNetworkEdge {
 
 
@@ -84,18 +94,6 @@ pub struct CoreNetworkEdge {
     /// Update requires: No interruption
     #[serde(rename = "Asn")]
     pub asn: Option<f64>,
-
-
-    /// 
-    /// The inside IP addresses used for core network edges.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InsideCidrBlocks")]
-    pub inside_cidr_blocks: Option<Vec<String>>,
 
 
     /// 
@@ -115,46 +113,23 @@ pub struct CoreNetworkEdge {
     #[serde(rename = "EdgeLocation")]
     pub edge_location: Option<String>,
 
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The inside IP addresses used for core network edges.
     /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InsideCidrBlocks")]
+    pub inside_cidr_blocks: Option<Vec<String>>,
 
 }
 
 
 /// Describes a core network segment, which are dedicated routes. Only attachments within this segment can communicate with each other.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CoreNetworkSegment {
 
 
@@ -198,5 +173,40 @@ pub struct CoreNetworkSegment {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: Option<String>,
+
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

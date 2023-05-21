@@ -3,40 +3,8 @@
 /// The AWS::Logs::LogGroup resource specifies a log group. A log group defines common properties for log streams,      such as their retention and access control rules. Each log stream must belong to one log group.
 ///
 /// You can create up to 1,000,000 log groups per Region per account. You must use the following guidelines when naming a log group:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLogGroup {
-
-
-    /// 
-    /// The name of the log group. If you don't specify a name, AWS CloudFormation generates a unique ID for the log group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: [\.\-_/#A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogGroupName")]
-    pub log_group_name: Option<String>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to the log group.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -60,17 +28,17 @@ pub struct CfnLogGroup {
 
 
     /// 
-    /// The number of days to retain the log events in the specified log group.    Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, and 3653.
+    /// An array of key-value pairs to apply to the log group.
     /// 
-    /// To set a log group so that its log events do not expire, use DeleteRetentionPolicy.
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RetentionInDays")]
-    pub retention_in_days: Option<i64>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -86,6 +54,48 @@ pub struct CfnLogGroup {
     #[serde(rename = "DataProtectionPolicy")]
     pub data_protection_policy: Option<serde_json::Value>,
 
+
+    /// 
+    /// The name of the log group. If you don't specify a name, AWS CloudFormation generates a unique ID for the log group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: [\.\-_/#A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogGroupName")]
+    pub log_group_name: Option<String>,
+
+
+    /// 
+    /// The number of days to retain the log events in the specified log group.    Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, and 3653.
+    /// 
+    /// To set a log group so that its log events do not expire, use DeleteRetentionPolicy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetentionInDays")]
+    pub retention_in_days: Option<i64>,
+
+}
+
+impl cfn_resources::CfnResource for CfnLogGroup {
+    fn type_string() -> &'static str {
+        "AWS::Logs::LogGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -96,7 +106,7 @@ pub struct CfnLogGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

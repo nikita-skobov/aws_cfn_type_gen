@@ -1,24 +1,8 @@
 
 
 /// Specifies a place index resource in your AWS account. Use a place index resource to       geocode addresses and other text queries by using the         SearchPlaceIndexForText operation, and reverse geocode coordinates by       using the SearchPlaceIndexForPosition operation, and enable autosuggestions       by using the SearchPlaceIndexForSuggestions operation.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPlaceIndex {
-
-
-    /// 
-    /// The optional description for the place index resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -41,6 +25,22 @@ pub struct CfnPlaceIndex {
     /// Update requires: Replacement
     #[serde(rename = "IndexName")]
     pub index_name: String,
+
+
+    /// 
+    /// The optional description for the place index resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -90,9 +90,19 @@ pub struct CfnPlaceIndex {
 
 }
 
+impl cfn_resources::CfnResource for CfnPlaceIndex {
+    fn type_string() -> &'static str {
+        "AWS::Location::PlaceIndex"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Specifies the data storage option requesting Places.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataSourceConfiguration {
 
 

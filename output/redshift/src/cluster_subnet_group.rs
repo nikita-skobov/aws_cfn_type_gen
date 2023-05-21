@@ -3,8 +3,20 @@
 /// Specifies an Amazon Redshift subnet group. You must provide a list of one or more       subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating       Amazon Redshift subnet group.
 ///
 /// For information about subnet groups, go to Amazon Redshift         Cluster Subnet Groups in the Amazon Redshift Cluster Management         Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClusterSubnetGroup {
+
+
+    /// 
+    /// An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single       request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
 
 
     /// 
@@ -32,18 +44,16 @@ pub struct CfnClusterSubnetGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+}
 
-    /// 
-    /// An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single       request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
+impl cfn_resources::CfnResource for CfnClusterSubnetGroup {
+    fn type_string() -> &'static str {
+        "AWS::Redshift::ClusterSubnetGroup"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -54,7 +64,7 @@ pub struct CfnClusterSubnetGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

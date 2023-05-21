@@ -7,32 +7,8 @@
 /// Alternatively, you can perform the verification process by providing your own       public-private key pair. This verification method is known as Bring Your Own DKIM       (BYODKIM). To use BYODKIM, your resource must include DkimSigningAttributes properties       DomainSigningSelector and DomainSigningPrivateKey. When you specify this object, you       provide a selector (DomainSigningSelector) (a component of the DNS record name that       identifies the public key to use for DKIM authentication) and a private key       (DomainSigningPrivateKey).
 ///
 /// Additionally, you can associate an existing configuration set with the email identity       that you're verifying.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEmailIdentity {
-
-
-    /// 
-    /// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MailFromAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MailFromAttributes")]
-    pub mail_from_attributes: Option<MailFromAttributes>,
-
-
-    /// 
-    /// Used to associate a configuration set with an email identity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ConfigurationSetAttributes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConfigurationSetAttributes")]
-    pub configuration_set_attributes: Option<ConfigurationSetAttributes>,
 
 
     /// 
@@ -48,6 +24,30 @@ pub struct CfnEmailIdentity {
 
 
     /// 
+    /// An object that contains information about the DKIM attributes for the identity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DkimAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DkimAttributes")]
+    pub dkim_attributes: Option<DkimAttributes>,
+
+
+    /// 
+    /// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MailFromAttributes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MailFromAttributes")]
+    pub mail_from_attributes: Option<MailFromAttributes>,
+
+
+    /// 
     /// If your request includes this object, Amazon SES configures the identity to use Bring       Your Own DKIM (BYODKIM) for DKIM authentication purposes, or, configures the key length       to be used for Easy       DKIM.
     /// 
     /// Required: No
@@ -60,15 +60,15 @@ pub struct CfnEmailIdentity {
 
 
     /// 
-    /// An object that contains information about the DKIM attributes for the identity.
+    /// Used to associate a configuration set with an email identity.
     /// 
     /// Required: No
     ///
-    /// Type: DkimAttributes
+    /// Type: ConfigurationSetAttributes
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DkimAttributes")]
-    pub dkim_attributes: Option<DkimAttributes>,
+    #[serde(rename = "ConfigurationSetAttributes")]
+    pub configuration_set_attributes: Option<ConfigurationSetAttributes>,
 
 
     /// 
@@ -84,67 +84,38 @@ pub struct CfnEmailIdentity {
 
 }
 
+impl cfn_resources::CfnResource for CfnEmailIdentity {
+    fn type_string() -> &'static str {
+        "AWS::SES::EmailIdentity"
+    }
 
-/// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
-#[derive(Default, serde::Serialize)]
-pub struct MailFromAttributes {
-
-
-    /// 
-    /// The action to take if the required MX record isn't found when you send an email. When       you set this value to USE_DEFAULT_VALUE, the mail is sent using         amazonses.com as the MAIL FROM domain. When you set this value       to REJECT_MESSAGE, the Amazon SES API v2 returns a         MailFromDomainNotVerified error, and doesn't attempt to deliver the       email.
-    /// 
-    /// These behaviors are taken when the custom MAIL FROM domain configuration is in the         Pending, Failed, and TemporaryFailure       states.
-    /// 
-    /// Valid Values: USE_DEFAULT_VALUE | REJECT_MESSAGE
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BehaviorOnMxFailure")]
-    pub behavior_on_mx_failure: Option<String>,
-
-
-    /// 
-    /// The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM       domain must meet the following criteria:
-    /// 
-    /// It has to be a subdomain of the verified identity.               It can't be used to receive email.               It can't be used in a "From" address if the MAIL FROM domain is a destination           for feedback forwarding emails.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MailFromDomain")]
-    pub mail_from_domain: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
-/// Used to enable or disable DKIM authentication for an email identity.
-#[derive(Default, serde::Serialize)]
-pub struct DkimAttributes {
+/// Used to associate a configuration set with an email identity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConfigurationSetAttributes {
 
 
     /// 
-    /// Sets the DKIM signing configuration for the identity.
-    /// 
-    /// When you set this value true, then the messages that are sent from the       identity are signed using DKIM. If you set this value to false, your       messages are sent without DKIM signing.
+    /// The configuration set to associate with an email identity.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SigningEnabled")]
-    pub signing_enabled: Option<bool>,
+    #[serde(rename = "ConfigurationSetName")]
+    pub configuration_set_name: Option<String>,
 
 }
 
 
 /// Used to enable or disable feedback forwarding for an identity. This setting determines       what happens when an identity is used to send an email that results in a bounce or       complaint event.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FeedbackAttributes {
 
 
@@ -166,23 +137,67 @@ pub struct FeedbackAttributes {
 }
 
 
-/// Used to configure or change the DKIM authentication settings for an email domain       identity. You can use this operation to do any of the following:
-#[derive(Default, serde::Serialize)]
-pub struct DkimSigningAttributes {
+/// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MailFromAttributes {
 
 
     /// 
-    /// [Easy DKIM] The key length of the future DKIM key pair to be generated. This can be       changed at most once per day.
+    /// The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM       domain must meet the following criteria:
     /// 
-    /// Valid Values: RSA_1024_BIT | RSA_2048_BIT
+    /// It has to be a subdomain of the verified identity.               It can't be used to receive email.               It can't be used in a "From" address if the MAIL FROM domain is a destination           for feedback forwarding emails.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NextSigningKeyLength")]
-    pub next_signing_key_length: Option<String>,
+    #[serde(rename = "MailFromDomain")]
+    pub mail_from_domain: Option<String>,
+
+
+    /// 
+    /// The action to take if the required MX record isn't found when you send an email. When       you set this value to USE_DEFAULT_VALUE, the mail is sent using         amazonses.com as the MAIL FROM domain. When you set this value       to REJECT_MESSAGE, the Amazon SES API v2 returns a         MailFromDomainNotVerified error, and doesn't attempt to deliver the       email.
+    /// 
+    /// These behaviors are taken when the custom MAIL FROM domain configuration is in the         Pending, Failed, and TemporaryFailure       states.
+    /// 
+    /// Valid Values: USE_DEFAULT_VALUE | REJECT_MESSAGE
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BehaviorOnMxFailure")]
+    pub behavior_on_mx_failure: Option<String>,
+
+}
+
+
+/// Used to enable or disable DKIM authentication for an email identity.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DkimAttributes {
+
+
+    /// 
+    /// Sets the DKIM signing configuration for the identity.
+    /// 
+    /// When you set this value true, then the messages that are sent from the       identity are signed using DKIM. If you set this value to false, your       messages are sent without DKIM signing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SigningEnabled")]
+    pub signing_enabled: Option<bool>,
+
+}
+
+
+/// Used to configure or change the DKIM authentication settings for an email domain       identity. You can use this operation to do any of the following:
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DkimSigningAttributes {
 
 
     /// 
@@ -212,23 +227,18 @@ pub struct DkimSigningAttributes {
     #[serde(rename = "DomainSigningPrivateKey")]
     pub domain_signing_private_key: Option<String>,
 
-}
-
-
-/// Used to associate a configuration set with an email identity.
-#[derive(Default, serde::Serialize)]
-pub struct ConfigurationSetAttributes {
-
 
     /// 
-    /// The configuration set to associate with an email identity.
+    /// [Easy DKIM] The key length of the future DKIM key pair to be generated. This can be       changed at most once per day.
+    /// 
+    /// Valid Values: RSA_1024_BIT | RSA_2048_BIT
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ConfigurationSetName")]
-    pub configuration_set_name: Option<String>,
+    #[serde(rename = "NextSigningKeyLength")]
+    pub next_signing_key_length: Option<String>,
 
 }

@@ -1,20 +1,22 @@
 
 
 /// Creates a private namespace based on DNS, which is visible only inside a specified Amazon  VPC. The namespace defines your service naming scheme. For example, if you name your namespace   example.com and name your service backend, the resulting DNS name for  the service is backend.example.com. Service instances that are registered using a  private DNS namespace can be discovered using either a DiscoverInstances request or  using DNS. For the current quota on the number of namespaces that you can create using the same   AWS account, see AWS Cloud Map quotas in the           AWS Cloud Map Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPrivateDnsNamespace {
 
 
     /// 
-    /// Properties for the  private DNS namespace.
+    /// The ID of the Amazon VPC that you want to associate the namespace with.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Properties
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Properties")]
-    pub properties: Option<Properties>,
+    /// Maximum: 64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Vpc")]
+    pub vpc: String,
 
 
     /// 
@@ -48,6 +50,18 @@ pub struct CfnPrivateDnsNamespace {
 
 
     /// 
+    /// Properties for the  private DNS namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Properties
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Properties")]
+    pub properties: Option<Properties>,
+
+
+    /// 
     /// A description for the namespace.
     /// 
     /// Required: No
@@ -60,39 +74,16 @@ pub struct CfnPrivateDnsNamespace {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
-    /// The ID of the Amazon VPC that you want to associate the namespace with.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Vpc")]
-    pub vpc: String,
-
 }
 
+impl cfn_resources::CfnResource for CfnPrivateDnsNamespace {
+    fn type_string() -> &'static str {
+        "AWS::ServiceDiscovery::PrivateDnsNamespace"
+    }
 
-/// DNS properties for  the private DNS namespace.
-#[derive(Default, serde::Serialize)]
-pub struct PrivateDnsPropertiesMutable {
-
-
-    /// 
-    /// Fields for the Start  of Authority (SOA) record for the hosted zone for the private DNS  namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SOA
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SOA")]
-    pub soa: Option<SOA>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -103,7 +94,7 @@ pub struct PrivateDnsPropertiesMutable {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -131,8 +122,27 @@ pub struct Tag {
 }
 
 
+/// Start of Authority  (SOA) properties for a public or private DNS namespace.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SOA {
+
+
+    /// 
+    /// The time to live  (TTL) for purposes of negative caching.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TTL")]
+    pub ttl: Option<f64>,
+
+}
+
+
 /// Properties for the  private DNS namespace.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Properties {
 
 
@@ -150,20 +160,20 @@ pub struct Properties {
 }
 
 
-/// Start of Authority  (SOA) properties for a public or private DNS namespace.
-#[derive(Default, serde::Serialize)]
-pub struct SOA {
+/// DNS properties for  the private DNS namespace.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PrivateDnsPropertiesMutable {
 
 
     /// 
-    /// The time to live  (TTL) for purposes of negative caching.
+    /// Fields for the Start  of Authority (SOA) record for the hosted zone for the private DNS  namespace.
     /// 
     /// Required: No
     ///
-    /// Type: Double
+    /// Type: SOA
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TTL")]
-    pub ttl: Option<f64>,
+    #[serde(rename = "SOA")]
+    pub soa: Option<SOA>,
 
 }

@@ -1,46 +1,8 @@
 
 
 /// Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVolume {
-
-
-    /// 
-    /// The configuration of an Amazon FSx for NetApp ONTAP volume.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OntapConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OntapConfiguration")]
-    pub ontap_configuration: Option<OntapConfiguration>,
-
-
-    /// 
-    /// The type of the volume.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ONTAP | OPENZFS
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VolumeType")]
-    pub volume_type: Option<String>,
-
-
-    /// 
-    /// Specifies the ID of the volume backup to use to create a new volume.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BackupId")]
-    pub backup_id: Option<String>,
 
 
     /// 
@@ -86,215 +48,59 @@ pub struct CfnVolume {
     #[serde(rename = "Name")]
     pub name: String,
 
-}
-
-
-/// Specifies the configuration of the Amazon FSx for OpenZFS volume that you are creating.
-#[derive(Default, serde::Serialize)]
-pub struct OpenZFSConfiguration {
-
 
     /// 
-    /// Specifies the suggested block size for a volume in a ZFS dataset, in kibibytes (KiB). Valid values are 4, 8,       16, 32, 64, 128, 256, 512, or 1024 KiB. The default is 128 KiB.       We recommend using the default setting for the majority of use cases.       Generally, workloads that write in fixed small or large record sizes       may benefit from setting a custom record size, like database workloads       (small record size) or media streaming workloads (large record size).       For additional guidance on when       to set a custom record size, see              ZFS Record size in the Amazon FSx for OpenZFS User Guide.
+    /// The configuration of an Amazon FSx for NetApp ONTAP volume.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 4
-    ///
-    /// Maximum: 1024
+    /// Type: OntapConfiguration
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RecordSizeKiB")]
-    pub record_size_ki_b: Option<i64>,
+    #[serde(rename = "OntapConfiguration")]
+    pub ontap_configuration: Option<OntapConfiguration>,
 
 
     /// 
-    /// An object specifying how much storage users or groups can use on the volume.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of UserAndGroupQuotas
-    ///
-    /// Maximum: 500
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserAndGroupQuotas")]
-    pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
-
-
-    /// 
-    /// A Boolean value indicating whether tags for the volume should be copied to snapshots.       This value defaults to false. If it's set to true, all tags       for the volume are copied to snapshots where the user doesn't specify tags. If this       value is true, and you specify one or more tags, only the specified tags       are copied to snapshots. If you specify one or more tags when creating the snapshot, no       tags are copied from the volume, regardless of this value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CopyTagsToSnapshots")]
-    pub copy_tags_to_snapshots: Option<bool>,
-
-
-    /// 
-    /// The configuration object for mounting a Network File System (NFS) file system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of NfsExports
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NfsExports")]
-    pub nfs_exports: Option<Vec<NfsExports>>,
-
-
-    /// 
-    /// A Boolean value indicating whether the volume is read-only.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReadOnly")]
-    pub read_only: Option<bool>,
-
-
-    /// 
-    /// The ID of the volume to use as the parent volume of the volume that you are creating.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 23
-    ///
-    /// Maximum: 23
-    ///
-    /// Pattern: ^(fsvol-[0-9a-f]{17,})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ParentVolumeId")]
-    pub parent_volume_id: String,
-
-
-    /// 
-    /// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
-    /// 
-    /// Required: No
-    ///
-    /// Type: OriginSnapshot
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OriginSnapshot")]
-    pub origin_snapshot: Option<OriginSnapshot>,
-
-
-    /// 
-    /// Sets the maximum storage size in gibibytes (GiB) for the volume. You can specify       a quota that is larger than the storage on the parent volume. A volume quota limits       the amount of storage that the volume can consume to the configured amount, but does not       guarantee the space will be available on the parent volume. To guarantee quota space, you must also set       StorageCapacityReservationGiB. To not specify a storage capacity quota, set this to -1.
-    /// 
-    /// For more information, see       Volume properties       in the Amazon FSx for OpenZFS User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: -1
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StorageCapacityQuotaGiB")]
-    pub storage_capacity_quota_gi_b: Option<i64>,
-
-
-    /// 
-    /// Specifies the method used to compress the data on the volume. The compression       type is NONE by default.
-    /// 
-    /// NONE - Doesn't compress the data on the volume.           NONE is the default.                        ZSTD - Compresses the data in the volume using the Zstandard           (ZSTD) compression algorithm. Compared to LZ4, Z-Standard provides a better           compression ratio to minimize on-disk storage utilization.                        LZ4 - Compresses the data in the volume using the LZ4           compression algorithm. Compared to Z-Standard, LZ4 is less compute-intensive           and delivers higher write throughput speeds.
+    /// The type of the volume.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: LZ4 | NONE | ZSTD
+    /// Allowed values: ONTAP | OPENZFS
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataCompressionType")]
-    pub data_compression_type: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "VolumeType")]
+    pub volume_type: Option<String>,
 
 
     /// 
-    /// Specifies the amount of storage in gibibytes (GiB) to reserve from the parent volume. Setting       StorageCapacityReservationGiB guarantees that the specified amount of storage space       on the parent volume will always be available for the volume.       You can't reserve more storage than the parent volume has. To not specify a storage capacity       reservation, set this to 0 or -1. For more information, see       Volume properties       in the Amazon FSx for OpenZFS User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: -1
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StorageCapacityReservationGiB")]
-    pub storage_capacity_reservation_gi_b: Option<i64>,
-
-
-    /// 
-    /// To delete the volume's child volumes, snapshots, and clones, use the string        DELETE_CHILD_VOLUMES_AND_SNAPSHOTS.
+    /// Specifies the ID of the volume backup to use to create a new volume.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Options")]
-    pub options: Option<Vec<String>>,
+    /// Update requires: Replacement
+    #[serde(rename = "BackupId")]
+    pub backup_id: Option<String>,
 
 }
 
+impl cfn_resources::CfnResource for CfnVolume {
+    fn type_string() -> &'static str {
+        "AWS::FSx::Volume"
+    }
 
-/// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
-#[derive(Default, serde::Serialize)]
-pub struct OriginSnapshot {
-
-
-    /// 
-    /// Specifies the snapshot to use when creating an OpenZFS volume from a snapshot.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotARN")]
-    pub snapshot_arn: String,
-
-
-    /// 
-    /// The strategy used when copying data from the snapshot to the new volume.
-    /// 
-    /// CLONE - The new volume references the data in the origin           snapshot. Cloning a snapshot is faster than copying data from the snapshot to a           new volume and doesn't consume disk throughput. However, the origin snapshot           can't be deleted if there is a volume using its copied data.                         FULL_COPY - Copies all data from the snapshot to the new volume.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CLONE | FULL_COPY
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CopyStrategy")]
-    pub copy_strategy: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Specifies the configuration of the ONTAP volume that you are creating.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OntapConfiguration {
 
 
@@ -312,40 +118,6 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SecurityStyle")]
     pub security_style: Option<String>,
-
-
-    /// 
-    /// Specifies the size of the volume, in megabytes (MB), that you are creating.       Provide any whole number in the range of 20–104857600 to specify the size of       the volume.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SizeInMegabytes")]
-    pub size_in_megabytes: String,
-
-
-    /// 
-    /// Specifies the ONTAP SVM in which to create the volume.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 21
-    ///
-    /// Maximum: 21
-    ///
-    /// Pattern: ^(svm-[0-9a-f]{17,})$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StorageVirtualMachineId")]
-    pub storage_virtual_machine_id: String,
 
 
     /// 
@@ -371,33 +143,21 @@ pub struct OntapConfiguration {
 
 
     /// 
-    /// A boolean flag indicating whether tags for the volume should be copied to backups. This value defaults to       false. If it's set to true, all tags for the volume are copied to all automatic and user-initiated backups       where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the       specified tags are copied to backups. If you specify one or more tags when creating a user-initiated       backup, no tags are copied from the volume, regardless of this value.
+    /// Specifies the ONTAP SVM in which to create the volume.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "CopyTagsToBackups")]
-    pub copy_tags_to_backups: Option<String>,
-
-
-    /// 
-    /// Specifies the type of volume you are creating. Valid values are the following:
-    /// 
-    /// RW specifies a read/write volume. RW is the default.                        DP specifies a data-protection volume. A DP volume         is read-only and can be used as the destination of a NetApp SnapMirror relationship.
-    /// 
-    /// For more information, see Volume types       in the Amazon FSx for NetApp ONTAP User Guide.
-    /// 
-    /// Required: No
+    /// Minimum: 21
     ///
-    /// Type: String
+    /// Maximum: 21
     ///
-    /// Allowed values: DP | RW
+    /// Pattern: ^(svm-[0-9a-f]{17,})$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "OntapVolumeType")]
-    pub ontap_volume_type: Option<String>,
+    #[serde(rename = "StorageVirtualMachineId")]
+    pub storage_virtual_machine_id: String,
 
 
     /// 
@@ -410,24 +170,6 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "StorageEfficiencyEnabled")]
     pub storage_efficiency_enabled: Option<String>,
-
-
-    /// 
-    /// Specifies the location in the SVM's namespace where the volume is mounted.       This parameter is required. The JunctionPath must have a leading       forward slash, such as /vol3.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,255}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JunctionPath")]
-    pub junction_path: Option<String>,
 
 
     /// 
@@ -451,47 +193,90 @@ pub struct OntapConfiguration {
     #[serde(rename = "TieringPolicy")]
     pub tiering_policy: Option<TieringPolicy>,
 
-}
 
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
+    /// 
+    /// Specifies the location in the SVM's namespace where the volume is mounted.       This parameter is required. The JunctionPath must have a leading       forward slash, such as /vol3.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^[^\u0000\u0085\u2028\u2029\r\n]{1,255}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JunctionPath")]
+    pub junction_path: Option<String>,
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// Specifies the type of volume you are creating. Valid values are the following:
+    /// 
+    /// RW specifies a read/write volume. RW is the default.                        DP specifies a data-protection volume. A DP volume         is read-only and can be used as the destination of a NetApp SnapMirror relationship.
+    /// 
+    /// For more information, see Volume types       in the Amazon FSx for NetApp ONTAP User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DP | RW
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OntapVolumeType")]
+    pub ontap_volume_type: Option<String>,
+
+
+    /// 
+    /// A boolean flag indicating whether tags for the volume should be copied to backups. This value defaults to       false. If it's set to true, all tags for the volume are copied to all automatic and user-initiated backups       where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the       specified tags are copied to backups. If you specify one or more tags when creating a user-initiated       backup, no tags are copied from the volume, regardless of this value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CopyTagsToBackups")]
+    pub copy_tags_to_backups: Option<String>,
+
+
+    /// 
+    /// Specifies the size of the volume, in megabytes (MB), that you are creating.       Provide any whole number in the range of 20–104857600 to specify the size of       the volume.
     /// 
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SizeInMegabytes")]
+    pub size_in_megabytes: String,
 
 }
 
 
 /// An object specifying how much storage users or groups can use on the volume.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct UserAndGroupQuotas {
+
+
+    /// 
+    /// A value that specifies whether the quota applies to a user or group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: GROUP | USER
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 
     /// 
@@ -525,25 +310,67 @@ pub struct UserAndGroupQuotas {
     #[serde(rename = "StorageCapacityQuotaGiB")]
     pub storage_capacity_quota_gi_b: i64,
 
+}
+
+
+/// The configuration object for mounting a Network File System (NFS) file system.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NfsExports {
+
 
     /// 
-    /// A value that specifies whether the quota applies to a user or group.
+    /// A list of configuration objects that contain the client and options for mounting the       OpenZFS file system.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of ClientConfigurations
+    ///
+    /// Maximum: 25
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientConfigurations")]
+    pub client_configurations: Vec<ClientConfigurations>,
+
+}
+
+
+/// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OriginSnapshot {
+
+
+    /// 
+    /// The strategy used when copying data from the snapshot to the new volume.
+    /// 
+    /// CLONE - The new volume references the data in the origin           snapshot. Cloning a snapshot is faster than copying data from the snapshot to a           new volume and doesn't consume disk throughput. However, the origin snapshot           can't be deleted if there is a volume using its copied data.                         FULL_COPY - Copies all data from the snapshot to the new volume.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: GROUP | USER
+    /// Allowed values: CLONE | FULL_COPY
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// Update requires: Replacement
+    #[serde(rename = "CopyStrategy")]
+    pub copy_strategy: String,
+
+
+    /// 
+    /// Specifies the snapshot to use when creating an OpenZFS volume from a snapshot.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotARN")]
+    pub snapshot_arn: String,
 
 }
 
 
 /// Specifies who can mount an OpenZFS file system and the options available while       mounting the file system.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClientConfigurations {
 
 
@@ -583,10 +410,214 @@ pub struct ClientConfigurations {
 }
 
 
+/// Specifies the configuration of the Amazon FSx for OpenZFS volume that you are creating.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OpenZFSConfiguration {
+
+
+    /// 
+    /// The ID of the volume to use as the parent volume of the volume that you are creating.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 23
+    ///
+    /// Maximum: 23
+    ///
+    /// Pattern: ^(fsvol-[0-9a-f]{17,})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ParentVolumeId")]
+    pub parent_volume_id: String,
+
+
+    /// 
+    /// The configuration object for mounting a Network File System (NFS) file system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of NfsExports
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NfsExports")]
+    pub nfs_exports: Option<Vec<NfsExports>>,
+
+
+    /// 
+    /// An object specifying how much storage users or groups can use on the volume.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of UserAndGroupQuotas
+    ///
+    /// Maximum: 500
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserAndGroupQuotas")]
+    pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
+
+
+    /// 
+    /// A Boolean value indicating whether the volume is read-only.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReadOnly")]
+    pub read_only: Option<bool>,
+
+
+    /// 
+    /// Sets the maximum storage size in gibibytes (GiB) for the volume. You can specify       a quota that is larger than the storage on the parent volume. A volume quota limits       the amount of storage that the volume can consume to the configured amount, but does not       guarantee the space will be available on the parent volume. To guarantee quota space, you must also set       StorageCapacityReservationGiB. To not specify a storage capacity quota, set this to -1.
+    /// 
+    /// For more information, see       Volume properties       in the Amazon FSx for OpenZFS User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: -1
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StorageCapacityQuotaGiB")]
+    pub storage_capacity_quota_gi_b: Option<i64>,
+
+
+    /// 
+    /// Specifies the amount of storage in gibibytes (GiB) to reserve from the parent volume. Setting       StorageCapacityReservationGiB guarantees that the specified amount of storage space       on the parent volume will always be available for the volume.       You can't reserve more storage than the parent volume has. To not specify a storage capacity       reservation, set this to 0 or -1. For more information, see       Volume properties       in the Amazon FSx for OpenZFS User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: -1
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StorageCapacityReservationGiB")]
+    pub storage_capacity_reservation_gi_b: Option<i64>,
+
+
+    /// 
+    /// Specifies the suggested block size for a volume in a ZFS dataset, in kibibytes (KiB). Valid values are 4, 8,       16, 32, 64, 128, 256, 512, or 1024 KiB. The default is 128 KiB.       We recommend using the default setting for the majority of use cases.       Generally, workloads that write in fixed small or large record sizes       may benefit from setting a custom record size, like database workloads       (small record size) or media streaming workloads (large record size).       For additional guidance on when       to set a custom record size, see              ZFS Record size in the Amazon FSx for OpenZFS User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 4
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RecordSizeKiB")]
+    pub record_size_ki_b: Option<i64>,
+
+
+    /// 
+    /// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OriginSnapshot
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OriginSnapshot")]
+    pub origin_snapshot: Option<OriginSnapshot>,
+
+
+    /// 
+    /// To delete the volume's child volumes, snapshots, and clones, use the string        DELETE_CHILD_VOLUMES_AND_SNAPSHOTS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Options")]
+    pub options: Option<Vec<String>>,
+
+
+    /// 
+    /// A Boolean value indicating whether tags for the volume should be copied to snapshots.       This value defaults to false. If it's set to true, all tags       for the volume are copied to snapshots where the user doesn't specify tags. If this       value is true, and you specify one or more tags, only the specified tags       are copied to snapshots. If you specify one or more tags when creating the snapshot, no       tags are copied from the volume, regardless of this value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CopyTagsToSnapshots")]
+    pub copy_tags_to_snapshots: Option<bool>,
+
+
+    /// 
+    /// Specifies the method used to compress the data on the volume. The compression       type is NONE by default.
+    /// 
+    /// NONE - Doesn't compress the data on the volume.           NONE is the default.                        ZSTD - Compresses the data in the volume using the Zstandard           (ZSTD) compression algorithm. Compared to LZ4, Z-Standard provides a better           compression ratio to minimize on-disk storage utilization.                        LZ4 - Compresses the data in the volume using the LZ4           compression algorithm. Compared to Z-Standard, LZ4 is less compute-intensive           and delivers higher write throughput speeds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: LZ4 | NONE | ZSTD
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataCompressionType")]
+    pub data_compression_type: Option<String>,
+
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
 /// Describes the data tiering policy for an ONTAP volume. When enabled, Amazon FSx for ONTAP's intelligent       tiering automatically transitions a volume's data between the file system's primary storage and capacity       pool storage based on your access patterns.
 ///
 /// Valid tiering policies are the following:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TieringPolicy {
 
 
@@ -620,26 +651,5 @@ pub struct TieringPolicy {
     /// Update requires: No interruption
     #[serde(rename = "CoolingPeriod")]
     pub cooling_period: Option<i64>,
-
-}
-
-
-/// The configuration object for mounting a Network File System (NFS) file system.
-#[derive(Default, serde::Serialize)]
-pub struct NfsExports {
-
-
-    /// 
-    /// A list of configuration objects that contain the client and options for mounting the       OpenZFS file system.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of ClientConfigurations
-    ///
-    /// Maximum: 25
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientConfigurations")]
-    pub client_configurations: Vec<ClientConfigurations>,
 
 }

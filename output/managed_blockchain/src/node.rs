@@ -3,20 +3,8 @@
 /// Creates a node on the specified blockchain network.
 ///
 /// Applies to Hyperledger Fabric and Ethereum.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNode {
-
-
-    /// 
-    /// Configuration properties of a peer node.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: NodeConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NodeConfiguration")]
-    pub node_configuration: NodeConfiguration,
 
 
     /// 
@@ -50,11 +38,33 @@ pub struct CfnNode {
     #[serde(rename = "NetworkId")]
     pub network_id: String,
 
+
+    /// 
+    /// Configuration properties of a peer node.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: NodeConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NodeConfiguration")]
+    pub node_configuration: NodeConfiguration,
+
+}
+
+impl cfn_resources::CfnResource for CfnNode {
+    fn type_string() -> &'static str {
+        "AWS::ManagedBlockchain::Node"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Configuration properties of a peer node within a membership.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NodeConfiguration {
 
 

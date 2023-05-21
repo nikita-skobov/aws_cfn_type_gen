@@ -1,7 +1,7 @@
 
 
 /// The     AWS::Greengrass::LoggerDefinitionVersion resource represents a logger definition version for AWS IoT Greengrass.     A logger definition version contains a list of loggers.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLoggerDefinitionVersion {
 
 
@@ -30,12 +30,46 @@ pub struct CfnLoggerDefinitionVersion {
 
 }
 
+impl cfn_resources::CfnResource for CfnLoggerDefinitionVersion {
+    fn type_string() -> &'static str {
+        "AWS::Greengrass::LoggerDefinitionVersion"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// A logger represents logging settings for the AWS IoT Greengrass group, which can be stored in CloudWatch and the local file system of your core device.   All log entries include a timestamp, log level, and information about the event. For more information, see Monitoring with AWS IoT Greengrass Logs in the    AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Loggers 		 property of the AWS::Greengrass::LoggerDefinitionVersion resource contains a      list of Logger property types.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Logger {
+
+
+    /// 
+    /// A descriptive or arbitrary ID for the logger. This value must be unique within       the logger definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
+    /// 
+    /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Component")]
+    pub component: String,
 
 
     /// 
@@ -72,29 +106,5 @@ pub struct Logger {
     /// Update requires: Replacement
     #[serde(rename = "Level")]
     pub level: String,
-
-
-    /// 
-    /// A descriptive or arbitrary ID for the logger. This value must be unique within       the logger definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Id")]
-    pub id: String,
-
-
-    /// 
-    /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Component")]
-    pub component: String,
 
 }

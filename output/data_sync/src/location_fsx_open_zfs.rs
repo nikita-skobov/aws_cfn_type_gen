@@ -1,20 +1,8 @@
 
 
 /// The AWS::DataSync::LocationFSxOpenZFS resource specifies an endpoint for an Amazon FSx for OpenZFS file system.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationFSxOpenZFS {
-
-
-    /// 
-    /// The type of protocol that AWS DataSync uses to access your file system.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Protocol
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: Protocol,
 
 
     /// 
@@ -45,6 +33,18 @@ pub struct CfnLocationFSxOpenZFS {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The type of protocol that AWS DataSync uses to access your file system.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Protocol
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: Protocol,
 
 
     /// 
@@ -82,6 +82,16 @@ pub struct CfnLocationFSxOpenZFS {
 
 }
 
+impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
+    fn type_string() -> &'static str {
+        "AWS::DataSync::LocationFSxOpenZFS"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -90,7 +100,7 @@ pub struct CfnLocationFSxOpenZFS {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -118,8 +128,27 @@ pub struct Tag {
 }
 
 
+/// Represents the protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Protocol {
+
+
+    /// 
+    /// Represents the Network File System (NFS) protocol that DataSync uses to access your FSx for OpenZFS file system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: NFS
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NFS")]
+    pub nfs: Option<NFS>,
+
+}
+
+
 /// Represents the mount options that are available for DataSync to access a Network File System (NFS) location.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MountOptions {
 
 
@@ -144,7 +173,7 @@ pub struct MountOptions {
 
 
 /// Represents the Network File System (NFS) protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NFS {
 
 
@@ -158,24 +187,5 @@ pub struct NFS {
     /// Update requires: Replacement
     #[serde(rename = "MountOptions")]
     pub mount_options: MountOptions,
-
-}
-
-
-/// Represents the protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
-#[derive(Default, serde::Serialize)]
-pub struct Protocol {
-
-
-    /// 
-    /// Represents the Network File System (NFS) protocol that DataSync uses to access your FSx for OpenZFS file system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: NFS
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NFS")]
-    pub nfs: Option<NFS>,
 
 }

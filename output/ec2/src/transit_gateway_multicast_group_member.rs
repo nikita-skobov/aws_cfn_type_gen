@@ -1,7 +1,7 @@
 
 
 /// Registers members (network interfaces) with the transit gateway multicast group. A     member is a network interface associated with a supported EC2 instance that receives     multicast traffic. For information about supported instances, see Multicast Consideration in Amazon VPC Transit       Gateways.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayMulticastGroupMember {
 
 
@@ -40,4 +40,14 @@ pub struct CfnTransitGatewayMulticastGroupMember {
     #[serde(rename = "TransitGatewayMulticastDomainId")]
     pub transit_gateway_multicast_domain_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnTransitGatewayMulticastGroupMember {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TransitGatewayMulticastGroupMember"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

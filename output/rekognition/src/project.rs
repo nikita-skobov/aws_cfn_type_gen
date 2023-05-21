@@ -1,7 +1,7 @@
 
 
 /// The AWS::Rekognition::Project type creates an Amazon Rekognition Custom Labels     project. A project is a group of resources needed to create and manage versions of an      Amazon Rekognition Custom Labels model.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProject {
 
 
@@ -22,4 +22,14 @@ pub struct CfnProject {
     #[serde(rename = "ProjectName")]
     pub project_name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnProject {
+    fn type_string() -> &'static str {
+        "AWS::Rekognition::Project"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

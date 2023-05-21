@@ -1,20 +1,20 @@
 
 
 /// The AWS::Lightsail::LoadBalancerTlsCertificate resource specifies a TLS     certificate that can be used with a Lightsail load balancer.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLoadBalancerTlsCertificate {
 
 
     /// 
-    /// The name of the SSL/TLS certificate.
+    /// The domain name for the SSL/TLS certificate. For example, example.com or www.example.com.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateName")]
-    pub certificate_name: String,
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "CertificateDomainName")]
+    pub certificate_domain_name: String,
 
 
     /// 
@@ -32,39 +32,15 @@ pub struct CfnLoadBalancerTlsCertificate {
 
 
     /// 
-    /// A Boolean value indicating whether HTTPS redirection is enabled for the load    balancer that the TLS certificate is attached to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpsRedirectionEnabled")]
-    pub https_redirection_enabled: Option<bool>,
-
-
-    /// 
-    /// The domain name for the SSL/TLS certificate. For example, example.com or www.example.com.
+    /// The name of the SSL/TLS certificate.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "CertificateDomainName")]
-    pub certificate_domain_name: String,
-
-
-    /// 
-    /// A Boolean value indicating whether the SSL/TLS certificate is attached to a Lightsail load balancer.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IsAttached")]
-    pub is_attached: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateName")]
+    pub certificate_name: String,
 
 
     /// 
@@ -80,4 +56,38 @@ pub struct CfnLoadBalancerTlsCertificate {
     #[serde(rename = "CertificateAlternativeNames")]
     pub certificate_alternative_names: Option<Vec<String>>,
 
+
+    /// 
+    /// A Boolean value indicating whether HTTPS redirection is enabled for the load    balancer that the TLS certificate is attached to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HttpsRedirectionEnabled")]
+    pub https_redirection_enabled: Option<bool>,
+
+
+    /// 
+    /// A Boolean value indicating whether the SSL/TLS certificate is attached to a Lightsail load balancer.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IsAttached")]
+    pub is_attached: Option<bool>,
+
+}
+
+impl cfn_resources::CfnResource for CfnLoadBalancerTlsCertificate {
+    fn type_string() -> &'static str {
+        "AWS::Lightsail::LoadBalancerTlsCertificate"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

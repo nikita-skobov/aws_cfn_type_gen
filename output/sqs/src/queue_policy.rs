@@ -1,7 +1,7 @@
 
 
 /// The AWS::SQS::QueuePolicy type applies a policy to Amazon SQS queues.    For an example snippet, see Declaring an      Amazon SQS policy in the AWS CloudFormation User     Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnQueuePolicy {
 
 
@@ -28,4 +28,14 @@ pub struct CfnQueuePolicy {
     #[serde(rename = "Queues")]
     pub queues: Vec<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnQueuePolicy {
+    fn type_string() -> &'static str {
+        "AWS::SQS::QueuePolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

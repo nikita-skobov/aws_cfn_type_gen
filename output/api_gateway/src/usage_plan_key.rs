@@ -1,8 +1,20 @@
 
 
 /// The AWS::ApiGateway::UsagePlanKey resource associates an API key with a usage plan. This association determines which users the usage plan is applied to.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUsagePlanKey {
+
+
+    /// 
+    /// The Id of the UsagePlanKey resource to be deleted.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KeyId")]
+    pub key_id: String,
 
 
     /// 
@@ -28,16 +40,14 @@ pub struct CfnUsagePlanKey {
     #[serde(rename = "UsagePlanId")]
     pub usage_plan_id: String,
 
+}
 
-    /// 
-    /// The Id of the UsagePlanKey resource to be deleted.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KeyId")]
-    pub key_id: String,
+impl cfn_resources::CfnResource for CfnUsagePlanKey {
+    fn type_string() -> &'static str {
+        "AWS::ApiGateway::UsagePlanKey"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

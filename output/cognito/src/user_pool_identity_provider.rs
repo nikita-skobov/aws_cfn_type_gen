@@ -1,56 +1,8 @@
 
 
 /// The AWS::Cognito::UserPoolIdentityProvider resource creates an identity    provider for a user pool.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserPoolIdentityProvider {
-
-
-    /// 
-    /// The user pool ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 55
-    ///
-    /// Pattern: [\w-]+_[0-9a-zA-Z]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
-
-
-    /// 
-    /// A mapping of IdP attributes to standard and custom user pool attributes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttributeMapping")]
-    pub attribute_mapping: Option<serde_json::Value>,
-
-
-    /// 
-    /// The IdP name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 32
-    ///
-    /// Pattern: [^_][\p{L}\p{M}\p{S}\p{N}\p{P}][^_]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProviderName")]
-    pub provider_name: String,
 
 
     /// 
@@ -82,6 +34,24 @@ pub struct CfnUserPoolIdentityProvider {
 
 
     /// 
+    /// The user pool ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 55
+    ///
+    /// Pattern: [\w-]+_[0-9a-zA-Z]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserPoolId")]
+    pub user_pool_id: String,
+
+
+    /// 
     /// A list of IdP identifiers.
     /// 
     /// Required: No
@@ -94,4 +64,44 @@ pub struct CfnUserPoolIdentityProvider {
     #[serde(rename = "IdpIdentifiers")]
     pub idp_identifiers: Option<Vec<String>>,
 
+
+    /// 
+    /// The IdP name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 32
+    ///
+    /// Pattern: [^_][\p{L}\p{M}\p{S}\p{N}\p{P}][^_]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProviderName")]
+    pub provider_name: String,
+
+
+    /// 
+    /// A mapping of IdP attributes to standard and custom user pool attributes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AttributeMapping")]
+    pub attribute_mapping: Option<serde_json::Value>,
+
+}
+
+impl cfn_resources::CfnResource for CfnUserPoolIdentityProvider {
+    fn type_string() -> &'static str {
+        "AWS::Cognito::UserPoolIdentityProvider"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

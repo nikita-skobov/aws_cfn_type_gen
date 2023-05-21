@@ -3,20 +3,20 @@
 /// Creates an AWS Resilience Hub application. An AWS Resilience Hub application is a    collection of AWS resources structured to prevent and recover AWS application disruptions. To describe a AWS Resilience Hub application,    you provide an    application name, resources from one or more AWS CloudFormation stacks, AWS Resource Groups, Terraform state files, AppRegistry applications, and an appropriate    resiliency policy. In addition, you can also add resources that are located on Amazon Elastic Kubernetes Service (Amazon EKS) clusters as optional resources. For more information    about the number of resources supported per application, see Service    quotas.
 ///
 /// After you create an AWS Resilience Hub application, you publish it so that you can run a resiliency    assessment on it. You can then use recommendations from the assessment to improve resiliency    by running another assessment, comparing results, and then iterating the process until you    achieve your goals for recovery time objective (RTO) and recovery point objective    (RPO).
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApp {
 
 
     /// 
-    /// An array of ResourceMapping objects.
+    /// The name for the application.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of ResourceMapping
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceMappings")]
-    pub resource_mappings: Vec<ResourceMapping>,
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -32,15 +32,39 @@ pub struct CfnApp {
 
 
     /// 
-    /// The name for the application.
+    /// An array of ResourceMapping objects.
     /// 
     /// Required: Yes
     ///
+    /// Type: List of ResourceMapping
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceMappings")]
+    pub resource_mappings: Vec<ResourceMapping>,
+
+
+    /// 
+    /// The tags assigned to the resource. A tag is a label that you assign to an AWS resource. Each tag consists of a key/value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the resiliency policy.
+    /// 
+    /// Required: No
+    ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "ResiliencyPolicyArn")]
+    pub resiliency_policy_arn: Option<String>,
 
 
     /// 
@@ -60,18 +84,6 @@ pub struct CfnApp {
 
 
     /// 
-    /// The tags assigned to the resource. A tag is a label that you assign to an AWS resource. Each tag consists of a key/value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
     /// Assessment execution schedule with 'Daily' or 'Disabled' values.
     /// 
     /// Required: No
@@ -82,24 +94,34 @@ pub struct CfnApp {
     #[serde(rename = "AppAssessmentSchedule")]
     pub app_assessment_schedule: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnApp {
+    fn type_string() -> &'static str {
+        "AWS::ResilienceHub::App"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Defines a resource mapping.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ResourceMapping {
+
 
     /// 
-    /// The Amazon Resource Name (ARN) of the resiliency policy.
+    /// The name of the CloudFormation stack this resource is mapped to.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResiliencyPolicyArn")]
-    pub resiliency_policy_arn: Option<String>,
-
-}
-
-
-/// Defines a resource mapping.
-#[derive(Default, serde::Serialize)]
-pub struct ResourceMapping {
+    #[serde(rename = "LogicalStackName")]
+    pub logical_stack_name: Option<String>,
 
 
     /// 
@@ -112,18 +134,6 @@ pub struct ResourceMapping {
     /// Update requires: No interruption
     #[serde(rename = "PhysicalResourceId")]
     pub physical_resource_id: PhysicalResourceId,
-
-
-    /// 
-    /// The short name of the Terraform source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TerraformSourceName")]
-    pub terraform_source_name: Option<String>,
 
 
     /// 
@@ -155,22 +165,34 @@ pub struct ResourceMapping {
 
 
     /// 
-    /// The name of the CloudFormation stack this resource is mapped to.
+    /// The short name of the Terraform source.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LogicalStackName")]
-    pub logical_stack_name: Option<String>,
+    #[serde(rename = "TerraformSourceName")]
+    pub terraform_source_name: Option<String>,
 
 }
 
 
 /// Defines a physical resource identifier.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PhysicalResourceId {
+
+
+    /// 
+    /// The AWS Region that the physical resource is located in.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AwsRegion")]
+    pub aws_region: Option<String>,
 
 
     /// 
@@ -197,18 +219,6 @@ pub struct PhysicalResourceId {
     /// Update requires: No interruption
     #[serde(rename = "AwsAccountId")]
     pub aws_account_id: Option<String>,
-
-
-    /// 
-    /// The AWS Region that the physical resource is located in.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AwsRegion")]
-    pub aws_region: Option<String>,
 
 
     /// 

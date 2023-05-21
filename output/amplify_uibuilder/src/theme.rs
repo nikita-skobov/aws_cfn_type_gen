@@ -1,7 +1,7 @@
 
 
 /// The AWS::AmplifyUIBuilder::Theme resource specifies a theme within an Amplify app. A theme    is a collection of style settings that apply globally to the components associated with the    app.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTheme {
 
 
@@ -27,6 +27,17 @@ pub struct CfnTheme {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AppId")]
+    pub app_id: Option<String>,
 
 
     /// Property description not available.
@@ -63,35 +74,22 @@ pub struct CfnTheme {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
+}
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AppId")]
-    pub app_id: Option<String>,
+impl cfn_resources::CfnResource for CfnTheme {
+    fn type_string() -> &'static str {
+        "AWS::AmplifyUIBuilder::Theme"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The ThemeValues property specifies key-value pair that defines a property of a theme.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ThemeValues {
-
-
-    /// 
-    /// The name of the property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
 
 
     /// 
@@ -105,24 +103,24 @@ pub struct ThemeValues {
     #[serde(rename = "Value")]
     pub value: Option<ThemeValue>,
 
-}
-
-
-/// The ThemeValue property specifies the configuration of a theme's    properties.
-#[derive(Default, serde::Serialize)]
-pub struct ThemeValue {
-
 
     /// 
-    /// The value of a theme property.
+    /// The name of the property.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
+
+}
+
+
+/// The ThemeValue property specifies the configuration of a theme's    properties.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ThemeValue {
 
 
     /// 
@@ -135,5 +133,17 @@ pub struct ThemeValue {
     /// Update requires: No interruption
     #[serde(rename = "Children")]
     pub children: Option<Vec<ThemeValues>>,
+
+
+    /// 
+    /// The value of a theme property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }

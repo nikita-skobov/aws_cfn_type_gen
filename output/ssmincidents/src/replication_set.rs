@@ -1,8 +1,20 @@
 
 
 /// The AWS::SSMIncidents::ReplicationSet resource specifies a set of Regions       that Incident Manager data is replicated to and the KMS key used to encrypt       the data.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnReplicationSet {
+
+
+    /// 
+    /// Determines if the replication set deletion protection is enabled or not. If deletion       protection is enabled, you can't delete the last Region in the replication set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeletionProtected")]
+    pub deletion_protected: Option<bool>,
 
 
     /// 
@@ -28,23 +40,40 @@ pub struct CfnReplicationSet {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnReplicationSet {
+    fn type_string() -> &'static str {
+        "AWS::SSMIncidents::ReplicationSet"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// The RegionConfiguration property specifies the Region and KMS key to add       to the replication set.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RegionConfiguration {
+
 
     /// 
-    /// Determines if the replication set deletion protection is enabled or not. If deletion       protection is enabled, you can't delete the last Region in the replication set.
+    /// The KMS key ID to use to encrypt your replication set.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeletionProtected")]
-    pub deletion_protected: Option<bool>,
+    #[serde(rename = "SseKmsKeyId")]
+    pub sse_kms_key_id: String,
 
 }
 
 
 /// The ReplicationRegion property type specifies the Region and KMS key to       add to the replication set.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReplicationRegion {
 
 
@@ -74,25 +103,6 @@ pub struct ReplicationRegion {
 }
 
 
-/// The RegionConfiguration property specifies the Region and KMS key to add       to the replication set.
-#[derive(Default, serde::Serialize)]
-pub struct RegionConfiguration {
-
-
-    /// 
-    /// The KMS key ID to use to encrypt your replication set.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SseKmsKeyId")]
-    pub sse_kms_key_id: String,
-
-}
-
-
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -100,7 +110,7 @@ pub struct RegionConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

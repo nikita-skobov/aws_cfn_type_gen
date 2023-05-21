@@ -1,56 +1,8 @@
 
 
 /// Creates a new role for your AWS account. For more information about roles, see         IAM         roles. For information about quotas for role names and the number of roles       you can create, see IAM and AWS STS quotas in the         IAM User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRole {
-
-
-    /// 
-    /// The ARN of the policy used to set the permissions boundary for the role.
-    /// 
-    /// For more information about permissions boundaries, see Permissions boundaries for IAM       identities in the IAM User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PermissionsBoundary")]
-    pub permissions_boundary: Option<String>,
-
-
-    /// 
-    /// The path to the role. For more information about paths, see IAM         Identifiers in the IAM User Guide.
-    /// 
-    /// This parameter is optional. If it is not included, it defaults to a slash (/).
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: (\u002F)|(\u002F[\u0021-\u007E]+\u002F)
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
-
-
-    /// 
-    /// The trust policy that is associated with this role. Trust policies define which entities     can assume the role. You can associate only one trust policy with a role. For an example of     a policy that can be used to assume a role, see Template Examples. For more information about the elements that you can use in     an IAM policy, see IAM Policy       Elements Reference in the IAM User     Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssumeRolePolicyDocument")]
-    pub assume_role_policy_document: serde_json::Value,
 
 
     /// 
@@ -71,20 +23,6 @@ pub struct CfnRole {
     /// Update requires: Replacement
     #[serde(rename = "RoleName")]
     pub role_name: Option<String>,
-
-
-    /// 
-    /// A list of Amazon Resource Names (ARNs) of the IAM managed policies that     you want to attach to the role.
-    /// 
-    /// For more information about ARNs, see Amazon Resource Names (ARNs) and        AWS Service Namespaces in the AWS       General Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManagedPolicyArns")]
-    pub managed_policy_arns: Option<Vec<String>>,
 
 
     /// 
@@ -122,6 +60,62 @@ pub struct CfnRole {
 
 
     /// 
+    /// The ARN of the policy used to set the permissions boundary for the role.
+    /// 
+    /// For more information about permissions boundaries, see Permissions boundaries for IAM       identities in the IAM User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PermissionsBoundary")]
+    pub permissions_boundary: Option<String>,
+
+
+    /// 
+    /// A list of Amazon Resource Names (ARNs) of the IAM managed policies that     you want to attach to the role.
+    /// 
+    /// For more information about ARNs, see Amazon Resource Names (ARNs) and        AWS Service Namespaces in the AWS       General Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManagedPolicyArns")]
+    pub managed_policy_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// The trust policy that is associated with this role. Trust policies define which entities     can assume the role. You can associate only one trust policy with a role. For an example of     a policy that can be used to assume a role, see Template Examples. For more information about the elements that you can use in     an IAM policy, see IAM Policy       Elements Reference in the IAM User     Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssumeRolePolicyDocument")]
+    pub assume_role_policy_document: serde_json::Value,
+
+
+    /// 
+    /// A description of the role that you provide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The maximum session duration (in seconds) that you want to set for the specified role.       If you do not specify a value for this setting, the default value of one hour is       applied. This setting can have a value from 1 hour to 12 hours.
     /// 
     /// Anyone who assumes the role from the AWS CLI or API can use the         DurationSeconds API parameter or the duration-seconds       AWS CLI parameter to request a longer session. The MaxSessionDuration setting       determines the maximum duration that can be requested using the         DurationSeconds parameter. If users don't specify a value for the         DurationSeconds parameter, their security credentials are valid for one       hour by default. This applies when you use the AssumeRole* API operations       or the assume-role*       AWS CLI operations but does not apply when you use those       operations to create a console URL. For more information, see Using IAM         roles in the IAM User Guide.
@@ -140,19 +134,70 @@ pub struct CfnRole {
 
 
     /// 
-    /// A description of the role that you provide.
+    /// The path to the role. For more information about paths, see IAM         Identifiers in the IAM User Guide.
+    /// 
+    /// This parameter is optional. If it is not included, it defaults to a slash (/).
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 1000
+    /// Minimum: 1
     ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*
+    /// Maximum: 512
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Pattern: (\u002F)|(\u002F[\u0021-\u007E]+\u002F)
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnRole {
+    fn type_string() -> &'static str {
+        "AWS::IAM::Role"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }
 
@@ -162,8 +207,20 @@ pub struct CfnRole {
 /// An attached policy is a managed policy that has been attached to a user, group, or     role.
 ///
 /// For more information about managed policies, refer to Managed Policies and Inline       Policies in the IAM User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Policy {
+
+
+    /// 
+    /// The entire contents of the policy that defines permissions. For more information, see       Overview of JSON       policies.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyDocument")]
+    pub policy_document: serde_json::Value,
 
 
     /// 
@@ -182,52 +239,5 @@ pub struct Policy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
     pub policy_name: String,
-
-
-    /// 
-    /// The entire contents of the policy that defines permissions. For more information, see       Overview of JSON       policies.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PolicyDocument")]
-    pub policy_document: serde_json::Value,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 }

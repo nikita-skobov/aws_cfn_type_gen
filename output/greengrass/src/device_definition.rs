@@ -3,7 +3,7 @@
 /// The     AWS::Greengrass::DeviceDefinition resource represents a device definition for AWS IoT Greengrass. 			Device definitions are used to organize your device definition versions.
 ///
 /// Device definitions can reference multiple device definition versions. All device definition versions      must be associated with a device definition. Each device definition version can contain one or more devices.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeviceDefinition {
 
 
@@ -50,11 +50,21 @@ pub struct CfnDeviceDefinition {
 
 }
 
+impl cfn_resources::CfnResource for CfnDeviceDefinition {
+    fn type_string() -> &'static str {
+        "AWS::Greengrass::DeviceDefinition"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// A device is an AWS IoT device (thing) that's added to a Greengrass group. 	 Greengrass devices can communicate with the Greengrass core in the same group. For more information,   see What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Devices 		 property of the DeviceDefinitionVersion property type contains a list       of Device property types.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Device {
 
 
@@ -71,18 +81,6 @@ pub struct Device {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateArn")]
-    pub certificate_arn: String,
-
-
-    /// 
     /// A descriptive or arbitrary ID for the device. This value must be unique within       the device definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
     /// 
     /// Required: Yes
@@ -92,6 +90,18 @@ pub struct Device {
     /// Update requires: Replacement
     #[serde(rename = "Id")]
     pub id: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateArn")]
+    pub certificate_arn: String,
 
 
     /// 
@@ -111,7 +121,7 @@ pub struct Device {
 /// A device definition version contains a list of devices.
 ///
 /// In an AWS CloudFormation template, DeviceDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::DeviceDefinition resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DeviceDefinitionVersion {
 
 

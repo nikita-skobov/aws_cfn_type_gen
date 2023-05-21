@@ -3,8 +3,19 @@
 /// The AWS::ElastiCache::SecurityGroup resource creates a cache security group. For more information about cache security groups,     go to CacheSecurityGroups in the Amazon ElastiCache User Guide     or go to CreateCacheSecurityGroup in the      Amazon ElastiCache API Reference Guide.
 ///
 /// For more information,       see CreateCacheSubnetGroup.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSecurityGroup {
+
+
+    /// A tag that can be added to an ElastiCache security group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your security groups. A tag with a null Value is permitted.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -18,17 +29,16 @@ pub struct CfnSecurityGroup {
     #[serde(rename = "Description")]
     pub description: String,
 
+}
 
-    /// A tag that can be added to an ElastiCache security group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your security groups. A tag with a null Value is permitted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnSecurityGroup {
+    fn type_string() -> &'static str {
+        "AWS::ElastiCache::SecurityGroup"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -39,7 +49,7 @@ pub struct CfnSecurityGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

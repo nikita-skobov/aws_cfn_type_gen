@@ -3,414 +3,8 @@
 /// Specifies a cluster. A cluster is a fully managed data warehouse       that consists of a set of compute nodes.
 ///
 /// To create a cluster in Virtual Private Cloud (VPC), you must provide a cluster subnet       group name. The cluster subnet group identifies the subnets of your VPC that Amazon       Redshift uses when creating the cluster. For more information about managing clusters,       go to Amazon Redshift Clusters in the Amazon Redshift Cluster         Management Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCluster {
-
-
-    /// 
-    /// The default number of days to retain a manual snapshot. If the value is -1, the       snapshot is retained indefinitely. This setting doesn't change the retention period       of existing snapshots.
-    /// 
-    /// The value must be either -1 or an integer between 1 and 3,653.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManualSnapshotRetentionPeriod")]
-    pub manual_snapshot_retention_period: Option<i64>,
-
-
-    /// 
-    /// Describes a RevisionTarget object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RevisionTarget")]
-    pub revision_target: Option<String>,
-
-
-    /// 
-    /// The version of the Amazon Redshift engine software that you want to deploy on the       cluster.
-    /// 
-    /// The version selected runs on all the nodes in the cluster.
-    /// 
-    /// Constraints: Only version 1.0 is currently available.
-    /// 
-    /// Example: 1.0
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClusterVersion")]
-    pub cluster_version: Option<String>,
-
-
-    /// 
-    /// The user name associated with the admin user for the cluster that is being       created.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be 1 - 128 alphanumeric characters or hyphens. The user name can't be             PUBLIC.               Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.               The first character must be a letter.               Must not contain a colon (:) or a slash (/).               Cannot be a reserved word. A list of reserved words can be found in Reserved             Words in the Amazon Redshift Database Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MasterUsername")]
-    pub master_username: String,
-
-
-    /// 
-    /// If true, the data in the cluster is encrypted at rest.
-    /// 
-    /// Default: false
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Encrypted")]
-    pub encrypted: Option<bool>,
-
-
-    /// 
-    /// The name of the snapshot from which to create the new cluster. This parameter isn't       case sensitive. You must specify this parameter or snapshotArn, but not both.
-    /// 
-    /// Example: my-snapshot-id
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotIdentifier")]
-    pub snapshot_identifier: Option<String>,
-
-
-    /// 
-    /// Specifies the name of the HSM configuration that contains the information the       Amazon Redshift cluster can use to retrieve and store keys in an HSM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HsmConfigurationIdentifier")]
-    pub hsm_configuration_identifier: Option<String>,
-
-
-    /// 
-    /// Indicates whether to apply the snapshot retention period to newly copied manual       snapshots instead of automated snapshots.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshotCopyManual")]
-    pub snapshot_copy_manual: Option<bool>,
-
-
-    /// 
-    /// The node type to be provisioned for the cluster. For information about node types,       go to Working with         Clusters in the Amazon Redshift Cluster Management Guide.
-    /// 
-    /// Valid Values: ds2.xlarge | ds2.8xlarge |         dc1.large | dc1.8xlarge |         dc2.large | dc2.8xlarge |         ra3.xlplus | ra3.4xlarge | ra3.16xlarge
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NodeType")]
-    pub node_type: String,
-
-
-    /// 
-    /// The name of the cluster the source snapshot was created from. This parameter is       required if your user or role has a policy containing a snapshot resource element that       specifies anything other than * for the cluster name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotClusterIdentifier")]
-    pub snapshot_cluster_identifier: Option<String>,
-
-
-    /// 
-    /// An option that specifies whether to create the cluster with enhanced VPC routing       enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a       VPC. For more information, see Enhanced VPC Routing in       the Amazon Redshift Cluster Management Guide.
-    /// 
-    /// If this option is true, enhanced VPC routing is enabled.
-    /// 
-    /// Default: false
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnhancedVpcRouting")]
-    pub enhanced_vpc_routing: Option<bool>,
-
-
-    /// 
-    /// Specifies logging information, such as queries and connection attempts, for the       specified Amazon Redshift cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LoggingProperties
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LoggingProperties")]
-    pub logging_properties: Option<LoggingProperties>,
-
-
-    /// 
-    /// The destination region that snapshots are automatically copied to when cross-region       snapshot copy is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationRegion")]
-    pub destination_region: Option<String>,
-
-
-    /// 
-    /// The AWS Key Management Service (KMS) key ID of the encryption key that you want to       use to encrypt data in the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// If true, major version upgrades can be applied during the maintenance       window to the Amazon Redshift engine that is running on the cluster.
-    /// 
-    /// When a new major version of the Amazon Redshift engine is released, you can request that       the service automatically apply upgrades during the maintenance window to the Amazon Redshift       engine that is running on your cluster.
-    /// 
-    /// Default: true
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllowVersionUpgrade")]
-    pub allow_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// A timestamp indicating the start time for the deferred maintenance window.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeferMaintenanceStartTime")]
-    pub defer_maintenance_start_time: Option<String>,
-
-
-    /// 
-    /// The Elastic IP (EIP) address for the cluster.
-    /// 
-    /// Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible       through an Internet gateway. Don't specify the Elastic IP address for a publicly accessible       cluster with availability zone relocation turned on. For more information about provisioning clusters in       EC2-VPC, go to Supported         Platforms to Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ElasticIp")]
-    pub elastic_ip: Option<String>,
-
-
-    /// 
-    /// An optional parameter for the name of the maintenance track for the cluster. If you       don't provide a maintenance track name, the cluster is assigned to the         current track.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaintenanceTrackName")]
-    pub maintenance_track_name: Option<String>,
-
-
-    /// 
-    /// A boolean value indicating whether the resize operation is using the classic resize       process. If you don't provide this parameter or set the value to       false, the resize type is elastic.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Classic")]
-    pub classic: Option<bool>,
-
-
-    /// 
-    /// An integer indicating the duration of the maintenance window in days. If you specify a duration, you can't specify an end time.       The duration must be 45 days or less.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeferMaintenanceDuration")]
-    pub defer_maintenance_duration: Option<i64>,
-
-
-    /// 
-    /// A Boolean indicating whether to enable the deferred maintenance window.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeferMaintenance")]
-    pub defer_maintenance: Option<bool>,
-
-
-    /// 
-    /// The port number on which the cluster accepts incoming connections.
-    /// 
-    /// The cluster is accessible only via the JDBC and ODBC connection strings. Part of       the connection string requires the port on which the cluster will listen for incoming       connections.
-    /// 
-    /// Default: 5439
-    /// 
-    /// Valid Values: 1150-65535
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The name of the snapshot copy grant.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshotCopyGrantName")]
-    pub snapshot_copy_grant_name: Option<String>,
-
-
-    /// 
-    /// The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster is created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AvailabilityZoneRelocation")]
-    pub availability_zone_relocation: Option<bool>,
-
-
-    /// 
-    /// The type of the cluster. When cluster type is specified as
-    /// 
-    /// single-node, the NumberOfNodes           parameter is not required.                        multi-node, the NumberOfNodes           parameter is required.
-    /// 
-    /// Valid Values: multi-node | single-node
-    /// 
-    /// Default: multi-node
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClusterType")]
-    pub cluster_type: String,
-
-
-    /// 
-    /// Describes the status of the Availability Zone relocation operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AvailabilityZoneRelocationStatus")]
-    pub availability_zone_relocation_status: Option<String>,
-
-
-    /// 
-    /// Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to       retrieve the data encryption keys stored in an HSM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HsmClientCertificateIdentifier")]
-    pub hsm_client_certificate_identifier: Option<String>,
-
-
-    /// 
-    /// A list of Virtual Private Cloud (VPC) security groups to be associated with the       cluster.
-    /// 
-    /// Default: The default VPC security group is associated with the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSecurityGroupIds")]
-    pub vpc_security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -434,29 +28,77 @@ pub struct CfnCluster {
 
 
     /// 
-    /// Rotates the encryption keys for a cluster.
+    /// Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to       retrieve the data encryption keys stored in an HSM.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RotateEncryptionKey")]
-    pub rotate_encryption_key: Option<bool>,
+    #[serde(rename = "HsmClientCertificateIdentifier")]
+    pub hsm_client_certificate_identifier: Option<String>,
 
 
     /// 
-    /// A list of AWS Identity and Access Management (IAM) roles that can be used by the       cluster to access other AWS services. You must supply the IAM roles in their Amazon       Resource Name (ARN) format.
+    /// The version of the Amazon Redshift engine software that you want to deploy on the       cluster.
     /// 
-    /// The maximum number of IAM roles that you can associate is subject to a quota.       For more information, go to Quotas and limits       in the Amazon Redshift Cluster Management Guide.
+    /// The version selected runs on all the nodes in the cluster.
+    /// 
+    /// Constraints: Only version 1.0 is currently available.
+    /// 
+    /// Example: 1.0
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IamRoles")]
-    pub iam_roles: Option<Vec<String>>,
+    #[serde(rename = "ClusterVersion")]
+    pub cluster_version: Option<String>,
+
+
+    /// 
+    /// The name of the cluster the source snapshot was created from. This parameter is       required if your user or role has a policy containing a snapshot resource element that       specifies anything other than * for the cluster name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotClusterIdentifier")]
+    pub snapshot_cluster_identifier: Option<String>,
+
+
+    /// 
+    /// Describes a RevisionTarget object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RevisionTarget")]
+    pub revision_target: Option<String>,
+
+
+    /// 
+    /// The AWS account used to create or copy the snapshot. Required if you are       restoring a snapshot you do not own, optional if you own the snapshot.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OwnerAccount")]
+    pub owner_account: Option<String>,
 
 
     /// 
@@ -474,67 +116,35 @@ pub struct CfnCluster {
 
 
     /// 
-    /// A timestamp for the end of the time period when we defer maintenance.
+    /// The Amazon Redshift operation to be performed. Supported operations are pause-cluster and     resume-cluster.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeferMaintenanceEndTime")]
-    pub defer_maintenance_end_time: Option<String>,
+    #[serde(rename = "ResourceAction")]
+    pub resource_action: Option<String>,
 
 
     /// 
-    /// The number of compute nodes in the cluster. This parameter is required when the         ClusterType parameter is specified as         multi-node.
+    /// The default number of days to retain a manual snapshot. If the value is -1, the       snapshot is retained indefinitely. This setting doesn't change the retention period       of existing snapshots.
     /// 
-    /// For information about determining how many nodes you need, go to Working with         Clusters in the Amazon Redshift Cluster Management Guide.
-    /// 
-    /// If you don't specify this parameter, you get a single-node cluster. When requesting       a multi-node cluster, you must specify the number of nodes that you want in the       cluster.
-    /// 
-    /// Default: 1
-    /// 
-    /// Constraints: Value must be at least 1 and no more than 100.
+    /// The value must be either -1 or an integer between 1 and 3,653.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NumberOfNodes")]
-    pub number_of_nodes: Option<i64>,
+    #[serde(rename = "ManualSnapshotRetentionPeriod")]
+    pub manual_snapshot_retention_period: Option<i64>,
 
 
     /// 
-    /// The name of the first database to be created when the cluster is created.
+    /// The Elastic IP (EIP) address for the cluster.
     /// 
-    /// To create additional databases after the cluster is created, connect to the cluster       with a SQL client and use SQL commands to create a database. For more information, go to         Create         a Database in the Amazon Redshift Database Developer Guide.
-    /// 
-    /// Default: dev
-    /// 
-    /// Constraints:
-    /// 
-    /// Must contain 1 to 64 alphanumeric characters.               Must contain only lowercase letters.               Cannot be a word that is reserved by the service. A list of reserved words           can be found in Reserved Words in the           Amazon Redshift Database Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBName")]
-    pub dbname: String,
-
-
-    /// 
-    /// The name of the parameter group to be associated with this cluster.
-    /// 
-    /// Default: The default Amazon Redshift cluster parameter group. For information about the       default parameter group, go to Working with Amazon         Redshift Parameter Groups
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be 1 to 255 alphanumeric characters or hyphens.               First character must be a letter.               Cannot end with a hyphen or contain two consecutive hyphens.
+    /// Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible       through an Internet gateway. Don't specify the Elastic IP address for a publicly accessible       cluster with availability zone relocation turned on. For more information about provisioning clusters in       EC2-VPC, go to Supported         Platforms to Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
     /// 
     /// Required: No
     ///
@@ -543,50 +153,24 @@ pub struct CfnCluster {
     /// Maximum: 2147483647
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ClusterParameterGroupName")]
-    pub cluster_parameter_group_name: Option<String>,
+    #[serde(rename = "ElasticIp")]
+    pub elastic_ip: Option<String>,
 
 
     /// 
-    /// If true, the cluster can be accessed from a public network.
+    /// An option that specifies whether to create the cluster with enhanced VPC routing       enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a       VPC. For more information, see Enhanced VPC Routing in       the Amazon Redshift Cluster Management Guide.
+    /// 
+    /// If this option is true, enhanced VPC routing is enabled.
+    /// 
+    /// Default: false
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PubliclyAccessible")]
-    pub publicly_accessible: Option<bool>,
-
-
-    /// 
-    /// The password associated with the admin user for the cluster that is being       created.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be between 8 and 64 characters in length.               Must contain at least one uppercase letter.               Must contain at least one lowercase letter.               Must contain one number.               Can be any printable ASCII character (ASCII code 33-126) except '           (single quote), " (double quote), \, /, or @.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MasterUserPassword")]
-    pub master_user_password: String,
-
-
-    /// 
-    /// The connection endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Endpoint
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Endpoint")]
-    pub endpoint: Option<Endpoint>,
+    #[serde(rename = "EnhancedVpcRouting")]
+    pub enhanced_vpc_routing: Option<bool>,
 
 
     /// 
@@ -612,45 +196,29 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The AWS account used to create or copy the snapshot. Required if you are       restoring a snapshot you do not own, optional if you own the snapshot.
+    /// A timestamp indicating the start time for the deferred maintenance window.
     /// 
     /// Required: No
     ///
     /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OwnerAccount")]
-    pub owner_account: Option<String>,
-
-
-    /// 
-    /// The name of a cluster subnet group to be associated with this cluster.
-    /// 
-    /// If this parameter is not provided the resulting cluster will be deployed outside       virtual private cloud (VPC).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClusterSubnetGroupName")]
-    pub cluster_subnet_group_name: Option<String>,
-
-
-    /// 
-    /// A list of tag instances.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "DeferMaintenanceStartTime")]
+    pub defer_maintenance_start_time: Option<String>,
+
+
+    /// 
+    /// This parameter is retired. It does not set the AQUA configuration status. Amazon Redshift automatically determines whether to use AQUA (Advanced Query Accelerator).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: auto | disabled | enabled
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AquaConfigurationStatus")]
+    pub aqua_configuration_status: Option<String>,
 
 
     /// 
@@ -671,6 +239,466 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "ClusterIdentifier")]
     pub cluster_identifier: Option<String>,
+
+
+    /// 
+    /// The user name associated with the admin user for the cluster that is being       created.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be 1 - 128 alphanumeric characters or hyphens. The user name can't be             PUBLIC.               Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.               The first character must be a letter.               Must not contain a colon (:) or a slash (/).               Cannot be a reserved word. A list of reserved words can be found in Reserved             Words in the Amazon Redshift Database Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MasterUsername")]
+    pub master_username: String,
+
+
+    /// 
+    /// The connection endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Endpoint
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Endpoint")]
+    pub endpoint: Option<Endpoint>,
+
+
+    /// 
+    /// The number of days that automated snapshots are retained. If the value is 0, automated       snapshots are disabled. Even if automated snapshots are disabled, you can still create       manual snapshots when you want with CreateClusterSnapshot in the Amazon Redshift API         Reference.
+    /// 
+    /// Default: 1
+    /// 
+    /// Constraints: Must be a value from 0 to 35.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutomatedSnapshotRetentionPeriod")]
+    pub automated_snapshot_retention_period: Option<i64>,
+
+
+    /// 
+    /// Indicates whether to apply the snapshot retention period to newly copied manual       snapshots instead of automated snapshots.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnapshotCopyManual")]
+    pub snapshot_copy_manual: Option<bool>,
+
+
+    /// 
+    /// The name of the snapshot copy grant.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SnapshotCopyGrantName")]
+    pub snapshot_copy_grant_name: Option<String>,
+
+
+    /// 
+    /// The name of the snapshot from which to create the new cluster. This parameter isn't       case sensitive. You must specify this parameter or snapshotArn, but not both.
+    /// 
+    /// Example: my-snapshot-id
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotIdentifier")]
+    pub snapshot_identifier: Option<String>,
+
+
+    /// 
+    /// The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster is created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AvailabilityZoneRelocation")]
+    pub availability_zone_relocation: Option<bool>,
+
+
+    /// 
+    /// The name of the first database to be created when the cluster is created.
+    /// 
+    /// To create additional databases after the cluster is created, connect to the cluster       with a SQL client and use SQL commands to create a database. For more information, go to         Create         a Database in the Amazon Redshift Database Developer Guide.
+    /// 
+    /// Default: dev
+    /// 
+    /// Constraints:
+    /// 
+    /// Must contain 1 to 64 alphanumeric characters.               Must contain only lowercase letters.               Cannot be a word that is reserved by the service. A list of reserved words           can be found in Reserved Words in the           Amazon Redshift Database Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBName")]
+    pub dbname: String,
+
+
+    /// 
+    /// An optional parameter for the name of the maintenance track for the cluster. If you       don't provide a maintenance track name, the cluster is assigned to the         current track.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaintenanceTrackName")]
+    pub maintenance_track_name: Option<String>,
+
+
+    /// 
+    /// The number of compute nodes in the cluster. This parameter is required when the         ClusterType parameter is specified as         multi-node.
+    /// 
+    /// For information about determining how many nodes you need, go to Working with         Clusters in the Amazon Redshift Cluster Management Guide.
+    /// 
+    /// If you don't specify this parameter, you get a single-node cluster. When requesting       a multi-node cluster, you must specify the number of nodes that you want in the       cluster.
+    /// 
+    /// Default: 1
+    /// 
+    /// Constraints: Value must be at least 1 and no more than 100.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NumberOfNodes")]
+    pub number_of_nodes: Option<i64>,
+
+
+    /// 
+    /// Describes the status of the Availability Zone relocation operation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AvailabilityZoneRelocationStatus")]
+    pub availability_zone_relocation_status: Option<String>,
+
+
+    /// 
+    /// A timestamp for the end of the time period when we defer maintenance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeferMaintenanceEndTime")]
+    pub defer_maintenance_end_time: Option<String>,
+
+
+    /// 
+    /// If true, the data in the cluster is encrypted at rest.
+    /// 
+    /// Default: false
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Encrypted")]
+    pub encrypted: Option<bool>,
+
+
+    /// 
+    /// A boolean value indicating whether the resize operation is using the classic resize       process. If you don't provide this parameter or set the value to       false, the resize type is elastic.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Classic")]
+    pub classic: Option<bool>,
+
+
+    /// 
+    /// If true, major version upgrades can be applied during the maintenance       window to the Amazon Redshift engine that is running on the cluster.
+    /// 
+    /// When a new major version of the Amazon Redshift engine is released, you can request that       the service automatically apply upgrades during the maintenance window to the Amazon Redshift       engine that is running on your cluster.
+    /// 
+    /// Default: true
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllowVersionUpgrade")]
+    pub allow_version_upgrade: Option<bool>,
+
+
+    /// 
+    /// The password associated with the admin user for the cluster that is being       created.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be between 8 and 64 characters in length.               Must contain at least one uppercase letter.               Must contain at least one lowercase letter.               Must contain one number.               Can be any printable ASCII character (ASCII code 33-126) except '           (single quote), " (double quote), \, /, or @.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MasterUserPassword")]
+    pub master_user_password: String,
+
+
+    /// 
+    /// An integer indicating the duration of the maintenance window in days. If you specify a duration, you can't specify an end time.       The duration must be 45 days or less.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeferMaintenanceDuration")]
+    pub defer_maintenance_duration: Option<i64>,
+
+
+    /// 
+    /// A list of tag instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The AWS Key Management Service (KMS) key ID of the encryption key that you want to       use to encrypt data in the cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// A list of AWS Identity and Access Management (IAM) roles that can be used by the       cluster to access other AWS services. You must supply the IAM roles in their Amazon       Resource Name (ARN) format.
+    /// 
+    /// The maximum number of IAM roles that you can associate is subject to a quota.       For more information, go to Quotas and limits       in the Amazon Redshift Cluster Management Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IamRoles")]
+    pub iam_roles: Option<Vec<String>>,
+
+
+    /// 
+    /// The port number on which the cluster accepts incoming connections.
+    /// 
+    /// The cluster is accessible only via the JDBC and ODBC connection strings. Part of       the connection string requires the port on which the cluster will listen for incoming       connections.
+    /// 
+    /// Default: 5439
+    /// 
+    /// Valid Values: 1150-65535
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// A Boolean indicating whether to enable the deferred maintenance window.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeferMaintenance")]
+    pub defer_maintenance: Option<bool>,
+
+
+    /// 
+    /// The destination region that snapshots are automatically copied to when cross-region       snapshot copy is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationRegion")]
+    pub destination_region: Option<String>,
+
+
+    /// 
+    /// The name of a cluster subnet group to be associated with this cluster.
+    /// 
+    /// If this parameter is not provided the resulting cluster will be deployed outside       virtual private cloud (VPC).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterSubnetGroupName")]
+    pub cluster_subnet_group_name: Option<String>,
+
+
+    /// 
+    /// Rotates the encryption keys for a cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RotateEncryptionKey")]
+    pub rotate_encryption_key: Option<bool>,
+
+
+    /// 
+    /// If true, the cluster can be accessed from a public network.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PubliclyAccessible")]
+    pub publicly_accessible: Option<bool>,
+
+
+    /// 
+    /// The node type to be provisioned for the cluster. For information about node types,       go to Working with         Clusters in the Amazon Redshift Cluster Management Guide.
+    /// 
+    /// Valid Values: ds2.xlarge | ds2.8xlarge |         dc1.large | dc1.8xlarge |         dc2.large | dc2.8xlarge |         ra3.xlplus | ra3.4xlarge | ra3.16xlarge
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NodeType")]
+    pub node_type: String,
+
+
+    /// 
+    /// The name of the parameter group to be associated with this cluster.
+    /// 
+    /// Default: The default Amazon Redshift cluster parameter group. For information about the       default parameter group, go to Working with Amazon         Redshift Parameter Groups
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be 1 to 255 alphanumeric characters or hyphens.               First character must be a letter.               Cannot end with a hyphen or contain two consecutive hyphens.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClusterParameterGroupName")]
+    pub cluster_parameter_group_name: Option<String>,
+
+
+    /// 
+    /// The type of the cluster. When cluster type is specified as
+    /// 
+    /// single-node, the NumberOfNodes           parameter is not required.                        multi-node, the NumberOfNodes           parameter is required.
+    /// 
+    /// Valid Values: multi-node | single-node
+    /// 
+    /// Default: multi-node
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClusterType")]
+    pub cluster_type: String,
+
+
+    /// 
+    /// Specifies logging information, such as queries and connection attempts, for the       specified Amazon Redshift cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LoggingProperties
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingProperties")]
+    pub logging_properties: Option<LoggingProperties>,
+
+
+    /// 
+    /// Specifies the name of the HSM configuration that contains the information the       Amazon Redshift cluster can use to retrieve and store keys in an HSM.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HsmConfigurationIdentifier")]
+    pub hsm_configuration_identifier: Option<String>,
 
 
     /// 
@@ -698,51 +726,101 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The number of days that automated snapshots are retained. If the value is 0, automated       snapshots are disabled. Even if automated snapshots are disabled, you can still create       manual snapshots when you want with CreateClusterSnapshot in the Amazon Redshift API         Reference.
+    /// A list of Virtual Private Cloud (VPC) security groups to be associated with the       cluster.
     /// 
-    /// Default: 1
-    /// 
-    /// Constraints: Must be a value from 0 to 35.
+    /// Default: The default VPC security group is associated with the cluster.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AutomatedSnapshotRetentionPeriod")]
-    pub automated_snapshot_retention_period: Option<i64>,
+    #[serde(rename = "VpcSecurityGroupIds")]
+    pub vpc_security_group_ids: Option<Vec<String>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnCluster {
+    fn type_string() -> &'static str {
+        "AWS::Redshift::Cluster"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
 
 
     /// 
-    /// This parameter is retired. It does not set the AQUA configuration status. Amazon Redshift automatically determines whether to use AQUA (Advanced Query Accelerator).
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+/// Describes a connection endpoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Endpoint {
+
+
+    /// 
+    /// The DNS address of the cluster. This property is read only.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: auto | disabled | enabled
+    /// Maximum: 2147483647
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AquaConfigurationStatus")]
-    pub aqua_configuration_status: Option<String>,
+    #[serde(rename = "Address")]
+    pub address: Option<String>,
 
 
     /// 
-    /// The Amazon Redshift operation to be performed. Supported operations are pause-cluster and     resume-cluster.
+    /// The port that the database engine is listening on. This property is read only.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ResourceAction")]
-    pub resource_action: Option<String>,
+    #[serde(rename = "Port")]
+    pub port: Option<String>,
 
 }
 
 
 /// Specifies logging information, such as queries and connection attempts, for the       specified Amazon Redshift cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LoggingProperties {
 
 
@@ -780,73 +858,5 @@ pub struct LoggingProperties {
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
     pub bucket_name: String,
-
-}
-
-
-/// Describes a connection endpoint.
-#[derive(Default, serde::Serialize)]
-pub struct Endpoint {
-
-
-    /// 
-    /// The port that the database engine is listening on. This property is read only.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<String>,
-
-
-    /// 
-    /// The DNS address of the cluster. This property is read only.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Address")]
-    pub address: Option<String>,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 }

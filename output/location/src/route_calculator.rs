@@ -3,7 +3,7 @@
 /// Specifies a route calculator resource in your AWS account.
 ///
 /// You can send requests to a route calculator resource to estimate travel time,       distance, and get directions. A route calculator sources traffic and road network data       from your chosen data provider.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRouteCalculator {
 
 
@@ -21,6 +21,40 @@ pub struct CfnRouteCalculator {
     /// Update requires: Replacement
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// Specifies the data provider of traffic and road network data.
+    /// 
+    /// NoteThis field is case-sensitive. Enter the valid values as shown. For example,         entering HERE returns an error.
+    /// 
+    /// Valid values include:
+    /// 
+    /// Esri – For additional information about Esri's coverage in your region of interest, see Esri details on street networks and traffic coverage.         Route calculators that use Esri as a           data source only calculate routes that are shorter than 400 km.               Grab – Grab provides routing functionality for Southeast Asia.           For additional information about GrabMaps' coverage,           see GrabMaps             countries and areas covered.               Here – For additional information about HERE             Technologies' coverage in your region of interest, see HERE car routing coverage and HERE truck routing coverage.
+    /// 
+    /// For additional information , see Data         providers on the Amazon Location Service Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataSource")]
+    pub data_source: String,
+
+
+    /// 
+    /// No longer used. If included, the only allowed value is       RequestBasedUsage.
+    /// 
+    /// Allowed Values: RequestBasedUsage
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PricingPlan")]
+    pub pricing_plan: Option<String>,
 
 
     /// 
@@ -44,38 +78,14 @@ pub struct CfnRouteCalculator {
     #[serde(rename = "CalculatorName")]
     pub calculator_name: String,
 
+}
 
-    /// 
-    /// No longer used. If included, the only allowed value is       RequestBasedUsage.
-    /// 
-    /// Allowed Values: RequestBasedUsage
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PricingPlan")]
-    pub pricing_plan: Option<String>,
+impl cfn_resources::CfnResource for CfnRouteCalculator {
+    fn type_string() -> &'static str {
+        "AWS::Location::RouteCalculator"
+    }
 
-
-    /// 
-    /// Specifies the data provider of traffic and road network data.
-    /// 
-    /// NoteThis field is case-sensitive. Enter the valid values as shown. For example,         entering HERE returns an error.
-    /// 
-    /// Valid values include:
-    /// 
-    /// Esri – For additional information about Esri's coverage in your region of interest, see Esri details on street networks and traffic coverage.         Route calculators that use Esri as a           data source only calculate routes that are shorter than 400 km.               Grab – Grab provides routing functionality for Southeast Asia.           For additional information about GrabMaps' coverage,           see GrabMaps             countries and areas covered.               Here – For additional information about HERE             Technologies' coverage in your region of interest, see HERE car routing coverage and HERE truck routing coverage.
-    /// 
-    /// For additional information , see Data         providers on the Amazon Location Service Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataSource")]
-    pub data_source: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

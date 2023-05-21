@@ -1,8 +1,22 @@
 
 
 /// Use the AWS::EventSchemas::Schema resource to specify an event       schema.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSchema {
+
+
+    /// 
+    /// The type of schema.
+    /// 
+    /// Valid types include OpenApi3 and JSONSchemaDraft4.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 
     /// 
@@ -15,6 +29,18 @@ pub struct CfnSchema {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagsEntry>>,
+
+
+    /// 
+    /// A description of the schema.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -42,20 +68,6 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The type of schema.
-    /// 
-    /// Valid types include OpenApi3 and JSONSchemaDraft4.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
     /// The source of the schema definition.
     /// 
     /// Required: Yes
@@ -66,36 +78,22 @@ pub struct CfnSchema {
     #[serde(rename = "Content")]
     pub content: String,
 
+}
 
-    /// 
-    /// A description of the schema.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+impl cfn_resources::CfnResource for CfnSchema {
+    fn type_string() -> &'static str {
+        "AWS::EventSchemas::Schema"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Tags to associate with the schema.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagsEntry {
-
-
-    /// 
-    /// They value of a key-value pair.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -108,5 +106,17 @@ pub struct TagsEntry {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// They value of a key-value pair.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

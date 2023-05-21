@@ -1,44 +1,20 @@
 
 
 /// Creates a project in the specified portal.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProject {
 
 
     /// 
-    /// A list of key-value pairs that contain metadata for the project. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
+    /// A description for the project.
     /// 
     /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A list that contains the IDs of each asset associated with the project.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssetIds")]
-    pub asset_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// A friendly name for the project.
-    /// 
-    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ProjectName")]
-    pub project_name: String,
+    #[serde(rename = "ProjectDescription")]
+    pub project_description: Option<String>,
 
 
     /// 
@@ -54,16 +30,50 @@ pub struct CfnProject {
 
 
     /// 
-    /// A description for the project.
+    /// A friendly name for the project.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ProjectDescription")]
-    pub project_description: Option<String>,
+    #[serde(rename = "ProjectName")]
+    pub project_name: String,
 
+
+    /// 
+    /// A list that contains the IDs of each asset associated with the project.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssetIds")]
+    pub asset_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// A list of key-value pairs that contain metadata for the project. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnProject {
+    fn type_string() -> &'static str {
+        "AWS::IoTSiteWise::Project"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -74,19 +84,8 @@ pub struct CfnProject {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -98,5 +97,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

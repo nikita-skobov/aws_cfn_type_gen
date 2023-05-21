@@ -3,20 +3,8 @@
 /// Use the AWS::XRay::SamplingRule resource to specify a sampling rule, which controls sampling behavior for instrumented applications.    Include a SamplingRule entity to create or update a sampling rule.
 ///
 /// Services retrieve rules with GetSamplingRules, and evaluate each rule in ascending    order of priority for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service    reports back to X-Ray with GetSamplingTargets to get updated versions of    each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSamplingRule {
-
-
-    /// 
-    /// The sampling rule to be created or updated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SamplingRule
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SamplingRule")]
-    pub sampling_rule: Option<Box<SamplingRule>>,
 
 
     /// 
@@ -30,47 +18,48 @@ pub struct CfnSamplingRule {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The sampling rule to be created or updated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SamplingRule
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SamplingRule")]
+    pub sampling_rule: Option<Box<SamplingRule>>,
+
 }
 
+impl cfn_resources::CfnResource for CfnSamplingRule {
+    fn type_string() -> &'static str {
+        "AWS::XRay::SamplingRule"
+    }
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A sampling rule that services use to decide whether to instrument a request. Rule    fields can match properties of the service, or properties of a request. The service can ignore    rules that don't match its properties.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SamplingRule {
+
+
+    /// 
+    /// The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
+    /// 
+    /// NoteSpecifying a sampling rule by name is recommended, as specifying by      ARN will be deprecated in future.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RuleARN")]
+    pub rule_arn: Option<String>,
 
 
     /// 
@@ -85,6 +74,62 @@ pub struct SamplingRule {
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
     pub service_name: String,
+
+
+    /// 
+    /// Matches the hostname from a request URL.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Host")]
+    pub host: String,
+
+
+    /// 
+    /// A fixed number of matching requests to instrument per second, prior to applying the    fixed rate. The reservoir is not used directly by services, but applies to all services using the rule collectively.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReservoirSize")]
+    pub reservoir_size: i64,
+
+
+    /// 
+    /// Matches the origin that the service uses to identify its type in segments.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServiceType")]
+    pub service_type: String,
+
+
+    /// 
+    /// Matches the HTTP method of a request.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HTTPMethod")]
+    pub httpmethod: String,
 
 
     /// 
@@ -104,87 +149,33 @@ pub struct SamplingRule {
 
 
     /// 
-    /// The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
-    /// 
-    /// NoteSpecifying a sampling rule by name is recommended, as specifying by      ARN will be deprecated in future.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RuleARN")]
-    pub rule_arn: Option<String>,
-
-
-    /// 
-    /// Matches the hostname from a request URL.
+    /// Matches the path from a request URL.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Maximum: 64
+    /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Host")]
-    pub host: String,
+    #[serde(rename = "URLPath")]
+    pub urlpath: String,
 
 
     /// 
-    /// Matches the ARN of the AWS resource on which the service runs.
+    /// The priority of the sampling rule.
     /// 
     /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 500
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
-
-
-    /// 
-    /// The version of the sampling rule. Version can only be set when creating a new sampling rule.
-    /// 
-    /// Required: Conditional
     ///
     /// Type: Integer
     ///
     /// Minimum: 1
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Version")]
-    pub version: Option<i64>,
-
-
-    /// 
-    /// A fixed number of matching requests to instrument per second, prior to applying the    fixed rate. The reservoir is not used directly by services, but applies to all services using the rule collectively.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
+    /// Maximum: 9999
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ReservoirSize")]
-    pub reservoir_size: i64,
-
-
-    /// 
-    /// Matches the HTTP method of a request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 10
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HTTPMethod")]
-    pub httpmethod: String,
+    #[serde(rename = "Priority")]
+    pub priority: i64,
 
 
     /// 
@@ -206,19 +197,17 @@ pub struct SamplingRule {
 
 
     /// 
-    /// The priority of the sampling rule.
+    /// Matches the ARN of the AWS resource on which the service runs.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 9999
+    /// Maximum: 500
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: i64,
+    #[serde(rename = "ResourceARN")]
+    pub resource_arn: String,
 
 
     /// 
@@ -234,30 +223,51 @@ pub struct SamplingRule {
 
 
     /// 
-    /// Matches the origin that the service uses to identify its type in segments.
+    /// The version of the sampling rule. Version can only be set when creating a new sampling rule.
     /// 
-    /// Required: Yes
+    /// Required: Conditional
     ///
-    /// Type: String
+    /// Type: Integer
     ///
-    /// Maximum: 64
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceType")]
-    pub service_type: String,
+    /// Update requires: Replacement
+    #[serde(rename = "Version")]
+    pub version: Option<i64>,
+
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
 
 
     /// 
-    /// Matches the path from a request URL.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "URLPath")]
-    pub urlpath: String,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

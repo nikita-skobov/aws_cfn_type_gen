@@ -1,7 +1,7 @@
 
 
 /// The AWS::GlobalAccelerator::Listener resource is a Global Accelerator resource type that contains information about 	   		how you create a listener to process inbound connections from clients to an accelerator. Connections arrive to assigned static 			IP addresses on a port, port range, or list of port ranges that you specify.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnListener {
 
 
@@ -17,20 +17,6 @@ pub struct CfnListener {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     pub protocol: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of your accelerator.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AcceleratorArn")]
-    pub accelerator_arn: String,
 
 
     /// 
@@ -66,28 +52,36 @@ pub struct CfnListener {
     #[serde(rename = "PortRanges")]
     pub port_ranges: Vec<PortRange>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of your accelerator.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AcceleratorArn")]
+    pub accelerator_arn: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnListener {
+    fn type_string() -> &'static str {
+        "AWS::GlobalAccelerator::Listener"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A complex type for a range of ports for a listener.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PortRange {
-
-
-    /// 
-    /// The last port in the range of ports, inclusive.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ToPort")]
-    pub to_port: i64,
 
 
     /// 
@@ -104,5 +98,21 @@ pub struct PortRange {
     /// Update requires: No interruption
     #[serde(rename = "FromPort")]
     pub from_port: i64,
+
+
+    /// 
+    /// The last port in the range of ports, inclusive.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ToPort")]
+    pub to_port: i64,
 
 }

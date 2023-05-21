@@ -1,7 +1,7 @@
 
 
 /// A complex type that contains SizeConstraint objects, which specify the parts of web requests that you             want AWS WAF to inspect the size of. If a SizeConstraintSet contains more than one SizeConstraint 			object, a request only needs to match one constraint to be considered a match.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSizeConstraintSet {
 
 
@@ -36,9 +36,19 @@ pub struct CfnSizeConstraintSet {
 
 }
 
+impl cfn_resources::CfnResource for CfnSizeConstraintSet {
+    fn type_string() -> &'static str {
+        "AWS::WAF::SizeConstraintSet"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// The part of a web request that you want to inspect, such as a specified header or a query string.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FieldToMatch {
 
 
@@ -83,50 +93,8 @@ pub struct FieldToMatch {
 
 
 /// Specifies a constraint on the size of a part of the web request. AWS WAF uses the Size, ComparisonOperator, and FieldToMatch to build 			an expression in the form of "Size       ComparisonOperator size in bytes of FieldToMatch". If that expression is true, the 			SizeConstraint is considered to match.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SizeConstraint {
-
-
-    /// 
-    /// The size in bytes that you want AWS WAF to compare against the size of the specified FieldToMatch. AWS WAF uses this in combination 			with ComparisonOperator and FieldToMatch to build an expression in the form of "Size       ComparisonOperator size 			in bytes of FieldToMatch". If that expression is true, the SizeConstraint is considered to match.
-    /// 
-    /// Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).
-    /// 
-    /// If you specify URI for the value of Type, the / in the URI path that you specify counts as one character. 			For example, the URI /logo.jpg is nine characters long.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Size")]
-    pub size: i64,
-
-
-    /// 
-    /// The type of comparison you want AWS WAF to perform. AWS WAF uses this in combination with the provided Size and FieldToMatch 			to build an expression in the form of "Size       ComparisonOperator size in bytes of FieldToMatch". If that expression 			is true, the SizeConstraint is considered to match.
-    /// 
-    /// EQ: Used to test if the Size is equal to the size of the FieldToMatch
-    /// 
-    /// NE: Used to test if the Size is not equal to the size of the FieldToMatch
-    /// 
-    /// LE: Used to test if the Size is less than or equal to the size of the FieldToMatch
-    /// 
-    /// LT: Used to test if the Size is strictly less than the size of the FieldToMatch
-    /// 
-    /// GE: Used to test if the Size is greater than or equal to the size of the FieldToMatch
-    /// 
-    /// GT: Used to test if the Size is strictly greater than the size of the FieldToMatch
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: EQ | GE | GT | LE | LT | NE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComparisonOperator")]
-    pub comparison_operator: String,
 
 
     /// 
@@ -177,6 +145,48 @@ pub struct SizeConstraint {
     /// Update requires: No interruption
     #[serde(rename = "TextTransformation")]
     pub text_transformation: String,
+
+
+    /// 
+    /// The size in bytes that you want AWS WAF to compare against the size of the specified FieldToMatch. AWS WAF uses this in combination 			with ComparisonOperator and FieldToMatch to build an expression in the form of "Size       ComparisonOperator size 			in bytes of FieldToMatch". If that expression is true, the SizeConstraint is considered to match.
+    /// 
+    /// Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).
+    /// 
+    /// If you specify URI for the value of Type, the / in the URI path that you specify counts as one character. 			For example, the URI /logo.jpg is nine characters long.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Size")]
+    pub size: i64,
+
+
+    /// 
+    /// The type of comparison you want AWS WAF to perform. AWS WAF uses this in combination with the provided Size and FieldToMatch 			to build an expression in the form of "Size       ComparisonOperator size in bytes of FieldToMatch". If that expression 			is true, the SizeConstraint is considered to match.
+    /// 
+    /// EQ: Used to test if the Size is equal to the size of the FieldToMatch
+    /// 
+    /// NE: Used to test if the Size is not equal to the size of the FieldToMatch
+    /// 
+    /// LE: Used to test if the Size is less than or equal to the size of the FieldToMatch
+    /// 
+    /// LT: Used to test if the Size is strictly less than the size of the FieldToMatch
+    /// 
+    /// GE: Used to test if the Size is greater than or equal to the size of the FieldToMatch
+    /// 
+    /// GT: Used to test if the Size is strictly greater than the size of the FieldToMatch
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: EQ | GE | GT | LE | LT | NE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComparisonOperator")]
+    pub comparison_operator: String,
 
 
     /// 

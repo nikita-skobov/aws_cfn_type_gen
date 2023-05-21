@@ -1,20 +1,8 @@
 
 
 /// Associates the specified VPC with the specified local gateway route table.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocalGatewayRouteTableVPCAssociation {
-
-
-    /// 
-    /// The ID of the local gateway route table.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LocalGatewayRouteTableId")]
-    pub local_gateway_route_table_id: String,
 
 
     /// 
@@ -40,6 +28,28 @@ pub struct CfnLocalGatewayRouteTableVPCAssociation {
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
 
+
+    /// 
+    /// The ID of the local gateway route table.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LocalGatewayRouteTableId")]
+    pub local_gateway_route_table_id: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnLocalGatewayRouteTableVPCAssociation {
+    fn type_string() -> &'static str {
+        "AWS::EC2::LocalGatewayRouteTableVPCAssociation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -50,7 +60,7 @@ pub struct CfnLocalGatewayRouteTableVPCAssociation {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

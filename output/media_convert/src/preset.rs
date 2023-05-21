@@ -5,8 +5,22 @@
 /// When you declare this entity in your AWS CloudFormation template, you pass in your       transcoding job settings in JSON or YAML format. This settings specification must be       formed in a particular way that conforms to AWS Elemental MediaConvert job validation. For       more information about creating an output preset model for the SettingsJson       property, see the Remarks section later in this topic.
 ///
 /// For more information about output MediaConvert presets, see Working       with AWS Elemental MediaConvert Output Presets in the AWS Elemental MediaConvert User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPreset {
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
 
 
     /// 
@@ -36,17 +50,15 @@ pub struct CfnPreset {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
+    /// The new category for the preset, if you are changing it.
     /// 
     /// Required: No
     ///
-    /// Type: Json
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+    #[serde(rename = "Category")]
+    pub category: Option<String>,
 
 
     /// 
@@ -60,16 +72,14 @@ pub struct CfnPreset {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
 
-    /// 
-    /// The new category for the preset, if you are changing it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Category")]
-    pub category: Option<String>,
+impl cfn_resources::CfnResource for CfnPreset {
+    fn type_string() -> &'static str {
+        "AWS::MediaConvert::Preset"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

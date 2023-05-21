@@ -7,7 +7,7 @@
 /// AWS AppConfig requires that you create resources and deploy a configuration in the    following order:
 ///
 /// For more information, see AWS AppConfig in the      AWS AppConfig User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeployment {
 
 
@@ -42,6 +42,20 @@ pub struct CfnDeployment {
 
 
     /// 
+    /// The deployment strategy ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [a-z0-9]{4,7}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeploymentStrategyId")]
+    pub deployment_strategy_id: String,
+
+
+    /// 
     /// The AWS KMS key identifier (key ID, key alias, or key ARN). AWS AppConfig uses this ID to encrypt the configuration data using a customer managed key.
     /// 
     /// Required: No
@@ -58,7 +72,7 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// The deployment strategy ID.
+    /// The environment ID.
     /// 
     /// Required: Yes
     ///
@@ -67,24 +81,8 @@ pub struct CfnDeployment {
     /// Pattern: [a-z0-9]{4,7}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DeploymentStrategyId")]
-    pub deployment_strategy_id: String,
-
-
-    /// 
-    /// The configuration version to deploy. If deploying an AWS AppConfig hosted     configuration version, you can specify either the version number or version label. For all     other configurations, you must specify the version number.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConfigurationVersion")]
-    pub configuration_version: String,
+    #[serde(rename = "EnvironmentId")]
+    pub environment_id: String,
 
 
     /// 
@@ -114,36 +112,36 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// The environment ID.
+    /// The configuration version to deploy. If deploying an AWS AppConfig hosted     configuration version, you can specify either the version number or version label. For all     other configurations, you must specify the version number.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: [a-z0-9]{4,7}
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EnvironmentId")]
-    pub environment_id: String,
+    #[serde(rename = "ConfigurationVersion")]
+    pub configuration_version: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnDeployment {
+    fn type_string() -> &'static str {
+        "AWS::AppConfig::Deployment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Metadata to assign to the deployment strategy. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tags {
-
-
-    /// 
-    /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: Option<String>,
 
 
     /// 
@@ -156,5 +154,17 @@ pub struct Tags {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
+
+
+    /// 
+    /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: Option<String>,
 
 }

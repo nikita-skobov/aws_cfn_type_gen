@@ -3,7 +3,7 @@
 /// Grant or revoke permissions for service consumers (users, IAM roles, and AWS accounts) to connect to a VPC endpoint service.
 ///
 /// If you grant permissions to all principals, the service is public. Any users who know     the name of a public service can send a request to attach an endpoint. If the service does     not require manual approval, attachments are automatically approved.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPCEndpointServicePermissions {
 
 
@@ -30,4 +30,14 @@ pub struct CfnVPCEndpointServicePermissions {
     #[serde(rename = "ServiceId")]
     pub service_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnVPCEndpointServicePermissions {
+    fn type_string() -> &'static str {
+        "AWS::EC2::VPCEndpointServicePermissions"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

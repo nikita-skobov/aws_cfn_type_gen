@@ -7,8 +7,22 @@
 /// If the request includes tags, then the requester must have the         organizations:TagResource permission.
 ///
 /// This operation can be called only from the organization's management account.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnOrganizationalUnit {
+
+
+    /// 
+    /// A list of tags that you want to attach to the newly created OU. For each tag in the       list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
+    /// 
+    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for an OU, then the entire request fails and the OU is not created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -29,20 +43,6 @@ pub struct CfnOrganizationalUnit {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// A list of tags that you want to attach to the newly created OU. For each tag in the       list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
-    /// 
-    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for an OU, then the entire request fails and the OU is not created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -68,6 +68,16 @@ pub struct CfnOrganizationalUnit {
 
 }
 
+impl cfn_resources::CfnResource for CfnOrganizationalUnit {
+    fn type_string() -> &'static str {
+        "AWS::Organizations::OrganizationalUnit"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -76,7 +86,7 @@ pub struct CfnOrganizationalUnit {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

@@ -1,21 +1,8 @@
 
 
 /// This resource associates the specified application with the specified fleet. This is only supported for Elastic fleets.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationFleetAssociation {
-
-
-    /// The name of the fleet.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FleetName")]
-    pub fleet_name: String,
 
 
     /// The ARN of the application.
@@ -30,4 +17,27 @@ pub struct CfnApplicationFleetAssociation {
     #[serde(rename = "ApplicationArn")]
     pub application_arn: String,
 
+
+    /// The name of the fleet.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FleetName")]
+    pub fleet_name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnApplicationFleetAssociation {
+    fn type_string() -> &'static str {
+        "AWS::AppStream::ApplicationFleetAssociation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

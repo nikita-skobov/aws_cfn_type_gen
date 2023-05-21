@@ -9,8 +9,20 @@
 /// Every deployment has a revision number that indicates how many deployment revisions you    define for a target. Use this operation to create a new revision of an existing deployment.    This operation returns the revision number of the new deployment when you create it.
 ///
 /// For more information, see the Create deployments    in the AWS IoT Greengrass V2 Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeployment {
+
+
+    /// 
+    /// The deployment policies for the deployment. These policies define how the deployment    updates components and handles failure.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeploymentPolicies
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeploymentPolicies")]
+    pub deployment_policies: Option<DeploymentPolicies>,
 
 
     /// 
@@ -26,15 +38,27 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// The job configuration for the deployment configuration. The job configuration specifies    the rollout, timeout, and stop configurations for the deployment configuration.
+    /// The ARN of the target AWS IoT thing or thing group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetArn")]
+    pub target_arn: String,
+
+
+    /// 
+    /// The parent deployment's ARN for a subdeployment.
     /// 
     /// Required: No
     ///
-    /// Type: DeploymentIoTJobConfiguration
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "IotJobConfiguration")]
-    pub iot_job_configuration: Option<DeploymentIoTJobConfiguration>,
+    #[serde(rename = "ParentTargetArn")]
+    pub parent_target_arn: Option<String>,
 
 
     /// 
@@ -54,15 +78,15 @@ pub struct CfnDeployment {
 
 
     /// 
-    /// The parent deployment's ARN for a subdeployment.
+    /// The job configuration for the deployment configuration. The job configuration specifies    the rollout, timeout, and stop configurations for the deployment configuration.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: DeploymentIoTJobConfiguration
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ParentTargetArn")]
-    pub parent_target_arn: Option<String>,
+    #[serde(rename = "IotJobConfiguration")]
+    pub iot_job_configuration: Option<DeploymentIoTJobConfiguration>,
 
 
     /// 
@@ -76,385 +100,21 @@ pub struct CfnDeployment {
     #[serde(rename = "DeploymentName")]
     pub deployment_name: Option<String>,
 
-
-    /// 
-    /// The deployment policies for the deployment. These policies define how the deployment    updates components and handles failure.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeploymentPolicies
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeploymentPolicies")]
-    pub deployment_policies: Option<DeploymentPolicies>,
-
-
-    /// 
-    /// The ARN of the target AWS IoT thing or thing group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetArn")]
-    pub target_arn: String,
-
 }
 
-
-/// Contains information about a deployment's policy that defines when components are safe to    update.
-///
-/// Each component on a device can report whether or not it's ready to update. After a    component and its dependencies are ready, they can apply the update in the deployment. You can    configure whether or not the deployment notifies components of an update and waits for a    response. You specify the amount of time each component has to respond to the update    notification.
-#[derive(Default, serde::Serialize)]
-pub struct DeploymentComponentUpdatePolicy {
-
-
-    /// 
-    /// The amount of time in seconds that each component on a device has to report that it's safe    to update. If the component waits for longer than this timeout, then the deployment proceeds    on the device.
-    /// 
-    /// Default: 60
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TimeoutInSeconds")]
-    pub timeout_in_seconds: Option<i64>,
-
-
-    /// 
-    /// Whether or not to notify components and wait for components to become safe to update.    Choose from the following options:
-    /// 
-    /// NOTIFY_COMPONENTS – The deployment notifies each component before it      stops and updates that component. Components can use the SubscribeToComponentUpdates IPC operation to receive these notifications. Then,      components can respond with the DeferComponentUpdate IPC operation. For more information, see the Create deployments in the AWS IoT Greengrass V2 Developer       Guide.        SKIP_NOTIFY_COMPONENTS – The deployment doesn't notify components or wait      for them to be safe to update.
-    /// 
-    /// Default: NOTIFY_COMPONENTS
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Action")]
-    pub action: Option<String>,
-
-}
-
-
-/// Contains information about system resource limits that the software    applies to a component's processes.
-#[derive(Default, serde::Serialize)]
-pub struct SystemResourceLimits {
-
-
-    /// 
-    /// The maximum amount of RAM, expressed in kilobytes, that a component's processes can use on    the core device. For more information, see Configure system resource limits for components.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Memory")]
-    pub memory: Option<i64>,
-
-
-    /// 
-    /// The maximum amount of CPU time that a component's processes can use on the core device. A    core device's total CPU time is equivalent to the device's number of CPU cores. For example,    on a core device with 4 CPU cores, you can set this value to 2 to limit the component's    processes to 50 percent usage of each CPU core. On a device with 1 CPU core, you can set this    value to 0.25 to limit the component's processes to 25 percent usage of the CPU. If you set    this value to a number greater than the number of CPU cores, the AWS IoT Greengrass Core    software doesn't limit the component's CPU usage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Cpus")]
-    pub cpus: Option<f64>,
-
-}
-
-
-/// Contains information about an AWS IoT job configuration.
-#[derive(Default, serde::Serialize)]
-pub struct DeploymentIoTJobConfiguration {
-
-
-    /// 
-    /// The stop configuration for the job. This configuration defines when and how to stop a job    rollout.
-    /// 
-    /// Required: No
-    ///
-    /// Type: IoTJobAbortConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AbortConfig")]
-    pub abort_config: Option<IoTJobAbortConfig>,
-
-
-    /// 
-    /// The timeout configuration for the job. This configuration defines the amount of time each    device has to complete the job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: IoTJobTimeoutConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TimeoutConfig")]
-    pub timeout_config: Option<IoTJobTimeoutConfig>,
-
-
-    /// 
-    /// The rollout configuration for the job. This configuration defines the rate at which the    job rolls out to the fleet of target devices.
-    /// 
-    /// Required: No
-    ///
-    /// Type: IoTJobExecutionsRolloutConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "JobExecutionsRolloutConfig")]
-    pub job_executions_rollout_config: Option<IoTJobExecutionsRolloutConfig>,
-
-}
-
-
-/// Contains information about an exponential rollout rate for a configuration deployment    job.
-#[derive(Default, serde::Serialize)]
-pub struct IoTJobExponentialRolloutRate {
-
-
-    /// 
-    /// The criteria to increase the rollout rate for the job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: IoTJobRateIncreaseCriteria
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RateIncreaseCriteria")]
-    pub rate_increase_criteria: IoTJobRateIncreaseCriteria,
-
-
-    /// 
-    /// The minimum number of devices that receive a pending job notification, per minute, when    the job starts. This parameter defines the initial rollout rate of the job.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BaseRatePerMinute")]
-    pub base_rate_per_minute: i64,
-
-
-    /// 
-    /// The exponential factor to increase the rollout rate for the job.
-    /// 
-    /// This parameter supports up to one digit after the decimal (for example, you can specify     1.5, but not 1.55).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IncrementFactor")]
-    pub increment_factor: f64,
-
-}
-
-
-/// Contains information about the rollout configuration for a job. This configuration defines    the rate at which the job deploys a configuration to a fleet of target devices.
-#[derive(Default, serde::Serialize)]
-pub struct IoTJobExecutionsRolloutConfig {
-
-
-    /// 
-    /// The maximum number of devices that receive a pending job notification, per minute.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MaximumPerMinute")]
-    pub maximum_per_minute: Option<i64>,
-
-
-    /// 
-    /// The exponential rate to increase the job rollout rate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: IoTJobExponentialRolloutRate
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ExponentialRate")]
-    pub exponential_rate: Option<IoTJobExponentialRolloutRate>,
-
-}
-
-
-/// Contains information about policies that define how a deployment updates components and    handles failure.
-#[derive(Default, serde::Serialize)]
-pub struct DeploymentPolicies {
-
-
-    /// 
-    /// The component update policy for the configuration deployment. This policy defines when    it's safe to deploy the configuration to devices.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeploymentComponentUpdatePolicy
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ComponentUpdatePolicy")]
-    pub component_update_policy: Option<DeploymentComponentUpdatePolicy>,
-
-
-    /// 
-    /// The failure handling policy for the configuration deployment. This policy defines what to    do if the deployment fails.
-    /// 
-    /// Default: ROLLBACK
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FailureHandlingPolicy")]
-    pub failure_handling_policy: Option<String>,
-
-
-    /// 
-    /// The configuration validation policy for the configuration deployment. This policy defines    how long each component has to validate its configure updates.
-    /// 
-    /// Required: No
-    ///
-    /// Type: DeploymentConfigurationValidationPolicy
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConfigurationValidationPolicy")]
-    pub configuration_validation_policy: Option<DeploymentConfigurationValidationPolicy>,
-
-}
-
-
-/// Contains information about a component to deploy.
-#[derive(Default, serde::Serialize)]
-pub struct ComponentDeploymentSpecification {
-
-
-    /// 
-    /// The system user and group that the software uses to run component    processes on the core device. If you omit this parameter, the software    uses the system user and group that you configure for the core device. For more information,    see Configure the user and group that run components in the AWS IoT Greengrass V2 Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ComponentRunWith
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RunWith")]
-    pub run_with: Option<ComponentRunWith>,
-
-
-    /// 
-    /// The version of the component.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ComponentVersion")]
-    pub component_version: Option<String>,
-
-
-    /// 
-    /// The configuration updates to deploy for the component. You can define reset updates and    merge updates. A reset updates the keys that you specify to the default configuration for the    component. A merge updates the core device's component configuration with the keys and values    that you specify. The AWS IoT Greengrass Core software applies reset updates before it    applies merge updates. For more information, see Update component     configuration.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ComponentConfigurationUpdate
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConfigurationUpdate")]
-    pub configuration_update: Option<ComponentConfigurationUpdate>,
-
-}
-
-
-/// Contains information about the timeout configuration for a job.
-#[derive(Default, serde::Serialize)]
-pub struct IoTJobTimeoutConfig {
-
-
-    /// 
-    /// The amount of time, in minutes, that devices have to complete the job. The timer starts    when the job status is set to IN_PROGRESS. If the job status doesn't change to a    terminal state before the time expires, then the job status is set to    TIMED_OUT.
-    /// 
-    /// The timeout interval must be between 1 minute and 7 days (10080 minutes).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InProgressTimeoutInMinutes")]
-    pub in_progress_timeout_in_minutes: Option<i64>,
-
-}
-
-
-/// Contains information about how long a component on a core device can validate its    configuration updates before it times out. Components can use the SubscribeToValidateConfigurationUpdates IPC operation to receive notifications when    a deployment specifies a configuration update. Then, components can respond with the SendConfigurationValidityReport IPC operation. For more information, see the Create deployments in the AWS IoT Greengrass V2 Developer    Guide.
-#[derive(Default, serde::Serialize)]
-pub struct DeploymentConfigurationValidationPolicy {
-
-
-    /// 
-    /// The amount of time in seconds that a component can validate its configuration updates. If    the validation time exceeds this timeout, then the deployment proceeds for the device.
-    /// 
-    /// Default: 30
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TimeoutInSeconds")]
-    pub timeout_in_seconds: Option<i64>,
-
-}
-
-
-/// Contains information about a deployment's update to a component's configuration on AWS IoT Greengrass core devices. For more information, see Update component     configurations in the AWS IoT Greengrass V2 Developer    Guide.
-#[derive(Default, serde::Serialize)]
-pub struct ComponentConfigurationUpdate {
-
-
-    /// 
-    /// A serialized JSON string that contains the configuration object to merge to target    devices. The core device merges this configuration with the component's existing    configuration. If this is the first time a component deploys on a device, the core device    merges this configuration with the component's default configuration. This means that the core    device keeps it's existing configuration for keys and values that you don't specify in this    object. For more information, see Merge configuration updates in the AWS IoT Greengrass V2 Developer     Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Merge")]
-    pub merge: Option<String>,
-
-
-    /// 
-    /// The list of configuration nodes to reset to default values on target devices. Use JSON    pointers to specify each node to reset. JSON pointers start with a forward slash     (/) and use forward slashes to separate the key for each level in the object.    For more information, see the JSON pointer     specification and Reset configuration updates in the AWS IoT Greengrass V2 Developer     Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Reset")]
-    pub reset: Option<Vec<String>>,
-
+impl cfn_resources::CfnResource for CfnDeployment {
+    fn type_string() -> &'static str {
+        "AWS::GreengrassV2::Deployment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Contains information system user and group that the AWS IoT Greengrass Core software uses    to run component processes on the core device. For more information, see Configure the user and group that run components in the AWS IoT Greengrass V2 Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentRunWith {
 
 
@@ -500,8 +160,312 @@ pub struct ComponentRunWith {
 }
 
 
+/// Contains information about an exponential rollout rate for a configuration deployment    job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IoTJobExponentialRolloutRate {
+
+
+    /// 
+    /// The exponential factor to increase the rollout rate for the job.
+    /// 
+    /// This parameter supports up to one digit after the decimal (for example, you can specify     1.5, but not 1.55).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IncrementFactor")]
+    pub increment_factor: f64,
+
+
+    /// 
+    /// The criteria to increase the rollout rate for the job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: IoTJobRateIncreaseCriteria
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RateIncreaseCriteria")]
+    pub rate_increase_criteria: IoTJobRateIncreaseCriteria,
+
+
+    /// 
+    /// The minimum number of devices that receive a pending job notification, per minute, when    the job starts. This parameter defines the initial rollout rate of the job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BaseRatePerMinute")]
+    pub base_rate_per_minute: i64,
+
+}
+
+
+/// Contains criteria that define when and how to cancel a job.
+///
+/// The deployment stops if the following conditions are true:
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IoTJobAbortCriteria {
+
+
+    /// 
+    /// The action to perform when the criteria are met.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Action")]
+    pub action: String,
+
+
+    /// 
+    /// The minimum number of things that receive the configuration before the job can    cancel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MinNumberOfExecutedThings")]
+    pub min_number_of_executed_things: i64,
+
+
+    /// 
+    /// The minimum percentage of failureType failures that occur before the job can    cancel.
+    /// 
+    /// This parameter supports up to two digits after the decimal (for example, you can specify     10.9 or 10.99, but not 10.999).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ThresholdPercentage")]
+    pub threshold_percentage: f64,
+
+
+    /// 
+    /// The type of job deployment failure that can cancel a job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FailureType")]
+    pub failure_type: String,
+
+}
+
+
+/// Contains information about the timeout configuration for a job.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IoTJobTimeoutConfig {
+
+
+    /// 
+    /// The amount of time, in minutes, that devices have to complete the job. The timer starts    when the job status is set to IN_PROGRESS. If the job status doesn't change to a    terminal state before the time expires, then the job status is set to    TIMED_OUT.
+    /// 
+    /// The timeout interval must be between 1 minute and 7 days (10080 minutes).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InProgressTimeoutInMinutes")]
+    pub in_progress_timeout_in_minutes: Option<i64>,
+
+}
+
+
+/// Contains information about a component to deploy.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ComponentDeploymentSpecification {
+
+
+    /// 
+    /// The configuration updates to deploy for the component. You can define reset updates and    merge updates. A reset updates the keys that you specify to the default configuration for the    component. A merge updates the core device's component configuration with the keys and values    that you specify. The AWS IoT Greengrass Core software applies reset updates before it    applies merge updates. For more information, see Update component     configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ComponentConfigurationUpdate
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConfigurationUpdate")]
+    pub configuration_update: Option<ComponentConfigurationUpdate>,
+
+
+    /// 
+    /// The version of the component.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ComponentVersion")]
+    pub component_version: Option<String>,
+
+
+    /// 
+    /// The system user and group that the software uses to run component    processes on the core device. If you omit this parameter, the software    uses the system user and group that you configure for the core device. For more information,    see Configure the user and group that run components in the AWS IoT Greengrass V2 Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ComponentRunWith
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RunWith")]
+    pub run_with: Option<ComponentRunWith>,
+
+}
+
+
+/// Contains information about a deployment's policy that defines when components are safe to    update.
+///
+/// Each component on a device can report whether or not it's ready to update. After a    component and its dependencies are ready, they can apply the update in the deployment. You can    configure whether or not the deployment notifies components of an update and waits for a    response. You specify the amount of time each component has to respond to the update    notification.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeploymentComponentUpdatePolicy {
+
+
+    /// 
+    /// The amount of time in seconds that each component on a device has to report that it's safe    to update. If the component waits for longer than this timeout, then the deployment proceeds    on the device.
+    /// 
+    /// Default: 60
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TimeoutInSeconds")]
+    pub timeout_in_seconds: Option<i64>,
+
+
+    /// 
+    /// Whether or not to notify components and wait for components to become safe to update.    Choose from the following options:
+    /// 
+    /// NOTIFY_COMPONENTS – The deployment notifies each component before it      stops and updates that component. Components can use the SubscribeToComponentUpdates IPC operation to receive these notifications. Then,      components can respond with the DeferComponentUpdate IPC operation. For more information, see the Create deployments in the AWS IoT Greengrass V2 Developer       Guide.        SKIP_NOTIFY_COMPONENTS – The deployment doesn't notify components or wait      for them to be safe to update.
+    /// 
+    /// Default: NOTIFY_COMPONENTS
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Action")]
+    pub action: Option<String>,
+
+}
+
+
+/// Contains information about system resource limits that the software    applies to a component's processes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SystemResourceLimits {
+
+
+    /// 
+    /// The maximum amount of RAM, expressed in kilobytes, that a component's processes can use on    the core device. For more information, see Configure system resource limits for components.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Memory")]
+    pub memory: Option<i64>,
+
+
+    /// 
+    /// The maximum amount of CPU time that a component's processes can use on the core device. A    core device's total CPU time is equivalent to the device's number of CPU cores. For example,    on a core device with 4 CPU cores, you can set this value to 2 to limit the component's    processes to 50 percent usage of each CPU core. On a device with 1 CPU core, you can set this    value to 0.25 to limit the component's processes to 25 percent usage of the CPU. If you set    this value to a number greater than the number of CPU cores, the AWS IoT Greengrass Core    software doesn't limit the component's CPU usage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Cpus")]
+    pub cpus: Option<f64>,
+
+}
+
+
+/// Contains information about policies that define how a deployment updates components and    handles failure.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeploymentPolicies {
+
+
+    /// 
+    /// The failure handling policy for the configuration deployment. This policy defines what to    do if the deployment fails.
+    /// 
+    /// Default: ROLLBACK
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FailureHandlingPolicy")]
+    pub failure_handling_policy: Option<String>,
+
+
+    /// 
+    /// The configuration validation policy for the configuration deployment. This policy defines    how long each component has to validate its configure updates.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeploymentConfigurationValidationPolicy
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConfigurationValidationPolicy")]
+    pub configuration_validation_policy: Option<DeploymentConfigurationValidationPolicy>,
+
+
+    /// 
+    /// The component update policy for the configuration deployment. This policy defines when    it's safe to deploy the configuration to devices.
+    /// 
+    /// Required: No
+    ///
+    /// Type: DeploymentComponentUpdatePolicy
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ComponentUpdatePolicy")]
+    pub component_update_policy: Option<DeploymentComponentUpdatePolicy>,
+
+}
+
+
+/// Contains information about how long a component on a core device can validate its    configuration updates before it times out. Components can use the SubscribeToValidateConfigurationUpdates IPC operation to receive notifications when    a deployment specifies a configuration update. Then, components can respond with the SendConfigurationValidityReport IPC operation. For more information, see the Create deployments in the AWS IoT Greengrass V2 Developer    Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeploymentConfigurationValidationPolicy {
+
+
+    /// 
+    /// The amount of time in seconds that a component can validate its configuration updates. If    the validation time exceeds this timeout, then the deployment proceeds for the device.
+    /// 
+    /// Default: 30
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TimeoutInSeconds")]
+    pub timeout_in_seconds: Option<i64>,
+
+}
+
+
 /// Contains a list of criteria that define when and how to cancel a configuration    deployment.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IoTJobAbortConfig {
 
 
@@ -519,67 +483,82 @@ pub struct IoTJobAbortConfig {
 }
 
 
-/// Contains criteria that define when and how to cancel a job.
-///
-/// The deployment stops if the following conditions are true:
-#[derive(Default, serde::Serialize)]
-pub struct IoTJobAbortCriteria {
+/// Contains information about an AWS IoT job configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DeploymentIoTJobConfiguration {
 
 
     /// 
-    /// The type of job deployment failure that can cancel a job.
+    /// The stop configuration for the job. This configuration defines when and how to stop a job    rollout.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: IoTJobAbortConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FailureType")]
-    pub failure_type: String,
+    #[serde(rename = "AbortConfig")]
+    pub abort_config: Option<IoTJobAbortConfig>,
 
 
     /// 
-    /// The minimum number of things that receive the configuration before the job can    cancel.
+    /// The rollout configuration for the job. This configuration defines the rate at which the    job rolls out to the fleet of target devices.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: IoTJobExecutionsRolloutConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "JobExecutionsRolloutConfig")]
+    pub job_executions_rollout_config: Option<IoTJobExecutionsRolloutConfig>,
+
+
+    /// 
+    /// The timeout configuration for the job. This configuration defines the amount of time each    device has to complete the job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: IoTJobTimeoutConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TimeoutConfig")]
+    pub timeout_config: Option<IoTJobTimeoutConfig>,
+
+}
+
+
+/// Contains information about the rollout configuration for a job. This configuration defines    the rate at which the job deploys a configuration to a fleet of target devices.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IoTJobExecutionsRolloutConfig {
+
+
+    /// 
+    /// The maximum number of devices that receive a pending job notification, per minute.
+    /// 
+    /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "MinNumberOfExecutedThings")]
-    pub min_number_of_executed_things: i64,
+    #[serde(rename = "MaximumPerMinute")]
+    pub maximum_per_minute: Option<i64>,
 
 
     /// 
-    /// The action to perform when the criteria are met.
+    /// The exponential rate to increase the job rollout rate.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Action")]
-    pub action: String,
-
-
-    /// 
-    /// The minimum percentage of failureType failures that occur before the job can    cancel.
-    /// 
-    /// This parameter supports up to two digits after the decimal (for example, you can specify     10.9 or 10.99, but not 10.999).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
+    /// Type: IoTJobExponentialRolloutRate
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ThresholdPercentage")]
-    pub threshold_percentage: f64,
+    #[serde(rename = "ExponentialRate")]
+    pub exponential_rate: Option<IoTJobExponentialRolloutRate>,
 
 }
 
 
 /// Contains information about criteria to meet before a job increases its rollout rate.    Specify either numberOfNotifiedThings or    numberOfSucceededThings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IoTJobRateIncreaseCriteria {
 
 
@@ -605,5 +584,36 @@ pub struct IoTJobRateIncreaseCriteria {
     /// Update requires: Replacement
     #[serde(rename = "NumberOfNotifiedThings")]
     pub number_of_notified_things: Option<i64>,
+
+}
+
+
+/// Contains information about a deployment's update to a component's configuration on AWS IoT Greengrass core devices. For more information, see Update component     configurations in the AWS IoT Greengrass V2 Developer    Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ComponentConfigurationUpdate {
+
+
+    /// 
+    /// The list of configuration nodes to reset to default values on target devices. Use JSON    pointers to specify each node to reset. JSON pointers start with a forward slash     (/) and use forward slashes to separate the key for each level in the object.    For more information, see the JSON pointer     specification and Reset configuration updates in the AWS IoT Greengrass V2 Developer     Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Reset")]
+    pub reset: Option<Vec<String>>,
+
+
+    /// 
+    /// A serialized JSON string that contains the configuration object to merge to target    devices. The core device merges this configuration with the component's existing    configuration. If this is the first time a component deploys on a device, the core device    merges this configuration with the component's default configuration. This means that the core    device keeps it's existing configuration for keys and values that you don't specify in this    object. For more information, see Merge configuration updates in the AWS IoT Greengrass V2 Developer     Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Merge")]
+    pub merge: Option<String>,
 
 }

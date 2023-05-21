@@ -1,8 +1,26 @@
 
 
 /// The AWS::Lightsail::Bucket resource specifies a bucket.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBucket {
+
+
+    /// 
+    /// Indicates whether object versioning is enabled for the bucket.
+    /// 
+    /// The following options can be configured:
+    /// 
+    /// Enabled - Object versioning is enabled.                    Suspended - Object versioning was previously enabled but is currently        suspended. Existing object versions are retained.                    NeverEnabled - Object versioning has never been enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ObjectVersioning")]
+    pub object_versioning: Option<bool>,
 
 
     /// 
@@ -17,6 +35,34 @@ pub struct CfnBucket {
     /// Update requires: No interruption
     #[serde(rename = "ReadOnlyAccessAccounts")]
     pub read_only_access_accounts: Option<Vec<String>>,
+
+
+    /// 
+    /// An object that describes the access rules for the bucket.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AccessRules
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessRules")]
+    pub access_rules: Option<AccessRules>,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag     in the AWS CloudFormation User Guide.
+    /// 
+    /// NoteThe Value of Tags is optional for Lightsail resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -44,52 +90,6 @@ pub struct CfnBucket {
 
 
     /// 
-    /// Indicates whether object versioning is enabled for the bucket.
-    /// 
-    /// The following options can be configured:
-    /// 
-    /// Enabled - Object versioning is enabled.                    Suspended - Object versioning was previously enabled but is currently        suspended. Existing object versions are retained.                    NeverEnabled - Object versioning has never been enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ObjectVersioning")]
-    pub object_versioning: Option<bool>,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag     in the AWS CloudFormation User Guide.
-    /// 
-    /// NoteThe Value of Tags is optional for Lightsail resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// An object that describes the access rules for the bucket.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AccessRules
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessRules")]
-    pub access_rules: Option<AccessRules>,
-
-
-    /// 
     /// The bundle ID for the bucket (for example, small_1_0).
     /// 
     /// A bucket bundle specifies the monthly cost, storage space, and data transfer quota for a     bucket.
@@ -106,9 +106,19 @@ pub struct CfnBucket {
 
 }
 
+impl cfn_resources::CfnResource for CfnBucket {
+    fn type_string() -> &'static str {
+        "AWS::Lightsail::Bucket"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// AccessRules is a property of the AWS::Lightsail::Bucket resource. It describes access rules for a bucket.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccessRules {
 
 
@@ -153,7 +163,7 @@ pub struct AccessRules {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

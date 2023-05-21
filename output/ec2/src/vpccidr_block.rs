@@ -3,20 +3,32 @@
 /// Associates a CIDR block with your VPC. You can only associate a single IPv6 CIDR block     with your VPC. The IPv6 CIDR block size is fixed at /56.
 ///
 /// For more information about associating CIDR blocks with your VPC and applicable     restrictions, see VPC and Subnet Sizing in     the Amazon VPC User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPCCidrBlock {
 
 
     /// 
-    /// Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more information about Amazon VPC IP Address Manager (IPAM), see What is IPAM? in the Amazon VPC IPAM User Guide.
+    /// The ID of the VPC.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
+
+
+    /// 
+    /// The ID of an IPv6 address pool from which to allocate the IPv6 CIDR block.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Ipv6IpamPoolId")]
-    pub ipv6_ipam_pool_id: Option<String>,
+    #[serde(rename = "Ipv6Pool")]
+    pub ipv6_pool: Option<String>,
 
 
     /// 
@@ -32,15 +44,17 @@ pub struct CfnVPCCidrBlock {
 
 
     /// 
-    /// The ID of the VPC.
+    /// An IPv6 CIDR block from the IPv6 address pool. You must also specify Ipv6Pool in the request.
     /// 
-    /// Required: Yes
+    /// To let Amazon choose the IPv6 CIDR block for you, omit this parameter.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    #[serde(rename = "Ipv6CidrBlock")]
+    pub ipv6_cidr_block: Option<String>,
 
 
     /// 
@@ -80,15 +94,15 @@ pub struct CfnVPCCidrBlock {
 
 
     /// 
-    /// The ID of an IPv6 address pool from which to allocate the IPv6 CIDR block.
+    /// Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more information about Amazon VPC IP Address Manager (IPAM), see What is IPAM? in the Amazon VPC IPAM User Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Ipv6Pool")]
-    pub ipv6_pool: Option<String>,
+    #[serde(rename = "Ipv6IpamPoolId")]
+    pub ipv6_ipam_pool_id: Option<String>,
 
 
     /// 
@@ -102,18 +116,14 @@ pub struct CfnVPCCidrBlock {
     #[serde(rename = "AmazonProvidedIpv6CidrBlock")]
     pub amazon_provided_ipv6_cidr_block: Option<bool>,
 
+}
 
-    /// 
-    /// An IPv6 CIDR block from the IPv6 address pool. You must also specify Ipv6Pool in the request.
-    /// 
-    /// To let Amazon choose the IPv6 CIDR block for you, omit this parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ipv6CidrBlock")]
-    pub ipv6_cidr_block: Option<String>,
+impl cfn_resources::CfnResource for CfnVPCCidrBlock {
+    fn type_string() -> &'static str {
+        "AWS::EC2::VPCCidrBlock"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

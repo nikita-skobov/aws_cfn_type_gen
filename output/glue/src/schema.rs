@@ -1,20 +1,20 @@
 
 
 /// The AWS::Glue::Schema is an AWS Glue resource type that manages schemas in the AWS Glue Schema Registry.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSchema {
 
 
     /// 
-    /// Specify the VersionNumber or the IsLatest for setting the checkpoint for the schema. This is only required for updating a checkpoint.
+    /// The schema definition using the DataFormat setting for SchemaName.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: SchemaVersion
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "CheckpointVersion")]
-    pub checkpoint_version: Option<SchemaVersion>,
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaDefinition")]
+    pub schema_definition: String,
 
 
     /// 
@@ -48,39 +48,27 @@ pub struct CfnSchema {
 
 
     /// 
-    /// A description of the schema if specified when created.
+    /// Specify the VersionNumber or the IsLatest for setting the checkpoint for the schema. This is only required for updating a checkpoint.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: SchemaVersion
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "CheckpointVersion")]
+    pub checkpoint_version: Option<SchemaVersion>,
 
 
     /// 
-    /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The schema definition using the DataFormat setting for SchemaName.
+    /// The compatibility mode of the schema.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaDefinition")]
-    pub schema_definition: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Compatibility")]
+    pub compatibility: String,
 
 
     /// 
@@ -96,21 +84,74 @@ pub struct CfnSchema {
 
 
     /// 
-    /// The compatibility mode of the schema.
+    /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A description of the schema if specified when created.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Compatibility")]
-    pub compatibility: String,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnSchema {
+    fn type_string() -> &'static str {
+        "AWS::Glue::Schema"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Specifies a registry in the AWS Glue Schema Registry.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Registry {
+
+
+    /// 
+    /// The name of the registry.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the registry.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
 
 }
 
 
 /// Specifies the version of a schema.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SchemaVersion {
 
 
@@ -147,19 +188,8 @@ pub struct SchemaVersion {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -172,35 +202,15 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
-}
-
-
-/// Specifies a registry in the AWS Glue Schema Registry.
-#[derive(Default, serde::Serialize)]
-pub struct Registry {
-
 
     /// 
-    /// The name of the registry.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// Required: No
-    ///
+    /// Required: Yes
+    /// 
     /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
     /// 
-    /// The Amazon Resource Name (ARN) of the registry.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

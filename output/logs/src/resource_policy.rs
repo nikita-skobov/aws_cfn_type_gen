@@ -1,8 +1,20 @@
 
 
 /// Creates or updates a resource policy that allows other AWS services to put log events to    this account. An account can have up to 10 resource policies per AWS    Region.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourcePolicy {
+
+
+    /// 
+    /// The name of the resource policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PolicyName")]
+    pub policy_name: String,
 
 
     /// 
@@ -20,16 +32,14 @@ pub struct CfnResourcePolicy {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: String,
 
+}
 
-    /// 
-    /// The name of the resource policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PolicyName")]
-    pub policy_name: String,
+impl cfn_resources::CfnResource for CfnResourcePolicy {
+    fn type_string() -> &'static str {
+        "AWS::Logs::ResourcePolicy"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

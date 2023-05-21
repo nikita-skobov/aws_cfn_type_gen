@@ -3,8 +3,48 @@
 /// Specifies a new application with given parameters. Requires an existing runtime     environment and application definition file.
 ///
 /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
+
+
+    /// 
+    /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
+    /// 
+    /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Definition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Definition")]
+    pub definition: Definition,
+
+
+    /// 
+    /// The type of the target platform for this application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: bluage | microfocus
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EngineType")]
+    pub engine_type: String,
+
+
+    /// 
+    /// The identifier of a customer managed key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
@@ -50,51 +90,21 @@ pub struct CfnApplication {
     #[serde(rename = "Name")]
     pub name: String,
 
+}
 
-    /// 
-    /// The type of the target platform for this application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: bluage | microfocus
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EngineType")]
-    pub engine_type: String,
+impl cfn_resources::CfnResource for CfnApplication {
+    fn type_string() -> &'static str {
+        "AWS::M2::Application"
+    }
 
-
-    /// 
-    /// The identifier of a customer managed key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
-    /// 
-    /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Definition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Definition")]
-    pub definition: Definition,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Definition {
 
 

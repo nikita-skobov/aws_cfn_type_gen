@@ -1,7 +1,7 @@
 
 
 /// The AWS::ECR::ReplicationConfiguration resource creates or updates the       replication configuration for a private registry. The first time a replication       configuration is applied to a private registry, a service-linked IAM role       is created in your account for the replication process. For more information, see Using         Service-Linked Roles for Amazon ECR in the Amazon Elastic         Container Registry User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnReplicationConfiguration {
 
 
@@ -18,48 +18,54 @@ pub struct CfnReplicationConfiguration {
 
 }
 
+impl cfn_resources::CfnResource for CfnReplicationConfiguration {
+    fn type_string() -> &'static str {
+        "AWS::ECR::ReplicationConfiguration"
+    }
 
-/// An array of objects representing the destination for a replication rule.
-#[derive(Default, serde::Serialize)]
-pub struct ReplicationDestination {
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// An array of objects representing the replication destinations and repository filters       for a replication configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ReplicationRule {
 
 
     /// 
-    /// The Region to replicate to.
+    /// An array of objects representing the filters for a replication rule. Specifying a       repository filter for a replication rule provides a method for controlling which       repositories in a private registry are replicated.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of RepositoryFilter
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RepositoryFilters")]
+    pub repository_filters: Option<Vec<RepositoryFilter>>,
+
+
+    /// 
+    /// An array of objects representing the destination for a replication rule.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Minimum: 2
+    /// Type: List of ReplicationDestination
     ///
     /// Maximum: 25
     ///
-    /// Pattern: [0-9a-z-]{2,25}
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "Region")]
-    pub region: String,
-
-
-    /// 
-    /// The AWS account ID of the Amazon ECR private registry to replicate to. When configuring       cross-Region replication within your own registry, specify your own account ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [0-9]{12}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegistryId")]
-    pub registry_id: String,
+    #[serde(rename = "Destinations")]
+    pub destinations: Vec<ReplicationDestination>,
 
 }
 
 
 /// The filter settings used with image replication. Specifying a repository filter to a       replication rule provides a method for controlling which repositories in a private       registry are replicated. If no filters are added, the contents of all repositories are       replicated.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RepositoryFilter {
 
 
@@ -97,43 +103,47 @@ pub struct RepositoryFilter {
 }
 
 
-/// An array of objects representing the replication destinations and repository filters       for a replication configuration.
-#[derive(Default, serde::Serialize)]
-pub struct ReplicationRule {
+/// An array of objects representing the destination for a replication rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ReplicationDestination {
 
 
     /// 
-    /// An array of objects representing the filters for a replication rule. Specifying a       repository filter for a replication rule provides a method for controlling which       repositories in a private registry are replicated.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of RepositoryFilter
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RepositoryFilters")]
-    pub repository_filters: Option<Vec<RepositoryFilter>>,
-
-
-    /// 
-    /// An array of objects representing the destination for a replication rule.
+    /// The AWS account ID of the Amazon ECR private registry to replicate to. When configuring       cross-Region replication within your own registry, specify your own account ID.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of ReplicationDestination
+    /// Type: String
+    ///
+    /// Pattern: [0-9]{12}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegistryId")]
+    pub registry_id: String,
+
+
+    /// 
+    /// The Region to replicate to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 2
     ///
     /// Maximum: 25
     ///
+    /// Pattern: [0-9a-z-]{2,25}
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Destinations")]
-    pub destinations: Vec<ReplicationDestination>,
+    #[serde(rename = "Region")]
+    pub region: String,
 
 }
 
 
 /// The replication configuration for a registry.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReplicationConfiguration {
 
 

@@ -1,8 +1,26 @@
 
 
 /// Creates a public namespace based on DNS, which is visible on the internet. The namespace  defines your service naming scheme. For example, if you name your namespace   example.com and name your service backend, the resulting DNS name for  the service is backend.example.com. You can discover instances that were registered  with a public DNS namespace by using either a DiscoverInstances request or using  DNS. For the current quota on the number of namespaces that you can create using the same AWS account, see AWS Cloud Map quotas in the           AWS Cloud Map Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPublicDnsNamespace {
+
+
+    /// 
+    /// The name that you want to assign to this namespace.
+    /// 
+    /// NoteDo not include sensitive information in the name. The name is publicly available using DNS queries.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 253
+    ///
+    /// Pattern: ^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -44,67 +62,21 @@ pub struct CfnPublicDnsNamespace {
     #[serde(rename = "Properties")]
     pub properties: Option<Properties>,
 
-
-    /// 
-    /// The name that you want to assign to this namespace.
-    /// 
-    /// NoteDo not include sensitive information in the name. The name is publicly available using DNS queries.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 253
-    ///
-    /// Pattern: ^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
 }
 
+impl cfn_resources::CfnResource for CfnPublicDnsNamespace {
+    fn type_string() -> &'static str {
+        "AWS::ServiceDiscovery::PublicDnsNamespace"
+    }
 
-/// DNS properties for  the public DNS namespace.
-#[derive(Default, serde::Serialize)]
-pub struct PublicDnsPropertiesMutable {
-
-
-    /// 
-    /// Start of Authority  (SOA) record for the hosted zone for the public DNS namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SOA
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SOA")]
-    pub soa: Option<SOA>,
-
-}
-
-
-/// Properties for the  public DNS namespace.
-#[derive(Default, serde::Serialize)]
-pub struct Properties {
-
-
-    /// 
-    /// DNS properties for  the public DNS namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PublicDnsPropertiesMutable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DnsProperties")]
-    pub dns_properties: Option<PublicDnsPropertiesMutable>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Start of Authority  (SOA) properties for a public or private DNS namespace.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SOA {
 
 
@@ -122,6 +94,25 @@ pub struct SOA {
 }
 
 
+/// Properties for the  public DNS namespace.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Properties {
+
+
+    /// 
+    /// DNS properties for  the public DNS namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PublicDnsPropertiesMutable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DnsProperties")]
+    pub dns_properties: Option<PublicDnsPropertiesMutable>,
+
+}
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -129,7 +120,7 @@ pub struct SOA {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -153,5 +144,24 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+}
+
+
+/// DNS properties for  the public DNS namespace.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PublicDnsPropertiesMutable {
+
+
+    /// 
+    /// Start of Authority  (SOA) record for the hosted zone for the public DNS namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SOA
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SOA")]
+    pub soa: Option<SOA>,
 
 }

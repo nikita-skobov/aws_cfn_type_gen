@@ -5,22 +5,8 @@
 /// For more information about delegated policy management, see Delegated         administrator for AWS Organizations in the AWS Organizations User Guide.
 ///
 /// You can only call this operation from the organization's management account.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourcePolicy {
-
-
-    /// 
-    /// A list of tags that you want to attach to the newly created resource policy. For each       tag in the list, you must specify both a tag key and a value. You can set the value to       an empty string, but you can't set it to null. For more information about       tagging, see Tagging AWS Organizations         resources in the AWS Organizations User       Guide.
-    /// 
-    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for the resource policy, then the entire request fails and the resource policy is         not created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -42,6 +28,30 @@ pub struct CfnResourcePolicy {
     #[serde(rename = "Content")]
     pub content: serde_json::Value,
 
+
+    /// 
+    /// A list of tags that you want to attach to the newly created resource policy. For each       tag in the list, you must specify both a tag key and a value. You can set the value to       an empty string, but you can't set it to null. For more information about       tagging, see Tagging AWS Organizations         resources in the AWS Organizations User       Guide.
+    /// 
+    /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for the resource policy, then the entire request fails and the resource policy is         not created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnResourcePolicy {
+    fn type_string() -> &'static str {
+        "AWS::Organizations::ResourcePolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -52,19 +62,8 @@ pub struct CfnResourcePolicy {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -76,5 +75,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

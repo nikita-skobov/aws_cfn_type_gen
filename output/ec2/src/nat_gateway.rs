@@ -7,20 +7,34 @@
 /// If you add a default route (AWS::EC2::Route resource) that points to a NAT     gateway, specify the NAT gateway ID for the route's NatGatewayId     property.
 ///
 /// For more information, see NAT Gateways in the       Amazon VPC User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNatGateway {
 
 
     /// 
-    /// The tags for the NAT gateway.
+    /// Secondary private IPv4 addresses. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
+    /// 
+    /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "SecondaryPrivateIpAddresses")]
+    pub secondary_private_ip_addresses: Option<Vec<String>>,
+
+
+    /// 
+    /// Secondary EIP allocation IDs. For more information, see Create a NAT gateway       in the Amazon VPC User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecondaryAllocationIds")]
+    pub secondary_allocation_ids: Option<Vec<String>>,
 
 
     /// 
@@ -36,6 +50,30 @@ pub struct CfnNatGateway {
 
 
     /// 
+    /// The private IPv4 address to assign to the NAT gateway. If you don't provide an address, a private IPv4 address will be automatically assigned.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrivateIpAddress")]
+    pub private_ip_address: Option<String>,
+
+
+    /// 
+    /// The tags for the NAT gateway.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The ID of the subnet in which the NAT gateway is located.
     /// 
     /// Required: Yes
@@ -45,6 +83,20 @@ pub struct CfnNatGateway {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     pub subnet_id: String,
+
+
+    /// 
+    /// Indicates whether the NAT gateway supports public or private connectivity.      The default is public connectivity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: private | public
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConnectivityType")]
+    pub connectivity_type: Option<String>,
 
 
     /// 
@@ -64,46 +116,6 @@ pub struct CfnNatGateway {
 
 
     /// 
-    /// Secondary private IPv4 addresses. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
-    /// 
-    /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecondaryPrivateIpAddresses")]
-    pub secondary_private_ip_addresses: Option<Vec<String>>,
-
-
-    /// 
-    /// Indicates whether the NAT gateway supports public or private connectivity.      The default is public connectivity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: private | public
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConnectivityType")]
-    pub connectivity_type: Option<String>,
-
-
-    /// 
-    /// Secondary EIP allocation IDs. For more information, see Create a NAT gateway       in the Amazon VPC User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecondaryAllocationIds")]
-    pub secondary_allocation_ids: Option<Vec<String>>,
-
-
-    /// 
     /// [Private NAT gateway only] The number of secondary private IPv4 addresses you want to assign to the NAT gateway. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
     /// 
     /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
@@ -120,18 +132,16 @@ pub struct CfnNatGateway {
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
     pub secondary_private_ip_address_count: Option<i64>,
 
+}
 
-    /// 
-    /// The private IPv4 address to assign to the NAT gateway. If you don't provide an address, a private IPv4 address will be automatically assigned.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrivateIpAddress")]
-    pub private_ip_address: Option<String>,
+impl cfn_resources::CfnResource for CfnNatGateway {
+    fn type_string() -> &'static str {
+        "AWS::EC2::NatGateway"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -142,7 +152,7 @@ pub struct CfnNatGateway {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

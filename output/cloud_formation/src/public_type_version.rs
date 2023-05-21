@@ -11,7 +11,7 @@
 /// To perform testing, CloudFormation assumes the execution role specified when the type was  registered.
 ///
 /// An extension must have a test status of PASSED before it can be published. For more information,  see Publishing   extensions to make them available for public use in the CloudFormation CLI User   Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPublicTypeVersion {
 
 
@@ -52,24 +52,6 @@ pub struct CfnPublicTypeVersion {
 
 
     /// 
-    /// The Amazon Resource Number (ARN) of the extension.
-    /// 
-    /// Conditional: You must specify Arn, or TypeName and Type.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type/.+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Arn")]
-    pub arn: Option<String>,
-
-
-    /// 
     /// The S3 bucket to which CloudFormation delivers the contract test execution logs.
     /// 
     /// CloudFormation delivers the logs by the time contract testing has completed and the extension has been  assigned a test type status of PASSED or FAILED.
@@ -93,6 +75,24 @@ pub struct CfnPublicTypeVersion {
     /// Update requires: Replacement
     #[serde(rename = "LogDeliveryBucket")]
     pub log_delivery_bucket: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Number (ARN) of the extension.
+    /// 
+    /// Conditional: You must specify Arn, or TypeName and Type.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type/.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Arn")]
+    pub arn: Option<String>,
 
 
     /// 
@@ -120,4 +120,14 @@ pub struct CfnPublicTypeVersion {
     #[serde(rename = "PublicVersionNumber")]
     pub public_version_number: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnPublicTypeVersion {
+    fn type_string() -> &'static str {
+        "AWS::CloudFormation::PublicTypeVersion"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

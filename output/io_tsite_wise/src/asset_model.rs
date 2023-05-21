@@ -1,8 +1,22 @@
 
 
 /// Creates an asset model from specified property and hierarchy definitions. You create    assets from asset models. With asset models, you can easily create assets of the same type    that have standardized definitions. Each asset created from a model inherits the asset model's    property and hierarchy definitions. For more information, see Defining asset models in the       AWS IoT SiteWise User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAssetModel {
+
+
+    /// 
+    /// A unique, friendly name for the asset model.
+    /// 
+    /// The maximum length is 256 characters with the pattern [^\u0000-\u001F\u007F]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssetModelName")]
+    pub asset_model_name: String,
 
 
     /// 
@@ -58,20 +72,6 @@ pub struct CfnAssetModel {
 
 
     /// 
-    /// A unique, friendly name for the asset model.
-    /// 
-    /// The maximum length is 256 characters with the pattern [^\u0000-\u001F\u007F]+.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssetModelName")]
-    pub asset_model_name: String,
-
-
-    /// 
     /// A list of key-value pairs that contain metadata for the asset. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
     /// 
     /// Required: No
@@ -84,62 +84,116 @@ pub struct CfnAssetModel {
 
 }
 
+impl cfn_resources::CfnResource for CfnAssetModel {
+    fn type_string() -> &'static str {
+        "AWS::IoTSiteWise::AssetModel"
+    }
 
-/// Contains information about a composite model in an asset model. This object contains the       asset property definitions that you define in the composite model. You can use composite asset       models to define alarms on this asset model.
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Contains an asset metric property. With metrics, you can calculate aggregate functions,    such as an average, maximum, or minimum, as specified through an expression. A metric maps    several values to a single value (such as a sum).
 ///
-/// If you use the AssetModelCompositeModel property to create an alarm, you must use the following information to define three asset model properties:
+/// The maximum number of dependent/cascading variables used in any one metric calculation is    10. Therefore, a root metric can have    up to 10 cascading metrics in its computational dependency    tree. Additionally, a metric can only have a data type of DOUBLE and consume    properties with data types of INTEGER or DOUBLE.
 ///
-/// At the bottom of this page, we provide a YAML example that you can modify to create an alarm.
-#[derive(Default, serde::Serialize)]
-pub struct AssetModelCompositeModel {
+/// For more information, see Defining data properties in the AWS IoT SiteWise User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Metric {
 
 
     /// 
-    /// The asset property definitions for this composite model.
+    /// The mathematical expression that defines the metric aggregation function. You can specify    up to 10 variables per expression. You can specify up to 10 functions    per expression.
     /// 
-    /// Required: No
-    ///
-    /// Type: List of AssetModelProperty
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CompositeModelProperties")]
-    pub composite_model_properties: Option<Vec<AssetModelProperty>>,
-
-
-    /// 
-    /// The name of the composite model.
+    /// For more information, see Quotas in the       AWS IoT SiteWise User Guide.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "Expression")]
+    pub expression: String,
 
 
     /// 
-    /// The description of the composite model.
+    /// The window (time interval) over which AWS IoT SiteWise computes the metric's aggregation expression.    AWS IoT SiteWise computes one data point per window.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MetricWindow
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Window")]
+    pub window: MetricWindow,
+
+
+    /// 
+    /// The list of variables used in the expression.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of ExpressionVariable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Variables")]
+    pub variables: Vec<ExpressionVariable>,
+
+}
+
+
+/// Contains an asset attribute property. For more information, see       Defining data properties in the AWS IoT SiteWise User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Attribute {
+
+
+    /// 
+    /// The default value of the asset model property attribute. All assets that you create from    the asset model contain this attribute value. You can update an attribute's value after you    create an asset. For more information, see Updating attribute values in the       AWS IoT SiteWise User Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "DefaultValue")]
+    pub default_value: Option<String>,
+
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
 
 
     /// 
-    /// The type of the composite model. For alarm composite models, this type is     AWS/ALARM.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
@@ -149,7 +203,7 @@ pub struct AssetModelCompositeModel {
 /// You can use m, h, d, and w when you    specify an interval or offset. Note that m represents minutes, h    represents hours, d represents days, and w represents weeks. You can    also use s to represent seconds in offset.
 ///
 /// The interval and offset parameters support the ISO 8601 format. For example,     PT5S represents 5 seconds, PT5M represents 5 minutes, and     PT5H represents 5 hours.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TumblingWindow {
 
 
@@ -185,48 +239,96 @@ pub struct TumblingWindow {
 }
 
 
-/// Identifies a property value used in an expression.
-#[derive(Default, serde::Serialize)]
-pub struct VariableValue {
+/// Contains a time interval window used for data aggregate computations (for example,    average, sum, count, and so on).
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MetricWindow {
 
 
     /// 
-    /// The LogicalID of the property to use as the variable.
+    /// The tumbling time interval window.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TumblingWindow
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tumbling")]
+    pub tumbling: Option<TumblingWindow>,
+
+}
+
+
+/// Contains information about an asset model property.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AssetModelProperty {
+
+
+    /// 
+    /// The LogicalID of the asset model property.
+    /// 
+    /// The maximum length is 256 characters, with the pattern [^\\u0000-\\u001F\\u007F]+.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PropertyLogicalId")]
-    pub property_logical_id: String,
+    #[serde(rename = "LogicalId")]
+    pub logical_id: String,
 
 
     /// 
-    /// The LogicalID of the hierarchy to query for the PropertyLogicalID.
+    /// Contains a property type, which can be one of Attribute,     Measurement, Metric, or Transform.
     /// 
-    /// You use a hierarchyLogicalID instead of a model ID because you can have several hierarchies    using the same model and therefore the same property. For example, you might    have separately grouped assets that come from the same asset model. For more information, see      Defining relationships between assets in the AWS IoT SiteWise User Guide.
+    /// Required: Yes
+    ///
+    /// Type: PropertyType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: PropertyType,
+
+
+    /// 
+    /// The data type of the structure for this property. This parameter exists on properties that    have the STRUCT data type.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HierarchyLogicalId")]
-    pub hierarchy_logical_id: Option<String>,
-
-}
-
-
-/// Contains expression variable information.
-#[derive(Default, serde::Serialize)]
-pub struct ExpressionVariable {
+    #[serde(rename = "DataTypeSpec")]
+    pub data_type_spec: Option<String>,
 
 
     /// 
-    /// The friendly name of the variable to be used in the expression.
+    /// The unit of the asset model property, such as Newtons or    RPM.
     /// 
-    /// The maximum length is 64 characters with the pattern ^[a-z][a-z0-9_]*$.
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Unit")]
+    pub unit: Option<String>,
+
+
+    /// 
+    /// The data type of the asset model property. The value can be STRING, INTEGER, DOUBLE,      BOOLEAN, or STRUCT.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataType")]
+    pub data_type: String,
+
+
+    /// 
+    /// The name of the asset model property.
+    /// 
+    /// The maximum length is 256 characters with the pattern [^\u0000-\u001F\u007F]+.
     /// 
     /// Required: Yes
     ///
@@ -236,52 +338,12 @@ pub struct ExpressionVariable {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
-    /// The variable that identifies an asset property from which to use values.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: VariableValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: VariableValue,
-
 }
 
 
 /// Contains a property type, which can be one of Attribute,     Measurement, Metric, or Transform.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PropertyType {
-
-
-    /// 
-    /// Specifies an asset metric property. A metric contains a mathematical expression that uses    aggregate functions to process all input data points over a time interval and output a single    data point, such as to calculate the average hourly temperature.
-    /// 
-    /// This is required if the TypeName is Metric.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Metric
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Metric")]
-    pub metric: Option<Metric>,
-
-
-    /// 
-    /// Specifies an asset attribute property. An attribute generally contains static information,    such as the serial number of an industrial IoT wind turbine.
-    /// 
-    /// This is required if the TypeName is Attribute and has a DefaultValue.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Attribute
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attribute")]
-    pub attribute: Option<Attribute>,
 
 
     /// 
@@ -309,11 +371,39 @@ pub struct PropertyType {
     #[serde(rename = "Transform")]
     pub transform: Option<Transform>,
 
+
+    /// 
+    /// Specifies an asset attribute property. An attribute generally contains static information,    such as the serial number of an industrial IoT wind turbine.
+    /// 
+    /// This is required if the TypeName is Attribute and has a DefaultValue.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Attribute
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attribute")]
+    pub attribute: Option<Attribute>,
+
+
+    /// 
+    /// Specifies an asset metric property. A metric contains a mathematical expression that uses    aggregate functions to process all input data points over a time interval and output a single    data point, such as to calculate the average hourly temperature.
+    /// 
+    /// This is required if the TypeName is Metric.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Metric
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Metric")]
+    pub metric: Option<Metric>,
+
 }
 
 
 /// Describes an asset hierarchy that contains a hierarchy's name, LogicalID, and child asset model    ID that specifies the type of asset that can be in this hierarchy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AssetModelHierarchy {
 
 
@@ -359,39 +449,11 @@ pub struct AssetModelHierarchy {
 }
 
 
-/// Contains an asset metric property. With metrics, you can calculate aggregate functions,    such as an average, maximum, or minimum, as specified through an expression. A metric maps    several values to a single value (such as a sum).
-///
-/// The maximum number of dependent/cascading variables used in any one metric calculation is    10. Therefore, a root metric can have    up to 10 cascading metrics in its computational dependency    tree. Additionally, a metric can only have a data type of DOUBLE and consume    properties with data types of INTEGER or DOUBLE.
+/// Contains an asset transform property. A transform is a one-to-one mapping of a property's    data points from one form to another. For example, you can use a transform to convert a    Celsius data stream to Fahrenheit by applying the transformation expression to each data point    of the Celsius stream. Transforms can only input properties that are INTEGER, DOUBLE, or BOOLEAN type.    Booleans convert to 0 (FALSE) and 1 (TRUE)..
 ///
 /// For more information, see Defining data properties in the AWS IoT SiteWise User Guide.
-#[derive(Default, serde::Serialize)]
-pub struct Metric {
-
-
-    /// 
-    /// The window (time interval) over which AWS IoT SiteWise computes the metric's aggregation expression.    AWS IoT SiteWise computes one data point per window.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MetricWindow
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Window")]
-    pub window: MetricWindow,
-
-
-    /// 
-    /// The mathematical expression that defines the metric aggregation function. You can specify    up to 10 variables per expression. You can specify up to 10 functions    per expression.
-    /// 
-    /// For more information, see Quotas in the       AWS IoT SiteWise User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Expression")]
-    pub expression: String,
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Transform {
 
 
     /// 
@@ -404,50 +466,6 @@ pub struct Metric {
     /// Update requires: No interruption
     #[serde(rename = "Variables")]
     pub variables: Vec<ExpressionVariable>,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-}
-
-
-/// Contains an asset transform property. A transform is a one-to-one mapping of a property's    data points from one form to another. For example, you can use a transform to convert a    Celsius data stream to Fahrenheit by applying the transformation expression to each data point    of the Celsius stream. Transforms can only input properties that are INTEGER, DOUBLE, or BOOLEAN type.    Booleans convert to 0 (FALSE) and 1 (TRUE)..
-///
-/// For more information, see Defining data properties in the AWS IoT SiteWise User Guide.
-#[derive(Default, serde::Serialize)]
-pub struct Transform {
 
 
     /// 
@@ -463,68 +481,86 @@ pub struct Transform {
     #[serde(rename = "Expression")]
     pub expression: String,
 
-
-    /// 
-    /// The list of variables used in the expression.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of ExpressionVariable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Variables")]
-    pub variables: Vec<ExpressionVariable>,
-
 }
 
 
-/// Contains an asset attribute property. For more information, see       Defining data properties in the AWS IoT SiteWise User Guide.
-#[derive(Default, serde::Serialize)]
-pub struct Attribute {
+/// Identifies a property value used in an expression.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VariableValue {
 
 
     /// 
-    /// The default value of the asset model property attribute. All assets that you create from    the asset model contain this attribute value. You can update an attribute's value after you    create an asset. For more information, see Updating attribute values in the       AWS IoT SiteWise User Guide.
+    /// The LogicalID of the hierarchy to query for the PropertyLogicalID.
+    /// 
+    /// You use a hierarchyLogicalID instead of a model ID because you can have several hierarchies    using the same model and therefore the same property. For example, you might    have separately grouped assets that come from the same asset model. For more information, see      Defining relationships between assets in the AWS IoT SiteWise User Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultValue")]
-    pub default_value: Option<String>,
-
-}
-
-
-/// Contains a time interval window used for data aggregate computations (for example,    average, sum, count, and so on).
-#[derive(Default, serde::Serialize)]
-pub struct MetricWindow {
+    #[serde(rename = "HierarchyLogicalId")]
+    pub hierarchy_logical_id: Option<String>,
 
 
     /// 
-    /// The tumbling time interval window.
+    /// The LogicalID of the property to use as the variable.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: TumblingWindow
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tumbling")]
-    pub tumbling: Option<TumblingWindow>,
+    #[serde(rename = "PropertyLogicalId")]
+    pub property_logical_id: String,
 
 }
 
 
-/// Contains information about an asset model property.
-#[derive(Default, serde::Serialize)]
-pub struct AssetModelProperty {
+/// Contains expression variable information.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ExpressionVariable {
 
 
     /// 
-    /// The name of the asset model property.
+    /// The variable that identifies an asset property from which to use values.
     /// 
-    /// The maximum length is 256 characters with the pattern [^\u0000-\u001F\u007F]+.
+    /// Required: Yes
+    ///
+    /// Type: VariableValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: VariableValue,
+
+
+    /// 
+    /// The friendly name of the variable to be used in the expression.
+    /// 
+    /// The maximum length is 64 characters with the pattern ^[a-z][a-z0-9_]*$.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+/// Contains information about a composite model in an asset model. This object contains the       asset property definitions that you define in the composite model. You can use composite asset       models to define alarms on this asset model.
+///
+/// If you use the AssetModelCompositeModel property to create an alarm, you must use the following information to define three asset model properties:
+///
+/// At the bottom of this page, we provide a YAML example that you can modify to create an alarm.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AssetModelCompositeModel {
+
+
+    /// 
+    /// The name of the composite model.
     /// 
     /// Required: Yes
     ///
@@ -536,64 +572,38 @@ pub struct AssetModelProperty {
 
 
     /// 
-    /// The data type of the asset model property. The value can be STRING, INTEGER, DOUBLE,      BOOLEAN, or STRUCT.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataType")]
-    pub data_type: String,
-
-
-    /// 
-    /// The LogicalID of the asset model property.
-    /// 
-    /// The maximum length is 256 characters, with the pattern [^\\u0000-\\u001F\\u007F]+.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogicalId")]
-    pub logical_id: String,
-
-
-    /// 
-    /// The data type of the structure for this property. This parameter exists on properties that    have the STRUCT data type.
+    /// The asset property definitions for this composite model.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of AssetModelProperty
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DataTypeSpec")]
-    pub data_type_spec: Option<String>,
+    #[serde(rename = "CompositeModelProperties")]
+    pub composite_model_properties: Option<Vec<AssetModelProperty>>,
 
 
     /// 
-    /// The unit of the asset model property, such as Newtons or    RPM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unit")]
-    pub unit: Option<String>,
-
-
-    /// 
-    /// Contains a property type, which can be one of Attribute,     Measurement, Metric, or Transform.
+    /// The type of the composite model. For alarm composite models, this type is     AWS/ALARM.
     /// 
     /// Required: Yes
     ///
-    /// Type: PropertyType
+    /// Type: String
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    pub cfn_type: PropertyType,
+    pub cfn_type: String,
+
+
+    /// 
+    /// The description of the composite model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }

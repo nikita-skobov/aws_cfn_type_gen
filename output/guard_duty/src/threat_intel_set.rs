@@ -1,34 +1,8 @@
 
 
 /// The AWS::GuardDuty::ThreatIntelSet resource specifies a new             ThreatIntelSet. A ThreatIntelSet consists of known          malicious IP addresses. generates          findings based on the ThreatIntelSet when it is activated.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnThreatIntelSet {
-
-
-    /// 
-    /// The format of the file that contains the ThreatIntelSet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALIEN_VAULT | FIRE_EYE | OTX_CSV | PROOF_POINT | STIX | TXT
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Format")]
-    pub format: String,
-
-
-    /// 
-    /// A Boolean value that indicates whether GuardDuty is to start using the uploaded    ThreatIntelSet.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Activate")]
-    pub activate: bool,
 
 
     /// 
@@ -64,20 +38,6 @@ pub struct CfnThreatIntelSet {
 
 
     /// 
-    /// The tags to be added to a new threat list resource. Each tag consists of a key and          an optional value, both of which you define.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The URI of the file that contains the ThreatIntelSet.
     /// 
     /// Required: Yes
@@ -92,6 +52,56 @@ pub struct CfnThreatIntelSet {
     #[serde(rename = "Location")]
     pub location: String,
 
+
+    /// 
+    /// The tags to be added to a new threat list resource. Each tag consists of a key and          an optional value, both of which you define.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A Boolean value that indicates whether GuardDuty is to start using the uploaded    ThreatIntelSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Activate")]
+    pub activate: bool,
+
+
+    /// 
+    /// The format of the file that contains the ThreatIntelSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALIEN_VAULT | FIRE_EYE | OTX_CSV | PROOF_POINT | STIX | TXT
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Format")]
+    pub format: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnThreatIntelSet {
+    fn type_string() -> &'static str {
+        "AWS::GuardDuty::ThreatIntelSet"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -102,7 +112,7 @@ pub struct CfnThreatIntelSet {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

@@ -3,7 +3,7 @@
 /// Associates an Elastic IP address with an instance or a network interface. Before you can       use an Elastic IP address, you must allocate it to your account. For more information about       working with Elastic IP addresses, see         Elastic IP address concepts and rules.
 ///
 /// You must specify AllocationId and either InstanceId,       NetworkInterfaceId, or PrivateIpAddress.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEIPAssociation {
 
 
@@ -32,18 +32,6 @@ pub struct CfnEIPAssociation {
 
 
     /// 
-    /// The primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PrivateIpAddress")]
-    pub private_ip_address: Option<String>,
-
-
-    /// 
     /// The ID of the network interface. If the instance has more than one network interface, you must specify a network interface ID.
     /// 
     /// You can specify either the instance ID or the network interface ID, but not both.
@@ -58,6 +46,18 @@ pub struct CfnEIPAssociation {
 
 
     /// 
+    /// The primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PrivateIpAddress")]
+    pub private_ip_address: Option<String>,
+
+
+    /// 
     /// The allocation ID. This is required.
     /// 
     /// Required: Conditional
@@ -68,4 +68,14 @@ pub struct CfnEIPAssociation {
     #[serde(rename = "AllocationId")]
     pub allocation_id: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnEIPAssociation {
+    fn type_string() -> &'static str {
+        "AWS::EC2::EIPAssociation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -1,7 +1,7 @@
 
 
 /// A collection of AWS resources supported by DevOps Guru. The one type of AWS resource 			collection supported is AWS CloudFormation stacks. DevOps Guru can be configured to analyze 			only the AWS resources that are defined in the stacks.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceCollection {
 
 
@@ -18,9 +18,19 @@ pub struct CfnResourceCollection {
 
 }
 
+impl cfn_resources::CfnResource for CfnResourceCollection {
+    fn type_string() -> &'static str {
+        "AWS::DevOpsGuru::ResourceCollection"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudFormationCollectionFilter {
 
 
@@ -45,7 +55,7 @@ pub struct CloudFormationCollectionFilter {
 /// Each AWS tag has two parts.
 ///
 /// Together these are known as key-value pairs.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagCollection {
 
 
@@ -86,8 +96,20 @@ pub struct TagCollection {
 
 
 /// Information about a filter used to specify which AWS resources are analyzed for 			anomalous behavior by DevOps Guru.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceCollectionFilter {
+
+
+    /// 
+    /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CloudFormationCollectionFilter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudFormation")]
+    pub cloud_formation: Option<CloudFormationCollectionFilter>,
 
 
     /// 
@@ -110,17 +132,5 @@ pub struct ResourceCollectionFilter {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagCollection>>,
-
-
-    /// 
-    /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CloudFormationCollectionFilter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudFormation")]
-    pub cloud_formation: Option<CloudFormationCollectionFilter>,
 
 }

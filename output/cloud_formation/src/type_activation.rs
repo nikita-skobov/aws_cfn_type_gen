@@ -3,42 +3,8 @@
 /// Activates a public third-party extension, making it available for use in stack templates. For more information,  see Using public   extensions in the         AWS CloudFormation User Guide.
 ///
 /// Once you have activated a public third-party extension in your account and Region, use SetTypeConfiguration to specify configuration properties for the extension. For more information, see   Configuring extensions at   the account level in the CloudFormation User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTypeActivation {
-
-
-    /// 
-    /// The major version of this extension you want to activate, if multiple major versions are available. The default  is the latest major version. CloudFormation uses the latest available minor version of  the major version selected.
-    /// 
-    /// You can specify MajorVersion or VersionBump, but not both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MajorVersion")]
-    pub major_version: Option<String>,
-
-
-    /// 
-    /// The ID of the extension publisher.
-    /// 
-    /// Conditional: You must specify PublicTypeArn, or TypeName, Type, and   PublisherId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 40
-    ///
-    /// Pattern: [0-9a-zA-Z]{12,40}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PublisherId")]
-    pub publisher_id: Option<String>,
 
 
     /// 
@@ -62,6 +28,36 @@ pub struct CfnTypeActivation {
 
 
     /// 
+    /// The extension type.
+    /// 
+    /// Conditional: You must specify PublicTypeArn, or TypeName, Type, and   PublisherId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: HOOK | MODULE | RESOURCE
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
+
+    /// 
+    /// Whether to automatically update the extension in this account and Region when a new minor  version is published by the extension publisher. Major versions released by the publisher must be manually  updated.
+    /// 
+    /// The default is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoUpdate")]
+    pub auto_update: Option<bool>,
+
+
+    /// 
     /// The name of the extension.
     /// 
     /// Conditional: You must specify PublicTypeArn, or TypeName, Type, and   PublisherId.
@@ -79,6 +75,38 @@ pub struct CfnTypeActivation {
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
     pub type_name: Option<String>,
+
+
+    /// 
+    /// The name of the IAM execution role to use to activate the extension.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:.+:iam::[0-9]{12}:role/.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ExecutionRoleArn")]
+    pub execution_role_arn: Option<String>,
+
+
+    /// 
+    /// The major version of this extension you want to activate, if multiple major versions are available. The default  is the latest major version. CloudFormation uses the latest available minor version of  the major version selected.
+    /// 
+    /// You can specify MajorVersion or VersionBump, but not both.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MajorVersion")]
+    pub major_version: Option<String>,
 
 
     /// 
@@ -100,7 +128,7 @@ pub struct CfnTypeActivation {
 
 
     /// 
-    /// The extension type.
+    /// The ID of the extension publisher.
     /// 
     /// Conditional: You must specify PublicTypeArn, or TypeName, Type, and   PublisherId.
     /// 
@@ -108,29 +136,15 @@ pub struct CfnTypeActivation {
     ///
     /// Type: String
     ///
-    /// Allowed values: HOOK | MODULE | RESOURCE
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
-    /// The name of the IAM execution role to use to activate the extension.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
     /// Minimum: 1
     ///
-    /// Maximum: 256
+    /// Maximum: 40
     ///
-    /// Pattern: arn:.+:iam::[0-9]{12}:role/.+
+    /// Pattern: [0-9a-zA-Z]{12,40}
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ExecutionRoleArn")]
-    pub execution_role_arn: Option<String>,
+    #[serde(rename = "PublisherId")]
+    pub publisher_id: Option<String>,
 
 
     /// 
@@ -160,25 +174,21 @@ pub struct CfnTypeActivation {
     #[serde(rename = "LoggingConfig")]
     pub logging_config: Option<LoggingConfig>,
 
+}
 
-    /// 
-    /// Whether to automatically update the extension in this account and Region when a new minor  version is published by the extension publisher. Major versions released by the publisher must be manually  updated.
-    /// 
-    /// The default is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoUpdate")]
-    pub auto_update: Option<bool>,
+impl cfn_resources::CfnResource for CfnTypeActivation {
+    fn type_string() -> &'static str {
+        "AWS::CloudFormation::TypeActivation"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Contains logging configuration information for an extension.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LoggingConfig {
 
 

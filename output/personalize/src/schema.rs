@@ -5,7 +5,7 @@
 /// Amazon Personalize recognizes three schema variants. Each schema is associated with a dataset    type and has a set of required field and keywords. If you are creating a schema for a dataset in a Domain dataset group, you   provide the domain of the Domain dataset group.   You specify a schema when you call CreateDataset.
 ///
 /// For more information on schemas, see    Datasets and schemas.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSchema {
 
 
@@ -54,4 +54,14 @@ pub struct CfnSchema {
     #[serde(rename = "Name")]
     pub name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnSchema {
+    fn type_string() -> &'static str {
+        "AWS::Personalize::Schema"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

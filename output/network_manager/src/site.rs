@@ -1,22 +1,8 @@
 
 
 /// Creates a new site in a global network.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSite {
-
-
-    /// 
-    /// The site location. This information is used for visualization in the Network Manager console. If you specify the address, the latitude and longitude are automatically calculated.
-    /// 
-    /// Address: The physical address of the site.                        Latitude: The latitude of the site.                         Longitude: The longitude of the site.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Location")]
-    pub location: Option<Location>,
 
 
     /// 
@@ -52,6 +38,20 @@ pub struct CfnSite {
 
 
     /// 
+    /// The site location. This information is used for visualization in the Network Manager console. If you specify the address, the latitude and longitude are automatically calculated.
+    /// 
+    /// Address: The physical address of the site.                        Latitude: The latitude of the site.                         Longitude: The longitude of the site.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Location")]
+    pub location: Option<Location>,
+
+
+    /// 
     /// The ID of the global network.
     /// 
     /// Required: Yes
@@ -70,6 +70,16 @@ pub struct CfnSite {
 
 }
 
+impl cfn_resources::CfnResource for CfnSite {
+    fn type_string() -> &'static str {
+        "AWS::NetworkManager::Site"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -78,19 +88,8 @@ pub struct CfnSite {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -103,12 +102,41 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
 /// Describes a location.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Location {
+
+
+    /// 
+    /// The longitude.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Longitude")]
+    pub longitude: Option<String>,
 
 
     /// 
@@ -145,23 +173,5 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     pub address: Option<String>,
-
-
-    /// 
-    /// The longitude.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Longitude")]
-    pub longitude: Option<String>,
 
 }

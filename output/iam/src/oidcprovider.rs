@@ -9,32 +9,8 @@
 /// You get all of this information from the OIDC IdP that you want to use to access AWS.
 ///
 /// When you update the IAM OIDC provider, you specify the     following:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnOIDCProvider {
-
-
-    /// 
-    /// A list of client IDs (also known as audiences) that are associated with the specified       IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientIdList")]
-    pub client_id_list: Option<Vec<String>>,
-
-
-    /// 
-    /// A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ThumbprintList")]
-    pub thumbprint_list: Vec<String>,
 
 
     /// 
@@ -60,6 +36,40 @@ pub struct CfnOIDCProvider {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ThumbprintList")]
+    pub thumbprint_list: Vec<String>,
+
+
+    /// 
+    /// A list of client IDs (also known as audiences) that are associated with the specified       IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientIdList")]
+    pub client_id_list: Option<Vec<String>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnOIDCProvider {
+    fn type_string() -> &'static str {
+        "AWS::IAM::OIDCProvider"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -70,19 +80,8 @@ pub struct CfnOIDCProvider {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -94,5 +93,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

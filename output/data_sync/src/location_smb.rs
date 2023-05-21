@@ -1,26 +1,38 @@
 
 
 /// The AWS::DataSync::LocationSMB resource specifies a Server Message Block     (SMB) location.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationSMB {
 
 
     /// 
-    /// Specifies the Domain Name Service (DNS) name or IP address of the SMB file server that    your DataSync agent will mount.
+    /// The Amazon Resource Names (ARNs) of agents to use for a Server Message Block (SMB)    location.
     /// 
-    /// NoteYou can't specify an IP version 6 (IPv6) address.
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 4
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentArns")]
+    pub agent_arns: Vec<String>,
+
+
+    /// 
+    /// The password of the user who can mount the share and has the permissions to access files and    folders in the SMB share.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 255
+    /// Maximum: 104
     ///
-    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    /// Pattern: ^.{0,104}$
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServerHostname")]
-    pub server_hostname: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: Option<String>,
 
 
     /// 
@@ -41,6 +53,42 @@ pub struct CfnLocationSMB {
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
     pub subdirectory: Option<String>,
+
+
+    /// 
+    /// The user who can mount the share and has the permissions to access files and folders in the    SMB share.
+    /// 
+    /// For information about choosing a user name that ensures sufficient permissions to files,       folders, and metadata, see user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 104
+    ///
+    /// Pattern: ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "User")]
+    pub user: String,
+
+
+    /// 
+    /// Specifies the Domain Name Service (DNS) name or IP address of the SMB file server that    your DataSync agent will mount.
+    /// 
+    /// NoteYou can't specify an IP version 6 (IPv6) address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServerHostname")]
+    pub server_hostname: Option<String>,
 
 
     /// 
@@ -70,20 +118,6 @@ pub struct CfnLocationSMB {
 
 
     /// 
-    /// The Amazon Resource Names (ARNs) of agents to use for a Server Message Block (SMB)    location.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AgentArns")]
-    pub agent_arns: Vec<String>,
-
-
-    /// 
     /// Specifies the Windows domain name that your SMB file server belongs to.
     /// 
     /// For more information, see required permissions for SMB locations.
@@ -100,39 +134,40 @@ pub struct CfnLocationSMB {
     #[serde(rename = "Domain")]
     pub domain: Option<String>,
 
+}
 
-    /// 
-    /// The user who can mount the share and has the permissions to access files and folders in the    SMB share.
-    /// 
-    /// For information about choosing a user name that ensures sufficient permissions to files,       folders, and metadata, see user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 104
-    ///
-    /// Pattern: ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "User")]
-    pub user: String,
+impl cfn_resources::CfnResource for CfnLocationSMB {
+    fn type_string() -> &'static str {
+        "AWS::DataSync::LocationSMB"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
 
 
+/// Specifies the version of the SMB protocol that DataSync uses to access your SMB    file server.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MountOptions {
+
+
     /// 
-    /// The password of the user who can mount the share and has the permissions to access files and    folders in the SMB share.
+    /// By default, DataSync automatically chooses an SMB protocol version based on    negotiation with your SMB file server. You also can configure DataSync to use a    specific SMB version, but we recommend doing this only if DataSync has trouble    negotiating with the SMB file server automatically.
+    /// 
+    /// These are the following options for configuring the SMB version:
+    /// 
+    /// AUTOMATIC (default): DataSync and the SMB file server negotiate      the highest version of SMB that they mutually support between 2.1 and 3.1.1.        This is the recommended option. If you instead choose a specific version that your      file server doesn't support, you may get an Operation Not Supported      error.                        SMB3: Restricts the protocol negotiation to only SMB version      3.0.2.                        SMB2: Restricts the protocol negotiation to only SMB version 2.1.                        SMB2_0: Restricts the protocol negotiation to only SMB version      2.0.                        SMB1: Restricts the protocol negotiation to only SMB version 1.0.        NoteThe SMB1 option isn't available when creating an Amazon FSx for NetApp ONTAP location.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 104
-    ///
-    /// Pattern: ^.{0,104}$
+    /// Allowed values: AUTOMATIC | SMB1 | SMB2 | SMB2_0 | SMB3
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: Option<String>,
+    #[serde(rename = "Version")]
+    pub version: Option<String>,
 
 }
 
@@ -144,7 +179,7 @@ pub struct CfnLocationSMB {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -168,30 +203,5 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-/// Specifies the version of the SMB protocol that DataSync uses to access your SMB    file server.
-#[derive(Default, serde::Serialize)]
-pub struct MountOptions {
-
-
-    /// 
-    /// By default, DataSync automatically chooses an SMB protocol version based on    negotiation with your SMB file server. You also can configure DataSync to use a    specific SMB version, but we recommend doing this only if DataSync has trouble    negotiating with the SMB file server automatically.
-    /// 
-    /// These are the following options for configuring the SMB version:
-    /// 
-    /// AUTOMATIC (default): DataSync and the SMB file server negotiate      the highest version of SMB that they mutually support between 2.1 and 3.1.1.        This is the recommended option. If you instead choose a specific version that your      file server doesn't support, you may get an Operation Not Supported      error.                        SMB3: Restricts the protocol negotiation to only SMB version      3.0.2.                        SMB2: Restricts the protocol negotiation to only SMB version 2.1.                        SMB2_0: Restricts the protocol negotiation to only SMB version      2.0.                        SMB1: Restricts the protocol negotiation to only SMB version 1.0.        NoteThe SMB1 option isn't available when creating an Amazon FSx for NetApp ONTAP location.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AUTOMATIC | SMB1 | SMB2 | SMB2_0 | SMB3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Version")]
-    pub version: Option<String>,
 
 }

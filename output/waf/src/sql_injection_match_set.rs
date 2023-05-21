@@ -1,7 +1,7 @@
 
 
 /// A complex type that contains SqlInjectionMatchTuple objects, which specify the parts of web requests that you           want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header. If a 			SqlInjectionMatchSet contains more than one SqlInjectionMatchTuple object, a request needs to 			include snippets of SQL code in only one of the specified parts of the request to be considered a match.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSqlInjectionMatchSet {
 
 
@@ -36,39 +36,20 @@ pub struct CfnSqlInjectionMatchSet {
 
 }
 
+impl cfn_resources::CfnResource for CfnSqlInjectionMatchSet {
+    fn type_string() -> &'static str {
+        "AWS::WAF::SqlInjectionMatchSet"
+    }
 
-/// Specifies where in a web request to look for TargetString.
-#[derive(Default, serde::Serialize)]
-pub struct FieldToMatch {
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-type
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-data
-    #[serde(rename = "Data")]
-    pub data: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SqlInjectionMatchTuple {
-
-
-    /// 
-    /// The part of a web request that you want to inspect, such as a specified header or a query string.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
 
 
     /// 
@@ -117,5 +98,34 @@ pub struct SqlInjectionMatchTuple {
     /// Update requires: No interruption
     #[serde(rename = "TextTransformation")]
     pub text_transformation: String,
+
+
+    /// 
+    /// The part of a web request that you want to inspect, such as a specified header or a query string.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FieldToMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
+
+}
+
+
+/// Specifies where in a web request to look for TargetString.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FieldToMatch {
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-data
+    #[serde(rename = "Data")]
+    pub data: Option<String>,
+
+
+    /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-type
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }

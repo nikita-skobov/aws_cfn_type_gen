@@ -1,7 +1,7 @@
 
 
 /// The AWS::WAFRegional::WebACLAssociation resource associates an AWS WAF Regional web access control group (ACL) with a resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnWebACLAssociation {
 
 
@@ -28,4 +28,14 @@ pub struct CfnWebACLAssociation {
     #[serde(rename = "WebACLId")]
     pub web_aclid: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnWebACLAssociation {
+    fn type_string() -> &'static str {
+        "AWS::WAFRegional::WebACLAssociation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

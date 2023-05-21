@@ -9,7 +9,7 @@
 /// When you’re ready to use your function with a CloudFront distribution, publish the 			  function to the LIVE stage. You can do this in the CloudFront console, with         PublishFunction in the CloudFront API, or by updating the         AWS::CloudFront::Function resource with the AutoPublish         property set to true. When the function is published to the         LIVE stage, you can attach it to a distribution’s cache behavior, using the         function’s ARN.
 ///
 /// To automatically publish the function to the LIVE stage when it’s 				created, set the AutoPublish property to true.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFunction {
 
 
@@ -32,6 +32,18 @@ pub struct CfnFunction {
 
 
     /// 
+    /// A flag that determines whether to automatically publish the function to the 			LIVE stage when it’s created. To automatically publish to the 			LIVE stage, set this property to true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoPublish")]
+    pub auto_publish: Option<bool>,
+
+
+    /// 
     /// Contains configuration information about a CloudFront function.
     /// 
     /// Required: Yes
@@ -41,18 +53,6 @@ pub struct CfnFunction {
     /// Update requires: No interruption
     #[serde(rename = "FunctionConfig")]
     pub function_config: FunctionConfig,
-
-
-    /// 
-    /// Contains metadata about a CloudFront function.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FunctionMetadata
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionMetadata")]
-    pub function_metadata: Option<FunctionMetadata>,
 
 
     /// 
@@ -68,21 +68,31 @@ pub struct CfnFunction {
 
 
     /// 
-    /// A flag that determines whether to automatically publish the function to the 			LIVE stage when it’s created. To automatically publish to the 			LIVE stage, set this property to true.
+    /// Contains metadata about a CloudFront function.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: FunctionMetadata
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AutoPublish")]
-    pub auto_publish: Option<bool>,
+    #[serde(rename = "FunctionMetadata")]
+    pub function_metadata: Option<FunctionMetadata>,
 
+}
+
+impl cfn_resources::CfnResource for CfnFunction {
+    fn type_string() -> &'static str {
+        "AWS::CloudFront::Function"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Contains metadata about a CloudFront function.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FunctionMetadata {
 
 
@@ -101,7 +111,7 @@ pub struct FunctionMetadata {
 
 
 /// Contains configuration information about a CloudFront function.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FunctionConfig {
 
 

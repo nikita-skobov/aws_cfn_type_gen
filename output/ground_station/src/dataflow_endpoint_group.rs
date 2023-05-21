@@ -5,7 +5,7 @@
 /// Dataflow endpoint groups contain a list of endpoints.       When the name of a dataflow endpoint group is specified in a mission profile, the Ground Station service will connect to the endpoints and flow data during a contact.
 ///
 /// For more information about dataflow endpoint groups, see Dataflow Endpoint Groups.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDataflowEndpointGroup {
 
 
@@ -18,6 +18,18 @@ pub struct CfnDataflowEndpointGroup {
     /// Update requires: No interruption
     #[serde(rename = "ContactPrePassDurationSeconds")]
     pub contact_pre_pass_duration_seconds: Option<i64>,
+
+
+    /// 
+    /// Tags assigned to a resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// Property description not available.
@@ -42,18 +54,16 @@ pub struct CfnDataflowEndpointGroup {
     #[serde(rename = "EndpointDetails")]
     pub endpoint_details: Vec<EndpointDetails>,
 
+}
 
-    /// 
-    /// Tags assigned to a resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnDataflowEndpointGroup {
+    fn type_string() -> &'static str {
+        "AWS::GroundStation::DataflowEndpointGroup"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -64,7 +74,7 @@ pub struct CfnDataflowEndpointGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -92,82 +102,8 @@ pub struct Tag {
 }
 
 
-/// Contains information such as socket address and name that defines an endpoint.
-#[derive(Default, serde::Serialize)]
-pub struct DataflowEndpoint {
-
-
-    /// 
-    /// The endpoint name.
-    /// 
-    /// When listing available contacts for a satellite, Ground Station searches for a dataflow endpoint whose name matches the value specified by the dataflow endpoint config of the selected mission profile. If no matching dataflow endpoints are found then Ground Station will not display any available contacts for the satellite.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Maximum transmission unit (MTU) size in bytes of a dataflow endpoint.      Valid values are between 1400 and 1500. A default value of 1500 is used if not set.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Mtu")]
-    pub mtu: Option<i64>,
-
-
-    /// 
-    /// The address and port of an endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SocketAddress
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Address")]
-    pub address: Option<SocketAddress>,
-
-}
-
-
-/// The IntegerRange property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Default, serde::Serialize)]
-pub struct IntegerRange {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Maximum")]
-    pub maximum: Option<i64>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Minimum")]
-    pub minimum: Option<i64>,
-
-}
-
-
 /// The RangedConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RangedConnectionDetails {
 
 
@@ -195,99 +131,37 @@ pub struct RangedConnectionDetails {
 }
 
 
-/// The AwsGroundStationAgentEndpoint property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Default, serde::Serialize)]
-pub struct AwsGroundStationAgentEndpoint {
+/// The ConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ConnectionDetails {
 
 
     /// Property description not available.
     ///
     /// Required: No
     ///
-    /// Type: String
+    /// Type: SocketAddress
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AgentStatus")]
-    pub agent_status: Option<String>,
+    #[serde(rename = "SocketAddress")]
+    pub socket_address: Option<SocketAddress>,
 
 
     /// Property description not available.
     ///
     /// Required: No
     ///
-    /// Type: RangedConnectionDetails
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IngressAddress")]
-    pub ingress_address: Option<RangedConnectionDetails>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuditResults")]
-    pub audit_results: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: ConnectionDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EgressAddress")]
-    pub egress_address: Option<ConnectionDetails>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-/// The RangedSocketAddress property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Default, serde::Serialize)]
-pub struct RangedSocketAddress {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: IntegerRange
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PortRange")]
-    pub port_range: Option<IntegerRange>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "Mtu")]
+    pub mtu: Option<i64>,
 
 }
 
 
 /// The security details and endpoint information.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EndpointDetails {
 
 
@@ -328,68 +202,8 @@ pub struct EndpointDetails {
 }
 
 
-/// The ConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Default, serde::Serialize)]
-pub struct ConnectionDetails {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: SocketAddress
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SocketAddress")]
-    pub socket_address: Option<SocketAddress>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Mtu")]
-    pub mtu: Option<i64>,
-
-}
-
-
-/// The address of the endpoint, such as       192.168.1.1.
-#[derive(Default, serde::Serialize)]
-pub struct SocketAddress {
-
-
-    /// 
-    /// The port of the endpoint, such as       55888.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The name of the endpoint, such as       Endpoint 1.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
 /// Information about IAM roles, subnets, and security groups needed for this DataflowEndpointGroup.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SecurityDetails {
 
 
@@ -429,5 +243,201 @@ pub struct SecurityDetails {
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
+
+}
+
+
+/// The address of the endpoint, such as       192.168.1.1.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SocketAddress {
+
+
+    /// 
+    /// The port of the endpoint, such as       55888.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// The name of the endpoint, such as       Endpoint 1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+/// The RangedSocketAddress property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RangedSocketAddress {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: IntegerRange
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PortRange")]
+    pub port_range: Option<IntegerRange>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+/// The IntegerRange property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IntegerRange {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Maximum")]
+    pub maximum: Option<i64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Minimum")]
+    pub minimum: Option<i64>,
+
+}
+
+
+/// Contains information such as socket address and name that defines an endpoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DataflowEndpoint {
+
+
+    /// 
+    /// Maximum transmission unit (MTU) size in bytes of a dataflow endpoint.      Valid values are between 1400 and 1500. A default value of 1500 is used if not set.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Mtu")]
+    pub mtu: Option<i64>,
+
+
+    /// 
+    /// The address and port of an endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SocketAddress
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Address")]
+    pub address: Option<SocketAddress>,
+
+
+    /// 
+    /// The endpoint name.
+    /// 
+    /// When listing available contacts for a satellite, Ground Station searches for a dataflow endpoint whose name matches the value specified by the dataflow endpoint config of the selected mission profile. If no matching dataflow endpoints are found then Ground Station will not display any available contacts for the satellite.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+/// The AwsGroundStationAgentEndpoint property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AwsGroundStationAgentEndpoint {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuditResults")]
+    pub audit_results: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: ConnectionDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EgressAddress")]
+    pub egress_address: Option<ConnectionDetails>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: RangedConnectionDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IngressAddress")]
+    pub ingress_address: Option<RangedConnectionDetails>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AgentStatus")]
+    pub agent_status: Option<String>,
 
 }

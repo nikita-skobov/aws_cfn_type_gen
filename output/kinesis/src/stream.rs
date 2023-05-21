@@ -1,20 +1,22 @@
 
 
 /// Creates a Kinesis stream that captures and transports data records that are emitted       from data sources. For information about creating streams, see CreateStream in the Amazon Kinesis API Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStream {
 
 
     /// 
-    /// The number of hours for the data records that are stored in shards to remain       accessible. The default value is 24. For more information about the stream retention       period, see Changing the Data Retention         Period in the Amazon Kinesis Developer Guide.
+    /// The number of shards that the stream uses. For greater provisioned throughput,       increase the number of shards.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
+    /// Minimum: 1
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "RetentionPeriodHours")]
-    pub retention_period_hours: Option<i64>,
+    #[serde(rename = "ShardCount")]
+    pub shard_count: Option<i64>,
 
 
     /// 
@@ -30,6 +32,18 @@ pub struct CfnStream {
 
 
     /// 
+    /// The number of hours for the data records that are stored in shards to remain       accessible. The default value is 24. For more information about the stream retention       period, see Changing the Data Retention         Period in the Amazon Kinesis Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetentionPeriodHours")]
+    pub retention_period_hours: Option<i64>,
+
+
+    /// 
     /// An arbitrary set of tags (key–value pairs) to associate with the Kinesis stream.       For information about constraints for this property, see Tag Restrictions       in the Amazon Kinesis Developer Guide.
     /// 
     /// Required: No
@@ -39,18 +53,6 @@ pub struct CfnStream {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// When specified, enables or updates server-side encryption using an AWS KMS key for a specified stream. Removing this property from your stack       template and updating your stack disables encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: StreamEncryption
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StreamEncryption")]
-    pub stream_encryption: Option<StreamEncryption>,
 
 
     /// 
@@ -74,23 +76,66 @@ pub struct CfnStream {
 
 
     /// 
-    /// The number of shards that the stream uses. For greater provisioned throughput,       increase the number of shards.
+    /// When specified, enables or updates server-side encryption using an AWS KMS key for a specified stream. Removing this property from your stack       template and updating your stack disables encryption.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
+    /// Type: StreamEncryption
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ShardCount")]
-    pub shard_count: Option<i64>,
+    #[serde(rename = "StreamEncryption")]
+    pub stream_encryption: Option<StreamEncryption>,
+
+}
+
+impl cfn_resources::CfnResource for CfnStream {
+    fn type_string() -> &'static str {
+        "AWS::Kinesis::Stream"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
 
 /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StreamModeDetails {
 
 
@@ -117,7 +162,7 @@ pub struct StreamModeDetails {
 /// API Limits: You can successfully apply a new AWS KMS key for       server-side encryption 25 times in a rolling 24-hour period.
 ///
 /// Note: It can take up to 5 seconds after the stream is in an ACTIVE status       before all records written to the stream are encrypted. After you enable encryption, you       can verify that encryption is applied by inspecting the API response from         PutRecord or PutRecords.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StreamEncryption {
 
 
@@ -149,40 +194,5 @@ pub struct StreamEncryption {
     /// Update requires: No interruption
     #[serde(rename = "KeyId")]
     pub key_id: String,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 }

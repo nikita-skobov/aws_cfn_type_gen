@@ -1,8 +1,20 @@
 
 
 /// The AWS::WAFRegional::ByteMatchSet resource creates an AWS WAF ByteMatchSet that identifies a part of a web request that you want to inspect.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnByteMatchSet {
+
+
+    /// 
+    /// Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ByteMatchTuple
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ByteMatchTuples")]
+    pub byte_match_tuples: Option<Vec<ByteMatchTuple>>,
 
 
     /// 
@@ -22,42 +34,67 @@ pub struct CfnByteMatchSet {
     #[serde(rename = "Name")]
     pub name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnByteMatchSet {
+    fn type_string() -> &'static str {
+        "AWS::WAFRegional::ByteMatchSet"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Specifies where in a web request to look for TargetString.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FieldToMatch {
+
 
     /// 
-    /// Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
+    /// When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, 			for example, User-Agent or Referer. The name of the header is not case sensitive.
+    /// 
+    /// When the value of Type is SINGLE_QUERY_ARG, enter the name of the parameter that you want AWS WAF to search, 	    for example, UserName or SalesRegion. The parameter name is not case sensitive.
+    /// 
+    /// If the value of Type is any other value, omit Data.
     /// 
     /// Required: No
     ///
-    /// Type: List of ByteMatchTuple
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ByteMatchTuples")]
-    pub byte_match_tuples: Option<Vec<ByteMatchTuple>>,
+    #[serde(rename = "Data")]
+    pub data: Option<String>,
+
+
+    /// 
+    /// The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:
+    /// 
+    /// HEADER: A specified request header, for example, the value of the User-Agent or Referer header.         If you choose HEADER for the type, specify the name of the header in Data.                    METHOD: The HTTP method, which indicated the type of operation that the request is asking the origin to perform.                     QUERY_STRING: A query string, which is the part of a URL that appears after a ? character, if any.                    URI: The part of a web request that identifies a resource, for example, /images/daily-ad.jpg.                    BODY: The part of a request that contains any additional data that you want to send to your web server         as the HTTP request body, such as data from a form. The request body immediately follows the request headers.         Note that only the first 8192 bytes of the request body are forwarded to AWS WAF for inspection.         To allow or block requests based on the length of the body, you can create a size constraint set.                    SINGLE_QUERY_ARG: The parameter in the query string that you will inspect, such as UserName or SalesRegion. The maximum length for SINGLE_QUERY_ARG is 30 characters.                    ALL_QUERY_ARGS: Similar to SINGLE_QUERY_ARG, but rather than inspecting a single parameter, AWS WAF will inspect all parameters within the query for the value or regex pattern that you specify in         TargetString.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALL_QUERY_ARGS | BODY | HEADER | METHOD | QUERY_STRING | SINGLE_QUERY_ARG | URI
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }
 
 
 /// The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ByteMatchTuple {
-
-
-    /// 
-    /// The base64-encoded value that AWS WAF searches for. AWS CloudFormation sends this value to AWS WAF without encoding it.
-    /// 
-    /// You must specify this property or the TargetString property.
-    /// 
-    /// AWS WAF searches for this value in a specific part of web requests, which you define in the FieldToMatch property.
-    /// 
-    /// Valid values depend on the Type value in the FieldToMatch property. For example, for a METHOD type, you must specify HTTP methods such as DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetStringBase64")]
-    pub target_string_base64: Option<String>,
 
 
     /// 
@@ -109,18 +146,6 @@ pub struct ByteMatchTuple {
 
 
     /// 
-    /// The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
-
-
-    /// 
     /// Within the portion of a web request that you want to search (for example, in the query string, if any), specify where you want AWS WAF to search. Valid values include the following:
     /// 
     /// CONTAINS
@@ -157,6 +182,24 @@ pub struct ByteMatchTuple {
 
 
     /// 
+    /// The base64-encoded value that AWS WAF searches for. AWS CloudFormation sends this value to AWS WAF without encoding it.
+    /// 
+    /// You must specify this property or the TargetString property.
+    /// 
+    /// AWS WAF searches for this value in a specific part of web requests, which you define in the FieldToMatch property.
+    /// 
+    /// Valid values depend on the Type value in the FieldToMatch property. For example, for a METHOD type, you must specify HTTP methods such as DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetStringBase64")]
+    pub target_string_base64: Option<String>,
+
+
+    /// 
     /// The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you      specified in FieldToMatch. The maximum length of the value is 50 bytes.
     /// 
     /// You must specify this property or the TargetStringBase64 property.
@@ -175,49 +218,16 @@ pub struct ByteMatchTuple {
     #[serde(rename = "TargetString")]
     pub target_string: Option<String>,
 
-}
-
-
-/// Specifies where in a web request to look for TargetString.
-#[derive(Default, serde::Serialize)]
-pub struct FieldToMatch {
-
 
     /// 
-    /// The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:
-    /// 
-    /// HEADER: A specified request header, for example, the value of the User-Agent or Referer header.         If you choose HEADER for the type, specify the name of the header in Data.                    METHOD: The HTTP method, which indicated the type of operation that the request is asking the origin to perform.                     QUERY_STRING: A query string, which is the part of a URL that appears after a ? character, if any.                    URI: The part of a web request that identifies a resource, for example, /images/daily-ad.jpg.                    BODY: The part of a request that contains any additional data that you want to send to your web server         as the HTTP request body, such as data from a form. The request body immediately follows the request headers.         Note that only the first 8192 bytes of the request body are forwarded to AWS WAF for inspection.         To allow or block requests based on the length of the body, you can create a size constraint set.                    SINGLE_QUERY_ARG: The parameter in the query string that you will inspect, such as UserName or SalesRegion. The maximum length for SINGLE_QUERY_ARG is 30 characters.                    ALL_QUERY_ARGS: Similar to SINGLE_QUERY_ARG, but rather than inspecting a single parameter, AWS WAF will inspect all parameters within the query for the value or regex pattern that you specify in         TargetString.
+    /// The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: ALL_QUERY_ARGS | BODY | HEADER | METHOD | QUERY_STRING | SINGLE_QUERY_ARG | URI
+    /// Type: FieldToMatch
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, 			for example, User-Agent or Referer. The name of the header is not case sensitive.
-    /// 
-    /// When the value of Type is SINGLE_QUERY_ARG, enter the name of the parameter that you want AWS WAF to search, 	    for example, UserName or SalesRegion. The parameter name is not case sensitive.
-    /// 
-    /// If the value of Type is any other value, omit Data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Data")]
-    pub data: Option<String>,
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
 
 }

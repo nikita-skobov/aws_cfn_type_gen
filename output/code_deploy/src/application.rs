@@ -1,22 +1,20 @@
 
 
 /// The AWS::CodeDeploy::Application resource creates an AWS CodeDeploy    application. In CodeDeploy, an application is a name that functions as a container    to ensure that the correct combination of revision, deployment configuration, and deployment    group are referenced during a deployment. You can use the     AWS::CodeDeploy::DeploymentGroup resource to associate the application with a     CodeDeploy deployment group. For more information, see CodeDeploy     Deployments in the AWS CodeDeploy User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
 
 
     /// 
-    /// The compute platform that CodeDeploy deploys the application to.
+    /// The metadata that you apply to CodeDeploy applications to help you organize and       categorize them. Each tag consists of a key and an optional value, both of which you       define.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Allowed values: ECS | Lambda | Server
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ComputePlatform")]
-    pub compute_platform: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -38,16 +36,28 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The metadata that you apply to CodeDeploy applications to help you organize and       categorize them. Each tag consists of a key and an optional value, both of which you       define.
+    /// The compute platform that CodeDeploy deploys the application to.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Allowed values: ECS | Lambda | Server
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ComputePlatform")]
+    pub compute_platform: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnApplication {
+    fn type_string() -> &'static str {
+        "AWS::CodeDeploy::Application"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -58,7 +68,7 @@ pub struct CfnApplication {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

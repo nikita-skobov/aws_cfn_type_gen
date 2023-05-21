@@ -1,7 +1,7 @@
 
 
 /// The resource represents an enabled control. It specifies an asynchronous operation       that creates AWS resources on the specified organizational unit and the       accounts it contains. The resources created will vary according to the control that you       specify.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEnabledControl {
 
 
@@ -28,4 +28,14 @@ pub struct CfnEnabledControl {
     #[serde(rename = "TargetIdentifier")]
     pub target_identifier: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnEnabledControl {
+    fn type_string() -> &'static str {
+        "AWS::ControlTower::EnabledControl"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

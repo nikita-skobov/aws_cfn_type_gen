@@ -15,7 +15,7 @@
 /// Regions
 ///
 /// AWS KMS CloudFormation resources are available in all AWS Regions in which AWS KMS and    AWS CloudFormation are supported. You can use the AWS::KMS::ReplicaKey    resource to create replica keys in all Regions that support multi-Region KMS keys. For    details, see Multi-Region keys in AWS KMS in the AWS Key Management Service Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnReplicaKey {
 
 
@@ -35,26 +35,6 @@ pub struct CfnReplicaKey {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
-
-
-    /// 
-    /// Specifies the multi-Region primary key to replicate. The primary key must be in a    different AWS Region of the same AWS partition. You can    create only one replica of a given primary key in each AWS Region .
-    /// 
-    /// ImportantIf you change the PrimaryKeyArn value of a replica key, the existing     replica key is scheduled for deletion and a new replica key is created based on the     specified primary key. While it is scheduled for deletion, the existing replica key becomes     unusable. You can cancel the scheduled deletion of the key outside of CloudFormation.However, if you inadvertently delete a replica key, you can decrypt ciphertext encrypted     by that replica key by using any related multi-Region key. If necessary, you can recreate     the replica in the same Region after the previous one is completely deleted. For details,     see Deleting multi-Region      keys in the AWS Key Management Service Developer Guide
-    /// 
-    /// Specify the key ARN of an existing multi-Region primary key. For example,     arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrimaryKeyArn")]
-    pub primary_key_arn: String,
 
 
     /// 
@@ -78,23 +58,23 @@ pub struct CfnReplicaKey {
 
 
     /// 
-    /// A description of the KMS key.
+    /// Specifies the multi-Region primary key to replicate. The primary key must be in a    different AWS Region of the same AWS partition. You can    create only one replica of a given primary key in each AWS Region .
     /// 
-    /// The default value is an empty string (no description).
+    /// ImportantIf you change the PrimaryKeyArn value of a replica key, the existing     replica key is scheduled for deletion and a new replica key is created based on the     specified primary key. While it is scheduled for deletion, the existing replica key becomes     unusable. You can cancel the scheduled deletion of the key outside of CloudFormation.However, if you inadvertently delete a replica key, you can decrypt ciphertext encrypted     by that replica key by using any related multi-Region key. If necessary, you can recreate     the replica in the same Region after the previous one is completely deleted. For details,     see Deleting multi-Region      keys in the AWS Key Management Service Developer Guide
     /// 
-    /// The description is not a shared property of multi-Region keys. You can specify the same    description or a different description for each key in a set of related multi-Region keys. AWS Key Management Service does not synchronize this property.
+    /// Specify the key ARN of an existing multi-Region primary key. For example,     arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 0
+    /// Minimum: 1
     ///
-    /// Maximum: 8192
+    /// Maximum: 2048
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "PrimaryKeyArn")]
+    pub primary_key_arn: String,
 
 
     /// 
@@ -124,6 +104,26 @@ pub struct CfnReplicaKey {
 
 
     /// 
+    /// A description of the KMS key.
+    /// 
+    /// The default value is an empty string (no description).
+    /// 
+    /// The description is not a shared property of multi-Region keys. You can specify the same    description or a different description for each key in a set of related multi-Region keys. AWS Key Management Service does not synchronize this property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 8192
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// Specifies the number of days in the waiting period before AWS KMS deletes a    replica key that has been removed from a CloudFormation stack. Enter a value between 7 and 30    days. The default value is 30 days.
     /// 
     /// When you remove a replica key from a CloudFormation stack, AWS KMS schedules    the replica key for deletion and starts the mandatory waiting period. The     PendingWindowInDays property determines the length of waiting period. During    the waiting period, the key state of replica key is Pending Deletion, which    prevents it from being used in cryptographic operations. When the waiting period expires,     AWS KMS permanently deletes the replica key.
@@ -150,6 +150,16 @@ pub struct CfnReplicaKey {
 
 }
 
+impl cfn_resources::CfnResource for CfnReplicaKey {
+    fn type_string() -> &'static str {
+        "AWS::KMS::ReplicaKey"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -158,7 +168,7 @@ pub struct CfnReplicaKey {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

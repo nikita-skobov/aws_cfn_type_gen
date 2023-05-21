@@ -1,7 +1,7 @@
 
 
 /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-drtaccess.html
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDRTAccess {
 
 
@@ -14,4 +14,14 @@ pub struct CfnDRTAccess {
     #[serde(rename = "LogBucketList")]
     pub log_bucket_list: Option<Vec<String>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnDRTAccess {
+    fn type_string() -> &'static str {
+        "AWS::Shield::DRTAccess"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

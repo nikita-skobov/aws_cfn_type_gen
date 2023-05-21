@@ -7,7 +7,7 @@
 /// When you successfully enable logging using a PutLoggingConfiguration      request, AWS WAF creates an additional role or policy that is required to write        logs to the logging destination. For an Amazon CloudWatch Logs log group, AWS WAF creates a resource policy on the log group.      For an Amazon S3 bucket, AWS WAF creates a bucket policy. For an Amazon Kinesis Data Firehose, AWS WAF creates a service-linked role.
 ///
 /// For additional information about web ACL logging, see       Logging web ACL traffic information         in the         AWS WAF Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLoggingConfiguration {
 
 
@@ -27,6 +27,18 @@ pub struct CfnLoggingConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ResourceArn")]
     pub resource_arn: String,
+
+
+    /// 
+    /// Filtering that specifies which web requests are kept in the logs and which are dropped.     You can filter on the rule action and on the web request labels that were applied by     matching rules during web ACL evaluation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LoggingFilter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LoggingFilter")]
+    pub logging_filter: Option<LoggingFilter>,
 
 
     /// 
@@ -60,23 +72,83 @@ pub struct CfnLoggingConfiguration {
     #[serde(rename = "RedactedFields")]
     pub redacted_fields: Option<Vec<FieldToMatch>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnLoggingConfiguration {
+    fn type_string() -> &'static str {
+        "AWS::WAFv2::LoggingConfiguration"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Inspect one of the headers in the web request, identified by name, for example,       User-Agent or Referer. The name isn't case sensitive.
+///
+/// You can filter and inspect all headers with the FieldToMatch setting       Headers.
+///
+/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
+///
+/// Example JSON: "SingleHeader": { "Name": "haystack" }
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SingleHeader {
+
 
     /// 
-    /// Filtering that specifies which web requests are kept in the logs and which are dropped.     You can filter on the rule action and on the web request labels that were applied by     matching rules during web ACL evaluation.
+    /// The name of the query header to inspect.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+
+/// A single match condition for a log filter.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Condition {
+
+
+    /// 
+    /// A single label name condition. This is the fully qualified label name that a log record must contain in order to meet the condition.     Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label.
     /// 
     /// Required: No
     ///
-    /// Type: LoggingFilter
+    /// Type: LabelNameCondition
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LoggingFilter")]
-    pub logging_filter: Option<LoggingFilter>,
+    #[serde(rename = "LabelNameCondition")]
+    pub label_name_condition: Option<LabelNameCondition>,
+
+
+    /// 
+    /// A single action condition. This is the action setting that a log record must contain in order to meet the condition.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ActionCondition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ActionCondition")]
+    pub action_condition: Option<ActionCondition>,
 
 }
 
 
 /// A single label name condition for a condition in a logging     filter.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LabelNameCondition {
 
 
@@ -100,39 +172,54 @@ pub struct LabelNameCondition {
 }
 
 
-/// A single logging filter, used in LoggingFilter.
-#[derive(Default, serde::Serialize)]
-pub struct Filter {
+/// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MatchPattern {
 
 
     /// 
-    /// Match conditions for the filter.
+    /// Match all of the elements.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Condition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Conditions")]
-    pub conditions: Vec<Condition>,
-
-
+    /// You must specify either this setting or the IncludedPaths setting, but not     both.
     /// 
-    /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy     the filter, a log must match all conditions or must match at least one condition.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: MEETS_ALL | MEETS_ANY
+    /// Type: Json
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Requirement")]
-    pub requirement: String,
+    #[serde(rename = "All")]
+    pub all: Option<serde_json::Value>,
 
 
     /// 
-    /// How to handle logs that satisfy the filter's conditions and requirement.
+    /// Match only the specified include paths.
+    /// 
+    /// Provide the include paths using JSON Pointer syntax. For example, "IncludedPaths":       ["/dogs/0/name", "/dogs/1/name"]. For information about this syntax, see the     Internet Engineering Task Force (IETF) documentation JavaScript Object Notation (JSON)       Pointer.
+    /// 
+    /// You must specify either this setting or the All setting, but not     both.
+    /// 
+    /// NoteDon't use this option to include all paths. Instead, use the All       setting.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludedPaths")]
+    pub included_paths: Option<Vec<String>>,
+
+}
+
+
+/// Filtering that specifies which web requests are kept in the logs and which are dropped,       defined for a web ACL's LoggingConfiguration.
+///
+/// You can filter on the rule action and on the web request labels that were applied by     matching rules during web ACL evaluation.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LoggingFilter {
+
+
+    /// 
+    /// Default handling for logs that don't match any of the specified filtering conditions.
     /// 
     /// Required: Yes
     ///
@@ -141,8 +228,120 @@ pub struct Filter {
     /// Allowed values: DROP | KEEP
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Behavior")]
-    pub behavior: String,
+    #[serde(rename = "DefaultBehavior")]
+    pub default_behavior: String,
+
+
+    /// 
+    /// The filters that you want to apply to the logs.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Filter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Filters")]
+    pub filters: Vec<Filter>,
+
+}
+
+
+/// A single action condition for a condition in a logging filter.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ActionCondition {
+
+
+    /// 
+    /// The action setting that a log record must contain in order to meet the condition. This is the action that AWS WAF applied to the web request.
+    /// 
+    /// For rule groups, this is either the configured rule action setting, or if you've applied a rule action override to the rule, it's the override action.     The value EXCLUDED_AS_COUNT matches on     excluded rules and also on rules that have a rule action override of Count.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALLOW | BLOCK | CAPTCHA | CHALLENGE | COUNT | EXCLUDED_AS_COUNT
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: String,
+
+}
+
+
+/// The parts of the request that you want to keep out of the logs. This is used in the logging configuration RedactedFields specification.
+///
+/// Example JSON for a QueryString field to match:
+///
+/// "FieldToMatch": { "QueryString": {} }
+///
+/// Example JSON for a Method field to match specification:
+///
+/// "FieldToMatch": { "Method": { "Name": "DELETE" } }
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FieldToMatch {
+
+
+    /// 
+    /// Redact the query string. This is the part of a URL that appears after a ?     character, if any.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryString")]
+    pub query_string: Option<serde_json::Value>,
+
+
+    /// 
+    /// Redact the request body JSON.
+    /// 
+    /// Required: No
+    ///
+    /// Type: JsonBody
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "JsonBody")]
+    pub json_body: Option<JsonBody>,
+
+
+    /// 
+    /// Redact the indicated HTTP method. The method indicates the type of operation that the request is     asking the origin to perform.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Method")]
+    pub method: Option<serde_json::Value>,
+
+
+    /// 
+    /// Redact the request URI path. This is the part of the web request that identifies a     resource, for example, /images/daily-ad.jpg.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UriPath")]
+    pub uri_path: Option<serde_json::Value>,
+
+
+    /// 
+    /// Redact a single header. Provide the name of the header to inspect, for example,       User-Agent or Referer. This setting isn't case     sensitive.
+    /// 
+    /// Example JSON: "SingleHeader": { "Name": "haystack" }
+    /// 
+    /// Required: No
+    ///
+    /// Type: SingleHeader
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SingleHeader")]
+    pub single_header: Option<SingleHeader>,
 
 }
 
@@ -154,7 +353,7 @@ pub struct Filter {
 /// Use the specifications in this object to indicate which parts of the JSON body to     inspect using the rule's inspection criteria. AWS WAF inspects only the parts of the JSON     that result from the matches that you indicate.
 ///
 /// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JsonBody {
 
 
@@ -183,18 +382,6 @@ pub struct JsonBody {
 
 
     /// 
-    /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MatchPattern
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MatchPattern")]
-    pub match_pattern: MatchPattern,
-
-
-    /// 
     /// The parts of the JSON to match against using the MatchPattern. If you     specify All, AWS WAF matches against keys and values.
     /// 
     /// Required: Yes
@@ -207,231 +394,28 @@ pub struct JsonBody {
     #[serde(rename = "MatchScope")]
     pub match_scope: String,
 
-}
-
-
-/// The parts of the request that you want to keep out of the logs. This is used in the logging configuration RedactedFields specification.
-///
-/// Example JSON for a QueryString field to match:
-///
-/// "FieldToMatch": { "QueryString": {} }
-///
-/// Example JSON for a Method field to match specification:
-///
-/// "FieldToMatch": { "Method": { "Name": "DELETE" } }
-#[derive(Default, serde::Serialize)]
-pub struct FieldToMatch {
-
 
     /// 
-    /// Redact the request body JSON.
-    /// 
-    /// Required: No
-    ///
-    /// Type: JsonBody
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "JsonBody")]
-    pub json_body: Option<JsonBody>,
-
-
-    /// 
-    /// Redact a single header. Provide the name of the header to inspect, for example,       User-Agent or Referer. This setting isn't case     sensitive.
-    /// 
-    /// Example JSON: "SingleHeader": { "Name": "haystack" }
-    /// 
-    /// Required: No
-    ///
-    /// Type: SingleHeader
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SingleHeader")]
-    pub single_header: Option<SingleHeader>,
-
-
-    /// 
-    /// Redact the request URI path. This is the part of the web request that identifies a     resource, for example, /images/daily-ad.jpg.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UriPath")]
-    pub uri_path: Option<serde_json::Value>,
-
-
-    /// 
-    /// Redact the indicated HTTP method. The method indicates the type of operation that the request is     asking the origin to perform.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Method")]
-    pub method: Option<serde_json::Value>,
-
-
-    /// 
-    /// Redact the query string. This is the part of a URL that appears after a ?     character, if any.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryString")]
-    pub query_string: Option<serde_json::Value>,
-
-}
-
-
-/// A single match condition for a log filter.
-#[derive(Default, serde::Serialize)]
-pub struct Condition {
-
-
-    /// 
-    /// A single action condition. This is the action setting that a log record must contain in order to meet the condition.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ActionCondition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActionCondition")]
-    pub action_condition: Option<ActionCondition>,
-
-
-    /// 
-    /// A single label name condition. This is the fully qualified label name that a log record must contain in order to meet the condition.     Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LabelNameCondition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LabelNameCondition")]
-    pub label_name_condition: Option<LabelNameCondition>,
-
-}
-
-
-/// Inspect one of the headers in the web request, identified by name, for example,       User-Agent or Referer. The name isn't case sensitive.
-///
-/// You can filter and inspect all headers with the FieldToMatch setting       Headers.
-///
-/// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
-///
-/// Example JSON: "SingleHeader": { "Name": "haystack" }
-#[derive(Default, serde::Serialize)]
-pub struct SingleHeader {
-
-
-    /// 
-    /// The name of the query header to inspect.
+    /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: .*\S.*
+    /// Type: MatchPattern
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "MatchPattern")]
+    pub match_pattern: MatchPattern,
 
 }
 
 
-/// A single action condition for a condition in a logging filter.
-#[derive(Default, serde::Serialize)]
-pub struct ActionCondition {
+/// A single logging filter, used in LoggingFilter.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Filter {
 
 
     /// 
-    /// The action setting that a log record must contain in order to meet the condition. This is the action that AWS WAF applied to the web request.
-    /// 
-    /// For rule groups, this is either the configured rule action setting, or if you've applied a rule action override to the rule, it's the override action.     The value EXCLUDED_AS_COUNT matches on     excluded rules and also on rules that have a rule action override of Count.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALLOW | BLOCK | CAPTCHA | CHALLENGE | COUNT | EXCLUDED_AS_COUNT
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: String,
-
-}
-
-
-/// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
-#[derive(Default, serde::Serialize)]
-pub struct MatchPattern {
-
-
-    /// 
-    /// Match only the specified include paths.
-    /// 
-    /// Provide the include paths using JSON Pointer syntax. For example, "IncludedPaths":       ["/dogs/0/name", "/dogs/1/name"]. For information about this syntax, see the     Internet Engineering Task Force (IETF) documentation JavaScript Object Notation (JSON)       Pointer.
-    /// 
-    /// You must specify either this setting or the All setting, but not     both.
-    /// 
-    /// NoteDon't use this option to include all paths. Instead, use the All       setting.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludedPaths")]
-    pub included_paths: Option<Vec<String>>,
-
-
-    /// 
-    /// Match all of the elements.
-    /// 
-    /// You must specify either this setting or the IncludedPaths setting, but not     both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "All")]
-    pub all: Option<serde_json::Value>,
-
-}
-
-
-/// Filtering that specifies which web requests are kept in the logs and which are dropped,       defined for a web ACL's LoggingConfiguration.
-///
-/// You can filter on the rule action and on the web request labels that were applied by     matching rules during web ACL evaluation.
-#[derive(Default, serde::Serialize)]
-pub struct LoggingFilter {
-
-
-    /// 
-    /// The filters that you want to apply to the logs.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Filter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Filters")]
-    pub filters: Vec<Filter>,
-
-
-    /// 
-    /// Default handling for logs that don't match any of the specified filtering conditions.
+    /// How to handle logs that satisfy the filter's conditions and requirement.
     /// 
     /// Required: Yes
     ///
@@ -440,7 +424,33 @@ pub struct LoggingFilter {
     /// Allowed values: DROP | KEEP
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultBehavior")]
-    pub default_behavior: String,
+    #[serde(rename = "Behavior")]
+    pub behavior: String,
+
+
+    /// 
+    /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy     the filter, a log must match all conditions or must match at least one condition.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: MEETS_ALL | MEETS_ANY
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Requirement")]
+    pub requirement: String,
+
+
+    /// 
+    /// Match conditions for the filter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Condition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Conditions")]
+    pub conditions: Vec<Condition>,
 
 }

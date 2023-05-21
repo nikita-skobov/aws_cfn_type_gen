@@ -1,8 +1,32 @@
 
 
 /// The AWS::ApiGatewayV2::VpcLink resource creates a VPC link. Supported only for HTTP APIs. The VPC link status must transition          from PENDING to AVAILABLE to successfully create a VPC link, which can take up to 10 minutes. To learn more, see             Working with VPC Links for HTTP APIs          in the API Gateway Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVpcLink {
+
+
+    /// 
+    /// A list of security group IDs for the VPC link.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the VPC link.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -28,28 +52,14 @@ pub struct CfnVpcLink {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
 
+}
 
-    /// 
-    /// The name of the VPC link.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+impl cfn_resources::CfnResource for CfnVpcLink {
+    fn type_string() -> &'static str {
+        "AWS::ApiGatewayV2::VpcLink"
+    }
 
-
-    /// 
-    /// A list of security group IDs for the VPC link.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

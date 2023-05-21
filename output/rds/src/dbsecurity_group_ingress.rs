@@ -5,7 +5,7 @@
 /// This type supports updates. For more information about updating stacks, see AWS         CloudFormation Stacks Updates.
 ///
 /// For details about the settings for DB security group ingress, see AuthorizeDBSecurityGroupIngress.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBSecurityGroupIngress {
 
 
@@ -19,30 +19,6 @@ pub struct CfnDBSecurityGroupIngress {
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupOwnerId")]
     pub ec2_security_group_owner_id: Option<String>,
-
-
-    /// 
-    /// The name of the DB security group to add authorization to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBSecurityGroupName")]
-    pub dbsecurity_group_name: String,
-
-
-    /// 
-    /// Name of the EC2 security group to authorize.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName    or EC2SecurityGroupId must be provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EC2SecurityGroupName")]
-    pub ec2_security_group_name: Option<String>,
 
 
     /// 
@@ -68,4 +44,38 @@ pub struct CfnDBSecurityGroupIngress {
     #[serde(rename = "CIDRIP")]
     pub cidrip: Option<String>,
 
+
+    /// 
+    /// The name of the DB security group to add authorization to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBSecurityGroupName")]
+    pub dbsecurity_group_name: String,
+
+
+    /// 
+    /// Name of the EC2 security group to authorize.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName    or EC2SecurityGroupId must be provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EC2SecurityGroupName")]
+    pub ec2_security_group_name: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDBSecurityGroupIngress {
+    fn type_string() -> &'static str {
+        "AWS::RDS::DBSecurityGroupIngress"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

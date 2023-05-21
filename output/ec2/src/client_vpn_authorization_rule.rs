@@ -1,7 +1,7 @@
 
 
 /// Specifies an ingress authorization rule to add to a Client VPN endpoint. Ingress     authorization rules act as firewall rules that grant access to networks. You must configure     ingress authorization rules to enable clients to access resources in AWS     or on-premises networks.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClientVpnAuthorizationRule {
 
 
@@ -64,4 +64,14 @@ pub struct CfnClientVpnAuthorizationRule {
     #[serde(rename = "ClientVpnEndpointId")]
     pub client_vpn_endpoint_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnClientVpnAuthorizationRule {
+    fn type_string() -> &'static str {
+        "AWS::EC2::ClientVpnAuthorizationRule"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

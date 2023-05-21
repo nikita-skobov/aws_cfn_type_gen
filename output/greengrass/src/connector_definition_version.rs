@@ -1,7 +1,7 @@
 
 
 /// The     AWS::Greengrass::ConnectorDefinitionVersion resource represents a connector definition version for AWS IoT Greengrass.     A connector definition version contains a list of connectors.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConnectorDefinitionVersion {
 
 
@@ -30,12 +30,36 @@ pub struct CfnConnectorDefinitionVersion {
 
 }
 
+impl cfn_resources::CfnResource for CfnConnectorDefinitionVersion {
+    fn type_string() -> &'static str {
+        "AWS::Greengrass::ConnectorDefinitionVersion"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Connectors are modules that provide       built-in integration with local infrastructure, device protocols, AWS, and other cloud services. 	For more information, 	see Integrate with Services and Protocols Using Greengrass Connectors in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Connectors 		 property of the AWS::Greengrass::ConnectorDefinitionVersion resource contains a      list of Connector property types.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Connector {
+
+
+    /// 
+    /// The parameters or configuration that the connector uses.
+    /// 
+    /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<serde_json::Value>,
 
 
     /// 
@@ -62,19 +86,5 @@ pub struct Connector {
     /// Update requires: Replacement
     #[serde(rename = "Id")]
     pub id: String,
-
-
-    /// 
-    /// The parameters or configuration that the connector uses.
-    /// 
-    /// For more information about connectors provided by AWS, see Greengrass Connectors Provided by AWS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<serde_json::Value>,
 
 }

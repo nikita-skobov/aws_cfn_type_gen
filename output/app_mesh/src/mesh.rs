@@ -5,8 +5,24 @@
 /// A service mesh is a logical boundary for network traffic between services that are     represented by resources within the mesh. After you create your service mesh, you can     create virtual services, virtual nodes, virtual routers, and routes to distribute traffic     between the applications in your mesh.
 ///
 /// For more information about service meshes, see Service meshes.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMesh {
+
+
+    /// 
+    /// The name to use for the service mesh.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MeshName")]
+    pub mesh_name: Option<String>,
 
 
     /// 
@@ -34,27 +50,21 @@ pub struct CfnMesh {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+}
 
-    /// 
-    /// The name to use for the service mesh.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MeshName")]
-    pub mesh_name: Option<String>,
+impl cfn_resources::CfnResource for CfnMesh {
+    fn type_string() -> &'static str {
+        "AWS::AppMesh::Mesh"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// An object that represents the egress filter rules for a service mesh.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EgressFilter {
 
 
@@ -77,7 +87,7 @@ pub struct EgressFilter {
 
 
 /// An object that represents the service discovery information for a service mesh.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MeshServiceDiscovery {
 
 
@@ -98,7 +108,7 @@ pub struct MeshServiceDiscovery {
 
 
 /// An object that represents the specification of a service mesh.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MeshSpec {
 
 
@@ -134,19 +144,8 @@ pub struct MeshSpec {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -158,5 +157,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

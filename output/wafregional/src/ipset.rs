@@ -3,8 +3,20 @@
 /// Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports IPv4 address ranges: /8 and any range between /16 through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56, /64, and /128.
 ///
 /// To specify an individual IP address, you specify the four-part IP address followed by a       /32, for example, 192.0.2.0/32. To block a range of IP addresses, you can     specify /8 or any range between /16 through /32 (for IPv4) or /24, /32, /48, /56, /64, or     /128 (for IPv6). For more information about CIDR notation, see the Wikipedia entry Classless       Inter-Domain Routing.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPSet {
+
+
+    /// 
+    /// The IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) that web requests originate from.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of IPSetDescriptor
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IPSetDescriptors")]
+    pub ipset_descriptors: Option<Vec<IPSetDescriptor>>,
 
 
     /// 
@@ -24,24 +36,36 @@ pub struct CfnIPSet {
     #[serde(rename = "Name")]
     pub name: String,
 
+}
 
-    /// 
-    /// The IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) that web requests originate from.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of IPSetDescriptor
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IPSetDescriptors")]
-    pub ipset_descriptors: Option<Vec<IPSetDescriptor>>,
+impl cfn_resources::CfnResource for CfnIPSet {
+    fn type_string() -> &'static str {
+        "AWS::WAFRegional::IPSet"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Specifies the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) that web requests originate from.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IPSetDescriptor {
+
+
+    /// 
+    /// Specify IPV4 or IPV6.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 
     /// 
@@ -68,19 +92,5 @@ pub struct IPSetDescriptor {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
-
-    /// 
-    /// Specify IPV4 or IPV6.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
 
 }

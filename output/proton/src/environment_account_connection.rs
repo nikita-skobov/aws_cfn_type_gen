@@ -1,8 +1,26 @@
 
 
 /// Detailed data of an AWS Proton environment account connection resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEnvironmentAccountConnection {
+
+
+    /// 
+    /// The IAM service role that's associated with the environment account connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 200
+    ///
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:\d{12}:([\w+=,.@-]+[/:])*[\w+=,.@-]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
 
 
     /// 
@@ -28,7 +46,7 @@ pub struct CfnEnvironmentAccountConnection {
 
 
     /// 
-    /// The IAM service role that's associated with the environment account connection.
+    /// The Amazon Resource Name (ARN) of an IAM service role in the environment account. AWS Proton uses this role to provision infrastructure resources    using CodeBuild-based provisioning in the associated environment account.
     /// 
     /// Required: No
     ///
@@ -36,13 +54,13 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 200
+    /// Maximum: 2048
     ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:\d{12}:([\w+=,.@-]+[/:])*[\w+=,.@-]+$
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):iam::\d{12}:role/([\w+=,.@-]{1,512}[/:])*([\w+=,.@-]{1,64})$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
+    #[serde(rename = "CodebuildRoleArn")]
+    pub codebuild_role_arn: Option<String>,
 
 
     /// 
@@ -76,6 +94,20 @@ pub struct CfnEnvironmentAccountConnection {
 
 
     /// 
+    /// The environment account that's connected to the environment account connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^\d{12}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnvironmentAccountId")]
+    pub environment_account_id: Option<String>,
+
+
+    /// 
     /// The name of the environment that's associated with the environment account connection.
     /// 
     /// Required: No
@@ -92,38 +124,16 @@ pub struct CfnEnvironmentAccountConnection {
     #[serde(rename = "EnvironmentName")]
     pub environment_name: Option<String>,
 
+}
 
-    /// 
-    /// The Amazon Resource Name (ARN) of an IAM service role in the environment account. AWS Proton uses this role to provision infrastructure resources    using CodeBuild-based provisioning in the associated environment account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov):iam::\d{12}:role/([\w+=,.@-]{1,512}[/:])*([\w+=,.@-]{1,64})$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CodebuildRoleArn")]
-    pub codebuild_role_arn: Option<String>,
+impl cfn_resources::CfnResource for CfnEnvironmentAccountConnection {
+    fn type_string() -> &'static str {
+        "AWS::Proton::EnvironmentAccountConnection"
+    }
 
-
-    /// 
-    /// The environment account that's connected to the environment account connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^\d{12}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnvironmentAccountId")]
-    pub environment_account_id: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -134,7 +144,7 @@ pub struct CfnEnvironmentAccountConnection {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

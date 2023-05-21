@@ -3,20 +3,8 @@
 /// Associate an identity provider configuration to a cluster.
 ///
 /// If you want to authenticate identities using an identity provider, you can create an       identity provider configuration and associate it to your cluster. After configuring       authentication to your cluster you can create Kubernetes roles and         clusterroles to assign permissions to the roles, and then bind the       roles to the identities using Kubernetes rolebindings and         clusterrolebindings. For more information see Using RBAC         Authorization in the Kubernetes documentation.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIdentityProviderConfig {
-
-
-    /// 
-    /// The metadata to apply to the provider configuration to assist with categorization and       organization. Each tag consists of a key and an optional value. You define both.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -44,15 +32,15 @@ pub struct CfnIdentityProviderConfig {
 
 
     /// 
-    /// An object representing an OpenID Connect (OIDC) identity provider       configuration.
+    /// The metadata to apply to the provider configuration to assist with categorization and       organization. Each tag consists of a key and an optional value. You define both.
     /// 
     /// Required: No
     ///
-    /// Type: OidcIdentityProviderConfig
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Oidc")]
-    pub oidc: Option<OidcIdentityProviderConfig>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -66,102 +54,33 @@ pub struct CfnIdentityProviderConfig {
     #[serde(rename = "Type")]
     pub cfn_type: String,
 
+
+    /// 
+    /// An object representing an OpenID Connect (OIDC) identity provider       configuration.
+    /// 
+    /// Required: No
+    ///
+    /// Type: OidcIdentityProviderConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Oidc")]
+    pub oidc: Option<OidcIdentityProviderConfig>,
+
 }
 
+impl cfn_resources::CfnResource for CfnIdentityProviderConfig {
+    fn type_string() -> &'static str {
+        "AWS::EKS::IdentityProviderConfig"
+    }
 
-/// An object representing the configuration for an OpenID Connect (OIDC) identity       provider.
-#[derive(Default, serde::Serialize)]
-pub struct OidcIdentityProviderConfig {
-
-
-    /// 
-    /// The prefix that is prepended to group claims to prevent clashes with existing names       (such as system: groups). For example, the value oidc: creates       group names like oidc:engineering and oidc:infra. The prefix       can't contain system:
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupsPrefix")]
-    pub groups_prefix: Option<String>,
-
-
-    /// 
-    /// The key-value pairs that describe required claims in the identity token. If set, each       claim is verified to be present in the token with a matching value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of RequiredClaim
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RequiredClaims")]
-    pub required_claims: Option<Vec<RequiredClaim>>,
-
-
-    /// 
-    /// The prefix that is prepended to username claims to prevent clashes with existing       names. The prefix can't contain system:
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UsernamePrefix")]
-    pub username_prefix: Option<String>,
-
-
-    /// 
-    /// This is also known as audience. The ID of the client application       that makes authentication requests to the OIDC identity provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClientId")]
-    pub client_id: String,
-
-
-    /// 
-    /// The JSON Web token (JWT) claim that is used as the username.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UsernameClaim")]
-    pub username_claim: Option<String>,
-
-
-    /// 
-    /// The JSON web token (JWT) claim that the provider uses to return your groups.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupsClaim")]
-    pub groups_claim: Option<String>,
-
-
-    /// 
-    /// The URL of the OIDC identity provider that allows the API server to discover public       signing keys for verifying tokens.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IssuerUrl")]
-    pub issuer_url: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A key-value pair that describes a required claim in the identity token. If set, each       claim is verified to be present in the token with a matching value.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RequiredClaim {
 
 
@@ -198,7 +117,7 @@ pub struct RequiredClaim {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -222,5 +141,96 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+}
+
+
+/// An object representing the configuration for an OpenID Connect (OIDC) identity       provider.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OidcIdentityProviderConfig {
+
+
+    /// 
+    /// The JSON web token (JWT) claim that the provider uses to return your groups.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GroupsClaim")]
+    pub groups_claim: Option<String>,
+
+
+    /// 
+    /// The key-value pairs that describe required claims in the identity token. If set, each       claim is verified to be present in the token with a matching value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of RequiredClaim
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RequiredClaims")]
+    pub required_claims: Option<Vec<RequiredClaim>>,
+
+
+    /// 
+    /// This is also known as audience. The ID of the client application       that makes authentication requests to the OIDC identity provider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClientId")]
+    pub client_id: String,
+
+
+    /// 
+    /// The JSON Web token (JWT) claim that is used as the username.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UsernameClaim")]
+    pub username_claim: Option<String>,
+
+
+    /// 
+    /// The prefix that is prepended to group claims to prevent clashes with existing names       (such as system: groups). For example, the value oidc: creates       group names like oidc:engineering and oidc:infra. The prefix       can't contain system:
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GroupsPrefix")]
+    pub groups_prefix: Option<String>,
+
+
+    /// 
+    /// The URL of the OIDC identity provider that allows the API server to discover public       signing keys for verifying tokens.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IssuerUrl")]
+    pub issuer_url: String,
+
+
+    /// 
+    /// The prefix that is prepended to username claims to prevent clashes with existing       names. The prefix can't contain system:
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UsernamePrefix")]
+    pub username_prefix: Option<String>,
 
 }

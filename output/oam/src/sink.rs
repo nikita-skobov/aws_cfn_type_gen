@@ -5,7 +5,7 @@
 /// After you create a sink, you must create a sink policy that allows source accounts to attach to it.     For more information, see PutSinkPolicy.
 ///
 /// An account can have one sink.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSink {
 
 
@@ -48,4 +48,14 @@ pub struct CfnSink {
     #[serde(rename = "Name")]
     pub name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnSink {
+    fn type_string() -> &'static str {
+        "AWS::Oam::Sink"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

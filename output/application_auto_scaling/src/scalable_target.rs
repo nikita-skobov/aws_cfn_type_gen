@@ -3,8 +3,22 @@
 /// The AWS::ApplicationAutoScaling::ScalableTarget resource specifies a resource    that Application Auto Scaling can scale, such as an AWS::DynamoDB::Table or AWS::ECS::Service    resource.
 ///
 /// For more information, see Getting started in the     Application Auto Scaling User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnScalableTarget {
+
+
+    /// 
+    /// The namespace of the AWS service that provides the resource, or a       custom-resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: appstream | cassandra | comprehend | custom-resource | dynamodb | ec2 | ecs | elasticache | elasticmapreduce | kafka | lambda | neptune | rds | sagemaker
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceNamespace")]
+    pub service_namespace: String,
 
 
     /// 
@@ -24,29 +38,27 @@ pub struct CfnScalableTarget {
 
 
     /// 
-    /// The namespace of the AWS service that provides the resource, or a       custom-resource.
+    /// The minimum value that you plan to scale in to. When a scaling policy is in effect,    Application Auto Scaling can scale in (contract) as needed to the minimum capacity limit in    response to changing demand.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: appstream | cassandra | comprehend | custom-resource | dynamodb | ec2 | ecs | elasticache | elasticmapreduce | kafka | lambda | neptune | rds | sagemaker
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceNamespace")]
-    pub service_namespace: String,
-
-
-    /// 
-    /// The scheduled actions for the scalable target. Duplicates aren't allowed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ScheduledAction
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ScheduledActions")]
-    pub scheduled_actions: Option<Vec<ScheduledAction>>,
+    #[serde(rename = "MinCapacity")]
+    pub min_capacity: i64,
+
+
+    /// 
+    /// The maximum value that you plan to scale out to. When a scaling policy is in effect,    Application Auto Scaling can scale out (expand) as needed to the maximum capacity limit in    response to changing demand.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxCapacity")]
+    pub max_capacity: i64,
 
 
     /// 
@@ -63,6 +75,20 @@ pub struct CfnScalableTarget {
     /// Update requires: No interruption
     #[serde(rename = "SuspendedState")]
     pub suspended_state: Option<SuspendedState>,
+
+
+    /// 
+    /// Specify the Amazon Resource Name (ARN) of an Identity and Access Management (IAM) role    that allows Application Auto Scaling to modify the scalable target on your behalf. This can be    either an IAM service role that Application Auto Scaling can assume to make calls to other     AWS resources on your behalf, or a service-linked role for the specified    service. For more information, see How Application     Auto Scaling works with IAM in the Application Auto Scaling User     Guide.
+    /// 
+    /// To automatically create a service-linked role (recommended), specify the full ARN of the    service-linked role in your stack template. To find the exact ARN of the service-linked role    for your AWS or custom resource, see the Service-linked roles topic in the Application Auto Scaling User     Guide. Look for the ARN in the table at the bottom of the page.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleARN")]
+    pub role_arn: String,
 
 
     /// 
@@ -86,41 +112,101 @@ pub struct CfnScalableTarget {
 
 
     /// 
-    /// The maximum value that you plan to scale out to. When a scaling policy is in effect,    Application Auto Scaling can scale out (expand) as needed to the maximum capacity limit in    response to changing demand.
+    /// The scheduled actions for the scalable target. Duplicates aren't allowed.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: List of ScheduledAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScheduledActions")]
+    pub scheduled_actions: Option<Vec<ScheduledAction>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnScalableTarget {
+    fn type_string() -> &'static str {
+        "AWS::ApplicationAutoScaling::ScalableTarget"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// ScalableTargetAction specifies the minimum and maximum capacity for the     ScalableTargetAction property of the AWS::ApplicationAutoScaling::ScalableTarget ScheduledAction property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScalableTargetAction {
+
+
+    /// 
+    /// The maximum capacity.
+    /// 
+    /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
-    pub max_capacity: i64,
+    pub max_capacity: Option<i64>,
 
 
     /// 
-    /// Specify the Amazon Resource Name (ARN) of an Identity and Access Management (IAM) role    that allows Application Auto Scaling to modify the scalable target on your behalf. This can be    either an IAM service role that Application Auto Scaling can assume to make calls to other     AWS resources on your behalf, or a service-linked role for the specified    service. For more information, see How Application     Auto Scaling works with IAM in the Application Auto Scaling User     Guide.
+    /// The minimum capacity.
     /// 
-    /// To automatically create a service-linked role (recommended), specify the full ARN of the    service-linked role in your stack template. To find the exact ARN of the service-linked role    for your AWS or custom resource, see the Service-linked roles topic in the Application Auto Scaling User     Guide. Look for the ARN in the table at the bottom of the page.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleARN")]
-    pub role_arn: String,
-
-
-    /// 
-    /// The minimum value that you plan to scale in to. When a scaling policy is in effect,    Application Auto Scaling can scale in (contract) as needed to the minimum capacity limit in    response to changing demand.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinCapacity")]
-    pub min_capacity: i64,
+    pub min_capacity: Option<i64>,
+
+}
+
+
+/// SuspendedState is a property of the AWS::ApplicationAutoScaling::ScalableTarget resource that specifies whether the    scaling activities for a scalable target are in a suspended state.
+///
+/// For more information, see Suspending and resuming scaling in the Application Auto Scaling User     Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SuspendedState {
+
+
+    /// 
+    /// Whether scheduled scaling is suspended. Set the value to true if you don't    want Application Auto Scaling to add or remove capacity by initiating scheduled actions. The    default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScheduledScalingSuspended")]
+    pub scheduled_scaling_suspended: Option<bool>,
+
+
+    /// 
+    /// Whether scale out by a target tracking scaling policy or a step scaling policy is    suspended. Set the value to true if you don't want Application Auto Scaling to    add capacity when a scaling policy is triggered. The default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DynamicScalingOutSuspended")]
+    pub dynamic_scaling_out_suspended: Option<bool>,
+
+
+    /// 
+    /// Whether scale in by a target tracking scaling policy or a step scaling policy is    suspended. Set the value to true if you don't want Application Auto Scaling to    remove capacity when a scaling policy is triggered. The default is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DynamicScalingInSuspended")]
+    pub dynamic_scaling_in_suspended: Option<bool>,
 
 }
 
@@ -128,7 +214,7 @@ pub struct CfnScalableTarget {
 /// ScheduledAction is a property of the AWS::ApplicationAutoScaling::ScalableTarget resource that specifies a scheduled    action for a scalable target.
 ///
 /// For more information, see Scheduled scaling in the Application Auto Scaling User    Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ScheduledAction {
 
 
@@ -148,18 +234,6 @@ pub struct ScheduledAction {
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
     pub timezone: Option<String>,
-
-
-    /// 
-    /// The date and time that the action is scheduled to end, in UTC.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Timestamp
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EndTime")]
-    pub end_time: Option<String>,
 
 
     /// 
@@ -231,80 +305,16 @@ pub struct ScheduledAction {
     #[serde(rename = "Schedule")]
     pub schedule: String,
 
-}
-
-
-/// ScalableTargetAction specifies the minimum and maximum capacity for the     ScalableTargetAction property of the AWS::ApplicationAutoScaling::ScalableTarget ScheduledAction property type.
-#[derive(Default, serde::Serialize)]
-pub struct ScalableTargetAction {
-
 
     /// 
-    /// The maximum capacity.
+    /// The date and time that the action is scheduled to end, in UTC.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: Timestamp
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxCapacity")]
-    pub max_capacity: Option<i64>,
-
-
-    /// 
-    /// The minimum capacity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinCapacity")]
-    pub min_capacity: Option<i64>,
-
-}
-
-
-/// SuspendedState is a property of the AWS::ApplicationAutoScaling::ScalableTarget resource that specifies whether the    scaling activities for a scalable target are in a suspended state.
-///
-/// For more information, see Suspending and resuming scaling in the Application Auto Scaling User     Guide.
-#[derive(Default, serde::Serialize)]
-pub struct SuspendedState {
-
-
-    /// 
-    /// Whether scale in by a target tracking scaling policy or a step scaling policy is    suspended. Set the value to true if you don't want Application Auto Scaling to    remove capacity when a scaling policy is triggered. The default is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DynamicScalingInSuspended")]
-    pub dynamic_scaling_in_suspended: Option<bool>,
-
-
-    /// 
-    /// Whether scheduled scaling is suspended. Set the value to true if you don't    want Application Auto Scaling to add or remove capacity by initiating scheduled actions. The    default is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScheduledScalingSuspended")]
-    pub scheduled_scaling_suspended: Option<bool>,
-
-
-    /// 
-    /// Whether scale out by a target tracking scaling policy or a step scaling policy is    suspended. Set the value to true if you don't want Application Auto Scaling to    add capacity when a scaling policy is triggered. The default is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DynamicScalingOutSuspended")]
-    pub dynamic_scaling_out_suspended: Option<bool>,
+    #[serde(rename = "EndTime")]
+    pub end_time: Option<String>,
 
 }

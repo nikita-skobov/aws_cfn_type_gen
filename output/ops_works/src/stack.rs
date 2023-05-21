@@ -3,68 +3,52 @@
 /// Creates a new stack. For more information, see Create a New     Stack.
 ///
 /// Required Permissions: To use this action, an IAM user must have an attached policy    that explicitly grants permissions. For more information about user permissions, see Managing User     Permissions.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStack {
 
 
     /// 
-    /// Whether the stack uses custom cookbooks.
+    /// The default AWS OpsWorks Stacks agent version. You have the following options:
     /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UseCustomCookbooks")]
-    pub use_custom_cookbooks: Option<bool>,
-
-
+    /// Auto-update - Set this parameter to LATEST. AWS OpsWorks Stacks     automatically installs new agent versions on the stack's instances as soon as     they are available.               Fixed version - Set this parameter to your preferred agent version. To update the agent version,        you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks installs        that version on the stack's instances.
     /// 
-    /// If you're cloning an AWS OpsWorks stack, the stack ID of the source AWS OpsWorks     stack to clone.
+    /// The default setting is the most recent release of the agent. To specify an agent version,    you must use the complete version number, not the abbreviated number shown on the console.    For a list of available agent version numbers, call DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceStackId")]
-    pub source_stack_id: Option<String>,
-
-
-    /// 
-    /// The stack's default Availability Zone, which must be in the specified region. For more    information, see Regions and     Endpoints. If you also specify a value for DefaultSubnetId, the subnet must    be in the same zone. For more information, see the VpcId parameter description.
+    /// NoteYou can also specify an agent version when you create or update an instance,      which overrides the stack's default setting.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultAvailabilityZone")]
-    pub default_availability_zone: Option<String>,
+    #[serde(rename = "AgentVersion")]
+    pub agent_version: Option<String>,
 
 
     /// 
-    /// The stack's default subnet ID. All instances are launched into this subnet unless you specify another subnet ID when you create the instance.     This parameter is required if you specify a value for the     VpcId parameter. If you also specify a value for     DefaultAvailabilityZone, the subnet must be in that zone.
+    /// The Amazon Resource Name (ARN) of the Amazon Elastic Container Service (Amazon ECS)     cluster to register with the AWS OpsWorks stack.
     /// 
-    /// Required: Conditional
+    /// NoteIf you specify a cluster that's registered with another AWS OpsWorks stack, AWS CloudFormation       deregisters the existing association before registering the       cluster.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultSubnetId")]
-    pub default_subnet_id: Option<String>,
+    #[serde(rename = "EcsClusterArn")]
+    pub ecs_cluster_arn: Option<String>,
 
 
     /// 
-    /// Contains the information required to retrieve an app or cookbook from a repository. For more information,       see Adding Apps or       Cookbooks and Recipes.
+    /// The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances.      For more information about IAM ARNs, see Using    Identifiers.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Source
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CustomCookbooksSource")]
-    pub custom_cookbooks_source: Option<Source>,
+    #[serde(rename = "DefaultInstanceProfileArn")]
+    pub default_instance_profile_arn: String,
 
 
     /// 
@@ -92,185 +76,27 @@ pub struct CfnStack {
 
 
     /// 
-    /// A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration      attribute values or to pass data to recipes. The string should be in the following format:
-    /// 
-    /// "{\"key1\": \"value1\", \"key2\": \"value2\",...}"
-    /// 
-    /// For more information about custom JSON, see Use Custom JSON to     Modify the Stack Configuration Attributes.
+    /// If you're cloning an AWS OpsWorks stack, the stack ID of the source AWS OpsWorks     stack to clone.
     /// 
     /// Required: No
     ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomJson")]
-    pub custom_json: Option<serde_json::Value>,
-
-
-    /// 
-    /// The Amazon Relational Database Service (Amazon RDS) database instance to register with the     AWS OpsWorks stack.
-    /// 
-    /// NoteIf you specify a database instance that's registered with another AWS OpsWorks stack, AWS CloudFormation       deregisters the existing association before registering the database       instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of RdsDbInstance
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RdsDbInstances")]
-    pub rds_db_instances: Option<Vec<RdsDbInstance>>,
-
-
-    /// 
-    /// A ChefConfiguration object that specifies whether to enable Berkshelf and the    Berkshelf version on Chef 11.10 stacks. For more information, see Create a New Stack.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ChefConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChefConfiguration")]
-    pub chef_configuration: Option<ChefConfiguration>,
-
-
-    /// 
-    /// If you're cloning an AWS OpsWorks stack, indicates whether to clone the source     stack's permissions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ClonePermissions")]
-    pub clone_permissions: Option<bool>,
+    #[serde(rename = "SourceStackId")]
+    pub source_stack_id: Option<String>,
 
 
     /// 
-    /// The stack name. Stack names can be a maximum of 64 characters.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The stack's default operating system, which is installed on every instance unless you specify a different operating      system when you create the instance. You can specify one of the following.
-    /// 
-    /// A supported Linux operating system: An Amazon Linux version, such as Amazon Linux 2, Amazon Linux 2018.03, Amazon Linux 2017.09, Amazon Linux 2017.03, Amazon Linux 2016.09,        Amazon Linux 2016.03, Amazon Linux 2015.09, or Amazon Linux 2015.03.               A supported Ubuntu operating system, such as Ubuntu 18.04 LTS, Ubuntu 16.04 LTS, Ubuntu 14.04 LTS, or Ubuntu 12.04 LTS.                        CentOS Linux 7                                Red Hat Enterprise Linux 7                       A supported Windows operating system, such as Microsoft Windows Server 2012 R2 Base,        Microsoft Windows Server 2012 R2 with SQL Server Express,        Microsoft Windows Server 2012 R2 with SQL Server Standard, or        Microsoft Windows Server 2012 R2 with SQL Server Web.               A custom AMI: Custom. You specify the custom AMI you want to use when     you create instances. For more     information, see     Using Custom AMIs.
-    /// 
-    /// The default option is the current Amazon Linux version.      Not all operating systems are supported with all versions of Chef. For more information about supported operating systems,      see AWS OpsWorks Stacks Operating Systems.
+    /// The stack's default Availability Zone, which must be in the specified region. For more    information, see Regions and     Endpoints. If you also specify a value for DefaultSubnetId, the subnet must    be in the same zone. For more information, see the VpcId parameter description.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultOs")]
-    pub default_os: Option<String>,
-
-
-    /// 
-    /// A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name,      AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH    client to log in to the instance. For more information, see Using SSH to     Communicate with an Instance and Managing SSH     Access. You can override this setting by specifying a different key pair, or no key    pair, when you     create an instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultSshKeyName")]
-    pub default_ssh_key_name: Option<String>,
-
-
-    /// 
-    /// The stack's host name theme, with spaces replaced by underscores. The theme is used to    generate host names for the stack's instances. By default, HostnameTheme is set    to Layer_Dependent, which creates host names by appending integers to the layer's    short name. The other themes are:
-    /// 
-    /// Baked_Goods                                Clouds                                Europe_Cities                                Fruits                                Greek_Deities_and_Titans                                Legendary_creatures_from_Japan                                Planets_and_Moons                                Roman_Deities                                Scottish_Islands                                US_Cities                                Wild_Cats
-    /// 
-    /// To obtain a generated host name, call GetHostNameSuggestion, which returns a    host name based on the current theme.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HostnameTheme")]
-    pub hostname_theme: Option<String>,
-
-
-    /// 
-    /// A list of Elastic IP addresses to register with the AWS OpsWorks stack.
-    /// 
-    /// NoteIf you specify an IP address that's registered with another AWS OpsWorks stack, AWS CloudFormation       deregisters the existing association before registering the IP       address.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ElasticIp
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ElasticIps")]
-    pub elastic_ips: Option<Vec<ElasticIp>>,
-
-
-    /// 
-    /// A map that contains tag keys and tag values that are attached to a stack or layer.
-    /// 
-    /// The key cannot be empty.               The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators,        or the following special characters: + - = . _ : /                       The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators,        or the following special characters: + - = . _ : /                       Leading and trailing white spaces are trimmed from both the key and value.               A maximum of 40 tags is allowed for any resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances.      For more information about IAM ARNs, see Using    Identifiers.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultInstanceProfileArn")]
-    pub default_instance_profile_arn: String,
-
-
-    /// 
-    /// Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.
-    /// 
-    /// AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are    associated with layers by default. With UseOpsworksSecurityGroups you can instead    provide your own custom security groups. UseOpsworksSecurityGroups has the    following settings:
-    /// 
-    /// True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each        layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot        delete the built-in security group.               False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create        appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still        manually associate a built-in security group with a layer on creation; custom security groups are required only for those        layers that need custom settings.
-    /// 
-    /// For more information, see Create a New     Stack.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UseOpsworksSecurityGroups")]
-    pub use_opsworks_security_groups: Option<bool>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon Elastic Container Service (Amazon ECS)     cluster to register with the AWS OpsWorks stack.
-    /// 
-    /// NoteIf you specify a cluster that's registered with another AWS OpsWorks stack, AWS CloudFormation       deregisters the existing association before registering the       cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EcsClusterArn")]
-    pub ecs_cluster_arn: Option<String>,
+    #[serde(rename = "DefaultAvailabilityZone")]
+    pub default_availability_zone: Option<String>,
 
 
     /// 
@@ -288,21 +114,27 @@ pub struct CfnStack {
 
 
     /// 
-    /// The default AWS OpsWorks Stacks agent version. You have the following options:
+    /// The stack's default subnet ID. All instances are launched into this subnet unless you specify another subnet ID when you create the instance.     This parameter is required if you specify a value for the     VpcId parameter. If you also specify a value for     DefaultAvailabilityZone, the subnet must be in that zone.
     /// 
-    /// Auto-update - Set this parameter to LATEST. AWS OpsWorks Stacks     automatically installs new agent versions on the stack's instances as soon as     they are available.               Fixed version - Set this parameter to your preferred agent version. To update the agent version,        you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks installs        that version on the stack's instances.
-    /// 
-    /// The default setting is the most recent release of the agent. To specify an agent version,    you must use the complete version number, not the abbreviated number shown on the console.    For a list of available agent version numbers, call DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
-    /// 
-    /// NoteYou can also specify an agent version when you create or update an instance,      which overrides the stack's default setting.
-    /// 
-    /// Required: No
+    /// Required: Conditional
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AgentVersion")]
-    pub agent_version: Option<String>,
+    #[serde(rename = "DefaultSubnetId")]
+    pub default_subnet_id: Option<String>,
+
+
+    /// 
+    /// If you're cloning an AWS OpsWorks stack, a list of AWS OpsWorks application stack IDs     from the source stack to include in the cloned stack.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CloneAppIds")]
+    pub clone_app_ids: Option<Vec<String>>,
 
 
     /// 
@@ -328,6 +160,52 @@ pub struct CfnStack {
 
 
     /// 
+    /// The stack name. Stack names can be a maximum of 64 characters.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.
+    /// 
+    /// AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are    associated with layers by default. With UseOpsworksSecurityGroups you can instead    provide your own custom security groups. UseOpsworksSecurityGroups has the    following settings:
+    /// 
+    /// True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each        layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot        delete the built-in security group.               False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create        appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still        manually associate a built-in security group with a layer on creation; custom security groups are required only for those        layers that need custom settings.
+    /// 
+    /// For more information, see Create a New     Stack.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseOpsworksSecurityGroups")]
+    pub use_opsworks_security_groups: Option<bool>,
+
+
+    /// 
+    /// The stack's default operating system, which is installed on every instance unless you specify a different operating      system when you create the instance. You can specify one of the following.
+    /// 
+    /// A supported Linux operating system: An Amazon Linux version, such as Amazon Linux 2, Amazon Linux 2018.03, Amazon Linux 2017.09, Amazon Linux 2017.03, Amazon Linux 2016.09,        Amazon Linux 2016.03, Amazon Linux 2015.09, or Amazon Linux 2015.03.               A supported Ubuntu operating system, such as Ubuntu 18.04 LTS, Ubuntu 16.04 LTS, Ubuntu 14.04 LTS, or Ubuntu 12.04 LTS.                        CentOS Linux 7                                Red Hat Enterprise Linux 7                       A supported Windows operating system, such as Microsoft Windows Server 2012 R2 Base,        Microsoft Windows Server 2012 R2 with SQL Server Express,        Microsoft Windows Server 2012 R2 with SQL Server Standard, or        Microsoft Windows Server 2012 R2 with SQL Server Web.               A custom AMI: Custom. You specify the custom AMI you want to use when     you create instances. For more     information, see     Using Custom AMIs.
+    /// 
+    /// The default option is the current Amazon Linux version.      Not all operating systems are supported with all versions of Chef. For more information about supported operating systems,      see AWS OpsWorks Stacks Operating Systems.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultOs")]
+    pub default_os: Option<String>,
+
+
+    /// 
     /// The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the      Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is      currently 12.
     /// 
     /// Required: No
@@ -340,21 +218,349 @@ pub struct CfnStack {
 
 
     /// 
-    /// If you're cloning an AWS OpsWorks stack, a list of AWS OpsWorks application stack IDs     from the source stack to include in the cloned stack.
+    /// A map that contains tag keys and tag values that are attached to a stack or layer.
+    /// 
+    /// The key cannot be empty.               The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators,        or the following special characters: + - = . _ : /                       The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators,        or the following special characters: + - = . _ : /                       Leading and trailing white spaces are trimmed from both the key and value.               A maximum of 40 tags is allowed for any resource.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Contains the information required to retrieve an app or cookbook from a repository. For more information,       see Adding Apps or       Cookbooks and Recipes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Source
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomCookbooksSource")]
+    pub custom_cookbooks_source: Option<Source>,
+
+
+    /// 
+    /// Whether the stack uses custom cookbooks.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseCustomCookbooks")]
+    pub use_custom_cookbooks: Option<bool>,
+
+
+    /// 
+    /// A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name,      AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH    client to log in to the instance. For more information, see Using SSH to     Communicate with an Instance and Managing SSH     Access. You can override this setting by specifying a different key pair, or no key    pair, when you     create an instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultSshKeyName")]
+    pub default_ssh_key_name: Option<String>,
+
+
+    /// 
+    /// A ChefConfiguration object that specifies whether to enable Berkshelf and the    Berkshelf version on Chef 11.10 stacks. For more information, see Create a New Stack.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ChefConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChefConfiguration")]
+    pub chef_configuration: Option<ChefConfiguration>,
+
+
+    /// 
+    /// A list of Elastic IP addresses to register with the AWS OpsWorks stack.
+    /// 
+    /// NoteIf you specify an IP address that's registered with another AWS OpsWorks stack, AWS CloudFormation       deregisters the existing association before registering the IP       address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ElasticIp
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ElasticIps")]
+    pub elastic_ips: Option<Vec<ElasticIp>>,
+
+
+    /// 
+    /// If you're cloning an AWS OpsWorks stack, indicates whether to clone the source     stack's permissions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CloneAppIds")]
-    pub clone_app_ids: Option<Vec<String>>,
+    #[serde(rename = "ClonePermissions")]
+    pub clone_permissions: Option<bool>,
+
+
+    /// 
+    /// The stack's host name theme, with spaces replaced by underscores. The theme is used to    generate host names for the stack's instances. By default, HostnameTheme is set    to Layer_Dependent, which creates host names by appending integers to the layer's    short name. The other themes are:
+    /// 
+    /// Baked_Goods                                Clouds                                Europe_Cities                                Fruits                                Greek_Deities_and_Titans                                Legendary_creatures_from_Japan                                Planets_and_Moons                                Roman_Deities                                Scottish_Islands                                US_Cities                                Wild_Cats
+    /// 
+    /// To obtain a generated host name, call GetHostNameSuggestion, which returns a    host name based on the current theme.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HostnameTheme")]
+    pub hostname_theme: Option<String>,
+
+
+    /// 
+    /// The Amazon Relational Database Service (Amazon RDS) database instance to register with the     AWS OpsWorks stack.
+    /// 
+    /// NoteIf you specify a database instance that's registered with another AWS OpsWorks stack, AWS CloudFormation       deregisters the existing association before registering the database       instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of RdsDbInstance
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RdsDbInstances")]
+    pub rds_db_instances: Option<Vec<RdsDbInstance>>,
+
+
+    /// 
+    /// A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration      attribute values or to pass data to recipes. The string should be in the following format:
+    /// 
+    /// "{\"key1\": \"value1\", \"key2\": \"value2\",...}"
+    /// 
+    /// For more information about custom JSON, see Use Custom JSON to     Modify the Stack Configuration Attributes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomJson")]
+    pub custom_json: Option<serde_json::Value>,
+
+}
+
+impl cfn_resources::CfnResource for CfnStack {
+    fn type_string() -> &'static str {
+        "AWS::OpsWorks::Stack"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Describes an Amazon RDS instance.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RdsDbInstance {
+
+
+    /// 
+    /// AWS OpsWorks Stacks returns *****FILTERED***** instead of the actual value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DbPassword")]
+    pub db_password: String,
+
+
+    /// 
+    /// The instance's ARN.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RdsDbInstanceArn")]
+    pub rds_db_instance_arn: String,
+
+
+    /// 
+    /// The master user name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DbUser")]
+    pub db_user: String,
+
+}
+
+
+/// Describes an Elastic IP address.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ElasticIp {
+
+
+    /// 
+    /// The IP address.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ip")]
+    pub ip: String,
+
+
+    /// 
+    /// The name, which can be a maximum of 32 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
+/// Describes the Chef configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ChefConfiguration {
+
+
+    /// 
+    /// The Berkshelf version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BerkshelfVersion")]
+    pub berkshelf_version: Option<String>,
+
+
+    /// 
+    /// The Berkshelf version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManageBerkshelf")]
+    pub manage_berkshelf: Option<bool>,
+
+}
+
+
+/// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Source {
+
+
+    /// 
+    /// The repository's SSH key. For more information, see      Using Git Repository SSH Keys      in the AWS OpsWorks User Guide.     To pass in an SSH key as a parameter, see the following example:
+    /// 
+    /// "Parameters" : { "GitSSHKey" : { "Description" : "Change SSH key newlines to       commas.", "Type" : "CommaDelimitedList", "NoEcho" : "true" }, ...       "CustomCookbooksSource": { "Revision" : { "Ref": "GitRevision"}, "SshKey" : { "Fn::Join"       : [ "\n", { "Ref": "GitSSHKey"} ] }, "Type": "git", "Url": { "Ref": "GitURL"} }       ...
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SshKey")]
+    pub ssh_key: Option<String>,
+
+
+    /// 
+    /// When included in a request, the parameter depends on the repository type.
+    /// 
+    /// For Amazon S3 bundles, set Password to the appropriate IAM secret access     key.               For HTTP bundles and Subversion repositories, set Password to the     password.
+    /// 
+    /// For more information on how to safely handle IAM credentials, see https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html.
+    /// 
+    /// In responses, AWS OpsWorks Stacks returns *****FILTERED***** instead of the actual value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Password")]
+    pub password: Option<String>,
+
+
+    /// 
+    /// The source URL. The following is an example of an Amazon S3 source      URL: https://s3.amazonaws.com/opsworks-demo-bucket/opsworks_cookbook_demo.tar.gz.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Url")]
+    pub url: Option<String>,
+
+
+    /// 
+    /// The repository type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: archive | git | s3 | svn
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
+
+
+    /// 
+    /// This parameter depends on the repository type.
+    /// 
+    /// For Amazon S3 bundles, set Username to the appropriate IAM access key     ID.               For HTTP bundles, Git repositories, and Subversion repositories, set Username     to the user name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Username")]
+    pub username: Option<String>,
+
+
+    /// 
+    /// The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application.      One of the simplest approaches is to have branches or revisions in your repository that represent different      versions that can potentially be deployed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Revision")]
+    pub revision: Option<String>,
 
 }
 
 
 /// Describes the configuration manager.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StackConfigurationManager {
 
 
@@ -391,19 +597,8 @@ pub struct StackConfigurationManager {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -416,200 +611,15 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-/// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
-#[derive(Default, serde::Serialize)]
-pub struct Source {
-
 
     /// 
-    /// This parameter depends on the repository type.
-    /// 
-    /// For Amazon S3 bundles, set Username to the appropriate IAM access key     ID.               For HTTP bundles, Git repositories, and Subversion repositories, set Username     to the user name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Username")]
-    pub username: Option<String>,
-
-
-    /// 
-    /// The repository's SSH key. For more information, see      Using Git Repository SSH Keys      in the AWS OpsWorks User Guide.     To pass in an SSH key as a parameter, see the following example:
-    /// 
-    /// "Parameters" : { "GitSSHKey" : { "Description" : "Change SSH key newlines to       commas.", "Type" : "CommaDelimitedList", "NoEcho" : "true" }, ...       "CustomCookbooksSource": { "Revision" : { "Ref": "GitRevision"}, "SshKey" : { "Fn::Join"       : [ "\n", { "Ref": "GitSSHKey"} ] }, "Type": "git", "Url": { "Ref": "GitURL"} }       ...
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SshKey")]
-    pub ssh_key: Option<String>,
-
-
-    /// 
-    /// The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application.      One of the simplest approaches is to have branches or revisions in your repository that represent different      versions that can potentially be deployed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Revision")]
-    pub revision: Option<String>,
-
-
-    /// 
-    /// The repository type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: archive | git | s3 | svn
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
-    /// When included in a request, the parameter depends on the repository type.
-    /// 
-    /// For Amazon S3 bundles, set Password to the appropriate IAM secret access     key.               For HTTP bundles and Subversion repositories, set Password to the     password.
-    /// 
-    /// For more information on how to safely handle IAM credentials, see https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html.
-    /// 
-    /// In responses, AWS OpsWorks Stacks returns *****FILTERED***** instead of the actual value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Password")]
-    pub password: Option<String>,
-
-
-    /// 
-    /// The source URL. The following is an example of an Amazon S3 source      URL: https://s3.amazonaws.com/opsworks-demo-bucket/opsworks_cookbook_demo.tar.gz.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Url")]
-    pub url: Option<String>,
-
-}
-
-
-/// Describes an Elastic IP address.
-#[derive(Default, serde::Serialize)]
-pub struct ElasticIp {
-
-
-    /// 
-    /// The IP address.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ip")]
-    pub ip: String,
-
-
     /// 
-    /// The name, which can be a maximum of 32 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-}
-
-
-/// Describes an Amazon RDS instance.
-#[derive(Default, serde::Serialize)]
-pub struct RdsDbInstance {
-
-
-    /// 
-    /// The instance's ARN.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RdsDbInstanceArn")]
-    pub rds_db_instance_arn: String,
-
-
-    /// 
-    /// AWS OpsWorks Stacks returns *****FILTERED***** instead of the actual value.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DbPassword")]
-    pub db_password: String,
-
-
-    /// 
-    /// The master user name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DbUser")]
-    pub db_user: String,
-
-}
-
-
-/// Describes the Chef configuration.
-#[derive(Default, serde::Serialize)]
-pub struct ChefConfiguration {
-
-
-    /// 
-    /// The Berkshelf version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BerkshelfVersion")]
-    pub berkshelf_version: Option<String>,
-
-
-    /// 
-    /// The Berkshelf version.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManageBerkshelf")]
-    pub manage_berkshelf: Option<bool>,
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

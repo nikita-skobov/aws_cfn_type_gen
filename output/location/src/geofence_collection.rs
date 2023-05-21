@@ -1,24 +1,8 @@
 
 
 /// The AWS::Location::GeofenceCollection resource specifies the ability to       detect and act when a tracked device enters or exits a defined geographical boundary       known as a geofence.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGeofenceCollection {
-
-
-    /// 
-    /// An optional description for the geofence collection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -35,6 +19,22 @@ pub struct CfnGeofenceCollection {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// An optional description for the geofence collection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -58,4 +58,14 @@ pub struct CfnGeofenceCollection {
     #[serde(rename = "CollectionName")]
     pub collection_name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnGeofenceCollection {
+    fn type_string() -> &'static str {
+        "AWS::Location::GeofenceCollection"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

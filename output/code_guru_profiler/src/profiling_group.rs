@@ -1,8 +1,32 @@
 
 
 /// Creates a profiling group.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProfilingGroup {
+
+
+    /// 
+    /// A list of tags to add to the created profiling group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Adds anomaly notifications for a profiling group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Channel
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AnomalyDetectionNotificationConfiguration")]
+    pub anomaly_detection_notification_configuration: Option<Vec<Channel>>,
 
 
     /// 
@@ -34,30 +58,6 @@ pub struct CfnProfilingGroup {
 
 
     /// 
-    /// Adds anomaly notifications for a profiling group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Channel
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AnomalyDetectionNotificationConfiguration")]
-    pub anomaly_detection_notification_configuration: Option<Vec<Channel>>,
-
-
-    /// 
-    /// A list of tags to add to the created profiling group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The compute platform of the profiling group. Use AWSLambda if your     application runs on AWS Lambda. Use Default if your application runs on a     compute platform that is not AWS Lambda, such an Amazon EC2 instance, an on-premises     server, or a different platform. If not specified, Default is used. This     property is immutable.
     /// 
     /// Required: No
@@ -70,9 +70,50 @@ pub struct CfnProfilingGroup {
 
 }
 
+impl cfn_resources::CfnResource for CfnProfilingGroup {
+    fn type_string() -> &'static str {
+        "AWS::CodeGuruProfiler::ProfilingGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Notification medium for users to get alerted for events that occur in application profile. We support SNS topic as a notification channel.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Channel {
+
+
+    /// 
+    /// The channel URI.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "channelUri")]
+    pub channel_uri: String,
+
+
+    /// 
+    /// The channel ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "channelId")]
+    pub channel_id: Option<String>,
+
+}
+
 
 /// The AgentPermissions property type specifies Property description not available. for an AWS::CodeGuruProfiler::ProfilingGroup.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AgentPermissions {
 
 
@@ -96,19 +137,8 @@ pub struct AgentPermissions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -121,35 +151,15 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
-}
-
-
-/// Notification medium for users to get alerted for events that occur in application profile. We support SNS topic as a notification channel.
-#[derive(Default, serde::Serialize)]
-pub struct Channel {
-
 
     /// 
-    /// The channel ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "channelId")]
-    pub channel_id: Option<String>,
-
-
-    /// 
-    /// The channel URI.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "channelUri")]
-    pub channel_uri: String,
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

@@ -1,20 +1,20 @@
 
 
 /// A list that contains contacts that have subscribed to a particular topic or       topics.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnContactList {
 
 
     /// 
-    /// An interest group, theme, or label within a list. A contact list can have multiple       topics.
+    /// The tags associated with a contact list.
     /// 
     /// Required: No
     ///
-    /// Type: List of Topic
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Topics")]
-    pub topics: Option<Vec<Topic>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -30,6 +30,18 @@ pub struct CfnContactList {
 
 
     /// 
+    /// An interest group, theme, or label within a list. A contact list can have multiple       topics.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Topic
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Topics")]
+    pub topics: Option<Vec<Topic>>,
+
+
+    /// 
     /// A description of what the contact list is about.
     /// 
     /// Required: No
@@ -40,36 +52,34 @@ pub struct CfnContactList {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
 
-    /// 
-    /// The tags associated with a contact list.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnContactList {
+    fn type_string() -> &'static str {
+        "AWS::SES::ContactList"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// An interest group, theme, or label within a list. Lists can have multiple       topics.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Topic {
 
 
     /// 
-    /// A description of what the topic is about, which the contact will see.
+    /// The default subscription status to be applied to a contact if the contact has not       noted their preference for subscribing to a topic.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "DefaultSubscriptionStatus")]
+    pub default_subscription_status: String,
 
 
     /// 
@@ -85,15 +95,15 @@ pub struct Topic {
 
 
     /// 
-    /// The default subscription status to be applied to a contact if the contact has not       noted their preference for subscribing to a topic.
+    /// A description of what the topic is about, which the contact will see.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DefaultSubscriptionStatus")]
-    pub default_subscription_status: String,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -117,19 +127,8 @@ pub struct Topic {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -141,5 +140,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

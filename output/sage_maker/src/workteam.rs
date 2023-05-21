@@ -3,19 +3,8 @@
 /// Creates a new work team for labeling your data. A work team is defined by one or more       Amazon Cognito user pools. You must first create the user pools before you can create a work       team.
 ///
 /// You cannot create more than 25 work teams in an account and region.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnWorkteam {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "WorkforceName")]
-    pub workforce_name: Option<String>,
 
 
     /// 
@@ -32,6 +21,17 @@ pub struct CfnWorkteam {
     /// Update requires: No interruption
     #[serde(rename = "MemberDefinitions")]
     pub member_definitions: Option<Vec<MemberDefinition>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "WorkforceName")]
+    pub workforce_name: Option<String>,
 
 
     /// 
@@ -95,43 +95,38 @@ pub struct CfnWorkteam {
 
 }
 
+impl cfn_resources::CfnResource for CfnWorkteam {
+    fn type_string() -> &'static str {
+        "AWS::SageMaker::Workteam"
+    }
 
-/// Configures Amazon SNS notifications of available or expiring work items for work       teams.
-#[derive(Default, serde::Serialize)]
-pub struct NotificationConfiguration {
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
 
 
-    /// 
-    /// The ARN for the Amazon SNS topic to which notifications should be published.
-    /// 
+/// A list of user groups that exist in your OIDC Identity Provider (IdP).       One to ten groups can be used to create a single private work team.       When you add a user group to the list of Groups, you can add that user group to one or more       private work teams. If you add a user group to a private work team, all workers in that user group       are added to the work team.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct OidcMemberDefinition {
+
+
+    /// Property description not available.
+    ///
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Pattern: arn:aws[a-z\-]*:sns:[a-z0-9\-]*:[0-9]{12}:[a-zA-Z0-9_.-]*
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotificationTopicArn")]
-    pub notification_topic_arn: String,
+    #[serde(rename = "OidcGroups")]
+    pub oidc_groups: Vec<String>,
 
 }
 
 
 /// Identifies a Amazon Cognito user group. A user group can be used in on or more work       teams.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CognitoMemberDefinition {
-
-
-    /// 
-    /// An identifier for a user pool. The user pool must be in the same region as the service       that you are calling.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CognitoUserPool")]
-    pub cognito_user_pool: String,
 
 
     /// 
@@ -157,23 +152,17 @@ pub struct CognitoMemberDefinition {
     #[serde(rename = "CognitoUserGroup")]
     pub cognito_user_group: String,
 
-}
 
-
-/// A list of user groups that exist in your OIDC Identity Provider (IdP).       One to ten groups can be used to create a single private work team.       When you add a user group to the list of Groups, you can add that user group to one or more       private work teams. If you add a user group to a private work team, all workers in that user group       are added to the work team.
-#[derive(Default, serde::Serialize)]
-pub struct OidcMemberDefinition {
-
-
-    /// Property description not available.
-    ///
+    /// 
+    /// An identifier for a user pool. The user pool must be in the same region as the service       that you are calling.
+    /// 
     /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "OidcGroups")]
-    pub oidc_groups: Vec<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "CognitoUserPool")]
+    pub cognito_user_pool: String,
 
 }
 
@@ -185,7 +174,7 @@ pub struct OidcMemberDefinition {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -214,7 +203,7 @@ pub struct Tag {
 
 
 /// Defines an Amazon Cognito or your own OIDC IdP user group that is part of a work team.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MemberDefinition {
 
 
@@ -240,5 +229,26 @@ pub struct MemberDefinition {
     /// Update requires: No interruption
     #[serde(rename = "OidcMemberDefinition")]
     pub oidc_member_definition: Option<OidcMemberDefinition>,
+
+}
+
+
+/// Configures Amazon SNS notifications of available or expiring work items for work       teams.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NotificationConfiguration {
+
+
+    /// 
+    /// The ARN for the Amazon SNS topic to which notifications should be published.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: arn:aws[a-z\-]*:sns:[a-z0-9\-]*:[0-9]{12}:[a-zA-Z0-9_.-]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationTopicArn")]
+    pub notification_topic_arn: String,
 
 }

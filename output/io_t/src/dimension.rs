@@ -1,20 +1,8 @@
 
 
 /// Use the AWS::IoT::Dimension to limit the scope of a metric used in a     security profile for AWS IoT Device Defender. For example, using a       TOPIC_FILTER dimension, you can narrow down the scope of the metric to only     MQTT topics where the name matches the pattern specified in the dimension. For API     reference, see CreateDimension and for     general information, see Scoping metrics in       security profiles using dimensions.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDimension {
-
-
-    /// 
-    /// Specifies the value or list of values for the dimension. For TOPIC_FILTER dimensions, this is a pattern used to match the MQTT topic (for example, "admin/#").
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StringValues")]
-    pub string_values: Vec<String>,
 
 
     /// 
@@ -52,6 +40,28 @@ pub struct CfnDimension {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// Specifies the value or list of values for the dimension. For TOPIC_FILTER dimensions, this is a pattern used to match the MQTT topic (for example, "admin/#").
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StringValues")]
+    pub string_values: Vec<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDimension {
+    fn type_string() -> &'static str {
+        "AWS::IoT::Dimension"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -62,7 +72,7 @@ pub struct CfnDimension {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

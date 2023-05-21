@@ -3,20 +3,20 @@
 /// Creates a new capacity provider. Capacity providers are associated with an Amazon ECS 			cluster and are used in capacity provider strategies to facilitate cluster auto 			scaling.
 ///
 /// Only capacity providers that use an Auto Scaling group can be created. Amazon ECS tasks on 			AWS Fargate use the FARGATE and FARGATE_SPOT capacity providers. 			These providers are available to all accounts in the AWS Regions that AWS Fargate 			supports.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCapacityProvider {
 
 
     /// 
-    /// The name of the capacity provider. If a name is specified, it cannot start with aws,   ecs, or fargate. If no name is specified, a default name in the   CFNStackName-CFNResourceName-RandomString format is used.
+    /// The Auto Scaling group settings for the capacity provider.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: String
+    /// Type: AutoScalingGroupProvider
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "AutoScalingGroupProvider")]
+    pub auto_scaling_group_provider: AutoScalingGroupProvider,
 
 
     /// 
@@ -38,15 +38,118 @@ pub struct CfnCapacityProvider {
 
 
     /// 
-    /// The Auto Scaling group settings for the capacity provider.
+    /// The name of the capacity provider. If a name is specified, it cannot start with aws,   ecs, or fargate. If no name is specified, a default name in the   CFNStackName-CFNResourceName-RandomString format is used.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: AutoScalingGroupProvider
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnCapacityProvider {
+    fn type_string() -> &'static str {
+        "AWS::ECS::CapacityProvider"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// The managed scaling settings for the Auto Scaling group capacity provider.
+///
+/// When managed scaling is turned on, Amazon ECS manages the scale-in and scale-out actions of 			the Auto Scaling group. Amazon ECS manages a target tracking scaling policy using an Amazon ECS 			managed CloudWatch metric with the specified targetCapacity value as the target 			value for the metric. For more information, see Using managed scaling in the Amazon Elastic Container Service Developer Guide.
+///
+/// If managed scaling is off, the user must manage the scaling of the Auto Scaling 			group.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ManagedScaling {
+
+
+    /// 
+    /// Determines whether to use managed scaling for the capacity provider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ENABLED
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AutoScalingGroupProvider")]
-    pub auto_scaling_group_provider: AutoScalingGroupProvider,
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
+    /// The target capacity utilization as a percentage for the capacity provider. The 			specified value must be greater than 0 and less than or equal to 				100. For example, if you want the capacity provider to maintain 10% 			spare capacity, then that means the utilization is 90%, so use a 				targetCapacity of 90. The default value of 				100 percent results in the Amazon EC2 instances in your Auto Scaling group being 			completely used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetCapacity")]
+    pub target_capacity: Option<i64>,
+
+
+    /// 
+    /// The maximum number of Amazon EC2 instances that Amazon ECS will scale out at one time. The scale 			in process is not affected by this parameter. If this parameter is omitted, the default 			value of 1 is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumScalingStepSize")]
+    pub maximum_scaling_step_size: Option<i64>,
+
+
+    /// 
+    /// The period of time, in seconds, after a newly launched Amazon EC2 instance can contribute 			to CloudWatch metrics for Auto Scaling group. If this parameter is omitted, the default value 			of 300 seconds is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceWarmupPeriod")]
+    pub instance_warmup_period: Option<i64>,
+
+
+    /// 
+    /// The minimum number of Amazon EC2 instances that Amazon ECS will scale out at one time. The scale 			in process is not affected by this parameter If this parameter is omitted, the default 			value of 1 is used.
+    /// 
+    /// When additional capacity is required, Amazon ECS will scale up the minimum scaling step 			size even if the actual demand is less than the minimum scaling step size.
+    /// 
+    /// If you use a capacity provider with an Auto Scaling group configured with more than 			one Amazon EC2 instance type or Availability Zone, Amazon ECS will scale up by the exact minimum 			scaling step size value and will ignore both the maximum scaling step size as well as 			the capacity demand.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinimumScalingStepSize")]
+    pub minimum_scaling_step_size: Option<i64>,
 
 }
 
@@ -58,7 +161,7 @@ pub struct CfnCapacityProvider {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -86,102 +189,21 @@ pub struct Tag {
 }
 
 
-/// The managed scaling settings for the Auto Scaling group capacity provider.
-///
-/// When managed scaling is turned on, Amazon ECS manages the scale-in and scale-out actions of 			the Auto Scaling group. Amazon ECS manages a target tracking scaling policy using an Amazon ECS 			managed CloudWatch metric with the specified targetCapacity value as the target 			value for the metric. For more information, see Using managed scaling in the Amazon Elastic Container Service Developer Guide.
-///
-/// If managed scaling is off, the user must manage the scaling of the Auto Scaling 			group.
-#[derive(Default, serde::Serialize)]
-pub struct ManagedScaling {
-
-
-    /// 
-    /// The target capacity utilization as a percentage for the capacity provider. The 			specified value must be greater than 0 and less than or equal to 				100. For example, if you want the capacity provider to maintain 10% 			spare capacity, then that means the utilization is 90%, so use a 				targetCapacity of 90. The default value of 				100 percent results in the Amazon EC2 instances in your Auto Scaling group being 			completely used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetCapacity")]
-    pub target_capacity: Option<i64>,
-
-
-    /// 
-    /// Determines whether to use managed scaling for the capacity provider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// The minimum number of Amazon EC2 instances that Amazon ECS will scale out at one time. The scale 			in process is not affected by this parameter If this parameter is omitted, the default 			value of 1 is used.
-    /// 
-    /// When additional capacity is required, Amazon ECS will scale up the minimum scaling step 			size even if the actual demand is less than the minimum scaling step size.
-    /// 
-    /// If you use a capacity provider with an Auto Scaling group configured with more than 			one Amazon EC2 instance type or Availability Zone, Amazon ECS will scale up by the exact minimum 			scaling step size value and will ignore both the maximum scaling step size as well as 			the capacity demand.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinimumScalingStepSize")]
-    pub minimum_scaling_step_size: Option<i64>,
-
-
-    /// 
-    /// The period of time, in seconds, after a newly launched Amazon EC2 instance can contribute 			to CloudWatch metrics for Auto Scaling group. If this parameter is omitted, the default value 			of 300 seconds is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceWarmupPeriod")]
-    pub instance_warmup_period: Option<i64>,
-
-
-    /// 
-    /// The maximum number of Amazon EC2 instances that Amazon ECS will scale out at one time. The scale 			in process is not affected by this parameter. If this parameter is omitted, the default 			value of 1 is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaximumScalingStepSize")]
-    pub maximum_scaling_step_size: Option<i64>,
-
-}
-
-
 /// The details of the Auto Scaling group for the capacity provider.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoScalingGroupProvider {
+
+
+    /// 
+    /// The managed scaling settings for the Auto Scaling group capacity provider.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ManagedScaling
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManagedScaling")]
+    pub managed_scaling: Option<ManagedScaling>,
 
 
     /// 
@@ -214,17 +236,5 @@ pub struct AutoScalingGroupProvider {
     /// Update requires: No interruption
     #[serde(rename = "ManagedTerminationProtection")]
     pub managed_termination_protection: Option<String>,
-
-
-    /// 
-    /// The managed scaling settings for the Auto Scaling group capacity provider.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ManagedScaling
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManagedScaling")]
-    pub managed_scaling: Option<ManagedScaling>,
 
 }

@@ -1,7 +1,7 @@
 
 
 /// The AWS::SageMaker::Pipeline resource creates shell scripts that run when       you create and/or start a SageMaker Pipeline. For information about SageMaker Pipelines,       see SageMaker         Pipelines in the Amazon SageMaker Developer       Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPipeline {
 
 
@@ -49,24 +49,6 @@ pub struct CfnPipeline {
 
 
     /// 
-    /// The description of the pipeline.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 3072
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineDescription")]
-    pub pipeline_description: Option<String>,
-
-
-    /// 
     /// The display name of the pipeline.
     /// 
     /// Required: No
@@ -97,6 +79,24 @@ pub struct CfnPipeline {
 
 
     /// 
+    /// The description of the pipeline.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 3072
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineDescription")]
+    pub pipeline_description: Option<String>,
+
+
+    /// 
     /// The Amazon Resource Name (ARN) of the IAM role used to execute the pipeline.
     /// 
     /// Required: Yes
@@ -115,9 +115,19 @@ pub struct CfnPipeline {
 
 }
 
+impl cfn_resources::CfnResource for CfnPipeline {
+    fn type_string() -> &'static str {
+        "AWS::SageMaker::Pipeline"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Configuration that controls the parallelism of the pipeline.       By default, the parallelism configuration specified applies to all       executions of the pipeline unless overridden.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ParallelismConfiguration {
 
 
@@ -138,19 +148,8 @@ pub struct ParallelismConfiguration {
 
 
 /// The S3Location property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Location {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// Property description not available.
@@ -177,6 +176,17 @@ pub struct S3Location {
 
     /// Property description not available.
     ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// Property description not available.
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -188,6 +198,35 @@ pub struct S3Location {
 }
 
 
+/// The PipelineDefinition property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PipelineDefinition {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: S3Location
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineDefinitionS3Location")]
+    pub pipeline_definition_s3_location: Option<S3Location>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PipelineDefinitionBody")]
+    pub pipeline_definition_body: Option<String>,
+
+}
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -195,7 +234,7 @@ pub struct S3Location {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -219,34 +258,5 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-/// The PipelineDefinition property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
-#[derive(Default, serde::Serialize)]
-pub struct PipelineDefinition {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineDefinitionBody")]
-    pub pipeline_definition_body: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: S3Location
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PipelineDefinitionS3Location")]
-    pub pipeline_definition_s3_location: Option<S3Location>,
 
 }

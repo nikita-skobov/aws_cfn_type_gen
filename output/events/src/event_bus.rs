@@ -1,20 +1,26 @@
 
 
 /// Creates a new event bus within your account. This can be a custom event bus which you can    use to receive events from your custom applications and services, or it can be a partner event    bus which can be matched to a partner event source.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEventBus {
 
 
     /// 
-    /// Tags to associate with the event bus.
+    /// If you are creating a partner event bus, this specifies the partner event source that the    new event bus will be matched with.
     /// 
     /// Required: No
     ///
-    /// Type: List of TagEntry
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<TagEntry>>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: aws\.partner(/[\.\-_A-Za-z0-9]+){2,}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EventSourceName")]
+    pub event_source_name: Option<String>,
 
 
     /// 
@@ -40,27 +46,31 @@ pub struct CfnEventBus {
 
 
     /// 
-    /// If you are creating a partner event bus, this specifies the partner event source that the    new event bus will be matched with.
+    /// Tags to associate with the event bus.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of TagEntry
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: aws\.partner(/[\.\-_A-Za-z0-9]+){2,}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EventSourceName")]
-    pub event_source_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<TagEntry>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnEventBus {
+    fn type_string() -> &'static str {
+        "AWS::Events::EventBus"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A key-value pair associated with an AWS resource. In EventBridge, rules and event buses    support tagging.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagEntry {
 
 

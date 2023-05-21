@@ -7,7 +7,7 @@
 /// If an Amazon EBS volume is the root device of an instance, it cannot be detached while     the instance is in the "running" state. To detach the root volume, stop the instance     first.
 ///
 /// If the root volume is detached from an instance with an AWS Marketplace product     code, then the product codes from that volume are no longer associated with the     instance.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVolumeAttachment {
 
 
@@ -46,4 +46,14 @@ pub struct CfnVolumeAttachment {
     #[serde(rename = "VolumeId")]
     pub volume_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnVolumeAttachment {
+    fn type_string() -> &'static str {
+        "AWS::EC2::VolumeAttachment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

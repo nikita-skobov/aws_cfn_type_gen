@@ -9,34 +9,8 @@
 /// To attach a VPN connection, use AWS::EC2::CustomerGateway to create a customer gateway and specify the ID of     the customer gateway and the ID of the transit gateway in a call to AWS::EC2::VPNConnection.
 ///
 /// When you create a transit gateway, we create a default transit gateway route table and     use it as the default association route table and the default propagation route table. You     can use AWS::EC2::TransitGatewayRouteTable to create additional transit gateway route     tables. If you disable automatic route propagation, we do not create a default transit     gateway route table. You can use AWS::EC2::TransitGatewayRouteTablePropagation to propagate routes from a     resource attachment to a transit gateway route table. If you disable automatic     associations, you can use AWS::EC2::TransitGatewayRouteTableAssociation to associate a resource     attachment with a transit gateway route table.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGateway {
-
-
-    /// 
-    /// The ID of the default propagation route table.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PropagationDefaultRouteTableId")]
-    pub propagation_default_route_table_id: Option<String>,
-
-
-    /// 
-    /// Enable or disable automatic acceptance of attachment requests. Disabled by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoAcceptSharedAttachments")]
-    pub auto_accept_shared_attachments: Option<String>,
 
 
     /// 
@@ -54,6 +28,20 @@ pub struct CfnTransitGateway {
 
 
     /// 
+    /// Enable or disable Equal Cost Multipath Protocol support. Enabled by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpnEcmpSupport")]
+    pub vpn_ecmp_support: Option<String>,
+
+
+    /// 
     /// Indicates whether multicast is enabled on the transit gateway
     /// 
     /// Required: No
@@ -65,6 +53,30 @@ pub struct CfnTransitGateway {
     /// Update requires: Replacement
     #[serde(rename = "MulticastSupport")]
     pub multicast_support: Option<String>,
+
+
+    /// 
+    /// The tags for the transit gateway.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The description of the transit gateway.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -80,7 +92,7 @@ pub struct CfnTransitGateway {
 
 
     /// 
-    /// Enable or disable Equal Cost Multipath Protocol support. Enabled by default.
+    /// Enable or disable automatic acceptance of attachment requests. Disabled by default.
     /// 
     /// Required: No
     ///
@@ -89,22 +101,8 @@ pub struct CfnTransitGateway {
     /// Allowed values: disable | enable
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VpnEcmpSupport")]
-    pub vpn_ecmp_support: Option<String>,
-
-
-    /// 
-    /// Enable or disable automatic propagation of routes to the default propagation route table. Enabled by default.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: disable | enable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultRouteTablePropagation")]
-    pub default_route_table_propagation: Option<String>,
+    #[serde(rename = "AutoAcceptSharedAttachments")]
+    pub auto_accept_shared_attachments: Option<String>,
 
 
     /// 
@@ -117,18 +115,6 @@ pub struct CfnTransitGateway {
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayCidrBlocks")]
     pub transit_gateway_cidr_blocks: Option<Vec<String>>,
-
-
-    /// 
-    /// The tags for the transit gateway.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -146,15 +132,15 @@ pub struct CfnTransitGateway {
 
 
     /// 
-    /// The description of the transit gateway.
+    /// The ID of the default propagation route table.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "PropagationDefaultRouteTableId")]
+    pub propagation_default_route_table_id: Option<String>,
 
 
     /// 
@@ -168,6 +154,30 @@ pub struct CfnTransitGateway {
     #[serde(rename = "AmazonSideAsn")]
     pub amazon_side_asn: Option<i64>,
 
+
+    /// 
+    /// Enable or disable automatic propagation of routes to the default propagation route table. Enabled by default.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: disable | enable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultRouteTablePropagation")]
+    pub default_route_table_propagation: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnTransitGateway {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TransitGateway"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -178,7 +188,7 @@ pub struct CfnTransitGateway {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

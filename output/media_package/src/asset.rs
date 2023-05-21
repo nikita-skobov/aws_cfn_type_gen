@@ -3,32 +3,20 @@
 /// Creates an asset to ingest VOD content.
 ///
 /// After it's created, the asset starts ingesting content and generates playback URLs for the packaging configurations associated with it. When ingest is complete, downstream         devices use the appropriate URL to request VOD content from AWS Elemental MediaPackage.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAsset {
 
 
     /// 
-    /// Unique identifier that you assign to the asset.
+    /// List of playback endpoints that are available for this asset.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of EgressEndpoint
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
-
-
-    /// 
-    /// The ARN for the IAM role that provides AWS Elemental MediaPackage access to the Amazon S3 bucket where the source content is stored. Valid format: arn:aws:iam::{accountID}:role/{name}
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceRoleArn")]
-    pub source_role_arn: String,
+    #[serde(rename = "EgressEndpoints")]
+    pub egress_endpoints: Option<Vec<EgressEndpoint>>,
 
 
     /// 
@@ -56,15 +44,15 @@ pub struct CfnAsset {
 
 
     /// 
-    /// The ID of the packaging group associated with this asset.
+    /// The ARN for the IAM role that provides AWS Elemental MediaPackage access to the Amazon S3 bucket where the source content is stored. Valid format: arn:aws:iam::{accountID}:role/{name}
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PackagingGroupId")]
-    pub packaging_group_id: String,
+    #[serde(rename = "SourceRoleArn")]
+    pub source_role_arn: String,
 
 
     /// 
@@ -80,34 +68,44 @@ pub struct CfnAsset {
 
 
     /// 
-    /// List of playback endpoints that are available for this asset.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of EgressEndpoint
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EgressEndpoints")]
-    pub egress_endpoints: Option<Vec<EgressEndpoint>>,
-
-}
-
-
-/// The playback endpoint for a packaging configuration on an asset.
-#[derive(Default, serde::Serialize)]
-pub struct EgressEndpoint {
-
-
-    /// 
-    /// The ID of a packaging configuration that's applied to this asset.
+    /// Unique identifier that you assign to the asset.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PackagingConfigurationId")]
-    pub packaging_configuration_id: String,
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
+    /// 
+    /// The ID of the packaging group associated with this asset.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PackagingGroupId")]
+    pub packaging_group_id: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnAsset {
+    fn type_string() -> &'static str {
+        "AWS::MediaPackage::Asset"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// The playback endpoint for a packaging configuration on an asset.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EgressEndpoint {
 
 
     /// 
@@ -121,6 +119,18 @@ pub struct EgressEndpoint {
     #[serde(rename = "Url")]
     pub url: String,
 
+
+    /// 
+    /// The ID of a packaging configuration that's applied to this asset.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PackagingConfigurationId")]
+    pub packaging_configuration_id: String,
+
 }
 
 
@@ -131,7 +141,7 @@ pub struct EgressEndpoint {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

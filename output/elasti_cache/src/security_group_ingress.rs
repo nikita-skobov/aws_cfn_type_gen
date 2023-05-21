@@ -1,7 +1,7 @@
 
 
 /// The AWS::ElastiCache::SecurityGroupIngress type authorizes ingress to a cache security group from hosts in specified Amazon EC2 security groups. For more information about ElastiCache security group ingress,     go to AuthorizeCacheSecurityGroupIngress in the Amazon ElastiCache API Reference Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSecurityGroupIngress {
 
 
@@ -40,4 +40,14 @@ pub struct CfnSecurityGroupIngress {
     #[serde(rename = "EC2SecurityGroupOwnerId")]
     pub ec2_security_group_owner_id: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnSecurityGroupIngress {
+    fn type_string() -> &'static str {
+        "AWS::ElastiCache::SecurityGroupIngress"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

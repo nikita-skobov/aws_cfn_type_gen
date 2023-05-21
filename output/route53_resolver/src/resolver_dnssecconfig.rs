@@ -1,7 +1,7 @@
 
 
 /// The AWS::Route53Resolver::ResolverDNSSECConfig resource is a complex type that contains information about a configuration for DNSSEC validation.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResolverDNSSECConfig {
 
 
@@ -20,4 +20,14 @@ pub struct CfnResolverDNSSECConfig {
     #[serde(rename = "ResourceId")]
     pub resource_id: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnResolverDNSSECConfig {
+    fn type_string() -> &'static str {
+        "AWS::Route53Resolver::ResolverDNSSECConfig"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

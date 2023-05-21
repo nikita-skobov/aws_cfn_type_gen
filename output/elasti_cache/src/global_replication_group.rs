@@ -1,19 +1,8 @@
 
 
 /// Consists of a primary cluster that accepts writes and an associated secondary cluster that resides in a different Amazon region. The secondary cluster accepts only reads. The primary     cluster automatically replicates updates to the secondary cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGlobalReplicationGroup {
-
-
-    /// The suffix name of a Global Datastore. The suffix guarantees uniqueness of the Global Datastore name across multiple regions.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GlobalReplicationGroupIdSuffix")]
-    pub global_replication_group_id_suffix: Option<String>,
 
 
     /// 
@@ -28,18 +17,6 @@ pub struct CfnGlobalReplicationGroup {
     pub members: Vec<GlobalReplicationGroupMember>,
 
 
-    /// 
-    /// The cache node type of the Global datastore
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheNodeType")]
-    pub cache_node_type: Option<String>,
-
-
     /// The number of node groups that comprise the Global Datastore.
     ///
     /// Required: No
@@ -49,17 +26,6 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "GlobalNodeGroupCount")]
     pub global_node_group_count: Option<i64>,
-
-
-    /// The Regions that comprise the Global Datastore.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of RegionalConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RegionalConfigurations")]
-    pub regional_configurations: Option<Vec<RegionalConfiguration>>,
 
 
     /// 
@@ -74,16 +40,15 @@ pub struct CfnGlobalReplicationGroup {
     pub engine_version: Option<String>,
 
 
-    /// 
-    /// The optional description of the Global datastore
-    /// 
+    /// The suffix name of a Global Datastore. The suffix guarantees uniqueness of the Global Datastore name across multiple regions.
+    ///
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GlobalReplicationGroupDescription")]
-    pub global_replication_group_description: Option<String>,
+    #[serde(rename = "GlobalReplicationGroupIdSuffix")]
+    pub global_replication_group_id_suffix: Option<String>,
 
 
     /// The name of the cache parameter group to use with the Global datastore. It must be compatible with the major engine version used by the Global datastore.
@@ -109,11 +74,99 @@ pub struct CfnGlobalReplicationGroup {
     #[serde(rename = "AutomaticFailoverEnabled")]
     pub automatic_failover_enabled: Option<bool>,
 
+
+    /// The Regions that comprise the Global Datastore.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of RegionalConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RegionalConfigurations")]
+    pub regional_configurations: Option<Vec<RegionalConfiguration>>,
+
+
+    /// 
+    /// The cache node type of the Global datastore
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheNodeType")]
+    pub cache_node_type: Option<String>,
+
+
+    /// 
+    /// The optional description of the Global datastore
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GlobalReplicationGroupDescription")]
+    pub global_replication_group_description: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {
+    fn type_string() -> &'static str {
+        "AWS::ElastiCache::GlobalReplicationGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GlobalReplicationGroupMember {
+
+
+    /// 
+    /// The Amazon region of the Global datastore member.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationGroupRegion")]
+    pub replication_group_region: Option<String>,
+
+
+    /// 
+    /// The replication group id of the Global datastore member.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationGroupId")]
+    pub replication_group_id: Option<String>,
+
+
+    /// 
+    /// Indicates the role of the replication group, PRIMARY or SECONDARY.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Role")]
+    pub role: Option<String>,
+
 }
 
 
 /// A list of the replication groups
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RegionalConfiguration {
 
 
@@ -129,6 +182,17 @@ pub struct RegionalConfiguration {
     pub replication_group_region: Option<String>,
 
 
+    /// A list of PreferredAvailabilityZones objects that specifies the configuration of a node group in the resharded cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of ReshardingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReshardingConfigurations")]
+    pub resharding_configurations: Option<Vec<ReshardingConfiguration>>,
+
+
     /// 
     /// The name of the secondary cluster
     /// 
@@ -140,22 +204,11 @@ pub struct RegionalConfiguration {
     #[serde(rename = "ReplicationGroupId")]
     pub replication_group_id: Option<String>,
 
-
-    /// A list of PreferredAvailabilityZones objects that specifies the configuration of a node group in the resharded cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of ReshardingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReshardingConfigurations")]
-    pub resharding_configurations: Option<Vec<ReshardingConfiguration>>,
-
 }
 
 
 /// A list of PreferredAvailabilityZones objects that specifies       the configuration of a node group in the resharded cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReshardingConfiguration {
 
 
@@ -187,48 +240,5 @@ pub struct ReshardingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PreferredAvailabilityZones")]
     pub preferred_availability_zones: Option<Vec<String>>,
-
-}
-
-
-/// A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.
-#[derive(Default, serde::Serialize)]
-pub struct GlobalReplicationGroupMember {
-
-
-    /// 
-    /// The replication group id of the Global datastore member.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationGroupId")]
-    pub replication_group_id: Option<String>,
-
-
-    /// 
-    /// Indicates the role of the replication group, PRIMARY or SECONDARY.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Role")]
-    pub role: Option<String>,
-
-
-    /// 
-    /// The Amazon region of the Global datastore member.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationGroupRegion")]
-    pub replication_group_region: Option<String>,
 
 }

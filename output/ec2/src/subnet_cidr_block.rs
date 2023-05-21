@@ -1,7 +1,7 @@
 
 
 /// Associates a CIDR block with your subnet. You can associate a single IPv6 CIDR block     with your subnet. An IPv6 CIDR block must have a prefix length of /64.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubnetCidrBlock {
 
 
@@ -30,4 +30,14 @@ pub struct CfnSubnetCidrBlock {
     #[serde(rename = "Ipv6CidrBlock")]
     pub ipv6_cidr_block: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnSubnetCidrBlock {
+    fn type_string() -> &'static str {
+        "AWS::EC2::SubnetCidrBlock"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

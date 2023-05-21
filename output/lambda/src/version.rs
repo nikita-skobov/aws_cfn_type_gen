@@ -1,8 +1,20 @@
 
 
 /// The AWS::Lambda::Version resource creates a version from the current code and configuration of a    function. Use versions to create a snapshot of your function code and configuration that doesn't change.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVersion {
+
+
+    /// 
+    /// Specifies a provisioned concurrency configuration for a function's version. Updates are not supported for this    property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ProvisionedConcurrencyConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ProvisionedConcurrencyConfig")]
+    pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 
 
     /// 
@@ -28,6 +40,18 @@ pub struct CfnVersion {
 
 
     /// 
+    /// Only publish a version if the hash value matches the value that's specified. Use this option to avoid    publishing a version if the function code has changed since you last updated it. Updates are not supported for    this property.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CodeSha256")]
+    pub code_sha256: Option<String>,
+
+
+    /// 
     /// A description for the version to override the description in the function configuration. Updates are not    supported for this property.
     /// 
     /// Required: No
@@ -42,35 +66,21 @@ pub struct CfnVersion {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
 
-    /// 
-    /// Specifies a provisioned concurrency configuration for a function's version. Updates are not supported for this    property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ProvisionedConcurrencyConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ProvisionedConcurrencyConfig")]
-    pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
+impl cfn_resources::CfnResource for CfnVersion {
+    fn type_string() -> &'static str {
+        "AWS::Lambda::Version"
+    }
 
-
-    /// 
-    /// Only publish a version if the hash value matches the value that's specified. Use this option to avoid    publishing a version if the function code has changed since you last updated it. Updates are not supported for    this property.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CodeSha256")]
-    pub code_sha256: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A provisioned concurrency configuration for a function's version.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisionedConcurrencyConfiguration {
 
 

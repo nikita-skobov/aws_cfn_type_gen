@@ -1,58 +1,8 @@
 
 
 /// Specifies an authorizer.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAuthorizer {
-
-
-    /// 
-    /// The authorizer name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AuthorizerName")]
-    pub authorizer_name: Option<String>,
-
-
-    /// 
-    /// The key used to extract the token from the HTTP headers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TokenKeyName")]
-    pub token_key_name: Option<String>,
-
-
-    /// 
-    /// Metadata which can be used to manage the custom authorizer.
-    /// 
-    /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Specifies whether AWS IoT validates the token signature in an authorization request.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SigningDisabled")]
-    pub signing_disabled: Option<bool>,
 
 
     /// 
@@ -70,6 +20,43 @@ pub struct CfnAuthorizer {
 
 
     /// 
+    /// Specifies whether AWS IoT validates the token signature in an authorization request.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SigningDisabled")]
+    pub signing_disabled: Option<bool>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableCachingForHttp")]
+    pub enable_caching_for_http: Option<bool>,
+
+
+    /// 
+    /// Metadata which can be used to manage the custom authorizer.
+    /// 
+    /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The public keys used to validate the token signature returned by your custom     authentication service.
     /// 
     /// Required: No
@@ -79,6 +66,30 @@ pub struct CfnAuthorizer {
     /// Update requires: No interruption
     #[serde(rename = "TokenSigningPublicKeys")]
     pub token_signing_public_keys: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The key used to extract the token from the HTTP headers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TokenKeyName")]
+    pub token_key_name: Option<String>,
+
+
+    /// 
+    /// The authorizer name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AuthorizerName")]
+    pub authorizer_name: Option<String>,
 
 
     /// 
@@ -92,17 +103,16 @@ pub struct CfnAuthorizer {
     #[serde(rename = "AuthorizerFunctionArn")]
     pub authorizer_function_arn: String,
 
+}
 
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableCachingForHttp")]
-    pub enable_caching_for_http: Option<bool>,
+impl cfn_resources::CfnResource for CfnAuthorizer {
+    fn type_string() -> &'static str {
+        "AWS::IoT::Authorizer"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -113,19 +123,8 @@ pub struct CfnAuthorizer {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -137,5 +136,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

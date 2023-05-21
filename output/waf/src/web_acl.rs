@@ -1,38 +1,8 @@
 
 
 /// Contains the Rules that identify the requests that you want to allow, block, or count. In a WebACL, you also specify a 			default action (ALLOW or BLOCK), and the action for each Rule that you add to a 			WebACL, for example, block requests from specified IP addresses or block requests from specified referrers.             You also associate the WebACL with a Amazon CloudFront distribution to identify the requests that you want AWS WAF to filter. 			If you add more than one Rule to a WebACL, a request needs to match only one of the specifications 			to be allowed, blocked, or counted.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnWebACL {
-
-
-    /// 
-    /// The name of the metrics for this WebACL. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain       whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the WebACL.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
-
-
-    /// 
-    /// The action to perform if none of the Rules contained in the WebACL match. The action is specified by the 		     WafAction object.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: WafAction
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultAction")]
-    pub default_action: WafAction,
 
 
     /// 
@@ -64,37 +34,66 @@ pub struct CfnWebACL {
     #[serde(rename = "Name")]
     pub name: String,
 
-}
 
-
-/// For the action that is associated with a rule in a WebACL, specifies the action that you want AWS WAF to perform when a 			web request matches all of the conditions in a rule. For the default action in a WebACL, specifies the action that you want             AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a WebACL.
-#[derive(Default, serde::Serialize)]
-pub struct WafAction {
+    /// 
+    /// The action to perform if none of the Rules contained in the WebACL match. The action is specified by the 		     WafAction object.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: WafAction
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultAction")]
+    pub default_action: WafAction,
 
 
     /// 
-    /// Specifies how you want AWS WAF to respond to requests that match the settings in a Rule. Valid settings include the following:
-    /// 
-    /// ALLOW: AWS WAF allows requests                        BLOCK: AWS WAF blocks requests                        COUNT: AWS WAF increments a counter of the requests that match all of the conditions in the rule.         AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify COUNT 				for the default action for a WebACL.
+    /// The name of the metrics for this WebACL. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain       whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the WebACL.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: ALLOW | BLOCK | COUNT
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnWebACL {
+    fn type_string() -> &'static str {
+        "AWS::WAF::WebACL"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The ActivatedRule object in an UpdateWebACL request specifies a Rule that you want to insert or delete, 			the priority of the Rule in the WebACL, and the action that you want AWS WAF to take when a web request matches the Rule 			(ALLOW, BLOCK, or COUNT).
 ///
 /// To specify whether to insert or delete a Rule, use the Action parameter in the WebACLUpdate data type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ActivatedRule {
+
+
+    /// 
+    /// Specifies the order in which the Rules in a WebACL are evaluated. Rules with a lower value for 			Priority are evaluated before Rules with a higher value. The value must be a unique integer. If you add multiple 			Rules to a WebACL, the values don't need to be consecutive.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Priority")]
+    pub priority: i64,
 
 
     /// 
@@ -132,16 +131,27 @@ pub struct ActivatedRule {
     #[serde(rename = "Action")]
     pub action: Option<WafAction>,
 
+}
+
+
+/// For the action that is associated with a rule in a WebACL, specifies the action that you want AWS WAF to perform when a 			web request matches all of the conditions in a rule. For the default action in a WebACL, specifies the action that you want             AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a WebACL.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct WafAction {
+
 
     /// 
-    /// Specifies the order in which the Rules in a WebACL are evaluated. Rules with a lower value for 			Priority are evaluated before Rules with a higher value. The value must be a unique integer. If you add multiple 			Rules to a WebACL, the values don't need to be consecutive.
+    /// Specifies how you want AWS WAF to respond to requests that match the settings in a Rule. Valid settings include the following:
+    /// 
+    /// ALLOW: AWS WAF allows requests                        BLOCK: AWS WAF blocks requests                        COUNT: AWS WAF increments a counter of the requests that match all of the conditions in the rule.         AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify COUNT 				for the default action for a WebACL.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
+    ///
+    /// Allowed values: ALLOW | BLOCK | COUNT
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Priority")]
-    pub priority: i64,
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }

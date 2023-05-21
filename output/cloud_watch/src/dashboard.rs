@@ -3,7 +3,7 @@
 /// The AWS::CloudWatch::Dashboard resource specifies an Amazon CloudWatch dashboard. A dashboard is a       customizable home page in the CloudWatch console that you can use to monitor your AWS resources in a single view.
 ///
 /// All dashboards in your account are global, not region-specific.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDashboard {
 
 
@@ -32,4 +32,14 @@ pub struct CfnDashboard {
     #[serde(rename = "DashboardBody")]
     pub dashboard_body: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnDashboard {
+    fn type_string() -> &'static str {
+        "AWS::CloudWatch::Dashboard"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

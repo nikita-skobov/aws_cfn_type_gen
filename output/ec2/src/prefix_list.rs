@@ -1,7 +1,7 @@
 
 
 /// Specifies a managed prefix list. You can add one or more entries to the prefix list.     Each entry consists of a CIDR block and an optional description.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPrefixList {
 
 
@@ -32,18 +32,6 @@ pub struct CfnPrefixList {
 
 
     /// 
-    /// The tags for the prefix list.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// One or more entries for the prefix list.
     /// 
     /// Required: No
@@ -55,6 +43,18 @@ pub struct CfnPrefixList {
     /// Update requires: No interruption
     #[serde(rename = "Entries")]
     pub entries: Option<Vec<Entry>>,
+
+
+    /// 
+    /// The tags for the prefix list.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -72,6 +72,16 @@ pub struct CfnPrefixList {
 
 }
 
+impl cfn_resources::CfnResource for CfnPrefixList {
+    fn type_string() -> &'static str {
+        "AWS::EC2::PrefixList"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -80,19 +90,8 @@ pub struct CfnPrefixList {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -105,24 +104,23 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
 /// An entry for a prefix list.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Entry {
-
-
-    /// 
-    /// The CIDR block.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Cidr")]
-    pub cidr: String,
 
 
     /// 
@@ -137,5 +135,17 @@ pub struct Entry {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
+
+
+    /// 
+    /// The CIDR block.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Cidr")]
+    pub cidr: String,
 
 }

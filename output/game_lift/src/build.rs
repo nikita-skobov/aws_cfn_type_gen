@@ -1,22 +1,24 @@
 
 
 /// The AWS::GameLift::Build resource creates a game server build that is    installed and run on instances in an Amazon GameLift fleet. This resource points to an Amazon    S3 location that contains a zip file with all of the components of the game server    build.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBuild {
 
 
     /// 
-    /// Information indicating where your game build files are stored. Use this parameter only       when creating a build with files stored in an Amazon S3 bucket that you own. The storage       location must specify an Amazon S3 bucket name and key. The location must also specify a role       ARN that you set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket and your       new build must be in the same Region.
-    /// 
-    /// If a StorageLocation is specified, the size of your file can be found in       your Amazon S3 bucket. Amazon GameLift will report a SizeOnDisk of 0.
+    /// A descriptive label that is associated with a build. Build names do not need to be    unique.
     /// 
     /// Required: No
     ///
-    /// Type: StorageLocation
+    /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "StorageLocation")]
-    pub storage_location: Option<StorageLocation>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
@@ -52,6 +54,20 @@ pub struct CfnBuild {
 
 
     /// 
+    /// Information indicating where your game build files are stored. Use this parameter only       when creating a build with files stored in an Amazon S3 bucket that you own. The storage       location must specify an Amazon S3 bucket name and key. The location must also specify a role       ARN that you set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket and your       new build must be in the same Region.
+    /// 
+    /// If a StorageLocation is specified, the size of your file can be found in       your Amazon S3 bucket. Amazon GameLift will report a SizeOnDisk of 0.
+    /// 
+    /// Required: No
+    ///
+    /// Type: StorageLocation
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StorageLocation")]
+    pub storage_location: Option<StorageLocation>,
+
+
+    /// 
     /// A server SDK version you used when integrating your game server build with Amazon GameLift. For more information see Integrate games         with custom game servers. By default Amazon GameLift sets this value to         4.0.2.
     /// 
     /// Required: No
@@ -66,42 +82,22 @@ pub struct CfnBuild {
     #[serde(rename = "ServerSdkVersion")]
     pub server_sdk_version: Option<String>,
 
+}
 
-    /// 
-    /// A descriptive label that is associated with a build. Build names do not need to be    unique.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+impl cfn_resources::CfnResource for CfnBuild {
+    fn type_string() -> &'static str {
+        "AWS::GameLift::Build"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The location in Amazon S3 where build or script files are stored for access by Amazon    GameLift.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StorageLocation {
-
-
-    /// 
-    /// The version of the file, if object versioning is turned on for the bucket. Amazon GameLift    uses this information when retrieving files from your S3 bucket. To retrieve a specific    version of the file, provide an object version. To retrieve the latest version of the    file, do not set this parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ObjectVersion")]
-    pub object_version: Option<String>,
 
 
     /// 
@@ -116,6 +112,20 @@ pub struct StorageLocation {
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
+
+
+    /// 
+    /// The version of the file, if object versioning is turned on for the bucket. Amazon GameLift    uses this information when retrieving files from your S3 bucket. To retrieve a specific    version of the file, provide an object version. To retrieve the latest version of the    file, do not set this parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ObjectVersion")]
+    pub object_version: Option<String>,
 
 
     /// 

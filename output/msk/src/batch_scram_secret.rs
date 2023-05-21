@@ -1,7 +1,7 @@
 
 
 /// The AWS::MSK::BatchScramSecret resource Property description not available. for MSK.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBatchScramSecret {
 
 
@@ -26,4 +26,14 @@ pub struct CfnBatchScramSecret {
     #[serde(rename = "ClusterArn")]
     pub cluster_arn: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnBatchScramSecret {
+    fn type_string() -> &'static str {
+        "AWS::MSK::BatchScramSecret"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

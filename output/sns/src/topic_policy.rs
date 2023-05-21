@@ -1,20 +1,8 @@
 
 
 /// The AWS::SNS::TopicPolicy resource associates Amazon SNS topics     with a policy. For an example snippet, see Declaring       an Amazon SNS policy in the AWS CloudFormation User       Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTopicPolicy {
-
-
-    /// 
-    /// The Amazon Resource Names (ARN) of the topics to which you want to add the policy. You     can use the       Ref      function to specify an       AWS::SNS::Topic      resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Topics")]
-    pub topics: Vec<String>,
 
 
     /// 
@@ -28,4 +16,26 @@ pub struct CfnTopicPolicy {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: serde_json::Value,
 
+
+    /// 
+    /// The Amazon Resource Names (ARN) of the topics to which you want to add the policy. You     can use the       Ref      function to specify an       AWS::SNS::Topic      resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Topics")]
+    pub topics: Vec<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnTopicPolicy {
+    fn type_string() -> &'static str {
+        "AWS::SNS::TopicPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

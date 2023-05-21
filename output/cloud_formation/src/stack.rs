@@ -5,22 +5,8 @@
 /// You can add output values from a nested stack within the containing template. You use the GetAtt function with the nested stack's logical name and the name of the output value in the nested stack  in the format Outputs.NestedStackOutputName.
 ///
 /// When you apply template changes to update a top-level stack, CloudFormation updates the top-level stack  and initiates an update to its nested stacks. CloudFormation updates the resources of modified nested  stacks, but doesn't update the resources of unmodified nested stacks. For more information, see CloudFormation   stack updates.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStack {
-
-
-    /// 
-    /// Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to the resources  created in the stack. A maximum number of 50 tags can be specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -35,24 +21,6 @@ pub struct CfnStack {
     /// Update requires: No interruption
     #[serde(rename = "NotificationARNs")]
     pub notification_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that's  located in an Amazon S3 bucket. For more information, see Template anatomy.
-    /// 
-    /// Whether an update causes interruptions depends on the resources that are being updated. An update never causes a  nested stack to be replaced.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TemplateURL")]
-    pub template_url: String,
 
 
     /// 
@@ -74,6 +42,24 @@ pub struct CfnStack {
 
 
     /// 
+    /// Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that's  located in an Amazon S3 bucket. For more information, see Template anatomy.
+    /// 
+    /// Whether an update causes interruptions depends on the resources that are being updated. An update never causes a  nested stack to be replaced.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TemplateURL")]
+    pub template_url: String,
+
+
+    /// 
     /// The length of time, in minutes, that CloudFormation waits for the nested stack to reach the   CREATE_COMPLETE state. The default is no timeout. When CloudFormation detects that the nested  stack has reached the CREATE_COMPLETE state, it marks the nested stack resource as   CREATE_COMPLETE in the parent stack and resumes creating the parent stack. If the timeout period  expires before the nested stack reaches CREATE_COMPLETE, CloudFormation marks the nested stack  as failed and rolls back both the nested stack and parent stack.
     /// 
     /// Updates aren't supported.
@@ -88,6 +74,30 @@ pub struct CfnStack {
     #[serde(rename = "TimeoutInMinutes")]
     pub timeout_in_minutes: Option<i64>,
 
+
+    /// 
+    /// Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to the resources  created in the stack. A maximum number of 50 tags can be specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnStack {
+    fn type_string() -> &'static str {
+        "AWS::CloudFormation::Stack"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -98,7 +108,7 @@ pub struct CfnStack {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

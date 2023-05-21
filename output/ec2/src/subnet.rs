@@ -5,22 +5,50 @@
 /// For an IPv4 only subnet, specify an IPv4 CIDR block. If the VPC has an IPv6 CIDR block,      you can create an IPv6 only subnet or a dual stack subnet instead. For an IPv6 only subnet,      specify an IPv6 CIDR block. For a dual stack subnet, specify both an IPv4 CIDR block and      an IPv6 CIDR block.
 ///
 /// For more information, see Subnets for your VPC in the Amazon VPC User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubnet {
 
 
     /// 
-    /// The IPv4 CIDR block assigned to the subnet.
+    /// The ID of the VPC the subnet is in.
     /// 
-    /// If you update this property, we create a new subnet, and then delete the existing     one.
+    /// If you update this property, you must also update the CidrBlock     property.
     /// 
-    /// Required: Conditional
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CidrBlock")]
-    pub cidr_block: Option<String>,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Outpost.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OutpostArn")]
+    pub outpost_arn: Option<String>,
+
+
+    /// 
+    /// The hostname type for EC2 instances launched into this subnet and how DNS A and AAAA record queries to the instances should be handled. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
+    /// 
+    /// Available options:
+    /// 
+    /// EnableResourceNameDnsAAAARecord (true | false)EnableResourceNameDnsARecord (true | false)HostnameType (ip-name | resource-name)
+    /// 
+    /// Required: No
+    ///
+    /// Type: PrivateDnsNameOptionsOnLaunch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PrivateDnsNameOptionsOnLaunch")]
+    pub private_dns_name_options_on_launch: Option<PrivateDnsNameOptionsOnLaunch>,
 
 
     /// 
@@ -35,6 +63,18 @@ pub struct CfnSubnet {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
+
+
+    /// 
+    /// Indicates whether this is an IPv6 only subnet. For more information, see Subnet basics in the Amazon Virtual Private Cloud User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ipv6Native")]
+    pub ipv6_native: Option<bool>,
 
 
     /// 
@@ -62,19 +102,17 @@ pub struct CfnSubnet {
 
 
     /// 
-    /// The hostname type for EC2 instances launched into this subnet and how DNS A and AAAA record queries to the instances should be handled. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
+    /// The IPv6 CIDR block.
     /// 
-    /// Available options:
+    /// If you specify AssignIpv6AddressOnCreation, you must also specify     Ipv6CidrBlock.
     /// 
-    /// EnableResourceNameDnsAAAARecord (true | false)EnableResourceNameDnsARecord (true | false)HostnameType (ip-name | resource-name)
-    /// 
-    /// Required: No
+    /// Required: Conditional
     ///
-    /// Type: PrivateDnsNameOptionsOnLaunch
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "PrivateDnsNameOptionsOnLaunch")]
-    pub private_dns_name_options_on_launch: Option<PrivateDnsNameOptionsOnLaunch>,
+    /// Update requires: Some interruptions
+    #[serde(rename = "Ipv6CidrBlock")]
+    pub ipv6_cidr_block: Option<String>,
 
 
     /// 
@@ -90,55 +128,17 @@ pub struct CfnSubnet {
 
 
     /// 
-    /// Indicates whether a network interface created in this subnet receives an IPv6 address.     The default value is false.
+    /// The IPv4 CIDR block assigned to the subnet.
     /// 
-    /// If you specify AssignIpv6AddressOnCreation, you must also specify     Ipv6CidrBlock.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssignIpv6AddressOnCreation")]
-    pub assign_ipv6_address_on_creation: Option<bool>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Outpost.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OutpostArn")]
-    pub outpost_arn: Option<String>,
-
-
-    /// 
-    /// Indicates whether this is an IPv6 only subnet. For more information, see Subnet basics in the Amazon Virtual Private Cloud User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ipv6Native")]
-    pub ipv6_native: Option<bool>,
-
-
-    /// 
-    /// The IPv6 CIDR block.
-    /// 
-    /// If you specify AssignIpv6AddressOnCreation, you must also specify     Ipv6CidrBlock.
+    /// If you update this property, we create a new subnet, and then delete the existing     one.
     /// 
     /// Required: Conditional
     ///
     /// Type: String
     ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "Ipv6CidrBlock")]
-    pub ipv6_cidr_block: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "CidrBlock")]
+    pub cidr_block: Option<String>,
 
 
     /// 
@@ -154,24 +154,46 @@ pub struct CfnSubnet {
 
 
     /// 
-    /// The ID of the VPC the subnet is in.
+    /// Indicates whether a network interface created in this subnet receives an IPv6 address.     The default value is false.
     /// 
-    /// If you update this property, you must also update the CidrBlock     property.
+    /// If you specify AssignIpv6AddressOnCreation, you must also specify     Ipv6CidrBlock.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "AssignIpv6AddressOnCreation")]
+    pub assign_ipv6_address_on_creation: Option<bool>,
 
+}
+
+impl cfn_resources::CfnResource for CfnSubnet {
+    fn type_string() -> &'static str {
+        "AWS::EC2::Subnet"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Describes the options for instance hostnames.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PrivateDnsNameOptionsOnLaunch {
+
+
+    /// 
+    /// Indicates whether to respond to DNS queries for instance hostname with DNS AAAA       records.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableResourceNameDnsAAAARecord")]
+    pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
 
     /// 
@@ -199,18 +221,6 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     #[serde(rename = "EnableResourceNameDnsARecord")]
     pub enable_resource_name_dns_arecord: Option<bool>,
 
-
-    /// 
-    /// Indicates whether to respond to DNS queries for instance hostname with DNS AAAA       records.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableResourceNameDnsAAAARecord")]
-    pub enable_resource_name_dns_aaaarecord: Option<bool>,
-
 }
 
 
@@ -221,7 +231,7 @@ pub struct PrivateDnsNameOptionsOnLaunch {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

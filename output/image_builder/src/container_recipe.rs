@@ -1,7 +1,7 @@
 
 
 /// Creates a new container recipe. Container recipes define how images are configured, 			tested, and assessed.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnContainerRecipe {
 
 
@@ -15,18 +15,6 @@ pub struct CfnContainerRecipe {
     /// Update requires: Replacement
     #[serde(rename = "DockerfileTemplateData")]
     pub dockerfile_template_data: Option<String>,
-
-
-    /// 
-    /// Specifies the operating system platform when you use a custom base image.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PlatformOverride")]
-    pub platform_override: Option<String>,
 
 
     /// 
@@ -46,18 +34,6 @@ pub struct CfnContainerRecipe {
 
 
     /// 
-    /// The S3 URI for the Dockerfile that will be used to build your container image.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DockerfileTemplateUri")]
-    pub dockerfile_template_uri: Option<String>,
-
-
-    /// 
     /// The name of the container recipe.
     /// 
     /// Required: Yes
@@ -69,6 +45,30 @@ pub struct CfnContainerRecipe {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// 
+    /// Tags that are attached to the container recipe.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The S3 URI for the Dockerfile that will be used to build your container image.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DockerfileTemplateUri")]
+    pub dockerfile_template_uri: Option<String>,
 
 
     /// 
@@ -88,31 +88,27 @@ pub struct CfnContainerRecipe {
 
 
     /// 
-    /// The base image for the container recipe.
+    /// Build and test components that are included in the container recipe. 			Recipes require a minimum of one build component, and can 			have a maximum of 20 build and test components in any combination.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
+    /// Type: List of ComponentConfiguration
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ParentImage")]
-    pub parent_image: String,
+    #[serde(rename = "Components")]
+    pub components: Vec<ComponentConfiguration>,
 
 
     /// 
-    /// Tags that are attached to the container recipe.
+    /// A group of options that can be used to configure an instance for building and testing 			container images.
     /// 
     /// Required: No
     ///
-    /// Type: Map of String
+    /// Type: InstanceConfiguration
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+    #[serde(rename = "InstanceConfiguration")]
+    pub instance_configuration: Option<InstanceConfiguration>,
 
 
     /// 
@@ -129,6 +125,18 @@ pub struct CfnContainerRecipe {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// The destination repository for the container image.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: TargetContainerRepository
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetRepository")]
+    pub target_repository: TargetContainerRepository,
 
 
     /// 
@@ -158,15 +166,31 @@ pub struct CfnContainerRecipe {
 
 
     /// 
-    /// A group of options that can be used to configure an instance for building and testing 			container images.
+    /// The base image for the container recipe.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ParentImage")]
+    pub parent_image: String,
+
+
+    /// 
+    /// Specifies the operating system platform when you use a custom base image.
     /// 
     /// Required: No
     ///
-    /// Type: InstanceConfiguration
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "InstanceConfiguration")]
-    pub instance_configuration: Option<InstanceConfiguration>,
+    #[serde(rename = "PlatformOverride")]
+    pub platform_override: Option<String>,
 
 
     /// 
@@ -184,47 +208,22 @@ pub struct CfnContainerRecipe {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
 
-    /// 
-    /// The destination repository for the container image.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: TargetContainerRepository
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetRepository")]
-    pub target_repository: TargetContainerRepository,
+impl cfn_resources::CfnResource for CfnContainerRecipe {
+    fn type_string() -> &'static str {
+        "AWS::ImageBuilder::ContainerRecipe"
+    }
 
-
-    /// 
-    /// Build and test components that are included in the container recipe. 			Recipes require a minimum of one build component, and can 			have a maximum of 20 build and test components in any combination.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of ComponentConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Components")]
-    pub components: Vec<ComponentConfiguration>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The ComponentParameter property type specifies Property description not available. for an AWS::ImageBuilder::ContainerRecipe.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentParameter {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// Property description not available.
@@ -237,128 +236,65 @@ pub struct ComponentParameter {
     #[serde(rename = "Value")]
     pub value: Vec<String>,
 
-}
-
-
-/// Defines a custom base AMI and block device mapping configurations of an instance    used for building and testing container images.
-#[derive(Default, serde::Serialize)]
-pub struct InstanceConfiguration {
-
-
-    /// 
-    /// The AMI ID to use as the base image for a container build and test instance. If not 			specified, Image Builder will use the appropriate ECS-optimized AMI as a base image.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Image")]
-    pub image: Option<String>,
-
-
-    /// 
-    /// Defines the block devices to attach for building an instance from this Image Builder 			AMI.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of InstanceBlockDeviceMapping
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BlockDeviceMappings")]
-    pub block_device_mappings: Option<Vec<InstanceBlockDeviceMapping>>,
-
-}
-
-
-/// The container repository where the output container image is stored.
-#[derive(Default, serde::Serialize)]
-pub struct TargetContainerRepository {
-
-
-    /// 
-    /// Specifies the service in which this image was registered.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ECR
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Service")]
-    pub service: Option<String>,
-
-
-    /// 
-    /// The name of the container repository where the output container image is stored. This 			name is prefixed by the repository location.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RepositoryName")]
-    pub repository_name: Option<String>,
-
-}
-
-
-/// Configuration details of the component.
-#[derive(Default, serde::Serialize)]
-pub struct ComponentConfiguration {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the component.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^arn:aws[^:]*:imagebuilder:[^:]+:(?:[0-9]{12}|aws):component/[a-z0-9-_]+/(?:(?:([0-9]+|x)\.([0-9]+|x)\.([0-9]+|x))|(?:[0-9]+\.[0-9]+\.[0-9]+/[0-9]+))$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ComponentArn")]
-    pub component_arn: Option<String>,
-
 
     /// Property description not available.
     ///
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of ComponentParameter
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<Vec<ComponentParameter>>,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 }
 
 
 /// Amazon EBS-specific block device mapping specifications.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EbsInstanceBlockDeviceSpecification {
 
 
     /// 
-    /// Use to configure delete on termination of the associated device.
+    /// For GP3 volumes only – The throughput in MiB/s 			that the volume supports.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 125
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Throughput")]
+    pub throughput: Option<i64>,
+
+
+    /// 
+    /// Use to override the device's volume type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: gp2 | gp3 | io1 | io2 | sc1 | st1 | standard
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VolumeType")]
+    pub volume_type: Option<String>,
+
+
+    /// 
+    /// Use to configure device encryption.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DeleteOnTermination")]
-    pub delete_on_termination: Option<bool>,
+    #[serde(rename = "Encrypted")]
+    pub encrypted: Option<bool>,
 
 
     /// 
@@ -394,18 +330,6 @@ pub struct EbsInstanceBlockDeviceSpecification {
 
 
     /// 
-    /// Use to configure device encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Encrypted")]
-    pub encrypted: Option<bool>,
-
-
-    /// 
     /// Use to override the device's volume size.
     /// 
     /// Required: No
@@ -419,6 +343,18 @@ pub struct EbsInstanceBlockDeviceSpecification {
     /// Update requires: Replacement
     #[serde(rename = "VolumeSize")]
     pub volume_size: Option<i64>,
+
+
+    /// 
+    /// Use to configure delete on termination of the associated device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeleteOnTermination")]
+    pub delete_on_termination: Option<bool>,
 
 
     /// 
@@ -436,46 +372,28 @@ pub struct EbsInstanceBlockDeviceSpecification {
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: Option<String>,
 
-
-    /// 
-    /// For GP3 volumes only – The throughput in MiB/s 			that the volume supports.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 125
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Throughput")]
-    pub throughput: Option<i64>,
-
-
-    /// 
-    /// Use to override the device's volume type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: gp2 | gp3 | io1 | io2 | sc1 | st1 | standard
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VolumeType")]
-    pub volume_type: Option<String>,
-
 }
 
 
-/// Defines block device mappings for the instance used to configure your image.
-#[derive(Default, serde::Serialize)]
-pub struct InstanceBlockDeviceMapping {
+/// Defines a custom base AMI and block device mapping configurations of an instance    used for building and testing container images.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceConfiguration {
 
 
     /// 
-    /// The device to which these mappings apply.
+    /// Defines the block devices to attach for building an instance from this Image Builder 			AMI.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of InstanceBlockDeviceMapping
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BlockDeviceMappings")]
+    pub block_device_mappings: Option<Vec<InstanceBlockDeviceMapping>>,
+
+
+    /// 
+    /// The AMI ID to use as the base image for a container build and test instance. If not 			specified, Image Builder will use the appropriate ECS-optimized AMI as a base image.
     /// 
     /// Required: No
     ///
@@ -486,8 +404,27 @@ pub struct InstanceBlockDeviceMapping {
     /// Maximum: 1024
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DeviceName")]
-    pub device_name: Option<String>,
+    #[serde(rename = "Image")]
+    pub image: Option<String>,
+
+}
+
+
+/// Defines block device mappings for the instance used to configure your image.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InstanceBlockDeviceMapping {
+
+
+    /// 
+    /// Use to manage Amazon EBS-specific configuration for this mapping.
+    /// 
+    /// Required: No
+    ///
+    /// Type: EbsInstanceBlockDeviceSpecification
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ebs")]
+    pub ebs: Option<EbsInstanceBlockDeviceSpecification>,
 
 
     /// 
@@ -507,15 +444,19 @@ pub struct InstanceBlockDeviceMapping {
 
 
     /// 
-    /// Use to manage Amazon EBS-specific configuration for this mapping.
+    /// The device to which these mappings apply.
     /// 
     /// Required: No
     ///
-    /// Type: EbsInstanceBlockDeviceSpecification
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Ebs")]
-    pub ebs: Option<EbsInstanceBlockDeviceSpecification>,
+    #[serde(rename = "DeviceName")]
+    pub device_name: Option<String>,
 
 
     /// 
@@ -532,5 +473,74 @@ pub struct InstanceBlockDeviceMapping {
     /// Update requires: Replacement
     #[serde(rename = "NoDevice")]
     pub no_device: Option<String>,
+
+}
+
+
+/// Configuration details of the component.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ComponentConfiguration {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of ComponentParameter
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<Vec<ComponentParameter>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the component.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^arn:aws[^:]*:imagebuilder:[^:]+:(?:[0-9]{12}|aws):component/[a-z0-9-_]+/(?:(?:([0-9]+|x)\.([0-9]+|x)\.([0-9]+|x))|(?:[0-9]+\.[0-9]+\.[0-9]+/[0-9]+))$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ComponentArn")]
+    pub component_arn: Option<String>,
+
+}
+
+
+/// The container repository where the output container image is stored.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetContainerRepository {
+
+
+    /// 
+    /// Specifies the service in which this image was registered.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ECR
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Service")]
+    pub service: Option<String>,
+
+
+    /// 
+    /// The name of the container repository where the output container image is stored. This 			name is prefixed by the repository location.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RepositoryName")]
+    pub repository_name: Option<String>,
 
 }

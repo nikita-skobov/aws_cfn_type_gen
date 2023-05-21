@@ -1,26 +1,20 @@
 
 
 /// Specifies a link for a site.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLink {
 
 
     /// 
-    /// The ID of the global network.
+    /// The tags for the link.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 50
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GlobalNetworkId")]
-    pub global_network_id: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -62,26 +56,6 @@ pub struct CfnLink {
 
 
     /// 
-    /// The type of the link.
-    /// 
-    /// Constraints: Maximum length of 128 characters. Cannot include the following characters: | \ ^
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\s\S]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: Option<String>,
-
-
-    /// 
     /// The provider of the link.
     /// 
     /// Constraints: Maximum length of 128 characters. Cannot include the following characters: | \ ^
@@ -102,6 +76,24 @@ pub struct CfnLink {
 
 
     /// 
+    /// The ID of the global network.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 50
+    ///
+    /// Pattern: [\s\S]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GlobalNetworkId")]
+    pub global_network_id: String,
+
+
+    /// 
     /// The bandwidth for the link.
     /// 
     /// Required: Yes
@@ -114,16 +106,34 @@ pub struct CfnLink {
 
 
     /// 
-    /// The tags for the link.
+    /// The type of the link.
+    /// 
+    /// Constraints: Maximum length of 128 characters. Cannot include the following characters: | \ ^
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\s\S]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Type")]
+    pub cfn_type: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnLink {
+    fn type_string() -> &'static str {
+        "AWS::NetworkManager::Link"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -134,19 +144,8 @@ pub struct CfnLink {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -159,24 +158,23 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
 /// Describes bandwidth information.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Bandwidth {
-
-
-    /// 
-    /// Upload speed in Mbps.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UploadSpeed")]
-    pub upload_speed: Option<i64>,
 
 
     /// 
@@ -189,5 +187,17 @@ pub struct Bandwidth {
     /// Update requires: No interruption
     #[serde(rename = "DownloadSpeed")]
     pub download_speed: Option<i64>,
+
+
+    /// 
+    /// Upload speed in Mbps.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UploadSpeed")]
+    pub upload_speed: Option<i64>,
 
 }

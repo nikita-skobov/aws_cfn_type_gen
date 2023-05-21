@@ -1,20 +1,8 @@
 
 
 /// In IPAM, an allocation is a CIDR assignment from an IPAM pool to another IPAM pool or to a resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPAMAllocation {
-
-
-    /// 
-    /// The ID of the IPAM pool from which you would like to allocate a CIDR.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpamPoolId")]
-    pub ipam_pool_id: String,
 
 
     /// 
@@ -31,6 +19,18 @@ pub struct CfnIPAMAllocation {
     /// Update requires: Replacement
     #[serde(rename = "NetmaskLength")]
     pub netmask_length: Option<i64>,
+
+
+    /// 
+    /// The ID of the IPAM pool from which you would like to allocate a CIDR.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpamPoolId")]
+    pub ipam_pool_id: String,
 
 
     /// 
@@ -60,4 +60,14 @@ pub struct CfnIPAMAllocation {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnIPAMAllocation {
+    fn type_string() -> &'static str {
+        "AWS::EC2::IPAMAllocation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

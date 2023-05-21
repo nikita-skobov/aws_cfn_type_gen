@@ -1,7 +1,7 @@
 
 
 /// Accepts an offer to share the specified portfolio.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAcceptedPortfolioShare {
 
 
@@ -38,4 +38,14 @@ pub struct CfnAcceptedPortfolioShare {
     #[serde(rename = "PortfolioId")]
     pub portfolio_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnAcceptedPortfolioShare {
+    fn type_string() -> &'static str {
+        "AWS::ServiceCatalog::AcceptedPortfolioShare"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -1,34 +1,19 @@
 
 
 /// This resource creates an application. Applications store the details about how to launch applications on streaming instances. This is only supported for Elastic fleets.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
 
 
-    /// The display name of the application. This name is visible to users in the application catalog.
+    /// A list of attributes to delete from an application.
     ///
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 1
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
-
-
-    /// The launch path of the application.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchPath")]
-    pub launch_path: String,
+    #[serde(rename = "AttributesToDelete")]
+    pub attributes_to_delete: Option<Vec<String>>,
 
 
     /// The description of the application.
@@ -44,7 +29,7 @@ pub struct CfnApplication {
     pub description: Option<String>,
 
 
-    /// The working directory of the application.
+    /// The display name of the application. This name is visible to users in the application catalog.
     ///
     /// Required: No
     ///
@@ -53,34 +38,8 @@ pub struct CfnApplication {
     /// Minimum: 1
     ///
     /// Update requires: No interruption
-    #[serde(rename = "WorkingDirectory")]
-    pub working_directory: Option<String>,
-
-
-    /// The launch parameters of the application.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LaunchParameters")]
-    pub launch_parameters: Option<String>,
-
-
-    /// The instance families the application supports.
-    ///
-    /// Allowed Values: GENERAL_PURPOSE | GRAPHICS_G4
-    ///
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceFamilies")]
-    pub instance_families: Vec<String>,
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
 
 
     /// The app block ARN with which the application should be associated.
@@ -96,34 +55,30 @@ pub struct CfnApplication {
     pub app_block_arn: String,
 
 
-    /// The platforms the application supports.
-    /// 
-    /// Allowed Values: WINDOWS_SERVER_2019 | AMAZON_LINUX2
+    /// The instance families the application supports.
+    ///
+    /// Allowed Values: GENERAL_PURPOSE | GRAPHICS_G4
     ///
     /// Required: Yes
     ///
     /// Type: List of String
     ///
-    /// Maximum: 4
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "Platforms")]
-    pub platforms: Vec<String>,
+    #[serde(rename = "InstanceFamilies")]
+    pub instance_families: Vec<String>,
 
 
-    /// The name of the application. This name is visible to users when a name is not specified in the     DisplayName property.
+    /// The working directory of the application.
     ///
-    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$
-    ///
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Minimum: 1
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "WorkingDirectory")]
+    pub working_directory: Option<String>,
 
 
     /// The tags of the application.
@@ -148,16 +103,71 @@ pub struct CfnApplication {
     pub icon_s3_location: S3Location,
 
 
-    /// A list of attributes to delete from an application.
+    /// The name of the application. This name is visible to users when a name is not specified in the     DisplayName property.
     ///
-    /// Required: No
+    /// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// The platforms the application supports.
+    /// 
+    /// Allowed Values: WINDOWS_SERVER_2019 | AMAZON_LINUX2
+    ///
+    /// Required: Yes
     ///
     /// Type: List of String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "AttributesToDelete")]
-    pub attributes_to_delete: Option<Vec<String>>,
+    /// Maximum: 4
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Platforms")]
+    pub platforms: Vec<String>,
 
+
+    /// The launch parameters of the application.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchParameters")]
+    pub launch_parameters: Option<String>,
+
+
+    /// The launch path of the application.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LaunchPath")]
+    pub launch_path: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnApplication {
+    fn type_string() -> &'static str {
+        "AWS::AppStream::Application"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -168,7 +178,7 @@ pub struct CfnApplication {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -197,7 +207,7 @@ pub struct Tag {
 
 
 /// The S3 location of the application icon.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Location {
 
 

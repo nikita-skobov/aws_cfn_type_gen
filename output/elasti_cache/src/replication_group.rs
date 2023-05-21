@@ -7,110 +7,83 @@
 /// The node or shard limit can be increased to a maximum of 500 per cluster if the Redis engine version is 5.0.6 or higher. For example, you can choose to configure a 500 node cluster that ranges between    83 shards (one primary and 5 replicas per shard) and 500 shards (single primary and no replicas). Make sure there are enough available IP addresses to accommodate the increase.    Common pitfalls include the subnets in the subnet group have too small a CIDR range or the subnets are shared and heavily used by other clusters. For more information, see    Creating a Subnet Group. For versions below 5.0.6,      the limit is 250 per cluster.
 ///
 /// To request a limit increase, see    Amazon Service Limits    and choose the limit type Nodes per cluster per instance type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnReplicationGroup {
 
 
     /// 
-    /// The network type you choose when creating a replication group, either ipv4 | ipv6. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
+    /// A flag indicating if you have Multi-AZ enabled to enhance fault tolerance. For more information, see Minimizing Downtime: Multi-AZ.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MultiAZEnabled")]
+    pub multi_azenabled: Option<bool>,
+
+
+    /// 
+    /// The identifier of the cluster that serves as the primary for this replication       group. This cluster must already exist and have a status of available.
+    /// 
+    /// This parameter is not required if NumCacheClusters,       NumNodeGroups, or       ReplicasPerNodeGroup is specified.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: ipv4 | ipv6
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "IpDiscovery")]
-    pub ip_discovery: Option<String>,
+    #[serde(rename = "PrimaryClusterId")]
+    pub primary_cluster_id: Option<String>,
 
 
     /// 
-    /// The number of days for which ElastiCache retains automatic snapshots before deleting them.       For example, if you set SnapshotRetentionLimit to 5,       a snapshot that was taken today is retained for 5 days before being deleted.
+    /// The version number of the cache engine to be used for the clusters in this replication group.       To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.
     /// 
-    /// Default: 0 (i.e., automatic backups are disabled for this cluster).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshotRetentionLimit")]
-    pub snapshot_retention_limit: Option<i64>,
-
-
-    /// 
-    /// Reserved parameter.        The password used to access a password protected server.
-    /// 
-    /// AuthToken can be specified only on replication groups where TransitEncryptionEnabled is       true. For more information, see Authenticating Users with the Redis AUTH Command.
-    /// 
-    /// ImportantFor HIPAA compliance, you must specify TransitEncryptionEnabled as true,       an AuthToken, and a CacheSubnetGroup.
-    /// 
-    /// Password constraints:
-    /// 
-    /// Must be only printable ASCII characters.               Must be at least 16 characters and no more than 128         characters in length.               Nonalphanumeric characters are restricted to (!, &, #, $, ^, <, >, -, ).
-    /// 
-    /// For more information, see AUTH password at http://redis.io/commands/AUTH.
-    /// 
-    /// NoteIf ADDING the AuthToken, update requires Replacement.
+    /// Important: You can upgrade to a newer engine version (see Selecting a Cache Engine and Version) in the ElastiCache User Guide,       but you cannot downgrade to an earlier engine version.       If you want to use an earlier engine version,       you must delete the existing cluster or replication group and       create it anew with the earlier engine version.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "AuthToken")]
-    pub auth_token: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
 
 
-    /// 
-    /// The ID of user group to associate with the replication group.
-    /// 
+    /// Enabled or Disabled. To modify cluster mode from Disabled to Enabled,    you must first set the cluster mode to Compatible. Compatible mode allows your Redis clients to connect using both cluster mode enabled and cluster mode disabled.    After you migrate all Redis clients to use cluster mode enabled, you can then complete cluster mode configuration and set the cluster mode to Enabled.    For more information, see Modify cluster mode.
+    ///
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UserGroupIds")]
-    pub user_group_ids: Option<Vec<String>>,
+    #[serde(rename = "ClusterMode")]
+    pub cluster_mode: Option<String>,
 
 
     /// 
-    /// A list of cache security group names to associate with this replication group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CacheSecurityGroupNames")]
-    pub cache_security_group_names: Option<Vec<String>>,
-
-
-    /// 
-    /// The port number on which each member of the replication group accepts connections.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// The name of the cache subnet group to be used for the replication group.
-    /// 
-    /// ImportantIf you're going to launch your cluster in an Amazon VPC,         you need to create a subnet group before you start creating a cluster.         For more information, see AWS::ElastiCache::SubnetGroup.
+    /// The ID of the KMS key used to encrypt the disk on the cluster.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CacheSubnetGroupName")]
-    pub cache_subnet_group_name: Option<String>,
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// A user-created description for the replication group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ReplicationGroupDescription")]
+    pub replication_group_description: String,
 
 
     /// 
@@ -132,29 +105,29 @@ pub struct CfnReplicationGroup {
 
 
     /// 
-    /// The version number of the cache engine to be used for the clusters in this replication group.       To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.
+    /// NodeGroupConfiguration is a property of the AWS::ElastiCache::ReplicationGroup resource that configures an Amazon ElastiCache (ElastiCache) Redis cluster node group.
     /// 
-    /// Important: You can upgrade to a newer engine version (see Selecting a Cache Engine and Version) in the ElastiCache User Guide,       but you cannot downgrade to an earlier engine version.       If you want to use an earlier engine version,       you must delete the existing cluster or replication group and       create it anew with the earlier engine version.
+    /// If you set UseOnlineResharding to true, you can update NodeGroupConfiguration without interruption. When UseOnlineResharding is set to false, or is not specified, updating NodeGroupConfiguration results in replacement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of NodeGroupConfiguration
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "NodeGroupConfiguration")]
+    pub node_group_configuration: Option<Vec<NodeGroupConfiguration>>,
+
+
+    /// 
+    /// The cluster ID that is used as the daily snapshot source for the replication group.       This parameter cannot be set for Redis (cluster mode enabled) replication groups.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
-
-
-    /// 
-    /// The ID of the KMS key used to encrypt the disk on the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
+    #[serde(rename = "SnapshottingClusterId")]
+    pub snapshotting_cluster_id: Option<String>,
 
 
     /// 
@@ -187,159 +160,28 @@ pub struct CfnReplicationGroup {
     pub cache_node_type: Option<String>,
 
 
-    /// Specifies the destination, format and type of the logs.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of LogDeliveryConfigurationRequest
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogDeliveryConfigurations")]
-    pub log_delivery_configurations: Option<Vec<LogDeliveryConfigurationRequest>>,
-
-
     /// 
-    /// The name of a snapshot from which to restore data into the new replication group.       The snapshot status changes to restoring while the new replication group is being created.
+    /// Reserved parameter.        The password used to access a password protected server.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotName")]
-    pub snapshot_name: Option<String>,
-
-
+    /// AuthToken can be specified only on replication groups where TransitEncryptionEnabled is       true. For more information, see Authenticating Users with the Redis AUTH Command.
     /// 
-    /// The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
+    /// ImportantFor HIPAA compliance, you must specify TransitEncryptionEnabled as true,       an AuthToken, and a CacheSubnetGroup.
     /// 
-    /// Example: 05:00-09:00
+    /// Password constraints:
     /// 
-    /// If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
+    /// Must be only printable ASCII characters.               Must be at least 16 characters and no more than 128         characters in length.               Nonalphanumeric characters are restricted to (!, &, #, $, ^, <, >, -, ).
+    /// 
+    /// For more information, see AUTH password at http://redis.io/commands/AUTH.
+    /// 
+    /// NoteIf ADDING the AuthToken, update requires Replacement.
     /// 
     /// Required: No
     ///
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshotWindow")]
-    pub snapshot_window: Option<String>,
-
-
-    /// 
-    /// A flag that enables encryption at rest when set to true.
-    /// 
-    /// You cannot modify the value of AtRestEncryptionEnabled after the replication       group is created.       To enable encryption at rest on a replication group you must set AtRestEncryptionEnabled to       true when you create the replication group.
-    /// 
-    /// Required:       Only available when creating a replication group in an Amazon VPC using redis version 3.2.6 or 4.x onward.
-    /// 
-    /// Default: false
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AtRestEncryptionEnabled")]
-    pub at_rest_encryption_enabled: Option<bool>,
-
-
-    /// 
-    /// An optional parameter that specifies the number of node groups (shards) for this Redis (cluster mode enabled) replication group.       For Redis (cluster mode disabled) either omit this parameter or set it to 1.
-    /// 
-    /// If you set UseOnlineResharding to true, you can update NumNodeGroups without interruption. When UseOnlineResharding is set to false, or is not specified, updating NumNodeGroups results in replacement.
-    /// 
-    /// Default: 1
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
     ///
     /// Update requires: Some interruptions
-    #[serde(rename = "NumNodeGroups")]
-    pub num_node_groups: Option<i64>,
-
-
-    /// 
-    /// An optional parameter that specifies the number of replica nodes in each node group (shard).       Valid values are 0 to 5.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ReplicasPerNodeGroup")]
-    pub replicas_per_node_group: Option<i64>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS)       topic to which notifications are sent.
-    /// 
-    /// NoteThe Amazon SNS topic owner must be the same as the cluster owner.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationTopicArn")]
-    pub notification_topic_arn: Option<String>,
-
-
-    /// 
-    /// One or more Amazon VPC security groups associated with this replication group.
-    /// 
-    /// Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud (Amazon VPC).
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// If you are running Redis engine version 6.0 or later, set this parameter to yes if you want to opt-in to the next minor version upgrade campaign. This parameter is disabled for previous versions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoMinorVersionUpgrade")]
-    pub auto_minor_version_upgrade: Option<bool>,
-
-
-    /// 
-    /// The cluster ID that is used as the daily snapshot source for the replication group.       This parameter cannot be set for Redis (cluster mode enabled) replication groups.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SnapshottingClusterId")]
-    pub snapshotting_cluster_id: Option<String>,
-
-
-    /// 
-    /// A list of EC2 Availability Zones in which the replication group's clusters are created.       The order of the Availability Zones in the list is the order in which clusters are allocated.       The primary cluster is created in the first AZ in the list.
-    /// 
-    /// This parameter is not used if there is more than one node group (shard).        You should use NodeGroupConfiguration instead.
-    /// 
-    /// NoteIf you are creating your replication group in an Amazon VPC (recommended),       you can only locate clusters in Availability Zones associated with the subnets in the selected subnet group.The number of Availability Zones listed must equal the value of NumCacheClusters.
-    /// 
-    /// Default: system chosen Availability Zones.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PreferredCacheClusterAZs")]
-    pub preferred_cache_cluster_azs: Option<Vec<String>>,
+    #[serde(rename = "AuthToken")]
+    pub auth_token: Option<String>,
 
 
     /// 
@@ -359,39 +201,108 @@ pub struct CfnReplicationGroup {
 
 
     /// 
-    /// A flag indicating if you have Multi-AZ enabled to enhance fault tolerance. For more information, see Minimizing Downtime: Multi-AZ.
+    /// The port number on which each member of the replication group accepts connections.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes.    For more information, see Data tiering.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataTieringEnabled")]
+    pub data_tiering_enabled: Option<bool>,
+
+
+    /// 
+    /// If you are running Redis engine version 6.0 or later, set this parameter to yes if you want to opt-in to the next minor version upgrade campaign. This parameter is disabled for previous versions.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MultiAZEnabled")]
-    pub multi_azenabled: Option<bool>,
+    #[serde(rename = "AutoMinorVersionUpgrade")]
+    pub auto_minor_version_upgrade: Option<bool>,
 
 
     /// 
-    /// The name of the Global datastore
+    /// An optional parameter that specifies the number of replica nodes in each node group (shard).       Valid values are 0 to 5.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ReplicasPerNodeGroup")]
+    pub replicas_per_node_group: Option<i64>,
+
+
+    /// 
+    /// The replication group identifier. This parameter is stored as a lowercase string.
+    /// 
+    /// Constraints:
+    /// 
+    /// A name must contain from 1 to 40 alphanumeric characters or hyphens.               The first character must be a letter.               A name cannot end with a hyphen or contain two consecutive hyphens.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "GlobalReplicationGroupId")]
-    pub global_replication_group_id: Option<String>,
+    #[serde(rename = "ReplicationGroupId")]
+    pub replication_group_id: Option<String>,
+
+
+    /// Specifies the destination, format and type of the logs.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of LogDeliveryConfigurationRequest
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogDeliveryConfigurations")]
+    pub log_delivery_configurations: Option<Vec<LogDeliveryConfigurationRequest>>,
 
 
     /// 
-    /// A list of tags to be added to this resource.      Tags are comma-separated key,value pairs (e.g. Key=myKey, Value=myKeyValue. You can include multiple tags as shown following:      Key=myKey, Value=myKeyValue Key=mySecondKey, Value=mySecondKeyValue. Tags on replication groups will be replicated to all nodes.
+    /// The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
+    /// 
+    /// Example: 05:00-09:00
+    /// 
+    /// If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "SnapshotWindow")]
+    pub snapshot_window: Option<String>,
+
+
+    /// 
+    /// One or more Amazon VPC security groups associated with this replication group.
+    /// 
+    /// Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud (Amazon VPC).
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -408,6 +319,20 @@ pub struct CfnReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "AutomaticFailoverEnabled")]
     pub automatic_failover_enabled: Option<bool>,
+
+
+    /// 
+    /// The network type you choose when creating a replication group, either ipv4 | ipv6. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ipv4 | ipv6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IpDiscovery")]
+    pub ip_discovery: Option<String>,
 
 
     /// 
@@ -435,86 +360,35 @@ pub struct CfnReplicationGroup {
 
 
     /// 
-    /// The identifier of the cluster that serves as the primary for this replication       group. This cluster must already exist and have a status of available.
+    /// The number of days for which ElastiCache retains automatic snapshots before deleting them.       For example, if you set SnapshotRetentionLimit to 5,       a snapshot that was taken today is retained for 5 days before being deleted.
     /// 
-    /// This parameter is not required if NumCacheClusters,       NumNodeGroups, or       ReplicasPerNodeGroup is specified.
+    /// Default: 0 (i.e., automatic backups are disabled for this cluster).
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PrimaryClusterId")]
-    pub primary_cluster_id: Option<String>,
+    #[serde(rename = "SnapshotRetentionLimit")]
+    pub snapshot_retention_limit: Option<i64>,
 
 
     /// 
-    /// NodeGroupConfiguration is a property of the AWS::ElastiCache::ReplicationGroup resource that configures an Amazon ElastiCache (ElastiCache) Redis cluster node group.
+    /// A list of EC2 Availability Zones in which the replication group's clusters are created.       The order of the Availability Zones in the list is the order in which clusters are allocated.       The primary cluster is created in the first AZ in the list.
     /// 
-    /// If you set UseOnlineResharding to true, you can update NodeGroupConfiguration without interruption. When UseOnlineResharding is set to false, or is not specified, updating NodeGroupConfiguration results in replacement.
+    /// This parameter is not used if there is more than one node group (shard).        You should use NodeGroupConfiguration instead.
     /// 
-    /// Required: No
-    ///
-    /// Type: List of NodeGroupConfiguration
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "NodeGroupConfiguration")]
-    pub node_group_configuration: Option<Vec<NodeGroupConfiguration>>,
-
-
+    /// NoteIf you are creating your replication group in an Amazon VPC (recommended),       you can only locate clusters in Availability Zones associated with the subnets in the selected subnet group.The number of Availability Zones listed must equal the value of NumCacheClusters.
     /// 
-    /// A list of Amazon Resource Names (ARN) that uniquely identify      the Redis RDB snapshot files stored in Amazon S3.      The snapshot files are used to populate the new replication group.      The Amazon S3 object name in the ARN cannot contain any commas.      The new replication group will have the number of node groups (console: shards)      specified by the parameter NumNodeGroups or the number of      node groups configured by NodeGroupConfiguration regardless      of the number of ARNs specified here.
-    /// 
-    /// Example of an Amazon S3 ARN: arn:aws:s3:::my_bucket/snapshot1.rdb
+    /// Default: system chosen Availability Zones.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SnapshotArns")]
-    pub snapshot_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// Must be either ipv4 | ipv6 | dual_stack. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: dual_stack | ipv4 | ipv6
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkType")]
-    pub network_type: Option<String>,
-
-
-    /// Enabled or Disabled. To modify cluster mode from Disabled to Enabled,    you must first set the cluster mode to Compatible. Compatible mode allows your Redis clients to connect using both cluster mode enabled and cluster mode disabled.    After you migrate all Redis clients to use cluster mode enabled, you can then complete cluster mode configuration and set the cluster mode to Enabled.    For more information, see Modify cluster mode.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClusterMode")]
-    pub cluster_mode: Option<String>,
-
-
-    /// 
-    /// The replication group identifier. This parameter is stored as a lowercase string.
-    /// 
-    /// Constraints:
-    /// 
-    /// A name must contain from 1 to 40 alphanumeric characters or hyphens.               The first character must be a letter.               A name cannot end with a hyphen or contain two consecutive hyphens.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ReplicationGroupId")]
-    pub replication_group_id: Option<String>,
+    #[serde(rename = "PreferredCacheClusterAZs")]
+    pub preferred_cache_cluster_azs: Option<Vec<String>>,
 
 
     /// 
@@ -538,6 +412,88 @@ pub struct CfnReplicationGroup {
 
 
     /// 
+    /// A list of cache security group names to associate with this replication group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CacheSecurityGroupNames")]
+    pub cache_security_group_names: Option<Vec<String>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS)       topic to which notifications are sent.
+    /// 
+    /// NoteThe Amazon SNS topic owner must be the same as the cluster owner.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationTopicArn")]
+    pub notification_topic_arn: Option<String>,
+
+
+    /// 
+    /// The name of the Global datastore
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "GlobalReplicationGroupId")]
+    pub global_replication_group_id: Option<String>,
+
+
+    /// 
+    /// The ID of user group to associate with the replication group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserGroupIds")]
+    pub user_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// A flag that enables encryption at rest when set to true.
+    /// 
+    /// You cannot modify the value of AtRestEncryptionEnabled after the replication       group is created.       To enable encryption at rest on a replication group you must set AtRestEncryptionEnabled to       true when you create the replication group.
+    /// 
+    /// Required:       Only available when creating a replication group in an Amazon VPC using redis version 3.2.6 or 4.x onward.
+    /// 
+    /// Default: false
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AtRestEncryptionEnabled")]
+    pub at_rest_encryption_enabled: Option<bool>,
+
+
+    /// 
+    /// A list of Amazon Resource Names (ARN) that uniquely identify      the Redis RDB snapshot files stored in Amazon S3.      The snapshot files are used to populate the new replication group.      The Amazon S3 object name in the ARN cannot contain any commas.      The new replication group will have the number of node groups (console: shards)      specified by the parameter NumNodeGroups or the number of      node groups configured by NodeGroupConfiguration regardless      of the number of ARNs specified here.
+    /// 
+    /// Example of an Amazon S3 ARN: arn:aws:s3:::my_bucket/snapshot1.rdb
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotArns")]
+    pub snapshot_arns: Option<Vec<String>>,
+
+
+    /// 
     /// The number of clusters this replication group initially has.
     /// 
     /// This parameter is not used if there is more than one node group (shard).        You should use ReplicasPerNodeGroup instead.
@@ -556,75 +512,82 @@ pub struct CfnReplicationGroup {
 
 
     /// 
-    /// A user-created description for the replication group.
+    /// A list of tags to be added to this resource.      Tags are comma-separated key,value pairs (e.g. Key=myKey, Value=myKeyValue. You can include multiple tags as shown following:      Key=myKey, Value=myKeyValue Key=mySecondKey, Value=mySecondKeyValue. Tags on replication groups will be replicated to all nodes.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationGroupDescription")]
-    pub replication_group_description: String,
-
-
-    /// 
-    /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes.    For more information, see Data tiering.
-    ///
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The name of a snapshot from which to restore data into the new replication group.       The snapshot status changes to restoring while the new replication group is being created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DataTieringEnabled")]
-    pub data_tiering_enabled: Option<bool>,
-
-}
+    #[serde(rename = "SnapshotName")]
+    pub snapshot_name: Option<String>,
 
 
-/// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
-#[derive(Default, serde::Serialize)]
-pub struct DestinationDetails {
-
-
-    /// The configuration details of the CloudWatch Logs destination. Note that this field is marked      as required but only if CloudWatch Logs was chosen as the destination.
-    ///
+    /// 
+    /// Must be either ipv4 | ipv6 | dual_stack. IPv6 is supported for workloads using Redis engine version 6.2 onward or Memcached engine version 1.6.6 on all instances built on the       Nitro system.
+    /// 
     /// Required: No
-    ///
-    /// Type: CloudWatchLogsDestinationDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLogsDetails")]
-    pub cloud_watch_logs_details: Option<CloudWatchLogsDestinationDetails>,
-
-
-    /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
-    ///
-    /// Required: No
-    ///
-    /// Type: KinesisFirehoseDestinationDetails
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisFirehoseDetails")]
-    pub kinesis_firehose_details: Option<KinesisFirehoseDestinationDetails>,
-
-}
-
-
-/// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
-#[derive(Default, serde::Serialize)]
-pub struct KinesisFirehoseDestinationDetails {
-
-
-    /// The name of the Kinesis Data Firehose delivery stream.
-    ///
-    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeliveryStream")]
-    pub delivery_stream: String,
+    /// Allowed values: dual_stack | ipv4 | ipv6
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkType")]
+    pub network_type: Option<String>,
 
+
+    /// 
+    /// The name of the cache subnet group to be used for the replication group.
+    /// 
+    /// ImportantIf you're going to launch your cluster in an Amazon VPC,         you need to create a subnet group before you start creating a cluster.         For more information, see AWS::ElastiCache::SubnetGroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CacheSubnetGroupName")]
+    pub cache_subnet_group_name: Option<String>,
+
+
+    /// 
+    /// An optional parameter that specifies the number of node groups (shards) for this Redis (cluster mode enabled) replication group.       For Redis (cluster mode disabled) either omit this parameter or set it to 1.
+    /// 
+    /// If you set UseOnlineResharding to true, you can update NumNodeGroups without interruption. When UseOnlineResharding is set to false, or is not specified, updating NumNodeGroups results in replacement.
+    /// 
+    /// Default: 1
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "NumNodeGroups")]
+    pub num_node_groups: Option<i64>,
+
+}
+
+impl cfn_resources::CfnResource for CfnReplicationGroup {
+    fn type_string() -> &'static str {
+        "AWS::ElastiCache::ReplicationGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -635,19 +598,8 @@ pub struct KinesisFirehoseDestinationDetails {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -660,12 +612,53 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+/// The configuration details of the CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CloudWatchLogsDestinationDetails {
+
+
+    /// The name of the CloudWatch Logs log group.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogGroup")]
+    pub log_group: String,
+
 }
 
 
 /// NodeGroupConfiguration is a property of the AWS::ElastiCache::ReplicationGroup resource that configures an Amazon ElastiCache (ElastiCache) Redis cluster node group.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NodeGroupConfiguration {
+
+
+    /// 
+    /// The Availability Zone where the primary node of this node group (shard) is launched.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PrimaryAvailabilityZone")]
+    pub primary_availability_zone: Option<String>,
 
 
     /// 
@@ -725,53 +718,59 @@ pub struct NodeGroupConfiguration {
     #[serde(rename = "Slots")]
     pub slots: Option<String>,
 
+}
 
-    /// 
-    /// The Availability Zone where the primary node of this node group (shard) is launched.
-    /// 
+
+/// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DestinationDetails {
+
+
+    /// The configuration details of the CloudWatch Logs destination. Note that this field is marked      as required but only if CloudWatch Logs was chosen as the destination.
+    ///
     /// Required: No
     ///
-    /// Type: String
+    /// Type: CloudWatchLogsDestinationDetails
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "PrimaryAvailabilityZone")]
-    pub primary_availability_zone: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLogsDetails")]
+    pub cloud_watch_logs_details: Option<CloudWatchLogsDestinationDetails>,
+
+
+    /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
+    ///
+    /// Required: No
+    ///
+    /// Type: KinesisFirehoseDestinationDetails
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisFirehoseDetails")]
+    pub kinesis_firehose_details: Option<KinesisFirehoseDestinationDetails>,
 
 }
 
 
-/// The configuration details of the CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
-#[derive(Default, serde::Serialize)]
-pub struct CloudWatchLogsDestinationDetails {
+/// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisFirehoseDestinationDetails {
 
 
-    /// The name of the CloudWatch Logs log group.
+    /// The name of the Kinesis Data Firehose delivery stream.
     ///
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "LogGroup")]
-    pub log_group: String,
+    #[serde(rename = "DeliveryStream")]
+    pub delivery_stream: String,
 
 }
 
 
 /// Specifies the destination, format and type of the logs.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LogDeliveryConfigurationRequest {
-
-
-    /// Valid values are either json or text.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogFormat")]
-    pub log_format: String,
 
 
     /// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
@@ -785,15 +784,15 @@ pub struct LogDeliveryConfigurationRequest {
     pub destination_details: DestinationDetails,
 
 
-    /// Specify either CloudWatch Logs or Kinesis Data Firehose as the destination type. Valid values are either cloudwatch-logs or kinesis-firehose.
+    /// Valid values are either json or text.
     ///
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DestinationType")]
-    pub destination_type: String,
+    #[serde(rename = "LogFormat")]
+    pub log_format: String,
 
 
     /// Valid value is either slow-log, which refers to slow-log or engine-log.
@@ -805,5 +804,16 @@ pub struct LogDeliveryConfigurationRequest {
     /// Update requires: No interruption
     #[serde(rename = "LogType")]
     pub log_type: String,
+
+
+    /// Specify either CloudWatch Logs or Kinesis Data Firehose as the destination type. Valid values are either cloudwatch-logs or kinesis-firehose.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationType")]
+    pub destination_type: String,
 
 }

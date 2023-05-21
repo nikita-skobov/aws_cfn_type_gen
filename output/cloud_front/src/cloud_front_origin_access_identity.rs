@@ -1,7 +1,7 @@
 
 
 /// The request to create a new origin access identity (OAI). An origin access identity is 			a special CloudFront user that you can associate with Amazon S3 origins, so that you can secure all 			or just some of your Amazon S3 content. For more information, see Restricting Access to Amazon S3 Content by Using an Origin Access Identity in 			the Amazon CloudFront Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCloudFrontOriginAccessIdentity {
 
 
@@ -18,9 +18,19 @@ pub struct CfnCloudFrontOriginAccessIdentity {
 
 }
 
+impl cfn_resources::CfnResource for CfnCloudFrontOriginAccessIdentity {
+    fn type_string() -> &'static str {
+        "AWS::CloudFront::CloudFrontOriginAccessIdentity"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Origin access identity configuration. Send a GET request to the 					/CloudFront API version/CloudFront/identity ID/config 			resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudFrontOriginAccessIdentityConfig {
 
 

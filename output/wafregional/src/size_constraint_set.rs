@@ -1,7 +1,7 @@
 
 
 /// A complex type that contains SizeConstraint objects, which specify the parts of web requests that you             want AWS WAF to inspect the size of. If a SizeConstraintSet contains more than one SizeConstraint 			object, a request only needs to match one constraint to be considered a match.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSizeConstraintSet {
 
 
@@ -36,9 +36,19 @@ pub struct CfnSizeConstraintSet {
 
 }
 
+impl cfn_resources::CfnResource for CfnSizeConstraintSet {
+    fn type_string() -> &'static str {
+        "AWS::WAFRegional::SizeConstraintSet"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FieldToMatch {
 
 
@@ -83,20 +93,8 @@ pub struct FieldToMatch {
 
 
 /// Specifies a constraint on the size of a part of the web request. AWS WAF uses the Size, ComparisonOperator, and FieldToMatch to build 			an expression in the form of "Size       ComparisonOperator size in bytes of FieldToMatch". If that expression is true, the 			SizeConstraint is considered to match.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SizeConstraint {
-
-
-    /// 
-    /// The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: FieldToMatch
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FieldToMatch")]
-    pub field_to_match: FieldToMatch,
 
 
     /// 
@@ -139,6 +137,18 @@ pub struct SizeConstraint {
     /// Update requires: No interruption
     #[serde(rename = "ComparisonOperator")]
     pub comparison_operator: String,
+
+
+    /// 
+    /// The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: FieldToMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldToMatch")]
+    pub field_to_match: FieldToMatch,
 
 
     /// 

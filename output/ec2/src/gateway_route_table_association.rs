@@ -1,7 +1,7 @@
 
 
 /// Associates a virtual private gateway or internet gateway with a route table. The gateway     and route table must be in the same VPC. This association causes the incoming traffic to     the gateway to be routed according to the routes in the route table.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGatewayRouteTableAssociation {
 
 
@@ -28,4 +28,14 @@ pub struct CfnGatewayRouteTableAssociation {
     #[serde(rename = "RouteTableId")]
     pub route_table_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnGatewayRouteTableAssociation {
+    fn type_string() -> &'static str {
+        "AWS::EC2::GatewayRouteTableAssociation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -7,7 +7,7 @@
 /// For more information about working with server certificates, see Working         with server certificates in the IAM User Guide. This       topic includes a list of AWS services that can use the server certificates that you       manage with IAM.
 ///
 /// For information about the number of server certificates you can upload, see IAM and AWS STS         quotas in the IAM User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnServerCertificate {
 
 
@@ -30,20 +30,6 @@ pub struct CfnServerCertificate {
 
 
     /// 
-    /// A list of tags that are attached to the server certificate. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The contents of the public key certificate.
     /// 
     /// Required: No
@@ -62,23 +48,17 @@ pub struct CfnServerCertificate {
 
 
     /// 
-    /// The name for the server certificate. Do not include the path in this value. The name       of the certificate cannot contain any spaces.
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// A list of tags that are attached to the server certificate. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Minimum: 1
+    /// Maximum: 50
     ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\w+=,.@-]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServerCertificateName")]
-    pub server_certificate_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -104,6 +84,26 @@ pub struct CfnServerCertificate {
 
 
     /// 
+    /// The name for the server certificate. Do not include the path in this value. The name       of the certificate cannot contain any spaces.
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\w+=,.@-]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServerCertificateName")]
+    pub server_certificate_name: Option<String>,
+
+
+    /// 
     /// The contents of the private key in PEM-encoded format.
     /// 
     /// The regex pattern   used to validate this parameter is a string of characters consisting of the following:
@@ -126,6 +126,16 @@ pub struct CfnServerCertificate {
 
 }
 
+impl cfn_resources::CfnResource for CfnServerCertificate {
+    fn type_string() -> &'static str {
+        "AWS::IAM::ServerCertificate"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -134,19 +144,8 @@ pub struct CfnServerCertificate {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -158,5 +157,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

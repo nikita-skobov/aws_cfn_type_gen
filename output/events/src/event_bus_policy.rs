@@ -9,8 +9,20 @@
 /// If you grant permissions using an organization, then accounts in that organization must    specify a RoleArn with proper permissions when they use PutTarget to    add your account's event bus as a target. For more information, see Sending and     Receiving Events Between AWS Accounts in the Amazon EventBridge User     Guide.
 ///
 /// The permission policy on the event bus cannot exceed 10 KB in size.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEventBusPolicy {
+
+
+    /// 
+    /// A JSON string that describes the permission policy statement. You can include a     Policy parameter in the request instead of using the StatementId,     Action, Principal, or Condition parameters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Statement")]
+    pub statement: Option<serde_json::Value>,
 
 
     /// 
@@ -31,52 +43,6 @@ pub struct CfnEventBusPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
     pub principal: Option<String>,
-
-
-    /// 
-    /// A JSON string that describes the permission policy statement. You can include a     Policy parameter in the request instead of using the StatementId,     Action, Principal, or Condition parameters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Statement")]
-    pub statement: Option<serde_json::Value>,
-
-
-    /// 
-    /// This parameter enables you to limit the permission to accounts that fulfill a certain    condition, such as being a member of a certain AWS organization. For more information about    AWS Organizations, see What Is AWS     Organizations in the         AWS Organizations User Guide.
-    /// 
-    /// If you specify Condition with an AWS organization ID, and specify "*" as the    value for Principal, you grant permission to all the accounts in the named    organization.
-    /// 
-    /// The Condition is a JSON string which must contain Type,     Key, and Value fields.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Condition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Condition")]
-    pub condition: Option<Condition>,
-
-
-    /// 
-    /// The name of the event bus associated with the rule. If you omit this, the default event    bus is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [\.\-_A-Za-z0-9]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EventBusName")]
-    pub event_bus_name: Option<String>,
 
 
     /// 
@@ -116,13 +82,57 @@ pub struct CfnEventBusPolicy {
     #[serde(rename = "Action")]
     pub action: Option<String>,
 
+
+    /// 
+    /// The name of the event bus associated with the rule. If you omit this, the default event    bus is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [\.\-_A-Za-z0-9]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EventBusName")]
+    pub event_bus_name: Option<String>,
+
+
+    /// 
+    /// This parameter enables you to limit the permission to accounts that fulfill a certain    condition, such as being a member of a certain AWS organization. For more information about    AWS Organizations, see What Is AWS     Organizations in the         AWS Organizations User Guide.
+    /// 
+    /// If you specify Condition with an AWS organization ID, and specify "*" as the    value for Principal, you grant permission to all the accounts in the named    organization.
+    /// 
+    /// The Condition is a JSON string which must contain Type,     Key, and Value fields.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Condition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Condition")]
+    pub condition: Option<Condition>,
+
+}
+
+impl cfn_resources::CfnResource for CfnEventBusPolicy {
+    fn type_string() -> &'static str {
+        "AWS::Events::EventBusPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A JSON string which you can use to limit the event bus permissions you are granting to    only accounts that fulfill the condition. Currently, the only supported condition is    membership in a certain AWS organization. The string must contain Type,     Key, and Value fields. The Value field specifies the    ID of the AWS organization. Following is an example value for Condition:
 ///
 /// '{"Type" : "StringEquals", "Key": "aws:PrincipalOrgID", "Value":     "o-1234567890"}'
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Condition {
 
 

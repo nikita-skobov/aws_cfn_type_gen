@@ -1,22 +1,8 @@
 
 
 /// The AWS::IoTEvents::Input resource creates an input. To monitor your devices and processes,    they must have a way to get telemetry data into AWS IoT Events. This is done by sending messages    as inputs to AWS IoT Events. For more information, see       How to Use AWS IoT Events in the AWS IoT Events Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInput {
-
-
-    /// 
-    /// A brief description of the input.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InputDescription")]
-    pub input_description: Option<String>,
 
 
     /// 
@@ -62,26 +48,56 @@ pub struct CfnInput {
     #[serde(rename = "InputName")]
     pub input_name: Option<String>,
 
+
+    /// 
+    /// A brief description of the input.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InputDescription")]
+    pub input_description: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnInput {
+    fn type_string() -> &'static str {
+        "AWS::IoTEvents::Input"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
-/// The definition of the input.
-#[derive(Default, serde::Serialize)]
-pub struct InputDefinition {
+/// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload. Those attributes (and their paired values) specified here are    available for use in the condition expressions used by detectors.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Attribute {
 
 
     /// 
-    /// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload, and those attributes (and their paired values) specified here    are available for use in the condition expressions used by detectors that monitor    this input.
+    /// An expression that specifies an attribute-value pair in a JSON structure. Use this to    specify an attribute from the JSON payload that is made available by the input. Inputs are    derived from messages sent to AWS IoT Events (BatchPutMessage). Each such message contains    a JSON payload. The attribute (and its paired value) specified here are available for use in    the condition expressions used by detectors.
+    /// 
+    /// Syntax: <field-name>.<field-name>...
     /// 
     /// Required: Yes
     ///
-    /// Type: List of Attribute
+    /// Type: String
     ///
-    /// Maximum: 200
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^((`[\w\- ]+`)|([\w\-]+))(\.((`[\w- ]+`)|([\w\-]+)))*$
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: Vec<Attribute>,
+    #[serde(rename = "JsonPath")]
+    pub json_path: String,
 
 }
 
@@ -93,7 +109,7 @@ pub struct InputDefinition {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -121,28 +137,22 @@ pub struct Tag {
 }
 
 
-/// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload. Those attributes (and their paired values) specified here are    available for use in the condition expressions used by detectors.
-#[derive(Default, serde::Serialize)]
-pub struct Attribute {
+/// The definition of the input.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct InputDefinition {
 
 
     /// 
-    /// An expression that specifies an attribute-value pair in a JSON structure. Use this to    specify an attribute from the JSON payload that is made available by the input. Inputs are    derived from messages sent to AWS IoT Events (BatchPutMessage). Each such message contains    a JSON payload. The attribute (and its paired value) specified here are available for use in    the condition expressions used by detectors.
-    /// 
-    /// Syntax: <field-name>.<field-name>...
+    /// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload, and those attributes (and their paired values) specified here    are available for use in the condition expressions used by detectors that monitor    this input.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of Attribute
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^((`[\w\- ]+`)|([\w\-]+))(\.((`[\w- ]+`)|([\w\-]+)))*$
+    /// Maximum: 200
     ///
     /// Update requires: No interruption
-    #[serde(rename = "JsonPath")]
-    pub json_path: String,
+    #[serde(rename = "Attributes")]
+    pub attributes: Vec<Attribute>,
 
 }

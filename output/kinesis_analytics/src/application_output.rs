@@ -11,7 +11,7 @@
 /// For the limits on the number of application inputs and outputs       you can configure, see Limits.
 ///
 /// This operation requires permissions to perform the kinesisanalytics:AddApplicationOutput action.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationOutput {
 
 
@@ -46,169 +46,59 @@ pub struct CfnApplicationOutput {
 
 }
 
+impl cfn_resources::CfnResource for CfnApplicationOutput {
+    fn type_string() -> &'static str {
+        "AWS::KinesisAnalytics::ApplicationOutput"
+    }
 
-/// When configuring application output, identifies an Amazon Kinesis Firehose delivery       stream as the destination. You provide the stream Amazon Resource Name (ARN) and an IAM       role that enables Amazon Kinesis Analytics to write to the stream on your behalf.
-#[derive(Default, serde::Serialize)]
-pub struct KinesisFirehoseOutput {
-
-
-    /// 
-    /// ARN of the destination Amazon Kinesis Firehose delivery stream to write to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
-
-
-    /// 
-    /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination stream on your behalf. You need to grant the necessary permissions to this       role.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleARN")]
-    pub role_arn: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
-/// Describes application output configuration in which you identify an in-application       stream and a destination where you want the in-application stream data to be written.       The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery       stream.
-/// 
-/// For limits on how many destinations an application can write and other limitations,       see Limits.
-#[derive(Default, serde::Serialize)]
-pub struct Output {
+/// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DestinationSchema {
 
 
     /// 
-    /// Identifies an AWS Lambda function as the destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LambdaOutput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LambdaOutput")]
-    pub lambda_output: Option<LambdaOutput>,
-
-
-    /// 
-    /// Identifies an Amazon Kinesis stream as the destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KinesisStreamsOutput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisStreamsOutput")]
-    pub kinesis_streams_output: Option<KinesisStreamsOutput>,
-
-
-    /// 
-    /// Identifies an Amazon Kinesis Firehose delivery stream as the destination.
-    /// 
-    /// Required: No
-    ///
-    /// Type: KinesisFirehoseOutput
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KinesisFirehoseOutput")]
-    pub kinesis_firehose_output: Option<KinesisFirehoseOutput>,
-
-
-    /// 
-    /// Name of the in-application stream.
+    /// Specifies the format of the records on the output stream.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 32
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: DestinationSchema
+    /// Allowed values: CSV | JSON
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DestinationSchema")]
-    pub destination_schema: DestinationSchema,
-
-}
-
-
-/// When configuring application output, identifies an Amazon Kinesis stream as the       destination. You provide the stream Amazon Resource Name (ARN) and also an IAM role ARN       that Amazon Kinesis Analytics can use to write to the stream on your behalf.
-#[derive(Default, serde::Serialize)]
-pub struct KinesisStreamsOutput {
-
-
-    /// 
-    /// ARN of the destination Amazon Kinesis stream to write to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceARN")]
-    pub resource_arn: String,
-
-
-    /// 
-    /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination stream on your behalf. You need to grant the necessary permissions to this       role.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleARN")]
-    pub role_arn: String,
+    #[serde(rename = "RecordFormatType")]
+    pub record_format_type: Option<String>,
 
 }
 
 
 /// When configuring application output, identifies an AWS Lambda function       as the destination. You provide the function Amazon Resource Name (ARN) and also an IAM       role ARN that Amazon Kinesis Analytics can use to write to the function on your behalf.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LambdaOutput {
+
+
+    /// 
+    /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination function on your behalf. You need to grant the necessary permissions to this       role.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleARN")]
+    pub role_arn: String,
 
 
     /// 
@@ -230,9 +120,89 @@ pub struct LambdaOutput {
     #[serde(rename = "ResourceARN")]
     pub resource_arn: String,
 
+}
+
+
+/// Describes application output configuration in which you identify an in-application       stream and a destination where you want the in-application stream data to be written.       The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery       stream.
+/// 
+/// For limits on how many destinations an application can write and other limitations,       see Limits.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Output {
+
 
     /// 
-    /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination function on your behalf. You need to grant the necessary permissions to this       role.
+    /// Name of the in-application stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 32
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// Identifies an Amazon Kinesis Firehose delivery stream as the destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: KinesisFirehoseOutput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisFirehoseOutput")]
+    pub kinesis_firehose_output: Option<KinesisFirehoseOutput>,
+
+
+    /// 
+    /// Identifies an Amazon Kinesis stream as the destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: KinesisStreamsOutput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KinesisStreamsOutput")]
+    pub kinesis_streams_output: Option<KinesisStreamsOutput>,
+
+
+    /// 
+    /// Identifies an AWS Lambda function as the destination.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LambdaOutput
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LambdaOutput")]
+    pub lambda_output: Option<LambdaOutput>,
+
+
+    /// 
+    /// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: DestinationSchema
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationSchema")]
+    pub destination_schema: DestinationSchema,
+
+}
+
+
+/// When configuring application output, identifies an Amazon Kinesis stream as the       destination. You provide the stream Amazon Resource Name (ARN) and also an IAM role ARN       that Amazon Kinesis Analytics can use to write to the stream on your behalf.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisStreamsOutput {
+
+
+    /// 
+    /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination stream on your behalf. You need to grant the necessary permissions to this       role.
     /// 
     /// Required: Yes
     ///
@@ -248,25 +218,65 @@ pub struct LambdaOutput {
     #[serde(rename = "RoleARN")]
     pub role_arn: String,
 
-}
-
-
-/// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.
-#[derive(Default, serde::Serialize)]
-pub struct DestinationSchema {
-
 
     /// 
-    /// Specifies the format of the records on the output stream.
+    /// ARN of the destination Amazon Kinesis stream to write to.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: CSV | JSON
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RecordFormatType")]
-    pub record_format_type: Option<String>,
+    #[serde(rename = "ResourceARN")]
+    pub resource_arn: String,
+
+}
+
+
+/// When configuring application output, identifies an Amazon Kinesis Firehose delivery       stream as the destination. You provide the stream Amazon Resource Name (ARN) and an IAM       role that enables Amazon Kinesis Analytics to write to the stream on your behalf.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisFirehoseOutput {
+
+
+    /// 
+    /// ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the       destination stream on your behalf. You need to grant the necessary permissions to this       role.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleARN")]
+    pub role_arn: String,
+
+
+    /// 
+    /// ARN of the destination Amazon Kinesis Firehose delivery stream to write to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceARN")]
+    pub resource_arn: String,
 
 }

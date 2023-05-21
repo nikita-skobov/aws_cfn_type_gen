@@ -1,48 +1,46 @@
 
 
 /// Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCluster {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which       notifications will be sent.
-    /// 
-    /// NoteThe Amazon SNS topic owner must be same as the DAX         cluster owner.
+    /// The description of the cluster.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotificationTopicARN")]
-    pub notification_topic_arn: Option<String>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
-    /// A list of security group IDs to be assigned to each node in the DAX       cluster. (Each of the security group ID is system-generated.)
+    /// The name of the subnet group to be used for the replication group.
     /// 
-    /// If this parameter is not specified, DAX assigns the default VPC       security group to each node.
+    /// ImportantDAX clusters can only run in an Amazon VPC environment. All of the subnets         that you specify in a subnet group must exist in the same VPC.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "SubnetGroupName")]
+    pub subnet_group_name: Option<String>,
 
 
     /// 
-    /// A range of time when maintenance of DAX cluster software will be performed. For       example: sun:01:00-sun:09:00. Cluster maintenance normally takes less than       30 minutes, and is performed automatically within the maintenance window.
+    /// The parameter group to be associated with the DAX cluster.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PreferredMaintenanceWindow")]
-    pub preferred_maintenance_window: Option<String>,
+    #[serde(rename = "ParameterGroupName")]
+    pub parameter_group_name: Option<String>,
 
 
     /// 
@@ -55,18 +53,6 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "NodeType")]
     pub node_type: String,
-
-
-    /// 
-    /// Represents the settings used to enable server-side encryption on the       cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SSESpecification
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SSESpecification")]
-    pub ssespecification: Option<SSESpecification>,
 
 
     /// 
@@ -85,30 +71,6 @@ pub struct CfnCluster {
     /// Update requires: Replacement
     #[serde(rename = "ClusterEndpointEncryptionType")]
     pub cluster_endpoint_encryption_type: Option<String>,
-
-
-    /// 
-    /// The parameter group to be associated with the DAX cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ParameterGroupName")]
-    pub parameter_group_name: Option<String>,
-
-
-    /// 
-    /// The description of the cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -138,15 +100,55 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The Availability Zones (AZs) in which the cluster nodes will reside after the       cluster has been created or updated. If provided, the length of this list must equal the         ReplicationFactor parameter. If you omit this parameter, DAX will spread the nodes across Availability Zones for the highest       availability.
+    /// A range of time when maintenance of DAX cluster software will be performed. For       example: sun:01:00-sun:09:00. Cluster maintenance normally takes less than       30 minutes, and is performed automatically within the maintenance window.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PreferredMaintenanceWindow")]
+    pub preferred_maintenance_window: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which       notifications will be sent.
+    /// 
+    /// NoteThe Amazon SNS topic owner must be same as the DAX         cluster owner.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationTopicARN")]
+    pub notification_topic_arn: Option<String>,
+
+
+    /// 
+    /// Represents the settings used to enable server-side encryption on the       cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SSESpecification
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SSESpecification")]
+    pub ssespecification: Option<SSESpecification>,
+
+
+    /// 
+    /// A list of security group IDs to be assigned to each node in the DAX       cluster. (Each of the security group ID is system-generated.)
+    /// 
+    /// If this parameter is not specified, DAX assigns the default VPC       security group to each node.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AvailabilityZones")]
-    pub availability_zones: Option<Vec<String>>,
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -162,17 +164,15 @@ pub struct CfnCluster {
 
 
     /// 
-    /// The name of the subnet group to be used for the replication group.
-    /// 
-    /// ImportantDAX clusters can only run in an Amazon VPC environment. All of the subnets         that you specify in a subnet group must exist in the same VPC.
+    /// The Availability Zones (AZs) in which the cluster nodes will reside after the       cluster has been created or updated. If provided, the length of this list must equal the         ReplicationFactor parameter. If you omit this parameter, DAX will spread the nodes across Availability Zones for the highest       availability.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "SubnetGroupName")]
-    pub subnet_group_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "AvailabilityZones")]
+    pub availability_zones: Option<Vec<String>>,
 
 
     /// 
@@ -188,9 +188,19 @@ pub struct CfnCluster {
 
 }
 
+impl cfn_resources::CfnResource for CfnCluster {
+    fn type_string() -> &'static str {
+        "AWS::DAX::Cluster"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Represents the settings used to enable server-side encryption.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SSESpecification {
 
 

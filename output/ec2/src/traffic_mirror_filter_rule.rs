@@ -5,34 +5,32 @@
 /// A Traffic Mirror rule defines the Traffic Mirror source traffic to mirror.
 ///
 /// You need the Traffic Mirror filter ID when you create the rule.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTrafficMirrorFilterRule {
 
 
     /// 
-    /// The protocol, for example UDP, to assign to the Traffic Mirror rule.
-    /// 
-    /// For information about the protocol value, see Protocol Numbers on the Internet Assigned Numbers Authority (IANA) website.
+    /// The source port range.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: TrafficMirrorPortRange
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<i64>,
+    #[serde(rename = "SourcePortRange")]
+    pub source_port_range: Option<TrafficMirrorPortRange>,
 
 
     /// 
-    /// The destination CIDR block to assign to the Traffic Mirror rule.
+    /// The ID of the filter that this rule is associated with.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationCidrBlock")]
-    pub destination_cidr_block: String,
+    /// Update requires: Replacement
+    #[serde(rename = "TrafficMirrorFilterId")]
+    pub traffic_mirror_filter_id: String,
 
 
     /// 
@@ -45,6 +43,54 @@ pub struct CfnTrafficMirrorFilterRule {
     /// Update requires: No interruption
     #[serde(rename = "RuleNumber")]
     pub rule_number: i64,
+
+
+    /// 
+    /// The destination port range.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TrafficMirrorPortRange
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationPortRange")]
+    pub destination_port_range: Option<TrafficMirrorPortRange>,
+
+
+    /// 
+    /// The source CIDR block to assign to the Traffic Mirror rule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SourceCidrBlock")]
+    pub source_cidr_block: String,
+
+
+    /// 
+    /// The description of the Traffic Mirror rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The destination CIDR block to assign to the Traffic Mirror rule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DestinationCidrBlock")]
+    pub destination_cidr_block: String,
 
 
     /// 
@@ -62,30 +108,6 @@ pub struct CfnTrafficMirrorFilterRule {
 
 
     /// 
-    /// The destination port range.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TrafficMirrorPortRange
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DestinationPortRange")]
-    pub destination_port_range: Option<TrafficMirrorPortRange>,
-
-
-    /// 
-    /// The source port range.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TrafficMirrorPortRange
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourcePortRange")]
-    pub source_port_range: Option<TrafficMirrorPortRange>,
-
-
-    /// 
     /// The action to take on the filtered traffic.
     /// 
     /// Required: Yes
@@ -100,45 +122,33 @@ pub struct CfnTrafficMirrorFilterRule {
 
 
     /// 
-    /// The description of the Traffic Mirror rule.
+    /// The protocol, for example UDP, to assign to the Traffic Mirror rule.
+    /// 
+    /// For information about the protocol value, see Protocol Numbers on the Internet Assigned Numbers Authority (IANA) website.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<i64>,
 
+}
 
-    /// 
-    /// The ID of the filter that this rule is associated with.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TrafficMirrorFilterId")]
-    pub traffic_mirror_filter_id: String,
+impl cfn_resources::CfnResource for CfnTrafficMirrorFilterRule {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TrafficMirrorFilterRule"
+    }
 
-
-    /// 
-    /// The source CIDR block to assign to the Traffic Mirror rule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SourceCidrBlock")]
-    pub source_cidr_block: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Describes the Traffic Mirror port range.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TrafficMirrorPortRange {
 
 

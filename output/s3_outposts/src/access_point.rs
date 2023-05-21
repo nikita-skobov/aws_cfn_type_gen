@@ -2,7 +2,7 @@
 
 /// The AWS::S3Outposts::AccessPoint resource specifies an access point and associates it with    the specified Amazon S3 on Outposts bucket. For more information, see Managing data access     with Amazon S3 access points.
 /// 
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccessPoint {
 
 
@@ -16,18 +16,6 @@ pub struct CfnAccessPoint {
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
     pub policy: Option<serde_json::Value>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the S3 on Outposts bucket that is associated with this    access point.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
 
 
     /// 
@@ -53,11 +41,33 @@ pub struct CfnAccessPoint {
     #[serde(rename = "Name")]
     pub name: String,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the S3 on Outposts bucket that is associated with this    access point.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnAccessPoint {
+    fn type_string() -> &'static str {
+        "AWS::S3Outposts::AccessPoint"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Contains the virtual private cloud (VPC) configuration for the specified access    point.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcConfiguration {
 
 

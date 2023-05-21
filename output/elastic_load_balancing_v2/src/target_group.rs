@@ -3,34 +3,20 @@
 /// Specifies a target group for an Application Load Balancer, a Network Load Balancer, or a      Gateway Load Balancer.
 ///
 /// Before you register a Lambda function as a target, you must create a       AWS::Lambda::Permission resource that grants the Elastic Load Balancing     service principal permission to invoke the Lambda function.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTargetGroup {
 
 
     /// 
-    /// [HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking for a successful    response from a target. For target groups with a protocol of TCP, TCP_UDP, UDP or TLS the range    is 200-599. For target groups with a protocol of HTTP or HTTPS, the range is 200-499. For target    groups with a protocol of GENEVE, the range is 200-399.
+    /// The tags.
     /// 
     /// Required: No
     ///
-    /// Type: Matcher
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Matcher")]
-    pub matcher: Option<Matcher>,
-
-
-    /// 
-    /// The protocol the load balancer uses when performing health checks on targets. For    Application Load Balancers, the default is HTTP. For Network Load Balancers and Gateway Load    Balancers, the default is TCP. The TCP protocol is not supported for health checks if the    protocol of the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP_UDP protocols are    not supported for health checks.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckProtocol")]
-    pub health_check_protocol: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -46,65 +32,15 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The name of the target group.
-    /// 
-    /// This name must be unique per region per account, can have a maximum of 32 characters, must    contain only alphanumeric characters or hyphens, and must not begin or end with a    hyphen.
+    /// [HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking for a successful    response from a target. For target groups with a protocol of TCP, TCP_UDP, UDP or TLS the range    is 200-599. For target groups with a protocol of HTTP or HTTPS, the range is 200-499. For target    groups with a protocol of GENEVE, the range is 200-399.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The number of consecutive health check successes required before considering a target healthy. The range is    2-10. If the target group protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 5. For target groups    with a protocol of GENEVE, the default is 5. If the target type    is lambda, the default is 5.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 2
-    ///
-    /// Maximum: 10
+    /// Type: Matcher
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HealthyThresholdCount")]
-    pub healthy_threshold_count: Option<i64>,
-
-
-    /// 
-    /// The approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300.    If the target group protocol is TCP, TLS, UDP, TCP_UDP, HTTP or HTTPS, the default is 30 seconds.    If the target group protocol is GENEVE, the default is 10 seconds.    If the target type is lambda, the default is 35 seconds.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 5
-    ///
-    /// Maximum: 300
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckIntervalSeconds")]
-    pub health_check_interval_seconds: Option<i64>,
-
-
-    /// 
-    /// The port on which the targets receive traffic. This port is used unless you specify a port    override when registering the target. If the target is a Lambda function, this parameter does    not apply. If the protocol is GENEVE, the supported port is 6081.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
+    #[serde(rename = "Matcher")]
+    pub matcher: Option<Matcher>,
 
 
     /// 
@@ -128,15 +64,57 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The identifier of the virtual private cloud (VPC). If the target is a Lambda function,    this parameter does not apply. Otherwise, this parameter is required.
+    /// Indicates whether health checks are enabled. If the target type is lambda,    health checks are disabled by default but can be enabled. If the target type is     instance, ip, or alb, health checks are always    enabled and cannot be disabled.
     /// 
-    /// Required: Conditional
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckEnabled")]
+    pub health_check_enabled: Option<bool>,
+
+
+    /// 
+    /// The port the load balancer uses when performing health checks on targets. If the protocol    is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the default is traffic-port, which is    the port on which each target receives traffic from the load balancer. If the protocol is    GENEVE, the default is port 80.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckPort")]
+    pub health_check_port: Option<String>,
+
+
+    /// 
+    /// The type of IP address used for this target group. The possible values are     ipv4 and ipv6. This is an optional parameter. If not specified,    the IP address type defaults to ipv4.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ipv4 | ipv6
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
+    #[serde(rename = "IpAddressType")]
+    pub ip_address_type: Option<String>,
+
+
+    /// 
+    /// The number of consecutive health check successes required before considering a target healthy. The range is    2-10. If the target group protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 5. For target groups    with a protocol of GENEVE, the default is 5. If the target type    is lambda, the default is 5.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 2
+    ///
+    /// Maximum: 10
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthyThresholdCount")]
+    pub healthy_threshold_count: Option<i64>,
 
 
     /// 
@@ -156,51 +134,47 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// Indicates whether health checks are enabled. If the target type is lambda,    health checks are disabled by default but can be enabled. If the target type is     instance, ip, or alb, health checks are always    enabled and cannot be disabled.
+    /// The name of the target group.
     /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheckEnabled")]
-    pub health_check_enabled: Option<bool>,
-
-
-    /// 
-    /// [HTTP/HTTPS protocol] The protocol version. The possible values are GRPC,     HTTP1, and HTTP2.
+    /// This name must be unique per region per account, can have a maximum of 32 characters, must    contain only alphanumeric characters or hyphens, and must not begin or end with a    hyphen.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ProtocolVersion")]
-    pub protocol_version: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// 
-    /// The attributes.
+    /// The protocol to use for routing traffic to the targets. For Application Load Balancers,    the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported    protocols are TCP, TLS, UDP, or TCP_UDP. For Gateway Load Balancers, the supported protocol is    GENEVE. A TCP_UDP listener must be associated with a TCP_UDP target group. If the target is a    Lambda function, this parameter does not apply.
     /// 
-    /// Required: No
+    /// Required: Conditional
     ///
-    /// Type: List of TargetGroupAttribute
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroupAttributes")]
-    pub target_group_attributes: Option<Vec<TargetGroupAttribute>>,
+    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<String>,
 
 
     /// 
-    /// The tags.
+    /// The port on which the targets receive traffic. This port is used unless you specify a port    override when registering the target. If the target is a Lambda function, this parameter does    not apply. If the protocol is GENEVE, the supported port is 6081.
     /// 
-    /// Required: No
+    /// Required: Conditional
     ///
-    /// Type: List of Tag
+    /// Type: Integer
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
 
 
     /// 
@@ -220,6 +194,22 @@ pub struct CfnTargetGroup {
 
 
     /// 
+    /// The approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300.    If the target group protocol is TCP, TLS, UDP, TCP_UDP, HTTP or HTTPS, the default is 30 seconds.    If the target group protocol is GENEVE, the default is 10 seconds.    If the target type is lambda, the default is 35 seconds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 5
+    ///
+    /// Maximum: 300
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckIntervalSeconds")]
+    pub health_check_interval_seconds: Option<i64>,
+
+
+    /// 
     /// The type of target that you must specify when registering targets with this target group.    You can't specify targets for a target group using more than one target type.
     /// 
     /// instance - Register targets by instance ID. This is the default      value.                        ip - Register targets by IP address. You can specify IP addresses from      the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range      (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10).      You can't specify publicly routable IP addresses.                        lambda - Register a single Lambda function as a target.                        alb - Register a single Application Load Balancer as a target.
@@ -236,86 +226,161 @@ pub struct CfnTargetGroup {
 
 
     /// 
-    /// The protocol to use for routing traffic to the targets. For Application Load Balancers,    the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported    protocols are TCP, TLS, UDP, or TCP_UDP. For Gateway Load Balancers, the supported protocol is    GENEVE. A TCP_UDP listener must be associated with a TCP_UDP target group. If the target is a    Lambda function, this parameter does not apply.
+    /// [HTTP/HTTPS protocol] The protocol version. The possible values are GRPC,     HTTP1, and HTTP2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProtocolVersion")]
+    pub protocol_version: Option<String>,
+
+
+    /// 
+    /// The identifier of the virtual private cloud (VPC). If the target is a Lambda function,    this parameter does not apply. Otherwise, this parameter is required.
     /// 
     /// Required: Conditional
     ///
     /// Type: String
     ///
-    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
 
 
     /// 
-    /// The type of IP address used for this target group. The possible values are     ipv4 and ipv6. This is an optional parameter. If not specified,    the IP address type defaults to ipv4.
+    /// The protocol the load balancer uses when performing health checks on targets. For    Application Load Balancers, the default is HTTP. For Network Load Balancers and Gateway Load    Balancers, the default is TCP. The TCP protocol is not supported for health checks if the    protocol of the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP_UDP protocols are    not supported for health checks.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: ipv4 | ipv6
+    /// Allowed values: GENEVE | HTTP | HTTPS | TCP | TCP_UDP | TLS | UDP
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpAddressType")]
-    pub ip_address_type: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheckProtocol")]
+    pub health_check_protocol: Option<String>,
 
 
     /// 
-    /// The port the load balancer uses when performing health checks on targets. If the protocol    is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the default is traffic-port, which is    the port on which each target receives traffic from the load balancer. If the protocol is    GENEVE, the default is port 80.
+    /// The attributes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TargetGroupAttribute
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupAttributes")]
+    pub target_group_attributes: Option<Vec<TargetGroupAttribute>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnTargetGroup {
+    fn type_string() -> &'static str {
+        "AWS::ElasticLoadBalancingV2::TargetGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Specifies a target to add to a target group.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetDescription {
+
+
+    /// 
+    /// An Availability Zone or all. This determines whether the target receives    traffic from the load balancer nodes in the specified Availability Zone or from all enabled    Availability Zones for the load balancer.
+    /// 
+    /// For Application Load Balancer target groups, the specified Availability Zone value is only applicable    when cross-zone load balancing is off. Otherwise the parameter is ignored and treated    as all.
+    /// 
+    /// This parameter is not supported if the target type of the target group is    instance or alb.
+    /// 
+    /// If the target type is ip and the IP address is in a subnet of the VPC for the target group,    the Availability Zone is automatically detected and this parameter is optional. If the IP address is outside    the VPC, this parameter is required.
+    /// 
+    /// For Application Load Balancer target groups with cross-zone load balancing off, if the target type    is ip and the IP address is outside of the VPC for the target group, this should be an    Availability Zone inside the VPC for the target group.
+    /// 
+    /// If the target type is lambda, this parameter is optional and the only    supported value is all.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "HealthCheckPort")]
-    pub health_check_port: Option<String>,
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
+
+
+    /// 
+    /// The ID of the target. If the target type of the target group is instance,    specify an instance ID. If the target type is ip, specify an IP address. If the    target type is lambda, specify the ARN of the Lambda function. If the target type    is alb, specify the ARN of the Application Load Balancer target.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
+    /// 
+    /// The port on which the target is listening. If the target group protocol is GENEVE, the    supported port is 6081. If the target type is alb, the targeted Application Load    Balancer must have at least one listener whose port matches the target group port. This    parameter is not used if the target is a Lambda function.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 65535
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
 
 }
 
 
-/// Specifies the HTTP codes that healthy targets must use when responding to an HTTP health     check.
-#[derive(Default, serde::Serialize)]
-pub struct Matcher {
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
 
 
     /// 
-    /// You can specify values between 0 and 99. You can specify multiple values (for example,    "0,1") or a range of values (for example, "0-5"). The default value is 12.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// Required: No
-    ///
+    /// Required: Yes
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GrpcCode")]
-    pub grpc_code: Option<String>,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
-    /// For Application Load Balancers, you can specify values between 200 and 499, with the    default value being 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// For Network Load Balancers, you can specify values between 200 and 599, with the    default value being 200-399. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
+    /// Required: Yes
     /// 
-    /// For Gateway Load Balancers, this must be "200–399".
-    /// 
-    /// Note that when using shorthand syntax, some values such as commas need to be    escaped.
-    /// 
-    /// Required: No
-    ///
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HttpCode")]
-    pub http_code: Option<String>,
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
 
 /// Specifies a target group attribute.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetGroupAttribute {
 
 
@@ -373,93 +438,38 @@ pub struct TargetGroupAttribute {
 }
 
 
-/// Specifies a target to add to a target group.
-#[derive(Default, serde::Serialize)]
-pub struct TargetDescription {
+/// Specifies the HTTP codes that healthy targets must use when responding to an HTTP health     check.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Matcher {
 
 
     /// 
-    /// The port on which the target is listening. If the target group protocol is GENEVE, the    supported port is 6081. If the target type is alb, the targeted Application Load    Balancer must have at least one listener whose port matches the target group port. This    parameter is not used if the target is a Lambda function.
+    /// For Application Load Balancers, you can specify values between 200 and 499, with the    default value being 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
+    /// For Network Load Balancers, you can specify values between 200 and 599, with the    default value being 200-399. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
     /// 
-    /// An Availability Zone or all. This determines whether the target receives    traffic from the load balancer nodes in the specified Availability Zone or from all enabled    Availability Zones for the load balancer.
+    /// For Gateway Load Balancers, this must be "200–399".
     /// 
-    /// For Application Load Balancer target groups, the specified Availability Zone value is only applicable    when cross-zone load balancing is off. Otherwise the parameter is ignored and treated    as all.
-    /// 
-    /// This parameter is not supported if the target type of the target group is    instance or alb.
-    /// 
-    /// If the target type is ip and the IP address is in a subnet of the VPC for the target group,    the Availability Zone is automatically detected and this parameter is optional. If the IP address is outside    the VPC, this parameter is required.
-    /// 
-    /// For Application Load Balancer target groups with cross-zone load balancing off, if the target type    is ip and the IP address is outside of the VPC for the target group, this should be an    Availability Zone inside the VPC for the target group.
-    /// 
-    /// If the target type is lambda, this parameter is optional and the only    supported value is all.
+    /// Note that when using shorthand syntax, some values such as commas need to be    escaped.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
+    #[serde(rename = "HttpCode")]
+    pub http_code: Option<String>,
 
 
     /// 
-    /// The ID of the target. If the target type of the target group is instance,    specify an instance ID. If the target type is ip, specify an IP address. If the    target type is lambda, specify the ARN of the Lambda function. If the target type    is alb, specify the ARN of the Application Load Balancer target.
+    /// You can specify values between 0 and 99. You can specify multiple values (for example,    "0,1") or a range of values (for example, "0-5"). The default value is 12.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    #[serde(rename = "GrpcCode")]
+    pub grpc_code: Option<String>,
 
 }

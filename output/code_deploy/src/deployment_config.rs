@@ -1,20 +1,22 @@
 
 
 /// The AWS::CodeDeploy::DeploymentConfig resource creates a set of deployment    rules, deployment success conditions, and deployment failure conditions that AWS CodeDeploy uses during a deployment. The deployment configuration specifies, through    the use of a MinimumHealthyHosts value, the number or percentage of instances    that must remain available at any time during a deployment.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeploymentConfig {
 
 
     /// 
-    /// The configuration that specifies how the deployment traffic is routed.
+    /// The destination platform type for the deployment (Lambda,         Server, or ECS).
     /// 
     /// Required: No
     ///
-    /// Type: TrafficRoutingConfig
+    /// Type: String
+    ///
+    /// Allowed values: ECS | Lambda | Server
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TrafficRoutingConfig")]
-    pub traffic_routing_config: Option<TrafficRoutingConfig>,
+    #[serde(rename = "ComputePlatform")]
+    pub compute_platform: Option<String>,
 
 
     /// 
@@ -58,100 +60,75 @@ pub struct CfnDeploymentConfig {
 
 
     /// 
-    /// The destination platform type for the deployment (Lambda,         Server, or ECS).
+    /// The configuration that specifies how the deployment traffic is routed.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Allowed values: ECS | Lambda | Server
+    /// Type: TrafficRoutingConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ComputePlatform")]
-    pub compute_platform: Option<String>,
+    #[serde(rename = "TrafficRoutingConfig")]
+    pub traffic_routing_config: Option<TrafficRoutingConfig>,
 
 }
 
+impl cfn_resources::CfnResource for CfnDeploymentConfig {
+    fn type_string() -> &'static str {
+        "AWS::CodeDeploy::DeploymentConfig"
+    }
 
-/// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in equal increments, with an equal number of minutes between       each increment. The original and target Lambda function versions or ECS task       sets are specified in the deployment's AppSpec file.
-#[derive(Default, serde::Serialize)]
-pub struct TimeBasedLinear {
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in two increments. The original and target         Lambda function versions or ECS task sets are specified in the       deployment's AppSpec file.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TimeBasedCanary {
 
 
     /// 
-    /// The number of minutes between each incremental traffic shift of a         TimeBasedLinear deployment.
+    /// The percentage of traffic to shift in the first increment of a         TimeBasedCanary deployment.
     /// 
     /// Required: Yes
     ///
     /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "LinearInterval")]
-    pub linear_interval: i64,
+    #[serde(rename = "CanaryPercentage")]
+    pub canary_percentage: i64,
 
 
     /// 
-    /// The percentage of traffic that is shifted at the start of each increment of a         TimeBasedLinear deployment.
+    /// The number of minutes between the first and second traffic shifts of a         TimeBasedCanary deployment.
     /// 
     /// Required: Yes
     ///
     /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "LinearPercentage")]
-    pub linear_percentage: i64,
-
-}
-
-
-/// The configuration that specifies how traffic is shifted from one version of a Lambda function to another version during an AWS Lambda deployment,       or from one Amazon ECS task set to another during an Amazon ECS       deployment.
-#[derive(Default, serde::Serialize)]
-pub struct TrafficRoutingConfig {
-
-
-    /// 
-    /// The type of traffic shifting (TimeBasedCanary or         TimeBasedLinear) used by a deployment configuration.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: AllAtOnce | TimeBasedCanary | TimeBasedLinear
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in equal increments, with an equal number of       minutes between each increment. The original and target Lambda function       versions or Amazon ECS task sets are specified in the deployment's AppSpec       file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TimeBasedLinear
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TimeBasedLinear")]
-    pub time_based_linear: Option<TimeBasedLinear>,
-
-
-    /// 
-    /// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in two increments. The original and target Lambda       function versions or ECS task sets are specified in the deployment's AppSpec       file.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TimeBasedCanary
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TimeBasedCanary")]
-    pub time_based_canary: Option<TimeBasedCanary>,
+    #[serde(rename = "CanaryInterval")]
+    pub canary_interval: i64,
 
 }
 
 
 /// MinimumHealthyHosts is a property of the DeploymentConfig resource that defines how many instances must remain healthy    during an AWS CodeDeploy deployment.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MinimumHealthyHosts {
+
+
+    /// 
+    /// The minimum healthy instance value.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: i64,
 
 
     /// 
@@ -175,47 +152,80 @@ pub struct MinimumHealthyHosts {
     #[serde(rename = "Type")]
     pub cfn_type: String,
 
+}
+
+
+/// The configuration that specifies how traffic is shifted from one version of a Lambda function to another version during an AWS Lambda deployment,       or from one Amazon ECS task set to another during an Amazon ECS       deployment.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TrafficRoutingConfig {
+
 
     /// 
-    /// The minimum healthy instance value.
+    /// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in two increments. The original and target Lambda       function versions or ECS task sets are specified in the deployment's AppSpec       file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TimeBasedCanary
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TimeBasedCanary")]
+    pub time_based_canary: Option<TimeBasedCanary>,
+
+
+    /// 
+    /// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in equal increments, with an equal number of       minutes between each increment. The original and target Lambda function       versions or Amazon ECS task sets are specified in the deployment's AppSpec       file.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TimeBasedLinear
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TimeBasedLinear")]
+    pub time_based_linear: Option<TimeBasedLinear>,
+
+
+    /// 
+    /// The type of traffic shifting (TimeBasedCanary or         TimeBasedLinear) used by a deployment configuration.
     /// 
     /// Required: Yes
     ///
-    /// Type: Integer
+    /// Type: String
+    ///
+    /// Allowed values: AllAtOnce | TimeBasedCanary | TimeBasedLinear
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: i64,
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 }
 
 
-/// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in two increments. The original and target         Lambda function versions or ECS task sets are specified in the       deployment's AppSpec file.
-#[derive(Default, serde::Serialize)]
-pub struct TimeBasedCanary {
+/// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in equal increments, with an equal number of minutes between       each increment. The original and target Lambda function versions or ECS task       sets are specified in the deployment's AppSpec file.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TimeBasedLinear {
 
 
     /// 
-    /// The number of minutes between the first and second traffic shifts of a         TimeBasedCanary deployment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CanaryInterval")]
-    pub canary_interval: i64,
-
-
-    /// 
-    /// The percentage of traffic to shift in the first increment of a         TimeBasedCanary deployment.
+    /// The percentage of traffic that is shifted at the start of each increment of a         TimeBasedLinear deployment.
     /// 
     /// Required: Yes
     ///
     /// Type: Integer
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CanaryPercentage")]
-    pub canary_percentage: i64,
+    #[serde(rename = "LinearPercentage")]
+    pub linear_percentage: i64,
+
+
+    /// 
+    /// The number of minutes between each incremental traffic shift of a         TimeBasedLinear deployment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LinearInterval")]
+    pub linear_interval: i64,
 
 }

@@ -3,20 +3,8 @@
 /// Creates a Connect attachment from a specified transit gateway attachment. A Connect attachment is a GRE-based tunnel attachment that you can use to establish a connection between a transit gateway and an appliance.
 ///
 /// A Connect attachment uses an existing VPC or AWS Direct Connect attachment as the underlying transport mechanism.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayConnect {
-
-
-    /// 
-    /// The tags for the attachment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -29,6 +17,18 @@ pub struct CfnTransitGatewayConnect {
     /// Update requires: Replacement
     #[serde(rename = "TransportTransitGatewayAttachmentId")]
     pub transport_transit_gateway_attachment_id: String,
+
+
+    /// 
+    /// The tags for the attachment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -46,25 +46,14 @@ pub struct CfnTransitGatewayConnect {
 
 }
 
+impl cfn_resources::CfnResource for CfnTransitGatewayConnect {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TransitGatewayConnect"
+    }
 
-/// Describes the Connect attachment options.
-#[derive(Default, serde::Serialize)]
-pub struct TransitGatewayConnectOptions {
-
-
-    /// 
-    /// The tunnel protocol.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: gre
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -75,7 +64,7 @@ pub struct TransitGatewayConnectOptions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -99,5 +88,26 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+}
+
+
+/// Describes the Connect attachment options.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TransitGatewayConnectOptions {
+
+
+    /// 
+    /// The tunnel protocol.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: gre
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<String>,
 
 }

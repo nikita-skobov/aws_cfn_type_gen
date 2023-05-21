@@ -5,8 +5,48 @@
 /// You can create your own extensions or use the AWS authored extensions provided by       AWS AppConfig. For an AWS AppConfig extension that uses       AWS Lambda, you must create a Lambda function to perform any     computation and processing defined in the extension. If you plan to create custom versions     of the AWS authored notification extensions, you only need to specify an Amazon Resource     Name (ARN) in the Uri field for the new extension version.
 ///
 /// For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnExtension {
+
+
+    /// 
+    /// Information about the extension.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// Adds one or more tags for the specified extension. Tags are metadata that help you     categorize resources in different ways, for example, by purpose, owner, or environment.     Each tag consists of a key and an optional value, both of which you define.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The parameters accepted by the extension. You specify parameter values when you     associate the extension to an AWS AppConfig resource by using the       CreateExtensionAssociation API action. For AWS Lambda extension     actions, these parameters are included in the Lambda request object.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of Parameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<std::collections::HashMap<String, Parameter>>,
 
 
     /// 
@@ -38,46 +78,6 @@ pub struct CfnExtension {
 
 
     /// 
-    /// Information about the extension.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The parameters accepted by the extension. You specify parameter values when you     associate the extension to an AWS AppConfig resource by using the       CreateExtensionAssociation API action. For AWS Lambda extension     actions, these parameters are included in the Lambda request object.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of Parameter
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<std::collections::HashMap<String, Parameter>>,
-
-
-    /// 
-    /// Adds one or more tags for the specified extension. Tags are metadata that help you     categorize resources in different ways, for example, by purpose, owner, or environment.     Each tag consists of a key and an optional value, both of which you define.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The actions defined in the extension.
     /// 
     /// Required: Yes
@@ -90,39 +90,14 @@ pub struct CfnExtension {
 
 }
 
+impl cfn_resources::CfnResource for CfnExtension {
+    fn type_string() -> &'static str {
+        "AWS::AppConfig::Extension"
+    }
 
-/// A value such as an Amazon Resource Name (ARN) or an Amazon Simple Notification Service topic entered     in an extension when invoked. Parameter values are specified in an extension association.     For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
-#[derive(Default, serde::Serialize)]
-pub struct Parameter {
-
-
-    /// 
-    /// Information about the parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1024
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// A parameter value must be specified in the extension association.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Required")]
-    pub required: bool,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -133,7 +108,7 @@ pub struct Parameter {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -157,5 +132,40 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+}
+
+
+/// A value such as an Amazon Resource Name (ARN) or an Amazon Simple Notification Service topic entered     in an extension when invoked. Parameter values are specified in an extension association.     For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Parameter {
+
+
+    /// 
+    /// A parameter value must be specified in the extension association.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Required")]
+    pub required: bool,
+
+
+    /// 
+    /// Information about the parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 1024
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 }

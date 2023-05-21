@@ -1,34 +1,36 @@
 
 
 /// The CreateTable operation adds a new table to an existing database in your account. In an     AWS account, table names must be at least unique within each Region if they    are in the same database. You may have identical table names in the same Region if the tables    are in separate databases. While creating the table, you must specify the table name, database    name, and the retention properties. Service quotas apply. See     code sample    for details.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTable {
 
 
     /// 
-    /// The retention duration for the memory store and magnetic store. This object has the    following attributes:
+    /// The name of the Timestream database that contains this table.
     /// 
-    /// MemoryStoreRetentionPeriodInHours: Retention duration for memory      store, in hours.        MagneticStoreRetentionPeriodInDays: Retention duration for      magnetic store, in days.
+    /// Length Constraints: Minimum length of 3 bytes. Maximum length of 256    bytes.
     /// 
-    /// Both attributes are of type string. Both attributes are required when RetentionProperties is specified.
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatabaseName")]
+    pub database_name: String,
+
+
     /// 
-    /// See the following examples:
+    /// The name of the Timestream table.
     /// 
-    /// JSON
-    /// 
-    /// {   "Type" : AWS::Timestream::Table",   "Properties" : {     "DatabaseName" : "TestDatabase",     "TableName" : "TestTable",     "RetentionProperties" : {       "MemoryStoreRetentionPeriodInHours": "24",       "MagneticStoreRetentionPeriodInDays": "7"     }   } }
-    /// 
-    /// YAML
-    /// 
-    /// Type: AWS::Timestream::Table DependsOn: TestDatabase Properties:   TableName: "TestTable"   DatabaseName: "TestDatabase"   RetentionProperties:     MemoryStoreRetentionPeriodInHours: "24"     MagneticStoreRetentionPeriodInDays: "7"
+    /// Length Constraints: Minimum length of 3 bytes. Maximum length of 256    bytes.
     /// 
     /// Required: No
     ///
-    /// Type: RetentionProperties
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetentionProperties")]
-    pub retention_properties: Option<RetentionProperties>,
+    /// Update requires: Replacement
+    #[serde(rename = "TableName")]
+    pub table_name: Option<String>,
 
 
     /// 
@@ -72,68 +74,45 @@ pub struct CfnTable {
 
 
     /// 
-    /// The name of the Timestream database that contains this table.
+    /// The retention duration for the memory store and magnetic store. This object has the    following attributes:
     /// 
-    /// Length Constraints: Minimum length of 3 bytes. Maximum length of 256    bytes.
+    /// MemoryStoreRetentionPeriodInHours: Retention duration for memory      store, in hours.        MagneticStoreRetentionPeriodInDays: Retention duration for      magnetic store, in days.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: String,
-
-
+    /// Both attributes are of type string. Both attributes are required when RetentionProperties is specified.
     /// 
-    /// The name of the Timestream table.
+    /// See the following examples:
     /// 
-    /// Length Constraints: Minimum length of 3 bytes. Maximum length of 256    bytes.
+    /// JSON
+    /// 
+    /// {   "Type" : AWS::Timestream::Table",   "Properties" : {     "DatabaseName" : "TestDatabase",     "TableName" : "TestTable",     "RetentionProperties" : {       "MemoryStoreRetentionPeriodInHours": "24",       "MagneticStoreRetentionPeriodInDays": "7"     }   } }
+    /// 
+    /// YAML
+    /// 
+    /// Type: AWS::Timestream::Table DependsOn: TestDatabase Properties:   TableName: "TestTable"   DatabaseName: "TestDatabase"   RetentionProperties:     MemoryStoreRetentionPeriodInHours: "24"     MagneticStoreRetentionPeriodInDays: "7"
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: RetentionProperties
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "TableName")]
-    pub table_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "RetentionProperties")]
+    pub retention_properties: Option<RetentionProperties>,
 
 }
 
+impl cfn_resources::CfnResource for CfnTable {
+    fn type_string() -> &'static str {
+        "AWS::Timestream::Table"
+    }
 
-/// Retention properties contain the duration for which your time-series data must be stored     in the magnetic store and the memory store.
-#[derive(Default, serde::Serialize)]
-pub struct RetentionProperties {
-
-
-    /// 
-    /// The duration for which data must be stored in the memory store.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MemoryStoreRetentionPeriodInHours")]
-    pub memory_store_retention_period_in_hours: Option<String>,
-
-
-    /// 
-    /// The duration for which data must be stored in the magnetic store.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MagneticStoreRetentionPeriodInDays")]
-    pub magnetic_store_retention_period_in_days: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The location to write error reports for records rejected, asynchronously, during     magnetic store writes.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MagneticStoreRejectedDataLocation {
 
 
@@ -151,57 +130,71 @@ pub struct MagneticStoreRejectedDataLocation {
 }
 
 
-/// The configuration that specifies an S3 location.
-#[derive(Default, serde::Serialize)]
-pub struct S3Configuration {
+/// The set of properties on a table for configuring magnetic store writes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MagneticStoreWriteProperties {
 
 
     /// 
-    /// The encryption option for the customer S3 location. Options are S3 server-side     encryption with an S3 managed key or AWS managed key.
+    /// The location to write error reports for records rejected asynchronously during magnetic     store writes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MagneticStoreRejectedDataLocation
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MagneticStoreRejectedDataLocation")]
+    pub magnetic_store_rejected_data_location: Option<MagneticStoreRejectedDataLocation>,
+
+
+    /// 
+    /// A flag to enable magnetic store writes.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Allowed values: SSE_KMS | SSE_S3
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EncryptionOption")]
-    pub encryption_option: String,
+    #[serde(rename = "EnableMagneticStoreWrites")]
+    pub enable_magnetic_store_writes: bool,
+
+}
+
+
+/// Retention properties contain the duration for which your time-series data must be stored     in the magnetic store and the memory store.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct RetentionProperties {
 
 
     /// 
-    /// The bucket name of the customer S3 bucket.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: [a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9]
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BucketName")]
-    pub bucket_name: String,
-
-
-    /// 
-    /// The AWS KMS key ID for the customer S3 location when encrypting with an       AWS managed key.
+    /// The duration for which data must be stored in the magnetic store.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Update requires: No interruption
+    #[serde(rename = "MagneticStoreRetentionPeriodInDays")]
+    pub magnetic_store_retention_period_in_days: Option<String>,
+
+
+    /// 
+    /// The duration for which data must be stored in the memory store.
+    /// 
+    /// Required: No
     ///
-    /// Maximum: 2048
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
+    #[serde(rename = "MemoryStoreRetentionPeriodInHours")]
+    pub memory_store_retention_period_in_hours: Option<String>,
+
+}
+
+
+/// The configuration that specifies an S3 location.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3Configuration {
 
 
     /// 
@@ -221,6 +214,54 @@ pub struct S3Configuration {
     #[serde(rename = "ObjectKeyPrefix")]
     pub object_key_prefix: Option<String>,
 
+
+    /// 
+    /// The encryption option for the customer S3 location. Options are S3 server-side     encryption with an S3 managed key or AWS managed key.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SSE_KMS | SSE_S3
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionOption")]
+    pub encryption_option: String,
+
+
+    /// 
+    /// The AWS KMS key ID for the customer S3 location when encrypting with an       AWS managed key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// The bucket name of the customer S3 bucket.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: [a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9]
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BucketName")]
+    pub bucket_name: String,
+
 }
 
 
@@ -231,7 +272,7 @@ pub struct S3Configuration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -255,36 +296,5 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
-
-}
-
-
-/// The set of properties on a table for configuring magnetic store writes.
-#[derive(Default, serde::Serialize)]
-pub struct MagneticStoreWriteProperties {
-
-
-    /// 
-    /// A flag to enable magnetic store writes.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableMagneticStoreWrites")]
-    pub enable_magnetic_store_writes: bool,
-
-
-    /// 
-    /// The location to write error reports for records rejected asynchronously during magnetic     store writes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MagneticStoreRejectedDataLocation
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MagneticStoreRejectedDataLocation")]
-    pub magnetic_store_rejected_data_location: Option<MagneticStoreRejectedDataLocation>,
 
 }

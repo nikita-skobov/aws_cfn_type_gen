@@ -5,56 +5,8 @@
 /// Parameters in a cluster parameter group apply to all of the instances in a cluster.
 ///
 /// A cluster parameter group is initially created with the default parameters for the     database engine used by instances in the cluster. To provide custom values for any of     the parameters, you must modify the group after you create it. After you create a DB     cluster parameter group, you must associate it with your cluster. For the new cluster     parameter group and associated settings to take effect, you must then reboot the DB     instances in the cluster without failover.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBClusterParameterGroup {
-
-
-    /// 
-    /// The cluster parameter group family name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Family")]
-    pub family: String,
-
-
-    /// 
-    /// Provides a list of parameters for the cluster parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: serde_json::Value,
-
-
-    /// 
-    /// The tags to be assigned to the cluster parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The description for the cluster parameter group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: String,
 
 
     /// 
@@ -74,6 +26,64 @@ pub struct CfnDBClusterParameterGroup {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// The description for the cluster parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: String,
+
+
+    /// 
+    /// Provides a list of parameters for the cluster parameter group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: serde_json::Value,
+
+
+    /// 
+    /// The cluster parameter group family name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Family")]
+    pub family: String,
+
+
+    /// 
+    /// The tags to be assigned to the cluster parameter group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDBClusterParameterGroup {
+    fn type_string() -> &'static str {
+        "AWS::DocDB::DBClusterParameterGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -84,19 +94,8 @@ pub struct CfnDBClusterParameterGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -108,5 +107,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

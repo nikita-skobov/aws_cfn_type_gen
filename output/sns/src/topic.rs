@@ -1,22 +1,22 @@
 
 
 /// The AWS::SNS::Topic resource creates a topic to which notifications can be     published.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTopic {
 
 
     /// 
-    /// The Amazon SNS subscriptions (endpoints) for this topic.
+    /// Enables content-based deduplication for FIFO topics.
     /// 
-    /// ImportantIf you specify the Subscription property in the        AWS::SNS::Topic resource and it creates an associated subscription       resource, the associated subscription is not deleted when the        AWS::SNS::Topic resource is deleted.
+    /// By default, ContentBasedDeduplication is set to false.        If you create a FIFO topic and this attribute is false, you must specify        a value for the MessageDeduplicationId parameter for the Publish action.                  When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId        using the body of the message (but not the attributes of the message).       (Optional) To override the generated value, you can specify a value for the the          MessageDeduplicationId parameter for the Publish        action.
     /// 
     /// Required: No
     ///
-    /// Type: List of Subscription
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Subscription")]
-    pub subscription: Option<Vec<Subscription>>,
+    #[serde(rename = "ContentBasedDeduplication")]
+    pub content_based_deduplication: Option<bool>,
 
 
     /// 
@@ -36,50 +36,6 @@ pub struct CfnTopic {
 
 
     /// 
-    /// The display name to use for an Amazon SNS topic with SMS subscriptions. The     display name must be maximum 100 characters long, including hyphens (-), underscores (_),     spaces, and tabs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DisplayName")]
-    pub display_name: Option<String>,
-
-
-    /// 
-    /// Enables content-based deduplication for FIFO topics.
-    /// 
-    /// By default, ContentBasedDeduplication is set to false.        If you create a FIFO topic and this attribute is false, you must specify        a value for the MessageDeduplicationId parameter for the Publish action.                  When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId        using the body of the message (but not the attributes of the message).       (Optional) To override the generated value, you can specify a value for the the          MessageDeduplicationId parameter for the Publish        action.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContentBasedDeduplication")]
-    pub content_based_deduplication: Option<bool>,
-
-
-    /// 
-    /// The body of the policy document you want to use for this topic.
-    /// 
-    /// You can only add one policy per topic.
-    /// 
-    /// The policy must be in JSON string format.
-    /// 
-    /// Length Constraints: Maximum length of 30,720.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DataProtectionPolicy")]
-    pub data_protection_policy: Option<serde_json::Value>,
-
-
-    /// 
     /// Set to true to create a FIFO topic.
     /// 
     /// Required: No
@@ -92,29 +48,17 @@ pub struct CfnTopic {
 
 
     /// 
-    /// The signature version corresponds to the hashing algorithm used while creating the     signature of the notifications, subscription confirmations, or unsubscribe confirmation     messages sent by Amazon SNS. By default, SignatureVersion is set to       1.
+    /// The Amazon SNS subscriptions (endpoints) for this topic.
+    /// 
+    /// ImportantIf you specify the Subscription property in the        AWS::SNS::Topic resource and it creates an associated subscription       resource, the associated subscription is not deleted when the        AWS::SNS::Topic resource is deleted.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Subscription
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SignatureVersion")]
-    pub signature_version: Option<String>,
-
-
-    /// 
-    /// The ID of an AWS managed customer master key (CMK) for Amazon SNS     or a custom CMK. For more information, see Key terms. For     more examples, see       KeyId      in the AWS Key Management Service API Reference.
-    /// 
-    /// This property applies only to server-side-encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsMasterKeyId")]
-    pub kms_master_key_id: Option<String>,
+    #[serde(rename = "Subscription")]
+    pub subscription: Option<Vec<Subscription>>,
 
 
     /// 
@@ -142,11 +86,112 @@ pub struct CfnTopic {
     #[serde(rename = "TracingConfig")]
     pub tracing_config: Option<String>,
 
+
+    /// 
+    /// The ID of an AWS managed customer master key (CMK) for Amazon SNS     or a custom CMK. For more information, see Key terms. For     more examples, see       KeyId      in the AWS Key Management Service API Reference.
+    /// 
+    /// This property applies only to server-side-encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsMasterKeyId")]
+    pub kms_master_key_id: Option<String>,
+
+
+    /// 
+    /// The body of the policy document you want to use for this topic.
+    /// 
+    /// You can only add one policy per topic.
+    /// 
+    /// The policy must be in JSON string format.
+    /// 
+    /// Length Constraints: Maximum length of 30,720.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DataProtectionPolicy")]
+    pub data_protection_policy: Option<serde_json::Value>,
+
+
+    /// 
+    /// The signature version corresponds to the hashing algorithm used while creating the     signature of the notifications, subscription confirmations, or unsubscribe confirmation     messages sent by Amazon SNS. By default, SignatureVersion is set to       1.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SignatureVersion")]
+    pub signature_version: Option<String>,
+
+
+    /// 
+    /// The display name to use for an Amazon SNS topic with SMS subscriptions. The     display name must be maximum 100 characters long, including hyphens (-), underscores (_),     spaces, and tabs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DisplayName")]
+    pub display_name: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnTopic {
+    fn type_string() -> &'static str {
+        "AWS::SNS::Topic"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
 }
 
 
 /// Subscription is an embedded property that describes the subscription endpoints     of an Amazon SNS topic.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Subscription {
 
 
@@ -172,40 +217,5 @@ pub struct Subscription {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     pub protocol: String,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 }

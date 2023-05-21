@@ -3,7 +3,7 @@
 /// Specifies a network route to add to a Client VPN endpoint. Each Client VPN endpoint has     a route table that describes the available destination network routes. Each route in the     route table specifies the path for traffic to specific resources or networks.
 ///
 /// A target network association must be created before you can specify a route. If you're     setting up all the components of a Client VPN endpoint at the same time, you must use the       DependsOn       Attribute to declare a dependency on the       AWS::EC2::ClientVpnTargetNetworkAssociation resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClientVpnRoute {
 
 
@@ -58,4 +58,14 @@ pub struct CfnClientVpnRoute {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnClientVpnRoute {
+    fn type_string() -> &'static str {
+        "AWS::EC2::ClientVpnRoute"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -1,20 +1,8 @@
 
 
 /// Adds the specified user to the specified group.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserToGroupAddition {
-
-
-    /// 
-    /// A list of the names of the users that you want to add to the group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Users")]
-    pub users: Vec<String>,
 
 
     /// 
@@ -36,4 +24,26 @@ pub struct CfnUserToGroupAddition {
     #[serde(rename = "GroupName")]
     pub group_name: String,
 
+
+    /// 
+    /// A list of the names of the users that you want to add to the group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Users")]
+    pub users: Vec<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnUserToGroupAddition {
+    fn type_string() -> &'static str {
+        "AWS::IAM::UserToGroupAddition"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

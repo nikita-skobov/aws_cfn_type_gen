@@ -1,22 +1,24 @@
 
 
 /// Specifies a new schedule for one or more AWS Glue DataBrew jobs. Jobs can be       run at a specific date and time, or at regular intervals.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSchedule {
 
 
     /// 
-    /// A list of jobs to be run, according to the schedule.
+    /// The name of the schedule.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of String
+    /// Type: String
     ///
-    /// Maximum: 50
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "JobNames")]
-    pub job_names: Option<Vec<String>>,
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -48,20 +50,28 @@ pub struct CfnSchedule {
 
 
     /// 
-    /// The name of the schedule.
+    /// A list of jobs to be run, according to the schedule.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Minimum: 1
+    /// Maximum: 50
     ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "JobNames")]
+    pub job_names: Option<Vec<String>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnSchedule {
+    fn type_string() -> &'static str {
+        "AWS::DataBrew::Schedule"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -72,7 +82,7 @@ pub struct CfnSchedule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

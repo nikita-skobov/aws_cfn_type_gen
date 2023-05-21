@@ -7,32 +7,28 @@
 /// The Groups, Roles, and Users properties are optional. However, you must specify at least     one of these properties.
 ///
 /// For information about limits on the number of inline policies that you can embed in an     identity, see Limitations on IAM Entities in the IAM User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPolicy {
 
 
     /// 
-    /// The policy document.
+    /// The name of the group to associate the policy with.
     /// 
-    /// You must provide policies in JSON format in IAM. However, for AWS CloudFormation       templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy to JSON format before submitting it to       IAM.
+    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-.
     /// 
-    /// The regex pattern   used to validate this parameter is a string of characters consisting of the following:
-    /// 
-    /// Any printable ASCII   character ranging from the space character (\u0020) through the end of the ASCII character range               The printable characters in the Basic Latin and Latin-1 Supplement character set   (through \u00FF)               The special characters tab (\u0009), line feed (\u000A), and   carriage return (\u000D)
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: Json
+    /// Type: List of String
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 131072
+    /// Maximum: 128
     ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
+    /// Pattern: [\w+=,.@-]+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PolicyDocument")]
-    pub policy_document: serde_json::Value,
+    #[serde(rename = "Groups")]
+    pub groups: Option<Vec<String>>,
 
 
     /// 
@@ -72,26 +68,6 @@ pub struct CfnPolicy {
 
 
     /// 
-    /// The name of the group to associate the policy with.
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: [\w+=,.@-]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Groups")]
-    pub groups: Option<Vec<String>>,
-
-
-    /// 
     /// The name of the user to associate the policy with.
     /// 
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
@@ -110,4 +86,38 @@ pub struct CfnPolicy {
     #[serde(rename = "Users")]
     pub users: Option<Vec<String>>,
 
+
+    /// 
+    /// The policy document.
+    /// 
+    /// You must provide policies in JSON format in IAM. However, for AWS CloudFormation       templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy to JSON format before submitting it to       IAM.
+    /// 
+    /// The regex pattern   used to validate this parameter is a string of characters consisting of the following:
+    /// 
+    /// Any printable ASCII   character ranging from the space character (\u0020) through the end of the ASCII character range               The printable characters in the Basic Latin and Latin-1 Supplement character set   (through \u00FF)               The special characters tab (\u0009), line feed (\u000A), and   carriage return (\u000D)
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 131072
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u00FF]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PolicyDocument")]
+    pub policy_document: serde_json::Value,
+
+}
+
+impl cfn_resources::CfnResource for CfnPolicy {
+    fn type_string() -> &'static str {
+        "AWS::IAM::Policy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

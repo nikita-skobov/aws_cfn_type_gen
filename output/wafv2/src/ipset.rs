@@ -3,7 +3,7 @@
 /// Use an AWS::WAFv2::IPSet to identify web requests that originate from specific IP addresses or ranges of IP addresses. For example, if you're receiving a lot of requests from a ranges of IP addresses, you can configure AWS WAF to block them using an IP set that lists those IP addresses.
 ///
 /// You use an IP set by providing its Amazon Resource Name (ARN) to the rule statement IPSetReferenceStatement, when you add a rule to a rule group or web ACL.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPSet {
 
 
@@ -30,6 +30,34 @@ pub struct CfnIPSet {
 
 
     /// 
+    /// The version of the IP addresses, either IPV4 or IPV6.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IPAddressVersion")]
+    pub ipaddress_version: String,
+
+
+    /// 
+    /// Specifies whether this is for an Amazon CloudFront distribution or for a regional application. A regional      application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an      AWS AppSync GraphQL API, an Amazon Cognito user pool, or an AWS App Runner service. Valid Values are CLOUDFRONT and REGIONAL.
+    /// 
+    /// NoteFor CLOUDFRONT, you must create your WAFv2 resources in the US East (N. Virginia) Region, us-east-1.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Scope")]
+    pub scope: String,
+
+
+    /// 
     /// A description of the IP set that helps with identification.
     /// 
     /// Required: No
@@ -45,48 +73,6 @@ pub struct CfnIPSet {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// 
-    /// The version of the IP addresses, either IPV4 or IPV6.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IPAddressVersion")]
-    pub ipaddress_version: String,
-
-
-    /// 
-    /// Key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
-    /// 
-    /// NoteTo modify tags on existing resources, use the AWS WAF APIs or command line interface. With AWS CloudFormation, you can only add tags to AWS WAF resources during resource creation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Specifies whether this is for an Amazon CloudFront distribution or for a regional application. A regional      application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an      AWS AppSync GraphQL API, an Amazon Cognito user pool, or an AWS App Runner service. Valid Values are CLOUDFRONT and REGIONAL.
-    /// 
-    /// NoteFor CLOUDFRONT, you must create your WAFv2 resources in the US East (N. Virginia) Region, us-east-1.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Scope")]
-    pub scope: String,
 
 
     /// 
@@ -106,6 +92,30 @@ pub struct CfnIPSet {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// Key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
+    /// 
+    /// NoteTo modify tags on existing resources, use the AWS WAF APIs or command line interface. With AWS CloudFormation, you can only add tags to AWS WAF resources during resource creation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnIPSet {
+    fn type_string() -> &'static str {
+        "AWS::WAFv2::IPSet"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -116,7 +126,7 @@ pub struct CfnIPSet {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

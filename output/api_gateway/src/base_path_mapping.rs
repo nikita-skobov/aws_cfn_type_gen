@@ -1,20 +1,8 @@
 
 
 /// The AWS::ApiGateway::BasePathMapping resource creates a base path that clients who call your API must use in the invocation URL.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBasePathMapping {
-
-
-    /// 
-    /// The name of the associated stage.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Stage")]
-    pub stage: Option<String>,
 
 
     /// 
@@ -63,4 +51,26 @@ pub struct CfnBasePathMapping {
     #[serde(rename = "Id")]
     pub id: Option<String>,
 
+
+    /// 
+    /// The name of the associated stage.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Stage")]
+    pub stage: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnBasePathMapping {
+    fn type_string() -> &'static str {
+        "AWS::ApiGateway::BasePathMapping"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

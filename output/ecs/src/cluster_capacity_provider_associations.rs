@@ -1,7 +1,7 @@
 
 
 /// The AWS::ECS::ClusterCapacityProviderAssociations resource associates one or more capacity  providers and a default capacity provider strategy with a cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClusterCapacityProviderAssociations {
 
 
@@ -42,22 +42,20 @@ pub struct CfnClusterCapacityProviderAssociations {
 
 }
 
+impl cfn_resources::CfnResource for CfnClusterCapacityProviderAssociations {
+    fn type_string() -> &'static str {
+        "AWS::ECS::ClusterCapacityProviderAssociations"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// The CapacityProviderStrategy property specifies the details of the default capacity provider  strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider  strategy specified, the default capacity provider strategy is used.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CapacityProviderStrategy {
-
-
-    /// 
-    /// The short name of the capacity provider.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CapacityProvider")]
-    pub capacity_provider: String,
 
 
     /// 
@@ -70,6 +68,18 @@ pub struct CapacityProviderStrategy {
     /// Update requires: No interruption
     #[serde(rename = "Base")]
     pub base: Option<i64>,
+
+
+    /// 
+    /// The short name of the capacity provider.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CapacityProvider")]
+    pub capacity_provider: String,
 
 
     /// 

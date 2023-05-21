@@ -1,20 +1,8 @@
 
 
 /// The AWS::Cognito::UserPoolDomain resource creates a new domain for a user pool.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserPoolDomain {
-
-
-    /// 
-    /// The configuration for a custom domain that hosts the sign-up and sign-in pages for       your application. Use this object to specify an SSL certificate that is managed by       ACM.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CustomDomainConfigType
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomDomainConfig")]
-    pub custom_domain_config: Option<CustomDomainConfigType>,
 
 
     /// 
@@ -54,11 +42,33 @@ pub struct CfnUserPoolDomain {
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: String,
 
+
+    /// 
+    /// The configuration for a custom domain that hosts the sign-up and sign-in pages for       your application. Use this object to specify an SSL certificate that is managed by       ACM.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CustomDomainConfigType
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomDomainConfig")]
+    pub custom_domain_config: Option<CustomDomainConfigType>,
+
+}
+
+impl cfn_resources::CfnResource for CfnUserPoolDomain {
+    fn type_string() -> &'static str {
+        "AWS::Cognito::UserPoolDomain"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The configuration for a custom domain that hosts the sign-up and sign-in webpages for       your application.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomDomainConfigType {
 
 

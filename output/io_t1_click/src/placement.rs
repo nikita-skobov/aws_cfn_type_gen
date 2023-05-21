@@ -1,8 +1,20 @@
 
 
 /// The AWS::IoT1Click::Placement resource creates a placement to be associated with an AWS IoT 1-Click project. A placement is an instance of a device in a location.      For more information, see Projects, Templates, and Placements in the AWS IoT 1-Click Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPlacement {
+
+
+    /// 
+    /// The name of the placement.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PlacementName")]
+    pub placement_name: Option<String>,
 
 
     /// 
@@ -30,18 +42,6 @@ pub struct CfnPlacement {
 
 
     /// 
-    /// The name of the placement.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PlacementName")]
-    pub placement_name: Option<String>,
-
-
-    /// 
     /// The user-defined attributes associated with the placement.
     /// 
     /// Required: No
@@ -52,4 +52,14 @@ pub struct CfnPlacement {
     #[serde(rename = "Attributes")]
     pub attributes: Option<serde_json::Value>,
 
+}
+
+impl cfn_resources::CfnResource for CfnPlacement {
+    fn type_string() -> &'static str {
+        "AWS::IoT1Click::Placement"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

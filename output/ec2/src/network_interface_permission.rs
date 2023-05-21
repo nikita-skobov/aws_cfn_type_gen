@@ -1,8 +1,20 @@
 
 
 /// Specifies a permission for an Amazon EC2 network interface. For example, you can grant       an AWS authorized partner account permission to attach the specified       network interface to an instance in their account.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNetworkInterfacePermission {
+
+
+    /// 
+    /// The ID of the network interface.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NetworkInterfaceId")]
+    pub network_interface_id: String,
 
 
     /// 
@@ -30,16 +42,14 @@ pub struct CfnNetworkInterfacePermission {
     #[serde(rename = "Permission")]
     pub permission: String,
 
+}
 
-    /// 
-    /// The ID of the network interface.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkInterfaceId")]
-    pub network_interface_id: String,
+impl cfn_resources::CfnResource for CfnNetworkInterfacePermission {
+    fn type_string() -> &'static str {
+        "AWS::EC2::NetworkInterfacePermission"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -7,20 +7,8 @@
 /// For more information about segment pattern syntax, see              Segment rule pattern syntax.
 ///
 /// The pattern that you define for a segment is matched against the value of evaluationContext, which      is passed into Evidently in the EvaluateFeature operation,      when Evidently assigns a feature variation to a user.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSegment {
-
-
-    /// 
-    /// The pattern to use for the segment. For more information about pattern syntax,     see       Segment rule pattern syntax.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Pattern")]
-    pub pattern: Option<String>,
 
 
     /// An optional description for this segment.
@@ -32,17 +20,6 @@ pub struct CfnSegment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
-
-    /// A name for the segment.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -64,6 +41,39 @@ pub struct CfnSegment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The pattern to use for the segment. For more information about pattern syntax,     see       Segment rule pattern syntax.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Pattern")]
+    pub pattern: Option<String>,
+
+
+    /// A name for the segment.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnSegment {
+    fn type_string() -> &'static str {
+        "AWS::Evidently::Segment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -74,7 +84,7 @@ pub struct CfnSegment {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

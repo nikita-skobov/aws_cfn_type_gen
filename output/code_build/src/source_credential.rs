@@ -1,8 +1,22 @@
 
 
 /// Information about the credentials for a GitHub, GitHub Enterprise, or Bitbucket repository. We strongly recommend that you      use AWS Secrets Manager to store your credentials. If you use      Secrets Manager, you must have secrets in your secrets manager. For more       information, see         Using Dynamic References to Specify Template Values.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSourceCredential {
+
+
+    /// 
+    /// The type of authentication used by the credentials. Valid options are OAUTH,       BASIC_AUTH, or PERSONAL_ACCESS_TOKEN.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: BASIC_AUTH | OAUTH | PERSONAL_ACCESS_TOKEN
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthType")]
+    pub auth_type: String,
 
 
     /// 
@@ -46,18 +60,14 @@ pub struct CfnSourceCredential {
     #[serde(rename = "Token")]
     pub token: String,
 
+}
 
-    /// 
-    /// The type of authentication used by the credentials. Valid options are OAUTH,       BASIC_AUTH, or PERSONAL_ACCESS_TOKEN.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: BASIC_AUTH | OAUTH | PERSONAL_ACCESS_TOKEN
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthType")]
-    pub auth_type: String,
+impl cfn_resources::CfnResource for CfnSourceCredential {
+    fn type_string() -> &'static str {
+        "AWS::CodeBuild::SourceCredential"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

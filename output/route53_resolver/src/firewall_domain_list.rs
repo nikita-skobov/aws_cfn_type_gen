@@ -3,22 +3,20 @@
 /// High-level information about a list of firewall domains for use in a AWS::Route53Resolver::FirewallRule. This is returned by GetFirewallDomainList.
 ///
 /// To retrieve the domains that are defined for this domain list, call        ListFirewallDomains.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFirewallDomainList {
 
 
     /// 
-    /// A list of the tag keys and values that you want to associate with the domain list.
+    /// A list of the domain lists that you have defined.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Domains")]
+    pub domains: Option<Vec<String>>,
 
 
     /// 
@@ -40,18 +38,6 @@ pub struct CfnFirewallDomainList {
 
 
     /// 
-    /// A list of the domain lists that you have defined.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Domains")]
-    pub domains: Option<Vec<String>>,
-
-
-    /// 
     /// The name of the domain list.
     /// 
     /// Required: No
@@ -66,6 +52,30 @@ pub struct CfnFirewallDomainList {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// A list of the tag keys and values that you want to associate with the domain list.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnFirewallDomainList {
+    fn type_string() -> &'static str {
+        "AWS::Route53Resolver::FirewallDomainList"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -76,19 +86,8 @@ pub struct CfnFirewallDomainList {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -100,5 +99,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

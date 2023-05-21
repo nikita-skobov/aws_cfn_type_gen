@@ -1,26 +1,8 @@
 
 
 /// The AWS::SSM::MaintenanceWindowTarget resource registers a target with a    maintenance window for AWS Systems Manager. For more information, see     RegisterTargetWithMaintenanceWindow in the AWS Systems Manager API     Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMaintenanceWindowTarget {
-
-
-    /// 
-    /// The name for the maintenance window target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
 
 
     /// 
@@ -37,36 +19,6 @@ pub struct CfnMaintenanceWindowTarget {
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
     pub targets: Vec<Targets>,
-
-
-    /// 
-    /// A description for the target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The type of target that is being registered with the maintenance window.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: INSTANCE | RESOURCE_GROUP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceType")]
-    pub resource_type: String,
 
 
     /// 
@@ -88,6 +40,38 @@ pub struct CfnMaintenanceWindowTarget {
 
 
     /// 
+    /// The name for the maintenance window target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-.]{3,128}$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The type of target that is being registered with the maintenance window.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: INSTANCE | RESOURCE_GROUP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceType")]
+    pub resource_type: String,
+
+
+    /// 
     /// A user-provided value that will be included in any Amazon CloudWatch Events events that are  raised while running tasks for these targets in this maintenance window.
     /// 
     /// Required: No
@@ -102,14 +86,56 @@ pub struct CfnMaintenanceWindowTarget {
     #[serde(rename = "OwnerInformation")]
     pub owner_information: Option<String>,
 
+
+    /// 
+    /// A description for the target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnMaintenanceWindowTarget {
+    fn type_string() -> &'static str {
+        "AWS::SSM::MaintenanceWindowTarget"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The Targets property type specifies adding a target to a maintenance window    target in AWS Systems Manager.
 ///
 /// Targets is a property of the AWS::SSM::MaintenanceWindowTarget resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Targets {
+
+
+    /// 
+    /// User-defined criteria that maps to Key. For example, if you specified   tag:ServerRole, you could specify value:WebServer to run a command on  instances that include EC2 tags of ServerRole,WebServer.
+    /// 
+    /// Depending on the type of target, the maximum number of values for a key might be lower than  the global maximum of 50.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Values")]
+    pub values: Vec<String>,
 
 
     /// 
@@ -128,21 +154,5 @@ pub struct Targets {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
-
-
-    /// 
-    /// User-defined criteria that maps to Key. For example, if you specified   tag:ServerRole, you could specify value:WebServer to run a command on  instances that include EC2 tags of ServerRole,WebServer.
-    /// 
-    /// Depending on the type of target, the maximum number of values for a key might be lower than  the global maximum of 50.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Values")]
-    pub values: Vec<String>,
 
 }

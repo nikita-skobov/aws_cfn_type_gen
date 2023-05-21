@@ -3,56 +3,8 @@
 /// Creates a channel to receive content.
 ///
 /// After it's created, a channel provides static input URLs. These URLs remain the same throughout the lifetime of the channel, regardless of any failures or upgrades that might     occur. Use these URLs to configure the outputs of your upstream encoder.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnChannel {
-
-
-    /// 
-    /// The input URL where the source stream should be sent.
-    /// 
-    /// Required: No
-    ///
-    /// Type: HlsIngest
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HlsIngest")]
-    pub hls_ingest: Option<HlsIngest>,
-
-
-    /// 
-    /// The tags to assign to the channel.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// Configures egress access logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LogConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EgressAccessLogs")]
-    pub egress_access_logs: Option<LogConfiguration>,
-
-
-    /// 
-    /// Any descriptive information that you want to add to the channel for future identification purposes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -68,6 +20,30 @@ pub struct CfnChannel {
 
 
     /// 
+    /// Any descriptive information that you want to add to the channel for future identification purposes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The tags to assign to the channel.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// Unique identifier that you assign to the channel.
     /// 
     /// Required: Yes
@@ -78,24 +54,58 @@ pub struct CfnChannel {
     #[serde(rename = "Id")]
     pub id: String,
 
-}
 
-
-/// An endpoint for ingesting source content for a channel.
-#[derive(Default, serde::Serialize)]
-pub struct IngestEndpoint {
+    /// 
+    /// Configures egress access logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LogConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EgressAccessLogs")]
+    pub egress_access_logs: Option<LogConfiguration>,
 
 
     /// 
     /// The input URL where the source stream should be sent.
+    /// 
+    /// Required: No
+    ///
+    /// Type: HlsIngest
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HlsIngest")]
+    pub hls_ingest: Option<HlsIngest>,
+
+}
+
+impl cfn_resources::CfnResource for CfnChannel {
+    fn type_string() -> &'static str {
+        "AWS::MediaPackage::Channel"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// An endpoint for ingesting source content for a channel.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IngestEndpoint {
+
+
+    /// 
+    /// The endpoint identifier.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Url")]
-    pub url: String,
+    #[serde(rename = "Id")]
+    pub id: String,
 
 
     /// 
@@ -111,6 +121,18 @@ pub struct IngestEndpoint {
 
 
     /// 
+    /// The input URL where the source stream should be sent.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Url")]
+    pub url: String,
+
+
+    /// 
     /// The system-generated username for WebDAV input authentication.
     /// 
     /// Required: Yes
@@ -121,42 +143,11 @@ pub struct IngestEndpoint {
     #[serde(rename = "Username")]
     pub username: String,
 
-
-    /// 
-    /// The endpoint identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Id")]
-    pub id: String,
-
-}
-
-
-/// HLS ingest configuration.
-#[derive(Default, serde::Serialize)]
-pub struct HlsIngest {
-
-
-    /// 
-    /// The input URL where the source stream should be sent.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of IngestEndpoint
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ingestEndpoints")]
-    pub ingest_endpoints: Option<Vec<IngestEndpoint>>,
-
 }
 
 
 /// The access log configuration parameters for your channel.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LogConfiguration {
 
 
@@ -181,7 +172,7 @@ pub struct LogConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -205,5 +196,24 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+}
+
+
+/// HLS ingest configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HlsIngest {
+
+
+    /// 
+    /// The input URL where the source stream should be sent.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of IngestEndpoint
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ingestEndpoints")]
+    pub ingest_endpoints: Option<Vec<IngestEndpoint>>,
 
 }

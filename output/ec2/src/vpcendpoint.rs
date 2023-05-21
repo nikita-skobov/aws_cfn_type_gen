@@ -7,32 +7,8 @@
 /// A gateway endpoint serves as a target for a route in your route table for traffic destined      for Amazon S3 or Amazon DynamoDB. You can specify an endpoint policy for the endpoint,      which controls access to the service from your VPC. You can also specify the VPC route tables      that use the endpoint. For information about connectivity to Amazon S3, see Why can’t I connect to an S3 bucket using a gateway VPC endpoint?
 ///
 /// A Gateway Load Balancer endpoint provides private connectivity between your VPC and      virtual appliances from a service provider.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPCEndpoint {
-
-
-    /// 
-    /// The ID of the VPC for the endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
-
-
-    /// 
-    /// The service name.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ServiceName")]
-    pub service_name: String,
 
 
     /// 
@@ -60,19 +36,15 @@ pub struct CfnVPCEndpoint {
 
 
     /// 
-    /// The type of endpoint.
-    /// 
-    /// Default: Gateway
+    /// The IDs of the security groups to associate with the endpoint network interfaces.      If this parameter is not specified, we use the default security group for the VPC.      Security groups are supported only for interface endpoints.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Allowed values: Gateway | GatewayLoadBalancer | Interface
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcEndpointType")]
-    pub vpc_endpoint_type: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -94,6 +66,46 @@ pub struct CfnVPCEndpoint {
 
 
     /// 
+    /// The service name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ServiceName")]
+    pub service_name: String,
+
+
+    /// 
+    /// The ID of the VPC for the endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
+
+
+    /// 
+    /// The type of endpoint.
+    /// 
+    /// Default: Gateway
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Gateway | GatewayLoadBalancer | Interface
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcEndpointType")]
+    pub vpc_endpoint_type: Option<String>,
+
+
+    /// 
     /// A policy that controls access to the service from the VPC.      If this parameter is not specified, the default policy allows full access to the service.     Endpoint policies are supported only for gateway and interface endpoints.
     /// 
     /// For CloudFormation templates in YAML, you can provide the policy in JSON or YAML format.       AWS CloudFormation converts YAML policies to JSON format before calling the API to     create or modify the VPC endpoint.
@@ -106,16 +118,14 @@ pub struct CfnVPCEndpoint {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: Option<serde_json::Value>,
 
+}
 
-    /// 
-    /// The IDs of the security groups to associate with the endpoint network interfaces.      If this parameter is not specified, we use the default security group for the VPC.      Security groups are supported only for interface endpoints.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Option<Vec<String>>,
+impl cfn_resources::CfnResource for CfnVPCEndpoint {
+    fn type_string() -> &'static str {
+        "AWS::EC2::VPCEndpoint"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

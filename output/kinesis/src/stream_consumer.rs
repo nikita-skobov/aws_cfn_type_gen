@@ -5,7 +5,7 @@
 /// You can register up to five consumers per stream. However, you can request a limit       increase using the Kinesis Data Streams limits         form. A given consumer can only be registered with one stream at a time.
 ///
 /// For more information, see Using Consumers         with Enhanced Fan-Out.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStreamConsumer {
 
 
@@ -44,4 +44,14 @@ pub struct CfnStreamConsumer {
     #[serde(rename = "ConsumerName")]
     pub consumer_name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnStreamConsumer {
+    fn type_string() -> &'static str {
+        "AWS::Kinesis::StreamConsumer"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

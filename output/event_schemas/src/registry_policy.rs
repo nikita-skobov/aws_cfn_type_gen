@@ -1,20 +1,8 @@
 
 
 /// Use the AWS::EventSchemas::RegistryPolicy resource to specify       resource-based policies for an EventBridge Schema Registry.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRegistryPolicy {
-
-
-    /// 
-    /// A resource-based policy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: serde_json::Value,
 
 
     /// 
@@ -40,4 +28,26 @@ pub struct CfnRegistryPolicy {
     #[serde(rename = "RegistryName")]
     pub registry_name: String,
 
+
+    /// 
+    /// A resource-based policy.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Policy")]
+    pub policy: serde_json::Value,
+
+}
+
+impl cfn_resources::CfnResource for CfnRegistryPolicy {
+    fn type_string() -> &'static str {
+        "AWS::EventSchemas::RegistryPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

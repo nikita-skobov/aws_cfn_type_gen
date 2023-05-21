@@ -9,20 +9,8 @@
 /// A dataset can be in one of the following states:
 ///
 /// To get the status of the dataset, call DescribeDataset.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDataset {
-
-
-    /// 
-    /// Describes a job that imports training data from a data source (Amazon S3 bucket) to an       Amazon Personalize dataset.
-    ///
-    /// Required: No
-    ///
-    /// Type: DatasetImportJob
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatasetImportJob")]
-    pub dataset_import_job: Option<DatasetImportJob>,
 
 
     /// 
@@ -44,22 +32,6 @@ pub struct CfnDataset {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the dataset group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatasetGroupArn")]
-    pub dataset_group_arn: String,
-
-
-    /// 
     /// The ARN of the associated schema.
     /// 
     /// Required: Yes
@@ -73,6 +45,34 @@ pub struct CfnDataset {
     /// Update requires: Replacement
     #[serde(rename = "SchemaArn")]
     pub schema_arn: String,
+
+
+    /// 
+    /// Describes a job that imports training data from a data source (Amazon S3 bucket) to an       Amazon Personalize dataset.
+    ///
+    /// Required: No
+    ///
+    /// Type: DatasetImportJob
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatasetImportJob")]
+    pub dataset_import_job: Option<DatasetImportJob>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the dataset group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatasetGroupArn")]
+    pub dataset_group_arn: String,
 
 
     /// 
@@ -92,11 +92,21 @@ pub struct CfnDataset {
 
 }
 
+impl cfn_resources::CfnResource for CfnDataset {
+    fn type_string() -> &'static str {
+        "AWS::Personalize::Dataset"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Describes a job that imports training data from a data source (Amazon S3    bucket) to an Amazon Personalize dataset. For more information, see CreateDatasetImportJob.
 ///
 /// A dataset import job can be in one of the following states:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatasetImportJob {
 
 
@@ -110,22 +120,6 @@ pub struct DatasetImportJob {
     /// Update requires: No interruption
     #[serde(rename = "DataSource")]
     pub data_source: Option<DataSource>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the dataset that receives the    imported data.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatasetArn")]
-    pub dataset_arn: Option<String>,
 
 
     /// 
@@ -144,6 +138,22 @@ pub struct DatasetImportJob {
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
     pub job_name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the dataset that receives the    imported data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:([a-z\d-]+):personalize:.*:.*:.+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatasetArn")]
+    pub dataset_arn: Option<String>,
 
 
     /// 
@@ -181,7 +191,7 @@ pub struct DatasetImportJob {
 
 
 /// The DataSource property type specifies Property description not available. for an AWS::Personalize::Dataset.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataSource {
 
 

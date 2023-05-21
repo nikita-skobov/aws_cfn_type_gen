@@ -1,50 +1,8 @@
 
 
 /// Creates a Data Store that can ingest and export FHIR formatted data.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFHIRDatastore {
-
-
-    /// 
-    /// The server-side encryption key configuration for a customer provided encryption key specified for creating a Data Store.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SseConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SseConfiguration")]
-    pub sse_configuration: Option<SseConfiguration>,
-
-
-    /// 
-    /// The preloaded data configuration for the Data Store. Only data preloaded from Synthea is supported.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PreloadDataConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PreloadDataConfig")]
-    pub preload_data_config: Option<PreloadDataConfig>,
-
-
-    /// 
-    /// The user generated name for the Data Store.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatastoreName")]
-    pub datastore_name: Option<String>,
 
 
     /// 
@@ -74,45 +32,86 @@ pub struct CfnFHIRDatastore {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-}
-
-
-/// The server-side encryption key configuration for a customer provided encryption key.
-#[derive(Default, serde::Serialize)]
-pub struct SseConfiguration {
-
 
     /// 
-    /// The server-side encryption key configuration for a customer provided encryption key (CMK).
+    /// The user generated name for the Data Store.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: KmsEncryptionConfig
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "KmsEncryptionConfig")]
-    pub kms_encryption_config: KmsEncryptionConfig,
+    #[serde(rename = "DatastoreName")]
+    pub datastore_name: Option<String>,
+
+
+    /// 
+    /// The server-side encryption key configuration for a customer provided encryption key specified for creating a Data Store.
+    /// 
+    /// Required: No
+    ///
+    /// Type: SseConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SseConfiguration")]
+    pub sse_configuration: Option<SseConfiguration>,
+
+
+    /// 
+    /// The preloaded data configuration for the Data Store. Only data preloaded from Synthea is supported.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PreloadDataConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PreloadDataConfig")]
+    pub preload_data_config: Option<PreloadDataConfig>,
 
 }
 
+impl cfn_resources::CfnResource for CfnFHIRDatastore {
+    fn type_string() -> &'static str {
+        "AWS::HealthLake::FHIRDatastore"
+    }
 
-/// Optional parameter to preload data upon creation of the Data Store. Currently, the only     supported preloaded data is synthetic data generated from Synthea.
-#[derive(Default, serde::Serialize)]
-pub struct PreloadDataConfig {
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
 
 
-    /// 
-    /// The type of preloaded data. Only Synthea preloaded data is supported.
-    /// 
+/// The CreatedAt property type specifies Property description not available. for an AWS::HealthLake::FHIRDatastore.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CreatedAt {
+
+
+    /// Property description not available.
+    ///
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: SYNTHEA
+    /// Update requires: No interruption
+    #[serde(rename = "Seconds")]
+    pub seconds: String,
+
+
+    /// Property description not available.
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "PreloadDataType")]
-    pub preload_data_type: String,
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Nanos")]
+    pub nanos: i64,
 
 }
 
@@ -124,7 +123,7 @@ pub struct PreloadDataConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -152,8 +151,48 @@ pub struct Tag {
 }
 
 
+/// Optional parameter to preload data upon creation of the Data Store. Currently, the only     supported preloaded data is synthetic data generated from Synthea.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PreloadDataConfig {
+
+
+    /// 
+    /// The type of preloaded data. Only Synthea preloaded data is supported.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: SYNTHEA
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PreloadDataType")]
+    pub preload_data_type: String,
+
+}
+
+
+/// The server-side encryption key configuration for a customer provided encryption key.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SseConfiguration {
+
+
+    /// 
+    /// The server-side encryption key configuration for a customer provided encryption key (CMK).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: KmsEncryptionConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsEncryptionConfig")]
+    pub kms_encryption_config: KmsEncryptionConfig,
+
+}
+
+
 /// The customer-managed-key(CMK) used when creating a Data Store. If a customer owned key is not specified, an    Amazon owned key will be used for encryption.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KmsEncryptionConfig {
 
 
@@ -185,34 +224,5 @@ pub struct KmsEncryptionConfig {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
-
-}
-
-
-/// The CreatedAt property type specifies Property description not available. for an AWS::HealthLake::FHIRDatastore.
-#[derive(Default, serde::Serialize)]
-pub struct CreatedAt {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Seconds")]
-    pub seconds: String,
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Nanos")]
-    pub nanos: i64,
 
 }

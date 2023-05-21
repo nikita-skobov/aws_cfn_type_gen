@@ -1,7 +1,7 @@
 
 
 /// An object that provides information about a solution. A solution is a trained model    that can be deployed as a campaign.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSolution {
 
 
@@ -22,17 +22,15 @@ pub struct CfnSolution {
 
 
     /// 
-    /// The event type (for example, 'click' or 'like') that is used for training the model.    If no eventType is provided, Amazon Personalize uses all interactions for training with    equal weight regardless of type.
+    /// Describes the configuration properties for the solution.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Maximum: 256
+    /// Type: SolutionConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "EventType")]
-    pub event_type: Option<String>,
+    #[serde(rename = "SolutionConfig")]
+    pub solution_config: Option<SolutionConfig>,
 
 
     /// 
@@ -82,15 +80,17 @@ pub struct CfnSolution {
 
 
     /// 
-    /// Describes the configuration properties for the solution.
+    /// The event type (for example, 'click' or 'like') that is used for training the model.    If no eventType is provided, Amazon Personalize uses all interactions for training with    equal weight regardless of type.
     /// 
     /// Required: No
     ///
-    /// Type: SolutionConfig
+    /// Type: String
+    ///
+    /// Maximum: 256
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SolutionConfig")]
-    pub solution_config: Option<SolutionConfig>,
+    #[serde(rename = "EventType")]
+    pub event_type: Option<String>,
 
 
     /// 
@@ -108,187 +108,19 @@ pub struct CfnSolution {
 
 }
 
+impl cfn_resources::CfnResource for CfnSolution {
+    fn type_string() -> &'static str {
+        "AWS::Personalize::Solution"
+    }
 
-/// The AutoMLConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Default, serde::Serialize)]
-pub struct AutoMLConfig {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RecipeList")]
-    pub recipe_list: Option<Vec<String>>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricName")]
-    pub metric_name: Option<String>,
-
-}
-
-
-/// Describes the configuration properties for the solution.
-#[derive(Default, serde::Serialize)]
-pub struct SolutionConfig {
-
-
-    /// 
-    /// The AutoMLConfig object containing a list of recipes to search    when AutoML is performed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AutoMLConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AutoMLConfig")]
-    pub auto_mlconfig: Option<AutoMLConfig>,
-
-
-    /// 
-    /// Lists the hyperparameter names and ranges.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AlgorithmHyperParameters")]
-    pub algorithm_hyper_parameters: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// Describes the properties for hyperparameter optimization (HPO).
-    /// 
-    /// Required: No
-    ///
-    /// Type: HpoConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HpoConfig")]
-    pub hpo_config: Option<HpoConfig>,
-
-
-    /// 
-    /// Only events with a value greater than or equal to this threshold are    used for training a model.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EventValueThreshold")]
-    pub event_value_threshold: Option<String>,
-
-
-    /// 
-    /// Lists the feature transformation parameters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FeatureTransformationParameters")]
-    pub feature_transformation_parameters: Option<std::collections::HashMap<String, String>>,
-
-}
-
-
-/// The HpoConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Default, serde::Serialize)]
-pub struct HpoConfig {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: HpoObjective
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HpoObjective")]
-    pub hpo_objective: Option<HpoObjective>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: HpoResourceConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HpoResourceConfig")]
-    pub hpo_resource_config: Option<HpoResourceConfig>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: AlgorithmHyperParameterRanges
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AlgorithmHyperParameterRanges")]
-    pub algorithm_hyper_parameter_ranges: Option<AlgorithmHyperParameterRanges>,
-
-}
-
-
-/// The ContinuousHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Default, serde::Serialize)]
-pub struct ContinuousHyperParameterRange {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MinValue")]
-    pub min_value: Option<f64>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MaxValue")]
-    pub max_value: Option<f64>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The AlgorithmHyperParameterRanges property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AlgorithmHyperParameterRanges {
 
 
@@ -328,7 +160,7 @@ pub struct AlgorithmHyperParameterRanges {
 
 
 /// The HpoObjective property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HpoObjective {
 
 
@@ -367,9 +199,129 @@ pub struct HpoObjective {
 }
 
 
+/// The AutoMLConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AutoMLConfig {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RecipeList")]
+    pub recipe_list: Option<Vec<String>>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricName")]
+    pub metric_name: Option<String>,
+
+}
+
+
+/// The HpoConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HpoConfig {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: AlgorithmHyperParameterRanges
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AlgorithmHyperParameterRanges")]
+    pub algorithm_hyper_parameter_ranges: Option<AlgorithmHyperParameterRanges>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: HpoResourceConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HpoResourceConfig")]
+    pub hpo_resource_config: Option<HpoResourceConfig>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: HpoObjective
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HpoObjective")]
+    pub hpo_objective: Option<HpoObjective>,
+
+}
+
+
+/// The ContinuousHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ContinuousHyperParameterRange {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MinValue")]
+    pub min_value: Option<f64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Double
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MaxValue")]
+    pub max_value: Option<f64>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+}
+
+
 /// The IntegerHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IntegerHyperParameterRange {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MinValue")]
+    pub min_value: Option<i64>,
 
 
     /// Property description not available.
@@ -393,34 +345,81 @@ pub struct IntegerHyperParameterRange {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+}
 
-    /// Property description not available.
-    ///
+
+/// Describes the configuration properties for the solution.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SolutionConfig {
+
+
+    /// 
+    /// Lists the feature transformation parameters.
+    /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: Map of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "MinValue")]
-    pub min_value: Option<i64>,
+    #[serde(rename = "FeatureTransformationParameters")]
+    pub feature_transformation_parameters: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// Lists the hyperparameter names and ranges.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AlgorithmHyperParameters")]
+    pub algorithm_hyper_parameters: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The AutoMLConfig object containing a list of recipes to search    when AutoML is performed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AutoMLConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AutoMLConfig")]
+    pub auto_mlconfig: Option<AutoMLConfig>,
+
+
+    /// 
+    /// Describes the properties for hyperparameter optimization (HPO).
+    /// 
+    /// Required: No
+    ///
+    /// Type: HpoConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HpoConfig")]
+    pub hpo_config: Option<HpoConfig>,
+
+
+    /// 
+    /// Only events with a value greater than or equal to this threshold are    used for training a model.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EventValueThreshold")]
+    pub event_value_threshold: Option<String>,
 
 }
 
 
 /// The CategoricalHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CategoricalHyperParameterRange {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Values")]
-    pub values: Option<Vec<String>>,
 
 
     /// Property description not available.
@@ -433,11 +432,22 @@ pub struct CategoricalHyperParameterRange {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Values")]
+    pub values: Option<Vec<String>>,
+
 }
 
 
 /// The HpoResourceConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HpoResourceConfig {
 
 

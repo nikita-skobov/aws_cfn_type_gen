@@ -5,8 +5,60 @@
 /// When you create a warm pool, you can define a minimum size. When your Auto Scaling group    scales out and the size of the warm pool shrinks, Amazon EC2 Auto Scaling launches new    instances into the warm pool to maintain its minimum size.
 ///
 /// For more information, see Warm pools for Amazon EC2     Auto Scaling in the Amazon EC2 Auto Scaling User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnWarmPool {
+
+
+    /// 
+    /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on       scale in. The default is to terminate instances in the Auto Scaling group when the group scales       in.
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceReusePolicy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceReusePolicy")]
+    pub instance_reuse_policy: Option<InstanceReusePolicy>,
+
+
+    /// 
+    /// The name of the Auto Scaling group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AutoScalingGroupName")]
+    pub auto_scaling_group_name: String,
+
+
+    /// 
+    /// Sets the instance state to transition to after the lifecycle actions are complete.       Default is Stopped.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Hibernated | Running | Stopped
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PoolState")]
+    pub pool_state: Option<String>,
+
+
+    /// 
+    /// Specifies the minimum number of instances to maintain in the warm pool. This helps you       to ensure that there is always a certain number of warmed instances available to handle       traffic spikes. Defaults to 0 if not specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinSize")]
+    pub min_size: Option<i64>,
 
 
     /// 
@@ -26,65 +78,23 @@ pub struct CfnWarmPool {
     #[serde(rename = "MaxGroupPreparedCapacity")]
     pub max_group_prepared_capacity: Option<i64>,
 
+}
 
-    /// 
-    /// The name of the Auto Scaling group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AutoScalingGroupName")]
-    pub auto_scaling_group_name: String,
+impl cfn_resources::CfnResource for CfnWarmPool {
+    fn type_string() -> &'static str {
+        "AWS::AutoScaling::WarmPool"
+    }
 
-
-    /// 
-    /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on       scale in. The default is to terminate instances in the Auto Scaling group when the group scales       in.
-    /// 
-    /// Required: No
-    ///
-    /// Type: InstanceReusePolicy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "InstanceReusePolicy")]
-    pub instance_reuse_policy: Option<InstanceReusePolicy>,
-
-
-    /// 
-    /// Specifies the minimum number of instances to maintain in the warm pool. This helps you       to ensure that there is always a certain number of warmed instances available to handle       traffic spikes. Defaults to 0 if not specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MinSize")]
-    pub min_size: Option<i64>,
-
-
-    /// 
-    /// Sets the instance state to transition to after the lifecycle actions are complete.       Default is Stopped.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Hibernated | Running | Stopped
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PoolState")]
-    pub pool_state: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A structure that specifies an instance reuse policy for the     InstanceReusePolicy property of the AWS::AutoScaling::WarmPool resource.
 ///
 /// For more information, see Warm pools for Amazon EC2     Auto Scaling in the Amazon EC2 Auto Scaling User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceReusePolicy {
 
 

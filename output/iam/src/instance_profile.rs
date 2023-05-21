@@ -3,8 +3,30 @@
 /// Creates a new instance profile. For information about instance profiles, see Using       instance profiles.
 ///
 /// For information about the number of instance profiles you can create, see IAM object quotas in the IAM User       Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInstanceProfile {
+
+
+    /// 
+    /// The path to the instance profile. For more information about paths, see IAM         Identifiers in the IAM User Guide.
+    /// 
+    /// This parameter is optional. If it is not included, it defaults to a slash (/).
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: (\u002F)|(\u002F[\u0021-\u007E]+\u002F)
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
 
 
     /// 
@@ -38,26 +60,14 @@ pub struct CfnInstanceProfile {
     #[serde(rename = "Roles")]
     pub roles: Vec<String>,
 
+}
 
-    /// 
-    /// The path to the instance profile. For more information about paths, see IAM         Identifiers in the IAM User Guide.
-    /// 
-    /// This parameter is optional. If it is not included, it defaults to a slash (/).
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: (\u002F)|(\u002F[\u0021-\u007E]+\u002F)
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
+impl cfn_resources::CfnResource for CfnInstanceProfile {
+    fn type_string() -> &'static str {
+        "AWS::IAM::InstanceProfile"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

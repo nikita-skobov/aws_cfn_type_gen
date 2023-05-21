@@ -1,8 +1,68 @@
 
 
 /// The AWS::MediaConnect::FlowEntitlement resource defines the permission that an AWS account grants to another AWS account to allow access       to the content in a specific AWS Elemental MediaConnect flow. The       content originator grants an entitlement to a specific AWS account (the       subscriber). When an entitlement is granted, the subscriber can create a flow using the       originator's flow as the source. Each flow can have up to 50 entitlements.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFlowEntitlement {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the flow.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FlowArn")]
+    pub flow_arn: String,
+
+
+    /// 
+    /// The name of the entitlement. This value must be unique within the current        flow.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// The AWS account IDs that you want to share your content with. The receiving        accounts (subscribers) will be allowed to create their own flows using your content        as the source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Subscribers")]
+    pub subscribers: Vec<String>,
+
+
+    /// 
+    /// The percentage of the entitlement data transfer fee that you want the subscriber        to be responsible for.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DataTransferSubscriberFeePercent")]
+    pub data_transfer_subscriber_fee_percent: Option<i64>,
+
+
+    /// 
+    /// An indication of whether the new entitlement should be enabled or disabled as soon        as it is created. If you don’t specify the entitlementStatus field in your request,        MediaConnect sets it to ENABLED.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EntitlementStatus")]
+    pub entitlement_status: Option<String>,
 
 
     /// 
@@ -28,84 +88,22 @@ pub struct CfnFlowEntitlement {
     #[serde(rename = "Encryption")]
     pub encryption: Option<Encryption>,
 
+}
 
-    /// 
-    /// The AWS account IDs that you want to share your content with. The receiving        accounts (subscribers) will be allowed to create their own flows using your content        as the source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Subscribers")]
-    pub subscribers: Vec<String>,
+impl cfn_resources::CfnResource for CfnFlowEntitlement {
+    fn type_string() -> &'static str {
+        "AWS::MediaConnect::FlowEntitlement"
+    }
 
-
-    /// 
-    /// An indication of whether the new entitlement should be enabled or disabled as soon        as it is created. If you don’t specify the entitlementStatus field in your request,        MediaConnect sets it to ENABLED.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EntitlementStatus")]
-    pub entitlement_status: Option<String>,
-
-
-    /// 
-    /// The name of the entitlement. This value must be unique within the current        flow.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the flow.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FlowArn")]
-    pub flow_arn: String,
-
-
-    /// 
-    /// The percentage of the entitlement data transfer fee that you want the subscriber        to be responsible for.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DataTransferSubscriberFeePercent")]
-    pub data_transfer_subscriber_fee_percent: Option<i64>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Information about the encryption of the flow.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Encryption {
-
-
-    /// 
-    /// A 128-bit, 16-byte hex value represented by a 32-character string, to be used with        the key for encrypting content. This parameter is not valid for static key        encryption.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ConstantInitializationVector")]
-    pub constant_initialization_vector: Option<String>,
 
 
     /// 
@@ -121,15 +119,15 @@ pub struct Encryption {
 
 
     /// 
-    /// The value of one of the devices that you configured with your digital rights        management (DRM) platform key provider. This parameter is required for SPEKE        encryption and is not valid for static key encryption.
+    /// A 128-bit, 16-byte hex value represented by a 32-character string, to be used with        the key for encrypting content. This parameter is not valid for static key        encryption.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeviceId")]
-    pub device_id: Option<String>,
+    #[serde(rename = "ConstantInitializationVector")]
+    pub constant_initialization_vector: Option<String>,
 
 
     /// 
@@ -142,6 +140,30 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
     pub algorithm: String,
+
+
+    /// 
+    /// The value of one of the devices that you configured with your digital rights        management (DRM) platform key provider. This parameter is required for SPEKE        encryption and is not valid for static key encryption.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeviceId")]
+    pub device_id: Option<String>,
+
+
+    /// 
+    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretArn")]
+    pub secret_arn: Option<String>,
 
 
     /// 
@@ -178,18 +200,6 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
     pub resource_id: Option<String>,
-
-
-    /// 
-    /// The ARN of the secret that you created in AWS Secrets Manager to store the        encryption key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArn")]
-    pub secret_arn: Option<String>,
 
 
     /// 

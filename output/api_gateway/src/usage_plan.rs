@@ -3,20 +3,8 @@
 /// The AWS::ApiGateway::UsagePlan resource creates a usage plan for deployed APIs. A usage plan sets a target for the throttling and quota limits on individual client API keys. For more information, see Creating and Using API Usage Plans in Amazon API Gateway in the API Gateway Developer Guide.
 ///
 /// In some cases clients can exceed the targets that you set. Don’t rely on usage plans to control costs. Consider using AWS Budgets to monitor costs     and AWS WAF to manage API requests.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUsagePlan {
-
-
-    /// 
-    /// The target maximum number of permitted requests per a given unit time interval.
-    /// 
-    /// Required: No
-    ///
-    /// Type: QuotaSettings
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Quota")]
-    pub quota: Option<QuotaSettings>,
 
 
     /// 
@@ -32,15 +20,15 @@ pub struct CfnUsagePlan {
 
 
     /// 
-    /// A map containing method level throttling information for API stage in a usage plan.
+    /// The target maximum number of permitted requests per a given unit time interval.
     /// 
     /// Required: No
     ///
-    /// Type: ThrottleSettings
+    /// Type: QuotaSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Throttle")]
-    pub throttle: Option<ThrottleSettings>,
+    #[serde(rename = "Quota")]
+    pub quota: Option<QuotaSettings>,
 
 
     /// 
@@ -56,6 +44,18 @@ pub struct CfnUsagePlan {
 
 
     /// 
+    /// The collection of tags. Each tag element is associated with a given resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The description of a usage plan.
     /// 
     /// Required: No
@@ -68,68 +68,31 @@ pub struct CfnUsagePlan {
 
 
     /// 
-    /// The collection of tags. Each tag element is associated with a given resource.
+    /// A map containing method level throttling information for API stage in a usage plan.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: ThrottleSettings
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "Throttle")]
+    pub throttle: Option<ThrottleSettings>,
 
 }
 
+impl cfn_resources::CfnResource for CfnUsagePlan {
+    fn type_string() -> &'static str {
+        "AWS::ApiGateway::UsagePlan"
+    }
 
-/// QuotaSettings is a property of the AWS::ApiGateway::UsagePlan resource that specifies a target for the maximum number of requests users can make to your REST APIs.
-///
-/// In some cases clients can exceed the targets that you set. Don’t rely on usage plans to control costs. Consider using AWS Budgets to monitor costs     and AWS WAF to manage API requests.
-#[derive(Default, serde::Serialize)]
-pub struct QuotaSettings {
-
-
-    /// 
-    /// The number of requests subtracted from the given limit in the initial time period.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Offset")]
-    pub offset: Option<i64>,
-
-
-    /// 
-    /// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DAY | MONTH | WEEK
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Period")]
-    pub period: Option<String>,
-
-
-    /// 
-    /// The target maximum number of requests that can be made in a given time period.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Limit")]
-    pub limit: Option<i64>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// ThrottleSettings is a property of the AWS::ApiGateway::UsagePlan resource that specifies the overall request rate (average requests per second) and burst capacity when users call your REST APIs.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ThrottleSettings {
 
 
@@ -166,19 +129,8 @@ pub struct ThrottleSettings {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -191,24 +143,23 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
 /// API stage name of the associated API stage in a usage plan.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApiStage {
-
-
-    /// 
-    /// API Id of the associated API stage in a usage plan.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApiId")]
-    pub api_id: Option<String>,
 
 
     /// 
@@ -233,5 +184,64 @@ pub struct ApiStage {
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
     pub stage: Option<String>,
+
+
+    /// 
+    /// API Id of the associated API stage in a usage plan.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApiId")]
+    pub api_id: Option<String>,
+
+}
+
+
+/// QuotaSettings is a property of the AWS::ApiGateway::UsagePlan resource that specifies a target for the maximum number of requests users can make to your REST APIs.
+///
+/// In some cases clients can exceed the targets that you set. Don’t rely on usage plans to control costs. Consider using AWS Budgets to monitor costs     and AWS WAF to manage API requests.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct QuotaSettings {
+
+
+    /// 
+    /// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DAY | MONTH | WEEK
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Period")]
+    pub period: Option<String>,
+
+
+    /// 
+    /// The number of requests subtracted from the given limit in the initial time period.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Offset")]
+    pub offset: Option<i64>,
+
+
+    /// 
+    /// The target maximum number of requests that can be made in a given time period.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Limit")]
+    pub limit: Option<i64>,
 
 }

@@ -1,54 +1,8 @@
 
 
 /// The AWS::GuardDuty::Filter resource specifies a new filter defined by          the provided findingCriteria.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFilter {
-
-
-    /// 
-    /// Specifies the action that is to be applied to the findings that match the filter.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ARCHIVE | NOOP
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Action")]
-    pub action: String,
-
-
-    /// 
-    /// The ID of the detector belonging to the GuardDuty account that you want to create a filter    for.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 300
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DetectorId")]
-    pub detector_id: String,
-
-
-    /// 
-    /// The description of the filter. Valid characters include alphanumeric characters, and    special characters such as hyphen, period, colon, underscore, parentheses ({ },     [ ], and ( )), forward slash, horizontal tab, vertical tab,    newline, form feed, return, and whitespace.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: String,
 
 
     /// 
@@ -80,6 +34,36 @@ pub struct CfnFilter {
 
 
     /// 
+    /// Specifies the action that is to be applied to the findings that match the filter.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ARCHIVE | NOOP
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Action")]
+    pub action: String,
+
+
+    /// 
+    /// The description of the filter. Valid characters include alphanumeric characters, and    special characters such as hyphen, period, colon, underscore, parentheses ({ },     [ ], and ( )), forward slash, horizontal tab, vertical tab,    newline, form feed, return, and whitespace.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: String,
+
+
+    /// 
     /// The name of the filter. Valid characters include period (.), underscore (_), dash (-), and    alphanumeric characters. A whitespace is considered to be an invalid character.
     /// 
     /// Required: Yes
@@ -106,47 +90,74 @@ pub struct CfnFilter {
     #[serde(rename = "FindingCriteria")]
     pub finding_criteria: FindingCriteria,
 
+
+    /// 
+    /// The ID of the detector belonging to the GuardDuty account that you want to create a filter    for.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 300
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DetectorId")]
+    pub detector_id: String,
+
 }
 
+impl cfn_resources::CfnResource for CfnFilter {
+    fn type_string() -> &'static str {
+        "AWS::GuardDuty::Filter"
+    }
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Specifies the condition to apply to a single field when filtering through findings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Condition {
+
+
+    /// 
+    /// Represents a less than condition to be applied to a single field when    querying for findings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LessThan")]
+    pub less_than: Option<i64>,
+
+
+    /// 
+    /// Represents an equal       condition to be applied to    a single field when querying for findings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Equals")]
+    pub equals: Option<Vec<String>>,
+
+
+    /// 
+    /// Represents the less than condition to apply to a single field when querying for          findings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Lt")]
+    pub lt: Option<i64>,
 
 
     /// 
@@ -159,6 +170,42 @@ pub struct Condition {
     /// Update requires: No interruption
     #[serde(rename = "GreaterThan")]
     pub greater_than: Option<i64>,
+
+
+    /// 
+    /// Represents the equal condition to apply to a single field when querying for          findings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Eq")]
+    pub eq: Option<Vec<String>>,
+
+
+    /// 
+    /// Represents a less than or equal condition to be applied to a single    field when querying for findings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LessThanOrEqual")]
+    pub less_than_or_equal: Option<i64>,
+
+
+    /// 
+    /// Represents the not equal condition to apply to a single field when querying for          findings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Neq")]
+    pub neq: Option<Vec<String>>,
 
 
     /// 
@@ -186,54 +233,6 @@ pub struct Condition {
 
 
     /// 
-    /// Represents a greater than or equal condition to be applied to a    single field when querying for findings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "GreaterThanOrEqual")]
-    pub greater_than_or_equal: Option<i64>,
-
-
-    /// 
-    /// Represents a less than or equal condition to be applied to a single    field when querying for findings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LessThanOrEqual")]
-    pub less_than_or_equal: Option<i64>,
-
-
-    /// 
-    /// Represents an equal       condition to be applied to    a single field when querying for findings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Equals")]
-    pub equals: Option<Vec<String>>,
-
-
-    /// 
-    /// Represents the not equal condition to apply to a single field when querying for          findings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Neq")]
-    pub neq: Option<Vec<String>>,
-
-
-    /// 
     /// Represents the greater than or equal condition to apply to a single field when          querying for findings.
     /// 
     /// Required: No
@@ -243,6 +242,18 @@ pub struct Condition {
     /// Update requires: No interruption
     #[serde(rename = "Gte")]
     pub gte: Option<i64>,
+
+
+    /// 
+    /// Represents a greater than or equal condition to be applied to a    single field when querying for findings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GreaterThanOrEqual")]
+    pub greater_than_or_equal: Option<i64>,
 
 
     /// 
@@ -256,48 +267,24 @@ pub struct Condition {
     #[serde(rename = "NotEquals")]
     pub not_equals: Option<Vec<String>>,
 
-
-    /// 
-    /// Represents the equal condition to apply to a single field when querying for          findings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Eq")]
-    pub eq: Option<Vec<String>>,
-
-
-    /// 
-    /// Represents a less than condition to be applied to a single field when    querying for findings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LessThan")]
-    pub less_than: Option<i64>,
-
-
-    /// 
-    /// Represents the less than condition to apply to a single field when querying for          findings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Lt")]
-    pub lt: Option<i64>,
-
 }
 
 
 /// Represents a map of finding properties that match specified conditions and values          when querying findings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FindingCriteria {
+
+
+    /// 
+    /// Specifies the condition to be applied to a single field when filtering through          findings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Condition
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ItemType")]
+    pub item_type: Option<Condition>,
 
 
     /// 
@@ -315,16 +302,39 @@ pub struct FindingCriteria {
     #[serde(rename = "Criterion")]
     pub criterion: Option<serde_json::Value>,
 
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
 
     /// 
-    /// Specifies the condition to be applied to a single field when filtering through          findings.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// Required: No
-    ///
-    /// Type: Condition
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ItemType")]
-    pub item_type: Option<Condition>,
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

@@ -1,56 +1,8 @@
 
 
 /// The AWS::ApiGateway::ApiKey resource creates a unique key that you can distribute to clients who are executing API Gateway Method resources that require an API key. To specify which API key clients must use, map the API key with the RestApi and Stage resources that include the methods that require a key.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApiKey {
-
-
-    /// 
-    /// Specifies whether the ApiKey can be used by callers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// The description of the ApiKey.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// Specifies a value of the API key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
-
-    /// 
-    /// The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with aws:. The tag value can be up to 256 characters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -68,15 +20,15 @@ pub struct CfnApiKey {
 
 
     /// 
-    /// DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
+    /// Specifies a value of the API key.
     /// 
     /// Required: No
     ///
-    /// Type: List of StageKey
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "StageKeys")]
-    pub stage_keys: Option<Vec<StageKey>>,
+    /// Update requires: Replacement
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 
     /// 
@@ -92,6 +44,42 @@ pub struct CfnApiKey {
 
 
     /// 
+    /// The description of the ApiKey.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with aws:. The tag value can be up to 256 characters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of StageKey
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StageKeys")]
+    pub stage_keys: Option<Vec<StageKey>>,
+
+
+    /// 
     /// Specifies whether (true) or not (false) the key identifier is distinct from the created API key value. This parameter is deprecated and should not be used.
     /// 
     /// Required: No
@@ -102,37 +90,28 @@ pub struct CfnApiKey {
     #[serde(rename = "GenerateDistinctId")]
     pub generate_distinct_id: Option<bool>,
 
+
+    /// 
+    /// Specifies whether the ApiKey can be used by callers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
 }
 
+impl cfn_resources::CfnResource for CfnApiKey {
+    fn type_string() -> &'static str {
+        "AWS::ApiGateway::ApiKey"
+    }
 
-/// StageKey is a property of the AWS::ApiGateway::ApiKey resource that specifies the stage to associate with the API key. This association allows only clients with the key to make requests to methods in that stage.
-#[derive(Default, serde::Serialize)]
-pub struct StageKey {
-
-
-    /// 
-    /// The string identifier of the associated RestApi.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RestApiId")]
-    pub rest_api_id: Option<String>,
-
-
-    /// 
-    /// The stage name associated with the stage key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StageName")]
-    pub stage_name: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -143,7 +122,7 @@ pub struct StageKey {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -167,5 +146,36 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+}
+
+
+/// StageKey is a property of the AWS::ApiGateway::ApiKey resource that specifies the stage to associate with the API key. This association allows only clients with the key to make requests to methods in that stage.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct StageKey {
+
+
+    /// 
+    /// The stage name associated with the stage key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StageName")]
+    pub stage_name: Option<String>,
+
+
+    /// 
+    /// The string identifier of the associated RestApi.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RestApiId")]
+    pub rest_api_id: Option<String>,
 
 }

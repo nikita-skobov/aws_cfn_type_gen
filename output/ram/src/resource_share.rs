@@ -1,8 +1,56 @@
 
 
 /// Creates a resource share. You can provide a list of the Amazon Resource Names (ARNs)       for the resources that you want to share, a list of principals you want to share the       resources with, and the permissions to grant those principals.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceShare {
+
+
+    /// 
+    /// Specifies a list of one or more ARNs of the resources to associate with the       resource share.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResourceArns")]
+    pub resource_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// Specifies one or more tags to attach to the resource share itself. It doesn't attach the tags to       the resources associated with the resource share.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// Specifies the Amazon Resource Names (ARNs) of the AWS RAM permission to associate with the resource share. If you do       not specify an ARN for the permission, AWS RAM automatically attaches the default version       of the permission for each resource type. You can associate only one permission with       each resource type included in the resource share.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PermissionArns")]
+    pub permission_arns: Option<Vec<String>>,
+
+
+    /// 
+    /// Specifies the name of the resource share.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -22,30 +70,6 @@ pub struct CfnResourceShare {
 
 
     /// 
-    /// Specifies the Amazon Resource Names (ARNs) of the AWS RAM permission to associate with the resource share. If you do       not specify an ARN for the permission, AWS RAM automatically attaches the default version       of the permission for each resource type. You can associate only one permission with       each resource type included in the resource share.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PermissionArns")]
-    pub permission_arns: Option<Vec<String>>,
-
-
-    /// 
-    /// Specifies a list of one or more ARNs of the resources to associate with the       resource share.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResourceArns")]
-    pub resource_arns: Option<Vec<String>>,
-
-
-    /// 
     /// Specifies whether principals outside your organization in AWS Organizations can be associated       with a resource share. A value of true lets you share with individual AWS accounts       that are not in your organization. A value of false       only has meaning if your account is a member of an AWS Organization. The default value       is true.
     /// 
     /// Required: No
@@ -56,30 +80,16 @@ pub struct CfnResourceShare {
     #[serde(rename = "AllowExternalPrincipals")]
     pub allow_external_principals: Option<bool>,
 
+}
 
-    /// 
-    /// Specifies one or more tags to attach to the resource share itself. It doesn't attach the tags to       the resources associated with the resource share.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnResourceShare {
+    fn type_string() -> &'static str {
+        "AWS::RAM::ResourceShare"
+    }
 
-
-    /// 
-    /// Specifies the name of the resource share.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -90,19 +100,8 @@ pub struct CfnResourceShare {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -114,5 +113,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

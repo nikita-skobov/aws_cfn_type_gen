@@ -1,8 +1,24 @@
 
 
 /// Describes a parameter group.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClusterParameterGroup {
+
+
+    /// 
+    /// An array of parameters to be modified. A maximum of 20 parameters can be modified       in a single request.
+    /// 
+    /// For each parameter to be modified, you must supply at least the parameter name and       parameter value; other name-value pairs of the parameter are optional.
+    /// 
+    /// For the workload management (WLM) configuration, you must supply all the name-value       pairs in the wlm_json_configuration parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Parameter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Parameters")]
+    pub parameters: Option<Vec<Parameter>>,
 
 
     /// 
@@ -34,19 +50,17 @@ pub struct CfnClusterParameterGroup {
 
 
     /// 
-    /// An array of parameters to be modified. A maximum of 20 parameters can be modified       in a single request.
-    /// 
-    /// For each parameter to be modified, you must supply at least the parameter name and       parameter value; other name-value pairs of the parameter are optional.
-    /// 
-    /// For the workload management (WLM) configuration, you must supply all the name-value       pairs in the wlm_json_configuration parameter.
+    /// The name of the cluster parameter group.
     /// 
     /// Required: No
     ///
-    /// Type: List of Parameter
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Parameters")]
-    pub parameters: Option<Vec<Parameter>>,
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ParameterGroupName")]
+    pub parameter_group_name: Option<String>,
 
 
     /// 
@@ -60,25 +74,21 @@ pub struct CfnClusterParameterGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+}
 
-    /// 
-    /// The name of the cluster parameter group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ParameterGroupName")]
-    pub parameter_group_name: Option<String>,
+impl cfn_resources::CfnResource for CfnClusterParameterGroup {
+    fn type_string() -> &'static str {
+        "AWS::Redshift::ClusterParameterGroup"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Describes a parameter in a cluster parameter group.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Parameter {
 
 
@@ -119,7 +129,7 @@ pub struct Parameter {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

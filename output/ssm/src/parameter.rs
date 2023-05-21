@@ -3,8 +3,22 @@
 /// The AWS::SSM::Parameter resource creates an SSM parameter in AWS Systems Manager Parameter Store.
 ///
 /// For information about valid values for parameters, see Requirements     and Constraints for Parameter Names in the AWS Systems Manager User     Guide and PutParameter in the     AWS Systems Manager API Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnParameter {
+
+
+    /// 
+    /// Optional metadata that you assign to a resource in the form of an arbitrary set of tags    (key-value pairs). Tags enable you to categorize a resource in different ways, such as by    purpose, owner, or environment. For example, you might want to tag a Systems Manager parameter    to identify the type of resource to which it applies, the environment, or the type of    configuration data referenced by the parameter.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Maximum: 1000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
 
 
     /// 
@@ -26,6 +40,22 @@ pub struct CfnParameter {
 
 
     /// 
+    /// The type of parameter.
+    /// 
+    /// NoteAWS CloudFormation doesn't support creating a SecureString parameter     type.
+    /// 
+    /// Allowed Values: String | StringList
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+
+    /// 
     /// Information about the policies assigned to a parameter.
     /// 
     /// Assigning parameter   policies in the         AWS Systems Manager User Guide.
@@ -37,6 +67,34 @@ pub struct CfnParameter {
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
     pub policies: Option<String>,
+
+
+    /// 
+    /// The parameter tier.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Advanced | Intelligent-Tiering | Standard
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tier")]
+    pub tier: Option<String>,
+
+
+    /// 
+    /// The parameter value.
+    /// 
+    /// NoteIf type is StringList, the system returns a comma-separated string with no   spaces between commas in the Value field.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 
     /// 
@@ -86,62 +144,14 @@ pub struct CfnParameter {
     #[serde(rename = "DataType")]
     pub data_type: Option<String>,
 
+}
 
-    /// 
-    /// Optional metadata that you assign to a resource in the form of an arbitrary set of tags    (key-value pairs). Tags enable you to categorize a resource in different ways, such as by    purpose, owner, or environment. For example, you might want to tag a Systems Manager parameter    to identify the type of resource to which it applies, the environment, or the type of    configuration data referenced by the parameter.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
+impl cfn_resources::CfnResource for CfnParameter {
+    fn type_string() -> &'static str {
+        "AWS::SSM::Parameter"
+    }
 
-
-    /// 
-    /// The parameter value.
-    /// 
-    /// NoteIf type is StringList, the system returns a comma-separated string with no   spaces between commas in the Value field.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The parameter tier.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Advanced | Intelligent-Tiering | Standard
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tier")]
-    pub tier: Option<String>,
-
-
-    /// 
-    /// The type of parameter.
-    /// 
-    /// NoteAWS CloudFormation doesn't support creating a SecureString parameter     type.
-    /// 
-    /// Allowed Values: String | StringList
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

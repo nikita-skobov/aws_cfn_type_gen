@@ -3,7 +3,7 @@
 /// The AWS::Macie::Session resource represents the Amazon Macie       service and certain configuration settings for an Amazon Macie account in a       specific AWS Region. It enables Macie to become       operational for a specific account in a specific Region. An account can have only one       session in each Region.
 ///
 /// You must create an AWS::Macie::Session resource for an account before you       can create other types of resources for the account. Use a DependsOn         attribute to ensure that an AWS::Macie::Session resource is       created before other Macie resources are created for an account. For       example, "DependsOn": "Session".
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSession {
 
 
@@ -32,4 +32,14 @@ pub struct CfnSession {
     #[serde(rename = "Status")]
     pub status: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnSession {
+    fn type_string() -> &'static str {
+        "AWS::Macie::Session"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

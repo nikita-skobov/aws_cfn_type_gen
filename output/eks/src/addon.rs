@@ -3,8 +3,20 @@
 /// Creates an Amazon EKS add-on.
 ///
 /// Amazon EKS add-ons help to automate the provisioning and lifecycle management       of common operational software for Amazon EKS clusters. For more information,       see Amazon EKS add-ons in the Amazon EKS User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAddon {
+
+
+    /// 
+    /// The version of the add-on.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AddonVersion")]
+    pub addon_version: Option<String>,
 
 
     /// 
@@ -26,15 +38,27 @@ pub struct CfnAddon {
 
 
     /// 
-    /// The configuration values that you provided.
+    /// The name of the add-on.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Update requires: Replacement
+    #[serde(rename = "AddonName")]
+    pub addon_name: String,
+
+
+    /// 
+    /// The metadata that you apply to the add-on to assist with categorization and       organization. Each tag consists of a key and an optional value, both of which you       define. Add-on tags do not propagate to any other resources associated with the       cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "ConfigurationValues")]
-    pub configuration_values: Option<String>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -56,30 +80,6 @@ pub struct CfnAddon {
 
 
     /// 
-    /// Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on. If an IAM       account is associated with the add-on, it isn't removed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreserveOnDelete")]
-    pub preserve_on_delete: Option<bool>,
-
-
-    /// 
-    /// The metadata that you apply to the add-on to assist with categorization and       organization. Each tag consists of a key and an optional value, both of which you       define. Add-on tags do not propagate to any other resources associated with the       cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The name of the cluster.
     /// 
     /// Required: Yes
@@ -98,28 +98,38 @@ pub struct CfnAddon {
 
 
     /// 
-    /// The name of the add-on.
+    /// Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on. If an IAM       account is associated with the add-on, it isn't removed.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AddonName")]
-    pub addon_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "PreserveOnDelete")]
+    pub preserve_on_delete: Option<bool>,
 
 
     /// 
-    /// The version of the add-on.
+    /// The configuration values that you provided.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AddonVersion")]
-    pub addon_version: Option<String>,
+    #[serde(rename = "ConfigurationValues")]
+    pub configuration_values: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnAddon {
+    fn type_string() -> &'static str {
+        "AWS::EKS::Addon"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -130,7 +140,7 @@ pub struct CfnAddon {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

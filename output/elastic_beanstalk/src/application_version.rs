@@ -1,7 +1,7 @@
 
 
 /// The AWS::ElasticBeanstalk::ApplicationVersion resource is an AWS Elastic Beanstalk    resource type that specifies an application version, an iteration of deployable code, for an    Elastic Beanstalk application.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationVersion {
 
 
@@ -50,24 +50,20 @@ pub struct CfnApplicationVersion {
 
 }
 
+impl cfn_resources::CfnResource for CfnApplicationVersion {
+    fn type_string() -> &'static str {
+        "AWS::ElasticBeanstalk::ApplicationVersion"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// The SourceBundle property is an embedded property of the AWS::ElasticBeanstalk::ApplicationVersion resource. It specifies the Amazon S3     location of the source bundle for an AWS Elastic Beanstalk application version.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SourceBundle {
-
-
-    /// 
-    /// The Amazon S3 bucket where the data is located.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Bucket")]
-    pub s3_bucket: String,
 
 
     /// 
@@ -82,5 +78,19 @@ pub struct SourceBundle {
     /// Update requires: Replacement
     #[serde(rename = "S3Key")]
     pub s3_key: String,
+
+
+    /// 
+    /// The Amazon S3 bucket where the data is located.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Bucket")]
+    pub s3_bucket: String,
 
 }

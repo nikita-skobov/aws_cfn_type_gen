@@ -3,52 +3,8 @@
 /// The AWS::Lambda::EventSourceMapping resource creates a mapping between an event source and    an AWS Lambda function. Lambda reads items from the event source and triggers the function.
 ///
 /// For details about each event source type, see the following topics. In particular, each of the topics    describes the required and optional parameters for the specific event source.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEventSourceMapping {
-
-
-    /// 
-    /// The name of the Kafka topic.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Topics")]
-    pub topics: Option<Vec<String>>,
-
-
-    /// 
-    /// The maximum number of records in each batch that Lambda pulls from your stream or queue and sends to your function. Lambda passes all of the records in the batch to the function in a single call, up to the payload limit for synchronous invocation  (6 MB).
-    /// 
-    /// Amazon Kinesis – Default 100. Max 10,000.                        Amazon DynamoDB Streams – Default 100. Max 10,000.                        Amazon Simple Queue Service – Default 10. For standard queues the max is 10,000. For FIFO queues the max is 10.                        Amazon Managed Streaming for Apache Kafka – Default 100. Max 10,000.                        Self-managed Apache Kafka – Default 100. Max 10,000.                        Amazon MQ (ActiveMQ and RabbitMQ) – Default 100. Max 10,000.                        DocumentDB – Default 100. Max 10,000.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 10000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BatchSize")]
-    pub batch_size: Option<i64>,
-
-
-    /// 
-    /// With StartingPosition set to AT_TIMESTAMP, the time from which to start    reading, in Unix time seconds.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StartingPositionTimestamp")]
-    pub starting_position_timestamp: Option<f64>,
 
 
     /// 
@@ -61,6 +17,92 @@ pub struct CfnEventSourceMapping {
     /// Update requires: No interruption
     #[serde(rename = "DestinationConfig")]
     pub destination_config: Option<DestinationConfig>,
+
+
+    /// 
+    /// The position in a stream from which to start reading. Required for Amazon Kinesis and Amazon DynamoDB.
+    /// 
+    /// LATEST - Read only new records.        TRIM_HORIZON - Process all available records.        AT_TIMESTAMP - Specify a time from which to start reading records.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StartingPosition")]
+    pub starting_position: Option<String>,
+
+
+    /// 
+    /// When true, the event source mapping is active. When false, Lambda pauses polling and invocation.
+    /// 
+    /// Default: True
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// (Streams and SQS) A list of current response type enums applied to the event source mapping.
+    /// 
+    /// Valid Values: ReportBatchItemFailures
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FunctionResponseTypes")]
+    pub function_response_types: Option<Vec<String>>,
+
+
+    /// 
+    /// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: AmazonManagedKafkaEventSourceConfig
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AmazonManagedKafkaEventSourceConfig")]
+    pub amazon_managed_kafka_event_source_config: Option<AmazonManagedKafkaEventSourceConfig>,
+
+
+    /// 
+    /// (Amazon MQ) The name of the Amazon MQ broker destination queue to consume.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Queues")]
+    pub queues: Option<Vec<String>>,
+
+
+    /// 
+    /// (Kinesis and DynamoDB Streams only) Discard records after the specified number of retries. The default value is -1, which sets the maximum number of retries to infinite. When MaximumRetryAttempts is infinite, Lambda retries failed records until the record expires in the event source.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: -1
+    ///
+    /// Maximum: 10000
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaximumRetryAttempts")]
+    pub maximum_retry_attempts: Option<i64>,
 
 
     /// 
@@ -80,51 +122,15 @@ pub struct CfnEventSourceMapping {
 
 
     /// 
-    /// Specific configuration settings for a DocumentDB event source.
+    /// With StartingPosition set to AT_TIMESTAMP, the time from which to start    reading, in Unix time seconds.
     /// 
     /// Required: No
     ///
-    /// Type: DocumentDBEventSourceConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DocumentDBEventSourceConfig")]
-    pub document_dbevent_source_config: Option<DocumentDBEventSourceConfig>,
-
-
-    /// 
-    /// The self-managed Apache Kafka cluster for your event source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SelfManagedEventSource
+    /// Type: Double
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SelfManagedEventSource")]
-    pub self_managed_event_source: Option<SelfManagedEventSource>,
-
-
-    /// 
-    /// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: AmazonManagedKafkaEventSourceConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "AmazonManagedKafkaEventSourceConfig")]
-    pub amazon_managed_kafka_event_source_config: Option<AmazonManagedKafkaEventSourceConfig>,
-
-
-    /// 
-    /// Specific configuration settings for a self-managed Apache Kafka event source.
-    /// 
-    /// Required: No
-    ///
-    /// Type: SelfManagedKafkaEventSourceConfig
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SelfManagedKafkaEventSourceConfig")]
-    pub self_managed_kafka_event_source_config: Option<SelfManagedKafkaEventSourceConfig>,
+    #[serde(rename = "StartingPositionTimestamp")]
+    pub starting_position_timestamp: Option<f64>,
 
 
     /// 
@@ -144,27 +150,37 @@ pub struct CfnEventSourceMapping {
 
 
     /// 
-    /// (Amazon SQS only) The scaling configuration for the event source. For more information, see Configuring maximum concurrency for Amazon SQS event sources.
+    /// The maximum amount of time, in seconds, that Lambda spends gathering records before invoking the function.
+    /// 
+    /// Default (Kinesis, DynamoDB, Amazon SQS event sources): 0
+    /// 
+    /// Default (Amazon MSK, Kafka, Amazon MQ, Amazon DocumentDB event sources): 500 ms
+    /// 
+    /// Related setting: For Amazon SQS event sources, when you set BatchSize    to a value greater than 10, you must set MaximumBatchingWindowInSeconds to at least 1.
     /// 
     /// Required: No
     ///
-    /// Type: ScalingConfig
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 300
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ScalingConfig")]
-    pub scaling_config: Option<ScalingConfig>,
+    #[serde(rename = "MaximumBatchingWindowInSeconds")]
+    pub maximum_batching_window_in_seconds: Option<i64>,
 
 
     /// 
-    /// (Kinesis and DynamoDB Streams only) If the function returns an error, split the batch in two and retry. The default value is false.
+    /// The self-managed Apache Kafka cluster for your event source.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: SelfManagedEventSource
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "BisectBatchOnFunctionError")]
-    pub bisect_batch_on_function_error: Option<bool>,
+    /// Update requires: Replacement
+    #[serde(rename = "SelfManagedEventSource")]
+    pub self_managed_event_source: Option<SelfManagedEventSource>,
 
 
     /// 
@@ -190,31 +206,15 @@ pub struct CfnEventSourceMapping {
 
 
     /// 
-    /// (Amazon MQ) The name of the Amazon MQ broker destination queue to consume.
+    /// Specific configuration settings for a self-managed Apache Kafka event source.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Queues")]
-    pub queues: Option<Vec<String>>,
-
-
-    /// 
-    /// The position in a stream from which to start reading. Required for Amazon Kinesis and Amazon DynamoDB.
-    /// 
-    /// LATEST - Read only new records.        TRIM_HORIZON - Process all available records.        AT_TIMESTAMP - Specify a time from which to start reading records.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
+    /// Type: SelfManagedKafkaEventSourceConfig
     ///
     /// Update requires: Replacement
-    #[serde(rename = "StartingPosition")]
-    pub starting_position: Option<String>,
+    #[serde(rename = "SelfManagedKafkaEventSourceConfig")]
+    pub self_managed_kafka_event_source_config: Option<SelfManagedKafkaEventSourceConfig>,
 
 
     /// 
@@ -231,22 +231,6 @@ pub struct CfnEventSourceMapping {
     /// Update requires: Replacement
     #[serde(rename = "EventSourceArn")]
     pub event_source_arn: Option<String>,
-
-
-    /// 
-    /// (Streams and SQS) A list of current response type enums applied to the event source mapping.
-    /// 
-    /// Valid Values: ReportBatchItemFailures
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 1
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FunctionResponseTypes")]
-    pub function_response_types: Option<Vec<String>>,
 
 
     /// 
@@ -268,45 +252,45 @@ pub struct CfnEventSourceMapping {
 
 
     /// 
-    /// (Kinesis and DynamoDB Streams only) Discard records after the specified number of retries. The default value is -1, which sets the maximum number of retries to infinite. When MaximumRetryAttempts is infinite, Lambda retries failed records until the record expires in the event source.
+    /// The maximum number of records in each batch that Lambda pulls from your stream or queue and sends to your function. Lambda passes all of the records in the batch to the function in a single call, up to the payload limit for synchronous invocation  (6 MB).
+    /// 
+    /// Amazon Kinesis – Default 100. Max 10,000.                        Amazon DynamoDB Streams – Default 100. Max 10,000.                        Amazon Simple Queue Service – Default 10. For standard queues the max is 10,000. For FIFO queues the max is 10.                        Amazon Managed Streaming for Apache Kafka – Default 100. Max 10,000.                        Self-managed Apache Kafka – Default 100. Max 10,000.                        Amazon MQ (ActiveMQ and RabbitMQ) – Default 100. Max 10,000.                        DocumentDB – Default 100. Max 10,000.
     /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
-    /// Minimum: -1
+    /// Minimum: 1
     ///
     /// Maximum: 10000
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaximumRetryAttempts")]
-    pub maximum_retry_attempts: Option<i64>,
+    #[serde(rename = "BatchSize")]
+    pub batch_size: Option<i64>,
 
 
     /// 
-    /// When true, the event source mapping is active. When false, Lambda pauses polling and invocation.
-    /// 
-    /// Default: True
+    /// Specific configuration settings for a DocumentDB event source.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: DocumentDBEventSourceConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
+    #[serde(rename = "DocumentDBEventSourceConfig")]
+    pub document_dbevent_source_config: Option<DocumentDBEventSourceConfig>,
 
 
     /// 
-    /// An object that defines the filter criteria that   determine whether Lambda should process an event. For more information, see Lambda event filtering.
+    /// (Amazon SQS only) The scaling configuration for the event source. For more information, see Configuring maximum concurrency for Amazon SQS event sources.
     /// 
     /// Required: No
     ///
-    /// Type: FilterCriteria
+    /// Type: ScalingConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FilterCriteria")]
-    pub filter_criteria: Option<FilterCriteria>,
+    #[serde(rename = "ScalingConfig")]
+    pub scaling_config: Option<ScalingConfig>,
 
 
     /// 
@@ -324,94 +308,57 @@ pub struct CfnEventSourceMapping {
 
 
     /// 
-    /// The maximum amount of time, in seconds, that Lambda spends gathering records before invoking the function.
-    /// 
-    /// Default (Kinesis, DynamoDB, Amazon SQS event sources): 0
-    /// 
-    /// Default (Amazon MSK, Kafka, Amazon MQ, Amazon DocumentDB event sources): 500 ms
-    /// 
-    /// Related setting: For Amazon SQS event sources, when you set BatchSize    to a value greater than 10, you must set MaximumBatchingWindowInSeconds to at least 1.
+    /// (Kinesis and DynamoDB Streams only) If the function returns an error, split the batch in two and retry. The default value is false.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 300
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaximumBatchingWindowInSeconds")]
-    pub maximum_batching_window_in_seconds: Option<i64>,
-
-}
-
-
-/// Specific configuration settings for a self-managed Apache Kafka event source.
-#[derive(Default, serde::Serialize)]
-pub struct SelfManagedKafkaEventSourceConfig {
+    #[serde(rename = "BisectBatchOnFunctionError")]
+    pub bisect_batch_on_function_error: Option<bool>,
 
 
     /// 
-    /// The identifier for the Kafka consumer group to join. The consumer group ID must be unique among all your Kafka event sources.  After creating a Kafka event source mapping with the consumer group ID specified, you cannot update this value. For more information, see  Customizable consumer group ID.
+    /// The name of the Kafka topic.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 200
-    ///
-    /// Pattern: [a-zA-Z0-9-\/*:_+=.@-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConsumerGroupId")]
-    pub consumer_group_id: Option<String>,
-
-}
-
-
-/// The self-managed Apache Kafka cluster for your event source.
-#[derive(Default, serde::Serialize)]
-pub struct SelfManagedEventSource {
-
-
-    /// 
-    /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
-    /// 
-    /// Required: No
-    ///
-    /// Type: Endpoints
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Endpoints")]
-    pub endpoints: Option<Endpoints>,
-
-}
-
-
-/// An object that contains the filters for an event source.
-#[derive(Default, serde::Serialize)]
-pub struct FilterCriteria {
-
-
-    /// 
-    /// A list of filters.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Filter
+    /// Maximum: 1
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Filters")]
-    pub filters: Option<Vec<Filter>>,
+    #[serde(rename = "Topics")]
+    pub topics: Option<Vec<String>>,
 
+
+    /// 
+    /// An object that defines the filter criteria that   determine whether Lambda should process an event. For more information, see Lambda event filtering.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FilterCriteria
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FilterCriteria")]
+    pub filter_criteria: Option<FilterCriteria>,
+
+}
+
+impl cfn_resources::CfnResource for CfnEventSourceMapping {
+    fn type_string() -> &'static str {
+        "AWS::Lambda::EventSourceMapping"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// (Amazon SQS only) The scaling configuration for the event source. To remove the configuration, pass an empty value.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ScalingConfig {
 
 
@@ -434,7 +381,7 @@ pub struct ScalingConfig {
 
 
 /// An array of the authentication protocol, VPC components, or virtual host to secure and define your event source.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SourceAccessConfiguration {
 
 
@@ -474,109 +421,8 @@ pub struct SourceAccessConfiguration {
 }
 
 
-/// Specific configuration settings for a DocumentDB event source.
-#[derive(Default, serde::Serialize)]
-pub struct DocumentDBEventSourceConfig {
-
-
-    /// 
-    /// The name of the collection to consume within the database. If you do not specify a collection, Lambda consumes all collections.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 57
-    ///
-    /// Pattern: (^(?!(system\x2e)))(^[_a-zA-Z0-9])([^$]*)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CollectionName")]
-    pub collection_name: Option<String>,
-
-
-    /// 
-    /// The name of the database to consume within the DocumentDB cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: [^ /\.$\x22]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatabaseName")]
-    pub database_name: Option<String>,
-
-
-    /// 
-    /// Determines what DocumentDB sends to your event stream during document update operations. If set to UpdateLookup, DocumentDB sends a delta describing the changes, along with a copy of the entire document. Otherwise, DocumentDB sends only a partial document that contains the changes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Default | UpdateLookup
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FullDocument")]
-    pub full_document: Option<String>,
-
-}
-
-
-/// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
-#[derive(Default, serde::Serialize)]
-pub struct Endpoints {
-
-
-    /// 
-    /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KafkaBootstrapServers")]
-    pub kafka_bootstrap_servers: Option<Vec<String>>,
-
-}
-
-
-/// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
-#[derive(Default, serde::Serialize)]
-pub struct AmazonManagedKafkaEventSourceConfig {
-
-
-    /// 
-    /// The identifier for the Kafka consumer group to join. The consumer group ID must be unique among all your Kafka event sources.  After creating a Kafka event source mapping with the consumer group ID specified, you cannot update this value. For more information, see  Customizable consumer group ID.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 200
-    ///
-    /// Pattern: [a-zA-Z0-9-\/*:_+=.@-]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ConsumerGroupId")]
-    pub consumer_group_id: Option<String>,
-
-}
-
-
 /// A structure within a FilterCriteria object that defines an event filtering pattern.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Filter {
 
 
@@ -600,8 +446,33 @@ pub struct Filter {
 }
 
 
+/// Specific configuration settings for a self-managed Apache Kafka event source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SelfManagedKafkaEventSourceConfig {
+
+
+    /// 
+    /// The identifier for the Kafka consumer group to join. The consumer group ID must be unique among all your Kafka event sources.  After creating a Kafka event source mapping with the consumer group ID specified, you cannot update this value. For more information, see  Customizable consumer group ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 200
+    ///
+    /// Pattern: [a-zA-Z0-9-\/*:_+=.@-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConsumerGroupId")]
+    pub consumer_group_id: Option<String>,
+
+}
+
+
 /// A configuration object that specifies the destination of an event after Lambda processes it.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DestinationConfig {
 
 
@@ -619,8 +490,84 @@ pub struct DestinationConfig {
 }
 
 
+/// An object that contains the filters for an event source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FilterCriteria {
+
+
+    /// 
+    /// A list of filters.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Filter
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Filters")]
+    pub filters: Option<Vec<Filter>>,
+
+}
+
+
+/// Specific configuration settings for a DocumentDB event source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct DocumentDBEventSourceConfig {
+
+
+    /// 
+    /// The name of the collection to consume within the database. If you do not specify a collection, Lambda consumes all collections.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 57
+    ///
+    /// Pattern: (^(?!(system\x2e)))(^[_a-zA-Z0-9])([^$]*)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CollectionName")]
+    pub collection_name: Option<String>,
+
+
+    /// 
+    /// Determines what DocumentDB sends to your event stream during document update operations. If set to UpdateLookup, DocumentDB sends a delta describing the changes, along with a copy of the entire document. Otherwise, DocumentDB sends only a partial document that contains the changes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Default | UpdateLookup
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FullDocument")]
+    pub full_document: Option<String>,
+
+
+    /// 
+    /// The name of the database to consume within the DocumentDB cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: [^ /\.$\x22]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DatabaseName")]
+    pub database_name: Option<String>,
+
+}
+
+
 /// A destination for events that failed processing.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OnFailure {
 
 
@@ -640,5 +587,68 @@ pub struct OnFailure {
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
     pub destination: Option<String>,
+
+}
+
+
+/// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AmazonManagedKafkaEventSourceConfig {
+
+
+    /// 
+    /// The identifier for the Kafka consumer group to join. The consumer group ID must be unique among all your Kafka event sources.  After creating a Kafka event source mapping with the consumer group ID specified, you cannot update this value. For more information, see  Customizable consumer group ID.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 200
+    ///
+    /// Pattern: [a-zA-Z0-9-\/*:_+=.@-]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ConsumerGroupId")]
+    pub consumer_group_id: Option<String>,
+
+}
+
+
+/// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Endpoints {
+
+
+    /// 
+    /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KafkaBootstrapServers")]
+    pub kafka_bootstrap_servers: Option<Vec<String>>,
+
+}
+
+
+/// The self-managed Apache Kafka cluster for your event source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct SelfManagedEventSource {
+
+
+    /// 
+    /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
+    /// 
+    /// Required: No
+    ///
+    /// Type: Endpoints
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Endpoints")]
+    pub endpoints: Option<Endpoints>,
 
 }

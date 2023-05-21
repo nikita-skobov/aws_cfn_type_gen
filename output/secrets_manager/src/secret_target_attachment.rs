@@ -3,8 +3,20 @@
 /// The AWS::SecretsManager::SecretTargetAttachment resource completes the final    link between a Secrets Manager secret and the associated database by adding the database    connection information to the secret JSON. If you want to turn on automatic rotation    for a database credential secret, the secret must contain the database connection information.    For more information, see JSON structure     of Secrets Manager database credential secrets.
 ///
 /// For Amazon RDS master user credentials, see AWS::RDS::DBCluster MasterUserSecret.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSecretTargetAttachment {
+
+
+    /// 
+    /// The ARN or name of the secret. To reference a secret also created in this template, use    the see Ref    function with the secret's logical ID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretId")]
+    pub secret_id: String,
 
 
     /// 
@@ -32,16 +44,14 @@ pub struct CfnSecretTargetAttachment {
     #[serde(rename = "TargetId")]
     pub target_id: String,
 
+}
 
-    /// 
-    /// The ARN or name of the secret. To reference a secret also created in this template, use    the see Ref    function with the secret's logical ID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretId")]
-    pub secret_id: String,
+impl cfn_resources::CfnResource for CfnSecretTargetAttachment {
+    fn type_string() -> &'static str {
+        "AWS::SecretsManager::SecretTargetAttachment"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

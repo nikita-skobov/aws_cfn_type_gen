@@ -9,8 +9,22 @@
 /// Each monitoring account can be linked to as many as 100,000 source accounts.
 ///
 /// Each source account can be linked to as many as five monitoring accounts.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLink {
+
+
+    /// 
+    /// An array of key-value pairs to apply to the link.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -42,20 +56,6 @@ pub struct CfnLink {
 
 
     /// 
-    /// An array of key-value pairs to apply to the link.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
     /// An array of strings that define which types of data that the source account shares with the monitoring   account. Valid values are AWS::CloudWatch::Metric | AWS::Logs::LogGroup | AWS::XRay::Trace.
     /// 
     /// Required: Yes
@@ -66,4 +66,14 @@ pub struct CfnLink {
     #[serde(rename = "ResourceTypes")]
     pub resource_types: Vec<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnLink {
+    fn type_string() -> &'static str {
+        "AWS::Oam::Link"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

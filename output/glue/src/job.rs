@@ -1,42 +1,63 @@
 
 
 /// The AWS::Glue::Job resource specifies an AWS Glue job in the data       catalog. For more information, see Adding Jobs in AWS Glue and Job         Structure in the AWS Glue Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnJob {
 
 
+    /// Specifies configuration properties of a notification.
+    ///
+    /// Required: No
+    ///
+    /// Type: NotificationProperty
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotificationProperty")]
+    pub notification_property: Option<NotificationProperty>,
+
+
     /// 
-    /// The number of workers of a defined workerType that are allocated when a job runs.
-    /// 
-    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
+    /// The maximum number of times to retry this job after a JobRun fails.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NumberOfWorkers")]
-    pub number_of_workers: Option<i64>,
+    #[serde(rename = "MaxRetries")]
+    pub max_retries: Option<f64>,
 
 
     /// 
-    /// The name or Amazon Resource Name (ARN) of the IAM role associated with this       job.
+    /// The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
     /// 
-    /// Required: Yes
+    /// For the Standard worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2 executors per worker.For the G.1X worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.For the G.2X worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
+    /// Allowed values: G.025X | G.1X | G.2X | Standard
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Role")]
-    pub role: String,
+    #[serde(rename = "WorkerType")]
+    pub worker_type: Option<String>,
 
 
     /// 
-    /// Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version indicates the version supported for jobs of type Spark.
+    /// The tags to use with this job.
     /// 
-    /// For more information about the available AWS Glue versions and corresponding Spark and Python versions, see Glue version in the developer guide.
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<serde_json::Value>,
+
+
     /// 
-    /// Jobs that are created without specifying a Glue version default to Glue 0.9.
+    /// The name of the SecurityConfiguration structure to be used with this       job.
     /// 
     /// Required: No
     ///
@@ -46,11 +67,11 @@ pub struct CfnJob {
     ///
     /// Maximum: 255
     ///
-    /// Pattern: ^\w+\.\w+$
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "GlueVersion")]
-    pub glue_version: Option<String>,
+    #[serde(rename = "SecurityConfiguration")]
+    pub security_configuration: Option<String>,
 
 
     /// 
@@ -69,59 +90,6 @@ pub struct CfnJob {
     /// Update requires: No interruption
     #[serde(rename = "DefaultArguments")]
     pub default_arguments: Option<serde_json::Value>,
-
-
-    /// 
-    /// Non-overridable arguments for this job, specified as name-value pairs.
-    ///
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NonOverridableArguments")]
-    pub non_overridable_arguments: Option<serde_json::Value>,
-
-
-    /// 
-    /// The name you assign to this job definition.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
-    /// The maximum number of times to retry this job after a JobRun fails.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxRetries")]
-    pub max_retries: Option<f64>,
-
-
-    /// Specifies configuration properties of a notification.
-    ///
-    /// Required: No
-    ///
-    /// Type: NotificationProperty
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotificationProperty")]
-    pub notification_property: Option<NotificationProperty>,
 
 
     /// 
@@ -149,98 +117,6 @@ pub struct CfnJob {
 
 
     /// 
-    /// This field is reserved for future use.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogUri")]
-    pub log_uri: Option<String>,
-
-
-    /// 
-    /// The tags to use with this job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<serde_json::Value>,
-
-
-    /// 
-    /// Indicates whether the job is run with a standard or flexible execution class. The standard execution class is ideal for time-sensitive workloads that require fast job startup and dedicated resources.
-    /// 
-    /// The flexible execution class is appropriate for time-insensitive jobs whose start and completion times may vary.
-    /// 
-    /// Only jobs with AWS Glue version 3.0 and above and command type glueetl will be allowed to set ExecutionClass to FLEX. The flexible execution class is available for Spark jobs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExecutionClass")]
-    pub execution_class: Option<String>,
-
-
-    /// 
-    /// The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
-    /// 
-    /// For the Standard worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2 executors per worker.For the G.1X worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.For the G.2X worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: G.025X | G.1X | G.2X | Standard
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkerType")]
-    pub worker_type: Option<String>,
-
-
-    /// 
-    /// A description of the job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The name of the SecurityConfiguration structure to be used with this       job.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecurityConfiguration")]
-    pub security_configuration: Option<String>,
-
-
-    /// 
     /// The connections used for this job.
     /// 
     /// Required: No
@@ -252,15 +128,42 @@ pub struct CfnJob {
     pub connections: Option<ConnectionsList>,
 
 
-    /// The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).
+    /// 
+    /// Non-overridable arguments for this job, specified as name-value pairs.
     ///
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NonOverridableArguments")]
+    pub non_overridable_arguments: Option<serde_json::Value>,
+
+
+    /// 
+    /// The name or Amazon Resource Name (ARN) of the IAM role associated with this       job.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Role")]
+    pub role: String,
+
+
+    /// 
+    /// The number of workers of a defined workerType that are allocated when a job runs.
+    /// 
+    /// The maximum number of workers you can define are 299 for G.1X, and 149 for G.2X.
+    /// 
     /// Required: No
     ///
     /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Timeout")]
-    pub timeout: Option<i64>,
+    #[serde(rename = "NumberOfWorkers")]
+    pub number_of_workers: Option<i64>,
 
 
     /// 
@@ -282,6 +185,91 @@ pub struct CfnJob {
 
 
     /// 
+    /// The name you assign to this job definition.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Timeout")]
+    pub timeout: Option<i64>,
+
+
+    /// 
+    /// Indicates whether the job is run with a standard or flexible execution class. The standard execution class is ideal for time-sensitive workloads that require fast job startup and dedicated resources.
+    /// 
+    /// The flexible execution class is appropriate for time-insensitive jobs whose start and completion times may vary.
+    /// 
+    /// Only jobs with AWS Glue version 3.0 and above and command type glueetl will be allowed to set ExecutionClass to FLEX. The flexible execution class is available for Spark jobs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExecutionClass")]
+    pub execution_class: Option<String>,
+
+
+    /// 
+    /// Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version indicates the version supported for jobs of type Spark.
+    /// 
+    /// For more information about the available AWS Glue versions and corresponding Spark and Python versions, see Glue version in the developer guide.
+    /// 
+    /// Jobs that are created without specifying a Glue version default to Glue 0.9.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: ^\w+\.\w+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "GlueVersion")]
+    pub glue_version: Option<String>,
+
+
+    /// 
+    /// A description of the job.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// This parameter is no longer supported. Use MaxCapacity instead.
     /// 
     /// The number of capacity units that are allocated to this job.
@@ -294,11 +282,33 @@ pub struct CfnJob {
     #[serde(rename = "AllocatedCapacity")]
     pub allocated_capacity: Option<f64>,
 
+
+    /// 
+    /// This field is reserved for future use.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogUri")]
+    pub log_uri: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnJob {
+    fn type_string() -> &'static str {
+        "AWS::Glue::Job"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// An execution property of a job.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ExecutionProperty {
 
 
@@ -317,22 +327,8 @@ pub struct ExecutionProperty {
 
 
 /// Specifies code executed when a job is run.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JobCommand {
-
-
-    /// 
-    /// Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes       a job (required).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 400000
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScriptLocation")]
-    pub script_location: Option<String>,
 
 
     /// 
@@ -360,29 +356,25 @@ pub struct JobCommand {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-}
 
-
-/// Specifies configuration properties of a notification.
-#[derive(Default, serde::Serialize)]
-pub struct NotificationProperty {
-
-
-    /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
-    ///
+    /// 
+    /// Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes       a job (required).
+    /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
+    ///
+    /// Maximum: 400000
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotifyDelayAfter")]
-    pub notify_delay_after: Option<i64>,
+    #[serde(rename = "ScriptLocation")]
+    pub script_location: Option<String>,
 
 }
 
 
 /// Specifies the connections used by a job.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectionsList {
 
 
@@ -396,5 +388,23 @@ pub struct ConnectionsList {
     /// Update requires: No interruption
     #[serde(rename = "Connections")]
     pub connections: Option<Vec<String>>,
+
+}
+
+
+/// Specifies configuration properties of a notification.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NotificationProperty {
+
+
+    /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+    ///
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NotifyDelayAfter")]
+    pub notify_delay_after: Option<i64>,
 
 }

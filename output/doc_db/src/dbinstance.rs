@@ -1,20 +1,8 @@
 
 
 /// The AWS::DocDB::DBInstance Amazon DocumentDB (with MongoDB compatibility) resource describes a DBInstance.      For more information, see DBInstance in the Amazon DocumentDB Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBInstance {
-
-
-    /// 
-    /// The compute and memory capacity of the instance; for example,       db.m4.large. If you change the class of an instance there       can be some interruption in the cluster's service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBInstanceClass")]
-    pub dbinstance_class: String,
 
 
     /// 
@@ -49,15 +37,40 @@ pub struct CfnDBInstance {
     pub auto_minor_version_upgrade: Option<bool>,
 
 
-    /// Property description not available.
+    /// 
+    /// The compute and memory capacity of the instance; for example,       db.m4.large. If you change the class of an instance there       can be some interruption in the cluster's service.
+    /// 
+    /// Required: Yes
     ///
-    /// Required: No
-    ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnablePerformanceInsights")]
-    pub enable_performance_insights: Option<bool>,
+    #[serde(rename = "DBInstanceClass")]
+    pub dbinstance_class: String,
+
+
+    /// 
+    /// The tags to be assigned to the instance. You can assign up to      10 tags to an instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The identifier of the cluster that the instance will belong to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBClusterIdentifier")]
+    pub dbcluster_identifier: String,
 
 
     /// 
@@ -74,6 +87,17 @@ pub struct CfnDBInstance {
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnablePerformanceInsights")]
+    pub enable_performance_insights: Option<bool>,
 
 
     /// 
@@ -95,30 +119,16 @@ pub struct CfnDBInstance {
     #[serde(rename = "PreferredMaintenanceWindow")]
     pub preferred_maintenance_window: Option<String>,
 
+}
 
-    /// 
-    /// The identifier of the cluster that the instance will belong to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBClusterIdentifier")]
-    pub dbcluster_identifier: String,
+impl cfn_resources::CfnResource for CfnDBInstance {
+    fn type_string() -> &'static str {
+        "AWS::DocDB::DBInstance"
+    }
 
-
-    /// 
-    /// The tags to be assigned to the instance. You can assign up to      10 tags to an instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -129,7 +139,7 @@ pub struct CfnDBInstance {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

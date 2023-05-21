@@ -1,20 +1,8 @@
 
 
 /// The AWS::SSMContacts::Contact resource specifies a contact or escalation       plan. Incident Manager contacts are a subset of actions and data types that       you can use for managing responder engagement and interaction.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnContact {
-
-
-    /// 
-    /// A list of stages. A contact has an engagement plan with stages that contact specified     contact channels. An escalation plan uses stages that contact specified contacts.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Stage
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Plan")]
-    pub plan: Option<Vec<Stage>>,
 
 
     /// 
@@ -33,6 +21,18 @@ pub struct CfnContact {
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
     pub display_name: String,
+
+
+    /// 
+    /// A list of stages. A contact has an engagement plan with stages that contact specified     contact channels. An escalation plan uses stages that contact specified contacts.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Stage
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Plan")]
+    pub plan: Option<Vec<Stage>>,
 
 
     /// 
@@ -70,87 +70,19 @@ pub struct CfnContact {
 
 }
 
+impl cfn_resources::CfnResource for CfnContact {
+    fn type_string() -> &'static str {
+        "AWS::SSMContacts::Contact"
+    }
 
-/// Information about the contact channel that Incident Manager uses to engage the     contact.
-#[derive(Default, serde::Serialize)]
-pub struct ChannelTargetInfo {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the contact channel.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChannelId")]
-    pub channel_id: String,
-
-
-    /// 
-    /// The number of minutes to wait before retrying to send engagement if the engagement     initially failed.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 60
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RetryIntervalInMinutes")]
-    pub retry_interval_in_minutes: i64,
-
-}
-
-
-/// The contact that Incident Manager is engaging during an incident.
-#[derive(Default, serde::Serialize)]
-pub struct ContactTargetInfo {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the contact.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ContactId")]
-    pub contact_id: String,
-
-
-    /// 
-    /// A Boolean value determining if the contact's acknowledgement stops the progress of     stages in the plan.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IsEssential")]
-    pub is_essential: bool,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The Stage property type specifies a set amount of time that an escalation       plan or engagement plan engages the specified contacts or contact methods.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Stage {
 
 
@@ -195,21 +127,87 @@ pub struct Stage {
 }
 
 
-/// The contact or contact channel that's being engaged.
-#[derive(Default, serde::Serialize)]
-pub struct Targets {
+/// The contact that Incident Manager is engaging during an incident.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ContactTargetInfo {
 
 
     /// 
-    /// Information about the contact channel that Incident Manager engages.
+    /// A Boolean value determining if the contact's acknowledgement stops the progress of     stages in the plan.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: ChannelTargetInfo
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ChannelTargetInfo")]
-    pub channel_target_info: Option<ChannelTargetInfo>,
+    #[serde(rename = "IsEssential")]
+    pub is_essential: bool,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the contact.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContactId")]
+    pub contact_id: String,
+
+}
+
+
+/// Information about the contact channel that Incident Manager uses to engage the     contact.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ChannelTargetInfo {
+
+
+    /// 
+    /// The number of minutes to wait before retrying to send engagement if the engagement     initially failed.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 60
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RetryIntervalInMinutes")]
+    pub retry_interval_in_minutes: i64,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the contact channel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\w+=\/,.@]*:[0-9]+:([\w+=\/,.@:-]+)*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChannelId")]
+    pub channel_id: String,
+
+}
+
+
+/// The contact or contact channel that's being engaged.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Targets {
 
 
     /// 
@@ -222,5 +220,17 @@ pub struct Targets {
     /// Update requires: No interruption
     #[serde(rename = "ContactTargetInfo")]
     pub contact_target_info: Option<ContactTargetInfo>,
+
+
+    /// 
+    /// Information about the contact channel that Incident Manager engages.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ChannelTargetInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChannelTargetInfo")]
+    pub channel_target_info: Option<ChannelTargetInfo>,
 
 }

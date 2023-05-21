@@ -3,8 +3,24 @@
 /// Creates an IAM role that is linked to a specific AWS service. The service controls       the attached policies and when the role can be deleted. This helps ensure that the       service is not broken by an unexpectedly changed or deleted role, which could put your       AWS resources into an unknown state. Allowing the service to control the role helps       improve service stability and proper cleanup when a service and its role are no longer       needed. For more information, see Using service-linked         roles in the IAM User Guide.
 ///
 /// To attach a policy to this service-linked role, you must make the request using the       AWS service that depends on this role.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnServiceLinkedRole {
+
+
+    /// 
+    /// The description of the role.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1000
+    ///
+    /// Pattern: [\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
 
     /// 
@@ -28,22 +44,6 @@ pub struct CfnServiceLinkedRole {
 
 
     /// 
-    /// The description of the role.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: [\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
     /// 
     /// 
     /// A string that you provide, which is combined with the service-provided prefix to form       the complete role name. If you make multiple requests for the same service, then you       must supply a different CustomSuffix for each request. Otherwise the       request fails with a duplicate role name error. For example, you could add         -1 or -debug to the suffix.
@@ -64,4 +64,14 @@ pub struct CfnServiceLinkedRole {
     #[serde(rename = "CustomSuffix")]
     pub custom_suffix: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnServiceLinkedRole {
+    fn type_string() -> &'static str {
+        "AWS::IAM::ServiceLinkedRole"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

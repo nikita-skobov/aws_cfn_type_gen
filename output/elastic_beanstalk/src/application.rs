@@ -1,22 +1,8 @@
 
 
 /// The AWS::ElasticBeanstalk::Application resource is an AWS Elastic Beanstalk Beanstalk resource    type that specifies an Elastic Beanstalk application.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
-    /// 
-    /// Your description of the application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -48,41 +34,30 @@ pub struct CfnApplication {
     #[serde(rename = "ResourceLifecycleConfig")]
     pub resource_lifecycle_config: Option<ApplicationResourceLifecycleConfig>,
 
-}
-
-
-/// The resource lifecycle configuration for an application. Defines lifecycle settings for    resources that belong to the application, and the service role that Elastic Beanstalk assumes    in order to apply lifecycle settings. The version lifecycle configuration defines lifecycle    settings for application versions.
-///
-/// ApplicationResourceLifecycleConfig is a property of the AWS::ElasticBeanstalk::Application resource.
-#[derive(Default, serde::Serialize)]
-pub struct ApplicationResourceLifecycleConfig {
-
 
     /// 
-    /// The ARN of an IAM service role that Elastic Beanstalk has permission to    assume.
-    /// 
-    /// The ServiceRole property is required the first time that you provide a ResourceLifecycleConfig for the application.    After you provide it once, Elastic Beanstalk persists the Service Role with the application, and you don't need to specify it again.    You can, however, specify it in subsequent updates to change the Service Role to another value.
+    /// Your description of the application.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServiceRole")]
-    pub service_role: Option<String>,
-
-
-    /// 
-    /// Defines lifecycle settings for application versions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ApplicationVersionLifecycleConfig
+    /// Maximum: 200
     ///
     /// Update requires: No interruption
-    #[serde(rename = "VersionLifecycleConfig")]
-    pub version_lifecycle_config: Option<ApplicationVersionLifecycleConfig>,
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnApplication {
+    fn type_string() -> &'static str {
+        "AWS::ElasticBeanstalk::Application"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -91,7 +66,7 @@ pub struct ApplicationResourceLifecycleConfig {
 /// When Elastic Beanstalk deletes an application version from its database, you can no    longer deploy that version to an environment. The source bundle remains in S3 unless you    configure the rule to delete it.
 ///
 /// ApplicationVersionLifecycleConfig is a property of the ApplicationResourceLifecycleConfig    property type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApplicationVersionLifecycleConfig {
 
 
@@ -121,47 +96,37 @@ pub struct ApplicationVersionLifecycleConfig {
 }
 
 
-/// A lifecycle rule that deletes application versions after the specified number of    days.
+/// The resource lifecycle configuration for an application. Defines lifecycle settings for    resources that belong to the application, and the service role that Elastic Beanstalk assumes    in order to apply lifecycle settings. The version lifecycle configuration defines lifecycle    settings for application versions.
 ///
-/// MaxAgeRule is a property of the ApplicationVersionLifecycleConfig    property type.
-#[derive(Default, serde::Serialize)]
-pub struct MaxAgeRule {
+/// ApplicationResourceLifecycleConfig is a property of the AWS::ElasticBeanstalk::Application resource.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ApplicationResourceLifecycleConfig {
 
 
     /// 
-    /// Specify true to apply the rule, or false to disable    it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// Set to true to delete a version's source bundle from Amazon S3 when    Elastic Beanstalk deletes the application version.
+    /// Defines lifecycle settings for application versions.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: ApplicationVersionLifecycleConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DeleteSourceFromS3")]
-    pub delete_source_from_s3: Option<bool>,
+    #[serde(rename = "VersionLifecycleConfig")]
+    pub version_lifecycle_config: Option<ApplicationVersionLifecycleConfig>,
 
 
     /// 
-    /// Specify the number of days to retain an application versions.
+    /// The ARN of an IAM service role that Elastic Beanstalk has permission to    assume.
+    /// 
+    /// The ServiceRole property is required the first time that you provide a ResourceLifecycleConfig for the application.    After you provide it once, Elastic Beanstalk persists the Service Role with the application, and you don't need to specify it again.    You can, however, specify it in subsequent updates to change the Service Role to another value.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MaxAgeInDays")]
-    pub max_age_in_days: Option<i64>,
+    #[serde(rename = "ServiceRole")]
+    pub service_role: Option<String>,
 
 }
 
@@ -169,7 +134,7 @@ pub struct MaxAgeRule {
 /// A lifecycle rule that deletes the oldest application version when the maximum count is    exceeded.
 ///
 /// MaxCountRule is a property of the ApplicationVersionLifecycleConfig    property type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MaxCountRule {
 
 
@@ -207,5 +172,50 @@ pub struct MaxCountRule {
     /// Update requires: No interruption
     #[serde(rename = "MaxCount")]
     pub max_count: Option<i64>,
+
+}
+
+
+/// A lifecycle rule that deletes application versions after the specified number of    days.
+///
+/// MaxAgeRule is a property of the ApplicationVersionLifecycleConfig    property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MaxAgeRule {
+
+
+    /// 
+    /// Specify the number of days to retain an application versions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxAgeInDays")]
+    pub max_age_in_days: Option<i64>,
+
+
+    /// 
+    /// Set to true to delete a version's source bundle from Amazon S3 when    Elastic Beanstalk deletes the application version.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeleteSourceFromS3")]
+    pub delete_source_from_s3: Option<bool>,
+
+
+    /// 
+    /// Specify true to apply the rule, or false to disable    it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
 
 }

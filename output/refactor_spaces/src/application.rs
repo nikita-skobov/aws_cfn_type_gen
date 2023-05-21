@@ -3,8 +3,20 @@
 /// Creates an AWS Migration Hub Refactor Spaces application. The account that owns the environment also owns the    applications created inside the environment, regardless of the account that creates the    application. Refactor Spaces provisions an Amazon API Gateway, API Gateway VPC link, and     Network Load Balancer for the application proxy inside your account.
 ///
 /// In environments created with a CreateEnvironment:NetworkFabricType of NONE you need to configure     VPC to VPC connectivity between your service VPC and the application proxy VPC to    route traffic through the application proxy to a service with a private URL endpoint. For more    information, see     Create an application in the Refactor Spaces User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
+
+
+    /// 
+    /// The proxy type of the proxy created within the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProxyType")]
+    pub proxy_type: String,
 
 
     /// 
@@ -32,18 +44,6 @@ pub struct CfnApplication {
 
 
     /// 
-    /// The unique identifier of the environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EnvironmentIdentifier")]
-    pub environment_identifier: String,
-
-
-    /// 
     /// The name of the application.
     /// 
     /// Required: Yes
@@ -53,18 +53,6 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
-
-    /// 
-    /// The proxy type of the proxy created within the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProxyType")]
-    pub proxy_type: String,
 
 
     /// 
@@ -78,6 +66,28 @@ pub struct CfnApplication {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The unique identifier of the environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EnvironmentIdentifier")]
+    pub environment_identifier: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnApplication {
+    fn type_string() -> &'static str {
+        "AWS::RefactorSpaces::Application"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -88,7 +98,7 @@ pub struct CfnApplication {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -117,7 +127,7 @@ pub struct Tag {
 
 
 /// A wrapper object holding the Amazon API Gateway endpoint input.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApiGatewayProxyInput {
 
 

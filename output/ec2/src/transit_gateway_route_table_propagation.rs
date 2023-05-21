@@ -3,7 +3,7 @@
 /// Enables the specified attachment to propagate routes to the specified propagation route     table.
 ///
 /// For more information about enabling transit gateway route propagation, see EnableTransitGatewayRouteTablePropagation in the Amazon EC2 API     Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayRouteTablePropagation {
 
 
@@ -30,4 +30,14 @@ pub struct CfnTransitGatewayRouteTablePropagation {
     #[serde(rename = "TransitGatewayRouteTableId")]
     pub transit_gateway_route_table_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnTransitGatewayRouteTablePropagation {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TransitGatewayRouteTablePropagation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

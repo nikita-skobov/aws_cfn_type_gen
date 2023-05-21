@@ -1,54 +1,8 @@
 
 
 /// The AWS::DataSync::LocationFSxWindows resource specifies an endpoint for an     Amazon FSx for Windows Server file system.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationFSxWindows {
-
-
-    /// 
-    /// Specifies the name of the Windows domain that the FSx for Windows File Server belongs    to.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 253
-    ///
-    /// Pattern: ^[A-Za-z0-9]((\.|-+)?[A-Za-z0-9]){0,252}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Domain")]
-    pub domain: Option<String>,
-
-
-    /// 
-    /// Specifies the password of the user who has the permissions to access files and folders in    the file system.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 104
-    ///
-    /// Pattern: ^.{0,104}$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Password")]
-    pub password: Option<String>,
-
-
-    /// 
-    /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -68,6 +22,20 @@ pub struct CfnLocationFSxWindows {
 
 
     /// 
+    /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your location.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// Specifies the Amazon Resource Name (ARN) for the FSx for Windows File Server file    system.
     /// 
     /// Required: No
@@ -81,6 +49,22 @@ pub struct CfnLocationFSxWindows {
     /// Update requires: Replacement
     #[serde(rename = "FsxFilesystemArn")]
     pub fsx_filesystem_arn: Option<String>,
+
+
+    /// 
+    /// Specifies a mount path for your file system using forward slashes. This is where DataSync reads or writes data (depending on if this is a source or destination    location).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 4096
+    ///
+    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Subdirectory")]
+    pub subdirectory: Option<String>,
 
 
     /// 
@@ -102,20 +86,46 @@ pub struct CfnLocationFSxWindows {
 
 
     /// 
-    /// Specifies a mount path for your file system using forward slashes. This is where DataSync reads or writes data (depending on if this is a source or destination    location).
+    /// Specifies the password of the user who has the permissions to access files and folders in    the file system.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Maximum: 4096
+    /// Maximum: 104
     ///
-    /// Pattern: ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$
+    /// Pattern: ^.{0,104}$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Subdirectory")]
-    pub subdirectory: Option<String>,
+    #[serde(rename = "Password")]
+    pub password: Option<String>,
 
+
+    /// 
+    /// Specifies the name of the Windows domain that the FSx for Windows File Server belongs    to.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 253
+    ///
+    /// Pattern: ^[A-Za-z0-9]((\.|-+)?[A-Za-z0-9]){0,252}$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Domain")]
+    pub domain: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnLocationFSxWindows {
+    fn type_string() -> &'static str {
+        "AWS::DataSync::LocationFSxWindows"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -126,7 +136,7 @@ pub struct CfnLocationFSxWindows {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

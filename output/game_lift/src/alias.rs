@@ -1,7 +1,7 @@
 
 
 /// The AWS::GameLift::Alias resource creates an alias for an Amazon GameLift    (GameLift) fleet destination. There are two types of routing strategies for aliases: simple    and terminal. A simple alias points to an active fleet. A terminal alias displays a message    instead of routing players to an active fleet. For example, a terminal alias might display a    URL link that directs players to an upgrade site. You can use aliases to define destinations    in a game session queue or when requesting new game sessions.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAlias {
 
 
@@ -24,6 +24,18 @@ pub struct CfnAlias {
 
 
     /// 
+    /// The routing configuration, including routing type and fleet target, for the alias.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: RoutingStrategy
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoutingStrategy")]
+    pub routing_strategy: RoutingStrategy,
+
+
+    /// 
     /// A human-readable description of the alias.
     /// 
     /// Required: No
@@ -38,23 +50,21 @@ pub struct CfnAlias {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
 
-    /// 
-    /// The routing configuration, including routing type and fleet target, for the alias.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: RoutingStrategy
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoutingStrategy")]
-    pub routing_strategy: RoutingStrategy,
+impl cfn_resources::CfnResource for CfnAlias {
+    fn type_string() -> &'static str {
+        "AWS::GameLift::Alias"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The routing configuration for a fleet alias.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RoutingStrategy {
 
 
@@ -68,6 +78,20 @@ pub struct RoutingStrategy {
     /// Update requires: No interruption
     #[serde(rename = "Message")]
     pub message: Option<String>,
+
+
+    /// 
+    /// A unique identifier for a fleet that the alias points to. If you specify    SIMPLE for the Type property, you must specify this    property.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^fleet-\S+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FleetId")]
+    pub fleet_id: Option<String>,
 
 
     /// 
@@ -86,19 +110,5 @@ pub struct RoutingStrategy {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
-
-    /// 
-    /// A unique identifier for a fleet that the alias points to. If you specify    SIMPLE for the Type property, you must specify this    property.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^fleet-\S+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FleetId")]
-    pub fleet_id: Option<String>,
 
 }

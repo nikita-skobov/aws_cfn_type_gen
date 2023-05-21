@@ -1,7 +1,7 @@
 
 
 /// Specifies a prepared statement for use with SQL queries in Athena.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPreparedStatement {
 
 
@@ -15,6 +15,22 @@ pub struct CfnPreparedStatement {
     /// Update requires: Replacement
     #[serde(rename = "WorkGroup")]
     pub work_group: String,
+
+
+    /// 
+    /// The query string for the prepared statement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 262144
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "QueryStatement")]
+    pub query_statement: String,
 
 
     /// 
@@ -50,20 +66,14 @@ pub struct CfnPreparedStatement {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
 
-    /// 
-    /// The query string for the prepared statement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 262144
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "QueryStatement")]
-    pub query_statement: String,
+impl cfn_resources::CfnResource for CfnPreparedStatement {
+    fn type_string() -> &'static str {
+        "AWS::Athena::PreparedStatement"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

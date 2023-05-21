@@ -3,38 +3,8 @@
 /// A combination of ByteMatchSet, IPSet, and/or SqlInjectionMatchSet objects that identify the web requests that you 			want to allow, block, or count. For example, you might create a Rule that includes the following predicates:
 ///
 /// To match the settings in this Rule, a request must originate from 192.0.2.44 AND include a User-Agent 			header for which the value is BadBot.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRule {
-
-
-    /// 
-    /// The name of the metrics for this Rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain     whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the Rule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Pattern: .*\S.*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
-
-
-    /// 
-    /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Predicate
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Predicates")]
-    pub predicates: Option<Vec<Predicate>>,
 
 
     /// 
@@ -54,26 +24,52 @@ pub struct CfnRule {
     #[serde(rename = "Name")]
     pub name: String,
 
-}
 
-
-/// Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects 			that you want to add to a Rule and, for each object, indicates whether you want to negate the settings, for example, requests that do 			NOT originate from the IP address 192.0.2.44.
-#[derive(Default, serde::Serialize)]
-pub struct Predicate {
+    /// 
+    /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Predicate
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Predicates")]
+    pub predicates: Option<Vec<Predicate>>,
 
 
     /// 
-    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
+    /// The name of the metrics for this Rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain     whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the Rule.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
+    /// Minimum: 1
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    /// Maximum: 128
+    ///
+    /// Pattern: .*\S.*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnRule {
+    fn type_string() -> &'static str {
+        "AWS::WAF::Rule"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects 			that you want to add to a Rule and, for each object, indicates whether you want to negate the settings, for example, requests that do 			NOT originate from the IP address 192.0.2.44.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Predicate {
 
 
     /// 
@@ -92,6 +88,20 @@ pub struct Predicate {
     /// Update requires: No interruption
     #[serde(rename = "DataId")]
     pub data_id: String,
+
+
+    /// 
+    /// The type of predicate in a Rule, such as ByteMatch or IPSet.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ByteMatch | GeoMatch | IPMatch | RegexMatch | SizeConstraint | SqlInjectionMatch | XssMatch
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 
     /// 

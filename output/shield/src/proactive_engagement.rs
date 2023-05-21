@@ -1,7 +1,7 @@
 
 
 /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-proactiveengagement.html
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProactiveEngagement {
 
 
@@ -16,15 +16,25 @@ pub struct CfnProactiveEngagement {
 
 }
 
+impl cfn_resources::CfnResource for CfnProactiveEngagement {
+    fn type_string() -> &'static str {
+        "AWS::Shield::ProactiveEngagement"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EmergencyContact {
 
 
-    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-phonenumber
-    #[serde(rename = "PhoneNumber")]
-    pub phone_number: Option<String>,
+    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-emailaddress
+    #[serde(rename = "EmailAddress")]
+    pub email_address: String,
 
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-contactnotes
@@ -32,8 +42,8 @@ pub struct EmergencyContact {
     pub contact_notes: Option<String>,
 
 
-    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-emailaddress
-    #[serde(rename = "EmailAddress")]
-    pub email_address: String,
+    /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-proactiveengagement-emergencycontact.html#cfn-shield-proactiveengagement-emergencycontact-phonenumber
+    #[serde(rename = "PhoneNumber")]
+    pub phone_number: Option<String>,
 
 }

@@ -1,8 +1,22 @@
 
 
 /// The AWS::RoboMaker::RobotApplication resource creates an AWS     RoboMaker robot.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRobot {
+
+
+    /// 
+    /// The architecture of the robot.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ARM64 | ARMHF | X86_64
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Architecture")]
+    pub architecture: String,
 
 
     /// 
@@ -36,32 +50,6 @@ pub struct CfnRobot {
 
 
     /// 
-    /// The architecture of the robot.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ARM64 | ARMHF | X86_64
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Architecture")]
-    pub architecture: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the fleet to which the robot will be     registered.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Fleet")]
-    pub fleet: Option<String>,
-
-
-    /// 
     /// The name of the robot.
     /// 
     /// Required: No
@@ -78,4 +66,26 @@ pub struct CfnRobot {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the fleet to which the robot will be     registered.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Fleet")]
+    pub fleet: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnRobot {
+    fn type_string() -> &'static str {
+        "AWS::RoboMaker::Robot"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

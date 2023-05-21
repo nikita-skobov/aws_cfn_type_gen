@@ -1,7 +1,7 @@
 
 
 /// Creates a Redshift-managed VPC endpoint.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEndpointAccess {
 
 
@@ -17,20 +17,6 @@ pub struct CfnEndpointAccess {
     /// Update requires: Replacement
     #[serde(rename = "SubnetGroupName")]
     pub subnet_group_name: String,
-
-
-    /// 
-    /// The cluster identifier of the cluster associated with the endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClusterIdentifier")]
-    pub cluster_identifier: String,
 
 
     /// 
@@ -60,6 +46,20 @@ pub struct CfnEndpointAccess {
 
 
     /// 
+    /// The cluster identifier of the cluster associated with the endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClusterIdentifier")]
+    pub cluster_identifier: String,
+
+
+    /// 
     /// The name of the endpoint.
     /// 
     /// Required: Yes
@@ -74,9 +74,19 @@ pub struct CfnEndpointAccess {
 
 }
 
+impl cfn_resources::CfnResource for CfnEndpointAccess {
+    fn type_string() -> &'static str {
+        "AWS::Redshift::EndpointAccess"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Describes a network interface.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkInterface {
 
 
@@ -95,20 +105,6 @@ pub struct NetworkInterface {
 
 
     /// 
-    /// The Availability Zone.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2147483647
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
-
-
-    /// 
     /// The network interface identifier.
     /// 
     /// Required: No
@@ -120,6 +116,20 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: Option<String>,
+
+
+    /// 
+    /// The Availability Zone.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2147483647
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
 
 
     /// 
@@ -139,7 +149,7 @@ pub struct NetworkInterface {
 
 
 /// The security groups associated with the endpoint.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcSecurityGroup {
 
 
@@ -174,8 +184,20 @@ pub struct VpcSecurityGroup {
 
 
 /// The connection endpoint for connecting to an Amazon Redshift cluster through the proxy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcEndpoint {
+
+
+    /// 
+    /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of NetworkInterface
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NetworkInterfaces")]
+    pub network_interfaces: Option<Vec<NetworkInterface>>,
 
 
     /// 
@@ -190,18 +212,6 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     pub vpc_id: Option<String>,
-
-
-    /// 
-    /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of NetworkInterface
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NetworkInterfaces")]
-    pub network_interfaces: Option<Vec<NetworkInterface>>,
 
 
     /// 

@@ -5,32 +5,20 @@
 /// Network policies specify access to a collection and its OpenSearch Dashboards endpoint       from public networks or specific VPC endpoints. For more information, see Network         access for Amazon OpenSearch Serverless.
 ///
 /// Encryption policies specify a KMS encryption key to assign to particular collections.       For more information, see Encryption         at rest for Amazon OpenSearch Serverless.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSecurityPolicy {
 
 
     /// 
-    /// The name of the policy.
+    /// The type of security policy. Can be either encryption or network.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The JSON policy document without any whitespaces.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Policy")]
-    pub policy: String,
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
 
 
     /// 
@@ -46,14 +34,36 @@ pub struct CfnSecurityPolicy {
 
 
     /// 
-    /// The type of security policy. Can be either encryption or network.
+    /// The JSON policy document without any whitespaces.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Policy")]
+    pub policy: String,
+
+
+    /// 
+    /// The name of the policy.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
+    #[serde(rename = "Name")]
+    pub name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnSecurityPolicy {
+    fn type_string() -> &'static str {
+        "AWS::OpenSearchServerless::SecurityPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

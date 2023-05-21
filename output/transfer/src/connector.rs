@@ -1,8 +1,20 @@
 
 
 /// Creates the connector, which captures the parameters for an outbound connection for the    AS2 protocol. The connector is required for sending files to an externally hosted AS2 server.    For more details about connectors, see Create AS2 connectors.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConnector {
+
+
+    /// 
+    /// A structure that contains the parameters for a connector object.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: As2Config
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "As2Config")]
+    pub as2_config: As2Config,
 
 
     /// 
@@ -21,6 +33,20 @@ pub struct CfnConnector {
     /// Update requires: No interruption
     #[serde(rename = "AccessRole")]
     pub access_role: String,
+
+
+    /// 
+    /// The URL of the partner's AS2 endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 255
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Url")]
+    pub url: String,
 
 
     /// 
@@ -54,32 +80,16 @@ pub struct CfnConnector {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+}
 
-    /// 
-    /// A structure that contains the parameters for a connector object.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: As2Config
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "As2Config")]
-    pub as2_config: As2Config,
+impl cfn_resources::CfnResource for CfnConnector {
+    fn type_string() -> &'static str {
+        "AWS::Transfer::Connector"
+    }
 
-
-    /// 
-    /// The URL of the partner's AS2 endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 255
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Url")]
-    pub url: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -90,7 +100,7 @@ pub struct CfnConnector {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -119,8 +129,54 @@ pub struct Tag {
 
 
 /// A structure that contains the parameters for a connector object.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct As2Config {
+
+
+    /// 
+    /// Used as the Subject HTTP header attribute in AS2 messages that are being sent with the connector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^[\p{Print}\p{Blank}]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MessageSubject")]
+    pub message_subject: Option<String>,
+
+
+    /// 
+    /// Specifies whether the AS2 file is compressed.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DISABLED | ZLIB
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Compression")]
+    pub compression: Option<String>,
+
+
+    /// 
+    /// The algorithm that is used to sign the AS2 messages sent with the connector.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: NONE | SHA1 | SHA256 | SHA384 | SHA512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SigningAlgorithm")]
+    pub signing_algorithm: Option<String>,
 
 
     /// 
@@ -137,6 +193,22 @@ pub struct As2Config {
     /// Update requires: No interruption
     #[serde(rename = "MdnResponse")]
     pub mdn_response: Option<String>,
+
+
+    /// 
+    /// The signing algorithm for the MDN response.
+    /// 
+    /// NoteIf set to DEFAULT (or not set at all), the value for SigningAlgorithm is used.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DEFAULT | NONE | SHA1 | SHA256 | SHA384 | SHA512
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MdnSigningAlgorithm")]
+    pub mdn_signing_algorithm: Option<String>,
 
 
     /// 
@@ -174,24 +246,6 @@ pub struct As2Config {
 
 
     /// 
-    /// Used as the Subject HTTP header attribute in AS2 messages that are being sent with the connector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^[\p{Print}\p{Blank}]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MessageSubject")]
-    pub message_subject: Option<String>,
-
-
-    /// 
     /// A unique identifier for the AS2 local profile.
     /// 
     /// Required: No
@@ -207,49 +261,5 @@ pub struct As2Config {
     /// Update requires: No interruption
     #[serde(rename = "LocalProfileId")]
     pub local_profile_id: Option<String>,
-
-
-    /// 
-    /// The signing algorithm for the MDN response.
-    /// 
-    /// NoteIf set to DEFAULT (or not set at all), the value for SigningAlgorithm is used.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DEFAULT | NONE | SHA1 | SHA256 | SHA384 | SHA512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MdnSigningAlgorithm")]
-    pub mdn_signing_algorithm: Option<String>,
-
-
-    /// 
-    /// The algorithm that is used to sign the AS2 messages sent with the connector.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: NONE | SHA1 | SHA256 | SHA384 | SHA512
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SigningAlgorithm")]
-    pub signing_algorithm: Option<String>,
-
-
-    /// 
-    /// Specifies whether the AS2 file is compressed.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ZLIB
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Compression")]
-    pub compression: Option<String>,
 
 }

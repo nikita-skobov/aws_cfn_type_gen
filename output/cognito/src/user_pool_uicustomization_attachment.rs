@@ -5,7 +5,7 @@
 /// You can specify app UI customization settings for a single client (with a specific     clientId) or for all clients (by setting the clientId to     ALL). If you specify ALL, the default configuration is used for    every client that has had no UI customization set previously. If you specify UI customization    settings for a particular client, it no longer falls back to the ALL    configuration.
 ///
 /// Setting a logo image isn't supported from AWS CloudFormation. Use the Amazon Cognito     SetUICustomization API operation to set the image.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserPoolUICustomizationAttachment {
 
 
@@ -56,4 +56,14 @@ pub struct CfnUserPoolUICustomizationAttachment {
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnUserPoolUICustomizationAttachment {
+    fn type_string() -> &'static str {
+        "AWS::Cognito::UserPoolUICustomizationAttachment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

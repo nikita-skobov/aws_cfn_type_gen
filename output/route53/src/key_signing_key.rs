@@ -1,36 +1,8 @@
 
 
 /// The AWS::Route53::KeySigningKey resource creates a new key-signing key (KSK) in a hosted zone. The hosted zone ID is passed as a       parameter in the KSK properties. You can specify the properties of this KSK using the Name, Status, and         KeyManagementServiceArn properties of the resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnKeySigningKey {
-
-
-    /// 
-    /// A string used to identify a key-signing key (KSK). Name can include 			numbers, letters, and underscores (_). Name must be unique for each 			key-signing key in the same hosted zone.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
-
-
-    /// 
-    /// The unique string (ID) that is used to identify a hosted zone. For example: Z00001111A1ABCaaABC11.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "HostedZoneId")]
-    pub hosted_zone_id: String,
 
 
     /// 
@@ -64,4 +36,42 @@ pub struct CfnKeySigningKey {
     #[serde(rename = "KeyManagementServiceArn")]
     pub key_management_service_arn: String,
 
+
+    /// 
+    /// The unique string (ID) that is used to identify a hosted zone. For example: Z00001111A1ABCaaABC11.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "HostedZoneId")]
+    pub hosted_zone_id: String,
+
+
+    /// 
+    /// A string used to identify a key-signing key (KSK). Name can include 			numbers, letters, and underscores (_). Name must be unique for each 			key-signing key in the same hosted zone.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnKeySigningKey {
+    fn type_string() -> &'static str {
+        "AWS::Route53::KeySigningKey"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

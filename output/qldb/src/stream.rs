@@ -3,7 +3,7 @@
 /// The AWS::QLDB::Stream resource specifies a journal stream for a given Amazon     Quantum Ledger Database (Amazon QLDB) ledger. The stream captures every document revision     that is committed to the ledger's journal and delivers the data to a specified Amazon     Kinesis Data Streams resource.
 ///
 /// For more information, see StreamJournalToKinesis in the Amazon QLDB API     Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStream {
 
 
@@ -26,45 +26,37 @@ pub struct CfnStream {
 
 
     /// 
-    /// The exclusive date and time that specifies when the stream ends. If you don't define     this parameter, the stream runs indefinitely until you cancel it.
+    /// The name that you want to assign to the QLDB journal stream. User-defined names can     help identify and indicate the purpose of a stream.
     /// 
-    /// The ExclusiveEndTime must be in ISO 8601 date and time format     and in Universal Coordinated Time (UTC). For example:     2019-06-13T21:36:34Z.
+    /// Your stream name must be unique among other active streams for a     given ledger. Stream names have the same naming constraints as ledger names, as defined in       Quotas in Amazon QLDB in the Amazon QLDB Developer     Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 32
+    ///
+    /// Pattern: (?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StreamName")]
+    pub stream_name: String,
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "ExclusiveEndTime")]
-    pub exclusive_end_time: Option<String>,
-
-
-    /// 
-    /// The inclusive start date and time from which to start streaming journal data. This     parameter must be in ISO 8601 date and time format and in Universal     Coordinated Time (UTC). For example: 2019-06-13T21:36:34Z.
-    /// 
-    /// The InclusiveStartTime cannot be in the future and must be before       ExclusiveEndTime.
-    /// 
-    /// If you provide an InclusiveStartTime that is before the ledger's       CreationDateTime, QLDB effectively defaults it to the ledger's       CreationDateTime.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InclusiveStartTime")]
-    pub inclusive_start_time: String,
-
-
-    /// 
-    /// The configuration settings of the Kinesis Data Streams destination for your stream request.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: KinesisConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KinesisConfiguration")]
-    pub kinesis_configuration: KinesisConfiguration,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -86,60 +78,62 @@ pub struct CfnStream {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
+    /// The configuration settings of the Kinesis Data Streams destination for your stream request.
     /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: List of Tag
+    /// Type: KinesisConfiguration
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "KinesisConfiguration")]
+    pub kinesis_configuration: KinesisConfiguration,
 
 
     /// 
-    /// The name that you want to assign to the QLDB journal stream. User-defined names can     help identify and indicate the purpose of a stream.
+    /// The inclusive start date and time from which to start streaming journal data. This     parameter must be in ISO 8601 date and time format and in Universal     Coordinated Time (UTC). For example: 2019-06-13T21:36:34Z.
     /// 
-    /// Your stream name must be unique among other active streams for a     given ledger. Stream names have the same naming constraints as ledger names, as defined in       Quotas in Amazon QLDB in the Amazon QLDB Developer     Guide.
+    /// The InclusiveStartTime cannot be in the future and must be before       ExclusiveEndTime.
+    /// 
+    /// If you provide an InclusiveStartTime that is before the ledger's       CreationDateTime, QLDB effectively defaults it to the ledger's       CreationDateTime.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 32
-    ///
-    /// Pattern: (?!^.*--)(?!^[0-9]+$)(?!^-)(?!.*-$)^[A-Za-z0-9-]+$
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "StreamName")]
-    pub stream_name: String,
-
-}
-
-
-/// The configuration settings of the Amazon Kinesis Data Streams destination for an Amazon QLDB journal     stream.
-#[derive(Default, serde::Serialize)]
-pub struct KinesisConfiguration {
+    #[serde(rename = "InclusiveStartTime")]
+    pub inclusive_start_time: String,
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the Kinesis Data Streams resource.
+    /// The exclusive date and time that specifies when the stream ends. If you don't define     this parameter, the stream runs indefinitely until you cancel it.
+    /// 
+    /// The ExclusiveEndTime must be in ISO 8601 date and time format     and in Universal Coordinated Time (UTC). For example:     2019-06-13T21:36:34Z.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 1600
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "StreamArn")]
-    pub stream_arn: Option<String>,
+    #[serde(rename = "ExclusiveEndTime")]
+    pub exclusive_end_time: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnStream {
+    fn type_string() -> &'static str {
+        "AWS::QLDB::Stream"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// The configuration settings of the Amazon Kinesis Data Streams destination for an Amazon QLDB journal     stream.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct KinesisConfiguration {
 
 
     /// 
@@ -157,6 +151,22 @@ pub struct KinesisConfiguration {
     #[serde(rename = "AggregationEnabled")]
     pub aggregation_enabled: Option<bool>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Kinesis Data Streams resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 1600
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StreamArn")]
+    pub stream_arn: Option<String>,
+
 }
 
 
@@ -167,19 +177,8 @@ pub struct KinesisConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -191,5 +190,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

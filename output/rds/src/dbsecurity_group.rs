@@ -1,7 +1,7 @@
 
 
 /// The AWS::RDS::DBSecurityGroup resource creates or updates an Amazon RDS       DB security group.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBSecurityGroup {
 
 
@@ -20,15 +20,15 @@ pub struct CfnDBSecurityGroup {
 
 
     /// 
-    /// Ingress rules to be applied to the DB security group.
+    /// Provides the description of the DB security group.
     /// 
     /// Required: Yes
     ///
-    /// Type: List of Ingress
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBSecurityGroupIngress")]
-    pub dbsecurity_group_ingress: Vec<Ingress>,
+    /// Update requires: Replacement
+    #[serde(rename = "GroupDescription")]
+    pub group_description: String,
 
 
     /// 
@@ -44,16 +44,26 @@ pub struct CfnDBSecurityGroup {
 
 
     /// 
-    /// Provides the description of the DB security group.
+    /// Ingress rules to be applied to the DB security group.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: List of Ingress
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupDescription")]
-    pub group_description: String,
+    /// Update requires: No interruption
+    #[serde(rename = "DBSecurityGroupIngress")]
+    pub dbsecurity_group_ingress: Vec<Ingress>,
 
+}
+
+impl cfn_resources::CfnResource for CfnDBSecurityGroup {
+    fn type_string() -> &'static str {
+        "AWS::RDS::DBSecurityGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -64,19 +74,8 @@ pub struct CfnDBSecurityGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -89,24 +88,23 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
 /// The Ingress property type specifies an individual ingress rule within an         AWS::RDS::DBSecurityGroup resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Ingress {
-
-
-    /// 
-    /// Name of the EC2 security group to authorize.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName    or EC2SecurityGroupId must be provided.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EC2SecurityGroupName")]
-    pub ec2_security_group_name: Option<String>,
 
 
     /// 
@@ -143,5 +141,17 @@ pub struct Ingress {
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupId")]
     pub ec2_security_group_id: Option<String>,
+
+
+    /// 
+    /// Name of the EC2 security group to authorize.     For VPC DB security groups, EC2SecurityGroupId must be provided.     Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName    or EC2SecurityGroupId must be provided.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EC2SecurityGroupName")]
+    pub ec2_security_group_name: Option<String>,
 
 }

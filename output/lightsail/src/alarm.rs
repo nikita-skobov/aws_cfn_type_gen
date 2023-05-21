@@ -1,34 +1,20 @@
 
 
 /// The AWS::Lightsail::Alarm resource specifies an alarm that can be used to     monitor a single metric for one of your Lightsail resources.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAlarm {
 
 
     /// 
-    /// A Boolean value indicating whether the alarm is enabled.
+    /// The number of data points within the evaluation periods that must be breaching to cause     the alarm to go to the ALARM state.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "NotificationEnabled")]
-    pub notification_enabled: Option<bool>,
-
-
-    /// 
-    /// The name of the metric associated with the alarm.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: BurstCapacityPercentage | BurstCapacityTime | ClientTLSNegotiationErrorCount | CPUUtilization | DatabaseConnections | DiskQueueDepth | FreeStorageSpace | HealthyHostCount | HTTPCode_Instance_2XX_Count | HTTPCode_Instance_3XX_Count | HTTPCode_Instance_4XX_Count | HTTPCode_Instance_5XX_Count | HTTPCode_LB_4XX_Count | HTTPCode_LB_5XX_Count | InstanceResponseTime | NetworkIn | NetworkOut | NetworkReceiveThroughput | NetworkTransmitThroughput | RejectedConnectionCount | RequestCount | StatusCheckFailed | StatusCheckFailed_Instance | StatusCheckFailed_System | UnhealthyHostCount
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "MetricName")]
-    pub metric_name: String,
+    #[serde(rename = "DatapointsToAlarm")]
+    pub datapoints_to_alarm: Option<i64>,
 
 
     /// 
@@ -46,33 +32,15 @@ pub struct CfnAlarm {
 
 
     /// 
-    /// The number of data points within the evaluation periods that must be breaching to cause     the alarm to go to the ALARM state.
+    /// The name of the Lightsail resource that the alarm monitors.
     /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DatapointsToAlarm")]
-    pub datapoints_to_alarm: Option<i64>,
-
-
-    /// 
-    /// Specifies how the alarm handles missing data points.
-    /// 
-    /// An alarm can treat missing data in the following ways:
-    /// 
-    /// breaching - Assumes the missing data is not within the threshold. Missing        data counts towards the number of times that the metric is not within the         threshold.                    notBreaching - Assumes the missing data is within the threshold. Missing        data does not count towards the number of times that the metric is not within the         threshold.                    ignore - Ignores the missing data. Maintains the current alarm        state.                    missing - Missing data is treated as missing.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: breaching | ignore | missing | notBreaching
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TreatMissingData")]
-    pub treat_missing_data: Option<String>,
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "MonitoredResourceName")]
+    pub monitored_resource_name: String,
 
 
     /// 
@@ -104,29 +72,15 @@ pub struct CfnAlarm {
 
 
     /// 
-    /// The number of periods over which data is compared to the specified threshold.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EvaluationPeriods")]
-    pub evaluation_periods: i64,
-
-
-    /// 
-    /// The contact protocols for the alarm, such as Email, SMS (text     messaging), or both.
-    /// 
-    /// Allowed Values: Email | SMS
+    /// A Boolean value indicating whether the alarm is enabled.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ContactProtocols")]
-    pub contact_protocols: Option<Vec<String>>,
+    #[serde(rename = "NotificationEnabled")]
+    pub notification_enabled: Option<bool>,
 
 
     /// 
@@ -142,14 +96,70 @@ pub struct CfnAlarm {
 
 
     /// 
-    /// The name of the Lightsail resource that the alarm monitors.
+    /// Specifies how the alarm handles missing data points.
+    /// 
+    /// An alarm can treat missing data in the following ways:
+    /// 
+    /// breaching - Assumes the missing data is not within the threshold. Missing        data counts towards the number of times that the metric is not within the         threshold.                    notBreaching - Assumes the missing data is within the threshold. Missing        data does not count towards the number of times that the metric is not within the         threshold.                    ignore - Ignores the missing data. Maintains the current alarm        state.                    missing - Missing data is treated as missing.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: breaching | ignore | missing | notBreaching
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TreatMissingData")]
+    pub treat_missing_data: Option<String>,
+
+
+    /// 
+    /// The number of periods over which data is compared to the specified threshold.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EvaluationPeriods")]
+    pub evaluation_periods: i64,
+
+
+    /// 
+    /// The name of the metric associated with the alarm.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Allowed values: BurstCapacityPercentage | BurstCapacityTime | ClientTLSNegotiationErrorCount | CPUUtilization | DatabaseConnections | DiskQueueDepth | FreeStorageSpace | HealthyHostCount | HTTPCode_Instance_2XX_Count | HTTPCode_Instance_3XX_Count | HTTPCode_Instance_4XX_Count | HTTPCode_Instance_5XX_Count | HTTPCode_LB_4XX_Count | HTTPCode_LB_5XX_Count | InstanceResponseTime | NetworkIn | NetworkOut | NetworkReceiveThroughput | NetworkTransmitThroughput | RejectedConnectionCount | RequestCount | StatusCheckFailed | StatusCheckFailed_Instance | StatusCheckFailed_System | UnhealthyHostCount
+    ///
     /// Update requires: Updates are not supported.
-    #[serde(rename = "MonitoredResourceName")]
-    pub monitored_resource_name: String,
+    #[serde(rename = "MetricName")]
+    pub metric_name: String,
 
+
+    /// 
+    /// The contact protocols for the alarm, such as Email, SMS (text     messaging), or both.
+    /// 
+    /// Allowed Values: Email | SMS
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ContactProtocols")]
+    pub contact_protocols: Option<Vec<String>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnAlarm {
+    fn type_string() -> &'static str {
+        "AWS::Lightsail::Alarm"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

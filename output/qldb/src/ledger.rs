@@ -3,26 +3,8 @@
 /// The AWS::QLDB::Ledger resource specifies a new Amazon Quantum Ledger Database     (Amazon QLDB) ledger in your AWS account. Amazon QLDB is a fully managed ledger database     that provides a transparent, immutable, and cryptographically verifiable transaction log     owned by a central trusted authority. You can use QLDB to track all application data     changes, and maintain a complete and verifiable history of changes over time.
 ///
 /// For more information, see CreateLedger in the       Amazon QLDB API Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLedger {
-
-
-    /// 
-    /// The permissions mode to assign to the ledger that you want to create. This parameter can     have one of the following values:
-    /// 
-    /// ALLOW_ALL: A legacy permissions mode that enables access control with        API-level granularity for ledgers.        This mode allows users who have the SendCommand API permission for        this ledger to run all PartiQL commands (hence, ALLOW_ALL) on any tables        in the specified ledger. This mode disregards any table-level or command-level IAM        permissions policies that you create for the ledger.                        STANDARD: (Recommended) A permissions mode that        enables access control with finer granularity for ledgers, tables, and PartiQL        commands.        By default, this mode denies all user requests to run any PartiQL commands on any        tables in this ledger. To allow PartiQL commands to run, you must create IAM        permissions policies for specific table resources and PartiQL actions, in addition to        the SendCommand API permission for the ledger. For information, see          Getting          started with the standard permissions mode in the Amazon QLDB          Developer Guide.
-    /// 
-    /// NoteWe strongly recommend using the STANDARD permissions mode to maximize       the security of your ledger data.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ALLOW_ALL | STANDARD
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PermissionsMode")]
-    pub permissions_mode: String,
 
 
     /// 
@@ -60,20 +42,6 @@ pub struct CfnLedger {
 
 
     /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The key in AWS Key Management Service (AWS KMS) to use for encryption of data at rest in the ledger. For     more information, see Encryption at rest in     the Amazon QLDB Developer Guide.
     /// 
     /// Use one of the following options to specify this parameter:
@@ -98,6 +66,48 @@ pub struct CfnLedger {
     #[serde(rename = "KmsKey")]
     pub kms_key: Option<String>,
 
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The permissions mode to assign to the ledger that you want to create. This parameter can     have one of the following values:
+    /// 
+    /// ALLOW_ALL: A legacy permissions mode that enables access control with        API-level granularity for ledgers.        This mode allows users who have the SendCommand API permission for        this ledger to run all PartiQL commands (hence, ALLOW_ALL) on any tables        in the specified ledger. This mode disregards any table-level or command-level IAM        permissions policies that you create for the ledger.                        STANDARD: (Recommended) A permissions mode that        enables access control with finer granularity for ledgers, tables, and PartiQL        commands.        By default, this mode denies all user requests to run any PartiQL commands on any        tables in this ledger. To allow PartiQL commands to run, you must create IAM        permissions policies for specific table resources and PartiQL actions, in addition to        the SendCommand API permission for the ledger. For information, see          Getting          started with the standard permissions mode in the Amazon QLDB          Developer Guide.
+    /// 
+    /// NoteWe strongly recommend using the STANDARD permissions mode to maximize       the security of your ledger data.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ALLOW_ALL | STANDARD
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PermissionsMode")]
+    pub permissions_mode: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnLedger {
+    fn type_string() -> &'static str {
+        "AWS::QLDB::Ledger"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -108,19 +118,8 @@ pub struct CfnLedger {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -132,5 +131,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

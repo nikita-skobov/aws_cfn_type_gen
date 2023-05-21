@@ -7,7 +7,7 @@
 /// A Traffic Mirror target can be a network interface, a Network Load Balancer, or a Gateway Load Balancer endpoint.
 ///
 /// To use the target in a Traffic Mirror session, use AWS::EC2::TrafficMirrorSession.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTrafficMirrorTarget {
 
 
@@ -21,6 +21,30 @@ pub struct CfnTrafficMirrorTarget {
     /// Update requires: Replacement
     #[serde(rename = "GatewayLoadBalancerEndpointId")]
     pub gateway_load_balancer_endpoint_id: Option<String>,
+
+
+    /// 
+    /// The description of the Traffic Mirror target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The tags to assign to the Traffic Mirror target.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -46,30 +70,16 @@ pub struct CfnTrafficMirrorTarget {
     #[serde(rename = "NetworkLoadBalancerArn")]
     pub network_load_balancer_arn: Option<String>,
 
+}
 
-    /// 
-    /// The tags to assign to the Traffic Mirror target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnTrafficMirrorTarget {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TrafficMirrorTarget"
+    }
 
-
-    /// 
-    /// The description of the Traffic Mirror target.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -80,7 +90,7 @@ pub struct CfnTrafficMirrorTarget {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

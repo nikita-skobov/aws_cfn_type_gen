@@ -5,7 +5,7 @@
 /// When it's attached to a cache behavior, the origin request policy determines the 			values that CloudFront includes in requests that it sends to the origin. Each request that 			CloudFront sends to the origin includes the following:
 ///
 /// CloudFront sends a request when it can't find an object in its cache that matches the 			request. If you want to send values to the origin and also include them in the cache 			key, use CachePolicy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnOriginRequestPolicy {
 
 
@@ -22,26 +22,36 @@ pub struct CfnOriginRequestPolicy {
 
 }
 
+impl cfn_resources::CfnResource for CfnOriginRequestPolicy {
+    fn type_string() -> &'static str {
+        "AWS::CloudFront::OriginRequestPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// An origin request policy configuration.
 ///
 /// This configuration determines the values that CloudFront includes in requests that it sends 			to the origin. Each request that CloudFront sends to the origin includes the following:
 ///
 /// CloudFront sends a request when it can't find an object in its cache that matches the 			request. If you want to send values to the origin and also include them in the cache 			key, use CachePolicy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OriginRequestPolicyConfig {
 
 
     /// 
-    /// The URL query strings from viewer requests to include in origin requests.
+    /// A unique name to identify the origin request policy.
     /// 
     /// Required: Yes
     ///
-    /// Type: QueryStringsConfig
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "QueryStringsConfig")]
-    pub query_strings_config: QueryStringsConfig,
+    #[serde(rename = "Name")]
+    pub name: String,
 
 
     /// 
@@ -69,15 +79,15 @@ pub struct OriginRequestPolicyConfig {
 
 
     /// 
-    /// A unique name to identify the origin request policy.
+    /// The URL query strings from viewer requests to include in origin requests.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
+    /// Type: QueryStringsConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "QueryStringsConfig")]
+    pub query_strings_config: QueryStringsConfig,
 
 
     /// 
@@ -95,8 +105,20 @@ pub struct OriginRequestPolicyConfig {
 
 
 /// An object that determines whether any cookies in viewer requests (and if so, which 			cookies) are included in requests that CloudFront sends to the origin.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CookiesConfig {
+
+
+    /// 
+    /// Contains a list of cookie names.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Cookies")]
+    pub cookies: Option<Vec<String>>,
 
 
     /// 
@@ -114,58 +136,11 @@ pub struct CookiesConfig {
     #[serde(rename = "CookieBehavior")]
     pub cookie_behavior: String,
 
-
-    /// 
-    /// Contains a list of cookie names.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Cookies")]
-    pub cookies: Option<Vec<String>>,
-
-}
-
-
-/// An object that determines whether any HTTP headers (and if so, which headers) are 			included in requests that CloudFront sends to the origin.
-#[derive(Default, serde::Serialize)]
-pub struct HeadersConfig {
-
-
-    /// 
-    /// Contains a list of HTTP header names.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Headers")]
-    pub headers: Option<Vec<String>>,
-
-
-    /// 
-    /// Determines whether any HTTP headers are included in requests that CloudFront sends to the 			origin. Valid values are:
-    /// 
-    /// none – No HTTP headers in viewer requests are included in requests that CloudFront 					sends to the origin. Even when this field is set to none, any 					headers that are listed in a CachePolicy          are 					included in origin requests.                        whitelist – Only the HTTP headers that are listed in the Headers 					type are included in requests that CloudFront sends to the origin.                        allViewer – All HTTP headers in viewer requests are included in 					requests that CloudFront sends to the origin.                        allViewerAndWhitelistCloudFront – All HTTP headers in viewer 					requests and the additional CloudFront headers that are listed in the 						Headers type are included in requests that CloudFront sends to the 					origin. The additional headers are added by CloudFront.                        allExcept – All HTTP headers in viewer requests are included in 					requests that CloudFront sends to the origin,            except          for those listed in the Headers type, 					which are not included.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: allExcept | allViewer | allViewerAndWhitelistCloudFront | none | whitelist
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HeaderBehavior")]
-    pub header_behavior: String,
-
 }
 
 
 /// An object that determines whether any URL query strings in viewer requests (and if so, 			which query strings) are included in requests that CloudFront sends to the origin.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct QueryStringsConfig {
 
 
@@ -195,5 +170,40 @@ pub struct QueryStringsConfig {
     /// Update requires: No interruption
     #[serde(rename = "QueryStrings")]
     pub query_strings: Option<Vec<String>>,
+
+}
+
+
+/// An object that determines whether any HTTP headers (and if so, which headers) are 			included in requests that CloudFront sends to the origin.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HeadersConfig {
+
+
+    /// 
+    /// Contains a list of HTTP header names.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Headers")]
+    pub headers: Option<Vec<String>>,
+
+
+    /// 
+    /// Determines whether any HTTP headers are included in requests that CloudFront sends to the 			origin. Valid values are:
+    /// 
+    /// none – No HTTP headers in viewer requests are included in requests that CloudFront 					sends to the origin. Even when this field is set to none, any 					headers that are listed in a CachePolicy          are 					included in origin requests.                        whitelist – Only the HTTP headers that are listed in the Headers 					type are included in requests that CloudFront sends to the origin.                        allViewer – All HTTP headers in viewer requests are included in 					requests that CloudFront sends to the origin.                        allViewerAndWhitelistCloudFront – All HTTP headers in viewer 					requests and the additional CloudFront headers that are listed in the 						Headers type are included in requests that CloudFront sends to the 					origin. The additional headers are added by CloudFront.                        allExcept – All HTTP headers in viewer requests are included in 					requests that CloudFront sends to the origin,            except          for those listed in the Headers type, 					which are not included.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: allExcept | allViewer | allViewerAndWhitelistCloudFront | none | whitelist
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HeaderBehavior")]
+    pub header_behavior: String,
 
 }

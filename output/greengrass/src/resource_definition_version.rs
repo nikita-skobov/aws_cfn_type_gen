@@ -1,20 +1,8 @@
 
 
 /// The     AWS::Greengrass::ResourceDefinitionVersion resource represents a resource definition version for AWS IoT Greengrass.     A resource definition version contains a list of resources. (In AWS CloudFormation, resources are named resource instances.)
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceDefinitionVersion {
-
-
-    /// 
-    /// The ID of the resource definition associated with this version. This value is a GUID.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceDefinitionId")]
-    pub resource_definition_id: String,
 
 
     /// 
@@ -28,58 +16,35 @@ pub struct CfnResourceDefinitionVersion {
     #[serde(rename = "Resources")]
     pub resources: Vec<ResourceInstance>,
 
+
+    /// 
+    /// The ID of the resource definition associated with this version. This value is a GUID.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceDefinitionId")]
+    pub resource_definition_id: String,
+
 }
 
+impl cfn_resources::CfnResource for CfnResourceDefinitionVersion {
+    fn type_string() -> &'static str {
+        "AWS::Greengrass::ResourceDefinitionVersion"
+    }
 
-/// Settings for an 		Amazon S3 machine learning resource. 		 For more information,   see Perform Machine Learning Inference in the AWS IoT Greengrass Version 1 Developer Guide.
-///
-/// In an AWS CloudFormation template, S3MachineLearningModelResourceData can be used in the 		 ResourceDataContainer 		 property type.
-#[derive(Default, serde::Serialize)]
-pub struct S3MachineLearningModelResourceData {
-
-
-    /// 
-    /// The absolute local path of the resource inside the Lambda environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationPath")]
-    pub destination_path: String,
-
-
-    /// 
-    /// The URI of the source model in an Amazon S3 bucket. The model package must be in tar.gz 				 or .zip format.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "S3Uri")]
-    pub s3_uri: String,
-
-
-    /// 
-    /// The owner setting for the downloaded machine learning resource. For more information, see 	  Access Machine Learning Resources from Lambda 	  Functions in the AWS IoT Greengrass Version 1 Developer Guide.
-    ///
-    /// Required: No
-    ///
-    /// Type: ResourceDownloadOwnerSetting
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OwnerSetting")]
-    pub owner_setting: Option<ResourceDownloadOwnerSetting>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A container for resource data, which  		defines the resource type. The container takes only one of the following supported resource data types: 		LocalDeviceResourceData, LocalVolumeResourceData, SageMakerMachineLearningModelResourceData, 		S3MachineLearningModelResourceData, or SecretsManagerSecretResourceData.
 ///
 /// In an AWS CloudFormation template, ResourceDataContainer is a property of the ResourceInstance  		 property type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceDataContainer {
 
 
@@ -120,18 +85,6 @@ pub struct ResourceDataContainer {
 
 
     /// 
-    /// Settings for a local volume resource.
-    /// 
-    /// Required: No
-    ///
-    /// Type: LocalVolumeResourceData
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LocalVolumeResourceData")]
-    pub local_volume_resource_data: Option<LocalVolumeResourceData>,
-
-
-    /// 
     /// Settings for a local device resource.
     /// 
     /// Required: No
@@ -142,26 +95,26 @@ pub struct ResourceDataContainer {
     #[serde(rename = "LocalDeviceResourceData")]
     pub local_device_resource_data: Option<LocalDeviceResourceData>,
 
+
+    /// 
+    /// Settings for a local volume resource.
+    /// 
+    /// Required: No
+    ///
+    /// Type: LocalVolumeResourceData
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LocalVolumeResourceData")]
+    pub local_volume_resource_data: Option<LocalVolumeResourceData>,
+
 }
 
 
 /// The owner setting for a downloaded machine learning resource. For more information, see 	  Access Machine Learning Resources from Lambda 	  Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, ResourceDownloadOwnerSetting is the property type of the OwnerSetting property for the S3MachineLearningModelResourceData and SageMakerMachineLearningModelResourceData property types.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceDownloadOwnerSetting {
-
-
-    /// 
-    /// The permissions that the group owner has to the machine learning resource. Valid values are rw (read-write) or ro (read-only).
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "GroupPermission")]
-    pub group_permission: String,
 
 
     /// 
@@ -175,52 +128,17 @@ pub struct ResourceDownloadOwnerSetting {
     #[serde(rename = "GroupOwner")]
     pub group_owner: String,
 
-}
-
-
-/// A local resource, 		machine learning resource, or secret resource. 	For more information,   see Access Local Resources with Lambda Functions, 	Perform Machine Learning Inference, and 	Deploy Secrets to the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
-///
-/// In an AWS CloudFormation template, the Resources 		 property of the AWS::Greengrass::ResourceDefinitionVersion resource contains a      list of ResourceInstance property types.
-#[derive(Default, serde::Serialize)]
-pub struct ResourceInstance {
-
 
     /// 
-    /// A container for resource data. The container takes only one of the following supported resource data types: 				 LocalDeviceResourceData, LocalVolumeResourceData, 				 SageMakerMachineLearningModelResourceData, S3MachineLearningModelResourceData, or SecretsManagerSecretResourceData.
-    /// 
-    /// NoteOnly one resource type can be defined for a ResourceDataContainer instance.
+    /// The permissions that the group owner has to the machine learning resource. Valid values are rw (read-write) or ro (read-only).
     ///
-    /// Required: Yes
-    ///
-    /// Type: ResourceDataContainer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceDataContainer")]
-    pub resource_data_container: ResourceDataContainer,
-
-
-    /// 
-    /// A descriptive or arbitrary ID for the resource. This value must be unique within       the resource definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Id")]
-    pub id: String,
-
-
-    /// 
-    /// The descriptive resource name, which is displayed on the AWS IoT Greengrass console. Maximum length 128 characters with pattern [a-zA-Z0-9:_-]+. This must be unique within a Greengrass group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "GroupPermission")]
+    pub group_permission: String,
 
 }
 
@@ -228,7 +146,7 @@ pub struct ResourceInstance {
 /// Settings that define additional 		Linux OS group permissions to give to the Lambda function process. You can give the permissions of the Linux group that 		owns the resource or choose another Linux group. These permissions are in addition to the function's RunAs permissions.
 ///
 /// In an AWS CloudFormation template, GroupOwnerSetting is a property of the 		 LocalDeviceResourceData  		 and LocalVolumeResourceData property types.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GroupOwnerSetting {
 
 
@@ -261,7 +179,7 @@ pub struct GroupOwnerSetting {
 /// Settings for a secret resource, 		which references a secret from AWS Secrets Manager. AWS IoT Greengrass stores a local, encrypted copy of the secret on the Greengrass core, 		where it can be securely accessed by connectors and Lambda functions. 		For more information,   see Deploy Secrets to the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, SecretsManagerSecretResourceData can be used in the 		 ResourceDataContainer 		 property type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SecretsManagerSecretResourceData {
 
 
@@ -291,10 +209,57 @@ pub struct SecretsManagerSecretResourceData {
 }
 
 
+/// A local resource, 		machine learning resource, or secret resource. 	For more information,   see Access Local Resources with Lambda Functions, 	Perform Machine Learning Inference, and 	Deploy Secrets to the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
+///
+/// In an AWS CloudFormation template, the Resources 		 property of the AWS::Greengrass::ResourceDefinitionVersion resource contains a      list of ResourceInstance property types.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ResourceInstance {
+
+
+    /// 
+    /// A descriptive or arbitrary ID for the resource. This value must be unique within       the resource definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Id")]
+    pub id: String,
+
+
+    /// 
+    /// The descriptive resource name, which is displayed on the AWS IoT Greengrass console. Maximum length 128 characters with pattern [a-zA-Z0-9:_-]+. This must be unique within a Greengrass group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
+    /// A container for resource data. The container takes only one of the following supported resource data types: 				 LocalDeviceResourceData, LocalVolumeResourceData, 				 SageMakerMachineLearningModelResourceData, S3MachineLearningModelResourceData, or SecretsManagerSecretResourceData.
+    /// 
+    /// NoteOnly one resource type can be defined for a ResourceDataContainer instance.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: ResourceDataContainer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceDataContainer")]
+    pub resource_data_container: ResourceDataContainer,
+
+}
+
+
 /// Settings for an 		Secrets Manager machine learning resource. 		 For more information,   see Perform Machine Learning Inference in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, SageMakerMachineLearningModelResourceData can be used in the ResourceDataContainer 		 property type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SageMakerMachineLearningModelResourceData {
 
 
@@ -311,18 +276,6 @@ pub struct SageMakerMachineLearningModelResourceData {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the Amazon SageMaker training job that represents the source model.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SageMakerJobArn")]
-    pub sage_maker_job_arn: String,
-
-
-    /// 
     /// The owner setting for the downloaded machine learning resource. For more information, see 	  Access Machine Learning Resources from Lambda 	  Functions in the AWS IoT Greengrass Version 1 Developer Guide.
     ///
     /// Required: No
@@ -333,13 +286,25 @@ pub struct SageMakerMachineLearningModelResourceData {
     #[serde(rename = "OwnerSetting")]
     pub owner_setting: Option<ResourceDownloadOwnerSetting>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Amazon SageMaker training job that represents the source model.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SageMakerJobArn")]
+    pub sage_maker_job_arn: String,
+
 }
 
 
 /// Settings for a 		local device resource, which represents a file under /dev. 		 For more information,   see Access Local Resources with Lambda Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, LocalDeviceResourceData can be used in the ResourceDataContainer property type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LocalDeviceResourceData {
 
 
@@ -372,8 +337,20 @@ pub struct LocalDeviceResourceData {
 /// Settings for a 		local volume resource, which represents a file or directory on the root file system. 		 For more information,   see Access Local Resources with Lambda Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, LocalVolumeResourceData can be used in the ResourceDataContainer  		 property type.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LocalVolumeResourceData {
+
+
+    /// 
+    /// The absolute local path of the resource in the Lambda environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationPath")]
+    pub destination_path: String,
 
 
     /// 
@@ -399,9 +376,42 @@ pub struct LocalVolumeResourceData {
     #[serde(rename = "GroupOwnerSetting")]
     pub group_owner_setting: Option<GroupOwnerSetting>,
 
+}
+
+
+/// Settings for an 		Amazon S3 machine learning resource. 		 For more information,   see Perform Machine Learning Inference in the AWS IoT Greengrass Version 1 Developer Guide.
+///
+/// In an AWS CloudFormation template, S3MachineLearningModelResourceData can be used in the 		 ResourceDataContainer 		 property type.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct S3MachineLearningModelResourceData {
+
 
     /// 
-    /// The absolute local path of the resource in the Lambda environment.
+    /// The owner setting for the downloaded machine learning resource. For more information, see 	  Access Machine Learning Resources from Lambda 	  Functions in the AWS IoT Greengrass Version 1 Developer Guide.
+    ///
+    /// Required: No
+    ///
+    /// Type: ResourceDownloadOwnerSetting
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "OwnerSetting")]
+    pub owner_setting: Option<ResourceDownloadOwnerSetting>,
+
+
+    /// 
+    /// The URI of the source model in an Amazon S3 bucket. The model package must be in tar.gz 				 or .zip format.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "S3Uri")]
+    pub s3_uri: String,
+
+
+    /// 
+    /// The absolute local path of the resource inside the Lambda environment.
     /// 
     /// Required: Yes
     ///

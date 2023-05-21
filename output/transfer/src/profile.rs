@@ -1,48 +1,8 @@
 
 
 /// Creates the local or partner profile to use for AS2 transfers.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProfile {
-
-
-    /// 
-    /// Indicates whether to list only LOCAL type profiles or only PARTNER type profiles.   If not supplied in the request, the command lists all types of profiles.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: LOCAL | PARTNER
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ProfileType")]
-    pub profile_type: String,
-
-
-    /// 
-    /// An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CertificateIds")]
-    pub certificate_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// Key-value pairs that can be used to group and search for profiles.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -62,6 +22,56 @@ pub struct CfnProfile {
     #[serde(rename = "As2Id")]
     pub as2_id: String,
 
+
+    /// 
+    /// An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CertificateIds")]
+    pub certificate_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// Indicates whether to list only LOCAL type profiles or only PARTNER type profiles.   If not supplied in the request, the command lists all types of profiles.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: LOCAL | PARTNER
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ProfileType")]
+    pub profile_type: String,
+
+
+    /// 
+    /// Key-value pairs that can be used to group and search for profiles.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnProfile {
+    fn type_string() -> &'static str {
+        "AWS::Transfer::Profile"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -72,7 +82,7 @@ pub struct CfnProfile {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

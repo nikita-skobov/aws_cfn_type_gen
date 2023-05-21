@@ -1,22 +1,8 @@
 
 
 /// Specifies a listener for an Application Load Balancer, Network Load Balancer, or     Gateway Load Balancer.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnListener {
-
-
-    /// 
-    /// The actions for the default rule. You cannot define a condition for a default     rule.
-    /// 
-    /// To create additional rules for an Application Load Balancer, use AWS::ElasticLoadBalancingV2::ListenerRule.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Action
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultActions")]
-    pub default_actions: Vec<Action>,
 
 
     /// 
@@ -33,32 +19,6 @@ pub struct CfnListener {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     pub port: Option<i64>,
-
-
-    /// 
-    /// The default SSL server certificate for a secure listener. You must provide exactly one     certificate if the listener protocol is HTTPS or TLS.
-    /// 
-    /// To create a certificate list for a secure listener, use AWS::ElasticLoadBalancingV2::ListenerCertificate.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: List of Certificate
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Certificates")]
-    pub certificates: Option<Vec<Certificate>>,
-
-
-    /// 
-    /// [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)    policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlpnPolicy")]
-    pub alpn_policy: Option<Vec<String>>,
 
 
     /// 
@@ -88,6 +48,20 @@ pub struct CfnListener {
 
 
     /// 
+    /// The actions for the default rule. You cannot define a condition for a default     rule.
+    /// 
+    /// To create additional rules for an Application Load Balancer, use AWS::ElasticLoadBalancingV2::ListenerRule.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Action
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultActions")]
+    pub default_actions: Vec<Action>,
+
+
+    /// 
     /// The protocol for connections from clients to the load balancer. For Application Load    Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the    supported protocols are TCP, TLS, UDP, and TCP_UDP. You can’t specify the UDP or TCP_UDP    protocol if dual-stack mode is enabled. You cannot specify a protocol for a Gateway Load    Balancer.
     /// 
     /// Required: No
@@ -100,227 +74,42 @@ pub struct CfnListener {
     #[serde(rename = "Protocol")]
     pub protocol: Option<String>,
 
-}
-
-
-/// Specifies information required when integrating with Amazon Cognito to authenticate     users.
-#[derive(Default, serde::Serialize)]
-pub struct AuthenticateCognitoConfig {
-
 
     /// 
-    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
+    /// [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)    policy.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "SessionTimeout")]
-    pub session_timeout: Option<String>,
+    #[serde(rename = "AlpnPolicy")]
+    pub alpn_policy: Option<Vec<String>>,
 
 
     /// 
-    /// The set of user claims to be requested from the IdP. The default is    openid.
+    /// The default SSL server certificate for a secure listener. You must provide exactly one     certificate if the listener protocol is HTTPS or TLS.
     /// 
-    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
+    /// To create a certificate list for a secure listener, use AWS::ElasticLoadBalancingV2::ListenerCertificate.
     /// 
-    /// Required: No
+    /// Required: Conditional
     ///
-    /// Type: String
+    /// Type: List of Certificate
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: Option<String>,
-
-
-    /// 
-    /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionCookieName")]
-    pub session_cookie_name: Option<String>,
-
-
-    /// 
-    /// The behavior if the user is not authenticated. The following are possible values:
-    /// 
-    /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: allow | authenticate | deny
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "OnUnauthenticatedRequest")]
-    pub on_unauthenticated_request: Option<String>,
-
-
-    /// 
-    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationRequestExtraParams")]
-    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolDomain")]
-    pub user_pool_domain: String,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the Amazon Cognito user pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolArn")]
-    pub user_pool_arn: String,
-
-
-    /// 
-    /// The ID of the Amazon Cognito user pool client.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserPoolClientId")]
-    pub user_pool_client_id: String,
+    #[serde(rename = "Certificates")]
+    pub certificates: Option<Vec<Certificate>>,
 
 }
 
+impl cfn_resources::CfnResource for CfnListener {
+    fn type_string() -> &'static str {
+        "AWS::ElasticLoadBalancingV2::Listener"
+    }
 
-/// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
-#[derive(Default, serde::Serialize)]
-pub struct ForwardConfig {
-
-
-    /// 
-    /// Information about the target group stickiness for a rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TargetGroupStickinessConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroupStickinessConfig")]
-    pub target_group_stickiness_config: Option<TargetGroupStickinessConfig>,
-
-
-    /// 
-    /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of TargetGroupTuple
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroups")]
-    pub target_groups: Option<Vec<TargetGroupTuple>>,
-
-}
-
-
-/// Specifies an SSL server certificate to use as the default certificate for a secure     listener.
-#[derive(Default, serde::Serialize)]
-pub struct Certificate {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the certificate.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CertificateArn")]
-    pub certificate_arn: Option<String>,
-
-}
-
-
-/// Information about the target group stickiness for a rule.
-#[derive(Default, serde::Serialize)]
-pub struct TargetGroupStickinessConfig {
-
-
-    /// 
-    /// Indicates whether target group stickiness is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Enabled")]
-    pub enabled: Option<bool>,
-
-
-    /// 
-    /// The time period, in seconds, during which requests from a client should be routed to the    same target group. The range is 1-604800 seconds (7 days).
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DurationSeconds")]
-    pub duration_seconds: Option<i64>,
-
-}
-
-
-/// Information about how traffic will be distributed between multiple target groups in a    forward rule.
-#[derive(Default, serde::Serialize)]
-pub struct TargetGroupTuple {
-
-
-    /// 
-    /// The weight. The range is 0 to 999.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Weight")]
-    pub weight: Option<i64>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the target group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetGroupArn")]
-    pub target_group_arn: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -331,8 +120,22 @@ pub struct TargetGroupTuple {
 /// You can reuse URI components using the following reserved keywords:
 ///
 /// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RedirectConfig {
+
+
+    /// 
+    /// The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP,    HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^(HTTPS?|#\{protocol\})$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Protocol")]
+    pub protocol: Option<String>,
 
 
     /// 
@@ -368,22 +171,6 @@ pub struct RedirectConfig {
 
 
     /// 
-    /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include    the leading "?", as it is automatically added. You can specify any of the reserved    keywords.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Query")]
-    pub query: Option<String>,
-
-
-    /// 
     /// The port. You can specify a value from 1 to 65535 or #{port}.
     /// 
     /// Required: No
@@ -410,36 +197,26 @@ pub struct RedirectConfig {
 
 
     /// 
-    /// The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP,    HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.
+    /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include    the leading "?", as it is automatically added. You can specify any of the reserved    keywords.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Pattern: ^(HTTPS?|#\{protocol\})$
+    /// Minimum: 0
+    ///
+    /// Maximum: 128
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Protocol")]
-    pub protocol: Option<String>,
+    #[serde(rename = "Query")]
+    pub query: Option<String>,
 
 }
 
 
 /// Specifies an action for a listener rule.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Action {
-
-
-    /// 
-    /// [Application Load Balancer] Information for creating an action that returns a custom HTTP    response. Specify only when Type is fixed-response.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FixedResponseConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FixedResponseConfig")]
-    pub fixed_response_config: Option<FixedResponseConfig>,
 
 
     /// 
@@ -459,15 +236,15 @@ pub struct Action {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the target group. Specify only when Type is     forward and you want to route to a single target group. To route to one or more    target groups, use ForwardConfig instead.
+    /// [HTTPS listeners] Information about an identity provider that is compliant with OpenID    Connect (OIDC). Specify only when Type is authenticate-oidc.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: AuthenticateOidcConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetGroupArn")]
-    pub target_group_arn: Option<String>,
+    #[serde(rename = "AuthenticateOidcConfig")]
+    pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
 
 
     /// 
@@ -485,15 +262,27 @@ pub struct Action {
 
 
     /// 
-    /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
+    /// The Amazon Resource Name (ARN) of the target group. Specify only when Type is     forward and you want to route to a single target group. To route to one or more    target groups, use ForwardConfig instead.
     /// 
     /// Required: No
     ///
-    /// Type: ForwardConfig
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ForwardConfig")]
-    pub forward_config: Option<ForwardConfig>,
+    #[serde(rename = "TargetGroupArn")]
+    pub target_group_arn: Option<String>,
+
+
+    /// 
+    /// [Application Load Balancer] Information for creating an action that returns a custom HTTP    response. Specify only when Type is fixed-response.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FixedResponseConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FixedResponseConfig")]
+    pub fixed_response_config: Option<FixedResponseConfig>,
 
 
     /// 
@@ -509,6 +298,18 @@ pub struct Action {
 
 
     /// 
+    /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ForwardConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ForwardConfig")]
+    pub forward_config: Option<ForwardConfig>,
+
+
+    /// 
     /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
     /// 
     /// Required: No
@@ -519,122 +320,31 @@ pub struct Action {
     #[serde(rename = "AuthenticateCognitoConfig")]
     pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
 
+}
+
+
+/// Specifies an SSL server certificate to use as the default certificate for a secure     listener.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Certificate {
+
 
     /// 
-    /// [HTTPS listeners] Information about an identity provider that is compliant with OpenID    Connect (OIDC). Specify only when Type is authenticate-oidc.
+    /// The Amazon Resource Name (ARN) of the certificate.
     /// 
     /// Required: No
     ///
-    /// Type: AuthenticateOidcConfig
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AuthenticateOidcConfig")]
-    pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
+    #[serde(rename = "CertificateArn")]
+    pub certificate_arn: Option<String>,
 
 }
 
 
 /// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuthenticateOidcConfig {
-
-
-    /// 
-    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SessionTimeout")]
-    pub session_timeout: Option<String>,
-
-
-    /// 
-    /// The OAuth 2.0 client secret. This parameter is required if you are creating a rule. If you    are modifying a rule, you can omit this parameter if you set     UseExistingClientSecret to true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientSecret")]
-    pub client_secret: Option<String>,
-
-
-    /// 
-    /// The set of user claims to be requested from the IdP. The default is    openid.
-    /// 
-    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Scope")]
-    pub scope: Option<String>,
-
-
-    /// 
-    /// The OAuth 2.0 client identifier.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ClientId")]
-    pub client_id: String,
-
-
-    /// 
-    /// The authorization endpoint of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthorizationEndpoint")]
-    pub authorization_endpoint: String,
-
-
-    /// 
-    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationRequestExtraParams")]
-    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
-
-
-    /// 
-    /// The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the    domain, and the path.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TokenEndpoint")]
-    pub token_endpoint: String,
-
-
-    /// 
-    /// The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol,    the domain, and the path.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UserInfoEndpoint")]
-    pub user_info_endpoint: String,
 
 
     /// 
@@ -662,6 +372,92 @@ pub struct AuthenticateOidcConfig {
 
 
     /// 
+    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationRequestExtraParams")]
+    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The authorization endpoint of the IdP. This must be a full URL, including the HTTPS    protocol, the domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthorizationEndpoint")]
+    pub authorization_endpoint: String,
+
+
+    /// 
+    /// The OAuth 2.0 client identifier.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ClientId")]
+    pub client_id: String,
+
+
+    /// 
+    /// The set of user claims to be requested from the IdP. The default is    openid.
+    /// 
+    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scope")]
+    pub scope: Option<String>,
+
+
+    /// 
+    /// The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol,    the domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserInfoEndpoint")]
+    pub user_info_endpoint: String,
+
+
+    /// 
+    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionTimeout")]
+    pub session_timeout: Option<String>,
+
+
+    /// 
+    /// Indicates whether to use the existing client secret when modifying a rule. If you are    creating a rule, you can omit this parameter or set it to false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseExistingClientSecret")]
+    pub use_existing_client_secret: Option<bool>,
+
+
+    /// 
     /// The behavior if the user is not authenticated. The following are possible values:
     /// 
     /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
@@ -678,22 +474,48 @@ pub struct AuthenticateOidcConfig {
 
 
     /// 
-    /// Indicates whether to use the existing client secret when modifying a rule. If you are    creating a rule, you can omit this parameter or set it to false.
+    /// The OAuth 2.0 client secret. This parameter is required if you are creating a rule. If you    are modifying a rule, you can omit this parameter if you set     UseExistingClientSecret to true.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "UseExistingClientSecret")]
-    pub use_existing_client_secret: Option<bool>,
+    #[serde(rename = "ClientSecret")]
+    pub client_secret: Option<String>,
+
+
+    /// 
+    /// The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the    domain, and the path.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TokenEndpoint")]
+    pub token_endpoint: String,
 
 }
 
 
 /// Specifies information required when returning a custom HTTP response.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FixedResponseConfig {
+
+
+    /// 
+    /// The HTTP response code (2XX, 4XX, or 5XX).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^(2|4|5)\d\d$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "StatusCode")]
+    pub status_code: String,
 
 
     /// 
@@ -713,20 +535,6 @@ pub struct FixedResponseConfig {
 
 
     /// 
-    /// The HTTP response code (2XX, 4XX, or 5XX).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^(2|4|5)\d\d$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StatusCode")]
-    pub status_code: String,
-
-
-    /// 
     /// The content type.
     /// 
     /// Valid Values: text/plain | text/css | text/html | application/javascript |    application/json
@@ -742,5 +550,207 @@ pub struct FixedResponseConfig {
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
     pub content_type: Option<String>,
+
+}
+
+
+/// Information about the target group stickiness for a rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetGroupStickinessConfig {
+
+
+    /// 
+    /// Indicates whether target group stickiness is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Enabled")]
+    pub enabled: Option<bool>,
+
+
+    /// 
+    /// The time period, in seconds, during which requests from a client should be routed to the    same target group. The range is 1-604800 seconds (7 days).
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DurationSeconds")]
+    pub duration_seconds: Option<i64>,
+
+}
+
+
+/// Specifies information required when integrating with Amazon Cognito to authenticate     users.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AuthenticateCognitoConfig {
+
+
+    /// 
+    /// The ID of the Amazon Cognito user pool client.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserPoolClientId")]
+    pub user_pool_client_id: String,
+
+
+    /// 
+    /// The set of user claims to be requested from the IdP. The default is    openid.
+    /// 
+    /// To verify which scope values your IdP supports and how to separate multiple values, see    the documentation for your IdP.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Scope")]
+    pub scope: Option<String>,
+
+
+    /// 
+    /// The maximum duration of the authentication session, in seconds. The default is 604800    seconds (7 days).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionTimeout")]
+    pub session_timeout: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the Amazon Cognito user pool.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserPoolArn")]
+    pub user_pool_arn: String,
+
+
+    /// 
+    /// The behavior if the user is not authenticated. The following are possible values:
+    /// 
+    /// deny - Return an HTTP 401 Unauthorized error.               allow - Allow the request to be forwarded to the target.               authenticate - Redirect the request to the IdP authorization endpoint. This is      the default value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: allow | authenticate | deny
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "OnUnauthenticatedRequest")]
+    pub on_unauthenticated_request: Option<String>,
+
+
+    /// 
+    /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationRequestExtraParams")]
+    pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
+
+
+    /// 
+    /// The name of the cookie used to maintain session information. The default is    AWSELBAuthSessionCookie.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SessionCookieName")]
+    pub session_cookie_name: Option<String>,
+
+
+    /// 
+    /// The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UserPoolDomain")]
+    pub user_pool_domain: String,
+
+}
+
+
+/// Information about how traffic will be distributed between multiple target groups in a    forward rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TargetGroupTuple {
+
+
+    /// 
+    /// The weight. The range is 0 to 999.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Weight")]
+    pub weight: Option<i64>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the target group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupArn")]
+    pub target_group_arn: Option<String>,
+
+}
+
+
+/// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ForwardConfig {
+
+
+    /// 
+    /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of TargetGroupTuple
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroups")]
+    pub target_groups: Option<Vec<TargetGroupTuple>>,
+
+
+    /// 
+    /// Information about the target group stickiness for a rule.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TargetGroupStickinessConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetGroupStickinessConfig")]
+    pub target_group_stickiness_config: Option<TargetGroupStickinessConfig>,
 
 }

@@ -1,7 +1,7 @@
 
 
 /// Details about a Code signing configuration.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCodeSigningConfig {
 
 
@@ -46,30 +46,19 @@ pub struct CfnCodeSigningConfig {
 
 }
 
+impl cfn_resources::CfnResource for CfnCodeSigningConfig {
+    fn type_string() -> &'static str {
+        "AWS::Lambda::CodeSigningConfig"
+    }
 
-/// List of signing profiles that can sign a code package.
-#[derive(Default, serde::Serialize)]
-pub struct AllowedPublishers {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) for each of the signing profiles. A signing profile defines a trusted user    who can sign a code package.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SigningProfileVersionArns")]
-    pub signing_profile_version_arns: Vec<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Code signing configuration policies specify the validation failure action for signature mismatch or    expiry.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CodeSigningPolicies {
 
 
@@ -87,5 +76,26 @@ pub struct CodeSigningPolicies {
     /// Update requires: No interruption
     #[serde(rename = "UntrustedArtifactOnDeployment")]
     pub untrusted_artifact_on_deployment: String,
+
+}
+
+
+/// List of signing profiles that can sign a code package.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AllowedPublishers {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) for each of the signing profiles. A signing profile defines a trusted user    who can sign a code package.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SigningProfileVersionArns")]
+    pub signing_profile_version_arns: Vec<String>,
 
 }

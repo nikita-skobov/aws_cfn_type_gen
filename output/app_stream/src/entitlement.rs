@@ -1,7 +1,7 @@
 
 
 /// Creates an entitlement to control access, based on user attributes, to specific     applications within a stack. Entitlements apply to SAML 2.0 federated user identities.     Amazon AppStream 2.0 user pool and streaming URL users are entitled to all applications in     a stack. Entitlements don't apply to the desktop stream view application or to applications     managed by a dynamic app provider using the Dynamic Application Framework.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEntitlement {
 
 
@@ -48,18 +48,6 @@ pub struct CfnEntitlement {
 
 
     /// 
-    /// The attributes of the entitlement.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Attribute
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: Vec<Attribute>,
-
-
-    /// 
     /// The description of the entitlement.
     /// 
     /// Required: No
@@ -72,23 +60,34 @@ pub struct CfnEntitlement {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// The attributes of the entitlement.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Attribute
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Attributes")]
+    pub attributes: Vec<Attribute>,
+
+}
+
+impl cfn_resources::CfnResource for CfnEntitlement {
+    fn type_string() -> &'static str {
+        "AWS::AppStream::Entitlement"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// An attribute that belongs to an entitlement. Application entitlements work by matching a     supported SAML 2.0 attribute name to a value when a user identity federates to an AppStream     2.0 SAML application.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Attribute {
-
-
-    /// A value that is matched to a supported SAML attribute name when a user identity federates to an AppStream 2.0 SAML application.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// A supported AWS IAM SAML PrincipalTag attribute that is matched to a value when a user     identity federates to an AppStream 2.0 SAML application.
@@ -104,5 +103,16 @@ pub struct Attribute {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
+
+
+    /// A value that is matched to a supported SAML attribute name when a user identity federates to an AppStream 2.0 SAML application.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

@@ -7,7 +7,7 @@
 /// If you don't have s3-outposts:PutBucketPolicy permissions,    S3 on Outposts returns a 403 Access Denied error.
 ///
 /// For more information, see the AWS::IAM::Policy    PolicyDocument resource description in this guide and        Access Policy Language Overview.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBucketPolicy {
 
 
@@ -34,4 +34,14 @@ pub struct CfnBucketPolicy {
     #[serde(rename = "Bucket")]
     pub bucket: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnBucketPolicy {
+    fn type_string() -> &'static str {
+        "AWS::S3Outposts::BucketPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -7,12 +7,12 @@
 /// As a best practice, you can validate your IAM policies.    To learn more, see Validating IAM policies       in the IAM User Guide.
 ///
 /// For more information about managed policies in general, see Managed         policies and inline policies in the       IAM User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnManagedPolicy {
 
 
     /// 
-    /// The name (friendly name, not ARN) of the group to attach the policy to.
+    /// The name (friendly name, not ARN) of the IAM user to attach the policy to.
     /// 
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
     /// 
@@ -22,13 +22,13 @@ pub struct CfnManagedPolicy {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 128
+    /// Maximum: 64
     ///
     /// Pattern: [\w+=,.@-]+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Groups")]
-    pub groups: Option<Vec<String>>,
+    #[serde(rename = "Users")]
+    pub users: Option<Vec<String>>,
 
 
     /// 
@@ -57,26 +57,6 @@ pub struct CfnManagedPolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
     pub policy_document: serde_json::Value,
-
-
-    /// 
-    /// The name (friendly name, not ARN) of the IAM user to attach the policy to.
-    /// 
-    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [\w+=,.@-]+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Users")]
-    pub users: Option<Vec<String>>,
 
 
     /// 
@@ -124,6 +104,26 @@ pub struct CfnManagedPolicy {
 
 
     /// 
+    /// The name (friendly name, not ARN) of the group to attach the policy to.
+    /// 
+    /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\w+=,.@-]+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Groups")]
+    pub groups: Option<Vec<String>>,
+
+
+    /// 
     /// A friendly description of the policy.
     /// 
     /// Typically used to store information about the permissions defined in the policy. For       example, "Grants access to production DynamoDB tables."
@@ -156,4 +156,14 @@ pub struct CfnManagedPolicy {
     #[serde(rename = "Roles")]
     pub roles: Option<Vec<String>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnManagedPolicy {
+    fn type_string() -> &'static str {
+        "AWS::IAM::ManagedPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

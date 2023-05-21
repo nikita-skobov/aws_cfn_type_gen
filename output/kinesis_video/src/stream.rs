@@ -9,8 +9,38 @@
 /// For information about how the service works, see How it Works.
 ///
 /// You must have permissions for the KinesisVideo:CreateStream action.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStream {
+
+
+    /// 
+    /// The name of the stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+
+
+    /// 
+    /// The MediaType of the stream.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Pattern: [\w\-\.\+]+/[\w\-\.\+]+(,[\w\-\.\+]+/[\w\-\.\+]+)*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MediaType")]
+    pub media_type: Option<String>,
 
 
     /// 
@@ -32,7 +62,7 @@ pub struct CfnStream {
 
 
     /// 
-    /// The MediaType of the stream.
+    /// The ID of the AWS Key Management Service (AWS KMS) key that Kinesis Video Streams       uses to encrypt data on the stream.
     /// 
     /// Required: No
     ///
@@ -40,13 +70,13 @@ pub struct CfnStream {
     ///
     /// Minimum: 1
     ///
-    /// Maximum: 128
+    /// Maximum: 2048
     ///
-    /// Pattern: [\w\-\.\+]+/[\w\-\.\+]+(,[\w\-\.\+]+/[\w\-\.\+]+)*
+    /// Pattern: .+
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MediaType")]
-    pub media_type: Option<String>,
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
@@ -76,36 +106,16 @@ pub struct CfnStream {
     #[serde(rename = "DataRetentionInHours")]
     pub data_retention_in_hours: Option<i64>,
 
+}
 
-    /// 
-    /// The name of the stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+impl cfn_resources::CfnResource for CfnStream {
+    fn type_string() -> &'static str {
+        "AWS::KinesisVideo::Stream"
+    }
 
-
-    /// 
-    /// The ID of the AWS Key Management Service (AWS KMS) key that Kinesis Video Streams       uses to encrypt data on the stream.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: .+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -116,7 +126,7 @@ pub struct CfnStream {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

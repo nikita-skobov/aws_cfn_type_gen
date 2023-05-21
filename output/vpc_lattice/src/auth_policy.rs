@@ -1,7 +1,7 @@
 
 
 /// Creates or updates the auth policy. The policy string in JSON must not contain newlines or  blank lines.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAuthPolicy {
 
 
@@ -28,4 +28,14 @@ pub struct CfnAuthPolicy {
     #[serde(rename = "Policy")]
     pub policy: serde_json::Value,
 
+}
+
+impl cfn_resources::CfnResource for CfnAuthPolicy {
+    fn type_string() -> &'static str {
+        "AWS::VpcLattice::AuthPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

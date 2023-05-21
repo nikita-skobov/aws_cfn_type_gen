@@ -1,7 +1,7 @@
 
 
 /// The AWS::S3ObjectLambda::AccessPointPolicy resource specifies the Object       Lambda Access Point resource policy document.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccessPointPolicy {
 
 
@@ -28,4 +28,14 @@ pub struct CfnAccessPointPolicy {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: serde_json::Value,
 
+}
+
+impl cfn_resources::CfnResource for CfnAccessPointPolicy {
+    fn type_string() -> &'static str {
+        "AWS::S3ObjectLambda::AccessPointPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

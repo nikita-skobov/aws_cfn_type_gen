@@ -1,7 +1,7 @@
 
 
 /// Attaches an Elastic Load Balancing load balancer to an AWS OpsWorks layer that you     specify.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnElasticLoadBalancerAttachment {
 
 
@@ -28,4 +28,14 @@ pub struct CfnElasticLoadBalancerAttachment {
     #[serde(rename = "LayerId")]
     pub layer_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnElasticLoadBalancerAttachment {
+    fn type_string() -> &'static str {
+        "AWS::OpsWorks::ElasticLoadBalancerAttachment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -1,7 +1,7 @@
 
 
 /// Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity Center group, or    IAM user) access to the specified AWS IoT SiteWise Monitor portal or project resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccessPolicy {
 
 
@@ -18,18 +18,6 @@ pub struct CfnAccessPolicy {
 
 
     /// 
-    /// The identity for this access policy. Choose an IAM Identity Center user, an IAM Identity Center group, or an IAM user.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: AccessPolicyIdentity
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessPolicyIdentity")]
-    pub access_policy_identity: AccessPolicyIdentity,
-
-
-    /// 
     /// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
     /// 
     /// Required: Yes
@@ -40,11 +28,33 @@ pub struct CfnAccessPolicy {
     #[serde(rename = "AccessPolicyResource")]
     pub access_policy_resource: AccessPolicyResource,
 
+
+    /// 
+    /// The identity for this access policy. Choose an IAM Identity Center user, an IAM Identity Center group, or an IAM user.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: AccessPolicyIdentity
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AccessPolicyIdentity")]
+    pub access_policy_identity: AccessPolicyIdentity,
+
+}
+
+impl cfn_resources::CfnResource for CfnAccessPolicy {
+    fn type_string() -> &'static str {
+        "AWS::IoTSiteWise::AccessPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The Project property type specifies the AWS IoT SiteWise Monitor project for an       AWS::IoTSiteWise::AccessPolicy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Project {
 
 
@@ -62,73 +72,9 @@ pub struct Project {
 }
 
 
-/// Contains information about an AWS Identity and Access Management user.
-#[derive(Default, serde::Serialize)]
-pub struct IamUser {
-
-
-    /// 
-    /// The ARN of the IAM user. For more information, see IAM ARNs in the     IAM User Guide.
-    /// 
-    /// NoteIf you delete the IAM user, access policies that contain this identity include an     empty arn. You can delete the access policy for the IAM user that no longer     exists.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "arn")]
-    pub arn: Option<String>,
-
-}
-
-
-/// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
-#[derive(Default, serde::Serialize)]
-pub struct AccessPolicyResource {
-
-
-    /// 
-    /// The AWS IoT SiteWise Monitor portal for this access policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Portal
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Portal")]
-    pub portal: Option<Portal>,
-
-
-    /// 
-    /// The AWS IoT SiteWise Monitor project for this access policy.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Project
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Project")]
-    pub project: Option<Project>,
-
-}
-
-
 /// The identity (IAM Identity Center user, IAM Identity Center group, or IAM user) to which this access policy    applies.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccessPolicyIdentity {
-
-
-    /// 
-    /// An IAM user identity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: IamUser
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IamUser")]
-    pub iam_user: Option<IamUser>,
 
 
     /// 
@@ -154,11 +100,23 @@ pub struct AccessPolicyIdentity {
     #[serde(rename = "IamRole")]
     pub iam_role: Option<IamRole>,
 
+
+    /// 
+    /// An IAM user identity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: IamUser
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IamUser")]
+    pub iam_user: Option<IamUser>,
+
 }
 
 
 /// The Portal property type specifies the AWS IoT SiteWise Monitor portal for an       AWS::IoTSiteWise::AccessPolicy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Portal {
 
 
@@ -176,8 +134,58 @@ pub struct Portal {
 }
 
 
+/// Contains information about an AWS Identity and Access Management role. For more information, see IAM roles in the     IAM User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IamRole {
+
+
+    /// 
+    /// The ARN of the IAM role. For more information, see IAM ARNs in the     IAM User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "arn")]
+    pub arn: Option<String>,
+
+}
+
+
+/// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AccessPolicyResource {
+
+
+    /// 
+    /// The AWS IoT SiteWise Monitor project for this access policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Project
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Project")]
+    pub project: Option<Project>,
+
+
+    /// 
+    /// The AWS IoT SiteWise Monitor portal for this access policy.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Portal
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Portal")]
+    pub portal: Option<Portal>,
+
+}
+
+
 /// The User property type specifies the AWS IoT SiteWise Monitor user for       an AWS::IoTSiteWise::AccessPolicy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct User {
 
 
@@ -195,13 +203,15 @@ pub struct User {
 }
 
 
-/// Contains information about an AWS Identity and Access Management role. For more information, see IAM roles in the     IAM User Guide.
-#[derive(Default, serde::Serialize)]
-pub struct IamRole {
+/// Contains information about an AWS Identity and Access Management user.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct IamUser {
 
 
     /// 
-    /// The ARN of the IAM role. For more information, see IAM ARNs in the     IAM User Guide.
+    /// The ARN of the IAM user. For more information, see IAM ARNs in the     IAM User Guide.
+    /// 
+    /// NoteIf you delete the IAM user, access policies that contain this identity include an     empty arn. You can delete the access policy for the IAM user that no longer     exists.
     /// 
     /// Required: No
     ///

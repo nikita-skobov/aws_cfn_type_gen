@@ -4,32 +4,20 @@
 ///
 /// Amazon S3 on Outposts access points simplify managing data access at scale for shared    datasets in S3 on Outposts. S3 on Outposts uses endpoints to connect to S3 on Outposts buckets    so that you can perform actions within your virtual private cloud (VPC). For more information,    see     Accessing S3 on Outposts using VPC-only access points.
 /// 
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEndpoint {
 
 
     /// 
-    /// The ID of the security group to use with the endpoint.
+    /// The ID of the subnet.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupId")]
-    pub security_group_id: String,
-
-
-    /// 
-    /// The ID of the Outpost.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OutpostId")]
-    pub outpost_id: String,
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: String,
 
 
     /// 
@@ -44,6 +32,18 @@ pub struct CfnEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "CustomerOwnedIpv4Pool")]
     pub customer_owned_ipv4_pool: Option<String>,
+
+
+    /// 
+    /// The ID of the security group to use with the endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupId")]
+    pub security_group_id: String,
 
 
     /// 
@@ -63,21 +63,31 @@ pub struct CfnEndpoint {
 
 
     /// 
-    /// The ID of the subnet.
+    /// The ID of the Outpost.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: String,
+    #[serde(rename = "OutpostId")]
+    pub outpost_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnEndpoint {
+    fn type_string() -> &'static str {
+        "AWS::S3Outposts::Endpoint"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The container for the network interface.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkInterface {
 
 

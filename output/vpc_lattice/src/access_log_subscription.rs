@@ -1,20 +1,8 @@
 
 
 /// Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose. The service network owner  can use the access logs to audit the services in the network. The service network owner will only  see access logs from clients and services that are associated with their service network. Access  log entries represent traffic originated from VPCs associated with that network. For more  information, see Access logs in the   Amazon VPC Lattice User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccessLogSubscription {
-
-
-    /// 
-    /// The ID or Amazon Resource Name (ARN) of the service network or service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceIdentifier")]
-    pub resource_identifier: Option<String>,
 
 
     /// 
@@ -30,6 +18,18 @@ pub struct CfnAccessLogSubscription {
 
 
     /// 
+    /// The ID or Amazon Resource Name (ARN) of the service network or service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceIdentifier")]
+    pub resource_identifier: Option<String>,
+
+
+    /// 
     /// The tags for the access log subscription.
     /// 
     /// Required: No
@@ -42,6 +42,16 @@ pub struct CfnAccessLogSubscription {
 
 }
 
+impl cfn_resources::CfnResource for CfnAccessLogSubscription {
+    fn type_string() -> &'static str {
+        "AWS::VpcLattice::AccessLogSubscription"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
@@ -50,7 +60,7 @@ pub struct CfnAccessLogSubscription {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

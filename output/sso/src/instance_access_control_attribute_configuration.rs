@@ -1,22 +1,8 @@
 
 
 /// Enables the attribute-based access control (ABAC) feature for the specified IAM Identity Center     instance. You can also specify new attributes to add to your ABAC configuration during the     enabling process. For more information about ABAC, see Attribute-Based Access Control in     the IAM Identity Center User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInstanceAccessControlAttributeConfiguration {
-
-
-    /// 
-    /// Lists the attributes that are configured for ABAC in the specified IAM Identity Center     instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AccessControlAttribute
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AccessControlAttributes")]
-    pub access_control_attributes: Option<Vec<AccessControlAttribute>>,
 
 
     /// 
@@ -36,45 +22,36 @@ pub struct CfnInstanceAccessControlAttributeConfiguration {
     #[serde(rename = "InstanceArn")]
     pub instance_arn: String,
 
-}
-
-
-/// The value used for mapping a specified attribute to an identity source.
-#[derive(Default, serde::Serialize)]
-pub struct AccessControlAttributeValue {
-
 
     /// 
-    /// The identity source to use when mapping a specified attribute to IAM Identity Center.
+    /// Lists the attributes that are configured for ABAC in the specified IAM Identity Center     instance.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of String
+    /// Type: List of AccessControlAttribute
     ///
-    /// Maximum: 1
+    /// Maximum: 50
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Source")]
-    pub source: Vec<String>,
+    #[serde(rename = "AccessControlAttributes")]
+    pub access_control_attributes: Option<Vec<AccessControlAttribute>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnInstanceAccessControlAttributeConfiguration {
+    fn type_string() -> &'static str {
+        "AWS::SSO::InstanceAccessControlAttributeConfiguration"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// These are IAM Identity Center identity store attributes that you can configure for use in     attributes-based access control (ABAC). You can create permissions policies that determine     who can access your AWS resources based upon the configured attribute values. When you     enable ABAC and specify AccessControlAttributes, IAM Identity Center passes the attribute     values of the authenticated user into IAM for use in policy evaluation.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccessControlAttribute {
-
-
-    /// 
-    /// The value used for mapping a specified attribute to an identity source.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: AccessControlAttributeValue
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: AccessControlAttributeValue,
 
 
     /// 
@@ -93,5 +70,38 @@ pub struct AccessControlAttribute {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value used for mapping a specified attribute to an identity source.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: AccessControlAttributeValue
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: AccessControlAttributeValue,
+
+}
+
+
+/// The value used for mapping a specified attribute to an identity source.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AccessControlAttributeValue {
+
+
+    /// 
+    /// The identity source to use when mapping a specified attribute to IAM Identity Center.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Maximum: 1
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Source")]
+    pub source: Vec<String>,
 
 }

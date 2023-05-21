@@ -1,7 +1,7 @@
 
 
 /// The AWS::AppStream::StackFleetAssociation resource associates the specified fleet with the specified stack for Amazon AppStream 2.0.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStackFleetAssociation {
 
 
@@ -36,4 +36,14 @@ pub struct CfnStackFleetAssociation {
     #[serde(rename = "StackName")]
     pub stack_name: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnStackFleetAssociation {
+    fn type_string() -> &'static str {
+        "AWS::AppStream::StackFleetAssociation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

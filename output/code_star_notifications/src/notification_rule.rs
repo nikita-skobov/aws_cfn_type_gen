@@ -1,7 +1,7 @@
 
 
 /// Creates a notification rule for a resource. The rule specifies the events you want       notifications about and the targets (such as AWS Chatbot topics or AWS Chatbot clients configured for Slack) where you want to receive       them.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNotificationRule {
 
 
@@ -28,30 +28,26 @@ pub struct CfnNotificationRule {
     pub created_by: Option<String>,
 
 
-    /// 
-    /// The level of detail to include in the notifications for this resource. BASIC will include only the     contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental information     provided by AWS CodeStar Notifications and/or the service for the resource for which the notification is created.
-    /// 
-    /// Required: Yes
+    /// Property description not available.
+    ///
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Allowed values: BASIC | FULL
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "DetailType")]
-    pub detail_type: String,
+    #[serde(rename = "TargetAddress")]
+    pub target_address: Option<String>,
 
 
-    /// 
-    /// A list of event types associated with this notification rule. For a complete list of event types and IDs, see      Notification concepts     in the Developer Tools Console User Guide.
-    /// 
-    /// Required: Yes
+    /// Property description not available.
     ///
-    /// Type: List of String
+    /// Required: No
+    ///
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EventTypeIds")]
-    pub event_type_ids: Vec<String>,
+    #[serde(rename = "EventTypeId")]
+    pub event_type_id: Option<String>,
 
 
     /// 
@@ -69,28 +65,29 @@ pub struct CfnNotificationRule {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the resource to associate with the notification rule. Supported resources include pipelines in AWS CodePipeline,    repositories in AWS CodeCommit, and build projects in AWS CodeBuild.
+    /// The status of the notification rule. The default value is ENABLED. If the status is       set to DISABLED, notifications aren't sent for the notification rule.
     /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^arn:aws[^:\s]*:[^:\s]*:[^:\s]*:[0-9]{12}:[^\s]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Resource")]
-    pub resource: String,
-
-
-    /// Property description not available.
-    ///
     /// Required: No
     ///
     /// Type: String
     ///
+    /// Allowed values: DISABLED | ENABLED
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "EventTypeId")]
-    pub event_type_id: Option<String>,
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
+    /// A list of event types associated with this notification rule. For a complete list of event types and IDs, see      Notification concepts     in the Developer Tools Console User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventTypeIds")]
+    pub event_type_ids: Vec<String>,
 
 
     /// 
@@ -112,51 +109,48 @@ pub struct CfnNotificationRule {
 
 
     /// 
-    /// The status of the notification rule. The default value is ENABLED. If the status is       set to DISABLED, notifications aren't sent for the notification rule.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DISABLED | ENABLED
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TargetAddress")]
-    pub target_address: Option<String>,
-
-}
-
-
-/// Information about the AWS Chatbot topics or AWS Chatbot clients associated with a notification rule.
-#[derive(Default, serde::Serialize)]
-pub struct Target {
-
-
-    /// 
-    /// The target type. Can be an Amazon Simple Notification Service topic or AWS Chatbot client.
-    /// 
-    /// Amazon Simple Notification Service topics are specified as SNS.AWS Chatbot clients are specified as AWSChatbotSlack.
+    /// The level of detail to include in the notifications for this resource. BASIC will include only the     contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental information     provided by AWS CodeStar Notifications and/or the service for the resource for which the notification is created.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Pattern: ^[A-Za-z]+$
+    /// Allowed values: BASIC | FULL
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TargetType")]
-    pub target_type: String,
+    #[serde(rename = "DetailType")]
+    pub detail_type: String,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the resource to associate with the notification rule. Supported resources include pipelines in AWS CodePipeline,    repositories in AWS CodeCommit, and build projects in AWS CodeBuild.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^arn:aws[^:\s]*:[^:\s]*:[^:\s]*:[0-9]{12}:[^\s]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Resource")]
+    pub resource: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnNotificationRule {
+    fn type_string() -> &'static str {
+        "AWS::CodeStarNotifications::NotificationRule"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Information about the AWS Chatbot topics or AWS Chatbot clients associated with a notification rule.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Target {
 
 
     /// 
@@ -173,5 +167,21 @@ pub struct Target {
     /// Update requires: No interruption
     #[serde(rename = "TargetAddress")]
     pub target_address: String,
+
+
+    /// 
+    /// The target type. Can be an Amazon Simple Notification Service topic or AWS Chatbot client.
+    /// 
+    /// Amazon Simple Notification Service topics are specified as SNS.AWS Chatbot clients are specified as AWSChatbotSlack.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: ^[A-Za-z]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TargetType")]
+    pub target_type: String,
 
 }

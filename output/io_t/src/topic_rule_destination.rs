@@ -1,7 +1,7 @@
 
 
 /// A topic rule destination.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTopicRuleDestination {
 
 
@@ -18,18 +18,6 @@ pub struct CfnTopicRuleDestination {
 
 
     /// 
-    /// Properties of the virtual private cloud (VPC) connection.
-    /// 
-    /// Required: No
-    ///
-    /// Type: VpcDestinationProperties
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcProperties")]
-    pub vpc_properties: Option<VpcDestinationProperties>,
-
-
-    /// 
     /// IN_PROGRESS               A topic rule destination was created but has not been confirmed. You can set status to IN_PROGRESS by calling UpdateTopicRuleDestination. Calling UpdateTopicRuleDestination causes a new confirmation challenge to be sent to your confirmation endpoint.                   ENABLED               Confirmation was completed, and traffic to this destination is allowed. You can set status to DISABLED by calling UpdateTopicRuleDestination.                    DISABLED                  Confirmation was completed, and traffic to this destination is not allowed. You can set status to ENABLED by calling UpdateTopicRuleDestination.                       ERROR                  Confirmation could not be completed; for example, if the confirmation timed           out. You can call GetTopicRuleDestination for details about the           error. You can set status to IN_PROGRESS by calling             UpdateTopicRuleDestination. Calling             UpdateTopicRuleDestination causes a new confirmation challenge           to be sent to your confirmation endpoint.
     /// 
     /// Required: No
@@ -40,11 +28,33 @@ pub struct CfnTopicRuleDestination {
     #[serde(rename = "Status")]
     pub status: Option<String>,
 
+
+    /// 
+    /// Properties of the virtual private cloud (VPC) connection.
+    /// 
+    /// Required: No
+    ///
+    /// Type: VpcDestinationProperties
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcProperties")]
+    pub vpc_properties: Option<VpcDestinationProperties>,
+
+}
+
+impl cfn_resources::CfnResource for CfnTopicRuleDestination {
+    fn type_string() -> &'static str {
+        "AWS::IoT::TopicRuleDestination"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The properties of a virtual private cloud (VPC) destination.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcDestinationProperties {
 
 
@@ -61,15 +71,15 @@ pub struct VpcDestinationProperties {
 
 
     /// 
-    /// The ID of the VPC.
+    /// The subnet IDs of the VPC destination.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Option<Vec<String>>,
 
 
     /// 
@@ -85,21 +95,21 @@ pub struct VpcDestinationProperties {
 
 
     /// 
-    /// The subnet IDs of the VPC destination.
+    /// The ID of the VPC.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Option<Vec<String>>,
+    #[serde(rename = "VpcId")]
+    pub vpc_id: Option<String>,
 
 }
 
 
 /// HTTP URL destination properties.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HttpUrlDestinationSummary {
 
 

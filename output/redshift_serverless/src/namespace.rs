@@ -1,32 +1,8 @@
 
 
 /// A collection of database objects and users.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNamespace {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultIamRoleArn")]
-    pub default_iam_role_arn: Option<String>,
-
-
-    /// 
-    /// The name of the snapshot to be created before the namespace is deleted.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FinalSnapshotName")]
-    pub final_snapshot_name: Option<String>,
 
 
     /// 
@@ -42,27 +18,15 @@ pub struct CfnNamespace {
 
 
     /// 
-    /// The name of the primary database created in the namespace.
+    /// The name of the snapshot to be created before the namespace is deleted.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DbName")]
-    pub db_name: Option<String>,
-
-
-    /// 
-    /// The password of the administrator for the primary database created in the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdminUserPassword")]
-    pub admin_user_password: Option<String>,
+    #[serde(rename = "FinalSnapshotName")]
+    pub final_snapshot_name: Option<String>,
 
 
     /// 
@@ -78,27 +42,39 @@ pub struct CfnNamespace {
 
 
     /// 
-    /// A list of IAM roles to associate with the namespace.
+    /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IamRoles")]
-    pub iam_roles: Option<Vec<String>>,
+    #[serde(rename = "DefaultIamRoleArn")]
+    pub default_iam_role_arn: Option<String>,
 
 
     /// 
-    /// The name of the namespace.   Must be between 3-64 alphanumeric characters in lowercase,   and it cannot be a reserved word. A list of reserved words can be found   in Reserved Words in the Amazon Redshift Database Developer Guide.
+    /// The password of the administrator for the primary database created in the namespace.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "NamespaceName")]
-    pub namespace_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "AdminUserPassword")]
+    pub admin_user_password: Option<String>,
+
+
+    /// 
+    /// The name of the primary database created in the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DbName")]
+    pub db_name: Option<String>,
 
 
     /// 
@@ -114,15 +90,15 @@ pub struct CfnNamespace {
 
 
     /// 
-    /// The ID of the AWS Key Management Service key used to encrypt your data.
+    /// The name of the namespace.   Must be between 3-64 alphanumeric characters in lowercase,   and it cannot be a reserved word. A list of reserved words can be found   in Reserved Words in the Amazon Redshift Database Developer Guide.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "NamespaceName")]
+    pub namespace_name: String,
 
 
     /// 
@@ -136,37 +112,6 @@ pub struct CfnNamespace {
     #[serde(rename = "AdminUsername")]
     pub admin_username: Option<String>,
 
-}
-
-
-/// A collection of database objects and users.
-#[derive(Default, serde::Serialize)]
-pub struct Namespace {
-
-
-    /// 
-    /// A list of IAM roles to associate with the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IamRoles")]
-    pub iam_roles: Option<Vec<String>>,
-
-
-    /// 
-    /// The types of logs the namespace can export. Available export types are User log, Connection log, and User activity log.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LogExports")]
-    pub log_exports: Option<Vec<String>>,
-
 
     /// 
     /// The ID of the AWS Key Management Service key used to encrypt your data.
@@ -181,100 +126,26 @@ pub struct Namespace {
 
 
     /// 
-    /// The name of the first database created in the namespace.
+    /// A list of IAM roles to associate with the namespace.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DbName")]
-    pub db_name: Option<String>,
+    #[serde(rename = "IamRoles")]
+    pub iam_roles: Option<Vec<String>>,
 
+}
 
-    /// 
-    /// The unique identifier of a namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NamespaceId")]
-    pub namespace_id: Option<String>,
+impl cfn_resources::CfnResource for CfnNamespace {
+    fn type_string() -> &'static str {
+        "AWS::RedshiftServerless::Namespace"
+    }
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultIamRoleArn")]
-    pub default_iam_role_arn: Option<String>,
-
-
-    /// 
-    /// The date of when the namespace was created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CreationDate")]
-    pub creation_date: Option<String>,
-
-
-    /// 
-    /// The username of the administrator for the first database created in the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdminUsername")]
-    pub admin_username: Option<String>,
-
-
-    /// 
-    /// The status of the namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
-
-
-    /// 
-    /// The name of the namespace.    Must be between 3-64 alphanumeric characters in lowercase,    and it cannot be a reserved word. A list of reserved words can be found    in Reserved Words in the Amazon Redshift Database Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NamespaceName")]
-    pub namespace_name: Option<String>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) associated with a namespace.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NamespaceArn")]
-    pub namespace_arn: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -285,7 +156,7 @@ pub struct Namespace {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -309,5 +180,144 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+}
+
+
+/// A collection of database objects and users.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Namespace {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) associated with a namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NamespaceArn")]
+    pub namespace_arn: Option<String>,
+
+
+    /// 
+    /// The date of when the namespace was created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreationDate")]
+    pub creation_date: Option<String>,
+
+
+    /// 
+    /// The status of the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
+    /// The ID of the AWS Key Management Service key used to encrypt your data.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// The name of the namespace.    Must be between 3-64 alphanumeric characters in lowercase,    and it cannot be a reserved word. A list of reserved words can be found    in Reserved Words in the Amazon Redshift Database Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NamespaceName")]
+    pub namespace_name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultIamRoleArn")]
+    pub default_iam_role_arn: Option<String>,
+
+
+    /// 
+    /// The username of the administrator for the first database created in the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdminUsername")]
+    pub admin_username: Option<String>,
+
+
+    /// 
+    /// The unique identifier of a namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "NamespaceId")]
+    pub namespace_id: Option<String>,
+
+
+    /// 
+    /// The types of logs the namespace can export. Available export types are User log, Connection log, and User activity log.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "LogExports")]
+    pub log_exports: Option<Vec<String>>,
+
+
+    /// 
+    /// A list of IAM roles to associate with the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IamRoles")]
+    pub iam_roles: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the first database created in the namespace.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DbName")]
+    pub db_name: Option<String>,
 
 }

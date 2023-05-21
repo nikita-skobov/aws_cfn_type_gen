@@ -3,7 +3,7 @@
 /// An activity is a task that you write in any programming language and host on any machine     that has access to AWS Step Functions. Activities must poll Step Functions using the       GetActivityTask API action and respond using SendTask* API     actions. This function lets Step Functions know the existence of your activity and returns     an identifier for use in a state machine and when polling from the activity.
 ///
 /// For information about creating an activity, see Creating an     Activity State Machine in the AWS Step Functions Developer       Guide and CreateActivity     in the AWS Step Functions API Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnActivity {
 
 
@@ -40,22 +40,20 @@ pub struct CfnActivity {
 
 }
 
+impl cfn_resources::CfnResource for CfnActivity {
+    fn type_string() -> &'static str {
+        "AWS::StepFunctions::Activity"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// The TagsEntry property specifies tags to identify an     activity.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagsEntry {
-
-
-    /// 
-    /// The value for a key-value pair in a tag entry.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -68,5 +66,17 @@ pub struct TagsEntry {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for a key-value pair in a tag entry.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

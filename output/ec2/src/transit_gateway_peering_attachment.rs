@@ -3,8 +3,32 @@
 /// Requests a transit gateway peering attachment between the specified transit gateway     (requester) and a peer transit gateway (accepter). The peer transit gateway can be in your      account or a different AWS account.
 ///
 /// After you create the peering attachment, the owner of the accepter transit gateway must     accept the attachment request.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayPeeringAttachment {
+
+
+    /// 
+    /// The Region of the transit gateway.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PeerRegion")]
+    pub peer_region: String,
+
+
+    /// 
+    /// The ID of the transit gateway peering attachment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TransitGatewayId")]
+    pub transit_gateway_id: String,
 
 
     /// 
@@ -32,18 +56,6 @@ pub struct CfnTransitGatewayPeeringAttachment {
 
 
     /// 
-    /// The ID of the transit gateway peering attachment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TransitGatewayId")]
-    pub transit_gateway_id: String,
-
-
-    /// 
     /// The tags for the transit gateway peering attachment.
     /// 
     /// Required: No
@@ -54,36 +66,22 @@ pub struct CfnTransitGatewayPeeringAttachment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+}
 
-    /// 
-    /// The Region of the transit gateway.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "PeerRegion")]
-    pub peer_region: String,
+impl cfn_resources::CfnResource for CfnTransitGatewayPeeringAttachment {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TransitGatewayPeeringAttachment"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The status of the transit gateway peering attachment.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PeeringAttachmentStatus {
-
-
-    /// 
-    /// The status code.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Code")]
-    pub code: Option<String>,
 
 
     /// 
@@ -97,6 +95,18 @@ pub struct PeeringAttachmentStatus {
     #[serde(rename = "Message")]
     pub message: Option<String>,
 
+
+    /// 
+    /// The status code.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Code")]
+    pub code: Option<String>,
+
 }
 
 
@@ -107,7 +117,7 @@ pub struct PeeringAttachmentStatus {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

@@ -7,26 +7,20 @@
 /// To get a list of all your datasets, use the ListDatasets operation.
 ///
 /// For example Forecast datasets, see the Amazon Forecast Sample GitHub     repository.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDataset {
 
 
     /// 
-    /// The name of the dataset.
+    /// A Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon Forecast can assume to access    the key.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: EncryptionConfig
     ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z][a-zA-Z0-9_]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatasetName")]
-    pub dataset_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "EncryptionConfig")]
+    pub encryption_config: Option<EncryptionConfig>,
 
 
     /// 
@@ -56,20 +50,6 @@ pub struct CfnDataset {
 
 
     /// 
-    /// The domain associated with the dataset.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: CUSTOM | EC2_CAPACITY | INVENTORY_PLANNING | METRICS | RETAIL | WEB_TRAFFIC | WORK_FORCE
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Domain")]
-    pub domain: String,
-
-
-    /// 
     /// The frequency of data collection. This parameter is required for RELATED_TIME_SERIES    datasets.
     /// 
     /// Valid intervals are an integer followed by Y (Year), M (Month), W (Week), D (Day), H (Hour), and min (Minute). For example,    "1D" indicates every day and "15min" indicates every 15 minutes. You cannot specify a value that would overlap with the next larger frequency. That means, for example, you cannot specify a frequency of 60 minutes, because that is equivalent to 1 hour. The valid values for each frequency are the following:
@@ -94,18 +74,6 @@ pub struct CfnDataset {
 
 
     /// 
-    /// A Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon Forecast can assume to access    the key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: EncryptionConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EncryptionConfig")]
-    pub encryption_config: Option<EncryptionConfig>,
-
-
-    /// 
     /// An array of key-value pairs to apply to this resource.
     /// 
     /// For more information, see Tag.
@@ -118,12 +86,70 @@ pub struct CfnDataset {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagsItems>>,
 
+
+    /// 
+    /// The domain associated with the dataset.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: CUSTOM | EC2_CAPACITY | INVENTORY_PLANNING | METRICS | RETAIL | WEB_TRAFFIC | WORK_FORCE
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Domain")]
+    pub domain: String,
+
+
+    /// 
+    /// The name of the dataset.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z][a-zA-Z0-9_]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatasetName")]
+    pub dataset_name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnDataset {
+    fn type_string() -> &'static str {
+        "AWS::Forecast::Dataset"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// An AWS Key Management Service (KMS) key and an AWS Identity and Access Management (IAM) role that Amazon Forecast can assume to    access the key. You can specify this optional object in the    CreateDataset and CreatePredictor requests.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EncryptionConfig {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the KMS key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:aws:kms:.*:key/.*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyArn")]
+    pub kms_key_arn: Option<String>,
 
 
     /// 
@@ -143,48 +169,11 @@ pub struct EncryptionConfig {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the KMS key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:aws:kms:.*:key/.*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyArn")]
-    pub kms_key_arn: Option<String>,
-
-}
-
-
-/// Defines the fields of a dataset.
-#[derive(Default, serde::Serialize)]
-pub struct Schema {
-
-
-    /// 
-    /// An array of attributes specifying the name and type of each field in a dataset.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of AttributesItems
-    ///
-    /// Maximum: 100
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Attributes")]
-    pub attributes: Option<Vec<AttributesItems>>,
-
 }
 
 
 /// The AttributesItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AttributesItems {
 
 
@@ -213,8 +202,19 @@ pub struct AttributesItems {
 
 
 /// The TagsItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagsItems {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// Property description not available.
@@ -227,15 +227,25 @@ pub struct TagsItems {
     #[serde(rename = "Value")]
     pub value: String,
 
+}
 
-    /// Property description not available.
+
+/// Defines the fields of a dataset.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Schema {
+
+
+    /// 
+    /// An array of attributes specifying the name and type of each field in a dataset.
+    /// 
+    /// Required: No
     ///
-    /// Required: Yes
+    /// Type: List of AttributesItems
     ///
-    /// Type: String
+    /// Maximum: 100
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Key")]
-    pub key: String,
+    #[serde(rename = "Attributes")]
+    pub attributes: Option<Vec<AttributesItems>>,
 
 }

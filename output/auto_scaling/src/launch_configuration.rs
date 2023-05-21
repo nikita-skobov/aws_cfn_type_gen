@@ -3,8 +3,38 @@
 /// The AWS::AutoScaling::LaunchConfiguration resource specifies the launch    configuration that can be used by an Auto Scaling group to configure Amazon EC2 instances.
 ///
 /// When you update the launch configuration for an Auto Scaling group, CloudFormation deletes    that resource and creates a new launch configuration with the updated properties and a new    name. Existing instances are not affected. To update existing instances when you update the     AWS::AutoScaling::LaunchConfiguration resource, you can specify an UpdatePolicy     attribute for the group. You can find sample update policies for rolling updates in     Auto scaling template     snippets.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLaunchConfiguration {
+
+
+    /// 
+    /// The name of the launch configuration. This name must be unique per Region per       account.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 255
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LaunchConfigurationName")]
+    pub launch_configuration_name: Option<String>,
+
+
+    /// 
+    /// The name or the Amazon Resource Name (ARN) of the instance profile associated with the       IAM role for the instance. The instance profile contains the IAM role. For more       information, see IAM role for applications that run         on Amazon EC2 instances in the Amazon EC2 Auto Scaling User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IamInstanceProfile")]
+    pub iam_instance_profile: Option<String>,
 
 
     /// 
@@ -22,59 +52,31 @@ pub struct CfnLaunchConfiguration {
 
 
     /// 
-    /// The Base64-encoded user data to make available to the launched EC2 instances. For more    information, see Instance metadata and user     data in the Amazon EC2 User Guide for Linux Instances.
+    /// The ID of the kernel associated with the AMI.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 21847
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserData")]
-    pub user_data: Option<String>,
-
-
-    /// 
-    /// The tenancy of the instance, either default or dedicated. An       instance with dedicated tenancy runs on isolated, single-tenant hardware       and can only be launched into a VPC. To launch dedicated instances into a shared tenancy       VPC (a VPC with the instance placement tenancy attribute set to default),       you must set the value of this property to dedicated. For more information,       see Configuring         instance tenancy with Amazon EC2 Auto Scaling in the       Amazon EC2 Auto Scaling User Guide.
-    /// 
-    /// If you specify PlacementTenancy, you must specify at least one subnet for         VPCZoneIdentifier when you create your group.
-    /// 
-    /// Valid values: default | dedicated
+    /// NoteWe recommend that you use PV-GRUB instead of kernels and RAM disks. For more         information, see User provided           kernels in the Amazon EC2 User Guide for Linux           Instances.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PlacementTenancy")]
-    pub placement_tenancy: Option<String>,
+    #[serde(rename = "KernelId")]
+    pub kernel_id: Option<String>,
 
 
     /// 
-    /// The block device mapping entries that define the block devices to attach to the       instances at launch. By default, the block devices specified in the block device mapping       for the AMI are used. For more information, see Block device         mappings in the Amazon EC2 User Guide for Linux Instances.
+    /// A list that contains the security groups to assign to the instances in the Auto Scaling    group. The list can contain both the IDs of existing security groups and references to SecurityGroup resources created in the template.
     /// 
-    /// Required: No
-    ///
-    /// Type: List of BlockDeviceMapping
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BlockDeviceMappings")]
-    pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
-
-
-    /// 
-    /// The name of the key pair. For more information, see Amazon EC2 key pairs and Linux         instances in the Amazon EC2 User Guide for Linux Instances.
+    /// For more information, see Control traffic to resources using     security groups in the Amazon Virtual Private Cloud User Guide.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "KeyName")]
-    pub key_name: Option<String>,
+    #[serde(rename = "SecurityGroups")]
+    pub security_groups: Option<Vec<String>>,
 
 
     /// 
@@ -92,17 +94,69 @@ pub struct CfnLaunchConfiguration {
 
 
     /// 
-    /// The ID of the kernel associated with the AMI.
+    /// Available for backward compatibility.
     /// 
-    /// NoteWe recommend that you use PV-GRUB instead of kernels and RAM disks. For more         information, see User provided           kernels in the Amazon EC2 User Guide for Linux           Instances.
+    /// Required: Conditional
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClassicLinkVPCSecurityGroups")]
+    pub classic_link_vpcsecurity_groups: Option<Vec<String>>,
+
+
+    /// 
+    /// The block device mapping entries that define the block devices to attach to the       instances at launch. By default, the block devices specified in the block device mapping       for the AMI are used. For more information, see Block device         mappings in the Amazon EC2 User Guide for Linux Instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of BlockDeviceMapping
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BlockDeviceMappings")]
+    pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
+
+
+    /// 
+    /// Specifies whether the launch configuration is optimized for EBS I/O       (true) or not (false). The optimization provides dedicated       throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O       performance. This optimization is not available with all instance types. Additional fees       are incurred when you enable EBS optimization for an instance type that is not       EBS-optimized by default. For more information, see Amazon EBS-optimized instances in       the Amazon EC2 User Guide for Linux Instances.
+    /// 
+    /// The default value is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EbsOptimized")]
+    pub ebs_optimized: Option<bool>,
+
+
+    /// 
+    /// The name of the key pair. For more information, see Amazon EC2 key pairs and Linux         instances in the Amazon EC2 User Guide for Linux Instances.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "KernelId")]
-    pub kernel_id: Option<String>,
+    #[serde(rename = "KeyName")]
+    pub key_name: Option<String>,
+
+
+    /// 
+    /// The Base64-encoded user data to make available to the launched EC2 instances. For more    information, see Instance metadata and user     data in the Amazon EC2 User Guide for Linux Instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 21847
+    ///
+    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserData")]
+    pub user_data: Option<String>,
 
 
     /// 
@@ -136,15 +190,47 @@ pub struct CfnLaunchConfiguration {
 
 
     /// 
-    /// The name or the Amazon Resource Name (ARN) of the instance profile associated with the       IAM role for the instance. The instance profile contains the IAM role. For more       information, see IAM role for applications that run         on Amazon EC2 instances in the Amazon EC2 Auto Scaling User Guide.
+    /// The maximum hourly price to be paid for any Spot Instance launched to fulfill the       request. Spot Instances are launched when the price you specify exceeds the current Spot       price. For more information, see Request Spot         Instances for fault-tolerant and flexible applications in the         Amazon EC2 Auto Scaling User Guide.
+    /// 
+    /// Valid Range: Minimum value of 0.001
+    /// 
+    /// NoteWhen you change your maximum price by creating a new launch configuration, running         instances will continue to run as long as the maximum price for those running         instances is higher than the current Spot price.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "IamInstanceProfile")]
-    pub iam_instance_profile: Option<String>,
+    #[serde(rename = "SpotPrice")]
+    pub spot_price: Option<String>,
+
+
+    /// 
+    /// The tenancy of the instance, either default or dedicated. An       instance with dedicated tenancy runs on isolated, single-tenant hardware       and can only be launched into a VPC. To launch dedicated instances into a shared tenancy       VPC (a VPC with the instance placement tenancy attribute set to default),       you must set the value of this property to dedicated. For more information,       see Configuring         instance tenancy with Amazon EC2 Auto Scaling in the       Amazon EC2 Auto Scaling User Guide.
+    /// 
+    /// If you specify PlacementTenancy, you must specify at least one subnet for         VPCZoneIdentifier when you create your group.
+    /// 
+    /// Valid values: default | dedicated
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "PlacementTenancy")]
+    pub placement_tenancy: Option<String>,
+
+
+    /// 
+    /// Available for backward compatibility.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClassicLinkVPCId")]
+    pub classic_link_vpcid: Option<String>,
 
 
     /// 
@@ -176,92 +262,6 @@ pub struct CfnLaunchConfiguration {
 
 
     /// 
-    /// Available for backward compatibility.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClassicLinkVPCId")]
-    pub classic_link_vpcid: Option<String>,
-
-
-    /// 
-    /// Specifies whether the launch configuration is optimized for EBS I/O       (true) or not (false). The optimization provides dedicated       throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O       performance. This optimization is not available with all instance types. Additional fees       are incurred when you enable EBS optimization for an instance type that is not       EBS-optimized by default. For more information, see Amazon EBS-optimized instances in       the Amazon EC2 User Guide for Linux Instances.
-    /// 
-    /// The default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EbsOptimized")]
-    pub ebs_optimized: Option<bool>,
-
-
-    /// 
-    /// Available for backward compatibility.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClassicLinkVPCSecurityGroups")]
-    pub classic_link_vpcsecurity_groups: Option<Vec<String>>,
-
-
-    /// 
-    /// A list that contains the security groups to assign to the instances in the Auto Scaling    group. The list can contain both the IDs of existing security groups and references to SecurityGroup resources created in the template.
-    /// 
-    /// For more information, see Control traffic to resources using     security groups in the Amazon Virtual Private Cloud User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroups")]
-    pub security_groups: Option<Vec<String>>,
-
-
-    /// 
-    /// The maximum hourly price to be paid for any Spot Instance launched to fulfill the       request. Spot Instances are launched when the price you specify exceeds the current Spot       price. For more information, see Request Spot         Instances for fault-tolerant and flexible applications in the         Amazon EC2 Auto Scaling User Guide.
-    /// 
-    /// Valid Range: Minimum value of 0.001
-    /// 
-    /// NoteWhen you change your maximum price by creating a new launch configuration, running         instances will continue to run as long as the maximum price for those running         instances is higher than the current Spot price.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SpotPrice")]
-    pub spot_price: Option<String>,
-
-
-    /// 
-    /// The name of the launch configuration. This name must be unique per Region per       account.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 255
-    ///
-    /// Pattern: [\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LaunchConfigurationName")]
-    pub launch_configuration_name: Option<String>,
-
-
-    /// 
     /// The ID of the Amazon EC2 instance to use to create the launch configuration. When you use    an instance to create a launch configuration, all properties are derived from the instance    with the exception of BlockDeviceMapping and     AssociatePublicIpAddress. You can override any properties from the instance by    specifying them in the launch configuration.
     /// 
     /// Required: No
@@ -274,11 +274,84 @@ pub struct CfnLaunchConfiguration {
 
 }
 
+impl cfn_resources::CfnResource for CfnLaunchConfiguration {
+    fn type_string() -> &'static str {
+        "AWS::AutoScaling::LaunchConfiguration"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// BlockDeviceMapping specifies a block device mapping for the     BlockDeviceMappings property of the AWS::AutoScaling::LaunchConfiguration resource.
+///
+/// Each instance that is launched has an associated root device volume, either an Amazon EBS    volume or an instance store volume. You can use block device mappings to specify additional    EBS volumes or instance store volumes to attach to an instance when it is launched.
+///
+/// For more information, see Example block device mapping in the Amazon EC2 User Guide for Linux     Instances.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct BlockDeviceMapping {
+
+
+    /// 
+    /// The name of the instance store volume (virtual device) to attach to an instance at       launch. The name must be in the form ephemeralX where         X is a number starting from zero (0), for example,         ephemeral0.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VirtualName")]
+    pub virtual_name: Option<String>,
+
+
+    /// 
+    /// Setting this value to true prevents a volume that is included in the       block device mapping of the AMI from being mapped to the specified device name at       launch.
+    /// 
+    /// If NoDevice is true for the root device, instances might       fail the EC2 health check. In that case, Amazon EC2 Auto Scaling launches replacement instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NoDevice")]
+    pub no_device: Option<bool>,
+
+
+    /// 
+    /// The device name assigned to the volume (for example, /dev/sdh or         xvdh). For more information, see Device naming on Linux         instances in the Amazon EC2 User Guide for Linux Instances.
+    /// 
+    /// NoteTo define a block device mapping, set the device name and exactly one of the         following properties: Ebs, NoDevice, or           VirtualName.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceName")]
+    pub device_name: String,
+
+
+    /// 
+    /// Information to attach an EBS volume to an instance at launch.
+    /// 
+    /// Required: No
+    ///
+    /// Type: BlockDevice
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Ebs")]
+    pub ebs: Option<BlockDevice>,
+
+}
+
 
 /// MetadataOptions is a property of AWS::AutoScaling::LaunchConfiguration that describes metadata options for the    instances.
 ///
 /// For more information, see Configure the instance metadata options in the Amazon EC2 Auto Scaling     User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetadataOptions {
 
 
@@ -337,8 +410,50 @@ pub struct MetadataOptions {
 
 
 /// BlockDevice is a property of the EBS property of the AWS::AutoScaling::LaunchConfiguration BlockDeviceMapping property type that    describes an Amazon EBS volume.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BlockDevice {
+
+
+    /// 
+    /// The snapshot ID of the volume to use.
+    /// 
+    /// You must specify either a VolumeSize or a SnapshotId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotId")]
+    pub snapshot_id: Option<String>,
+
+
+    /// 
+    /// The volume type. For more information, see Amazon EBS volume types in the         Amazon EC2 User Guide for Linux Instances.
+    /// 
+    /// Valid values: standard | io1 | gp2 |         st1 | sc1 | gp3
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VolumeType")]
+    pub volume_type: Option<String>,
+
+
+    /// 
+    /// Specifies whether the volume should be encrypted. Encrypted EBS volumes can only be       attached to instances that support Amazon EBS encryption. For more information, see Supported instance types. If your AMI uses encrypted volumes, you can also       only launch it on supported instance types.
+    /// 
+    /// NoteIf you are creating a volume from a snapshot, you cannot create an unencrypted         volume from an encrypted snapshot. Also, you cannot specify a KMS key ID when using         a launch configuration.If you enable encryption by default, the EBS volumes that you create are always         encrypted, either using the AWS managed KMS key or a customer-managed KMS key,         regardless of whether the snapshot was encrypted. For more information, see Use AWS KMS keys to encrypt Amazon EBS volumes in the           Amazon EC2 Auto Scaling User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Encrypted")]
+    pub encrypted: Option<bool>,
 
 
     /// 
@@ -362,50 +477,6 @@ pub struct BlockDevice {
 
 
     /// 
-    /// Specifies whether the volume should be encrypted. Encrypted EBS volumes can only be       attached to instances that support Amazon EBS encryption. For more information, see Supported instance types. If your AMI uses encrypted volumes, you can also       only launch it on supported instance types.
-    /// 
-    /// NoteIf you are creating a volume from a snapshot, you cannot create an unencrypted         volume from an encrypted snapshot. Also, you cannot specify a KMS key ID when using         a launch configuration.If you enable encryption by default, the EBS volumes that you create are always         encrypted, either using the AWS managed KMS key or a customer-managed KMS key,         regardless of whether the snapshot was encrypted. For more information, see Use AWS KMS keys to encrypt Amazon EBS volumes in the           Amazon EC2 Auto Scaling User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Encrypted")]
-    pub encrypted: Option<bool>,
-
-
-    /// 
-    /// The volume type. For more information, see Amazon EBS volume types in the         Amazon EC2 User Guide for Linux Instances.
-    /// 
-    /// Valid values: standard | io1 | gp2 |         st1 | sc1 | gp3
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VolumeType")]
-    pub volume_type: Option<String>,
-
-
-    /// 
-    /// The throughput (MiBps) to provision for a gp3 volume.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 125
-    ///
-    /// Maximum: 1000
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Throughput")]
-    pub throughput: Option<i64>,
-
-
-    /// 
     /// Indicates whether the volume is deleted on instance termination. For Amazon EC2 Auto Scaling, the       default value is true.
     /// 
     /// Required: No
@@ -415,20 +486,6 @@ pub struct BlockDevice {
     /// Update requires: Replacement
     #[serde(rename = "DeleteOnTermination")]
     pub delete_on_termination: Option<bool>,
-
-
-    /// 
-    /// The snapshot ID of the volume to use.
-    /// 
-    /// You must specify either a VolumeSize or a SnapshotId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotId")]
-    pub snapshot_id: Option<String>,
 
 
     /// 
@@ -450,67 +507,20 @@ pub struct BlockDevice {
     #[serde(rename = "Iops")]
     pub iops: Option<i64>,
 
-}
-
-
-/// BlockDeviceMapping specifies a block device mapping for the     BlockDeviceMappings property of the AWS::AutoScaling::LaunchConfiguration resource.
-///
-/// Each instance that is launched has an associated root device volume, either an Amazon EBS    volume or an instance store volume. You can use block device mappings to specify additional    EBS volumes or instance store volumes to attach to an instance when it is launched.
-///
-/// For more information, see Example block device mapping in the Amazon EC2 User Guide for Linux     Instances.
-#[derive(Default, serde::Serialize)]
-pub struct BlockDeviceMapping {
-
 
     /// 
-    /// Setting this value to true prevents a volume that is included in the       block device mapping of the AMI from being mapped to the specified device name at       launch.
-    /// 
-    /// If NoDevice is true for the root device, instances might       fail the EC2 health check. In that case, Amazon EC2 Auto Scaling launches replacement instances.
+    /// The throughput (MiBps) to provision for a gp3 volume.
     /// 
     /// Required: No
     ///
-    /// Type: Boolean
+    /// Type: Integer
+    ///
+    /// Minimum: 125
+    ///
+    /// Maximum: 1000
     ///
     /// Update requires: Replacement
-    #[serde(rename = "NoDevice")]
-    pub no_device: Option<bool>,
-
-
-    /// 
-    /// The name of the instance store volume (virtual device) to attach to an instance at       launch. The name must be in the form ephemeralX where         X is a number starting from zero (0), for example,         ephemeral0.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VirtualName")]
-    pub virtual_name: Option<String>,
-
-
-    /// 
-    /// Information to attach an EBS volume to an instance at launch.
-    /// 
-    /// Required: No
-    ///
-    /// Type: BlockDevice
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Ebs")]
-    pub ebs: Option<BlockDevice>,
-
-
-    /// 
-    /// The device name assigned to the volume (for example, /dev/sdh or         xvdh). For more information, see Device naming on Linux         instances in the Amazon EC2 User Guide for Linux Instances.
-    /// 
-    /// NoteTo define a block device mapping, set the device name and exactly one of the         following properties: Ebs, NoDevice, or           VirtualName.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceName")]
-    pub device_name: String,
+    #[serde(rename = "Throughput")]
+    pub throughput: Option<i64>,
 
 }

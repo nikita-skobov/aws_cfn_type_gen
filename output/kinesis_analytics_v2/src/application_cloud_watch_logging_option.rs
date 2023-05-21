@@ -1,8 +1,20 @@
 
 
 /// Adds an Amazon CloudWatch log stream to monitor application configuration errors.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationCloudWatchLoggingOption {
+
+
+    /// 
+    /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: CloudWatchLoggingOption
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CloudWatchLoggingOption")]
+    pub cloud_watch_logging_option: CloudWatchLoggingOption,
 
 
     /// 
@@ -22,23 +34,21 @@ pub struct CfnApplicationCloudWatchLoggingOption {
     #[serde(rename = "ApplicationName")]
     pub application_name: String,
 
+}
 
-    /// 
-    /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: CloudWatchLoggingOption
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CloudWatchLoggingOption")]
-    pub cloud_watch_logging_option: CloudWatchLoggingOption,
+impl cfn_resources::CfnResource for CfnApplicationCloudWatchLoggingOption {
+    fn type_string() -> &'static str {
+        "AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchLoggingOption {
 
 

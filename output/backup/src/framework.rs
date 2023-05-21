@@ -3,7 +3,7 @@
 /// Creates a framework with one or more controls. A framework is a collection of controls     that you can use to evaluate your backup practices. By using pre-built customizable     controls to define your policies, you can evaluate whether your backup practices comply     with your policies and which resources are not yet in compliance.
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFramework {
 
 
@@ -17,6 +17,24 @@ pub struct CfnFramework {
     /// Update requires: No interruption
     #[serde(rename = "FrameworkTags")]
     pub framework_tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The unique name of a framework. This name is between 1 and 256 characters, starting with     a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores (_).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: [a-zA-Z][_a-zA-Z0-9]*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FrameworkName")]
+    pub framework_name: Option<String>,
 
 
     /// 
@@ -48,24 +66,16 @@ pub struct CfnFramework {
     #[serde(rename = "FrameworkDescription")]
     pub framework_description: Option<String>,
 
+}
 
-    /// 
-    /// The unique name of a framework. This name is between 1 and 256 characters, starting with     a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and underscores (_).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: [a-zA-Z][_a-zA-Z0-9]*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FrameworkName")]
-    pub framework_name: Option<String>,
+impl cfn_resources::CfnResource for CfnFramework {
+    fn type_string() -> &'static str {
+        "AWS::Backup::Framework"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -76,19 +86,8 @@ pub struct CfnFramework {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -101,56 +100,65 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
-/// A framework consists of one or more controls. Each control has its own control scope.     The control scope can include one or more resource types, a combination of a tag key and     value, or a combination of one resource type and one resource ID. If no scope is specified,     evaluations for the rule are triggered when any resource in your recording group changes in     configuration.
-#[derive(Default, serde::Serialize)]
-pub struct ControlScope {
+/// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FrameworkControl {
 
 
     /// 
-    /// Describes whether the control scope includes one or more types of resources, such as       EFS or RDS.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ComplianceResourceTypes")]
-    pub compliance_resource_types: Option<Vec<String>>,
-
-
-    /// 
-    /// The ID of the only AWS resource that you want your control scope to     contain.
+    /// A list of ParameterName and ParameterValue pairs.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
-    ///
-    /// Maximum: 100
+    /// Type: List of ControlInputParameter
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ComplianceResourceIds")]
-    pub compliance_resource_ids: Option<Vec<String>>,
+    #[serde(rename = "ControlInputParameters")]
+    pub control_input_parameters: Option<Vec<ControlInputParameter>>,
 
 
     /// 
-    /// The tag key-value pair applied to those AWS resources that you want to     trigger an evaluation for a rule. A maximum of one key-value pair can be provided. The tag     value is optional, but it cannot be an empty string. The structure to assign a tag is:       [{"Key":"string","Value":"string"}].
+    /// The name of a control. This name is between 1 and 256 characters.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ControlName")]
+    pub control_name: String,
+
+
+    /// 
+    /// The scope of a control. The control scope defines what the control will evaluate. Three     examples of control scopes are: a specific backup plan, all backup plans with a specific     tag, or all backup plans. For more information, see ControlScope.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: ControlScope
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "ControlScope")]
+    pub control_scope: Option<ControlScope>,
 
 }
 
 
 /// A list of parameters for a control. A control can have zero, one, or more than one     parameter. An example of a control with two parameters is: "backup plan frequency is at     least daily and the retention period is at least 1 year". The     first parameter is daily. The second parameter is 1 year.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ControlInputParameter {
 
 
@@ -180,44 +188,46 @@ pub struct ControlInputParameter {
 }
 
 
-/// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
-#[derive(Default, serde::Serialize)]
-pub struct FrameworkControl {
+/// A framework consists of one or more controls. Each control has its own control scope.     The control scope can include one or more resource types, a combination of a tag key and     value, or a combination of one resource type and one resource ID. If no scope is specified,     evaluations for the rule are triggered when any resource in your recording group changes in     configuration.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ControlScope {
 
 
     /// 
-    /// The name of a control. This name is between 1 and 256 characters.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ControlName")]
-    pub control_name: String,
-
-
-    /// 
-    /// A list of ParameterName and ParameterValue pairs.
+    /// The tag key-value pair applied to those AWS resources that you want to     trigger an evaluation for a rule. A maximum of one key-value pair can be provided. The tag     value is optional, but it cannot be an empty string. The structure to assign a tag is:       [{"Key":"string","Value":"string"}].
     /// 
     /// Required: No
     ///
-    /// Type: List of ControlInputParameter
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ControlInputParameters")]
-    pub control_input_parameters: Option<Vec<ControlInputParameter>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
-    /// The scope of a control. The control scope defines what the control will evaluate. Three     examples of control scopes are: a specific backup plan, all backup plans with a specific     tag, or all backup plans. For more information, see ControlScope.
+    /// The ID of the only AWS resource that you want your control scope to     contain.
     /// 
     /// Required: No
     ///
-    /// Type: ControlScope
+    /// Type: List of String
+    ///
+    /// Maximum: 100
     ///
     /// Update requires: No interruption
-    #[serde(rename = "ControlScope")]
-    pub control_scope: Option<ControlScope>,
+    #[serde(rename = "ComplianceResourceIds")]
+    pub compliance_resource_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// Describes whether the control scope includes one or more types of resources, such as       EFS or RDS.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ComplianceResourceTypes")]
+    pub compliance_resource_types: Option<Vec<String>>,
 
 }

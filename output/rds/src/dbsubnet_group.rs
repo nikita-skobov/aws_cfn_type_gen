@@ -3,7 +3,7 @@
 /// The AWS::RDS::DBSubnetGroup resource creates a database subnet group.       Subnet groups must contain at least two subnets in two different Availability Zones in       the same region.
 ///
 /// For more information, see       Working with DB subnet groups in the Amazon RDS User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBSubnetGroup {
 
 
@@ -17,18 +17,6 @@ pub struct CfnDBSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "DBSubnetGroupDescription")]
     pub dbsubnet_group_description: String,
-
-
-    /// 
-    /// The EC2 Subnet IDs for the DB subnet group.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubnetIds")]
-    pub subnet_ids: Vec<String>,
 
 
     /// 
@@ -58,6 +46,28 @@ pub struct CfnDBSubnetGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The EC2 Subnet IDs for the DB subnet group.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubnetIds")]
+    pub subnet_ids: Vec<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDBSubnetGroup {
+    fn type_string() -> &'static str {
+        "AWS::RDS::DBSubnetGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -68,7 +78,7 @@ pub struct CfnDBSubnetGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

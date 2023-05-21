@@ -1,20 +1,8 @@
 
 
 /// Specifies an SSL server certificate to add to the certificate list for an HTTPS or TLS     listener.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnListenerCertificate {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the listener.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ListenerArn")]
-    pub listener_arn: String,
 
 
     /// 
@@ -28,11 +16,33 @@ pub struct CfnListenerCertificate {
     #[serde(rename = "Certificates")]
     pub certificates: Vec<Certificate>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the listener.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ListenerArn")]
+    pub listener_arn: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnListenerCertificate {
+    fn type_string() -> &'static str {
+        "AWS::ElasticLoadBalancingV2::ListenerCertificate"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Specifies an SSL server certificate for the certificate list of a secure     listener.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Certificate {
 
 

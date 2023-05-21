@@ -11,58 +11,20 @@
 /// When this operation creates an alarm, the alarm state is immediately set to INSUFFICIENT_DATA. The alarm is then evaluated and       its state is set appropriately. Any actions associated with the new state are then executed. For a composite alarm, this initial       time after creation is the only time that the alarm can be in INSUFFICIENT_DATA state.
 ///
 /// When you update an existing alarm, its state is left unchanged, but the update completely overwrites the previous configuration of the alarm.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCompositeAlarm {
 
 
     /// 
-    /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. The default is TRUE.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActionsEnabled")]
-    pub actions_enabled: Option<bool>,
-
-
-    /// 
-    /// The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions     that you can specify, see PutCompositeAlarm in the     Amazon CloudWatch API Reference.
+    /// The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.
     /// 
     /// Required: No
     ///
     /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "AlarmActions")]
-    pub alarm_actions: Option<Vec<String>>,
-
-
-    /// 
-    /// The description for the composite alarm.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AlarmDescription")]
-    pub alarm_description: Option<String>,
-
-
-    /// 
-    /// The maximum time     in seconds     that the composite alarm waits     after suppressor alarm goes out     of the ALARM state.     After this time,     the composite alarm performs its actions.
-    /// 
-    /// Important         ExtensionPeriod         is required only         when ActionsSuppressor is specified.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ActionsSuppressorExtensionPeriod")]
-    pub actions_suppressor_extension_period: Option<i64>,
+    #[serde(rename = "InsufficientDataActions")]
+    pub insufficient_data_actions: Option<Vec<String>>,
 
 
     /// 
@@ -78,15 +40,39 @@ pub struct CfnCompositeAlarm {
 
 
     /// 
-    /// The name for the composite alarm. This name must be unique within your AWS account.
+    /// The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions     that you can specify, see PutCompositeAlarm in the     Amazon CloudWatch API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmActions")]
+    pub alarm_actions: Option<Vec<String>>,
+
+
+    /// 
+    /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. The default is TRUE.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ActionsEnabled")]
+    pub actions_enabled: Option<bool>,
+
+
+    /// 
+    /// The description for the composite alarm.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AlarmName")]
-    pub alarm_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "AlarmDescription")]
+    pub alarm_description: Option<String>,
 
 
     /// The maximum time     in seconds     that the composite alarm waits     for the suppressor alarm     to go     into the ALARM state.     After this time,     the composite alarm performs its actions.
@@ -137,14 +123,38 @@ pub struct CfnCompositeAlarm {
 
 
     /// 
-    /// The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.
+    /// The name for the composite alarm. This name must be unique within your AWS account.
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AlarmName")]
+    pub alarm_name: Option<String>,
+
+
+    /// 
+    /// The maximum time     in seconds     that the composite alarm waits     after suppressor alarm goes out     of the ALARM state.     After this time,     the composite alarm performs its actions.
+    /// 
+    /// Important         ExtensionPeriod         is required only         when ActionsSuppressor is specified.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InsufficientDataActions")]
-    pub insufficient_data_actions: Option<Vec<String>>,
+    #[serde(rename = "ActionsSuppressorExtensionPeriod")]
+    pub actions_suppressor_extension_period: Option<i64>,
 
+}
+
+impl cfn_resources::CfnResource for CfnCompositeAlarm {
+    fn type_string() -> &'static str {
+        "AWS::CloudWatch::CompositeAlarm"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

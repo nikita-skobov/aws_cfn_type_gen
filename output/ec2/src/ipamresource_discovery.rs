@@ -1,20 +1,20 @@
 
 
 /// A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPAMResourceDiscovery {
 
 
     /// 
-    /// The operating Regions for the resource discovery. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
+    /// A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs.
     /// 
     /// Required: No
     ///
-    /// Type: List of IpamOperatingRegion
+    /// Type: List of Tag
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OperatingRegions")]
-    pub operating_regions: Option<Vec<IpamOperatingRegion>>,
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -30,23 +30,33 @@ pub struct CfnIPAMResourceDiscovery {
 
 
     /// 
-    /// A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs.
+    /// The operating Regions for the resource discovery. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: List of IpamOperatingRegion
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(rename = "OperatingRegions")]
+    pub operating_regions: Option<Vec<IpamOperatingRegion>>,
 
+}
+
+impl cfn_resources::CfnResource for CfnIPAMResourceDiscovery {
+    fn type_string() -> &'static str {
+        "AWS::EC2::IPAMResourceDiscovery"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The operating Regions for an IPAM. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
 ///
 /// For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IpamOperatingRegion {
 
 
@@ -71,7 +81,7 @@ pub struct IpamOperatingRegion {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

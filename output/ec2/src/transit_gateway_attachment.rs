@@ -7,7 +7,7 @@
 /// To send VPC traffic to an attached transit gateway, add a route to the VPC route table     using AWS::EC2::Route.
 ///
 /// To update tags for a VPC attachment after creation without replacing the attachment, use      AWS::EC2::TransitGatewayVpcAttachment instead.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayAttachment {
 
 
@@ -38,18 +38,6 @@ pub struct CfnTransitGatewayAttachment {
 
 
     /// 
-    /// The tags for the attachment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
     /// The ID of the VPC.
     /// 
     /// Required: Yes
@@ -72,16 +60,38 @@ pub struct CfnTransitGatewayAttachment {
     #[serde(rename = "TransitGatewayId")]
     pub transit_gateway_id: String,
 
+
+    /// 
+    /// The tags for the attachment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnTransitGatewayAttachment {
+    fn type_string() -> &'static str {
+        "AWS::EC2::TransitGatewayAttachment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Describes the VPC attachment options.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Options {
 
 
     /// 
-    /// Indicates whether IPv6 support is disabled.
+    /// Indicates whether DNS support is enabled.
     /// 
     /// Required: No
     ///
@@ -90,8 +100,8 @@ pub struct Options {
     /// Allowed values: disable | enable
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Ipv6Support")]
-    pub ipv6_support: Option<String>,
+    #[serde(rename = "DnsSupport")]
+    pub dns_support: Option<String>,
 
 
     /// 
@@ -109,7 +119,7 @@ pub struct Options {
 
 
     /// 
-    /// Indicates whether DNS support is enabled.
+    /// Indicates whether IPv6 support is disabled.
     /// 
     /// Required: No
     ///
@@ -118,8 +128,8 @@ pub struct Options {
     /// Allowed values: disable | enable
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DnsSupport")]
-    pub dns_support: Option<String>,
+    #[serde(rename = "Ipv6Support")]
+    pub ipv6_support: Option<String>,
 
 }
 
@@ -131,19 +141,8 @@ pub struct Options {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -155,5 +154,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

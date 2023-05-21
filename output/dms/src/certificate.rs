@@ -1,20 +1,8 @@
 
 
 /// The AWS::DMS::Certificate resource creates an Secure Sockets Layer (SSL) certificate that       encrypts connections between AWS DMS endpoints and the replication instance.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCertificate {
-
-
-    /// 
-    /// The location of an imported Oracle Wallet certificate for use with SSL. An example       is: filebase64("${path.root}/rds-ca-2019-root.sso")
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CertificateWallet")]
-    pub certificate_wallet: Option<String>,
 
 
     /// 
@@ -40,4 +28,26 @@ pub struct CfnCertificate {
     #[serde(rename = "CertificatePem")]
     pub certificate_pem: Option<String>,
 
+
+    /// 
+    /// The location of an imported Oracle Wallet certificate for use with SSL. An example       is: filebase64("${path.root}/rds-ca-2019-root.sso")
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "CertificateWallet")]
+    pub certificate_wallet: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnCertificate {
+    fn type_string() -> &'static str {
+        "AWS::DMS::Certificate"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

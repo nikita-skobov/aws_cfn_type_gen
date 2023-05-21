@@ -3,7 +3,7 @@
 /// You can use the AWS::SupportApp::SlackWorkspaceConfiguration resource to       specify your Slack workspace configuration. This resource configures your AWS account so that you can use the specified Slack workspace in the         AWS Support App. This resource includes the following information:
 ///
 /// For more information, see the following topics in the AWS Support User Guide:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSlackWorkspaceConfiguration {
 
 
@@ -30,4 +30,14 @@ pub struct CfnSlackWorkspaceConfiguration {
     #[serde(rename = "TeamId")]
     pub team_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnSlackWorkspaceConfiguration {
+    fn type_string() -> &'static str {
+        "AWS::SupportApp::SlackWorkspaceConfiguration"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

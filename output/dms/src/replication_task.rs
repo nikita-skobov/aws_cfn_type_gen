@@ -1,24 +1,8 @@
 
 
 /// The AWS::DMS::ReplicationTask resource creates an AWS DMS replication task.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnReplicationTask {
-
-
-    /// 
-    /// Indicates when you want a change data capture (CDC) operation to stop. The value can be     either server time or commit time.
-    /// 
-    /// Here is a server time example: --cdc-stop-position         "server_time:2018-02-09T12:12:12"
-    /// 
-    /// Here is a commit time example: --cdc-stop-position "commit_time:         2018-02-09T12:12:12"
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CdcStopPosition")]
-    pub cdc_stop_position: Option<String>,
 
 
     /// 
@@ -38,26 +22,43 @@ pub struct CfnReplicationTask {
 
 
     /// 
-    /// The table mappings for the task, in JSON format. For more information, see                Using Table Mapping to Specify Task Settings       in the AWS Database Migration Service User Guide.
+    /// Indicates the start time for a change data capture (CDC) operation.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TableMappings")]
-    pub table_mappings: String,
+    #[serde(rename = "CdcStartTime")]
+    pub cdc_start_time: Option<f64>,
 
 
-    /// Property description not available.
-    ///
+    /// 
+    /// Indicates when you want a change data capture (CDC) operation to stop. The value can be     either server time or commit time.
+    /// 
+    /// Here is a server time example: --cdc-stop-position         "server_time:2018-02-09T12:12:12"
+    /// 
+    /// Here is a commit time example: --cdc-stop-position "commit_time:         2018-02-09T12:12:12"
+    /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TaskData")]
-    pub task_data: Option<String>,
+    #[serde(rename = "CdcStopPosition")]
+    pub cdc_stop_position: Option<String>,
+
+
+    /// 
+    /// An Amazon Resource Name (ARN) that uniquely identifies the target endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "TargetEndpointArn")]
+    pub target_endpoint_arn: String,
 
 
     /// 
@@ -70,6 +71,31 @@ pub struct CfnReplicationTask {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationTaskSettings")]
     pub replication_task_settings: Option<String>,
+
+
+    /// 
+    /// The migration type. Valid values: full-load | cdc | full-load-and-cdc
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: cdc | full-load | full-load-and-cdc
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MigrationType")]
+    pub migration_type: String,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TaskData")]
+    pub task_data: Option<String>,
 
 
     /// 
@@ -95,15 +121,27 @@ pub struct CfnReplicationTask {
 
 
     /// 
-    /// An Amazon Resource Name (ARN) that uniquely identifies the source endpoint.
+    /// One or more tags to be assigned to the replication task.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of a replication instance.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SourceEndpointArn")]
-    pub source_endpoint_arn: String,
+    #[serde(rename = "ReplicationInstanceArn")]
+    pub replication_instance_arn: String,
 
 
     /// 
@@ -121,66 +159,38 @@ pub struct CfnReplicationTask {
 
 
     /// 
-    /// The migration type. Valid values: full-load | cdc | full-load-and-cdc
+    /// The table mappings for the task, in JSON format. For more information, see                Using Table Mapping to Specify Task Settings       in the AWS Database Migration Service User Guide.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Allowed values: cdc | full-load | full-load-and-cdc
-    ///
     /// Update requires: No interruption
-    #[serde(rename = "MigrationType")]
-    pub migration_type: String,
+    #[serde(rename = "TableMappings")]
+    pub table_mappings: String,
 
 
     /// 
-    /// Indicates the start time for a change data capture (CDC) operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CdcStartTime")]
-    pub cdc_start_time: Option<f64>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of a replication instance.
+    /// An Amazon Resource Name (ARN) that uniquely identifies the source endpoint.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ReplicationInstanceArn")]
-    pub replication_instance_arn: String,
+    #[serde(rename = "SourceEndpointArn")]
+    pub source_endpoint_arn: String,
 
+}
 
-    /// 
-    /// One or more tags to be assigned to the replication task.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnReplicationTask {
+    fn type_string() -> &'static str {
+        "AWS::DMS::ReplicationTask"
+    }
 
-
-    /// 
-    /// An Amazon Resource Name (ARN) that uniquely identifies the target endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "TargetEndpointArn")]
-    pub target_endpoint_arn: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -191,7 +201,7 @@ pub struct CfnReplicationTask {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

@@ -1,22 +1,8 @@
 
 
 /// The AWS::Cloud9::EnvironmentEC2 resource creates an Amazon EC2 development environment in AWS Cloud9. For more information, see Creating an Environment in the AWS Cloud9 User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEnvironmentEC2 {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the environment owner. This ARN can be the ARN of any AWS Identity and Access Management principal. If this value is not specified, the ARN defaults to this environment's creator.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "OwnerArn")]
-    pub owner_arn: Option<String>,
 
 
     /// 
@@ -34,6 +20,34 @@ pub struct CfnEnvironmentEC2 {
 
 
     /// 
+    /// The description of the environment to create.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// An array of key-value pairs that will be associated with the new AWS Cloud9 development    environment.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 200
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// Any AWS CodeCommit source code repositories to be cloned into the development environment.
     /// 
     /// Required: No
@@ -43,6 +57,42 @@ pub struct CfnEnvironmentEC2 {
     /// Update requires: Replacement
     #[serde(rename = "Repositories")]
     pub repositories: Option<Vec<Repository>>,
+
+
+    /// 
+    /// The type of instance to connect to the environment (for example, t2.micro).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 5
+    ///
+    /// Maximum: 20
+    ///
+    /// Pattern: ^[a-z][1-9][.][a-z0-9]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "InstanceType")]
+    pub instance_type: String,
+
+
+    /// 
+    /// The ID of the subnet in Amazon Virtual Private Cloud (Amazon VPC) that AWS Cloud9 will use to communicate with the Amazon Elastic Compute Cloud (Amazon EC2) instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 15
+    ///
+    /// Maximum: 24
+    ///
+    /// Pattern: ^(subnet-[0-9a-f]{8}|subnet-[0-9a-f]{17})$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: Option<String>,
 
 
     /// 
@@ -70,67 +120,17 @@ pub struct CfnEnvironmentEC2 {
 
 
     /// 
-    /// The ID of the subnet in Amazon Virtual Private Cloud (Amazon VPC) that AWS Cloud9 will use to communicate with the Amazon Elastic Compute Cloud (Amazon EC2) instance.
+    /// The Amazon Resource Name (ARN) of the environment owner. This ARN can be the ARN of any AWS Identity and Access Management principal. If this value is not specified, the ARN defaults to this environment's creator.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 15
-    ///
-    /// Maximum: 24
-    ///
-    /// Pattern: ^(subnet-[0-9a-f]{8}|subnet-[0-9a-f]{17})$
+    /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
     ///
     /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: Option<String>,
-
-
-    /// 
-    /// An array of key-value pairs that will be associated with the new AWS Cloud9 development    environment.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The description of the environment to create.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 200
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The type of instance to connect to the environment (for example, t2.micro).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 5
-    ///
-    /// Maximum: 20
-    ///
-    /// Pattern: ^[a-z][1-9][.][a-z0-9]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    #[serde(rename = "OwnerArn")]
+    pub owner_arn: Option<String>,
 
 
     /// 
@@ -162,9 +162,54 @@ pub struct CfnEnvironmentEC2 {
 
 }
 
+impl cfn_resources::CfnResource for CfnEnvironmentEC2 {
+    fn type_string() -> &'static str {
+        "AWS::Cloud9::EnvironmentEC2"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
 
 /// The Repository property type specifies an AWS CodeCommit source code repository to be cloned into an AWS Cloud9 development environment.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Repository {
 
 
@@ -190,40 +235,5 @@ pub struct Repository {
     /// Update requires: No interruption
     #[serde(rename = "RepositoryUrl")]
     pub repository_url: String,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 }

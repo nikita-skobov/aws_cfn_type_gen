@@ -3,7 +3,7 @@
 /// The     AWS::Greengrass::LoggerDefinition resource represents a logger definition for AWS IoT Greengrass.   Logger definitions are used to organize your logger definition versions.
 ///
 /// Logger definitions can reference multiple logger definition versions. All logger definition versions      must be associated with a logger definition. Each logger definition version can contain one or more loggers.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLoggerDefinition {
 
 
@@ -50,11 +50,21 @@ pub struct CfnLoggerDefinition {
 
 }
 
+impl cfn_resources::CfnResource for CfnLoggerDefinition {
+    fn type_string() -> &'static str {
+        "AWS::Greengrass::LoggerDefinition"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// A logger definition version contains a list of loggers.
 ///
 /// In an AWS CloudFormation template, LoggerDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::LoggerDefinition resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LoggerDefinitionVersion {
 
 
@@ -75,20 +85,8 @@ pub struct LoggerDefinitionVersion {
 /// A logger represents logging settings for the AWS IoT Greengrass group, which can be stored in CloudWatch and the local file system of your core device. All log   entries include a timestamp, log level, and information about the event. For more information, see Monitoring with AWS IoT Greengrass Logs in the    AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Loggers 		 property of the LoggerDefinitionVersion property type contains a list       of Logger property types.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Logger {
-
-
-    /// 
-    /// The amount of file space (in KB) to use when writing logs to the local file system. 				 This property does not apply for CloudWatch Logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Space")]
-    pub space: Option<i64>,
 
 
     /// 
@@ -113,6 +111,18 @@ pub struct Logger {
     /// Update requires: Replacement
     #[serde(rename = "Id")]
     pub id: String,
+
+
+    /// 
+    /// The amount of file space (in KB) to use when writing logs to the local file system. 				 This property does not apply for CloudWatch Logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Space")]
+    pub space: Option<i64>,
 
 
     /// 

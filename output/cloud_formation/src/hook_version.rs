@@ -1,8 +1,36 @@
 
 
 /// The HookVersion resource publishes new or first hook version to the AWS CloudFormation  registry.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnHookVersion {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the task execution role that grants the hook permission.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ExecutionRoleArn")]
+    pub execution_role_arn: Option<String>,
+
+
+    /// 
+    /// A URL to the Amazon S3 bucket containing the hook project package that contains the necessary files for the hook  you want to register.
+    /// 
+    /// For information on generating a schema handler package for the resource you want to register, see submit in the   CloudFormation CLI User Guide for Extension Development.
+    /// 
+    /// NoteThe user registering the resource must be able to access the package in the S3 bucket. That's, the user must   have GetObject permissions for the   schema handler package. For more information, see Actions, Resources, and Condition Keys for Amazon S3   in the AWS Identity and Access Management User Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SchemaHandlerPackage")]
+    pub schema_handler_package: String,
 
 
     /// 
@@ -34,58 +62,22 @@ pub struct CfnHookVersion {
     #[serde(rename = "LoggingConfig")]
     pub logging_config: Option<LoggingConfig>,
 
+}
 
-    /// 
-    /// A URL to the Amazon S3 bucket containing the hook project package that contains the necessary files for the hook  you want to register.
-    /// 
-    /// For information on generating a schema handler package for the resource you want to register, see submit in the   CloudFormation CLI User Guide for Extension Development.
-    /// 
-    /// NoteThe user registering the resource must be able to access the package in the S3 bucket. That's, the user must   have GetObject permissions for the   schema handler package. For more information, see Actions, Resources, and Condition Keys for Amazon S3   in the AWS Identity and Access Management User Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SchemaHandlerPackage")]
-    pub schema_handler_package: String,
+impl cfn_resources::CfnResource for CfnHookVersion {
+    fn type_string() -> &'static str {
+        "AWS::CloudFormation::HookVersion"
+    }
 
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the task execution role that grants the hook permission.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ExecutionRoleArn")]
-    pub execution_role_arn: Option<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The LoggingConfig property type specifies logging configuration information for an  extension.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LoggingConfig {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the role that CloudFormation should assume when sending log entries  to CloudWatch Logs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: arn:.+:iam::[0-9]{12}:role/.+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "LogRoleArn")]
-    pub log_role_arn: Option<String>,
 
 
     /// 
@@ -104,5 +96,23 @@ pub struct LoggingConfig {
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
     pub log_group_name: Option<String>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the role that CloudFormation should assume when sending log entries  to CloudWatch Logs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: arn:.+:iam::[0-9]{12}:role/.+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "LogRoleArn")]
+    pub log_role_arn: Option<String>,
 
 }

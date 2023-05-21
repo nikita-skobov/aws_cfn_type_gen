@@ -1,19 +1,8 @@
 
 
 /// Associates an application to an entitlement.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationEntitlementAssociation {
-
-
-    /// The name of the entitlement.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "EntitlementName")]
-    pub entitlement_name: String,
 
 
     /// The identifier of the application.
@@ -37,4 +26,25 @@ pub struct CfnApplicationEntitlementAssociation {
     #[serde(rename = "StackName")]
     pub stack_name: String,
 
+
+    /// The name of the entitlement.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "EntitlementName")]
+    pub entitlement_name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnApplicationEntitlementAssociation {
+    fn type_string() -> &'static str {
+        "AWS::AppStream::ApplicationEntitlementAssociation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

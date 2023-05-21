@@ -7,60 +7,20 @@
 /// To specify a VPN connection between a virtual private gateway and customer gateway, use     the VpnGatewayId and CustomerGatewayId properties.
 ///
 /// For more information, see AWS Site-to-Site VPN in the     AWS Site-to-Site VPN User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPNConnection {
 
 
     /// 
-    /// The type of VPN connection.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ipsec.1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// The ID of the customer gateway at your end of the VPN connection.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CustomerGatewayId")]
-    pub customer_gateway_id: String,
-
-
-    /// 
-    /// The ID of the virtual private gateway at the AWS side of the VPN     connection.
-    /// 
-    /// You must specify either TransitGatewayId or VpnGatewayId, but     not both.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpnGatewayId")]
-    pub vpn_gateway_id: Option<String>,
-
-
-    /// 
-    /// Any tags assigned to the VPN connection.
+    /// The tunnel options for the VPN connection.
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: List of VpnTunnelOptionsSpecification
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "VpnTunnelOptionsSpecifications")]
+    pub vpn_tunnel_options_specifications: Option<Vec<VpnTunnelOptionsSpecification>>,
 
 
     /// 
@@ -92,16 +52,66 @@ pub struct CfnVPNConnection {
 
 
     /// 
-    /// The tunnel options for the VPN connection.
+    /// The ID of the virtual private gateway at the AWS side of the VPN     connection.
+    /// 
+    /// You must specify either TransitGatewayId or VpnGatewayId, but     not both.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpnGatewayId")]
+    pub vpn_gateway_id: Option<String>,
+
+
+    /// 
+    /// The type of VPN connection.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ipsec.1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+
+    /// 
+    /// Any tags assigned to the VPN connection.
     /// 
     /// Required: No
     ///
-    /// Type: List of VpnTunnelOptionsSpecification
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID of the customer gateway at your end of the VPN connection.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "VpnTunnelOptionsSpecifications")]
-    pub vpn_tunnel_options_specifications: Option<Vec<VpnTunnelOptionsSpecification>>,
+    #[serde(rename = "CustomerGatewayId")]
+    pub customer_gateway_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnVPNConnection {
+    fn type_string() -> &'static str {
+        "AWS::EC2::VPNConnection"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -112,7 +122,7 @@ pub struct CfnVPNConnection {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -141,7 +151,7 @@ pub struct Tag {
 
 
 /// The tunnel options for a single VPN tunnel.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpnTunnelOptionsSpecification {
 
 

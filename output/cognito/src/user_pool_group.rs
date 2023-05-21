@@ -3,58 +3,8 @@
 /// Specifies a new group in the identified user pool.
 ///
 /// Calling this action requires developer credentials.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserPoolGroup {
-
-
-    /// 
-    /// A string containing the description of the group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2048
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
-
-
-    /// 
-    /// The role Amazon Resource Name (ARN) for the group.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 20
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: arn:[\w+=/,.@-]+:[\w+=/,.@-]+:([\w+=/,.@-]*)?:[0-9]+:[\w+=/,.@-]+(:[\w+=/,.@-]+)?(:[\w+=/,.@-]+)?
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleArn")]
-    pub role_arn: Option<String>,
-
-
-    /// 
-    /// The user pool ID for the user pool.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 55
-    ///
-    /// Pattern: [\w-]+_[0-9a-zA-Z]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserPoolId")]
-    pub user_pool_id: String,
 
 
     /// 
@@ -76,6 +26,24 @@ pub struct CfnUserPoolGroup {
 
 
     /// 
+    /// The role Amazon Resource Name (ARN) for the group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 20
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: arn:[\w+=/,.@-]+:[\w+=/,.@-]+:([\w+=/,.@-]*)?:[0-9]+:[\w+=/,.@-]+(:[\w+=/,.@-]+)?(:[\w+=/,.@-]+)?
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleArn")]
+    pub role_arn: Option<String>,
+
+
+    /// 
     /// The name of the group. Must be unique.
     /// 
     /// Required: No
@@ -92,4 +60,46 @@ pub struct CfnUserPoolGroup {
     #[serde(rename = "GroupName")]
     pub group_name: Option<String>,
 
+
+    /// 
+    /// A string containing the description of the group.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2048
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
+    /// The user pool ID for the user pool.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 55
+    ///
+    /// Pattern: [\w-]+_[0-9a-zA-Z]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UserPoolId")]
+    pub user_pool_id: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnUserPoolGroup {
+    fn type_string() -> &'static str {
+        "AWS::Cognito::UserPoolGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

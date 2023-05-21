@@ -1,7 +1,7 @@
 
 
 /// The AWS::CertificateManager::Account resource defines the expiry event     configuration that determines the number of days prior to expiry when ACM starts generating     EventBridge events.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccount {
 
 
@@ -18,9 +18,19 @@ pub struct CfnAccount {
 
 }
 
+impl cfn_resources::CfnResource for CfnAccount {
+    fn type_string() -> &'static str {
+        "AWS::CertificateManager::Account"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Object containing expiration events options associated with an AWS account. For more information, see ExpiryEventsConfiguration in the API reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ExpiryEventsConfiguration {
 
 

@@ -1,7 +1,7 @@
 
 
 /// The AWS::Route53::DNSSEC resource is used to enable DNSSEC signing in a hosted zone.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDNSSEC {
 
 
@@ -16,4 +16,14 @@ pub struct CfnDNSSEC {
     #[serde(rename = "HostedZoneId")]
     pub hosted_zone_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnDNSSEC {
+    fn type_string() -> &'static str {
+        "AWS::Route53::DNSSEC"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

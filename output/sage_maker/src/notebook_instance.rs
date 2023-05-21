@@ -1,20 +1,74 @@
 
 
 /// The AWS::SageMaker::NotebookInstance resource creates an Amazon SageMaker       notebook instance. A notebook instance is a machine learning (ML) compute instance       running on a Jupyter notebook. For more information, see Use Notebook Instances.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNotebookInstance {
 
 
     /// 
-    /// Information on the IMDS configuration of the notebook instance
+    /// An array of up to three Git repositories associated with the notebook instance. These       can be either the names of Git repositories stored as resources in your account, or the       URL of Git repositories in AWS CodeCommit       or in any other Git repository. These repositories are cloned at the same level as the       default repository of your notebook instance. For more information, see Associating Git         Repositories with SageMaker Notebook Instances.
     /// 
     /// Required: No
     ///
-    /// Type: InstanceMetadataServiceConfiguration
+    /// Type: List of String
+    ///
+    /// Maximum: 3
     ///
     /// Update requires: No interruption
-    #[serde(rename = "InstanceMetadataServiceConfiguration")]
-    pub instance_metadata_service_configuration: Option<InstanceMetadataServiceConfiguration>,
+    #[serde(rename = "AdditionalCodeRepositories")]
+    pub additional_code_repositories: Option<Vec<String>>,
+
+
+    /// 
+    /// The Git repository associated with the notebook instance as its default code       repository. This can be either the name of a Git repository stored as a resource in your       account, or the URL of a Git repository in AWS CodeCommit       or in any other Git repository. When you open a notebook instance, it opens in the       directory that contains this repository. For more information, see Associating Git         Repositories with SageMaker Notebook Instances.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: ^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DefaultCodeRepository")]
+    pub default_code_repository: Option<String>,
+
+
+    /// 
+    /// Whether root access is enabled or disabled for users of the notebook instance. The       default value is Enabled.
+    /// 
+    /// NoteLifecycle configurations need root access to be able to set up a notebook         instance. Because of this, lifecycle configurations associated with a notebook         instance always run with root access even if you disable root access for         users.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: Disabled | Enabled
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RootAccess")]
+    pub root_access: Option<String>,
+
+
+    /// 
+    /// A list of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Resource         Tag and Using         Cost Allocation Tags.
+    /// 
+    /// You can add tags later by using the CreateTags API.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Maximum: 50
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -31,6 +85,98 @@ pub struct CfnNotebookInstance {
     /// Update requires: Replacement
     #[serde(rename = "DirectInternetAccess")]
     pub direct_internet_access: Option<String>,
+
+
+    /// 
+    /// Information on the IMDS configuration of the notebook instance
+    /// 
+    /// Required: No
+    ///
+    /// Type: InstanceMetadataServiceConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "InstanceMetadataServiceConfiguration")]
+    pub instance_metadata_service_configuration: Option<InstanceMetadataServiceConfiguration>,
+
+
+    /// 
+    /// The ID of the subnet in a VPC to which you would like to have a connectivity from       your ML compute instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 32
+    ///
+    /// Pattern: [-0-9a-zA-Z]+
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SubnetId")]
+    pub subnet_id: Option<String>,
+
+
+    /// 
+    /// The size, in GB, of the ML storage volume to attach to the notebook instance. The       default value is 5 GB.
+    /// 
+    /// NoteExpect some interruption of service if this parameter is changed as CloudFormation         stops a notebook instance and starts it up again to update it.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Minimum: 5
+    ///
+    /// Maximum: 16384
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VolumeSizeInGB")]
+    pub volume_size_in_gb: Option<i64>,
+
+
+    /// 
+    /// A list of Amazon Elastic Inference (EI) instance types to associate with the notebook       instance. Currently, only one instance type can be associated with a notebook instance.       For more information, see Using Elastic Inference in Amazon SageMaker.
+    /// 
+    /// Valid Values:       ml.eia1.medium | ml.eia1.large | ml.eia1.xlarge | ml.eia2.medium | ml.eia2.large |         ml.eia2.xlarge.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AcceleratorTypes")]
+    pub accelerator_types: Option<Vec<String>>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of a AWS Key Management Service key that       SageMaker uses to encrypt data on the storage volume attached to your notebook instance. The       KMS key you provide must be enabled. For information, see Enabling and Disabling         Keys in the         AWS Key Management Service Developer         Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 2048
+    ///
+    /// Pattern: .*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// The name of the new notebook instance.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 63
+    ///
+    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9])*
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "NotebookInstanceName")]
+    pub notebook_instance_name: Option<String>,
 
 
     /// 
@@ -54,20 +200,6 @@ pub struct CfnNotebookInstance {
 
 
     /// 
-    /// An array of up to three Git repositories associated with the notebook instance. These       can be either the names of Git repositories stored as resources in your account, or the       URL of Git repositories in AWS CodeCommit       or in any other Git repository. These repositories are cloned at the same level as the       default repository of your notebook instance. For more information, see Associating Git         Repositories with SageMaker Notebook Instances.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Maximum: 3
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdditionalCodeRepositories")]
-    pub additional_code_repositories: Option<Vec<String>>,
-
-
-    /// 
     /// The VPC security group IDs, in the form sg-xxxxxxxx. The security groups must be       for the same VPC as specified in the subnet.
     /// 
     /// Required: No
@@ -79,24 +211,6 @@ pub struct CfnNotebookInstance {
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The size, in GB, of the ML storage volume to attach to the notebook instance. The       default value is 5 GB.
-    /// 
-    /// NoteExpect some interruption of service if this parameter is changed as CloudFormation         stops a notebook instance and starts it up again to update it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 5
-    ///
-    /// Maximum: 16384
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VolumeSizeInGB")]
-    pub volume_size_in_gb: Option<i64>,
 
 
     /// 
@@ -116,72 +230,6 @@ pub struct CfnNotebookInstance {
 
 
     /// 
-    /// The name of a lifecycle configuration to associate with the notebook instance. For       information about lifecycle configurations, see Customize a Notebook         Instance in the Amazon SageMaker Developer       Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 63
-    ///
-    /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9])*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "LifecycleConfigName")]
-    pub lifecycle_config_name: Option<String>,
-
-
-    /// 
-    /// A list of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Resource         Tag and Using         Cost Allocation Tags.
-    /// 
-    /// You can add tags later by using the CreateTags API.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Maximum: 50
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The Git repository associated with the notebook instance as its default code       repository. This can be either the name of a Git repository stored as a resource in your       account, or the URL of a Git repository in AWS CodeCommit       or in any other Git repository. When you open a notebook instance, it opens in the       directory that contains this repository. For more information, see Associating Git         Repositories with SageMaker Notebook Instances.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: ^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DefaultCodeRepository")]
-    pub default_code_repository: Option<String>,
-
-
-    /// 
-    /// A list of Amazon Elastic Inference (EI) instance types to associate with the notebook       instance. Currently, only one instance type can be associated with a notebook instance.       For more information, see Using Elastic Inference in Amazon SageMaker.
-    /// 
-    /// Valid Values:       ml.eia1.medium | ml.eia1.large | ml.eia1.xlarge | ml.eia2.medium | ml.eia2.large |         ml.eia2.xlarge.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AcceleratorTypes")]
-    pub accelerator_types: Option<Vec<String>>,
-
-
-    /// 
     /// The platform identifier of the notebook instance runtime environment.
     /// 
     /// Required: No
@@ -198,55 +246,7 @@ pub struct CfnNotebookInstance {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of a AWS Key Management Service key that       SageMaker uses to encrypt data on the storage volume attached to your notebook instance. The       KMS key you provide must be enabled. For information, see Enabling and Disabling         Keys in the         AWS Key Management Service Developer         Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 2048
-    ///
-    /// Pattern: .*
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// The ID of the subnet in a VPC to which you would like to have a connectivity from       your ML compute instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 32
-    ///
-    /// Pattern: [-0-9a-zA-Z]+
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SubnetId")]
-    pub subnet_id: Option<String>,
-
-
-    /// 
-    /// Whether root access is enabled or disabled for users of the notebook instance. The       default value is Enabled.
-    /// 
-    /// NoteLifecycle configurations need root access to be able to set up a notebook         instance. Because of this, lifecycle configurations associated with a notebook         instance always run with root access even if you disable root access for         users.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: Disabled | Enabled
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RootAccess")]
-    pub root_access: Option<String>,
-
-
-    /// 
-    /// The name of the new notebook instance.
+    /// The name of a lifecycle configuration to associate with the notebook instance. For       information about lifecycle configurations, see Customize a Notebook         Instance in the Amazon SageMaker Developer       Guide.
     /// 
     /// Required: No
     ///
@@ -256,10 +256,20 @@ pub struct CfnNotebookInstance {
     ///
     /// Pattern: ^[a-zA-Z0-9](-*[a-zA-Z0-9])*
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "NotebookInstanceName")]
-    pub notebook_instance_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "LifecycleConfigName")]
+    pub lifecycle_config_name: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnNotebookInstance {
+    fn type_string() -> &'static str {
+        "AWS::SageMaker::NotebookInstance"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -270,19 +280,8 @@ pub struct CfnNotebookInstance {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -295,11 +294,22 @@ pub struct Tag {
     #[serde(rename = "Key")]
     pub key: String,
 
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
 }
 
 
 /// Information on the IMDS configuration of the notebook instance
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceMetadataServiceConfiguration {
 
 

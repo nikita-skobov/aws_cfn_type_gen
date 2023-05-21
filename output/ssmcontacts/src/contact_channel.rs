@@ -1,24 +1,8 @@
 
 
 /// The AWS::SSMContacts::ContactChannel resource specifies a contact channel       as the method that Incident Manager uses to engage your contact.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnContactChannel {
-
-
-    /// 
-    /// The type of the contact channel. Incident Manager supports three contact methods:
-    /// 
-    /// SMS               VOICE               EMAIL
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: EMAIL | SMS | VOICE
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ChannelType")]
-    pub channel_type: String,
 
 
     /// 
@@ -37,6 +21,18 @@ pub struct CfnContactChannel {
     /// Update requires: Replacement
     #[serde(rename = "ContactId")]
     pub contact_id: String,
+
+
+    /// 
+    /// The details that Incident Manager uses when trying to engage the contact channel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ChannelAddress")]
+    pub channel_address: String,
 
 
     /// 
@@ -70,14 +66,28 @@ pub struct CfnContactChannel {
 
 
     /// 
-    /// The details that Incident Manager uses when trying to engage the contact channel.
+    /// The type of the contact channel. Incident Manager supports three contact methods:
+    /// 
+    /// SMS               VOICE               EMAIL
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "ChannelAddress")]
-    pub channel_address: String,
+    /// Allowed values: EMAIL | SMS | VOICE
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ChannelType")]
+    pub channel_type: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnContactChannel {
+    fn type_string() -> &'static str {
+        "AWS::SSMContacts::ContactChannel"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

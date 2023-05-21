@@ -7,46 +7,8 @@
 /// You can create a global database that is initially empty, and then     add a primary cluster and a secondary cluster to it.
 ///
 /// For information about Aurora global databases, see       Working with Amazon Aurora Global Databases in the Amazon Aurora User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGlobalCluster {
-
-
-    /// 
-    /// The storage encryption setting for the global database cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "StorageEncrypted")]
-    pub storage_encrypted: Option<bool>,
-
-
-    /// 
-    /// The engine version of the Aurora global database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<String>,
-
-
-    /// 
-    /// The DB cluster identifier or Amazon Resource Name (ARN) to use as the primary cluster of the global database.
-    /// 
-    /// NoteIf the Engine property isn't specified, this property is required. If the Engine property is specified,         make sure this property isn't specified.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceDBClusterIdentifier")]
-    pub source_dbcluster_identifier: Option<String>,
 
 
     /// 
@@ -59,18 +21,6 @@ pub struct CfnGlobalCluster {
     /// Update requires: Replacement
     #[serde(rename = "GlobalClusterIdentifier")]
     pub global_cluster_identifier: Option<String>,
-
-
-    /// 
-    /// The deletion protection setting for the new global database.     The global database can't be deleted when deletion protection is enabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeletionProtection")]
-    pub deletion_protection: Option<bool>,
 
 
     /// 
@@ -88,4 +38,64 @@ pub struct CfnGlobalCluster {
     #[serde(rename = "Engine")]
     pub engine: Option<String>,
 
+
+    /// 
+    /// The deletion protection setting for the new global database.     The global database can't be deleted when deletion protection is enabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeletionProtection")]
+    pub deletion_protection: Option<bool>,
+
+
+    /// 
+    /// The DB cluster identifier or Amazon Resource Name (ARN) to use as the primary cluster of the global database.
+    /// 
+    /// NoteIf the Engine property isn't specified, this property is required. If the Engine property is specified,         make sure this property isn't specified.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceDBClusterIdentifier")]
+    pub source_dbcluster_identifier: Option<String>,
+
+
+    /// 
+    /// The engine version of the Aurora global database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<String>,
+
+
+    /// 
+    /// The storage encryption setting for the global database cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StorageEncrypted")]
+    pub storage_encrypted: Option<bool>,
+
+}
+
+impl cfn_resources::CfnResource for CfnGlobalCluster {
+    fn type_string() -> &'static str {
+        "AWS::RDS::GlobalCluster"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -11,20 +11,32 @@
 /// If any Fargate profiles in a cluster are in the DELETING       status, you must wait for that Fargate profile to finish deleting before       you can create any other profiles in that cluster.
 ///
 /// For more information, see AWS Fargate Profile in the       Amazon EKS User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFargateProfile {
 
 
     /// 
-    /// The name of the Amazon EKS cluster to apply the Fargate profile       to.
+    /// The selectors to match for pods to use this Fargate profile. Each       selector must have an associated namespace. Optionally, you can also specify labels for       a namespace. You may specify up to five selectors in a Fargate       profile.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Selector
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Selectors")]
+    pub selectors: Vec<Selector>,
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the pod execution role to use for pods that match the selectors in       the Fargate profile. The pod execution role allows Fargate       infrastructure to register with your cluster as a node, and it provides read access to         Amazon ECR image repositories. For more information, see Pod         Execution Role in the Amazon EKS User Guide.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "ClusterName")]
-    pub cluster_name: String,
+    #[serde(rename = "PodExecutionRoleArn")]
+    pub pod_execution_role_arn: String,
 
 
     /// 
@@ -40,15 +52,15 @@ pub struct CfnFargateProfile {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the pod execution role to use for pods that match the selectors in       the Fargate profile. The pod execution role allows Fargate       infrastructure to register with your cluster as a node, and it provides read access to         Amazon ECR image repositories. For more information, see Pod         Execution Role in the Amazon EKS User Guide.
+    /// The name of the Amazon EKS cluster to apply the Fargate profile       to.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "PodExecutionRoleArn")]
-    pub pod_execution_role_arn: String,
+    #[serde(rename = "ClusterName")]
+    pub cluster_name: String,
 
 
     /// 
@@ -74,89 +86,21 @@ pub struct CfnFargateProfile {
     #[serde(rename = "Subnets")]
     pub subnets: Option<Vec<String>>,
 
-
-    /// 
-    /// The selectors to match for pods to use this Fargate profile. Each       selector must have an associated namespace. Optionally, you can also specify labels for       a namespace. You may specify up to five selectors in a Fargate       profile.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Selector
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Selectors")]
-    pub selectors: Vec<Selector>,
-
 }
 
+impl cfn_resources::CfnResource for CfnFargateProfile {
+    fn type_string() -> &'static str {
+        "AWS::EKS::FargateProfile"
+    }
 
-/// An object representing an AWS Fargate profile selector.
-#[derive(Default, serde::Serialize)]
-pub struct Selector {
-
-
-    /// 
-    /// The Kubernetes labels that the selector should match. A pod must contain all of the       labels that are specified in the selector for it to be considered a match.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Label
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Labels")]
-    pub labels: Option<Vec<Label>>,
-
-
-    /// 
-    /// The Kubernetes namespace that the selector should match.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Namespace")]
-    pub namespace: String,
-
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A key-value pair.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Label {
 
 
@@ -182,5 +126,71 @@ pub struct Label {
     /// Update requires: Replacement
     #[serde(rename = "Value")]
     pub value: String,
+
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+/// An object representing an AWS Fargate profile selector.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Selector {
+
+
+    /// 
+    /// The Kubernetes namespace that the selector should match.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Namespace")]
+    pub namespace: String,
+
+
+    /// 
+    /// The Kubernetes labels that the selector should match. A pod must contain all of the       labels that are specified in the selector for it to be considered a match.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Label
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Labels")]
+    pub labels: Option<Vec<Label>>,
 
 }

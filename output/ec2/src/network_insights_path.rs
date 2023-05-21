@@ -3,32 +3,24 @@
 /// Specifies a path to analyze for reachability.
 ///
 /// VPC Reachability Analyzer enables you to analyze and debug network reachability between     two resources in your virtual private cloud (VPC). For more information, see the Reachability Analyzer User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNetworkInsightsPath {
 
 
     /// 
-    /// Scopes the analysis to network paths that match specific filters at the source. If you specify      this parameter, you can't specify the parameters for the source IP address or the destination port.
+    /// The destination port.
     /// 
     /// Required: No
     ///
-    /// Type: PathFilter
+    /// Type: Integer
+    ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 65535
     ///
     /// Update requires: Replacement
-    #[serde(rename = "FilterAtSource")]
-    pub filter_at_source: Option<PathFilter>,
-
-
-    /// 
-    /// Scopes the analysis to network paths that match specific filters at the destination. If you specify      this parameter, you can't specify the parameter for the destination IP address.
-    /// 
-    /// Required: No
-    ///
-    /// Type: PathFilter
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "FilterAtDestination")]
-    pub filter_at_destination: Option<PathFilter>,
+    #[serde(rename = "DestinationPort")]
+    pub destination_port: Option<i64>,
 
 
     /// 
@@ -44,21 +36,27 @@ pub struct CfnNetworkInsightsPath {
 
 
     /// 
-    /// The IP address of the destination.
+    /// The tags to add to the path.
     /// 
     /// Required: No
     ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ID or ARN of the source. If the resource is in another account, you must specify an ARN.
+    /// 
+    /// Required: Yes
+    ///
     /// Type: String
     ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 15
-    ///
-    /// Pattern: ^([0-9]{1,3}.){3}[0-9]{1,3}$
-    ///
     /// Update requires: Replacement
-    #[serde(rename = "DestinationIp")]
-    pub destination_ip: Option<String>,
+    #[serde(rename = "Source")]
+    pub source: String,
 
 
     /// 
@@ -80,43 +78,33 @@ pub struct CfnNetworkInsightsPath {
 
 
     /// 
-    /// The tags to add to the path.
+    /// The IP address of the destination.
     /// 
     /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The destination port.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 65535
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationPort")]
-    pub destination_port: Option<i64>,
-
-
-    /// 
-    /// The ID or ARN of the source. If the resource is in another account, you must specify an ARN.
-    /// 
-    /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Minimum: 0
+    ///
+    /// Maximum: 15
+    ///
+    /// Pattern: ^([0-9]{1,3}.){3}[0-9]{1,3}$
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "Source")]
-    pub source: String,
+    #[serde(rename = "DestinationIp")]
+    pub destination_ip: Option<String>,
+
+
+    /// 
+    /// Scopes the analysis to network paths that match specific filters at the source. If you specify      this parameter, you can't specify the parameters for the source IP address or the destination port.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PathFilter
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FilterAtSource")]
+    pub filter_at_source: Option<PathFilter>,
 
 
     /// 
@@ -132,11 +120,33 @@ pub struct CfnNetworkInsightsPath {
     #[serde(rename = "Protocol")]
     pub protocol: String,
 
+
+    /// 
+    /// Scopes the analysis to network paths that match specific filters at the destination. If you specify      this parameter, you can't specify the parameter for the destination IP address.
+    /// 
+    /// Required: No
+    ///
+    /// Type: PathFilter
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "FilterAtDestination")]
+    pub filter_at_destination: Option<PathFilter>,
+
+}
+
+impl cfn_resources::CfnResource for CfnNetworkInsightsPath {
+    fn type_string() -> &'static str {
+        "AWS::EC2::NetworkInsightsPath"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Describes a set of filters for a path analysis. Use path filters to scope the analysis when      there can be multiple resulting paths.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PathFilter {
 
 
@@ -159,6 +169,30 @@ pub struct PathFilter {
 
 
     /// 
+    /// The destination port range.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FilterPortRange
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DestinationPortRange")]
+    pub destination_port_range: Option<FilterPortRange>,
+
+
+    /// 
+    /// The source port range.
+    /// 
+    /// Required: No
+    ///
+    /// Type: FilterPortRange
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourcePortRange")]
+    pub source_port_range: Option<FilterPortRange>,
+
+
+    /// 
     /// The destination IPv4 address.
     /// 
     /// Required: No
@@ -175,30 +209,6 @@ pub struct PathFilter {
     #[serde(rename = "DestinationAddress")]
     pub destination_address: Option<String>,
 
-
-    /// 
-    /// The source port range.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FilterPortRange
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourcePortRange")]
-    pub source_port_range: Option<FilterPortRange>,
-
-
-    /// 
-    /// The destination port range.
-    /// 
-    /// Required: No
-    ///
-    /// Type: FilterPortRange
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DestinationPortRange")]
-    pub destination_port_range: Option<FilterPortRange>,
-
 }
 
 
@@ -209,7 +219,7 @@ pub struct PathFilter {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 
@@ -238,7 +248,7 @@ pub struct Tag {
 
 
 /// Describes a port range.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FilterPortRange {
 
 

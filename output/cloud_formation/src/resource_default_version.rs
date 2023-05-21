@@ -1,8 +1,26 @@
 
 
 /// Specifies the default version of a resource. The default version of a resource will be used in CloudFormation operations.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceDefaultVersion {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the resource version.
+    /// 
+    /// Conditional: You must specify either TypeVersionArn, or TypeName and   VersionId.
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 1024
+    ///
+    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TypeVersionArn")]
+    pub type_version_arn: Option<String>,
 
 
     /// 
@@ -44,22 +62,14 @@ pub struct CfnResourceDefaultVersion {
     #[serde(rename = "TypeName")]
     pub type_name: Option<String>,
 
+}
 
-    /// 
-    /// The Amazon Resource Name (ARN) of the resource version.
-    /// 
-    /// Conditional: You must specify either TypeVersionArn, or TypeName and   VersionId.
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 1024
-    ///
-    /// Pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TypeVersionArn")]
-    pub type_version_arn: Option<String>,
+impl cfn_resources::CfnResource for CfnResourceDefaultVersion {
+    fn type_string() -> &'static str {
+        "AWS::CloudFormation::ResourceDefaultVersion"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

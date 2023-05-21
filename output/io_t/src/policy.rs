@@ -1,7 +1,7 @@
 
 
 /// Use the AWS::IoT::Policy resource to declare an AWS IoT policy. For more     information about working with AWS IoT policies, see Authorization in the       AWS IoT Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPolicy {
 
 
@@ -28,4 +28,14 @@ pub struct CfnPolicy {
     #[serde(rename = "PolicyName")]
     pub policy_name: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnPolicy {
+    fn type_string() -> &'static str {
+        "AWS::IoT::Policy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

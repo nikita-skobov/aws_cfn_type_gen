@@ -1,20 +1,8 @@
 
 
 /// The AWS::Budgets::Budget resource allows customers to take pre-defined actions that will trigger once a budget threshold has been exceeded. creates, replaces, or deletes budgets for Billing and Cost Management. 			For more information, see 			Managing Your Costs with Budgets 			in the AWS Billing and Cost Management User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBudget {
-
-
-    /// 
-    /// The budget object that you want to create.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: BudgetData
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Budget")]
-    pub budget: BudgetData,
 
 
     /// 
@@ -30,6 +18,155 @@ pub struct CfnBudget {
     #[serde(rename = "NotificationsWithSubscribers")]
     pub notifications_with_subscribers: Option<Vec<NotificationWithSubscribers>>,
 
+
+    /// 
+    /// The budget object that you want to create.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: BudgetData
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Budget")]
+    pub budget: BudgetData,
+
+}
+
+impl cfn_resources::CfnResource for CfnBudget {
+    fn type_string() -> &'static str {
+        "AWS::Budgets::Budget"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// The period of time that is covered by a budget. The period has a start date and an end 			date. The start date must come before the end date. There are no restrictions on the end date.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct TimePeriod {
+
+
+    /// 
+    /// The start date for a budget. If you created your budget and didn't specify a start 			date, the start date defaults to the start of the chosen time period (MONTHLY, QUARTERLY, or 			ANNUALLY). For example, if you create your budget on January 24, 2019, choose 			MONTHLY, and don't set a start date, the start date defaults to 			01/01/19 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.
+    /// 
+    /// You can change your start date with the UpdateBudget operation.
+    /// 
+    /// Valid values depend on the value of BudgetType:
+    /// 
+    /// If BudgetType is COST or USAGE: Valid values are 					MONTHLY, QUARTERLY, and ANNUALLY.If BudgetType is RI_UTILIZATION or RI_COVERAGE: Valid values are 					DAILY, MONTHLY, QUARTERLY, and ANNUALLY.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Start")]
+    pub start: Option<String>,
+
+
+    /// 
+    /// The end date for a budget. If you didn't specify an end date, AWS set your end date to 06/15/87 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.
+    /// 
+    /// After the end date, AWS deletes the budget and all the associated 			notifications and subscribers. You can change your end date with the 				UpdateBudget operation.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "End")]
+    pub end: Option<String>,
+
+}
+
+
+/// The Subscriber property type specifies who to notify for a Billing and Cost Management budget notification. 			The subscriber consists of a subscription type, and either an Amazon SNS topic or an email address.
+///
+/// For example, an email subscriber would have the following parameters:
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Subscriber {
+
+
+    /// 
+    /// The address that AWS sends budget notifications to, either an SNS topic or an email.
+    /// 
+    /// When you create a subscriber, the value of Address can't contain line breaks.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Address")]
+    pub address: String,
+
+
+    /// 
+    /// The type of notification that AWS sends to a subscriber.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: EMAIL | SNS
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SubscriptionType")]
+    pub subscription_type: String,
+
+}
+
+
+/// A notification with subscribers. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct NotificationWithSubscribers {
+
+
+    /// 
+    /// The notification that's associated with a budget.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Notification
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Notification")]
+    pub notification: Notification,
+
+
+    /// 
+    /// A list of subscribers who are subscribed to this notification.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of Subscriber
+    ///
+    /// Maximum: 11
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Subscribers")]
+    pub subscribers: Vec<Subscriber>,
+
+}
+
+
+/// The HistoricalOptions property type specifies Property description not available. for an AWS::Budgets::Budget.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HistoricalOptions {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BudgetAdjustmentPeriod")]
+    pub budget_adjustment_period: i64,
+
 }
 
 
@@ -38,8 +175,26 @@ pub struct CfnBudget {
 /// This is the Amazon Resource Name (ARN) pattern for a budget:
 ///
 /// arn:aws:budgets::AccountId:budget/budgetName
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BudgetData {
+
+
+    /// 
+    /// The period of time that is covered by a budget. The period has a start date and an end 			date. The start date must come before the end date. There are no restrictions on the end date.
+    /// 
+    /// The start date for a budget. If you created your budget and didn't specify a start 			date, the start date defaults to the start of the chosen time period (MONTHLY, QUARTERLY, or 			ANNUALLY). For example, if you create your budget on January 24, 2019, choose 			MONTHLY, and don't set a start date, the start date defaults to 			01/01/19 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.
+    /// 
+    /// You can change your start date with the UpdateBudget operation.
+    /// 
+    /// After the end date, AWS deletes the budget and all associated notifications and subscribers.
+    /// 
+    /// Required: No
+    ///
+    /// Type: TimePeriod
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimePeriod")]
+    pub time_period: Option<TimePeriod>,
 
 
     /// 
@@ -54,6 +209,62 @@ pub struct BudgetData {
     /// Update requires: No interruption
     #[serde(rename = "BudgetType")]
     pub budget_type: String,
+
+
+    /// 
+    /// The cost filters, such as Region, Service, member account, Tag, or Cost Category, that are applied to a budget.
+    /// 
+    /// AWS Budgets supports the following services as a Service filter for RI budgets:
+    /// 
+    /// Amazon EC2               Amazon Redshift               Amazon Relational Database Service               Amazon ElastiCache               Amazon OpenSearch Service
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CostFilters")]
+    pub cost_filters: Option<serde_json::Value>,
+
+
+    /// 
+    /// The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or 			Savings Plans coverage that you want to track with your budget.
+    /// 
+    /// BudgetLimit is required for cost or usage budgets, but optional for RI or 			Savings Plans utilization or coverage budgets. RI and Savings Plans utilization or 			coverage budgets default to 100. This is the only valid value for RI or 			Savings Plans utilization or coverage budgets. You can't use BudgetLimit 			with PlannedBudgetLimits for CreateBudget and 				UpdateBudget actions.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Spend
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BudgetLimit")]
+    pub budget_limit: Option<Spend>,
+
+
+    /// 
+    /// The types of costs that are included in this COST budget.
+    /// 
+    /// USAGE, RI_UTILIZATION, RI_COVERAGE, SAVINGS_PLANS_UTILIZATION, and SAVINGS_PLANS_COVERAGE budgets do not have CostTypes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CostTypes
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CostTypes")]
+    pub cost_types: Option<CostTypes>,
+
+
+    /// 
+    /// The name of a budget. The value must be unique within an account. BudgetName can't include 			: and \ characters. If you don't include value for BudgetName in the template, 			Billing and Cost Management assigns your budget a randomly generated name.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "BudgetName")]
+    pub budget_name: Option<String>,
 
 
     /// 
@@ -94,54 +305,6 @@ pub struct BudgetData {
 
 
     /// 
-    /// The period of time that is covered by a budget. The period has a start date and an end 			date. The start date must come before the end date. There are no restrictions on the end date.
-    /// 
-    /// The start date for a budget. If you created your budget and didn't specify a start 			date, the start date defaults to the start of the chosen time period (MONTHLY, QUARTERLY, or 			ANNUALLY). For example, if you create your budget on January 24, 2019, choose 			MONTHLY, and don't set a start date, the start date defaults to 			01/01/19 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.
-    /// 
-    /// You can change your start date with the UpdateBudget operation.
-    /// 
-    /// After the end date, AWS deletes the budget and all associated notifications and subscribers.
-    /// 
-    /// Required: No
-    ///
-    /// Type: TimePeriod
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimePeriod")]
-    pub time_period: Option<TimePeriod>,
-
-
-    /// 
-    /// The cost filters, such as Region, Service, member account, Tag, or Cost Category, that are applied to a budget.
-    /// 
-    /// AWS Budgets supports the following services as a Service filter for RI budgets:
-    /// 
-    /// Amazon EC2               Amazon Redshift               Amazon Relational Database Service               Amazon ElastiCache               Amazon OpenSearch Service
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CostFilters")]
-    pub cost_filters: Option<serde_json::Value>,
-
-
-    /// 
-    /// The types of costs that are included in this COST budget.
-    /// 
-    /// USAGE, RI_UTILIZATION, RI_COVERAGE, SAVINGS_PLANS_UTILIZATION, and SAVINGS_PLANS_COVERAGE budgets do not have CostTypes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: CostTypes
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CostTypes")]
-    pub cost_types: Option<CostTypes>,
-
-
-    /// 
     /// The length of time until a budget resets the actual and forecasted spend. DAILY is available only for 			RI_UTILIZATION and RI_COVERAGE budgets.
     /// 
     /// Required: Yes
@@ -154,160 +317,11 @@ pub struct BudgetData {
     #[serde(rename = "TimeUnit")]
     pub time_unit: String,
 
-
-    /// 
-    /// The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or 			Savings Plans coverage that you want to track with your budget.
-    /// 
-    /// BudgetLimit is required for cost or usage budgets, but optional for RI or 			Savings Plans utilization or coverage budgets. RI and Savings Plans utilization or 			coverage budgets default to 100. This is the only valid value for RI or 			Savings Plans utilization or coverage budgets. You can't use BudgetLimit 			with PlannedBudgetLimits for CreateBudget and 				UpdateBudget actions.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Spend
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BudgetLimit")]
-    pub budget_limit: Option<Spend>,
-
-
-    /// 
-    /// The name of a budget. The value must be unique within an account. BudgetName can't include 			: and \ characters. If you don't include value for BudgetName in the template, 			Billing and Cost Management assigns your budget a randomly generated name.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "BudgetName")]
-    pub budget_name: Option<String>,
-
-}
-
-
-/// The HistoricalOptions property type specifies Property description not available. for an AWS::Budgets::Budget.
-#[derive(Default, serde::Serialize)]
-pub struct HistoricalOptions {
-
-
-    /// Property description not available.
-    ///
-    /// Required: Yes
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BudgetAdjustmentPeriod")]
-    pub budget_adjustment_period: i64,
-
-}
-
-
-/// The period of time that is covered by a budget. The period has a start date and an end 			date. The start date must come before the end date. There are no restrictions on the end date.
-#[derive(Default, serde::Serialize)]
-pub struct TimePeriod {
-
-
-    /// 
-    /// The end date for a budget. If you didn't specify an end date, AWS set your end date to 06/15/87 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.
-    /// 
-    /// After the end date, AWS deletes the budget and all the associated 			notifications and subscribers. You can change your end date with the 				UpdateBudget operation.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "End")]
-    pub end: Option<String>,
-
-
-    /// 
-    /// The start date for a budget. If you created your budget and didn't specify a start 			date, the start date defaults to the start of the chosen time period (MONTHLY, QUARTERLY, or 			ANNUALLY). For example, if you create your budget on January 24, 2019, choose 			MONTHLY, and don't set a start date, the start date defaults to 			01/01/19 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.
-    /// 
-    /// You can change your start date with the UpdateBudget operation.
-    /// 
-    /// Valid values depend on the value of BudgetType:
-    /// 
-    /// If BudgetType is COST or USAGE: Valid values are 					MONTHLY, QUARTERLY, and ANNUALLY.If BudgetType is RI_UTILIZATION or RI_COVERAGE: Valid values are 					DAILY, MONTHLY, QUARTERLY, and ANNUALLY.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Start")]
-    pub start: Option<String>,
-
-}
-
-
-/// A notification with subscribers. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.
-#[derive(Default, serde::Serialize)]
-pub struct NotificationWithSubscribers {
-
-
-    /// 
-    /// A list of subscribers who are subscribed to this notification.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of Subscriber
-    ///
-    /// Maximum: 11
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Subscribers")]
-    pub subscribers: Vec<Subscriber>,
-
-
-    /// 
-    /// The notification that's associated with a budget.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Notification
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Notification")]
-    pub notification: Notification,
-
-}
-
-
-/// The amount of cost or usage that's measured for a budget.
-///
-/// For example, a Spend for 3 GB of S3 usage has the following 			parameters:
-#[derive(Default, serde::Serialize)]
-pub struct Spend {
-
-
-    /// 
-    /// The unit of measurement that's used for the budget forecast, actual spend, or budget 			threshold, such as USD or GBP.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Unit")]
-    pub unit: String,
-
-
-    /// 
-    /// The cost or usage amount that's associated with a budget forecast, actual spend, or budget 			threshold.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Double
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Amount")]
-    pub amount: f64,
-
 }
 
 
 /// The AutoAdjustData property type specifies Property description not available. for an AWS::Budgets::Budget.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoAdjustData {
 
 
@@ -335,12 +349,175 @@ pub struct AutoAdjustData {
 }
 
 
+/// The types of cost that are included in a COST budget, such as tax and subscriptions.
+///
+/// USAGE, RI_UTILIZATION, RI_COVERAGE, 				SAVINGS_PLANS_UTILIZATION, and SAVINGS_PLANS_COVERAGE 			budgets don't have CostTypes.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CostTypes {
+
+
+    /// 
+    /// Specifies whether a budget includes subscriptions.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeSubscription")]
+    pub include_subscription: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget includes recurring fees such as monthly RI fees.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeRecurring")]
+    pub include_recurring: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget uses the amortized rate.
+    /// 
+    /// The default value is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseAmortized")]
+    pub use_amortized: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget includes discounts.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeDiscount")]
+    pub include_discount: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget includes upfront RI costs.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeUpfront")]
+    pub include_upfront: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget uses a blended rate.
+    /// 
+    /// The default value is false.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UseBlended")]
+    pub use_blended: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget includes support subscription fees.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeSupport")]
+    pub include_support: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget includes refunds.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeRefund")]
+    pub include_refund: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget includes non-RI subscription costs.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeOtherSubscription")]
+    pub include_other_subscription: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget includes credits.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeCredit")]
+    pub include_credit: Option<bool>,
+
+
+    /// 
+    /// Specifies whether a budget includes taxes.
+    /// 
+    /// The default value is true.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IncludeTax")]
+    pub include_tax: Option<bool>,
+
+}
+
+
 /// A notification that's associated with a budget. A budget can have up to ten notifications.
 ///
 /// Each notification must have at least one subscriber. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.
 ///
 /// For example, if you have a budget for 200 dollars and you want to be notified when you go over 160 dollars, create a notification with the following parameters:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Notification {
 
 
@@ -400,201 +577,34 @@ pub struct Notification {
 }
 
 
-/// The types of cost that are included in a COST budget, such as tax and subscriptions.
+/// The amount of cost or usage that's measured for a budget.
 ///
-/// USAGE, RI_UTILIZATION, RI_COVERAGE, 				SAVINGS_PLANS_UTILIZATION, and SAVINGS_PLANS_COVERAGE 			budgets don't have CostTypes.
-#[derive(Default, serde::Serialize)]
-pub struct CostTypes {
+/// For example, a Spend for 3 GB of S3 usage has the following 			parameters:
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Spend {
 
 
     /// 
-    /// Specifies whether a budget includes upfront RI costs.
+    /// The cost or usage amount that's associated with a budget forecast, actual spend, or budget 			threshold.
     /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: Boolean
+    /// Type: Double
     ///
     /// Update requires: No interruption
-    #[serde(rename = "IncludeUpfront")]
-    pub include_upfront: Option<bool>,
+    #[serde(rename = "Amount")]
+    pub amount: f64,
 
 
     /// 
-    /// Specifies whether a budget uses a blended rate.
-    /// 
-    /// The default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UseBlended")]
-    pub use_blended: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget includes non-RI subscription costs.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeOtherSubscription")]
-    pub include_other_subscription: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget uses the amortized rate.
-    /// 
-    /// The default value is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UseAmortized")]
-    pub use_amortized: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget includes subscriptions.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeSubscription")]
-    pub include_subscription: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget includes credits.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeCredit")]
-    pub include_credit: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget includes refunds.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeRefund")]
-    pub include_refund: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget includes taxes.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeTax")]
-    pub include_tax: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget includes recurring fees such as monthly RI fees.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeRecurring")]
-    pub include_recurring: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget includes discounts.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeDiscount")]
-    pub include_discount: Option<bool>,
-
-
-    /// 
-    /// Specifies whether a budget includes support subscription fees.
-    /// 
-    /// The default value is true.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IncludeSupport")]
-    pub include_support: Option<bool>,
-
-}
-
-
-/// The Subscriber property type specifies who to notify for a Billing and Cost Management budget notification. 			The subscriber consists of a subscription type, and either an Amazon SNS topic or an email address.
-///
-/// For example, an email subscriber would have the following parameters:
-#[derive(Default, serde::Serialize)]
-pub struct Subscriber {
-
-
-    /// 
-    /// The address that AWS sends budget notifications to, either an SNS topic or an email.
-    /// 
-    /// When you create a subscriber, the value of Address can't contain line breaks.
+    /// The unit of measurement that's used for the budget forecast, actual spend, or budget 			threshold, such as USD or GBP.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Address")]
-    pub address: String,
-
-
-    /// 
-    /// The type of notification that AWS sends to a subscriber.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: EMAIL | SNS
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SubscriptionType")]
-    pub subscription_type: String,
+    #[serde(rename = "Unit")]
+    pub unit: String,
 
 }

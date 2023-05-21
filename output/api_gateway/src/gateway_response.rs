@@ -1,32 +1,8 @@
 
 
 /// The AWS::ApiGateway::GatewayResponse resource creates a gateway response for your API. For more information, see API Gateway Responses in the API Gateway Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGatewayResponse {
-
-
-    /// 
-    /// The string identifier of the associated RestApi.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RestApiId")]
-    pub rest_api_id: String,
-
-
-    /// 
-    /// Response parameters (paths, query strings and headers) of the GatewayResponse as a    string-to-string map of key-value pairs.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResponseParameters")]
-    pub response_parameters: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -54,6 +30,18 @@ pub struct CfnGatewayResponse {
 
 
     /// 
+    /// The string identifier of the associated RestApi.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "RestApiId")]
+    pub rest_api_id: String,
+
+
+    /// 
     /// The response type of the associated GatewayResponse.
     /// 
     /// Required: Yes
@@ -66,4 +54,26 @@ pub struct CfnGatewayResponse {
     #[serde(rename = "ResponseType")]
     pub response_type: String,
 
+
+    /// 
+    /// Response parameters (paths, query strings and headers) of the GatewayResponse as a    string-to-string map of key-value pairs.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResponseParameters")]
+    pub response_parameters: Option<std::collections::HashMap<String, String>>,
+
+}
+
+impl cfn_resources::CfnResource for CfnGatewayResponse {
+    fn type_string() -> &'static str {
+        "AWS::ApiGateway::GatewayResponse"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

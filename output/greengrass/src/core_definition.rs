@@ -3,20 +3,8 @@
 /// The     AWS::Greengrass::CoreDefinition resource represents a core definition for AWS IoT Greengrass.      Core definitions are used to organize your core definition versions.
 ///
 /// Core definitions can reference multiple core definition versions. All core definition versions      must be associated with a core definition. Each core definition version can contain one Greengrass core.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCoreDefinition {
-
-
-    /// 
-    /// The name of the core definition.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: String,
 
 
     /// 
@@ -48,13 +36,35 @@ pub struct CfnCoreDefinition {
     #[serde(rename = "Tags")]
     pub tags: Option<serde_json::Value>,
 
+
+    /// 
+    /// The name of the core definition.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnCoreDefinition {
+    fn type_string() -> &'static str {
+        "AWS::Greengrass::CoreDefinition"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// A core definition version contains a Greengrass core.
 ///
 /// In an AWS CloudFormation template, CoreDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::CoreDefinition resource.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CoreDefinitionVersion {
 
 
@@ -75,20 +85,8 @@ pub struct CoreDefinitionVersion {
 /// A core is an AWS IoT device that runs the AWS IoT Greengrass core software 		and manages local processes for a Greengrass group. For more information, see    What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Cores 		 property of the CoreDefinitionVersion property type contains a list       of Core property types. Currently, the list can contain only one core.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Core {
-
-
-    /// 
-    /// A descriptive or arbitrary ID for the core. This value must be unique within the core definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Id")]
-    pub id: String,
 
 
     /// 
@@ -101,6 +99,18 @@ pub struct Core {
     /// Update requires: Replacement
     #[serde(rename = "ThingArn")]
     pub thing_arn: String,
+
+
+    /// 
+    /// A descriptive or arbitrary ID for the core. This value must be unique within the core definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Id")]
+    pub id: String,
 
 
     /// 

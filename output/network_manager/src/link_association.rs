@@ -1,7 +1,7 @@
 
 
 /// Describes the association between a device and a link.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLinkAssociation {
 
 
@@ -58,4 +58,14 @@ pub struct CfnLinkAssociation {
     #[serde(rename = "LinkId")]
     pub link_id: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnLinkAssociation {
+    fn type_string() -> &'static str {
+        "AWS::NetworkManager::LinkAssociation"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

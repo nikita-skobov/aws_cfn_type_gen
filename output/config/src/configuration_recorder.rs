@@ -7,20 +7,8 @@
 /// To stop the recorder and delete it, delete the configuration recorder from your stack. To stop the recorder without deleting it,       call the StopConfigurationRecorder action of the AWS Config API directly.
 ///
 /// For more information, see Configuration Recorder in the AWS Config Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConfigurationRecorder {
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the IAM (IAM) role that is used to make read or write requests to the delivery channel that you specify and to get configuration details for supported AWS resources.       For more information, see Permissions for the IAM Role Assigned to AWS Config in the AWS Config Developer Guide.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RoleARN")]
-    pub role_arn: String,
 
 
     /// 
@@ -54,6 +42,28 @@ pub struct CfnConfigurationRecorder {
     #[serde(rename = "RecordingGroup")]
     pub recording_group: Option<RecordingGroup>,
 
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the IAM (IAM) role that is used to make read or write requests to the delivery channel that you specify and to get configuration details for supported AWS resources.       For more information, see Permissions for the IAM Role Assigned to AWS Config in the AWS Config Developer Guide.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoleARN")]
+    pub role_arn: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnConfigurationRecorder {
+    fn type_string() -> &'static str {
+        "AWS::Config::ConfigurationRecorder"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -68,8 +78,24 @@ pub struct CfnConfigurationRecorder {
 /// For a list of supported resource types, see Supported Resource Types.
 ///
 /// For more information and a table of the Home Regions for Global Resource Types Onboarded after February 2022, see Selecting Which Resources AWS Config Records.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RecordingGroup {
+
+
+    /// 
+    /// Specifies whether AWS Config records configuration changes for 			every supported type of regional resource.
+    /// 
+    /// If you set this option to true, when AWS Config 			adds support for a new type of regional resource, it starts 			recording resources of that type automatically.
+    /// 
+    /// If you set this option to true, you cannot 			enumerate a list of resourceTypes.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AllSupported")]
+    pub all_supported: Option<bool>,
 
 
     /// 
@@ -88,22 +114,6 @@ pub struct RecordingGroup {
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypes")]
     pub resource_types: Option<Vec<String>>,
-
-
-    /// 
-    /// Specifies whether AWS Config records configuration changes for 			every supported type of regional resource.
-    /// 
-    /// If you set this option to true, when AWS Config 			adds support for a new type of regional resource, it starts 			recording resources of that type automatically.
-    /// 
-    /// If you set this option to true, you cannot 			enumerate a list of resourceTypes.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AllSupported")]
-    pub all_supported: Option<bool>,
 
 
     /// 

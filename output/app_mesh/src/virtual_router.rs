@@ -5,7 +5,7 @@
 /// Specify a listener for any inbound traffic that your virtual router     receives. Create a virtual router for each protocol and port that you need to route.     Virtual routers handle traffic for one or more virtual services within your mesh. After you     create your virtual router, create and associate routes for your virtual router that direct     incoming requests to different virtual nodes.
 ///
 /// For more information about virtual routers, see Virtual routers.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVirtualRouter {
 
 
@@ -84,28 +84,54 @@ pub struct CfnVirtualRouter {
 
 }
 
+impl cfn_resources::CfnResource for CfnVirtualRouter {
+    fn type_string() -> &'static str {
+        "AWS::AppMesh::VirtualRouter"
+    }
 
-/// An object that represents a virtual router listener.
-#[derive(Default, serde::Serialize)]
-pub struct VirtualRouterListener {
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
 
 
     /// 
-    /// The port mapping information for the listener.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
     /// Required: Yes
-    ///
-    /// Type: PortMapping
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PortMapping")]
-    pub port_mapping: PortMapping,
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }
 
 
 /// An object representing a virtual router listener port mapping.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PortMapping {
 
 
@@ -141,43 +167,27 @@ pub struct PortMapping {
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
+/// An object that represents a virtual router listener.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct VirtualRouterListener {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The port mapping information for the listener.
     /// 
     /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Type: PortMapping
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PortMapping")]
+    pub port_mapping: PortMapping,
 
 }
 
 
 /// An object that represents the specification of a virtual router.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VirtualRouterSpec {
 
 

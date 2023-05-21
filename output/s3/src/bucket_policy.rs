@@ -7,7 +7,7 @@
 /// For more information, see Bucket policy    examples.
 ///
 /// The following operations are related to PutBucketPolicy:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBucketPolicy {
 
 
@@ -34,4 +34,14 @@ pub struct CfnBucketPolicy {
     #[serde(rename = "Bucket")]
     pub bucket: String,
 
+}
+
+impl cfn_resources::CfnResource for CfnBucketPolicy {
+    fn type_string() -> &'static str {
+        "AWS::S3::BucketPolicy"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

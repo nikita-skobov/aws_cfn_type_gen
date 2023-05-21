@@ -3,8 +3,20 @@
 /// Specifies a virtual private gateway. A virtual private gateway is the endpoint on the     VPC side of your VPN connection. You can create a virtual private gateway before creating     the VPC itself.
 ///
 /// For more information, see AWS Site-to-Site VPN in the        AWS Site-to-Site VPN User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPNGateway {
+
+
+    /// 
+    /// Any tags assigned to the virtual private gateway.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -32,18 +44,16 @@ pub struct CfnVPNGateway {
     #[serde(rename = "AmazonSideAsn")]
     pub amazon_side_asn: Option<i64>,
 
+}
 
-    /// 
-    /// Any tags assigned to the virtual private gateway.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnVPNGateway {
+    fn type_string() -> &'static str {
+        "AWS::EC2::VPNGateway"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -54,7 +64,7 @@ pub struct CfnVPNGateway {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

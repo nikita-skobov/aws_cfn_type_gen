@@ -7,8 +7,20 @@
 /// For more details about what happens when you turn on Resource Explorer in an AWS Region, see Turning on         Resource Explorer to index your resources in an AWS Region       in the AWS Resource Explorer User Guide.
 ///
 /// If this is the first AWS Region in which you've created an index for       Resource Explorer, this operation also creates a service-linked role in your AWS account that allows Resource Explorer to search for your resources and       populate the index.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIndex {
+
+
+    /// 
+    /// The specified tags are attached to only the index created in this AWS Region. The tags don't attach to any of the resources listed in the       index.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Map of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<std::collections::HashMap<String, String>>,
 
 
     /// 
@@ -24,16 +36,14 @@ pub struct CfnIndex {
     #[serde(rename = "Type")]
     pub cfn_type: String,
 
+}
 
-    /// 
-    /// The specified tags are attached to only the index created in this AWS Region. The tags don't attach to any of the resources listed in the       index.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Map of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<std::collections::HashMap<String, String>>,
+impl cfn_resources::CfnResource for CfnIndex {
+    fn type_string() -> &'static str {
+        "AWS::ResourceExplorer2::Index"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

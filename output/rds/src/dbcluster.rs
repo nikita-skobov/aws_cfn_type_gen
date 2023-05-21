@@ -17,8 +17,52 @@
 /// Deleting DB clusters
 ///
 /// The default DeletionPolicy for AWS::RDS::DBCluster resources       is Snapshot. For more information about how AWS CloudFormation deletes       resources, see         DeletionPolicy Attribute.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBCluster {
+
+
+    /// 
+    /// Specifies the name of the IAM role to use when making API calls to the Directory Service.
+    /// 
+    /// Valid for: Aurora DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DomainIAMRoleName")]
+    pub domain_iamrole_name: Option<String>,
+
+
+    /// 
+    /// A value that indicates whether to restore the DB cluster to the latest restorable       backup time. By default, the DB cluster is not restored to the latest restorable backup       time.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "UseLatestRestorableTime")]
+    pub use_latest_restorable_time: Option<bool>,
+
+
+    /// 
+    /// The name of the master user for the DB cluster.
+    /// 
+    /// NoteIf you specify the SourceDBClusterIdentifier, SnapshotIdentifier, or GlobalClusterIdentifier         property, don't specify this property. The value is inherited from the source DB cluster, the snapshot, or the primary DB         cluster for the global database cluster, respectively.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "MasterUsername")]
+    pub master_username: Option<String>,
 
 
     /// 
@@ -48,107 +92,81 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// The master password for the DB instance.
+    /// The name of the database engine to be used for this DB cluster.
     /// 
-    /// NoteIf you specify the SourceDBClusterIdentifier, SnapshotIdentifier, or GlobalClusterIdentifier         property, don't specify this property. The value is inherited from the source DB cluster, the snapshot, or the primary DB         cluster for the global database cluster, respectively.
+    /// Valid Values:
+    /// 
+    /// aurora (for MySQL 5.6-compatible Aurora)               aurora-mysql (for MySQL 5.7-compatible and MySQL 8.0-compatible Aurora)               aurora-postgresql               mysql               postgres
     /// 
     /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
     /// 
-    /// Required: Conditional
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "MasterUserPassword")]
-    pub master_user_password: Option<String>,
+    /// Update requires: Some interruptions
+    #[serde(rename = "Engine")]
+    pub engine: Option<String>,
 
 
     /// 
-    /// A value that indicates whether to turn on Performance Insights for the DB cluster.
+    /// The name of the DB cluster parameter group to associate with this DB cluster.
     /// 
-    /// For more information, see       Using Amazon Performance Insights in the Amazon RDS User Guide.
+    /// ImportantIf you apply a parameter group to an existing DB cluster, then its DB instances         might need to reboot. This can result in an outage while the DB instances are         rebooting.If you apply a change to parameter group associated with a stopped DB cluster,         then the update stack waits until the DB cluster is started.
     /// 
-    /// Valid for: Multi-AZ DB clusters only
+    /// To list all of the available DB cluster parameter group names, use the following       command:
     /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PerformanceInsightsEnabled")]
-    pub performance_insights_enabled: Option<bool>,
-
-
-    /// 
-    /// The amount of Provisioned IOPS (input/output operations per second) to be initially allocated       for each DB instance in the Multi-AZ DB cluster.
-    /// 
-    /// For information about valid IOPS values, see Provisioned IOPS storage in the Amazon RDS         User Guide.
-    /// 
-    /// This setting is required to create a Multi-AZ DB cluster.
-    /// 
-    /// Constraints: Must be a multiple between .5 and 50 of the storage amount for the DB cluster.
-    /// 
-    /// Valid for: Multi-AZ DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Iops")]
-    pub iops: Option<i64>,
-
-
-    /// 
-    /// The list of log types that need to be enabled for exporting to CloudWatch Logs. The values       in the list depend on the DB engine being used. For more information, see                Publishing Database Logs to Amazon CloudWatch Logs in the Amazon Aurora User Guide.
-    /// 
-    /// Aurora MySQL
-    /// 
-    /// Valid values: audit, error, general, slowquery
-    /// 
-    /// Aurora PostgreSQL
-    /// 
-    /// Valid values: postgresql
+    /// aws rds describe-db-cluster-parameter-groups --query         "DBClusterParameterGroups[].DBClusterParameterGroupName" --output text
     /// 
     /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnableCloudwatchLogsExports")]
-    pub enable_cloudwatch_logs_exports: Option<Vec<String>>,
-
-
-    /// 
-    /// The ServerlessV2ScalingConfiguration property type specifies the scaling configuration of an Aurora Serverless V2 DB cluster.
-    /// 
-    /// This property is only supported for Aurora Serverless v2. For Aurora Serverless v1, use ScalingConfiguration property.
-    /// 
-    /// Valid for: Aurora DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: ServerlessV2ScalingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ServerlessV2ScalingConfiguration")]
-    pub serverless_v2_scaling_configuration: Option<ServerlessV2ScalingConfiguration>,
-
-
-    /// 
-    /// Specifies the name of the IAM role to use when making API calls to the Directory Service.
-    /// 
-    /// Valid for: Aurora DB clusters only
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DomainIAMRoleName")]
-    pub domain_iamrole_name: Option<String>,
+    #[serde(rename = "DBClusterParameterGroupName")]
+    pub dbcluster_parameter_group_name: Option<String>,
+
+
+    /// 
+    /// Provides a list of the AWS Identity and Access Management (IAM) roles that are associated with the DB cluster.      IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other Amazon Web Services      on your behalf.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of DBClusterRole
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AssociatedRoles")]
+    pub associated_roles: Option<Vec<DBClusterRole>>,
+
+
+    /// 
+    /// The identifier for the DB snapshot or DB cluster snapshot to restore       from.
+    /// 
+    /// You can use either the name or the Amazon Resource Name (ARN) to specify a DB       cluster snapshot. However, you can use only the ARN to specify a DB snapshot.
+    /// 
+    /// After you restore a DB cluster with a SnapshotIdentifier property, you       must specify the same SnapshotIdentifier property for any future updates to       the DB cluster. When you specify this property for an update, the DB cluster is not       restored from the snapshot again, and the data in the database is not changed. However,       if you don't specify the SnapshotIdentifier property, an empty DB cluster       is created, and the original DB cluster is deleted. If you specify a property that is       different from the previous snapshot restore property, a new DB cluster is restored from       the specified SnapshotIdentifier property, and the original DB cluster is       deleted.
+    /// 
+    /// If you specify the SnapshotIdentifier property to restore a DB cluster (as opposed to specifying it for DB cluster updates),       then don't specify the following properties:
+    /// 
+    /// GlobalClusterIdentifier               MasterUsername               MasterUserPassword               ReplicationSourceIdentifier               RestoreType               SourceDBClusterIdentifier               SourceRegion               StorageEncrypted (for an encrypted snapshot)               UseLatestRestorableTime
+    /// 
+    /// Constraints:
+    /// 
+    /// Must match the identifier of an existing Snapshot.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SnapshotIdentifier")]
+    pub snapshot_identifier: Option<String>,
 
 
     /// 
@@ -168,133 +186,9 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// Indicates the directory ID of the Active Directory to create the DB cluster.
+    /// The Amazon Resource Name (ARN) for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.       An example is arn:aws:iam:123456789012:role/emaccess. For information on creating a monitoring role,       see Setting         up and enabling Enhanced Monitoring in the Amazon RDS User Guide.
     /// 
-    /// For Amazon Aurora DB clusters, Amazon RDS can use Kerberos authentication to authenticate users that connect to the DB cluster.
-    /// 
-    /// For more information, see Kerberos authentication       in the Amazon Aurora User Guide.
-    /// 
-    /// Valid for: Aurora DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Domain")]
-    pub domain: Option<String>,
-
-
-    /// 
-    /// The target backtrack window, in seconds. To disable backtracking, set this value to       0.
-    /// 
-    /// NoteCurrently, Backtrack is only supported for Aurora MySQL DB clusters.
-    /// 
-    /// Default: 0
-    /// 
-    /// Constraints:
-    /// 
-    /// If specified, this value must be set to a number from 0 to 259,200 (72 hours).
-    /// 
-    /// Valid for: Aurora MySQL DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BacktrackWindow")]
-    pub backtrack_window: Option<i64>,
-
-
-    /// 
-    /// A value that indicates whether to manage the master user password with AWS Secrets Manager.
-    /// 
-    /// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
-    /// 
-    /// Constraints:
-    /// 
-    /// Can't manage the master user password with AWS Secrets Manager if MasterUserPassword           is specified.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ManageMasterUserPassword")]
-    pub manage_master_user_password: Option<bool>,
-
-
-    /// 
-    /// The number of days for which automated backups are retained.
-    /// 
-    /// Default: 1
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be a value from 1 to 35
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BackupRetentionPeriod")]
-    pub backup_retention_period: Option<i64>,
-
-
-    /// 
-    /// Specifies the storage type to be associated with the DB cluster.
-    /// 
-    /// This setting is required to create a Multi-AZ DB cluster.
-    /// 
-    /// When specified for a Multi-AZ DB cluster, a value for the Iops parameter is required.
-    /// 
-    /// Valid values: aurora, aurora-iopt1 (Aurora DB clusters); io1 (Multi-AZ DB clusters)
-    /// 
-    /// Default: aurora (Aurora DB clusters); io1 (Multi-AZ DB clusters)
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StorageType")]
-    pub storage_type: Option<String>,
-
-
-    /// 
-    /// The DB cluster identifier. This parameter is stored as a lowercase string.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must contain from 1 to 63 letters, numbers, or hyphens.               First character must be a letter.               Can't end with a hyphen or contain two consecutive hyphens.
-    /// 
-    /// Example: my-cluster1
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBClusterIdentifier")]
-    pub dbcluster_identifier: Option<String>,
-
-
-    /// 
-    /// The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6gd.xlarge.       Not all DB instance classes are available in all AWS Regions, or for all database engines.
-    /// 
-    /// For the full list of DB instance classes and availability for your engine, see DB instance class in the Amazon RDS User Guide.
-    /// 
-    /// This setting is required to create a Multi-AZ DB cluster.
+    /// If MonitoringInterval is set to a value other than 0, supply a MonitoringRoleArn value.
     /// 
     /// Valid for: Multi-AZ DB clusters only
     /// 
@@ -303,28 +197,14 @@ pub struct CfnDBCluster {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DBClusterInstanceClass")]
-    pub dbcluster_instance_class: Option<String>,
+    #[serde(rename = "MonitoringRoleArn")]
+    pub monitoring_role_arn: Option<String>,
 
 
     /// 
-    /// Reserved for future use.
+    /// The Amazon Resource Name (ARN) of the AWS KMS key that is       used to encrypt the database instances in the DB cluster, such as         arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef.       If you enable the StorageEncrypted property but don't specify this       property, the default KMS key is used. If you specify this property, you must set the         StorageEncrypted property to true.
     /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBSystemId")]
-    pub dbsystem_id: Option<String>,
-
-
-    /// 
-    /// The daily time range during which automated backups are created. For more information, see       Backup Window in the Amazon Aurora User Guide.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must be in the format hh24:mi-hh24:mi.               Must be in Universal Coordinated Time (UTC).               Must not conflict with the preferred maintenance window.               Must be at least 30 minutes.
+    /// If you specify the SnapshotIdentifier property, the StorageEncrypted property       value is inherited from the snapshot, and if the DB cluster is encrypted, the specified KmsKeyId       property is used.
     /// 
     /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
     /// 
@@ -332,23 +212,41 @@ pub struct CfnDBCluster {
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreferredBackupWindow")]
-    pub preferred_backup_window: Option<String>,
+    /// Update requires: Replacement
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
-    /// A list of Availability Zones (AZs) where instances in the DB cluster can be created. For information on       AWS Regions and Availability Zones, see       Choosing the Regions and         Availability Zones in the Amazon Aurora User Guide.
+    /// The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB cluster. To turn off       collecting Enhanced Monitoring metrics, specify 0. The default is 0.
     /// 
-    /// Valid for: Aurora DB clusters only
+    /// If MonitoringRoleArn is specified, also set MonitoringInterval       to a value other than 0.
+    /// 
+    /// Valid Values: 0, 1, 5, 10, 15, 30, 60
+    /// 
+    /// Valid for: Multi-AZ DB clusters only
     /// 
     /// Required: No
     ///
-    /// Type: List of String
+    /// Type: Integer
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZones")]
-    pub availability_zones: Option<Vec<String>>,
+    /// Update requires: No interruption
+    #[serde(rename = "MonitoringInterval")]
+    pub monitoring_interval: Option<i64>,
+
+
+    /// 
+    /// A value that indicates whether the DB cluster has deletion protection enabled.       The database can't be deleted when deletion protection is enabled. By default,       deletion protection is disabled.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DeletionProtection")]
+    pub deletion_protection: Option<bool>,
 
 
     /// 
@@ -363,124 +261,6 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationSourceIdentifier")]
     pub replication_source_identifier: Option<String>,
-
-
-    /// 
-    /// A value that indicates whether to restore the DB cluster to the latest restorable       backup time. By default, the DB cluster is not restored to the latest restorable backup       time.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "UseLatestRestorableTime")]
-    pub use_latest_restorable_time: Option<bool>,
-
-
-    /// 
-    /// The port number on which the DB instances in the DB cluster accept connections.
-    /// 
-    /// Default:
-    /// 
-    /// When EngineMode is provisioned, 3306           (for both Aurora MySQL and Aurora PostgreSQL)               When EngineMode is serverless:                                                    3306 when Engine is aurora or                 aurora-mysql                       5432 when Engine is                 aurora-postgresql
-    /// 
-    /// ImportantThe No interruption on update behavior only applies to DB clusters. If you are updating a         DB instance, see Port         for the AWS::RDS::DBInstance resource.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<i64>,
-
-
-    /// 
-    /// When restoring a DB cluster to a point in time, the identifier of the source DB cluster from which to restore.
-    /// 
-    /// Constraints:
-    /// 
-    /// Must match the identifier of an existing DBCluster.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceDBClusterIdentifier")]
-    pub source_dbcluster_identifier: Option<String>,
-
-
-    /// 
-    /// Provides a list of the AWS Identity and Access Management (IAM) roles that are associated with the DB cluster.      IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other Amazon Web Services      on your behalf.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of DBClusterRole
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AssociatedRoles")]
-    pub associated_roles: Option<Vec<DBClusterRole>>,
-
-
-    /// 
-    /// The number of days to retain Performance Insights data. The default is 7 days. The following values are valid:
-    /// 
-    /// 7                        month * 31, where month is a number of months from 1-23               731
-    /// 
-    /// For example, the following values are valid:
-    /// 
-    /// 93 (3 months * 31)               341 (11 months * 31)               589 (19 months * 31)               731
-    /// 
-    /// If you specify a retention period such as 94, which isn't a valid value, RDS issues an error.
-    /// 
-    /// Valid for: Multi-AZ DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PerformanceInsightsRetentionPeriod")]
-    pub performance_insights_retention_period: Option<i64>,
-
-
-    /// 
-    /// The AWS Region which contains the source DB cluster when replicating a DB cluster. For       example, us-east-1.
-    /// 
-    /// Valid for: Aurora DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SourceRegion")]
-    pub source_region: Option<String>,
-
-
-    /// 
-    /// A DB subnet group that you want to associate with this DB cluster.
-    /// 
-    /// If you are restoring a DB cluster to a point in time with RestoreType set to copy-on-write, and don't       specify a DB subnet group name, then the DB cluster is restored with a default DB subnet group.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBSubnetGroupName")]
-    pub dbsubnet_group_name: Option<String>,
 
 
     /// 
@@ -512,237 +292,17 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// The name of the DB cluster parameter group to associate with this DB cluster.
-    /// 
-    /// ImportantIf you apply a parameter group to an existing DB cluster, then its DB instances         might need to reboot. This can result in an outage while the DB instances are         rebooting.If you apply a change to parameter group associated with a stopped DB cluster,         then the update stack waits until the DB cluster is started.
-    /// 
-    /// To list all of the available DB cluster parameter group names, use the following       command:
-    /// 
-    /// aws rds describe-db-cluster-parameter-groups --query         "DBClusterParameterGroups[].DBClusterParameterGroupName" --output text
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DBClusterParameterGroupName")]
-    pub dbcluster_parameter_group_name: Option<String>,
-
-
-    /// 
-    /// A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster.       The default is not to copy them.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CopyTagsToSnapshot")]
-    pub copy_tags_to_snapshot: Option<bool>,
-
-
-    /// 
-    /// The ScalingConfiguration property type specifies the scaling       configuration of an Aurora Serverless DB cluster.
-    /// 
-    /// This property is only supported for Aurora Serverless v1. For Aurora Serverless v2, use ServerlessV2ScalingConfiguration property.
+    /// The AWS Region which contains the source DB cluster when replicating a DB cluster. For       example, us-east-1.
     /// 
     /// Valid for: Aurora DB clusters only
     /// 
     /// Required: No
     ///
-    /// Type: ScalingConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ScalingConfiguration")]
-    pub scaling_configuration: Option<ScalingConfiguration>,
-
-
-    /// 
-    /// The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB cluster. To turn off       collecting Enhanced Monitoring metrics, specify 0. The default is 0.
-    /// 
-    /// If MonitoringRoleArn is specified, also set MonitoringInterval       to a value other than 0.
-    /// 
-    /// Valid Values: 0, 1, 5, 10, 15, 30, 60
-    /// 
-    /// Valid for: Multi-AZ DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MonitoringInterval")]
-    pub monitoring_interval: Option<i64>,
-
-
-    /// 
-    /// The name of the master user for the DB cluster.
-    /// 
-    /// NoteIf you specify the SourceDBClusterIdentifier, SnapshotIdentifier, or GlobalClusterIdentifier         property, don't specify this property. The value is inherited from the source DB cluster, the snapshot, or the primary DB         cluster for the global database cluster, respectively.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: Conditional
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "MasterUsername")]
-    pub master_username: Option<String>,
-
-
-    /// 
-    /// Contains the secret managed by RDS in AWS Secrets Manager for the master user password.
-    /// 
-    /// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: MasterUserSecret
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MasterUserSecret")]
-    pub master_user_secret: Option<MasterUserSecret>,
-
-
-    /// 
-    /// A list of EC2 VPC security groups to associate with this DB cluster.
-    /// 
-    /// If you plan to update the resource, don't specify VPC security groups in a shared VPC.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSecurityGroupIds")]
-    pub vpc_security_group_ids: Option<Vec<String>>,
-
-
-    /// 
-    /// The Amazon Resource Name (ARN) of the AWS KMS key that is       used to encrypt the database instances in the DB cluster, such as         arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef.       If you enable the StorageEncrypted property but don't specify this       property, the default KMS key is used. If you specify this property, you must set the         StorageEncrypted property to true.
-    /// 
-    /// If you specify the SnapshotIdentifier property, the StorageEncrypted property       value is inherited from the snapshot, and if the DB cluster is encrypted, the specified KmsKeyId       property is used.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
-
-
-    /// 
-    /// The name of your database. If you don't provide a name, then Amazon RDS won't create a       database in this DB cluster. For naming constraints, see Naming         Constraints in the Amazon Aurora User Guide.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: Option<String>,
-
-
-    /// 
-    /// The identifier for the DB snapshot or DB cluster snapshot to restore       from.
-    /// 
-    /// You can use either the name or the Amazon Resource Name (ARN) to specify a DB       cluster snapshot. However, you can use only the ARN to specify a DB snapshot.
-    /// 
-    /// After you restore a DB cluster with a SnapshotIdentifier property, you       must specify the same SnapshotIdentifier property for any future updates to       the DB cluster. When you specify this property for an update, the DB cluster is not       restored from the snapshot again, and the data in the database is not changed. However,       if you don't specify the SnapshotIdentifier property, an empty DB cluster       is created, and the original DB cluster is deleted. If you specify a property that is       different from the previous snapshot restore property, a new DB cluster is restored from       the specified SnapshotIdentifier property, and the original DB cluster is       deleted.
-    /// 
-    /// If you specify the SnapshotIdentifier property to restore a DB cluster (as opposed to specifying it for DB cluster updates),       then don't specify the following properties:
-    /// 
-    /// GlobalClusterIdentifier               MasterUsername               MasterUserPassword               ReplicationSourceIdentifier               RestoreType               SourceDBClusterIdentifier               SourceRegion               StorageEncrypted (for an encrypted snapshot)               UseLatestRestorableTime
-    /// 
-    /// Constraints:
-    /// 
-    /// Must match the identifier of an existing Snapshot.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SnapshotIdentifier")]
-    pub snapshot_identifier: Option<String>,
-
-
-    /// 
-    /// An optional array of key-value pairs to apply to this DB cluster.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// A value that indicates whether the DB cluster has deletion protection enabled.       The database can't be deleted when deletion protection is enabled. By default,       deletion protection is disabled.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DeletionProtection")]
-    pub deletion_protection: Option<bool>,
-
-
-    /// 
-    /// The AWS KMS key identifier for encryption of Performance Insights data.
-    /// 
-    /// The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
-    /// 
-    /// If you don't specify a value for PerformanceInsightsKMSKeyId, then Amazon RDS       uses your default KMS key. There is a default KMS key for your AWS account.       Your AWS account has a different default KMS key for each AWS Region.
-    /// 
-    /// Valid for: Multi-AZ DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PerformanceInsightsKmsKeyId")]
-    pub performance_insights_kms_key_id: Option<String>,
-
-
-    /// 
-    /// The name of the database engine to be used for this DB cluster.
-    /// 
-    /// Valid Values:
-    /// 
-    /// aurora (for MySQL 5.6-compatible Aurora)               aurora-mysql (for MySQL 5.7-compatible and MySQL 8.0-compatible Aurora)               aurora-postgresql               mysql               postgres
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "Engine")]
-    pub engine: Option<String>,
+    #[serde(rename = "SourceRegion")]
+    pub source_region: Option<String>,
 
 
     /// 
@@ -774,15 +334,7 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// Indicates whether the DB cluster is encrypted.
-    /// 
-    /// If you specify the KmsKeyId property, then you must enable encryption.
-    /// 
-    /// If you specify the SourceDBClusterIdentifier property, don't specify this property. The       value is inherited from the source DB cluster, and if the DB cluster is encrypted, the specified       KmsKeyId property is used.
-    /// 
-    /// If you specify the SnapshotIdentifier and the specified snapshot is encrypted,       don't specify this property. The value is inherited from the snapshot, and the specified KmsKeyId       property is used.
-    /// 
-    /// If you specify the SnapshotIdentifier and the specified snapshot isn't encrypted, you can use this property       to specify that the restored DB cluster is encrypted. Specify the KmsKeyId property for the KMS key       to use for encryption. If you don't want the restored DB cluster to be encrypted, then don't set this property       or set it to false.
+    /// A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster.       The default is not to copy them.
     /// 
     /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
     /// 
@@ -790,9 +342,119 @@ pub struct CfnDBCluster {
     ///
     /// Type: Boolean
     ///
+    /// Update requires: No interruption
+    #[serde(rename = "CopyTagsToSnapshot")]
+    pub copy_tags_to_snapshot: Option<bool>,
+
+
+    /// 
+    /// The type of restore to be performed. You can specify one of the following values:
+    /// 
+    /// full-copy - The new DB cluster is restored as a full copy of the         source DB cluster.                        copy-on-write - The new DB cluster is restored as a clone of the         source DB cluster.
+    /// 
+    /// Constraints: You can't specify copy-on-write if the engine version of the source DB cluster is earlier than 1.11.
+    /// 
+    /// If you don't specify a RestoreType value, then the new DB cluster is       restored as a full copy of the source DB cluster.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
     /// Update requires: Replacement
-    #[serde(rename = "StorageEncrypted")]
-    pub storage_encrypted: Option<bool>,
+    #[serde(rename = "RestoreType")]
+    pub restore_type: Option<String>,
+
+
+    /// 
+    /// Contains the secret managed by RDS in AWS Secrets Manager for the master user password.
+    /// 
+    /// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: MasterUserSecret
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MasterUserSecret")]
+    pub master_user_secret: Option<MasterUserSecret>,
+
+
+    /// 
+    /// The number of days to retain Performance Insights data. The default is 7 days. The following values are valid:
+    /// 
+    /// 7                        month * 31, where month is a number of months from 1-23               731
+    /// 
+    /// For example, the following values are valid:
+    /// 
+    /// 93 (3 months * 31)               341 (11 months * 31)               589 (19 months * 31)               731
+    /// 
+    /// If you specify a retention period such as 94, which isn't a valid value, RDS issues an error.
+    /// 
+    /// Valid for: Multi-AZ DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PerformanceInsightsRetentionPeriod")]
+    pub performance_insights_retention_period: Option<i64>,
+
+
+    /// 
+    /// If you are configuring an Aurora global database cluster and want your Aurora DB cluster to be a secondary member in the global database       cluster, specify the global cluster ID of the global database cluster. To define the primary database cluster of the global cluster,       use the AWS::RDS::GlobalCluster       resource.
+    /// 
+    /// If you aren't configuring a global database cluster, don't specify this property.
+    /// 
+    /// NoteTo remove the DB cluster from a global database cluster, specify an empty value for the GlobalClusterIdentifier property.
+    /// 
+    /// For information about Aurora global databases, see       Working with Amazon Aurora Global Databases in the Amazon Aurora User Guide.
+    /// 
+    /// Valid for: Aurora DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Some interruptions
+    #[serde(rename = "GlobalClusterIdentifier")]
+    pub global_cluster_identifier: Option<String>,
+
+
+    /// 
+    /// A value that indicates whether to turn on Performance Insights for the DB cluster.
+    /// 
+    /// For more information, see       Using Amazon Performance Insights in the Amazon RDS User Guide.
+    /// 
+    /// Valid for: Multi-AZ DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PerformanceInsightsEnabled")]
+    pub performance_insights_enabled: Option<bool>,
+
+
+    /// 
+    /// The daily time range during which automated backups are created. For more information, see       Backup Window in the Amazon Aurora User Guide.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be in the format hh24:mi-hh24:mi.               Must be in Universal Coordinated Time (UTC).               Must not conflict with the preferred maintenance window.               Must be at least 30 minutes.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PreferredBackupWindow")]
+    pub preferred_backup_window: Option<String>,
 
 
     /// 
@@ -812,25 +474,97 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
+    /// Indicates the directory ID of the Active Directory to create the DB cluster.
     /// 
-    /// Format: ddd:hh24:mi-ddd:hh24:mi
+    /// For Amazon Aurora DB clusters, Amazon RDS can use Kerberos authentication to authenticate users that connect to the DB cluster.
     /// 
-    /// The default is a 30-minute window selected at random from an       8-hour block of time for each AWS Region, occurring on a random day of the       week. To see the time blocks available, see                Adjusting the Preferred DB Cluster Maintenance Window in the Amazon Aurora User Guide.
+    /// For more information, see Kerberos authentication       in the Amazon Aurora User Guide.
     /// 
-    /// Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
-    /// 
-    /// Constraints: Minimum 30-minute window.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// Valid for: Aurora DB clusters only
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "PreferredMaintenanceWindow")]
-    pub preferred_maintenance_window: Option<String>,
+    #[serde(rename = "Domain")]
+    pub domain: Option<String>,
+
+
+    /// 
+    /// The number of days for which automated backups are retained.
+    /// 
+    /// Default: 1
+    /// 
+    /// Constraints:
+    /// 
+    /// Must be a value from 1 to 35
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BackupRetentionPeriod")]
+    pub backup_retention_period: Option<i64>,
+
+
+    /// 
+    /// The amount of Provisioned IOPS (input/output operations per second) to be initially allocated       for each DB instance in the Multi-AZ DB cluster.
+    /// 
+    /// For information about valid IOPS values, see Provisioned IOPS storage in the Amazon RDS         User Guide.
+    /// 
+    /// This setting is required to create a Multi-AZ DB cluster.
+    /// 
+    /// Constraints: Must be a multiple between .5 and 50 of the storage amount for the DB cluster.
+    /// 
+    /// Valid for: Multi-AZ DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Iops")]
+    pub iops: Option<i64>,
+
+
+    /// 
+    /// The target backtrack window, in seconds. To disable backtracking, set this value to       0.
+    /// 
+    /// NoteCurrently, Backtrack is only supported for Aurora MySQL DB clusters.
+    /// 
+    /// Default: 0
+    /// 
+    /// Constraints:
+    /// 
+    /// If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+    /// 
+    /// Valid for: Aurora MySQL DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BacktrackWindow")]
+    pub backtrack_window: Option<i64>,
+
+
+    /// 
+    /// A list of Availability Zones (AZs) where instances in the DB cluster can be created. For information on       AWS Regions and Availability Zones, see       Choosing the Regions and         Availability Zones in the Amazon Aurora User Guide.
+    /// 
+    /// Valid for: Aurora DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AvailabilityZones")]
+    pub availability_zones: Option<Vec<String>>,
 
 
     /// 
@@ -856,46 +590,6 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// If you are configuring an Aurora global database cluster and want your Aurora DB cluster to be a secondary member in the global database       cluster, specify the global cluster ID of the global database cluster. To define the primary database cluster of the global cluster,       use the AWS::RDS::GlobalCluster       resource.
-    /// 
-    /// If you aren't configuring a global database cluster, don't specify this property.
-    /// 
-    /// NoteTo remove the DB cluster from a global database cluster, specify an empty value for the GlobalClusterIdentifier property.
-    /// 
-    /// For information about Aurora global databases, see       Working with Amazon Aurora Global Databases in the Amazon Aurora User Guide.
-    /// 
-    /// Valid for: Aurora DB clusters only
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Some interruptions
-    #[serde(rename = "GlobalClusterIdentifier")]
-    pub global_cluster_identifier: Option<String>,
-
-
-    /// 
-    /// The type of restore to be performed. You can specify one of the following values:
-    /// 
-    /// full-copy - The new DB cluster is restored as a full copy of the         source DB cluster.                        copy-on-write - The new DB cluster is restored as a clone of the         source DB cluster.
-    /// 
-    /// Constraints: You can't specify copy-on-write if the engine version of the source DB cluster is earlier than 1.11.
-    /// 
-    /// If you don't specify a RestoreType value, then the new DB cluster is       restored as a full copy of the source DB cluster.
-    /// 
-    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "RestoreType")]
-    pub restore_type: Option<String>,
-
-
-    /// 
     /// A value that indicates whether minor engine upgrades are applied automatically to the DB cluster during the maintenance window.       By default, minor engine upgrades are applied automatically.
     /// 
     /// Valid for: Multi-AZ DB clusters only
@@ -907,6 +601,328 @@ pub struct CfnDBCluster {
     /// Update requires: No interruption
     #[serde(rename = "AutoMinorVersionUpgrade")]
     pub auto_minor_version_upgrade: Option<bool>,
+
+
+    /// 
+    /// The ServerlessV2ScalingConfiguration property type specifies the scaling configuration of an Aurora Serverless V2 DB cluster.
+    /// 
+    /// This property is only supported for Aurora Serverless v2. For Aurora Serverless v1, use ScalingConfiguration property.
+    /// 
+    /// Valid for: Aurora DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: ServerlessV2ScalingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ServerlessV2ScalingConfiguration")]
+    pub serverless_v2_scaling_configuration: Option<ServerlessV2ScalingConfiguration>,
+
+
+    /// 
+    /// The master password for the DB instance.
+    /// 
+    /// NoteIf you specify the SourceDBClusterIdentifier, SnapshotIdentifier, or GlobalClusterIdentifier         property, don't specify this property. The value is inherited from the source DB cluster, the snapshot, or the primary DB         cluster for the global database cluster, respectively.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: Conditional
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MasterUserPassword")]
+    pub master_user_password: Option<String>,
+
+
+    /// 
+    /// A value that indicates whether to manage the master user password with AWS Secrets Manager.
+    /// 
+    /// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
+    /// 
+    /// Constraints:
+    /// 
+    /// Can't manage the master user password with AWS Secrets Manager if MasterUserPassword           is specified.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ManageMasterUserPassword")]
+    pub manage_master_user_password: Option<bool>,
+
+
+    /// 
+    /// The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6gd.xlarge.       Not all DB instance classes are available in all AWS Regions, or for all database engines.
+    /// 
+    /// For the full list of DB instance classes and availability for your engine, see DB instance class in the Amazon RDS User Guide.
+    /// 
+    /// This setting is required to create a Multi-AZ DB cluster.
+    /// 
+    /// Valid for: Multi-AZ DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBClusterInstanceClass")]
+    pub dbcluster_instance_class: Option<String>,
+
+
+    /// 
+    /// The AWS KMS key identifier for encryption of Performance Insights data.
+    /// 
+    /// The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
+    /// 
+    /// If you don't specify a value for PerformanceInsightsKMSKeyId, then Amazon RDS       uses your default KMS key. There is a default KMS key for your AWS account.       Your AWS account has a different default KMS key for each AWS Region.
+    /// 
+    /// Valid for: Multi-AZ DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PerformanceInsightsKmsKeyId")]
+    pub performance_insights_kms_key_id: Option<String>,
+
+
+    /// 
+    /// When restoring a DB cluster to a point in time, the identifier of the source DB cluster from which to restore.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must match the identifier of an existing DBCluster.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SourceDBClusterIdentifier")]
+    pub source_dbcluster_identifier: Option<String>,
+
+
+    /// 
+    /// The name of your database. If you don't provide a name, then Amazon RDS won't create a       database in this DB cluster. For naming constraints, see Naming         Constraints in the Amazon Aurora User Guide.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatabaseName")]
+    pub database_name: Option<String>,
+
+
+    /// 
+    /// The list of log types that need to be enabled for exporting to CloudWatch Logs. The values       in the list depend on the DB engine being used. For more information, see                Publishing Database Logs to Amazon CloudWatch Logs in the Amazon Aurora User Guide.
+    /// 
+    /// Aurora MySQL
+    /// 
+    /// Valid values: audit, error, general, slowquery
+    /// 
+    /// Aurora PostgreSQL
+    /// 
+    /// Valid values: postgresql
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableCloudwatchLogsExports")]
+    pub enable_cloudwatch_logs_exports: Option<Vec<String>>,
+
+
+    /// 
+    /// The port number on which the DB instances in the DB cluster accept connections.
+    /// 
+    /// Default:
+    /// 
+    /// When EngineMode is provisioned, 3306           (for both Aurora MySQL and Aurora PostgreSQL)               When EngineMode is serverless:                                                    3306 when Engine is aurora or                 aurora-mysql                       5432 when Engine is                 aurora-postgresql
+    /// 
+    /// ImportantThe No interruption on update behavior only applies to DB clusters. If you are updating a         DB instance, see Port         for the AWS::RDS::DBInstance resource.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Port")]
+    pub port: Option<i64>,
+
+
+    /// 
+    /// The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
+    /// 
+    /// Format: ddd:hh24:mi-ddd:hh24:mi
+    /// 
+    /// The default is a 30-minute window selected at random from an       8-hour block of time for each AWS Region, occurring on a random day of the       week. To see the time blocks available, see                Adjusting the Preferred DB Cluster Maintenance Window in the Amazon Aurora User Guide.
+    /// 
+    /// Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
+    /// 
+    /// Constraints: Minimum 30-minute window.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PreferredMaintenanceWindow")]
+    pub preferred_maintenance_window: Option<String>,
+
+
+    /// 
+    /// A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the HTTP endpoint       is disabled.
+    /// 
+    /// When enabled, the HTTP endpoint provides a connectionless web service API for running       SQL queries on the Aurora Serverless DB cluster. You can also query your database       from inside the RDS console with the query editor.
+    /// 
+    /// For more information, see Using the Data API for Aurora Serverless in the       Amazon Aurora User Guide.
+    /// 
+    /// Valid for: Aurora DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnableHttpEndpoint")]
+    pub enable_http_endpoint: Option<bool>,
+
+
+    /// 
+    /// An optional array of key-value pairs to apply to this DB cluster.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The ScalingConfiguration property type specifies the scaling       configuration of an Aurora Serverless DB cluster.
+    /// 
+    /// This property is only supported for Aurora Serverless v1. For Aurora Serverless v2, use ServerlessV2ScalingConfiguration property.
+    /// 
+    /// Valid for: Aurora DB clusters only
+    /// 
+    /// Required: No
+    ///
+    /// Type: ScalingConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ScalingConfiguration")]
+    pub scaling_configuration: Option<ScalingConfiguration>,
+
+
+    /// 
+    /// The name of the DB parameter group to apply to all instances of the DB cluster.
+    /// 
+    /// NoteWhen you apply a parameter group using the DBInstanceParameterGroupName parameter, the DB      cluster isn't rebooted automatically. Also, parameter changes are applied immediately rather than        during the next maintenance window.
+    /// 
+    /// Default: The existing name setting
+    /// 
+    /// Constraints:
+    /// 
+    /// The DB parameter group must be in the same DB parameter group family as this DB cluster.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DBInstanceParameterGroupName")]
+    pub dbinstance_parameter_group_name: Option<String>,
+
+
+    /// 
+    /// Reserved for future use.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBSystemId")]
+    pub dbsystem_id: Option<String>,
+
+
+    /// 
+    /// A list of EC2 VPC security groups to associate with this DB cluster.
+    /// 
+    /// If you plan to update the resource, don't specify VPC security groups in a shared VPC.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcSecurityGroupIds")]
+    pub vpc_security_group_ids: Option<Vec<String>>,
+
+
+    /// 
+    /// Indicates whether the DB cluster is encrypted.
+    /// 
+    /// If you specify the KmsKeyId property, then you must enable encryption.
+    /// 
+    /// If you specify the SourceDBClusterIdentifier property, don't specify this property. The       value is inherited from the source DB cluster, and if the DB cluster is encrypted, the specified       KmsKeyId property is used.
+    /// 
+    /// If you specify the SnapshotIdentifier and the specified snapshot is encrypted,       don't specify this property. The value is inherited from the snapshot, and the specified KmsKeyId       property is used.
+    /// 
+    /// If you specify the SnapshotIdentifier and the specified snapshot isn't encrypted, you can use this property       to specify that the restored DB cluster is encrypted. Specify the KmsKeyId property for the KMS key       to use for encryption. If you don't want the restored DB cluster to be encrypted, then don't set this property       or set it to false.
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "StorageEncrypted")]
+    pub storage_encrypted: Option<bool>,
+
+
+    /// 
+    /// The DB cluster identifier. This parameter is stored as a lowercase string.
+    /// 
+    /// Constraints:
+    /// 
+    /// Must contain from 1 to 63 letters, numbers, or hyphens.               First character must be a letter.               Can't end with a hyphen or contain two consecutive hyphens.
+    /// 
+    /// Example: my-cluster1
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBClusterIdentifier")]
+    pub dbcluster_identifier: Option<String>,
 
 
     /// 
@@ -932,121 +948,197 @@ pub struct CfnDBCluster {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.       An example is arn:aws:iam:123456789012:role/emaccess. For information on creating a monitoring role,       see Setting         up and enabling Enhanced Monitoring in the Amazon RDS User Guide.
+    /// A DB subnet group that you want to associate with this DB cluster.
     /// 
-    /// If MonitoringInterval is set to a value other than 0, supply a MonitoringRoleArn value.
+    /// If you are restoring a DB cluster to a point in time with RestoreType set to copy-on-write, and don't       specify a DB subnet group name, then the DB cluster is restored with a default DB subnet group.
     /// 
-    /// Valid for: Multi-AZ DB clusters only
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBSubnetGroupName")]
+    pub dbsubnet_group_name: Option<String>,
+
+
+    /// 
+    /// Specifies the storage type to be associated with the DB cluster.
+    /// 
+    /// This setting is required to create a Multi-AZ DB cluster.
+    /// 
+    /// When specified for a Multi-AZ DB cluster, a value for the Iops parameter is required.
+    /// 
+    /// Valid values: aurora, aurora-iopt1 (Aurora DB clusters); io1 (Multi-AZ DB clusters)
+    /// 
+    /// Default: aurora (Aurora DB clusters); io1 (Multi-AZ DB clusters)
+    /// 
+    /// Valid for: Aurora DB clusters and Multi-AZ DB clusters
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MonitoringRoleArn")]
-    pub monitoring_role_arn: Option<String>,
+    #[serde(rename = "StorageType")]
+    pub storage_type: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDBCluster {
+    fn type_string() -> &'static str {
+        "AWS::RDS::DBCluster"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// The ScalingConfiguration property type specifies the scaling       configuration of an Aurora Serverless DB cluster.
+///
+/// For more information, see Using Amazon Aurora         Serverless in the Amazon Aurora User Guide.
+///
+/// This property is only supported for Aurora Serverless v1. For Aurora Serverless v2, use ServerlessV2ScalingConfiguration property.
+///
+/// Valid for: Aurora DB clusters only
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ScalingConfiguration {
 
 
     /// 
-    /// The name of the DB parameter group to apply to all instances of the DB cluster.
+    /// The action to take when the timeout is reached, either ForceApplyCapacityChange or RollbackCapacityChange.
     /// 
-    /// NoteWhen you apply a parameter group using the DBInstanceParameterGroupName parameter, the DB      cluster isn't rebooted automatically. Also, parameter changes are applied immediately rather than        during the next maintenance window.
+    /// ForceApplyCapacityChange sets the capacity to the specified value as soon as possible.
     /// 
-    /// Default: The existing name setting
+    /// RollbackCapacityChange, the default, ignores the capacity change if a scaling point isn't found in the timeout period.
     /// 
-    /// Constraints:
+    /// ImportantIf you specify ForceApplyCapacityChange, connections that         prevent Aurora Serverless v1 from finding a scaling point might be dropped.
     /// 
-    /// The DB parameter group must be in the same DB parameter group family as this DB cluster.
+    /// For more information, see           Autoscaling for Aurora Serverless v1 in the Amazon Aurora User Guide.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "DBInstanceParameterGroupName")]
-    pub dbinstance_parameter_group_name: Option<String>,
+    #[serde(rename = "TimeoutAction")]
+    pub timeout_action: Option<String>,
 
 
     /// 
-    /// A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the HTTP endpoint       is disabled.
+    /// The maximum capacity for an Aurora DB cluster in serverless DB engine mode.
     /// 
-    /// When enabled, the HTTP endpoint provides a connectionless web service API for running       SQL queries on the Aurora Serverless DB cluster. You can also query your database       from inside the RDS console with the query editor.
+    /// For Aurora MySQL, valid capacity values are 1, 2, 4, 8, 16, 32, 64, 128, and 256.
     /// 
-    /// For more information, see Using the Data API for Aurora Serverless in the       Amazon Aurora User Guide.
+    /// For Aurora PostgreSQL, valid capacity values are 2, 4, 8, 16, 32, 64, 192, and 384.
     /// 
-    /// Valid for: Aurora DB clusters only
+    /// The maximum capacity must be greater than or equal to the minimum capacity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MaxCapacity")]
+    pub max_capacity: Option<i64>,
+
+
+    /// 
+    /// The amount of time, in seconds, that Aurora Serverless v1 tries to find a scaling point       to perform seamless scaling before enforcing the timeout action. The default is 300.
+    /// 
+    /// Specify a value between 60 and 600 seconds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecondsBeforeTimeout")]
+    pub seconds_before_timeout: Option<i64>,
+
+
+    /// 
+    /// A value that indicates whether to allow or disallow automatic pause for an Aurora DB cluster in serverless DB engine mode.       A DB cluster can be paused only when it's idle (it has no connections).
+    /// 
+    /// NoteIf a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot.         In this case, the DB cluster is restored when there is a request to connect to it.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "EnableHttpEndpoint")]
-    pub enable_http_endpoint: Option<bool>,
+    #[serde(rename = "AutoPause")]
+    pub auto_pause: Option<bool>,
+
+
+    /// 
+    /// The time, in seconds, before an Aurora DB cluster in serverless mode is paused.
+    /// 
+    /// Specify a value between 300 and 86,400 seconds.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecondsUntilAutoPause")]
+    pub seconds_until_auto_pause: Option<i64>,
+
+
+    /// 
+    /// The minimum capacity for an Aurora DB cluster in serverless DB engine mode.
+    /// 
+    /// For Aurora MySQL, valid capacity values are 1, 2, 4, 8, 16, 32, 64, 128, and 256.
+    /// 
+    /// For Aurora PostgreSQL, valid capacity values are 2, 4, 8, 16, 32, 64, 192, and 384.
+    /// 
+    /// The minimum capacity must be less than or equal to the maximum capacity.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "MinCapacity")]
+    pub min_capacity: Option<i64>,
 
 }
 
 
-/// Specifies the connection endpoint for the primary instance of the DB cluster.
-#[derive(Default, serde::Serialize)]
-pub struct Endpoint {
-
-
-    /// 
-    /// Specifies the connection endpoint for the primary instance of the DB cluster.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Address")]
-    pub address: Option<String>,
-
-
-    /// 
-    /// Specifies the port that the database engine is listening on.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Port")]
-    pub port: Option<String>,
-
-}
-
-
-/// The MasterUserSecret return value specifies the secret managed by RDS in AWS Secrets Manager for the master user password.
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
-/// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
-#[derive(Default, serde::Serialize)]
-pub struct MasterUserSecret {
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
 
 
     /// 
-    /// The Amazon Resource Name (ARN) of the secret.
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
     /// 
-    /// Required: No
-    ///
+    /// Required: Yes
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecretArn")]
-    pub secret_arn: Option<String>,
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 
     /// 
-    /// The AWS KMS key identifier that is used to encrypt the secret.
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
     /// 
-    /// Required: No
-    ///
+    /// Required: Yes
+    /// 
     /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }
 
@@ -1058,7 +1150,7 @@ pub struct MasterUserSecret {
 /// If you have an Aurora cluster, you must set the ScalingConfigurationInfo attribute before you add a DB instance that uses the        db.serverless DB instance class. For more information, see        Clusters that use Aurora Serverless v2 must have a capacity range specified in the        Amazon Aurora User Guide.
 ///
 /// This property is only supported for Aurora Serverless v2. For Aurora Serverless v1, use ScalingConfiguration property.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServerlessV2ScalingConfiguration {
 
 
@@ -1090,167 +1182,73 @@ pub struct ServerlessV2ScalingConfiguration {
 }
 
 
-/// The ScalingConfiguration property type specifies the scaling       configuration of an Aurora Serverless DB cluster.
-///
-/// For more information, see Using Amazon Aurora         Serverless in the Amazon Aurora User Guide.
-///
-/// This property is only supported for Aurora Serverless v1. For Aurora Serverless v2, use ServerlessV2ScalingConfiguration property.
-///
-/// Valid for: Aurora DB clusters only
-#[derive(Default, serde::Serialize)]
-pub struct ScalingConfiguration {
+/// Specifies the connection endpoint for the primary instance of the DB cluster.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Endpoint {
 
 
     /// 
-    /// The time, in seconds, before an Aurora DB cluster in serverless mode is paused.
-    /// 
-    /// Specify a value between 300 and 86,400 seconds.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecondsUntilAutoPause")]
-    pub seconds_until_auto_pause: Option<i64>,
-
-
-    /// 
-    /// A value that indicates whether to allow or disallow automatic pause for an Aurora DB cluster in serverless DB engine mode.       A DB cluster can be paused only when it's idle (it has no connections).
-    /// 
-    /// NoteIf a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot.         In this case, the DB cluster is restored when there is a request to connect to it.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoPause")]
-    pub auto_pause: Option<bool>,
-
-
-    /// 
-    /// The amount of time, in seconds, that Aurora Serverless v1 tries to find a scaling point       to perform seamless scaling before enforcing the timeout action. The default is 300.
-    /// 
-    /// Specify a value between 60 and 600 seconds.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SecondsBeforeTimeout")]
-    pub seconds_before_timeout: Option<i64>,
-
-
-    /// 
-    /// The maximum capacity for an Aurora DB cluster in serverless DB engine mode.
-    /// 
-    /// For Aurora MySQL, valid capacity values are 1, 2, 4, 8, 16, 32, 64, 128, and 256.
-    /// 
-    /// For Aurora PostgreSQL, valid capacity values are 2, 4, 8, 16, 32, 64, 192, and 384.
-    /// 
-    /// The maximum capacity must be greater than or equal to the minimum capacity.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MaxCapacity")]
-    pub max_capacity: Option<i64>,
-
-
-    /// 
-    /// The action to take when the timeout is reached, either ForceApplyCapacityChange or RollbackCapacityChange.
-    /// 
-    /// ForceApplyCapacityChange sets the capacity to the specified value as soon as possible.
-    /// 
-    /// RollbackCapacityChange, the default, ignores the capacity change if a scaling point isn't found in the timeout period.
-    /// 
-    /// ImportantIf you specify ForceApplyCapacityChange, connections that         prevent Aurora Serverless v1 from finding a scaling point might be dropped.
-    /// 
-    /// For more information, see           Autoscaling for Aurora Serverless v1 in the Amazon Aurora User Guide.
+    /// Specifies the port that the database engine is listening on.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TimeoutAction")]
-    pub timeout_action: Option<String>,
+    #[serde(rename = "Port")]
+    pub port: Option<String>,
 
 
     /// 
-    /// The minimum capacity for an Aurora DB cluster in serverless DB engine mode.
-    /// 
-    /// For Aurora MySQL, valid capacity values are 1, 2, 4, 8, 16, 32, 64, 128, and 256.
-    /// 
-    /// For Aurora PostgreSQL, valid capacity values are 2, 4, 8, 16, 32, 64, 192, and 384.
-    /// 
-    /// The minimum capacity must be less than or equal to the maximum capacity.
+    /// Specifies the connection endpoint for the primary instance of the DB cluster.
     /// 
     /// Required: No
     ///
-    /// Type: Integer
+    /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "MinCapacity")]
-    pub min_capacity: Option<i64>,
+    #[serde(rename = "Address")]
+    pub address: Option<String>,
 
 }
 
 
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+/// The MasterUserSecret return value specifies the secret managed by RDS in AWS Secrets Manager for the master user password.
 ///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
+/// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct MasterUserSecret {
 
 
     /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// The AWS KMS key identifier that is used to encrypt the secret.
     /// 
-    /// Required: Yes
-    /// 
+    /// Required: No
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
 
 
     /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// The Amazon Resource Name (ARN) of the secret.
     /// 
-    /// Required: Yes
-    /// 
+    /// Required: No
+    ///
     /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SecretArn")]
+    pub secret_arn: Option<String>,
 
 }
 
 
 /// Describes an AWS Identity and Access Management (IAM) role that is associated with a DB cluster.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DBClusterRole {
-
-
-    /// 
-    /// The name of the feature associated with the AWS Identity and Access Management (IAM)       role. IAM roles that are associated with a DB cluster grant permission for the DB       cluster to access other AWS services on your behalf. For the list of supported feature       names, see the SupportedFeatureNames description in DBEngineVersion       in the Amazon RDS API Reference.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FeatureName")]
-    pub feature_name: Option<String>,
 
 
     /// 
@@ -1264,6 +1262,18 @@ pub struct DBClusterRole {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
+
+    /// 
+    /// The name of the feature associated with the AWS Identity and Access Management (IAM)       role. IAM roles that are associated with a DB cluster grant permission for the DB       cluster to access other AWS services on your behalf. For the list of supported feature       names, see the SupportedFeatureNames description in DBEngineVersion       in the Amazon RDS API Reference.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FeatureName")]
+    pub feature_name: Option<String>,
+
 }
 
 
@@ -1274,7 +1284,7 @@ pub struct DBClusterRole {
 /// If a failover occurs, and the Aurora Replica that you are connected to is promoted to be the primary instance, your connection          is dropped. To continue sending your read workload to other Aurora Replicas in the cluster, you can then reconnect to the          reader endpoint.
 ///
 /// For more information about Aurora endpoints, see Amazon Aurora connection management          in the Amazon Aurora User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReadEndpoint {
 
 

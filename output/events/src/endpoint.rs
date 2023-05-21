@@ -1,8 +1,20 @@
 
 
 /// A global endpoint used to improve your application's availability by making it regional-fault tolerant. For more information about global endpoints, see Making applications Regional-fault tolerant with global endpoints and event replication in the Amazon EventBridge User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEndpoint {
+
+
+    /// 
+    /// The routing configuration of the endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: RoutingConfig
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RoutingConfig")]
+    pub routing_config: RoutingConfig,
 
 
     /// 
@@ -22,15 +34,15 @@ pub struct CfnEndpoint {
 
 
     /// 
-    /// The routing configuration of the endpoint.
+    /// Whether event replication was enabled or disabled for this endpoint. The default state is ENABLED which means you must supply a RoleArn.     If you don't have a RoleArn or you don't want event replication enabled, set the state to DISABLED.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: RoutingConfig
+    /// Type: ReplicationConfig
     ///
     /// Update requires: No interruption
-    #[serde(rename = "RoutingConfig")]
-    pub routing_config: RoutingConfig,
+    #[serde(rename = "ReplicationConfig")]
+    pub replication_config: Option<ReplicationConfig>,
 
 
     /// 
@@ -70,18 +82,6 @@ pub struct CfnEndpoint {
 
 
     /// 
-    /// Whether event replication was enabled or disabled for this endpoint. The default state is ENABLED which means you must supply a RoleArn.     If you don't have a RoleArn or you don't want event replication enabled, set the state to DISABLED.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ReplicationConfig
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ReplicationConfig")]
-    pub replication_config: Option<ReplicationConfig>,
-
-
-    /// 
     /// The event buses being used by the endpoint.
     /// 
     /// Exactly: 2
@@ -96,9 +96,19 @@ pub struct CfnEndpoint {
 
 }
 
+impl cfn_resources::CfnResource for CfnEndpoint {
+    fn type_string() -> &'static str {
+        "AWS::Events::Endpoint"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// The routing configuration of the endpoint.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RoutingConfig {
 
 
@@ -116,8 +126,89 @@ pub struct RoutingConfig {
 }
 
 
+/// The primary Region of the endpoint.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Primary {
+
+
+    /// 
+    /// The ARN of the health check used by the endpoint to determine whether failover is triggered.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 1600
+    ///
+    /// Pattern: ^arn:aws([a-z]|\-)*:route53:::healthcheck/[\-a-z0-9]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthCheck")]
+    pub health_check: String,
+
+}
+
+
+/// The failover configuration for an endpoint. This includes what triggers failover and what happens when it's triggered.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct FailoverConfig {
+
+
+    /// 
+    /// The main Region of the endpoint.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Primary
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Primary")]
+    pub primary: Primary,
+
+
+    /// 
+    /// The Region that events are routed to when failover is triggered or event replication is enabled.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: Secondary
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Secondary")]
+    pub secondary: Secondary,
+
+}
+
+
+/// The event buses the endpoint is associated with.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EndpointEventBus {
+
+
+    /// 
+    /// The ARN of the event bus the endpoint is associated with.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 512
+    ///
+    /// Pattern: ^arn:aws[a-z-]*:events:[a-z]{2}-[a-z-]+-\d+:\d{12}:event-bus/[\w.-]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EventBusArn")]
+    pub event_bus_arn: String,
+
+}
+
+
 /// The secondary Region that processes events when failover is triggered or replication is enabled.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Secondary {
 
 
@@ -142,7 +233,7 @@ pub struct Secondary {
 
 
 /// Endpoints can replicate all events to the secondary Region.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReplicationConfig {
 
 
@@ -158,86 +249,5 @@ pub struct ReplicationConfig {
     /// Update requires: No interruption
     #[serde(rename = "State")]
     pub state: String,
-
-}
-
-
-/// The failover configuration for an endpoint. This includes what triggers failover and what happens when it's triggered.
-#[derive(Default, serde::Serialize)]
-pub struct FailoverConfig {
-
-
-    /// 
-    /// The Region that events are routed to when failover is triggered or event replication is enabled.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Secondary
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Secondary")]
-    pub secondary: Secondary,
-
-
-    /// 
-    /// The main Region of the endpoint.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: Primary
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Primary")]
-    pub primary: Primary,
-
-}
-
-
-/// The event buses the endpoint is associated with.
-#[derive(Default, serde::Serialize)]
-pub struct EndpointEventBus {
-
-
-    /// 
-    /// The ARN of the event bus the endpoint is associated with.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 512
-    ///
-    /// Pattern: ^arn:aws[a-z-]*:events:[a-z]{2}-[a-z-]+-\d+:\d{12}:event-bus/[\w.-]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EventBusArn")]
-    pub event_bus_arn: String,
-
-}
-
-
-/// The primary Region of the endpoint.
-#[derive(Default, serde::Serialize)]
-pub struct Primary {
-
-
-    /// 
-    /// The ARN of the health check used by the endpoint to determine whether failover is triggered.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 1600
-    ///
-    /// Pattern: ^arn:aws([a-z]|\-)*:route53:::healthcheck/[\-a-z0-9]+$
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthCheck")]
-    pub health_check: String,
 
 }

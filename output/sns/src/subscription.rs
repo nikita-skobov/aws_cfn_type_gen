@@ -1,64 +1,32 @@
 
 
 /// The AWS::SNS::Subscription resource subscribes an endpoint to an Amazon SNS topic. For a subscription to be created, the owner of the endpoint must     confirm the subscription.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubscription {
 
 
     /// 
-    /// For cross-region subscriptions, the region in which the topic resides.
+    /// The ARN of the topic to subscribe to.
     /// 
-    /// If no region is specified, AWS CloudFormation uses the region of the caller as the     default.
-    /// 
-    /// If you perform an update operation that only updates the Region property of     a AWS::SNS::Subscription resource, that operation will fail unless you are     either:
-    /// 
-    /// Updating the Region from NULL to the caller        region.            Updating the Region from the caller region to        NULL.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Region")]
-    pub region: Option<String>,
-
-
-    /// 
-    /// When specified, sends undeliverable messages to the specified Amazon SQS     dead-letter queue. Messages that can't be delivered due to client errors (for example, when     the subscribed endpoint is unreachable) or server errors (for example, when the service     that powers the subscribed endpoint becomes unavailable) are held in the dead-letter queue     for further analysis or reprocessing.
-    /// 
-    /// For more information about the redrive policy and dead-letter queues, see Amazon       SQS dead-letter queues in the Amazon SQS Developer       Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RedrivePolicy")]
-    pub redrive_policy: Option<serde_json::Value>,
-
-
-    /// 
-    /// The filter policy JSON assigned to the subscription. Enables the subscriber to filter     out unwanted messages. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       filtering in the Amazon SNS Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Json
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "FilterPolicy")]
-    pub filter_policy: Option<serde_json::Value>,
-
-
-    /// 
-    /// The subscription's endpoint. The endpoint value depends on the protocol that you     specify. For more information, see the Endpoint parameter of the       Subscribe      action in the Amazon SNS API Reference.
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Endpoint")]
-    pub endpoint: Option<String>,
+    #[serde(rename = "TopicArn")]
+    pub topic_arn: String,
+
+
+    /// 
+    /// The subscription's protocol. For more information, see the Protocol     parameter of the       Subscribe      action in the Amazon SNS API Reference.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Protocol")]
+    pub protocol: String,
 
 
     /// 
@@ -78,15 +46,35 @@ pub struct CfnSubscription {
 
 
     /// 
-    /// The subscription's protocol. For more information, see the Protocol     parameter of the       Subscribe      action in the Amazon SNS API Reference.
+    /// When specified, sends undeliverable messages to the specified Amazon SQS     dead-letter queue. Messages that can't be delivered due to client errors (for example, when     the subscribed endpoint is unreachable) or server errors (for example, when the service     that powers the subscribed endpoint becomes unavailable) are held in the dead-letter queue     for further analysis or reprocessing.
     /// 
-    /// Required: Yes
+    /// For more information about the redrive policy and dead-letter queues, see Amazon       SQS dead-letter queues in the Amazon SQS Developer       Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RedrivePolicy")]
+    pub redrive_policy: Option<serde_json::Value>,
+
+
+    /// 
+    /// For cross-region subscriptions, the region in which the topic resides.
+    /// 
+    /// If no region is specified, AWS CloudFormation uses the region of the caller as the     default.
+    /// 
+    /// If you perform an update operation that only updates the Region property of     a AWS::SNS::Subscription resource, that operation will fail unless you are     either:
+    /// 
+    /// Updating the Region from NULL to the caller        region.            Updating the Region from the caller region to        NULL.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "Protocol")]
-    pub protocol: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Region")]
+    pub region: Option<String>,
 
 
     /// 
@@ -116,15 +104,27 @@ pub struct CfnSubscription {
 
 
     /// 
-    /// The ARN of the topic to subscribe to.
+    /// The filter policy JSON assigned to the subscription. Enables the subscriber to filter     out unwanted messages. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       filtering in the Amazon SNS Developer Guide.
     /// 
-    /// Required: Yes
+    /// Required: No
+    ///
+    /// Type: Json
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FilterPolicy")]
+    pub filter_policy: Option<serde_json::Value>,
+
+
+    /// 
+    /// The subscription's endpoint. The endpoint value depends on the protocol that you     specify. For more information, see the Endpoint parameter of the       Subscribe      action in the Amazon SNS API Reference.
+    /// 
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "TopicArn")]
-    pub topic_arn: String,
+    #[serde(rename = "Endpoint")]
+    pub endpoint: Option<String>,
 
 
     /// 
@@ -138,4 +138,14 @@ pub struct CfnSubscription {
     #[serde(rename = "RawMessageDelivery")]
     pub raw_message_delivery: Option<bool>,
 
+}
+
+impl cfn_resources::CfnResource for CfnSubscription {
+    fn type_string() -> &'static str {
+        "AWS::SNS::Subscription"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

@@ -1,8 +1,42 @@
 
 
 /// The AWS::Location::Map resource specifies a map resource in your       AWS account, which provides map tiles of different styles sourced       from global location data providers.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMap {
+
+
+    /// 
+    /// Specifies the MapConfiguration, including the map style, for the       map resource that you create. The map style defines the look of maps and the data       provider for your map resource.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: MapConfiguration
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Configuration")]
+    pub configuration: MapConfiguration,
+
+
+    /// 
+    /// The name for the map resource.
+    /// 
+    /// Requirements:
+    /// 
+    /// Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_). Must be a unique map resource name.         No spaces allowed. For example, ExampleMap.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 100
+    ///
+    /// Pattern: ^[-._\w]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "MapName")]
+    pub map_name: String,
 
 
     /// 
@@ -34,45 +68,21 @@ pub struct CfnMap {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+}
 
-    /// 
-    /// The name for the map resource.
-    /// 
-    /// Requirements:
-    /// 
-    /// Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_). Must be a unique map resource name.         No spaces allowed. For example, ExampleMap.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 100
-    ///
-    /// Pattern: ^[-._\w]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "MapName")]
-    pub map_name: String,
+impl cfn_resources::CfnResource for CfnMap {
+    fn type_string() -> &'static str {
+        "AWS::Location::Map"
+    }
 
-
-    /// 
-    /// Specifies the MapConfiguration, including the map style, for the       map resource that you create. The map style defines the look of maps and the data       provider for your map resource.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: MapConfiguration
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Configuration")]
-    pub configuration: MapConfiguration,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Specifies the map tile style selected from an available provider.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MapConfiguration {
 
 

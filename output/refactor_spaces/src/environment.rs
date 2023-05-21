@@ -3,20 +3,8 @@
 /// Creates an AWS Migration Hub Refactor Spaces environment. The caller owns the environment resource, and all    Refactor Spaces applications, services, and routes created within the environment. They are referred    to as the environment owner. The environment owner has cross-account    visibility and control of Refactor Spaces resources that are added to the environment by other    accounts that the environment is shared with.
 ///
 /// When creating an environment with a CreateEnvironment:NetworkFabricType of TRANSIT_GATEWAY, Refactor Spaces    provisions a transit gateway to enable services in VPCs to communicate directly across    accounts. If CreateEnvironment:NetworkFabricType is NONE, Refactor Spaces does not create    a transit gateway and you must use your network infrastructure to route traffic to services    with private URL endpoints.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEnvironment {
-
-
-    /// 
-    /// The network fabric type of the environment.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "NetworkFabricType")]
-    pub network_fabric_type: String,
 
 
     /// 
@@ -32,15 +20,15 @@ pub struct CfnEnvironment {
 
 
     /// 
-    /// The name of the environment.
+    /// The network fabric type of the environment.
     /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    #[serde(rename = "NetworkFabricType")]
+    pub network_fabric_type: String,
 
 
     /// 
@@ -54,6 +42,28 @@ pub struct CfnEnvironment {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
+
+    /// 
+    /// The name of the environment.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnEnvironment {
+    fn type_string() -> &'static str {
+        "AWS::RefactorSpaces::Environment"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -64,19 +74,8 @@ pub struct CfnEnvironment {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -88,5 +87,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

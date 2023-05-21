@@ -1,20 +1,8 @@
 
 
 /// Use the AWS::EventSchemas::Registry to specify a schema registry. Schema       registries are containers for Schemas. Registries collect and organize schemas so that       your schemas are in logical groups.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRegistry {
-
-
-    /// 
-    /// A description of the registry to be created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
 
 
     /// 
@@ -30,6 +18,18 @@ pub struct CfnRegistry {
 
 
     /// 
+    /// A description of the registry to be created.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The name of the schema registry.
     /// 
     /// Required: No
@@ -42,9 +42,19 @@ pub struct CfnRegistry {
 
 }
 
+impl cfn_resources::CfnResource for CfnRegistry {
+    fn type_string() -> &'static str {
+        "AWS::EventSchemas::Registry"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Tags to associate with the schema registry.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagsEntry {
 
 

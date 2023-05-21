@@ -1,20 +1,8 @@
 
 
 /// Creates a new event data store.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEventDataStore {
-
-
-    /// 
-    /// Specifies whether the event data store includes events from all regions, or only from     the region in which the event data store is created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "MultiRegionEnabled")]
-    pub multi_region_enabled: Option<bool>,
 
 
     /// 
@@ -33,6 +21,44 @@ pub struct CfnEventDataStore {
     /// Update requires: No interruption
     #[serde(rename = "AdvancedEventSelectors")]
     pub advanced_event_selectors: Option<Vec<AdvancedEventSelector>>,
+
+
+    /// 
+    /// Specifies the AWS KMS key ID to use to encrypt the events delivered by       CloudTrail. The value can be an alias name prefixed by alias/, a     fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique     identifier.
+    /// 
+    /// ImportantDisabling or deleting the KMS key, or removing CloudTrail       permissions on the key, prevents CloudTrail from logging events to the event data       store, and prevents users from querying the data in the event data store that was       encrypted with the key. After you associate an event data store with a KMS key, the KMS key cannot be removed or changed. Before you       disable or delete a KMS key that you are using with an event data store,       delete or back up your event data store.
+    /// 
+    /// CloudTrail also supports AWS KMS multi-Region keys. For more     information about multi-Region keys, see Using multi-Region       keys in the         AWS Key Management Service Developer Guide.
+    /// 
+    /// Examples:
+    /// 
+    /// alias/MyAliasName                                arn:aws:kms:us-east-2:123456789012:alias/MyAliasName                                arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012                                12345678-1234-1234-1234-123456789012
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 350
+    ///
+    /// Pattern: ^[a-zA-Z0-9._/\-:]+$
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "KmsKeyId")]
+    pub kms_key_id: Option<String>,
+
+
+    /// 
+    /// Specifies whether termination protection is enabled for the event data store. If     termination protection is enabled, you cannot delete the event data store until termination     protection is disabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TerminationProtectionEnabled")]
+    pub termination_protection_enabled: Option<bool>,
 
 
     /// 
@@ -66,15 +92,15 @@ pub struct CfnEventDataStore {
 
 
     /// 
-    /// Specifies whether termination protection is enabled for the event data store. If     termination protection is enabled, you cannot delete the event data store until termination     protection is disabled.
+    /// Specifies whether an event data store collects events logged for an organization in       AWS Organizations.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "TerminationProtectionEnabled")]
-    pub termination_protection_enabled: Option<bool>,
+    #[serde(rename = "OrganizationEnabled")]
+    pub organization_enabled: Option<bool>,
 
 
     /// 
@@ -96,60 +122,71 @@ pub struct CfnEventDataStore {
 
 
     /// 
-    /// Specifies whether an event data store collects events logged for an organization in       AWS Organizations.
+    /// Specifies whether the event data store includes events from all regions, or only from     the region in which the event data store is created.
     /// 
     /// Required: No
     ///
     /// Type: Boolean
     ///
     /// Update requires: No interruption
-    #[serde(rename = "OrganizationEnabled")]
-    pub organization_enabled: Option<bool>,
+    #[serde(rename = "MultiRegionEnabled")]
+    pub multi_region_enabled: Option<bool>,
+
+}
+
+impl cfn_resources::CfnResource for CfnEventDataStore {
+    fn type_string() -> &'static str {
+        "AWS::CloudTrail::EventDataStore"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// Advanced event selectors let you create fine-grained selectors for the following AWS CloudTrail event record ﬁelds. They help you control costs by logging only those     events that are important to you. For more information about advanced event selectors, see       Logging data events in the         AWS CloudTrail User Guide.
+///
+/// You cannot apply both event selectors and advanced event selectors to a trail.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AdvancedEventSelector {
 
 
     /// 
-    /// Specifies the AWS KMS key ID to use to encrypt the events delivered by       CloudTrail. The value can be an alias name prefixed by alias/, a     fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique     identifier.
+    /// Contains all selector statements in an advanced event selector.
     /// 
-    /// ImportantDisabling or deleting the KMS key, or removing CloudTrail       permissions on the key, prevents CloudTrail from logging events to the event data       store, and prevents users from querying the data in the event data store that was       encrypted with the key. After you associate an event data store with a KMS key, the KMS key cannot be removed or changed. Before you       disable or delete a KMS key that you are using with an event data store,       delete or back up your event data store.
+    /// Required: Yes
+    ///
+    /// Type: List of AdvancedFieldSelector
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "FieldSelectors")]
+    pub field_selectors: Vec<AdvancedFieldSelector>,
+
+
     /// 
-    /// CloudTrail also supports AWS KMS multi-Region keys. For more     information about multi-Region keys, see Using multi-Region       keys in the         AWS Key Management Service Developer Guide.
-    /// 
-    /// Examples:
-    /// 
-    /// alias/MyAliasName                                arn:aws:kms:us-east-2:123456789012:alias/MyAliasName                                arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012                                12345678-1234-1234-1234-123456789012
+    /// An optional, descriptive name for an advanced event selector, such as "Log data events     for only two S3 buckets".
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Minimum: 1
+    /// Minimum: 0
     ///
-    /// Maximum: 350
+    /// Maximum: 1000
     ///
-    /// Pattern: ^[a-zA-Z0-9._/\-:]+$
+    /// Pattern: .*
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KmsKeyId")]
-    pub kms_key_id: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 }
 
 
 /// A single selector statement in an advanced event selector.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AdvancedFieldSelector {
-
-
-    /// 
-    /// An operator that excludes events that match the exact value of the event record field     specified as the value of Field.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "NotEquals")]
-    pub not_equals: Option<Vec<String>>,
 
 
     /// 
@@ -162,18 +199,6 @@ pub struct AdvancedFieldSelector {
     /// Update requires: No interruption
     #[serde(rename = "EndsWith")]
     pub ends_with: Option<Vec<String>>,
-
-
-    /// 
-    /// An operator that includes events that match the first few characters of the event record     field specified as the value of Field.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "StartsWith")]
-    pub starts_with: Option<Vec<String>>,
 
 
     /// 
@@ -235,44 +260,29 @@ pub struct AdvancedFieldSelector {
     #[serde(rename = "NotStartsWith")]
     pub not_starts_with: Option<Vec<String>>,
 
-}
-
-
-/// Advanced event selectors let you create fine-grained selectors for the following AWS CloudTrail event record ﬁelds. They help you control costs by logging only those     events that are important to you. For more information about advanced event selectors, see       Logging data events in the         AWS CloudTrail User Guide.
-///
-/// You cannot apply both event selectors and advanced event selectors to a trail.
-#[derive(Default, serde::Serialize)]
-pub struct AdvancedEventSelector {
-
 
     /// 
-    /// An optional, descriptive name for an advanced event selector, such as "Log data events     for only two S3 buckets".
+    /// An operator that includes events that match the first few characters of the event record     field specified as the value of Field.
     /// 
     /// Required: No
     ///
-    /// Type: String
-    ///
-    /// Minimum: 0
-    ///
-    /// Maximum: 1000
-    ///
-    /// Pattern: .*
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
+    #[serde(rename = "StartsWith")]
+    pub starts_with: Option<Vec<String>>,
 
 
     /// 
-    /// Contains all selector statements in an advanced event selector.
+    /// An operator that excludes events that match the exact value of the event record field     specified as the value of Field.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: List of AdvancedFieldSelector
+    /// Type: List of String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "FieldSelectors")]
-    pub field_selectors: Vec<AdvancedFieldSelector>,
+    #[serde(rename = "NotEquals")]
+    pub not_equals: Option<Vec<String>>,
 
 }
 
@@ -284,19 +294,8 @@ pub struct AdvancedEventSelector {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -308,5 +307,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

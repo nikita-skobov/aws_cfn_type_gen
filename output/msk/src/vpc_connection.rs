@@ -1,7 +1,7 @@
 
 
 /// Create remote VPC connection.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVpcConnection {
 
 
@@ -30,6 +30,30 @@ pub struct CfnVpcConnection {
 
 
     /// 
+    /// The list of subnets in the client VPC to connect to.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ClientSubnets")]
+    pub client_subnets: Vec<String>,
+
+
+    /// 
+    /// The VPC id of the remote client.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "VpcId")]
+    pub vpc_id: String,
+
+
+    /// 
     /// The type of private link authentication.
     /// 
     /// Required: Yes
@@ -52,28 +76,14 @@ pub struct CfnVpcConnection {
     #[serde(rename = "TargetClusterArn")]
     pub target_cluster_arn: String,
 
+}
 
-    /// 
-    /// The VPC id of the remote client.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+impl cfn_resources::CfnResource for CfnVpcConnection {
+    fn type_string() -> &'static str {
+        "AWS::MSK::VpcConnection"
+    }
 
-
-    /// 
-    /// The list of subnets in the client VPC to connect to.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ClientSubnets")]
-    pub client_subnets: Vec<String>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

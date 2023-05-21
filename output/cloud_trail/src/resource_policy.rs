@@ -1,8 +1,26 @@
 
 
 /// Attaches a resource-based permission policy to a CloudTrail channel that is used for an integration with an event source outside of AWS. For more information about resource-based policies, see      CloudTrail resource-based policy examples      in the CloudTrail User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourcePolicy {
+
+
+    /// 
+    /// The Amazon Resource Name (ARN) of the CloudTrail channel attached to the resource-based policy.      The following is the format of a resource ARN:      arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 3
+    ///
+    /// Maximum: 256
+    ///
+    /// Pattern: ^[a-zA-Z0-9._/\-:]+$
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "ResourceArn")]
+    pub resource_arn: String,
 
 
     /// 
@@ -24,22 +42,14 @@ pub struct CfnResourcePolicy {
     #[serde(rename = "ResourcePolicy")]
     pub resource_policy: serde_json::Value,
 
+}
 
-    /// 
-    /// The Amazon Resource Name (ARN) of the CloudTrail channel attached to the resource-based policy.      The following is the format of a resource ARN:      arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 3
-    ///
-    /// Maximum: 256
-    ///
-    /// Pattern: ^[a-zA-Z0-9._/\-:]+$
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "ResourceArn")]
-    pub resource_arn: String,
+impl cfn_resources::CfnResource for CfnResourcePolicy {
+    fn type_string() -> &'static str {
+        "AWS::CloudTrail::ResourcePolicy"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

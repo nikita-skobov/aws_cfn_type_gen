@@ -3,7 +3,7 @@
 /// Specifies a grant.
 ///
 /// A grant shares the use of license entitlements with specific AWS accounts. For more information,      see Granted       licenses in the AWS License Manager User Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGrant {
 
 
@@ -29,18 +29,6 @@ pub struct CfnGrant {
     /// Update requires: No interruption
     #[serde(rename = "HomeRegion")]
     pub home_region: Option<String>,
-
-
-    /// 
-    /// Granted license status.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: Option<String>,
 
 
     /// 
@@ -74,6 +62,18 @@ pub struct CfnGrant {
 
 
     /// 
+    /// Granted license status.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: Option<String>,
+
+
+    /// 
     /// License ARN.
     /// 
     /// Required: No
@@ -84,4 +84,14 @@ pub struct CfnGrant {
     #[serde(rename = "LicenseArn")]
     pub license_arn: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnGrant {
+    fn type_string() -> &'static str {
+        "AWS::LicenseManager::Grant"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

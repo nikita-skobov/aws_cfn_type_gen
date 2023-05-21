@@ -1,7 +1,7 @@
 
 
 /// Creates a new Timestream database. If the AWS KMS key is not    specified, the database will be encrypted with a Timestream managed AWS KMS key located in your account. Refer to AWS managed      AWS KMS keys for more info. Service quotas apply. See     code sample for    details.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDatabase {
 
 
@@ -22,6 +22,18 @@ pub struct CfnDatabase {
 
 
     /// 
+    /// The tags to add to the database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
     /// The name of the Timestream database.
     /// 
     /// Length Constraints: Minimum length of 3 bytes. Maximum length of 256    bytes.
@@ -34,18 +46,16 @@ pub struct CfnDatabase {
     #[serde(rename = "DatabaseName")]
     pub database_name: Option<String>,
 
+}
 
-    /// 
-    /// The tags to add to the database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+impl cfn_resources::CfnResource for CfnDatabase {
+    fn type_string() -> &'static str {
+        "AWS::Timestream::Database"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -56,19 +66,8 @@ pub struct CfnDatabase {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -80,5 +79,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

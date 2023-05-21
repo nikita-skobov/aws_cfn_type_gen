@@ -1,76 +1,8 @@
 
 
 /// An SAP application registered with AWS Systems Manager for 			SAP.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
-    /// 
-    /// The ID of the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [\w\d]{1,50}
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplicationId")]
-    pub application_id: String,
-
-
-    /// 
-    /// The tags on the application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
-
-
-    /// 
-    /// The credentials of the SAP application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Credential
-    ///
-    /// Maximum: 20
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Credentials")]
-    pub credentials: Option<Vec<Credential>>,
-
-
-    /// 
-    /// The System ID of the application.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Pattern: [A-Z][A-Z0-9]{2}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Sid")]
-    pub sid: Option<String>,
-
-
-    /// 
-    /// The type of the application.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: HANA
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ApplicationType")]
-    pub application_type: String,
 
 
     /// 
@@ -88,6 +20,74 @@ pub struct CfnApplication {
 
 
     /// 
+    /// The tags on the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// The type of the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: HANA
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplicationType")]
+    pub application_type: String,
+
+
+    /// 
+    /// The System ID of the application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [A-Z][A-Z0-9]{2}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Sid")]
+    pub sid: Option<String>,
+
+
+    /// 
+    /// The credentials of the SAP application.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Credential
+    ///
+    /// Maximum: 20
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Credentials")]
+    pub credentials: Option<Vec<Credential>>,
+
+
+    /// 
+    /// The ID of the application.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [\w\d]{1,50}
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ApplicationId")]
+    pub application_id: String,
+
+
+    /// 
     /// The Amazon EC2 instances on which your SAP application is running.
     /// 
     /// Required: No
@@ -102,22 +102,20 @@ pub struct CfnApplication {
 
 }
 
+impl cfn_resources::CfnResource for CfnApplication {
+    fn type_string() -> &'static str {
+        "AWS::SystemsManagerSAP::Application"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// The credentials of your SAP application.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Credential {
-
-
-    /// 
-    /// The name of the SAP HANA database.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DatabaseName")]
-    pub database_name: Option<String>,
 
 
     /// 
@@ -143,6 +141,18 @@ pub struct Credential {
     #[serde(rename = "SecretId")]
     pub secret_id: Option<String>,
 
+
+    /// 
+    /// The name of the SAP HANA database.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DatabaseName")]
+    pub database_name: Option<String>,
+
 }
 
 
@@ -153,7 +163,7 @@ pub struct Credential {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

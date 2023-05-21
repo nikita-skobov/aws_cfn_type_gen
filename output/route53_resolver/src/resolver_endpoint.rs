@@ -1,8 +1,24 @@
 
 
 /// Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResolverEndpoint {
+
+
+    /// 
+    /// A friendly name that lets you easily find a configuration in the Resolver dashboard in the Route 53 console.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
 
 
     /// Property description not available.
@@ -42,36 +58,6 @@ pub struct CfnResolverEndpoint {
 
 
     /// 
-    /// The Resolver endpoint IP address type.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: DUALSTACK | IPV4 | IPV6
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResolverEndpointType")]
-    pub resolver_endpoint_type: Option<String>,
-
-
-    /// 
-    /// A friendly name that lets you easily find a configuration in the Resolver dashboard in the Route 53 console.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: (?!^[0-9]+$)([a-zA-Z0-9\-_' ']+)
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Name")]
-    pub name: Option<String>,
-
-
-    /// 
     /// Indicates whether the Resolver endpoint allows inbound or outbound DNS queries:
     /// 
     /// INBOUND: allows DNS queries to your VPC from your network                        OUTBOUND: allows DNS queries from your VPC to your network
@@ -88,18 +74,6 @@ pub struct CfnResolverEndpoint {
 
 
     /// 
-    /// The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules 			(for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. 			For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
-
-
-    /// 
     /// Route 53 Resolver doesn't support updating tags through CloudFormation.
     /// 
     /// Required: No
@@ -112,11 +86,47 @@ pub struct CfnResolverEndpoint {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// 
+    /// The Resolver endpoint IP address type.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: DUALSTACK | IPV4 | IPV6
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResolverEndpointType")]
+    pub resolver_endpoint_type: Option<String>,
+
+
+    /// 
+    /// The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules 			(for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. 			For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "SecurityGroupIds")]
+    pub security_group_ids: Vec<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnResolverEndpoint {
+    fn type_string() -> &'static str {
+        "AWS::Route53Resolver::ResolverEndpoint"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// In a 			CreateResolverEndpoint 			request, the IP address that DNS queries originate from (for outbound endpoints) or that you forward DNS queries to (for inbound endpoints). 			IpAddressRequest also includes the ID of the subnet that contains the IP address.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IpAddressRequest {
 
 
@@ -177,7 +187,7 @@ pub struct IpAddressRequest {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

@@ -1,7 +1,7 @@
 
 
 /// Allocates a fully dedicated physical server for launching EC2 instances. Because the     host is fully dedicated for your use, it can help you address compliance requirements and     reduce costs by allowing you to use your existing server-bound software licenses. For more     information, see Dedicated Hosts in     the Amazon EC2 User Guide for Linux Instances.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnHost {
 
 
@@ -29,22 +29,6 @@ pub struct CfnHost {
     /// Update requires: No interruption
     #[serde(rename = "HostMaintenance")]
     pub host_maintenance: Option<String>,
-
-
-    /// 
-    /// Indicates whether the host accepts any untargeted instance launches that match its       instance type configuration, or if it only accepts Host tenancy instance launches that       specify its unique host ID. For more information, see Understanding auto-placement and affinity in the         Amazon EC2 User Guide.
-    /// 
-    /// Default: on
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: off | on
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoPlacement")]
-    pub auto_placement: Option<String>,
 
 
     /// 
@@ -98,4 +82,30 @@ pub struct CfnHost {
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<String>,
 
+
+    /// 
+    /// Indicates whether the host accepts any untargeted instance launches that match its       instance type configuration, or if it only accepts Host tenancy instance launches that       specify its unique host ID. For more information, see Understanding auto-placement and affinity in the         Amazon EC2 User Guide.
+    /// 
+    /// Default: on
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: off | on
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoPlacement")]
+    pub auto_placement: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnHost {
+    fn type_string() -> &'static str {
+        "AWS::EC2::Host"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

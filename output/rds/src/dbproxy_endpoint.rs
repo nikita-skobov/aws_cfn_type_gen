@@ -3,8 +3,20 @@
 /// The AWS::RDS::DBProxyEndpoint resource creates or updates a DB proxy endpoint. You can use custom proxy endpoints to access a proxy through a different       VPC than the proxy's default VPC.
 ///
 /// For more information about RDS Proxy, see                AWS::RDS::DBProxy.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBProxyEndpoint {
+
+
+    /// 
+    /// The VPC security group IDs for the DB proxy endpoint that you create. You can     specify a different set of security group IDs than for the original DB proxy.     The default is the default security group for the VPC.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "VpcSecurityGroupIds")]
+    pub vpc_security_group_ids: Option<Vec<String>>,
 
 
     /// 
@@ -20,18 +32,6 @@ pub struct CfnDBProxyEndpoint {
 
 
     /// 
-    /// The VPC subnet IDs for the DB proxy endpoint that you create. You can specify a     different set of subnet IDs than for the original DB proxy.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "VpcSubnetIds")]
-    pub vpc_subnet_ids: Vec<String>,
-
-
-    /// 
     /// The name of the DB proxy endpoint to create.
     /// 
     /// Required: Yes
@@ -41,6 +41,18 @@ pub struct CfnDBProxyEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "DBProxyEndpointName")]
     pub dbproxy_endpoint_name: String,
+
+
+    /// 
+    /// The name of the DB proxy associated with the DB proxy endpoint that you create.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBProxyName")]
+    pub dbproxy_name: String,
 
 
     /// 
@@ -58,46 +70,32 @@ pub struct CfnDBProxyEndpoint {
 
 
     /// 
-    /// The name of the DB proxy associated with the DB proxy endpoint that you create.
+    /// The VPC subnet IDs for the DB proxy endpoint that you create. You can specify a     different set of subnet IDs than for the original DB proxy.
     /// 
     /// Required: Yes
     ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBProxyName")]
-    pub dbproxy_name: String,
-
-
-    /// 
-    /// The VPC security group IDs for the DB proxy endpoint that you create. You can     specify a different set of security group IDs than for the original DB proxy.     The default is the default security group for the VPC.
-    /// 
-    /// Required: No
-    ///
     /// Type: List of String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "VpcSecurityGroupIds")]
-    pub vpc_security_group_ids: Option<Vec<String>>,
+    /// Update requires: Replacement
+    #[serde(rename = "VpcSubnetIds")]
+    pub vpc_subnet_ids: Vec<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnDBProxyEndpoint {
+    fn type_string() -> &'static str {
+        "AWS::RDS::DBProxyEndpoint"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// Metadata assigned to a DB proxy endpoint consisting of a key-value pair.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagFormat {
-
-
-    /// 
-    /// Metadata assigned to a DB instance consisting of a key-value pair.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
 
 
     /// 
@@ -110,5 +108,17 @@ pub struct TagFormat {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<String>,
+
+
+    /// 
+    /// Metadata assigned to a DB instance consisting of a key-value pair.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 
 }

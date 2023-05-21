@@ -1,24 +1,20 @@
 
 
 /// Specifies a MemoryDB user. For more information, see Authenticating       users with Access Contol Lists (ACLs).
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUser {
 
 
     /// 
-    /// Denotes whether the user requires a password to authenticate.
+    /// The name of the user.
     /// 
-    /// Example:
-    /// 
-    /// mynewdbuser:   Type: AWS::MemoryDB::User   Properties:    AccessString: on ~* &* +@all   AuthenticationMode:      Passwords: '1234567890123456'     Type: password   UserName: mynewdbuser      AuthenticationMode:   {     "Passwords": ["1234567890123456"],     "Type": "Password"   }
-    /// 
-    /// Required: No
+    /// Required: Yes
     ///
-    /// Type: AuthenticationMode
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "AuthenticationMode")]
-    pub authentication_mode: Option<AuthenticationMode>,
+    /// Update requires: Replacement
+    #[serde(rename = "UserName")]
+    pub user_name: String,
 
 
     /// 
@@ -48,33 +44,36 @@ pub struct CfnUser {
 
 
     /// 
-    /// The name of the user.
+    /// Denotes whether the user requires a password to authenticate.
     /// 
-    /// Required: Yes
+    /// Example:
+    /// 
+    /// mynewdbuser:   Type: AWS::MemoryDB::User   Properties:    AccessString: on ~* &* +@all   AuthenticationMode:      Passwords: '1234567890123456'     Type: password   UserName: mynewdbuser      AuthenticationMode:   {     "Passwords": ["1234567890123456"],     "Type": "Password"   }
+    /// 
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: AuthenticationMode
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "UserName")]
-    pub user_name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "AuthenticationMode")]
+    pub authentication_mode: Option<AuthenticationMode>,
 
+}
+
+impl cfn_resources::CfnResource for CfnUser {
+    fn type_string() -> &'static str {
+        "AWS::MemoryDB::User"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// The AuthenticationMode property type specifies Property description not available. for an AWS::MemoryDB::User.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuthenticationMode {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Passwords")]
-    pub passwords: Option<Vec<String>>,
 
 
     /// Property description not available.
@@ -87,6 +86,17 @@ pub struct AuthenticationMode {
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Passwords")]
+    pub passwords: Option<Vec<String>>,
+
 }
 
 
@@ -97,19 +107,8 @@ pub struct AuthenticationMode {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -121,5 +120,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

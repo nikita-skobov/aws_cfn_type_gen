@@ -3,8 +3,52 @@
 /// The AWS::Lightsail::Container resource specifies a container     service.
 ///
 /// A Lightsail container service is a compute resource to which you can     deploy containers.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnContainer {
+
+
+    /// 
+    /// An array of key-value pairs to apply to this resource.
+    /// 
+    /// For more information, see Tag     in the AWS CloudFormation User Guide.
+    /// 
+    /// NoteThe Value of Tags is optional for Lightsail resources.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of Tag
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
+
+
+    /// 
+    /// A Boolean value indicating whether the container service is disabled.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IsDisabled")]
+    pub is_disabled: Option<bool>,
+
+
+    /// 
+    /// The power specification of the container service.
+    /// 
+    /// The power specifies the amount of RAM, the number of vCPUs, and the base price of the     container service.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: large | medium | micro | nano | small | xlarge
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Power")]
+    pub power: String,
 
 
     /// 
@@ -38,18 +82,6 @@ pub struct CfnContainer {
 
 
     /// 
-    /// A Boolean value indicating whether the container service is disabled.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IsDisabled")]
-    pub is_disabled: Option<bool>,
-
-
-    /// 
     /// The name of the container service.
     /// 
     /// Required: Yes
@@ -59,38 +91,6 @@ pub struct CfnContainer {
     /// Update requires: Replacement
     #[serde(rename = "ServiceName")]
     pub service_name: String,
-
-
-    /// 
-    /// The power specification of the container service.
-    /// 
-    /// The power specifies the amount of RAM, the number of vCPUs, and the base price of the     container service.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: large | medium | micro | nano | small | xlarge
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Power")]
-    pub power: String,
-
-
-    /// 
-    /// An array of key-value pairs to apply to this resource.
-    /// 
-    /// For more information, see Tag     in the AWS CloudFormation User Guide.
-    /// 
-    /// NoteThe Value of Tags is optional for Lightsail resources.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -112,88 +112,19 @@ pub struct CfnContainer {
 
 }
 
+impl cfn_resources::CfnResource for CfnContainer {
+    fn type_string() -> &'static str {
+        "AWS::Lightsail::Container"
+    }
 
-/// HealthCheckConfig is a property of the PublicEndpoint property. It describes the healthcheck configuration of a     container deployment on a container service.
-#[derive(Default, serde::Serialize)]
-pub struct HealthCheckConfig {
-
-
-    /// 
-    /// The number of consecutive health check failures required before moving the container to     the Unhealthy state. The default value is 2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "UnhealthyThreshold")]
-    pub unhealthy_threshold: Option<i64>,
-
-
-    /// 
-    /// The path on the container on which to perform the health check. The default value is       /.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Path")]
-    pub path: Option<String>,
-
-
-    /// 
-    /// The approximate interval, in seconds, between health checks of an individual container.     You can specify between 5 and 300 seconds. The default value is       5.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "IntervalSeconds")]
-    pub interval_seconds: Option<i64>,
-
-
-    /// 
-    /// The amount of time, in seconds, during which no response means a failed health check.     You can specify between 2 and 60 seconds. The default value is       2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "TimeoutSeconds")]
-    pub timeout_seconds: Option<i64>,
-
-
-    /// 
-    /// The HTTP codes to use when checking for a successful response from a container. You can     specify values between 200 and 499. You can specify multiple     values (for example, 200,202) or a range of values (for example,       200-299).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SuccessCodes")]
-    pub success_codes: Option<String>,
-
-
-    /// 
-    /// The number of consecutive health check successes required before moving the container     to the Healthy state. The default value is 2.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "HealthyThreshold")]
-    pub healthy_threshold: Option<i64>,
-
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
 /// PublicEndpoint is a property of the ContainerServiceDeployment property. It describes describes the settings of the     public endpoint of a container on a container service.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PublicEndpoint {
 
 
@@ -235,41 +166,10 @@ pub struct PublicEndpoint {
 }
 
 
-/// PublicDomainName is a property of the AWS::Lightsail::Container resource. It describes the public domain names to use     with a container service, such as example.com and     www.example.com. It also describes the certificates to use with a container     service.
-#[derive(Default, serde::Serialize)]
-pub struct PublicDomainName {
-
-
-    /// 
-    /// The name of the certificate for the public domains.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CertificateName")]
-    pub certificate_name: Option<String>,
-
-
-    /// 
-    /// The public domain names to use with the container service.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "DomainNames")]
-    pub domain_names: Option<Vec<String>>,
-
-}
-
-
 /// ContainerServiceDeployment is a property of the AWS::Lightsail::Container resource. It describes a container deployment     configuration of a container service.
 ///
 /// A deployment specifies the settings, such as the ports and launch command, of containers     that are deployed to your container service.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ContainerServiceDeployment {
 
 
@@ -299,6 +199,37 @@ pub struct ContainerServiceDeployment {
 }
 
 
+/// EnvironmentVariable is a property of the Container property. It describes the environment variables of a container on a container service which are key-value parameters that     provide dynamic configuration of the application or script run by the container.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct EnvironmentVariable {
+
+
+    /// 
+    /// The environment variable value.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
+
+
+    /// 
+    /// The environment variable key.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Variable")]
+    pub variable: Option<String>,
+
+}
+
+
 /// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
 ///
 /// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
@@ -306,19 +237,8 @@ pub struct ContainerServiceDeployment {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -331,12 +251,145 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: String,
 
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+}
+
+
+/// HealthCheckConfig is a property of the PublicEndpoint property. It describes the healthcheck configuration of a     container deployment on a container service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct HealthCheckConfig {
+
+
+    /// 
+    /// The HTTP codes to use when checking for a successful response from a container. You can     specify values between 200 and 499. You can specify multiple     values (for example, 200,202) or a range of values (for example,       200-299).
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SuccessCodes")]
+    pub success_codes: Option<String>,
+
+
+    /// 
+    /// The number of consecutive health check successes required before moving the container     to the Healthy state. The default value is 2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "HealthyThreshold")]
+    pub healthy_threshold: Option<i64>,
+
+
+    /// 
+    /// The path on the container on which to perform the health check. The default value is       /.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Path")]
+    pub path: Option<String>,
+
+
+    /// 
+    /// The number of consecutive health check failures required before moving the container to     the Unhealthy state. The default value is 2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "UnhealthyThreshold")]
+    pub unhealthy_threshold: Option<i64>,
+
+
+    /// 
+    /// The approximate interval, in seconds, between health checks of an individual container.     You can specify between 5 and 300 seconds. The default value is       5.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "IntervalSeconds")]
+    pub interval_seconds: Option<i64>,
+
+
+    /// 
+    /// The amount of time, in seconds, during which no response means a failed health check.     You can specify between 2 and 60 seconds. The default value is       2.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "TimeoutSeconds")]
+    pub timeout_seconds: Option<i64>,
+
+}
+
+
+/// PublicDomainName is a property of the AWS::Lightsail::Container resource. It describes the public domain names to use     with a container service, such as example.com and     www.example.com. It also describes the certificates to use with a container     service.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct PublicDomainName {
+
+
+    /// 
+    /// The public domain names to use with the container service.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "DomainNames")]
+    pub domain_names: Option<Vec<String>>,
+
+
+    /// 
+    /// The name of the certificate for the public domains.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CertificateName")]
+    pub certificate_name: Option<String>,
+
 }
 
 
 /// Container is a property of the ContainerServiceDeployment property. It describes the settings of a container     that will be launched, or that is launched, to an Amazon Lightsail container     service.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Container {
+
+
+    /// 
+    /// An object that describes the open firewall ports and protocols of the container.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of PortInfo
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Ports")]
+    pub ports: Option<Vec<PortInfo>>,
 
 
     /// 
@@ -349,6 +402,18 @@ pub struct Container {
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
     pub container_name: Option<String>,
+
+
+    /// 
+    /// The environment variables of the container.
+    /// 
+    /// Required: No
+    ///
+    /// Type: List of EnvironmentVariable
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Environment")]
+    pub environment: Option<Vec<EnvironmentVariable>>,
 
 
     /// 
@@ -378,66 +443,11 @@ pub struct Container {
     #[serde(rename = "Image")]
     pub image: Option<String>,
 
-
-    /// 
-    /// The environment variables of the container.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of EnvironmentVariable
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Environment")]
-    pub environment: Option<Vec<EnvironmentVariable>>,
-
-
-    /// 
-    /// An object that describes the open firewall ports and protocols of the container.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of PortInfo
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Ports")]
-    pub ports: Option<Vec<PortInfo>>,
-
-}
-
-
-/// EnvironmentVariable is a property of the Container property. It describes the environment variables of a container on a container service which are key-value parameters that     provide dynamic configuration of the application or script run by the container.
-#[derive(Default, serde::Serialize)]
-pub struct EnvironmentVariable {
-
-
-    /// 
-    /// The environment variable key.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Variable")]
-    pub variable: Option<String>,
-
-
-    /// 
-    /// The environment variable value.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-
 }
 
 
 /// PortInfo is a property of the Container property. It describes the ports to open and the protocols to use for     a container on a Amazon Lightsail container service.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PortInfo {
 
 

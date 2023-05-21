@@ -17,22 +17,8 @@
 /// Deleting Account resources
 ///
 /// The default DeletionPolicy for resource         AWS::Organizations::Account is Retain. For more       information about how AWS CloudFormation deletes resources, see         DeletionPolicy Attribute.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccount {
-
-
-    /// 
-    /// A list of tags that you want to attach to the newly created account. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
-    /// 
-    /// NoteIf any one of the tags is not valid or if you exceed the maximum allowed number of         tags for an account, then the entire request fails and the account is not         created.
-    /// 
-    /// Required: No
-    ///
-    /// Type: List of Tag
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -78,23 +64,17 @@ pub struct CfnAccount {
 
 
     /// 
-    /// The email address associated with the AWS account.
+    /// A list of tags that you want to attach to the newly created account. For each tag in       the list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
     /// 
-    /// The regex pattern for this parameter is a string of characters that represents a       standard internet email address.
+    /// NoteIf any one of the tags is not valid or if you exceed the maximum allowed number of         tags for an account, then the entire request fails and the account is not         created.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Minimum: 6
-    ///
-    /// Maximum: 64
-    ///
-    /// Pattern: [^\s@]+@[^\s@]+\.[^\s@]+
-    ///
-    /// Update requires: Updates are not supported.
-    #[serde(rename = "Email")]
-    pub email: String,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
 
     /// 
@@ -118,6 +98,36 @@ pub struct CfnAccount {
     #[serde(rename = "ParentIds")]
     pub parent_ids: Option<Vec<String>>,
 
+
+    /// 
+    /// The email address associated with the AWS account.
+    /// 
+    /// The regex pattern for this parameter is a string of characters that represents a       standard internet email address.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 6
+    ///
+    /// Maximum: 64
+    ///
+    /// Pattern: [^\s@]+@[^\s@]+\.[^\s@]+
+    ///
+    /// Update requires: Updates are not supported.
+    #[serde(rename = "Email")]
+    pub email: String,
+
+}
+
+impl cfn_resources::CfnResource for CfnAccount {
+    fn type_string() -> &'static str {
+        "AWS::Organizations::Account"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -128,19 +138,8 @@ pub struct CfnAccount {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -152,5 +151,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

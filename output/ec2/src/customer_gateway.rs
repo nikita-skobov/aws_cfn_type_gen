@@ -1,46 +1,8 @@
 
 
 /// Specifies a customer gateway.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCustomerGateway {
-
-
-    /// 
-    /// IPv4 address for the customer gateway device's outside interface. The address must be static.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "IpAddress")]
-    pub ip_address: String,
-
-
-    /// 
-    /// The type of VPN connection that this customer gateway supports       (ipsec.1).
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: ipsec.1
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Type")]
-    pub cfn_type: String,
-
-
-    /// 
-    /// The name of customer gateway device.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DeviceName")]
-    pub device_name: Option<String>,
 
 
     /// 
@@ -68,6 +30,54 @@ pub struct CfnCustomerGateway {
     #[serde(rename = "BgpAsn")]
     pub bgp_asn: i64,
 
+
+    /// 
+    /// The type of VPN connection that this customer gateway supports       (ipsec.1).
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Allowed values: ipsec.1
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Type")]
+    pub cfn_type: String,
+
+
+    /// 
+    /// IPv4 address for the customer gateway device's outside interface. The address must be static.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "IpAddress")]
+    pub ip_address: String,
+
+
+    /// 
+    /// The name of customer gateway device.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DeviceName")]
+    pub device_name: Option<String>,
+
+}
+
+impl cfn_resources::CfnResource for CfnCustomerGateway {
+    fn type_string() -> &'static str {
+        "AWS::EC2::CustomerGateway"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -78,19 +88,8 @@ pub struct CfnCustomerGateway {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
 
 
     /// 
@@ -102,5 +101,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Key")]
     pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
 
 }

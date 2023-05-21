@@ -1,7 +1,7 @@
 
 
 /// The AWS::LakeFormation::DataLakeSettings resource is an AWS Lake Formation resource type that manages the data lake settings for your account.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDataLakeSettings {
 
 
@@ -24,21 +24,27 @@ pub struct CfnDataLakeSettings {
 
 
     /// 
-    /// Specifies whether access control on a newly created table is managed by Lake Formation permissions or exclusively by IAM permissions.
-    /// 
-    /// A null value indicates that the access is controlled by Lake Formation permissions.       ALL permissions assigned to IAM_ALLOWED_PRINCIPALS group     indicate that the user's IAM permissions determine the access to the     table. This is referred to as the setting "Use only IAM access control," and is to support     the backward compatibility with the AWS Glue permission model implemented by IAM     permissions.
-    /// 
-    /// The only permitted values are an empty array or an array that contains a single JSON object that grants ALL permissions to IAM_ALLOWED_PRINCIPALS.
-    /// 
-    /// For more information, see Changing the default security settings for your data lake.
+    /// A list of the account IDs of AWS accounts with Amazon EMR clusters or third-party engines that are allwed to perform data filtering.
     /// 
     /// Required: No
     ///
-    /// Type: CreateTableDefaultPermissions
+    /// Type: ExternalDataFilteringAllowList
     ///
     /// Update requires: No interruption
-    #[serde(rename = "CreateTableDefaultPermissions")]
-    pub create_table_default_permissions: Option<CreateTableDefaultPermissions>,
+    #[serde(rename = "ExternalDataFilteringAllowList")]
+    pub external_data_filtering_allow_list: Option<ExternalDataFilteringAllowList>,
+
+
+    /// 
+    /// A list of AWS Lake Formation principals.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Admins
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Admins")]
+    pub admins: Option<Admins>,
 
 
     /// 
@@ -66,18 +72,6 @@ pub struct CfnDataLakeSettings {
 
 
     /// 
-    /// A list of the account IDs of AWS accounts with Amazon EMR clusters or third-party engines that are allwed to perform data filtering.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ExternalDataFilteringAllowList
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExternalDataFilteringAllowList")]
-    pub external_data_filtering_allow_list: Option<ExternalDataFilteringAllowList>,
-
-
-    /// 
     /// An array of UTF-8 strings.
     /// 
     /// A list of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs). The user ARNs can be logged in the resource owner's CloudTrail log. 	     	    You may want to specify this property when you are in a high-trust boundary, such as the same team or company.
@@ -89,18 +83,6 @@ pub struct CfnDataLakeSettings {
     /// Update requires: No interruption
     #[serde(rename = "TrustedResourceOwners")]
     pub trusted_resource_owners: Option<Vec<String>>,
-
-
-    /// 
-    /// A list of AWS Lake Formation principals.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Admins
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "Admins")]
-    pub admins: Option<Admins>,
 
 
     /// 
@@ -120,24 +102,73 @@ pub struct CfnDataLakeSettings {
     #[serde(rename = "CreateDatabaseDefaultPermissions")]
     pub create_database_default_permissions: Option<CreateDatabaseDefaultPermissions>,
 
+
+    /// 
+    /// Specifies whether access control on a newly created table is managed by Lake Formation permissions or exclusively by IAM permissions.
+    /// 
+    /// A null value indicates that the access is controlled by Lake Formation permissions.       ALL permissions assigned to IAM_ALLOWED_PRINCIPALS group     indicate that the user's IAM permissions determine the access to the     table. This is referred to as the setting "Use only IAM access control," and is to support     the backward compatibility with the AWS Glue permission model implemented by IAM     permissions.
+    /// 
+    /// The only permitted values are an empty array or an array that contains a single JSON object that grants ALL permissions to IAM_ALLOWED_PRINCIPALS.
+    /// 
+    /// For more information, see Changing the default security settings for your data lake.
+    /// 
+    /// Required: No
+    ///
+    /// Type: CreateTableDefaultPermissions
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CreateTableDefaultPermissions")]
+    pub create_table_default_permissions: Option<CreateTableDefaultPermissions>,
+
+}
+
+impl cfn_resources::CfnResource for CfnDataLakeSettings {
+    fn type_string() -> &'static str {
+        "AWS::LakeFormation::DataLakeSettings"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
-/// Specifies whether access control on a newly created table is managed by Lake Formation permissions or exclusively by IAM permissions.
+/// A list of the account IDs of AWS accounts with Amazon EMR     clusters that are allowed to perform data filtering.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ExternalDataFilteringAllowList {
+
+}
+
+
+/// A list of AWS Lake Formation principals.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Admins {
+
+}
+
+
+/// Specifies whether access control on a newly created database is managed by Lake Formation permissions or exclusively by IAM permissions.
 ///
-/// A null value indicates that the access is controlled by Lake Formation permissions. A value that assigns ALL to IAM_ALLOWED_PRINCIPALS indicates access control by IAM permissions.       This is referred to as the setting "Use only IAM access control," and is for backward compatibility with the AWS Glue permission model implemented by IAM permissions.
+/// A null value indicates that the access is controlled by Lake Formation permissions. A value that assigns ALL to IAM_ALLOWED_PRINCIPALS indicates access control by IAM permissions. This is referred to as the setting "Use only IAM access control," and is for backward compatibility with the AWS Glue permission model implemented by IAM permissions.
 ///
 /// The only permitted values are an empty array or an array that contains a single JSON object that grants ALL to IAM_ALLOWED_PRINCIPALS.
 ///
-/// For more information, see Changing the Default Security Settings for Your Data Lake.
-#[derive(Default, serde::Serialize)]
-pub struct CreateTableDefaultPermissions {
+/// For more information, see Changing the default security settings for your data lake.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CreateDatabaseDefaultPermissions {
+
+}
+
+
+/// Permissions granted to a principal.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Permissions {
 
 }
 
 
 /// The Lake Formation principal.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataLakePrincipal {
 
 
@@ -155,15 +186,8 @@ pub struct DataLakePrincipal {
 }
 
 
-/// A list of the account IDs of AWS accounts with Amazon EMR     clusters that are allowed to perform data filtering.
-#[derive(Default, serde::Serialize)]
-pub struct ExternalDataFilteringAllowList {
-
-}
-
-
 /// Permissions granted to a principal.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PrincipalPermissions {
 
 
@@ -193,28 +217,14 @@ pub struct PrincipalPermissions {
 }
 
 
-/// A list of AWS Lake Formation principals.
-#[derive(Default, serde::Serialize)]
-pub struct Admins {
-
-}
-
-
-/// Permissions granted to a principal.
-#[derive(Default, serde::Serialize)]
-pub struct Permissions {
-
-}
-
-
-/// Specifies whether access control on a newly created database is managed by Lake Formation permissions or exclusively by IAM permissions.
+/// Specifies whether access control on a newly created table is managed by Lake Formation permissions or exclusively by IAM permissions.
 ///
-/// A null value indicates that the access is controlled by Lake Formation permissions. A value that assigns ALL to IAM_ALLOWED_PRINCIPALS indicates access control by IAM permissions. This is referred to as the setting "Use only IAM access control," and is for backward compatibility with the AWS Glue permission model implemented by IAM permissions.
+/// A null value indicates that the access is controlled by Lake Formation permissions. A value that assigns ALL to IAM_ALLOWED_PRINCIPALS indicates access control by IAM permissions.       This is referred to as the setting "Use only IAM access control," and is for backward compatibility with the AWS Glue permission model implemented by IAM permissions.
 ///
 /// The only permitted values are an empty array or an array that contains a single JSON object that grants ALL to IAM_ALLOWED_PRINCIPALS.
 ///
-/// For more information, see Changing the default security settings for your data lake.
-#[derive(Default, serde::Serialize)]
-pub struct CreateDatabaseDefaultPermissions {
+/// For more information, see Changing the Default Security Settings for Your Data Lake.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CreateTableDefaultPermissions {
 
 }

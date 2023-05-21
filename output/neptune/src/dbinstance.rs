@@ -9,20 +9,32 @@
 /// Deleting DB Instances
 ///
 /// When properties labeled Update requires: Replacement are updated,      AWS CloudFormation first creates a       replacement DB instance, changes references from other dependent resources to point to       the replacement DB instance, and finally deletes the old DB instance.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBInstance {
 
 
     /// 
-    /// An arbitrary set of tags (key-value pairs) for this DB instance.
+    /// A DB subnet group to associate with the DB instance. If you update this value,          the new subnet group must be a subnet group in a new virtual private cloud          (VPC).
     /// 
     /// Required: No
     ///
-    /// Type: List of Tag
+    /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    /// Update requires: Replacement
+    #[serde(rename = "DBSubnetGroupName")]
+    pub dbsubnet_group_name: Option<String>,
+
+
+    /// 
+    /// If the DB instance is a member of a DB cluster, contains the name of the DB cluster that    the DB instance is a member of.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "DBClusterIdentifier")]
+    pub dbcluster_identifier: Option<String>,
 
 
     /// 
@@ -40,15 +52,15 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// A DB subnet group to associate with the DB instance. If you update this value,          the new subnet group must be a subnet group in a new virtual private cloud          (VPC).
+    /// Specifies the weekly time range during which system maintenance can occur, in Universal    Coordinated Time (UTC).
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBSubnetGroupName")]
-    pub dbsubnet_group_name: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "PreferredMaintenanceWindow")]
+    pub preferred_maintenance_window: Option<String>,
 
 
     /// 
@@ -80,6 +92,18 @@ pub struct CfnDBInstance {
 
 
     /// 
+    /// Specifies the name of the Availability Zone the DB instance is located in.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "AvailabilityZone")]
+    pub availability_zone: Option<String>,
+
+
+    /// 
     /// Indicates that minor version patches are applied automatically.
     /// 
     /// When updating this property, some interruptions may occur.
@@ -94,27 +118,15 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// If the DB instance is a member of a DB cluster, contains the name of the DB cluster that    the DB instance is a member of.
+    /// Contains a user-supplied database identifier. This identifier is the unique key that    identifies a DB instance.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "DBClusterIdentifier")]
-    pub dbcluster_identifier: Option<String>,
-
-
-    /// 
-    /// Specifies the weekly time range during which system maintenance can occur, in Universal    Coordinated Time (UTC).
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PreferredMaintenanceWindow")]
-    pub preferred_maintenance_window: Option<String>,
+    #[serde(rename = "DBInstanceIdentifier")]
+    pub dbinstance_identifier: Option<String>,
 
 
     /// 
@@ -132,28 +144,26 @@ pub struct CfnDBInstance {
 
 
     /// 
-    /// Specifies the name of the Availability Zone the DB instance is located in.
+    /// An arbitrary set of tags (key-value pairs) for this DB instance.
     /// 
     /// Required: No
     ///
-    /// Type: String
+    /// Type: List of Tag
     ///
-    /// Update requires: Replacement
-    #[serde(rename = "AvailabilityZone")]
-    pub availability_zone: Option<String>,
+    /// Update requires: No interruption
+    #[serde(rename = "Tags")]
+    pub tags: Option<Vec<Tag>>,
 
+}
 
-    /// 
-    /// Contains a user-supplied database identifier. This identifier is the unique key that    identifies a DB instance.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "DBInstanceIdentifier")]
-    pub dbinstance_identifier: Option<String>,
+impl cfn_resources::CfnResource for CfnDBInstance {
+    fn type_string() -> &'static str {
+        "AWS::Neptune::DBInstance"
+    }
 
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -164,19 +174,8 @@ pub struct CfnDBInstance {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
 
 
     /// 
@@ -188,5 +187,16 @@ pub struct Tag {
     /// 
     #[serde(rename = "Value")]
     pub value: String,
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
 
 }

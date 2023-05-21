@@ -1,19 +1,8 @@
 
 
 /// The AWS::Detective::Graph resource is an Amazon Detective resource type       that creates a Detective behavior graph. The requesting account becomes the       administrator account for the behavior graph.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGraph {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AutoEnableMembers")]
-    pub auto_enable_members: Option<bool>,
 
 
     /// 
@@ -27,6 +16,27 @@ pub struct CfnGraph {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AutoEnableMembers")]
+    pub auto_enable_members: Option<bool>,
+
+}
+
+impl cfn_resources::CfnResource for CfnGraph {
+    fn type_string() -> &'static str {
+        "AWS::Detective::Graph"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }
 
 
@@ -37,7 +47,7 @@ pub struct CfnGraph {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
 
 

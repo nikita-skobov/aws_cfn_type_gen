@@ -5,7 +5,7 @@
 /// This makes it possible to block public access to the origin, allowing viewers (users) to 			access the origin's content only through CloudFront.
 ///
 /// For more information about using a CloudFront origin access control, see Restricting access to an AWS origin in the 				Amazon CloudFront Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnOriginAccessControl {
 
 
@@ -22,28 +22,24 @@ pub struct CfnOriginAccessControl {
 
 }
 
+impl cfn_resources::CfnResource for CfnOriginAccessControl {
+    fn type_string() -> &'static str {
+        "AWS::CloudFront::OriginAccessControl"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
 
 /// Creates a new origin access control in CloudFront. After you create an origin access 			control, you can add it to an origin in a CloudFront distribution so that CloudFront sends 			authenticated (signed) requests to the origin.
 ///
 /// This makes it possible to block public access to the origin, allowing viewers (users) to 			access the origin's content only through CloudFront.
 ///
 /// For more information about using a CloudFront origin access control, see Restricting access to an AWS origin in the 				Amazon CloudFront Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OriginAccessControlConfig {
-
-
-    /// 
-    /// The signing protocol of the origin access control, which determines how CloudFront signs 			(authenticates) requests. The only valid value is sigv4.
-    /// 
-    /// Required: Yes
-    ///
-    /// Type: String
-    ///
-    /// Allowed values: sigv4
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SigningProtocol")]
-    pub signing_protocol: String,
 
 
     /// 
@@ -77,6 +73,18 @@ pub struct OriginAccessControlConfig {
 
 
     /// 
+    /// A description of the origin access control.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Description")]
+    pub description: Option<String>,
+
+
+    /// 
     /// The type of origin that this origin access control is for.
     /// 
     /// Required: Yes
@@ -91,14 +99,16 @@ pub struct OriginAccessControlConfig {
 
 
     /// 
-    /// A description of the origin access control.
+    /// The signing protocol of the origin access control, which determines how CloudFront signs 			(authenticates) requests. The only valid value is sigv4.
     /// 
-    /// Required: No
+    /// Required: Yes
     ///
     /// Type: String
     ///
+    /// Allowed values: sigv4
+    ///
     /// Update requires: No interruption
-    #[serde(rename = "Description")]
-    pub description: Option<String>,
+    #[serde(rename = "SigningProtocol")]
+    pub signing_protocol: String,
 
 }

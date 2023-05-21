@@ -1,20 +1,36 @@
 
 
 /// Use the AWS::IoT::Certificate resource to declare an AWS IoT X.509     certificate. For information about working with X.509 certificates, see X.509 Client       Certificates in the AWS IoT Developer Guide.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCertificate {
 
 
     /// 
-    /// The certificate data in PEM format. Requires SNI_ONLY for the certificate mode or the accompanying CACertificatePem for registration.
+    /// The status of the certificate.
+    /// 
+    /// Valid values are ACTIVE, INACTIVE, REVOKED, PENDING_TRANSFER, and     PENDING_ACTIVATION.
+    /// 
+    /// The status value REGISTER_INACTIVE is deprecated and should not be used.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "Status")]
+    pub status: String,
+
+
+    /// 
+    /// The CA certificate used to sign the device certificate being registered, not available when CertificateMode is SNI_ONLY.
     /// 
     /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
-    #[serde(rename = "CertificatePem")]
-    pub certificate_pem: Option<String>,
+    #[serde(rename = "CACertificatePem")]
+    pub cacertificate_pem: Option<String>,
 
 
     /// 
@@ -34,18 +50,6 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The CA certificate used to sign the device certificate being registered, not available when CertificateMode is SNI_ONLY.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "CACertificatePem")]
-    pub cacertificate_pem: Option<String>,
-
-
-    /// 
     /// The certificate signing request (CSR).
     /// 
     /// Required: No
@@ -58,18 +62,24 @@ pub struct CfnCertificate {
 
 
     /// 
-    /// The status of the certificate.
+    /// The certificate data in PEM format. Requires SNI_ONLY for the certificate mode or the accompanying CACertificatePem for registration.
     /// 
-    /// Valid values are ACTIVE, INACTIVE, REVOKED, PENDING_TRANSFER, and     PENDING_ACTIVATION.
-    /// 
-    /// The status value REGISTER_INACTIVE is deprecated and should not be used.
-    /// 
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
-    /// Update requires: No interruption
-    #[serde(rename = "Status")]
-    pub status: String,
+    /// Update requires: Replacement
+    #[serde(rename = "CertificatePem")]
+    pub certificate_pem: Option<String>,
 
+}
+
+impl cfn_resources::CfnResource for CfnCertificate {
+    fn type_string() -> &'static str {
+        "AWS::IoT::Certificate"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
 }

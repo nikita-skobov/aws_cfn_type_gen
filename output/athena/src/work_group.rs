@@ -1,32 +1,8 @@
 
 
 /// The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup,       which contains a name, description, creation time, state, and other configuration,       listed under WorkGroupConfiguration. Each workgroup enables you to       isolate queries for you or your group from other queries in the same account. For more       information, see CreateWorkGroup in       the Amazon Athena API Reference.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnWorkGroup {
-
-
-    /// 
-    /// The configuration of the workgroup, which includes the location in Amazon S3 where       query results are stored, the encryption option, if any, used for query results, whether       Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of       bytes scanned (cutoff) per query, if it is specified. The EnforceWorkGroupConfiguration option determines whether workgroup       settings override client-side query settings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: WorkGroupConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "WorkGroupConfiguration")]
-    pub work_group_configuration: Option<WorkGroupConfiguration>,
-
-
-    /// 
-    /// The option to delete a workgroup and its contents even if the workgroup contains any       named queries. The default is false.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RecursiveDeleteOption")]
-    pub recursive_delete_option: Option<bool>,
 
 
     /// 
@@ -42,17 +18,15 @@ pub struct CfnWorkGroup {
 
 
     /// 
-    /// The workgroup name.
+    /// The option to delete a workgroup and its contents even if the workgroup contains any       named queries. The default is false.
     /// 
-    /// Required: Yes
+    /// Required: No
     ///
-    /// Type: String
+    /// Type: Boolean
     ///
-    /// Pattern: [a-zA-Z0-9._-]{1,128}
-    ///
-    /// Update requires: Replacement
-    #[serde(rename = "Name")]
-    pub name: String,
+    /// Update requires: No interruption
+    #[serde(rename = "RecursiveDeleteOption")]
+    pub recursive_delete_option: Option<bool>,
 
 
     /// 
@@ -72,6 +46,20 @@ pub struct CfnWorkGroup {
 
 
     /// 
+    /// The workgroup name.
+    /// 
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Pattern: [a-zA-Z0-9._-]{1,128}
+    ///
+    /// Update requires: Replacement
+    #[serde(rename = "Name")]
+    pub name: String,
+
+
+    /// 
     /// The state of the workgroup: ENABLED or DISABLED.
     /// 
     /// Required: No
@@ -84,11 +72,199 @@ pub struct CfnWorkGroup {
     #[serde(rename = "State")]
     pub state: Option<String>,
 
+
+    /// 
+    /// The configuration of the workgroup, which includes the location in Amazon S3 where       query results are stored, the encryption option, if any, used for query results, whether       Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of       bytes scanned (cutoff) per query, if it is specified. The EnforceWorkGroupConfiguration option determines whether workgroup       settings override client-side query settings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: WorkGroupConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "WorkGroupConfiguration")]
+    pub work_group_configuration: Option<WorkGroupConfiguration>,
+
+}
+
+impl cfn_resources::CfnResource for CfnWorkGroup {
+    fn type_string() -> &'static str {
+        "AWS::Athena::WorkGroup"
+    }
+
+    fn properties(self) -> serde_json::Value {
+        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+    }
+}
+
+
+/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
+///
+/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
+///
+/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
+///
+/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Tag {
+
+
+    /// 
+    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Key")]
+    pub key: String,
+
+
+    /// 
+    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
+    /// 
+    /// Required: Yes
+    /// 
+    /// Type: String
+    /// 
+    #[serde(rename = "Value")]
+    pub value: String,
+
+}
+
+
+/// The AclConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct AclConfiguration {
+
+
+    /// Property description not available.
+    ///
+    /// Required: Yes
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "S3AclOption")]
+    pub s3_acl_option: String,
+
+}
+
+
+/// The configuration of the workgroup, which includes the location in Amazon S3 where       query results are stored, the encryption option, if any, used for query results, whether       Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of       bytes scanned (cutoff) per query, if it is specified. The EnforceWorkGroupConfiguration option determines whether workgroup       settings override client-side query settings.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct WorkGroupConfiguration {
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: CustomerContentEncryptionConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "CustomerContentEncryptionConfiguration")]
+    pub customer_content_encryption_configuration: Option<CustomerContentEncryptionConfiguration>,
+
+
+    /// 
+    /// If set to "true", the settings for the workgroup override client-side settings. If set       to "false", client-side settings are used. For more information, see Workgroup Settings Override Client-Side Settings.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EnforceWorkGroupConfiguration")]
+    pub enforce_work_group_configuration: Option<bool>,
+
+
+    /// 
+    /// If set to true, allows members assigned to a workgroup to reference       Amazon S3 Requester Pays buckets in queries. If set to false, workgroup       members cannot query data from Requester Pays buckets, and queries that retrieve data       from Requester Pays buckets cause an error. The default is false. For more       information about Requester Pays buckets, see Requester Pays Buckets       in the Amazon Simple Storage Service Developer Guide.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "RequesterPaysEnabled")]
+    pub requester_pays_enabled: Option<bool>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: EngineVersion
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "EngineVersion")]
+    pub engine_version: Option<EngineVersion>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "AdditionalConfiguration")]
+    pub additional_configuration: Option<String>,
+
+
+    /// 
+    /// Specifies the location in Amazon S3 where query results are stored and the encryption       option, if any, used for query results. For more information, see Working with Query         Results, Output Files, and Query History.
+    /// 
+    /// Required: No
+    ///
+    /// Type: ResultConfiguration
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ResultConfiguration")]
+    pub result_configuration: Option<ResultConfiguration>,
+
+
+    /// Property description not available.
+    ///
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "ExecutionRole")]
+    pub execution_role: Option<String>,
+
+
+    /// 
+    /// Indicates that the Amazon CloudWatch metrics are enabled for the workgroup.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Boolean
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "PublishCloudWatchMetricsEnabled")]
+    pub publish_cloud_watch_metrics_enabled: Option<bool>,
+
+
+    /// 
+    /// The upper limit (cutoff) for the amount of bytes a single query in a workgroup is       allowed to scan. No default is defined.
+    /// 
+    /// NoteThis property currently supports integer types. Support for long values is         planned.
+    /// 
+    /// Required: No
+    ///
+    /// Type: Integer
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "BytesScannedCutoffPerQuery")]
+    pub bytes_scanned_cutoff_per_query: Option<i64>,
+
 }
 
 
 /// If query results are encrypted in Amazon S3, indicates the encryption option used (for       example, SSE_KMS or CSE_KMS) and key information.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EncryptionConfiguration {
 
 
@@ -122,9 +298,9 @@ pub struct EncryptionConfiguration {
 }
 
 
-/// The AclConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
-#[derive(Default, serde::Serialize)]
-pub struct AclConfiguration {
+/// The CustomerContentEncryptionConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CustomerContentEncryptionConfiguration {
 
 
     /// Property description not available.
@@ -134,144 +310,15 @@ pub struct AclConfiguration {
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "S3AclOption")]
-    pub s3_acl_option: String,
-
-}
-
-
-/// The configuration of the workgroup, which includes the location in Amazon S3 where       query results are stored, the encryption option, if any, used for query results, whether       Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of       bytes scanned (cutoff) per query, if it is specified. The EnforceWorkGroupConfiguration option determines whether workgroup       settings override client-side query settings.
-#[derive(Default, serde::Serialize)]
-pub struct WorkGroupConfiguration {
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: EngineVersion
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EngineVersion")]
-    pub engine_version: Option<EngineVersion>,
-
-
-    /// 
-    /// If set to "true", the settings for the workgroup override client-side settings. If set       to "false", client-side settings are used. For more information, see Workgroup Settings Override Client-Side Settings.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "EnforceWorkGroupConfiguration")]
-    pub enforce_work_group_configuration: Option<bool>,
-
-
-    /// 
-    /// If set to true, allows members assigned to a workgroup to reference       Amazon S3 Requester Pays buckets in queries. If set to false, workgroup       members cannot query data from Requester Pays buckets, and queries that retrieve data       from Requester Pays buckets cause an error. The default is false. For more       information about Requester Pays buckets, see Requester Pays Buckets       in the Amazon Simple Storage Service Developer Guide.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "RequesterPaysEnabled")]
-    pub requester_pays_enabled: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExecutionRole")]
-    pub execution_role: Option<String>,
-
-
-    /// 
-    /// The upper limit (cutoff) for the amount of bytes a single query in a workgroup is       allowed to scan. No default is defined.
-    /// 
-    /// NoteThis property currently supports integer types. Support for long values is         planned.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Integer
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "BytesScannedCutoffPerQuery")]
-    pub bytes_scanned_cutoff_per_query: Option<i64>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: CustomerContentEncryptionConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "CustomerContentEncryptionConfiguration")]
-    pub customer_content_encryption_configuration: Option<CustomerContentEncryptionConfiguration>,
-
-
-    /// 
-    /// Indicates that the Amazon CloudWatch metrics are enabled for the workgroup.
-    /// 
-    /// Required: No
-    ///
-    /// Type: Boolean
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "PublishCloudWatchMetricsEnabled")]
-    pub publish_cloud_watch_metrics_enabled: Option<bool>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "AdditionalConfiguration")]
-    pub additional_configuration: Option<String>,
-
-
-    /// 
-    /// Specifies the location in Amazon S3 where query results are stored and the encryption       option, if any, used for query results. For more information, see Working with Query         Results, Output Files, and Query History.
-    /// 
-    /// Required: No
-    ///
-    /// Type: ResultConfiguration
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ResultConfiguration")]
-    pub result_configuration: Option<ResultConfiguration>,
+    #[serde(rename = "KmsKey")]
+    pub kms_key: String,
 
 }
 
 
 /// The Athena engine version for running queries, or the PySpark engine       version for running sessions.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EngineVersion {
-
-
-    /// 
-    /// The engine version requested by the user. Possible values are determined by the output       of ListEngineVersions, including AUTO. The default is AUTO.
-    /// 
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Minimum: 1
-    ///
-    /// Maximum: 128
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "SelectedEngineVersion")]
-    pub selected_engine_version: Option<String>,
 
 
     /// 
@@ -289,11 +336,27 @@ pub struct EngineVersion {
     #[serde(rename = "EffectiveEngineVersion")]
     pub effective_engine_version: Option<String>,
 
+
+    /// 
+    /// The engine version requested by the user. Possible values are determined by the output       of ListEngineVersions, including AUTO. The default is AUTO.
+    /// 
+    /// Required: No
+    ///
+    /// Type: String
+    ///
+    /// Minimum: 1
+    ///
+    /// Maximum: 128
+    ///
+    /// Update requires: No interruption
+    #[serde(rename = "SelectedEngineVersion")]
+    pub selected_engine_version: Option<String>,
+
 }
 
 
 /// The location in Amazon S3 where query and calculation results are stored and the encryption       option, if any, used for query and calculation results. These are known as "client-side settings". If       workgroup settings override client-side settings, then the query uses the workgroup       settings.
-#[derive(Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResultConfiguration {
 
 
@@ -307,17 +370,6 @@ pub struct ResultConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OutputLocation")]
     pub output_location: Option<String>,
-
-
-    /// Property description not available.
-    ///
-    /// Required: No
-    ///
-    /// Type: String
-    ///
-    /// Update requires: No interruption
-    #[serde(rename = "ExpectedBucketOwner")]
-    pub expected_bucket_owner: Option<String>,
 
 
     /// 
@@ -342,57 +394,15 @@ pub struct ResultConfiguration {
     #[serde(rename = "AclConfiguration")]
     pub acl_configuration: Option<AclConfiguration>,
 
-}
-
-
-/// You can use the Resource Tags property to apply tags to resources, which can help you    identify and categorize those resources. You can tag only resources for which AWS CloudFormation supports    tagging. For information about which resources you can tag with CloudFormation, see the individual    resources in AWS resource and property types reference.
-///
-/// In addition to any tags you define, CloudFormation automatically creates the following    stack-level tags with the prefix aws::
-///
-/// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
-///
-/// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Default, serde::Serialize)]
-pub struct Tag {
-
-
-    /// 
-    /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Value")]
-    pub value: String,
-
-
-    /// 
-    /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
-    /// Required: Yes
-    /// 
-    /// Type: String
-    /// 
-    #[serde(rename = "Key")]
-    pub key: String,
-
-}
-
-
-/// The CustomerContentEncryptionConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
-#[derive(Default, serde::Serialize)]
-pub struct CustomerContentEncryptionConfiguration {
-
 
     /// Property description not available.
     ///
-    /// Required: Yes
+    /// Required: No
     ///
     /// Type: String
     ///
     /// Update requires: No interruption
-    #[serde(rename = "KmsKey")]
-    pub kms_key: String,
+    #[serde(rename = "ExpectedBucketOwner")]
+    pub expected_bucket_owner: Option<String>,
 
 }
